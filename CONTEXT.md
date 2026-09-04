@@ -16,6 +16,10 @@ _Avoid_: SKU（除非明确指库存编码）
 包含目标作品、难度、预计时间、所需材料与制作指导的编织目标。
 _Avoid_: Kit, Product
 
+**Draft Project**:
+团队正在准备、但材料清单或主要 Tutorial 尚未达到公开标准的 Project。它不会对 Visitor 或 Member 公开。
+_Avoid_: Inspiration, Published Project
+
 **Inspiration**:
 通过成品图片、生活场景或推荐材料激发制作与购买兴趣的展示内容；它不提供足以独立完成作品的制作指导。
 _Avoid_: Project, Tutorial
@@ -75,6 +79,7 @@ _Avoid_: Project, Product
 ## Relationships
 
 - 一个 **Product** 有一个或多个 **Variants**。
+- **Draft Project** 达到可执行标准后才能成为公开 **Project**。
 - 公开 **Project** 至少包含材料清单和一个主要 **Tutorial**；不满足可执行条件的展示内容称为 **Inspiration**。
 - **Inspiration** 可以推荐 **Product** 或关联可执行 **Project**，但不承诺 Visitor 或 Member 能仅凭该内容完成作品。
 - 一个自然人可以先以 **Visitor** 身份访问，注册后成为 **Member**，并在完成购买后同时拥有 **Buyer** 角色。
@@ -101,5 +106,6 @@ _Avoid_: Project, Product
 ## Flagged ambiguities
 
 - 过去“Project”有时同时指教程和套件；现已拆分为 **Project**、**Tutorial** 和 **Project Kit**。
+- **Inspiration** 不是 **Draft Project** 的发布状态；前者有意提供非指导型展示内容，后者正在准备成为可执行 Project。
 - “用户”不是正式领域术语；涉及身份或权限时必须明确使用 **Visitor**、**Member**、**Buyer**、**Creator** 或 **Seller**。
 - Shopify API 中的 `Customer` 必须写作 **Shopify Customer**；不得用它指代已经购买的人，后者统一称为 **Buyer**。

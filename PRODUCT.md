@@ -227,6 +227,8 @@ Hoshiami 是商业定位和用户体验机制的主要参考对象。我们参�
 - 只有成品照片、生活场景或推荐毛线，但没有完整制作步骤的内容称为 Inspiration，不称为 Project。
 - Inspiration 可以推荐 Product 或引导到相关 Project，主要承担发现、审美表达和购买启发。
 - Inspiration 不向 Visitor 或 Member 承诺能够仅凭该页面完成作品。
+- 团队计划补齐材料清单和主要 Tutorial 的未完成内容称为 Draft Project，在达到公开标准前不对外发布。
+- Inspiration 是独立内容类型，不作为 Draft Project 的临时发布状态。
 
 ### 会员与购买关系
 
