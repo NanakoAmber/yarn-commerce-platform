@@ -247,6 +247,8 @@ Making 当前只作为未来 My Project 所需的领域概念保留，不进入�
 - 可以通过 Variant 提供少量配色等明确选项。
 - 单独销售和包含在 Kit 中的同一材料 Variant 共用实际库存，不为 Kit 复制一份库存。
 - 每个 Kit Variant 的可售数量由其所有 Kit Components 的可用库存共同决定。
+- 任一 Kit Component 缺货时，受影响的 Kit Variant 暂停销售，不自动替换材料。
+- 如需替换，必须由运营方明确更新 Kit 配置，并在购买前向 Member 展示变化。
 - 第一版不允许 Member 任意增减材料或自由组套；需要自由选择时，使用单独购买 Product 的路径。
 
 ## 7. 首页

@@ -82,6 +82,7 @@ _Avoid_: Project, Product
 - **Project** 的公开可见性独立于 **Project Kit** 库存；对应 Kit 售罄时，Project 仍保持可发现。
 - 每个 **Project Kit** 都是一个可售 **Product**，可以通过 **Variants** 表达少量明确配置。
 - 一个 **Project Kit** 的 **Variant** 由一个或多个 **Kit Components** 构成；其可售数量受所有组件 Variant 的共享库存约束。
+- 任一 **Kit Component** 缺货时，受影响的 **Project Kit** Variant 不可购买；材料不得被系统自动替换。
 - 一个 **Tutorial** 指导一个 **Project**。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 
