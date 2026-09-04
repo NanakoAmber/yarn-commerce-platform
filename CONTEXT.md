@@ -52,8 +52,12 @@ _Avoid_: Creator
 Member 管理个人 Making 并记录制作进度的空间，不要求先购买对应 Product 或 Project Kit。
 _Avoid_: Order History, Purchased Projects
 
+**Favorite**:
+Member 对公开 Project 表达兴趣的收藏关系，不代表已经计划或开始制作，也不会创建 Making。
+_Avoid_: My Project, Making
+
 **Making**:
-Member 根据某个 Project 发起的一次实际制作，独立记录所用颜色、尺寸、材料和进度。同一个 Project 可以被同一 Member 制作多次。
+Member 明确选择“开始制作”后，根据某个 Project 发起的一次实际制作，独立记录所用颜色、尺寸、材料和进度。同一个 Project 可以被同一 Member 制作多次。
 _Avoid_: Project, Tutorial, Order
 
 **Member Work**:
@@ -67,6 +71,7 @@ _Avoid_: Project, Product
 - **Member** 可以关联一个 **Shopify Customer** 记录，但两者不是同一个领域概念。
 - **Creator**、**Seller** 和 **Buyer** 是 **Member** 可以同时拥有的角色。
 - **Member** 无需成为 **Buyer** 即可使用 **My Project**。
+- **Member** 可以收藏一个 **Project**；**Favorite** 不属于 **My Project**，也不会自动创建 **Making**。
 - **My Project** 包含该 Member 的一个或多个 **Makings**。
 - 每个 **Making** 引用一个公开 **Project**；同一 Member 可以为同一 Project 建立多个 Makings。
 - 一个 **Project** 可以对应零个、一个或多个 **Project Kits**。
