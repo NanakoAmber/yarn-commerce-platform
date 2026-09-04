@@ -25,7 +25,7 @@ _Avoid_: Project, Tutorial
 _Avoid_: Variant, Copied Product
 
 **Tutorial**:
-用于指导顾客完成 Project 的图解、视频或步骤内容。
+用于帮助 Visitor 或 Member 完成 Project 的图解、视频或步骤内容；可以是 Project 专属指南，也可以是跨 Project 复用的通用技巧。
 _Avoid_: Project
 
 **Visitor**:
@@ -83,7 +83,8 @@ _Avoid_: Project, Product
 - 每个 **Project Kit** 都是一个可售 **Product**，可以通过 **Variants** 表达少量明确配置。
 - 一个 **Project Kit** 的 **Variant** 由一个或多个 **Kit Components** 构成；其可售数量受所有组件 Variant 的共享库存约束。
 - 任一 **Kit Component** 缺货时，受影响的 **Project Kit** Variant 不可购买；材料不得被系统自动替换。
-- 一个 **Tutorial** 指导一个 **Project**。
+- 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
+- 一个通用 **Tutorial** 可以被多个 **Project** 复用。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 
 ## Example dialogue

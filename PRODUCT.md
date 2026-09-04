@@ -251,6 +251,12 @@ Making 当前只作为未来 My Project 所需的领域概念保留，不进入�
 - 如需替换，必须由运营方明确更新 Kit 配置，并在购买前向 Member 展示变化。
 - 第一版不允许 Member 任意增减材料或自由组套；需要自由选择时，使用单独购买 Product 的路径。
 
+### Tutorial 内容关系
+
+- 一个 Project 可以包含一个主要制作教程和多个辅助技巧 Tutorial。
+- 通用技巧 Tutorial 可以关联多个 Project，避免重复维护相同内容。
+- Tutorial 本身不是 Project；它是帮助完成 Project 的内容单元。
+
 ## 7. 首页
 
 ### 首页任务
