@@ -21,7 +21,7 @@ _Avoid_: Kit, Product
 _Avoid_: Inspiration, Published Project
 
 **Inspiration**:
-通过成品图片、生活场景或推荐材料激发制作与购买兴趣的展示内容；它不提供足以独立完成作品的制作指导。
+由品牌或编辑团队策划，通过成品图片、生活场景或推荐材料激发制作与购买兴趣的展示内容；它不提供足以独立完成作品的制作指导。
 _Avoid_: Project, Tutorial
 
 **Project Kit**:
@@ -73,7 +73,7 @@ Member 明确选择“开始制作”后，根据某个 Project 发起的一次�
 _Avoid_: Project, Tutorial, Order
 
 **Member Work**:
-Member 通过编织或钩织完成并选择分享的作品；可以使用购买的 Project Kit、单独购买的材料或自有材料。
+Member 通过编织或钩织完成并选择分享的作品；它按会员创作来源定义，不要求附带 Tutorial，可以使用购买的 Project Kit、单独购买的材料或自有材料。
 _Avoid_: Project, Product
 
 ## Relationships
@@ -97,6 +97,7 @@ _Avoid_: Project, Product
 - 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
 - 一个通用 **Tutorial** 可以被多个 **Project** 复用。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
+- **Member Work** 可以被品牌或编辑团队精选到 **Inspiration** 或 **Project** 页面中，但仍保持 Member Work 身份。
 
 ## Example dialogue
 

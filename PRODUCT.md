@@ -229,6 +229,8 @@ Hoshiami 是商业定位和用户体验机制的主要参考对象。我们参�
 - Inspiration 不向 Visitor 或 Member 承诺能够仅凭该页面完成作品。
 - 团队计划补齐材料清单和主要 Tutorial 的未完成内容称为 Draft Project，在达到公开标准前不对外发布。
 - Inspiration 是独立内容类型，不作为 Draft Project 的临时发布状态。
+- Member 上传的完成作品按来源称为 Member Work，即使只有照片、没有 Tutorial，也不归类为 Inspiration。
+- 编辑团队可以将 Member Work 精选到 Inspiration 或 Project 页面展示，但原始内容仍保持 Member Work 身份和归属。
 
 ### 会员与购买关系
 
