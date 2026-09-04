@@ -16,6 +16,14 @@ _Avoid_: SKU（除非明确指库存编码）
 包含目标作品、难度、预计时间、所需材料与制作指导的编织目标。
 _Avoid_: Kit, Product
 
+**Draft Project**:
+团队正在准备、但材料清单或主要 Tutorial 尚未达到公开标准的 Project。它不会对 Visitor 或 Member 公开。
+_Avoid_: Inspiration, Published Project
+
+**Inspiration**:
+由品牌或编辑团队策划，通过成品图片、生活场景或推荐材料激发制作与购买兴趣的展示内容；它不提供足以独立完成作品的制作指导。
+_Avoid_: Project, Tutorial
+
 **Project Kit**:
 为完成某个 Project 而组合销售的毛线、工具和可选配件，是 Product 的一种。
 _Avoid_: Project, Tutorial
@@ -65,12 +73,15 @@ Member 明确选择“开始制作”后，根据某个 Project 发起的一次�
 _Avoid_: Project, Tutorial, Order
 
 **Member Work**:
-Member 通过编织或钩织完成并选择分享的作品；可以使用购买的 Project Kit、单独购买的材料或自有材料。
+Member 通过编织或钩织完成并选择分享的作品；它按会员创作来源定义，不要求附带 Tutorial，可以使用购买的 Project Kit、单独购买的材料或自有材料。
 _Avoid_: Project, Product
 
 ## Relationships
 
 - 一个 **Product** 有一个或多个 **Variants**。
+- **Draft Project** 达到可执行标准后才能成为公开 **Project**。
+- 公开 **Project** 至少包含材料清单和一个主要 **Tutorial**；不满足可执行条件的展示内容称为 **Inspiration**。
+- **Inspiration** 可以推荐 **Product** 或关联可执行 **Project**，但不承诺 Visitor 或 Member 能仅凭该内容完成作品。
 - 一个自然人可以先以 **Visitor** 身份访问，注册后成为 **Member**，并在完成购买后同时拥有 **Buyer** 角色。
 - **Member** 可以关联一个 **Shopify Customer** 记录，但两者不是同一个领域概念。
 - **Creator**、**Seller** 和 **Buyer** 是 **Member** 可以同时拥有的角色。
@@ -86,6 +97,7 @@ _Avoid_: Project, Product
 - 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
 - 一个通用 **Tutorial** 可以被多个 **Project** 复用。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
+- **Member Work** 可以被品牌或编辑团队精选到 **Inspiration** 或 **Project** 页面中，但仍保持 Member Work 身份。
 
 ## Example dialogue
 
@@ -95,5 +107,6 @@ _Avoid_: Project, Product
 ## Flagged ambiguities
 
 - 过去“Project”有时同时指教程和套件；现已拆分为 **Project**、**Tutorial** 和 **Project Kit**。
+- **Inspiration** 不是 **Draft Project** 的发布状态；前者有意提供非指导型展示内容，后者正在准备成为可执行 Project。
 - “用户”不是正式领域术语；涉及身份或权限时必须明确使用 **Visitor**、**Member**、**Buyer**、**Creator** 或 **Seller**。
 - Shopify API 中的 `Customer` 必须写作 **Shopify Customer**；不得用它指代已经购买的人，后者统一称为 **Buyer**。

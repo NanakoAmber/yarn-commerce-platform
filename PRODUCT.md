@@ -218,8 +218,19 @@ Hoshiami 是商业定位和用户体验机制的主要参考对象。我们参�
 ### Project 可见性
 
 - Project 是长期内容与商品发现入口，不等同于可售 Project Kit。
+- 公开 Project 必须是可以实际完成的制作目标，至少包含材料清单和一个主要 Tutorial。
 - 即使对应 Project Kit 售罄或暂时未提供，Project 页面仍保持公开。
 - Visitor 和 Member 仍可查看 Project 信息、教程与材料清单；单买材料、到货通知和替代 Kit 属于可按需实现的购买选项。
+
+### Inspiration 内容
+
+- 只有成品照片、生活场景或推荐毛线，但没有完整制作步骤的内容称为 Inspiration，不称为 Project。
+- Inspiration 可以推荐 Product 或引导到相关 Project，主要承担发现、审美表达和购买启发。
+- Inspiration 不向 Visitor 或 Member 承诺能够仅凭该页面完成作品。
+- 团队计划补齐材料清单和主要 Tutorial 的未完成内容称为 Draft Project，在达到公开标准前不对外发布。
+- Inspiration 是独立内容类型，不作为 Draft Project 的临时发布状态。
+- Member 上传的完成作品按来源称为 Member Work，即使只有照片、没有 Tutorial，也不归类为 Inspiration。
+- 编辑团队可以将 Member Work 精选到 Inspiration 或 Project 页面展示，但原始内容仍保持 Member Work 身份和归属。
 
 ### 会员与购买关系
 
