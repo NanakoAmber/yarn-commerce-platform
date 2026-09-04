@@ -52,8 +52,8 @@ _Avoid_: Creator
 Member 用于收藏 Project 并记录个人制作进度的空间，不要求先购买对应 Product 或 Project Kit。
 _Avoid_: Order History, Purchased Projects
 
-**Customer Work**:
-顾客通过编织或钩织完成并选择分享的实体作品。
+**Member Work**:
+Member 通过编织或钩织完成并选择分享的作品；可以使用购买的 Project Kit、单独购买的材料或自有材料。
 _Avoid_: Project, Product
 
 ## Relationships
@@ -67,7 +67,7 @@ _Avoid_: Project, Product
 - **Project** 的公开可见性独立于 **Project Kit** 库存；对应 Kit 售罄时，Project 仍保持可发现。
 - 一个 **Project Kit** 包含一个或多个 **Variants**。
 - 一个 **Tutorial** 指导一个 **Project**。
-- 一个 **Customer Work** 来源于一个 **Project**，但不自动成为可售 **Product**。
+- 一个 **Member Work** 可以来源于一个 **Project**，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 
 ## Example dialogue
 
