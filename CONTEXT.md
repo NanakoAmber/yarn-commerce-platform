@@ -17,7 +17,7 @@ _Avoid_: SKU（除非明确指库存编码）
 _Avoid_: Kit, Product
 
 **Project Kit**:
-为完成某个 Project 而组合销售的毛线、工具和可选配件。
+为完成某个 Project 而组合销售的毛线、工具和可选配件，是 Product 的一种。
 _Avoid_: Project, Tutorial
 
 **Tutorial**:
@@ -76,7 +76,7 @@ _Avoid_: Project, Product
 - 每个 **Making** 引用一个公开 **Project**；同一 Member 可以为同一 Project 建立多个 Makings。
 - 一个 **Project** 可以对应零个、一个或多个 **Project Kits**。
 - **Project** 的公开可见性独立于 **Project Kit** 库存；对应 Kit 售罄时，Project 仍保持可发现。
-- 一个 **Project Kit** 包含一个或多个 **Variants**。
+- 每个 **Project Kit** 都是一个可售 **Product**，可以通过 **Variants** 表达少量明确配置。
 - 一个 **Tutorial** 指导一个 **Project**。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 
