@@ -29,7 +29,7 @@ _Avoid_: Project, Tutorial
 _Avoid_: Project, Tutorial
 
 **Material Requirement**:
-完成某个 Project 所需材料或工具的通用规格与数量，例如线材材质、粗细、长度、重量或针号；它独立于当前可售商品。
+完成某个 Project 所需材料或工具的通用规格与物理用量，例如线材材质、粗细、所需重量、所需长度或针号；它独立于当前可售商品，不以“几团某商品”表达。
 _Avoid_: Product, Variant, Kit Component
 
 **Product Recommendation**:
@@ -90,6 +90,7 @@ _Avoid_: Project, Product
 - **Draft Project** 达到可执行标准后才能成为公开 **Project**。
 - 公开 **Project** 至少包含一个或多个 **Material Requirement** 和一个主要 **Tutorial**；不满足可执行条件的展示内容称为 **Inspiration**。
 - 一个 **Material Requirement** 可以有零个或多个 **Product Recommendation**；推荐商品缺货、停售或替换不改变 Project 本身。
+- 毛线 **Material Requirement** 使用重量和／或长度表达所需用量；需要购买几团由具体 **Product Recommendation** 的每团规格换算。
 - **Project Kit** 是满足 Project Material Requirements 的一种固定可购买配置，但不是完成 Project 的唯一方式。
 - **Inspiration** 可以推荐 **Product** 或关联可执行 **Project**，但不承诺 Visitor 或 Member 能仅凭该内容完成作品。
 - 一个自然人可以先以 **Visitor** 身份访问，注册后成为 **Member**，并在完成购买后同时拥有 **Buyer** 角色。

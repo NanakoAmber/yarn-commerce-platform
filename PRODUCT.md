@@ -225,7 +225,9 @@ Hoshiami 是商业定位和用户体验机制的主要参考对象。我们参�
 ### 材料要求与商品推荐
 
 - Material Requirement 描述完成 Project 所需的通用材料或工具规格与数量，不直接等同于 Shopify Product。
+- 毛线用量以重量和／或长度保存，不将某个商品的“团数”写入 Material Requirement。
 - 每个 Material Requirement 可以推荐零个或多个当前适用的 Product 或 Variant。
+- Product Recommendation 根据商品每团的重量和长度换算需要购买的整数数量，并向上取整。
 - 推荐商品可以因库存、供应商或选品变化而替换，不改变 Project、Material Requirement 或 Tutorial。
 - Project Kit 是满足这些 Material Requirements 的一种固定购买方案；Member 仍可单买材料或使用自有材料。
 
