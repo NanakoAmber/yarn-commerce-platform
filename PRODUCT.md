@@ -224,7 +224,8 @@ Hoshiami 是商业定位和用户体验机制的主要参考对象。我们参�
 ### 会员与购买关系
 
 - 注册后即成为 Member，不需要先购买商品。
-- Member 可以收藏公开 Project、加入 My Project，并记录个人制作进度。
+- Member 可以为公开 Project 创建 Making，并在 My Project 中记录个人制作进度。
+- 同一个 Project 可以创建多个 Making，分别记录不同颜色、尺寸、材料和进度。
 - Member 无需购买对应 Project Kit，也可以使用自有材料完成并分享 Member Work。
 - 完成过至少一次购买的 Member 同时拥有 Buyer 角色。
 - Shopify Customer 仅指 Shopify 中的商业身份记录，不作为平台会员或已购买者的统称。

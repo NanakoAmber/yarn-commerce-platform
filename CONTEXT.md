@@ -49,8 +49,12 @@ _Avoid_: Seller
 _Avoid_: Creator
 
 **My Project**:
-Member 用于收藏 Project 并记录个人制作进度的空间，不要求先购买对应 Product 或 Project Kit。
+Member 管理个人 Making 并记录制作进度的空间，不要求先购买对应 Product 或 Project Kit。
 _Avoid_: Order History, Purchased Projects
+
+**Making**:
+Member 根据某个 Project 发起的一次实际制作，独立记录所用颜色、尺寸、材料和进度。同一个 Project 可以被同一 Member 制作多次。
+_Avoid_: Project, Tutorial, Order
 
 **Member Work**:
 Member 通过编织或钩织完成并选择分享的作品；可以使用购买的 Project Kit、单独购买的材料或自有材料。
@@ -63,11 +67,13 @@ _Avoid_: Project, Product
 - **Member** 可以关联一个 **Shopify Customer** 记录，但两者不是同一个领域概念。
 - **Creator**、**Seller** 和 **Buyer** 是 **Member** 可以同时拥有的角色。
 - **Member** 无需成为 **Buyer** 即可使用 **My Project**。
+- **My Project** 包含该 Member 的一个或多个 **Makings**。
+- 每个 **Making** 引用一个公开 **Project**；同一 Member 可以为同一 Project 建立多个 Makings。
 - 一个 **Project** 可以对应零个、一个或多个 **Project Kits**。
 - **Project** 的公开可见性独立于 **Project Kit** 库存；对应 Kit 售罄时，Project 仍保持可发现。
 - 一个 **Project Kit** 包含一个或多个 **Variants**。
 - 一个 **Tutorial** 指导一个 **Project**。
-- 一个 **Member Work** 可以来源于一个 **Project**，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
+- 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 
 ## Example dialogue
 
