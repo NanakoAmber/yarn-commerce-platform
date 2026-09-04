@@ -218,9 +218,16 @@ Hoshiami 是商业定位和用户体验机制的主要参考对象。我们参�
 ### Project 可见性
 
 - Project 是长期内容与商品发现入口，不等同于可售 Project Kit。
-- 公开 Project 必须是可以实际完成的制作目标，至少包含材料清单和一个主要 Tutorial。
+- 公开 Project 必须是可以实际完成的制作目标，至少包含 Material Requirements 和一个主要 Tutorial。
 - 即使对应 Project Kit 售罄或暂时未提供，Project 页面仍保持公开。
 - Visitor 和 Member 仍可查看 Project 信息、教程与材料清单；单买材料、到货通知和替代 Kit 属于可按需实现的购买选项。
+
+### 材料要求与商品推荐
+
+- Material Requirement 描述完成 Project 所需的通用材料或工具规格与数量，不直接等同于 Shopify Product。
+- 每个 Material Requirement 可以推荐零个或多个当前适用的 Product 或 Variant。
+- 推荐商品可以因库存、供应商或选品变化而替换，不改变 Project、Material Requirement 或 Tutorial。
+- Project Kit 是满足这些 Material Requirements 的一种固定购买方案；Member 仍可单买材料或使用自有材料。
 
 ### Inspiration 内容
 
