@@ -28,6 +28,14 @@ _Avoid_: Project, Tutorial
 为完成某个 Project 而组合销售的毛线、工具和可选配件，是 Product 的一种。
 _Avoid_: Project, Tutorial
 
+**Material Requirement**:
+完成某个 Project 所需材料或工具的通用规格与物理用量，例如线材材质、粗细、所需重量、所需长度或针号；它独立于当前可售商品，不以“几团某商品”表达。
+_Avoid_: Product, Variant, Kit Component
+
+**Product Recommendation**:
+将 Material Requirement 关联到当前适用 Product 或 Variant 的可替换推荐，不代表该商品是完成 Project 的唯一选择。
+_Avoid_: Material Requirement, Kit Component
+
 **Kit Component**:
 某个 Project Kit 配置所需的一项既有 Variant 及其数量。它引用同一份实际商品库存，不建立重复库存。
 _Avoid_: Variant, Copied Product
@@ -80,7 +88,10 @@ _Avoid_: Project, Product
 
 - 一个 **Product** 有一个或多个 **Variants**。
 - **Draft Project** 达到可执行标准后才能成为公开 **Project**。
-- 公开 **Project** 至少包含材料清单和一个主要 **Tutorial**；不满足可执行条件的展示内容称为 **Inspiration**。
+- 公开 **Project** 至少包含一个或多个 **Material Requirement** 和一个主要 **Tutorial**；不满足可执行条件的展示内容称为 **Inspiration**。
+- 一个 **Material Requirement** 可以有零个或多个 **Product Recommendation**；推荐商品缺货、停售或替换不改变 Project 本身。
+- 毛线 **Material Requirement** 可以使用重量和／或长度表达大致用量；具体商品需要购买几团可以在 **Product Recommendation** 中另行说明。
+- **Project Kit** 是满足 Project Material Requirements 的一种固定可购买配置，但不是完成 Project 的唯一方式。
 - **Inspiration** 可以推荐 **Product** 或关联可执行 **Project**，但不承诺 Visitor 或 Member 能仅凭该内容完成作品。
 - 一个自然人可以先以 **Visitor** 身份访问，注册后成为 **Member**，并在完成购买后同时拥有 **Buyer** 角色。
 - **Member** 可以关联一个 **Shopify Customer** 记录，但两者不是同一个领域概念。
