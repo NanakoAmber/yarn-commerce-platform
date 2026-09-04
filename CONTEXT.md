@@ -24,9 +24,33 @@ _Avoid_: Project, Tutorial
 用于指导顾客完成 Project 的图解、视频或步骤内容。
 _Avoid_: Project
 
-**Customer**:
-在商店中建立购买关系的个人。
-_Avoid_: User, Account
+**Visitor**:
+尚未登录平台的访问者。
+_Avoid_: User, Customer
+
+**Member**:
+已注册并登录平台的参与者。Member 无需购买即可收藏 Project、使用 My Project 和记录制作进度。
+_Avoid_: User, Customer, Buyer
+
+**Shopify Customer**:
+Shopify 中用于承载商业身份的客户记录；它可能在首次订单产生之前就已存在。
+_Avoid_: Member, Buyer
+
+**Buyer**:
+至少完成过一次购买的 Member。Buyer 是同一个人的商业角色，不是独立账号。
+_Avoid_: Customer
+
+**Creator**:
+创作 Project、Tutorial 或相关内容的 Member。
+_Avoid_: Seller
+
+**Seller**:
+未来获准通过平台销售 Product 或 Project Kit 的 Member。
+_Avoid_: Creator
+
+**My Project**:
+Member 用于收藏 Project 并记录个人制作进度的空间，不要求先购买对应 Product 或 Project Kit。
+_Avoid_: Order History, Purchased Projects
 
 **Customer Work**:
 顾客通过编织或钩织完成并选择分享的实体作品。
@@ -35,6 +59,10 @@ _Avoid_: Project, Product
 ## Relationships
 
 - 一个 **Product** 有一个或多个 **Variants**。
+- 一个自然人可以先以 **Visitor** 身份访问，注册后成为 **Member**，并在完成购买后同时拥有 **Buyer** 角色。
+- **Member** 可以关联一个 **Shopify Customer** 记录，但两者不是同一个领域概念。
+- **Creator**、**Seller** 和 **Buyer** 是 **Member** 可以同时拥有的角色。
+- **Member** 无需成为 **Buyer** 即可使用 **My Project**。
 - 一个 **Project** 可以对应零个、一个或多个 **Project Kits**。
 - **Project** 的公开可见性独立于 **Project Kit** 库存；对应 Kit 售罄时，Project 仍保持可发现。
 - 一个 **Project Kit** 包含一个或多个 **Variants**。
@@ -49,4 +77,5 @@ _Avoid_: Project, Product
 ## Flagged ambiguities
 
 - 过去“Project”有时同时指教程和套件；现已拆分为 **Project**、**Tutorial** 和 **Project Kit**。
-- “用户”可能指访客、顾客、内容创作者或未来卖家；涉及身份或权限模型时必须先明确具体角色。
+- “用户”不是正式领域术语；涉及身份或权限时必须明确使用 **Visitor**、**Member**、**Buyer**、**Creator** 或 **Seller**。
+- Shopify API 中的 `Customer` 必须写作 **Shopify Customer**；不得用它指代已经购买的人，后者统一称为 **Buyer**。
