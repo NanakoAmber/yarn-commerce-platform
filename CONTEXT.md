@@ -20,6 +20,10 @@ _Avoid_: Kit, Product
 为完成某个 Project 而组合销售的毛线、工具和可选配件，是 Product 的一种。
 _Avoid_: Project, Tutorial
 
+**Kit Component**:
+某个 Project Kit 配置所需的一项既有 Variant 及其数量。它引用同一份实际商品库存，不建立重复库存。
+_Avoid_: Variant, Copied Product
+
 **Tutorial**:
 用于指导顾客完成 Project 的图解、视频或步骤内容。
 _Avoid_: Project
@@ -77,6 +81,7 @@ _Avoid_: Project, Product
 - 一个 **Project** 可以对应零个、一个或多个 **Project Kits**。
 - **Project** 的公开可见性独立于 **Project Kit** 库存；对应 Kit 售罄时，Project 仍保持可发现。
 - 每个 **Project Kit** 都是一个可售 **Product**，可以通过 **Variants** 表达少量明确配置。
+- 一个 **Project Kit** 的 **Variant** 由一个或多个 **Kit Components** 构成；其可售数量受所有组件 Variant 的共享库存约束。
 - 一个 **Tutorial** 指导一个 **Project**。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 

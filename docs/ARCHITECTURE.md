@@ -27,7 +27,7 @@ Shopify 使用 Liquid 直接生成首屏商品内容。当某个页面需要 My 
 | Capability | Source of truth | Notes |
 | --- | --- | --- |
 | Product, Variant, price | Shopify | 不在自有数据库中复制真值 |
-| Inventory | Shopify | 在购物和下单时实时以 Shopify 为准 |
+| Inventory | Shopify | 单品和 Kit Component 引用同一 Variant 库存；Kit 可售量由组件库存共同约束 |
 | Cart, Checkout | Shopify | 支付与结账路径不自建 |
 | Order, refund | Shopify | 自有系统可保存 Shopify ID 和派生状态 |
 | Project 公开内容 | Shopify Metaobjects / Metafields initially | 名称、难度、时间、教程和关联商品 |

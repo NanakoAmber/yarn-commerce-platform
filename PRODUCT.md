@@ -245,6 +245,8 @@ Making 当前只作为未来 My Project 所需的领域概念保留，不进入�
 - 每个 Project Kit 是一个可直接购买的固定配置 Shopify Product。
 - Kit 中包含哪些毛线、工具和配件由运营方预先确定。
 - 可以通过 Variant 提供少量配色等明确选项。
+- 单独销售和包含在 Kit 中的同一材料 Variant 共用实际库存，不为 Kit 复制一份库存。
+- 每个 Kit Variant 的可售数量由其所有 Kit Components 的可用库存共同决定。
 - 第一版不允许 Member 任意增减材料或自由组套；需要自由选择时，使用单独购买 Product 的路径。
 
 ## 7. 首页
