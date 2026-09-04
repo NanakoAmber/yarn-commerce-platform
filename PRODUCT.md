@@ -4,7 +4,7 @@
 >
 > 状态：端到端原型已完成首轮实现与验收
 >
-> 最后更新：2026-09-02
+> 最后更新：2026-09-04
 
 ## 1. 商业定位
 
@@ -230,6 +230,15 @@ Hoshiami 是商业定位和用户体验机制的主要参考对象。我们参�
 - Member 无需购买对应 Project Kit，也可以使用自有材料完成并分享 Member Work。
 - 完成过至少一次购买的 Member 同时拥有 Buyer 角色。
 - Shopify Customer 仅指 Shopify 中的商业身份记录，不作为平台会员或已购买者的统称。
+
+### 平台功能优先级
+
+- **P0 — 完成商业闭环**：Shopify 商品、Variant、库存、购物车、Checkout 与上线流程。
+- **P1 — 帮助发现和购买**：公开 Project 页面、Tutorial、材料清单，以及 Project 与 Project Kit 的关系。
+- **P2 — 提升回访和留存**：Member、Favorite、My Project、Making 与个人制作进度。
+- **P3 — 建设社区和供给平台**：Member Work、社区互动，以及 Creator / Seller 能力。
+
+Making 当前只作为未来 My Project 所需的领域概念保留，不进入近期 Shopify 上线范围。开始实现 P2 前，必须先验证用户是否会反复查看 Tutorial，以及是否确实需要保存材料、进度或多次制作记录。
 
 ## 7. 首页
 
