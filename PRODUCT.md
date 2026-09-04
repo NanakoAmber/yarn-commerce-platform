@@ -256,6 +256,8 @@ Making 当前只作为未来 My Project 所需的领域概念保留，不进入�
 - 一个 Project 可以包含一个主要制作教程和多个辅助技巧 Tutorial。
 - 通用技巧 Tutorial 可以关联多个 Project，避免重复维护相同内容。
 - Tutorial 本身不是 Project；它是帮助完成 Project 的内容单元。
+- 第一版的自有 Tutorial 完全公开，不要求注册或购买 Project Kit 后解锁。
+- 未来的付费图解或 Creator 专属内容应作为独立数字 Product 评估，不改变公开 Project 的基础可发现性。
 
 ## 7. 首页
 
