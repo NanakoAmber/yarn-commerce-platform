@@ -16,6 +16,10 @@ _Avoid_: SKU（除非明确指库存编码）
 包含目标作品、难度、预计时间、所需材料与制作指导的编织目标。
 _Avoid_: Kit, Product
 
+**Inspiration**:
+通过成品图片、生活场景或推荐材料激发制作与购买兴趣的展示内容；它不提供足以独立完成作品的制作指导。
+_Avoid_: Project, Tutorial
+
 **Project Kit**:
 为完成某个 Project 而组合销售的毛线、工具和可选配件，是 Product 的一种。
 _Avoid_: Project, Tutorial
@@ -71,6 +75,8 @@ _Avoid_: Project, Product
 ## Relationships
 
 - 一个 **Product** 有一个或多个 **Variants**。
+- 公开 **Project** 至少包含材料清单和一个主要 **Tutorial**；不满足可执行条件的展示内容称为 **Inspiration**。
+- **Inspiration** 可以推荐 **Product** 或关联可执行 **Project**，但不承诺 Visitor 或 Member 能仅凭该内容完成作品。
 - 一个自然人可以先以 **Visitor** 身份访问，注册后成为 **Member**，并在完成购买后同时拥有 **Buyer** 角色。
 - **Member** 可以关联一个 **Shopify Customer** 记录，但两者不是同一个领域概念。
 - **Creator**、**Seller** 和 **Buyer** 是 **Member** 可以同时拥有的角色。
