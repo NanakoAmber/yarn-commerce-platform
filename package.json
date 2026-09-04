@@ -2,6 +2,9 @@
   "name": "yarn-commerce-platform",
   "private": true,
   "description": "Shopify storefront and platform workspace for the yarn commerce project",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "devDependencies": {
     "@shopify/cli": "4.7.1"
   },
