@@ -1,32 +1,32 @@
-## Issue
+## 对应 Issue
 
 Closes #
 
-## Outcome
+## 结果
 
 
 
-## Scope and non-goals
+## 范围与非目标
 
 
 
-## Verification
+## 验证
 
 - [ ] `npm run verify`
-- [ ] Relevant desktop flow checked
-- [ ] Relevant mobile flow checked
-- [ ] Relevant locales checked
-- [ ] No secrets, personal data, or unlicensed assets added
+- [ ] 已检查受影响的桌面端路径
+- [ ] 已检查受影响的移动端路径
+- [ ] 已检查受影响的语言
+- [ ] 未新增密钥、个人数据或未授权素材
 
-## Evidence
-
-
-
-## Risks and rollback
+## 验证证据
 
 
 
-## Human acceptance
+## 风险与回滚
 
-- [ ] Accepted on an unpublished Shopify theme
-- [ ] Production release separately approved, if applicable
+
+
+## 人工验收
+
+- [ ] 已在未发布 Shopify Theme 上验收
+- [ ] 如涉及生产发布，已另行获得批准

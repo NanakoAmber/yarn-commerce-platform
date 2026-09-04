@@ -24,6 +24,13 @@
 
 不创建与 GitHub Issue 重复的本地 feature tracker 或 progress tracker。
 
+## Collaboration Language
+
+- GitHub Issue、PR、评审意见、Slack 决策摘要和长期文档默认使用中文。
+- 代码标识符、API 字段、终端命令和需要精确引用的平台名称保留英文。
+- 中文说明中首次出现的重要技术术语可保留英文原词，避免翻译造成歧义。
+- 不在同一份 Issue 或 PR 中无规律地中英文切换。
+
 ## Architecture Guardrails
 
 - Shopify 是 Product、Variant、价格、库存、Cart、Checkout、Order 和 Refund 的唯一事实来源。
