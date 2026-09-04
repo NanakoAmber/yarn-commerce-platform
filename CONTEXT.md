@@ -36,6 +36,7 @@ _Avoid_: Project, Product
 
 - 一个 **Product** 有一个或多个 **Variants**。
 - 一个 **Project** 可以对应零个、一个或多个 **Project Kits**。
+- **Project** 的公开可见性独立于 **Project Kit** 库存；对应 Kit 售罄时，Project 仍保持可发现。
 - 一个 **Project Kit** 包含一个或多个 **Variants**。
 - 一个 **Tutorial** 指导一个 **Project**。
 - 一个 **Customer Work** 来源于一个 **Project**，但不自动成为可售 **Product**。
