@@ -1,0 +1,38 @@
+{%- liquid
+  assign label_new = '新着'
+  assign label_purpose = '目的から探す'
+  assign label_yarn = '毛糸'
+  assign label_kits = '編み物キット'
+  assign label_gifts = '道具・ギフト'
+  assign label_support = 'サポート'
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign label_new = '新品'
+      assign label_purpose = '按作品挑选'
+      assign label_yarn = '毛线'
+      assign label_kits = '编织套装'
+      assign label_gifts = '工具与礼物'
+      assign label_support = '咨询与帮助'
+    when 'en'
+      assign label_new = 'New arrivals'
+      assign label_purpose = 'Shop by project'
+      assign label_yarn = 'Yarn'
+      assign label_kits = 'Knitting kits'
+      assign label_gifts = 'Tools & gifts'
+      assign label_support = 'Support'
+  endcase
+  assign yarn_query = 'tag:毛糸' | url_encode
+  assign kit_query = 'tag:編みものキット' | url_encode
+  assign gift_query = 'tag:編み物道具 OR tag:ギフトセット OR tag:完成品' | url_encode
+-%}
+
+<nav class="header__inline-menu" aria-label="{{ 'sections.header.menu' | t }}">
+  <ul class="list-menu list-menu--inline yarn-main-menu" role="list">
+    <li><a class="header__menu-item list-menu__item link link--text focus-inset" href="{{ routes.all_products_collection_url }}"><span>{{ label_new }}</span></a></li>
+    <li><a class="header__menu-item list-menu__item link link--text focus-inset" href="{{ routes.root_url }}#shop-by-project"><span>{{ label_purpose }}</span></a></li>
+    <li><a class="header__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ yarn_query }}&type=product"><span>{{ label_yarn }}</span></a></li>
+    <li><a class="header__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ kit_query }}&type=product"><span>{{ label_kits }}</span></a></li>
+    <li><a class="header__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ gift_query }}&type=product"><span>{{ label_gifts }}</span></a></li>
+    <li><a class="header__menu-item list-menu__item link link--text focus-inset" href="{{ routes.root_url }}#line-support"><span>{{ label_support }}</span></a></li>
+  </ul>
+</nav>

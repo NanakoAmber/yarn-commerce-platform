@@ -1,0 +1,64 @@
+{%- liquid
+  assign label_new = '新着'
+  assign label_purpose = '目的から探す'
+  assign label_yarn = '毛糸'
+  assign label_kits = '編み物キット'
+  assign label_gifts = '道具・ギフト'
+  assign label_support = 'サポート'
+  assign label_search = '検索'
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign label_new = '新品'
+      assign label_purpose = '按作品挑选'
+      assign label_yarn = '毛线'
+      assign label_kits = '编织套装'
+      assign label_gifts = '工具与礼物'
+      assign label_support = '咨询与帮助'
+      assign label_search = '搜索'
+    when 'en'
+      assign label_new = 'New arrivals'
+      assign label_purpose = 'Shop by project'
+      assign label_yarn = 'Yarn'
+      assign label_kits = 'Knitting kits'
+      assign label_gifts = 'Tools & gifts'
+      assign label_support = 'Support'
+      assign label_search = 'Search'
+  endcase
+  assign yarn_query = 'tag:毛糸' | url_encode
+  assign kit_query = 'tag:編みものキット' | url_encode
+  assign gift_query = 'tag:編み物道具 OR tag:ギフトセット OR tag:完成品' | url_encode
+-%}
+
+<header-drawer data-breakpoint="tablet">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
+      <span>{{- 'icon-hamburger.svg' | inline_asset_content -}}{{- 'icon-close.svg' | inline_asset_content -}}</span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container">
+          <nav class="menu-drawer__navigation" aria-label="{{ 'sections.header.menu' | t }}">
+            <ul class="menu-drawer__menu list-menu" role="list">
+              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.all_products_collection_url }}">{{ label_new }}</a></li>
+              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.root_url }}#shop-by-project">{{ label_purpose }}</a></li>
+              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ yarn_query }}&type=product">{{ label_yarn }}</a></li>
+              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ kit_query }}&type=product">{{ label_kits }}</a></li>
+              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ gift_query }}&type=product">{{ label_gifts }}</a></li>
+              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.root_url }}#line-support">{{ label_support }}</a></li>
+              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}">{{ label_search }}</a></li>
+            </ul>
+          </nav>
+          {%- if show_language_selector and localization.available_languages.size > 1 -%}
+            <div class="menu-drawer__localization header-localization">
+              <localization-form>
+                {%- form 'localization', id: 'HeaderDrawerLanguageForm', class: 'localization-form' -%}
+                  <div><h2 class="visually-hidden" id="HeaderDrawerLanguageLabel">{{ 'localization.language_label' | t }}</h2>{%- render 'language-localization', localPosition: 'HeaderDrawerLanguage' -%}</div>
+                {%- endform -%}
+              </localization-form>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </details>
+</header-drawer>

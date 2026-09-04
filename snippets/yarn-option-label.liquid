@@ -1,0 +1,9 @@
+{%- assign localized_option_name = option_name -%}
+{%- if option_name == '选项' or option_name == 'オプション' or option_name == 'Option' -%}
+  {%- case request.locale.iso_code -%}
+    {%- when 'zh-CN', 'zh' -%}{%- assign localized_option_name = '选项' -%}
+    {%- when 'en' -%}{%- assign localized_option_name = 'Option' -%}
+    {%- else -%}{%- assign localized_option_name = 'オプション' -%}
+  {%- endcase -%}
+{%- endif -%}
+{{- localized_option_name -}}

@@ -1,0 +1,21 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.shopify/
+*.log
+
+/node_modules/
+/tmp/
+/output/
+
+# Local research and visual evidence. Keep these outside the product repository.
+/hoshiami-reference-20/
+/hoshiami-ux-audit/
+/qa/
+
+# Superseded or raw working notes. Durable decisions belong in PRODUCT.md and docs/.
+/ai-collaboration-infra-plan.md
+/design-qa.md
+/report-source.md
+/会议纪要-*.md

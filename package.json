@@ -1,0 +1,14 @@
+{
+  "name": "yarn-commerce-platform",
+  "private": true,
+  "description": "Shopify storefront and platform workspace for the yarn commerce project",
+  "devDependencies": {
+    "@shopify/cli": "4.7.1"
+  },
+  "scripts": {
+    "dev": "shopify theme dev",
+    "check": "shopify theme check --path .",
+    "verify": "npm run check",
+    "shopify": "shopify"
+  }
+}

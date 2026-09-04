@@ -1,0 +1,250 @@
+{% liquid
+  assign paths_heading = section.settings.heading
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign paths_heading = '选毛线，不止一种方式。'
+    when 'en'
+      assign paths_heading = 'There is more than one way to choose.'
+  endcase
+%}
+
+<section class="yarn-paths color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="yarn-paths__head">
+      <p>{{ section.settings.eyebrow | escape }}</p>
+      <h2>{{ paths_heading | escape }}</h2>
+    </div>
+
+    <div class="yarn-paths__grid">
+      {% for block in section.blocks %}
+        {% liquid
+          assign path_title = block.settings.title
+          assign path_text = block.settings.text
+          assign path_link_label = block.settings.link_label
+          case request.locale.iso_code
+            when 'zh-CN', 'zh'
+              case forloop.index
+                when 1
+                  assign path_title = '按材质挑选'
+                  assign path_text = '<p>比较颜色、粗细与触感，从想要的质地开始挑选毛线。</p>'
+                  assign path_link_label = '浏览毛线'
+                when 2
+                  assign path_title = '按作品挑选'
+                  assign path_text = '<p>包袋、披肩、毯子，从完成后的样子开始寻找所需材料。</p>'
+                  assign path_link_label = '按作品挑选'
+                when 3
+                  assign path_title = '咨询后挑选'
+                  assign path_text = '<p>不确定配色或用量时，可以通过 LINE 轻松咨询。</p>'
+                  assign path_link_label = '查看咨询方式'
+              endcase
+            when 'en'
+              case forloop.index
+                when 1
+                  assign path_title = 'Choose by material'
+                  assign path_text = '<p>Compare colour, weight and feel to find the texture you want in your hands.</p>'
+                  assign path_link_label = 'Browse yarn'
+                when 2
+                  assign path_title = 'Choose by project'
+                  assign path_text = '<p>Bags, shawls and blankets—start from the finished piece and find the materials it needs.</p>'
+                  assign path_link_label = 'Shop by project'
+                when 3
+                  assign path_title = 'Choose with guidance'
+                  assign path_text = '<p>Unsure about colour combinations or quantity? Ask us easily through LINE.</p>'
+                  assign path_link_label = 'See support options'
+              endcase
+          endcase
+        %}
+        <div class="yarn-paths__item" {{ block.shopify_attributes }}>
+          <span>0{{ forloop.index }}</span>
+          <h3>{{ path_title | escape }}</h3>
+          <div class="rte">{{ path_text }}</div>
+          {% if path_link_label != blank %}
+            <a href="{{ block.settings.link | default: routes.all_products_collection_url }}">
+              {{ path_link_label | escape }} <span aria-hidden="true">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .yarn-paths {
+    padding: clamp(64px, 8vw, 104px) 0;
+  }
+
+  .yarn-paths__head {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: end;
+    padding-bottom: 34px;
+    border-bottom: 1px solid rgba(120, 185, 216, 0.24);
+  }
+
+  .yarn-paths__head p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+  }
+
+  .yarn-paths__head h2 {
+    max-width: 12em;
+    margin: 0;
+    font-size: clamp(2.8rem, 3.4vw, 4.6rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  .yarn-paths__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    padding-top: 20px;
+  }
+
+  .yarn-paths__item {
+    min-height: 260px;
+    padding: 28px clamp(22px, 3vw, 36px);
+    border: 1px solid rgba(120, 185, 216, 0.18);
+    border-radius: 16px;
+    background: #f1f9fd;
+  }
+
+  .yarn-paths__item:nth-child(2) { background: #fff2f5; }
+  .yarn-paths__item:nth-child(3) { background: #eef8f3; }
+
+  .yarn-paths__item:first-child {
+    padding-left: clamp(22px, 3vw, 36px);
+  }
+
+  .yarn-paths__item:last-child {
+    padding-right: clamp(22px, 3vw, 36px);
+  }
+
+  .yarn-paths__item > span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #78b9d8;
+  }
+
+  .yarn-paths__item h3 {
+    margin: 48px 0 14px;
+    font-size: 2.6rem;
+    font-weight: 500;
+  }
+
+  .yarn-paths__item .rte {
+    max-width: 31rem;
+    font-size: 1.4rem;
+    line-height: 1.75;
+  }
+
+  .yarn-paths__item .rte p {
+    margin: 0;
+  }
+
+  .yarn-paths__item a {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 24px;
+    color: inherit;
+    font-size: 1.3rem;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+  }
+
+  .yarn-paths__item a span,
+  .yarn-paths__item a svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .yarn-paths {
+      padding: 56px 0;
+    }
+
+    .yarn-paths__head {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .yarn-paths__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .yarn-paths__item,
+    .yarn-paths__item:first-child,
+    .yarn-paths__item:last-child {
+      min-height: 0;
+      padding: 28px 0 34px;
+      border-right: 0;
+      border: 1px solid rgba(120, 185, 216, 0.18);
+      border-radius: 14px;
+    }
+
+    .yarn-paths__item:last-child {
+      border-bottom: 0;
+    }
+
+    .yarn-paths__item h3 {
+      margin-top: 34px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "三种选购路径",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "眉题",
+      "default": "HOW TO CHOOSE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "選び方は、ひとつじゃない。"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "配色",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "path",
+      "name": "选购路径",
+      "settings": [
+        { "type": "text", "id": "title", "label": "标题", "default": "素材から選ぶ" },
+        { "type": "richtext", "id": "text", "label": "说明", "default": "<p>色、太さ、素材感。手にしたい風合いから、毛糸を比べて選べます。</p>" },
+        { "type": "text", "id": "link_label", "label": "链接文字", "default": "毛糸を見る" },
+        { "type": "url", "id": "link", "label": "链接" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "三种选购路径",
+      "blocks": [
+        { "type": "path" },
+        { "type": "path" },
+        { "type": "path" }
+      ]
+    }
+  ]
+}
+{% endschema %}

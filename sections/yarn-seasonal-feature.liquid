@@ -1,0 +1,233 @@
+{% liquid
+  assign seasonal_heading = section.settings.heading
+  assign seasonal_heading_lead = '季節の色を、'
+  assign seasonal_heading_trail = 'ひとつずつ重ねる。'
+  assign seasonal_text = section.settings.text
+  assign seasonal_button = section.settings.button_label
+  assign seasonal_tag_1 = '季節の糸'
+  assign seasonal_tag_2 = '1玉から'
+  assign seasonal_tag_3 = '編み図付き'
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign seasonal_heading = '把季节的颜色，一层层织进去。'
+      assign seasonal_heading_lead = '把季节的颜色，'
+      assign seasonal_heading_trail = '一层层织进去。'
+      assign seasonal_text = '<p>从轻盈棉线到富有层次的渐变色线，我们挑选了适合此刻创作的季节毛线与编织套装。</p>'
+      assign seasonal_button = '查看当季推荐'
+      assign seasonal_tag_1 = '当季毛线'
+      assign seasonal_tag_2 = '一团起'
+      assign seasonal_tag_3 = '附编织图解'
+    when 'en'
+      assign seasonal_heading = 'Layer in the colours of the season.'
+      assign seasonal_heading_lead = 'Layer in the colours'
+      assign seasonal_heading_trail = 'of the season.'
+      assign seasonal_text = '<p>From airy cotton to richly shifting colourways, discover seasonal yarns and kits for what you want to make now.</p>'
+      assign seasonal_button = 'Explore seasonal picks'
+      assign seasonal_tag_1 = 'Seasonal yarns'
+      assign seasonal_tag_2 = 'From one ball'
+      assign seasonal_tag_3 = 'Pattern included'
+  endcase
+%}
+
+<section class="yarn-seasonal color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="yarn-seasonal__frame">
+      <div class="yarn-seasonal__media" aria-hidden="true">
+        <img
+          src="{{ 'yarn-hero-editorial.png' | asset_url }}"
+          alt=""
+          width="1536"
+          height="1024"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="yarn-seasonal__content">
+        <p class="yarn-seasonal__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h2 aria-label="{{ seasonal_heading | escape }}">
+          <span>{{ seasonal_heading_lead | escape }}</span>
+          <span>{{ seasonal_heading_trail | escape }}</span>
+        </h2>
+        <div class="yarn-seasonal__text rte">{{ seasonal_text }}</div>
+        <ul class="yarn-seasonal__tags" role="list">
+          <li>{{ seasonal_tag_1 }}</li>
+          <li>{{ seasonal_tag_2 }}</li>
+          <li>{{ seasonal_tag_3 }}</li>
+        </ul>
+        {% if seasonal_button != blank %}
+          <a class="button button--primary" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+            {{ seasonal_button | escape }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .yarn-seasonal {
+    padding: clamp(64px, 8vw, 112px) 0;
+  }
+
+  .yarn-seasonal__frame {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+    min-height: 620px;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(120, 185, 216, 0.18);
+    background: #eef8f3;
+  }
+
+  .yarn-seasonal__media {
+    min-height: 520px;
+    overflow: hidden;
+  }
+
+  .yarn-seasonal__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% center;
+    transform: scale(1.02);
+    transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .yarn-seasonal__frame:hover .yarn-seasonal__media img {
+    transform: scale(1.055);
+  }
+
+  .yarn-seasonal__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: clamp(40px, 6vw, 80px);
+    color: #403c3b;
+  }
+
+  .yarn-seasonal__eyebrow {
+    margin: 0 0 18px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+  }
+
+  .yarn-seasonal__content h2 {
+    max-width: none;
+    margin: 0;
+    font-size: clamp(2.8rem, 3.2vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  .yarn-seasonal__content h2 span {
+    display: block;
+  }
+
+  .yarn-seasonal__text {
+    max-width: 40rem;
+    margin-top: 24px;
+    font-size: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .yarn-seasonal__text p {
+    margin: 0;
+  }
+
+  .yarn-seasonal__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 30px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .yarn-seasonal__tags li {
+    padding: 7px 12px;
+    border: 1px solid rgba(120, 185, 216, 0.42);
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 999px;
+    font-size: 1.15rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .yarn-seasonal__frame {
+      grid-template-columns: 1fr;
+    }
+
+    .yarn-seasonal__media {
+      min-height: 430px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .yarn-seasonal {
+      padding: 56px 0;
+    }
+
+    .yarn-seasonal__frame {
+      min-height: 0;
+      border-radius: 14px;
+    }
+
+    .yarn-seasonal__media {
+      min-height: 330px;
+    }
+
+    .yarn-seasonal__content {
+      padding: 34px 24px 40px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "季节主题推荐",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "眉题",
+      "default": "SEASONAL EDIT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "季節の色を、ひとつずつ重ねる。"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "说明",
+      "default": "<p>軽やかなコットンから、深みのある段染めまで。いま編みたい作品に合う、季節の毛糸とキットを集めました。</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "按钮",
+      "default": "季節のおすすめを見る"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "链接"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "配色",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    { "name": "季节主题推荐" }
+  ]
+}
+{% endschema %}

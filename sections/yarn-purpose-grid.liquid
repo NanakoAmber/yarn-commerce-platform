@@ -1,0 +1,377 @@
+{% liquid
+  assign purpose_heading = section.settings.heading
+  assign purpose_text = section.settings.text
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign purpose_heading = '从想完成的作品开始'
+      assign purpose_text = '<p>先想象作品完成后的样子，再选择适合它的毛线与套装。</p>'
+    when 'en'
+      assign purpose_heading = 'Start with what you want to make'
+      assign purpose_text = '<p>Picture the finished piece, then choose the yarn or kit that fits it.</p>'
+  endcase
+%}
+
+<section id="shop-by-project" class="yarn-purpose color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="yarn-purpose__head">
+      <div>
+        {% if section.settings.eyebrow != blank %}
+          <p class="yarn-purpose__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {% endif %}
+        <h2 class="yarn-purpose__title">{{ purpose_heading | escape }}</h2>
+      </div>
+      {% if purpose_text != blank %}
+        <div class="yarn-purpose__intro rte">{{ purpose_text }}</div>
+      {% endif %}
+    </div>
+
+    <div class="yarn-purpose__grid">
+      {% for block in section.blocks %}
+        {% liquid
+          assign card_title = block.settings.title
+          assign card_caption = block.settings.caption
+          case request.locale.iso_code
+            when 'zh-CN', 'zh'
+              case forloop.index
+                when 1
+                  assign card_title = '包袋'
+                  assign card_caption = '查看毛线与套装'
+                when 2
+                  assign card_title = '披肩围巾'
+                  assign card_caption = '选择当季毛线'
+                when 3
+                  assign card_title = '毯子'
+                  assign card_caption = '查看人气套装'
+                when 4
+                  assign card_title = '礼物'
+                  assign card_caption = '适合送礼的作品'
+                when 5
+                  assign card_title = '一团即可完成'
+                  assign card_caption = '轻松开始'
+              endcase
+            when 'en'
+              case forloop.index
+                when 1
+                  assign card_title = 'Bags'
+                  assign card_caption = 'Yarns and kits'
+                when 2
+                  assign card_title = 'Shawls'
+                  assign card_caption = 'Seasonal yarns'
+                when 3
+                  assign card_title = 'Blankets'
+                  assign card_caption = 'Popular kits'
+                when 4
+                  assign card_title = 'Gifts'
+                  assign card_caption = 'Gift-worthy projects'
+                when 5
+                  assign card_title = 'One-ball'
+                  assign card_caption = 'An easy start'
+              endcase
+            else
+              case forloop.index
+                when 1
+                  assign card_title = 'バッグ'
+                when 2
+                  assign card_title = 'ショール'
+                when 3
+                  assign card_title = 'ブランケット'
+                when 4
+                  assign card_title = 'ギフト'
+                when 5
+                  assign card_title = '1玉で完成'
+              endcase
+          endcase
+        %}
+        {%- liquid
+          assign purpose_link = block.settings.link | default: routes.all_products_collection_url
+          case forloop.index
+            when 1
+              assign purpose_query = 'バッグ' | url_encode
+              assign purpose_link = routes.search_url | append: '?q=' | append: purpose_query | append: '&type=product'
+            when 2
+              assign purpose_query = 'ショール' | url_encode
+              assign purpose_link = routes.search_url | append: '?q=' | append: purpose_query | append: '&type=product'
+            when 3
+              assign purpose_query = 'ブランケット' | url_encode
+              assign purpose_link = routes.search_url | append: '?q=' | append: purpose_query | append: '&type=product'
+            when 4
+              assign purpose_query = 'tag:ギフトセット OR tag:完成品' | url_encode
+              assign purpose_link = routes.search_url | append: '?q=' | append: purpose_query | append: '&type=product'
+            when 5
+              assign purpose_link = routes.root_url | append: 'products/joyful-hanabi-shawl-crochet-kit'
+          endcase
+          case forloop.index
+            when 1
+              assign purpose_handle = 'tutu-bag-kit'
+            when 2
+              assign purpose_handle = 'joyful-hanabi-shawl-crochet-kit'
+            when 3
+              assign purpose_handle = 'nordic-blanket-niji-kit'
+            when 4
+              assign purpose_handle = 'knit-bouquet'
+            when 5
+              assign purpose_handle = 'ami-uchiwa-sakura-kit'
+          endcase
+          assign purpose_product = all_products[purpose_handle]
+        -%}
+        <a
+          class="yarn-purpose__card yarn-purpose__card--{{ forloop.index }}"
+          href="{{ purpose_link }}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="yarn-purpose__media">
+            {%- if purpose_product.featured_image != blank -%}
+              {{
+                purpose_product.featured_image
+                | image_url: width: 720
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '240, 360, 480, 720',
+                  sizes: '(min-width: 990px) 20vw, (min-width: 750px) 33vw, 50vw',
+                  alt: card_title
+              }}
+            {%- endif -%}
+          </span>
+          <span class="yarn-purpose__card-copy">
+            <strong>{{ card_title | escape }}</strong>
+            {% if card_caption != blank %}
+              <small>{{ card_caption | escape }}</small>
+            {% endif %}
+          </span>
+          <span class="yarn-purpose__arrow" aria-hidden="true">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .yarn-purpose {
+    padding: clamp(44px, 5vw, 72px) 0 clamp(54px, 6vw, 84px);
+  }
+
+  .yarn-purpose__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.65fr);
+    gap: 32px;
+    align-items: end;
+    margin-bottom: 24px;
+  }
+
+  .yarn-purpose__eyebrow {
+    display: none;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+  }
+
+  .yarn-purpose__title {
+    max-width: none;
+    margin: 0;
+    font-size: clamp(2.5rem, 2.7vw, 3.7rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  .yarn-purpose__intro {
+    max-width: 42rem;
+    color: rgba(64, 60, 59, 0.72);
+    font-size: 1.35rem;
+    line-height: 1.75;
+  }
+
+  .yarn-purpose__intro p {
+    margin: 0;
+  }
+
+  .yarn-purpose__grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .yarn-purpose__card {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(120, 185, 216, 0.2);
+    border-radius: 14px;
+    background: #ffffff;
+    color: #403c3b;
+    text-decoration: none;
+    transition: border-color 180ms ease, transform 180ms ease;
+  }
+
+  .yarn-purpose__card:hover,
+  .yarn-purpose__card:focus-visible {
+    border-color: #78b9d8;
+    transform: translateY(-3px);
+  }
+
+  .yarn-purpose__media {
+    display: block;
+    aspect-ratio: 1.55;
+    overflow: hidden;
+    background: #f4fafe;
+  }
+
+  .yarn-purpose__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
+  .yarn-purpose__card:hover .yarn-purpose__media img,
+  .yarn-purpose__card:focus-visible .yarn-purpose__media img {
+    transform: scale(1.035);
+  }
+
+  .yarn-purpose__card-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    padding: 13px 42px 13px 14px;
+  }
+
+  .yarn-purpose__card-copy strong {
+    overflow: hidden;
+    font-size: clamp(1.35rem, 1.3vw, 1.65rem);
+    font-weight: 500;
+    line-height: 1.45;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .yarn-purpose__card-copy small {
+    display: none;
+  }
+
+  .yarn-purpose__arrow {
+    position: absolute;
+    right: 14px;
+    bottom: 17px;
+    display: grid;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    color: #78b9d8;
+    transition: transform 180ms ease;
+  }
+
+  .yarn-purpose__arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .yarn-purpose__card:hover .yarn-purpose__arrow,
+  .yarn-purpose__card:focus-visible .yarn-purpose__arrow {
+    transform: translateX(3px);
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .yarn-purpose__head {
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.7fr);
+      gap: 28px;
+    }
+
+    .yarn-purpose__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media screen and (max-width: 749px) {
+    .yarn-purpose {
+      padding: 40px 0 52px;
+    }
+
+    .yarn-purpose__head {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .yarn-purpose__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .yarn-purpose__intro { display: none; }
+    .yarn-purpose__card:last-child { grid-column: 1 / -1; }
+    .yarn-purpose__media { aspect-ratio: 1.35; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "按目的寻找",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "眉题",
+      "default": "SHOP BY PROJECT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "つくりたいものから探す"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "说明",
+      "default": "<p>完成した姿を思い浮かべながら、作品に合う毛糸とキットを選べます。</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "配色",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "purpose",
+      "name": "目的卡片",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题",
+          "default": "バッグを編む"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "说明",
+          "default": "毛糸・キットを見る"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "按目的寻找",
+      "blocks": [
+        { "type": "purpose" },
+        { "type": "purpose" },
+        { "type": "purpose" },
+        { "type": "purpose" },
+        { "type": "purpose" }
+      ]
+    }
+  ]
+}
+{% endschema %}

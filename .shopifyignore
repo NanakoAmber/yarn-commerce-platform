@@ -1,0 +1,9 @@
+.github/**
+docs/**
+AGENTS.md
+CONTEXT.md
+PRODUCT.md
+README.md
+init.sh
+package.json
+package-lock.json
