@@ -17,28 +17,75 @@ _Avoid_: SKU（除非明确指库存编码）
 _Avoid_: Kit, Product
 
 **Project Kit**:
-为完成某个 Project 而组合销售的毛线、工具和可选配件。
+为完成某个 Project 而组合销售的毛线、工具和可选配件，是 Product 的一种。
 _Avoid_: Project, Tutorial
 
+**Kit Component**:
+某个 Project Kit 配置所需的一项既有 Variant 及其数量。它引用同一份实际商品库存，不建立重复库存。
+_Avoid_: Variant, Copied Product
+
 **Tutorial**:
-用于指导顾客完成 Project 的图解、视频或步骤内容。
+用于帮助 Visitor 或 Member 完成 Project 的图解、视频或步骤内容；可以是 Project 专属指南，也可以是跨 Project 复用的通用技巧。
 _Avoid_: Project
 
-**Customer**:
-在商店中建立购买关系的个人。
-_Avoid_: User, Account
+**Visitor**:
+尚未登录平台的访问者。
+_Avoid_: User, Customer
 
-**Customer Work**:
-顾客通过编织或钩织完成并选择分享的实体作品。
+**Member**:
+已注册并登录平台的参与者。Member 无需购买即可收藏 Project、使用 My Project 和记录制作进度。
+_Avoid_: User, Customer, Buyer
+
+**Shopify Customer**:
+Shopify 中用于承载商业身份的客户记录；它可能在首次订单产生之前就已存在。
+_Avoid_: Member, Buyer
+
+**Buyer**:
+至少完成过一次购买的 Member。Buyer 是同一个人的商业角色，不是独立账号。
+_Avoid_: Customer
+
+**Creator**:
+创作 Project、Tutorial 或相关内容的 Member。
+_Avoid_: Seller
+
+**Seller**:
+未来获准通过平台销售 Product 或 Project Kit 的 Member。
+_Avoid_: Creator
+
+**My Project**:
+Member 管理个人 Making 并记录制作进度的空间，不要求先购买对应 Product 或 Project Kit。
+_Avoid_: Order History, Purchased Projects
+
+**Favorite**:
+Member 对公开 Project 表达兴趣的收藏关系，不代表已经计划或开始制作，也不会创建 Making。
+_Avoid_: My Project, Making
+
+**Making**:
+Member 明确选择“开始制作”后，根据某个 Project 发起的一次实际制作，独立记录所用颜色、尺寸、材料和进度。同一个 Project 可以被同一 Member 制作多次。
+_Avoid_: Project, Tutorial, Order
+
+**Member Work**:
+Member 通过编织或钩织完成并选择分享的作品；可以使用购买的 Project Kit、单独购买的材料或自有材料。
 _Avoid_: Project, Product
 
 ## Relationships
 
 - 一个 **Product** 有一个或多个 **Variants**。
+- 一个自然人可以先以 **Visitor** 身份访问，注册后成为 **Member**，并在完成购买后同时拥有 **Buyer** 角色。
+- **Member** 可以关联一个 **Shopify Customer** 记录，但两者不是同一个领域概念。
+- **Creator**、**Seller** 和 **Buyer** 是 **Member** 可以同时拥有的角色。
+- **Member** 无需成为 **Buyer** 即可使用 **My Project**。
+- **Member** 可以收藏一个 **Project**；**Favorite** 不属于 **My Project**，也不会自动创建 **Making**。
+- **My Project** 包含该 Member 的一个或多个 **Makings**。
+- 每个 **Making** 引用一个公开 **Project**；同一 Member 可以为同一 Project 建立多个 Makings。
 - 一个 **Project** 可以对应零个、一个或多个 **Project Kits**。
-- 一个 **Project Kit** 包含一个或多个 **Variants**。
-- 一个 **Tutorial** 指导一个 **Project**。
-- 一个 **Customer Work** 来源于一个 **Project**，但不自动成为可售 **Product**。
+- **Project** 的公开可见性独立于 **Project Kit** 库存；对应 Kit 售罄时，Project 仍保持可发现。
+- 每个 **Project Kit** 都是一个可售 **Product**，可以通过 **Variants** 表达少量明确配置。
+- 一个 **Project Kit** 的 **Variant** 由一个或多个 **Kit Components** 构成；其可售数量受所有组件 Variant 的共享库存约束。
+- 任一 **Kit Component** 缺货时，受影响的 **Project Kit** Variant 不可购买；材料不得被系统自动替换。
+- 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
+- 一个通用 **Tutorial** 可以被多个 **Project** 复用。
+- 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 
 ## Example dialogue
 
@@ -48,4 +95,5 @@ _Avoid_: Project, Product
 ## Flagged ambiguities
 
 - 过去“Project”有时同时指教程和套件；现已拆分为 **Project**、**Tutorial** 和 **Project Kit**。
-- “用户”可能指访客、顾客、内容创作者或未来卖家；涉及身份或权限模型时必须先明确具体角色。
+- “用户”不是正式领域术语；涉及身份或权限时必须明确使用 **Visitor**、**Member**、**Buyer**、**Creator** 或 **Seller**。
+- Shopify API 中的 `Customer` 必须写作 **Shopify Customer**；不得用它指代已经购买的人，后者统一称为 **Buyer**。

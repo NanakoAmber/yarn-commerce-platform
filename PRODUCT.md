@@ -4,7 +4,7 @@
 >
 > 状态：端到端原型已完成首轮实现与验收
 >
-> 最后更新：2026-09-02
+> 最后更新：2026-09-04
 
 ## 1. 商业定位
 
@@ -214,6 +214,50 @@ Hoshiami 是商业定位和用户体验机制的主要参考对象。我们参�
 - 按作品或目的找：包、围巾和披肩、毯子、玩偶、家居用品、礼物、季节主题
 
 核心购买路径是：用户表达想做什么作品，平台帮助用户找到合适的毛线或套件。
+
+### Project 可见性
+
+- Project 是长期内容与商品发现入口，不等同于可售 Project Kit。
+- 即使对应 Project Kit 售罄或暂时未提供，Project 页面仍保持公开。
+- Visitor 和 Member 仍可查看 Project 信息、教程与材料清单；单买材料、到货通知和替代 Kit 属于可按需实现的购买选项。
+
+### 会员与购买关系
+
+- 注册后即成为 Member，不需要先购买商品。
+- Member 可以收藏公开 Project；Favorite 只表达兴趣，不代表已经开始制作。
+- 只有 Member 明确选择“开始制作”时，才创建 Making，并在 My Project 中记录个人制作进度。
+- 同一个 Project 可以创建多个 Making，分别记录不同颜色、尺寸、材料和进度。
+- Member 无需购买对应 Project Kit，也可以使用自有材料完成并分享 Member Work。
+- 完成过至少一次购买的 Member 同时拥有 Buyer 角色。
+- Shopify Customer 仅指 Shopify 中的商业身份记录，不作为平台会员或已购买者的统称。
+
+### 平台功能优先级
+
+- **P0 — 完成商业闭环**：Shopify 商品、Variant、库存、购物车、Checkout 与上线流程。
+- **P1 — 帮助发现和购买**：公开 Project 页面、Tutorial、材料清单，以及 Project 与 Project Kit 的关系。
+- **P2 — 提升回访和留存**：Member、Favorite、My Project、Making 与个人制作进度。
+- **P3 — 建设社区和供给平台**：Member Work、社区互动，以及 Creator / Seller 能力。
+
+Making 当前只作为未来 My Project 所需的领域概念保留，不进入近期 Shopify 上线范围。开始实现 P2 前，必须先验证用户是否会反复查看 Tutorial，以及是否确实需要保存材料、进度或多次制作记录。
+
+### 第一版 Project Kit 模式
+
+- 每个 Project Kit 是一个可直接购买的固定配置 Shopify Product。
+- Kit 中包含哪些毛线、工具和配件由运营方预先确定。
+- 可以通过 Variant 提供少量配色等明确选项。
+- 单独销售和包含在 Kit 中的同一材料 Variant 共用实际库存，不为 Kit 复制一份库存。
+- 每个 Kit Variant 的可售数量由其所有 Kit Components 的可用库存共同决定。
+- 任一 Kit Component 缺货时，受影响的 Kit Variant 暂停销售，不自动替换材料。
+- 如需替换，必须由运营方明确更新 Kit 配置，并在购买前向 Member 展示变化。
+- 第一版不允许 Member 任意增减材料或自由组套；需要自由选择时，使用单独购买 Product 的路径。
+
+### Tutorial 内容关系
+
+- 一个 Project 可以包含一个主要制作教程和多个辅助技巧 Tutorial。
+- 通用技巧 Tutorial 可以关联多个 Project，避免重复维护相同内容。
+- Tutorial 本身不是 Project；它是帮助完成 Project 的内容单元。
+- 第一版的自有 Tutorial 完全公开，不要求注册或购买 Project Kit 后解锁。
+- 未来的付费图解或 Creator 专属内容应作为独立数字 Product 评估，不改变公开 Project 的基础可发现性。
 
 ## 7. 首页
 
