@@ -40,6 +40,65 @@
 
 {%- liquid
   assign products_to_display = section.settings.collection.all_products_count
+  assign discovery_search_label = '作品や毛糸を検索'
+  assign discovery_search_placeholder = 'つくりたい作品や毛糸を検索'
+  assign filter_type = '作品タイプ'
+  assign filter_difficulty = '難易度'
+  assign filter_time = '完成時間'
+  assign filter_method = '編み方'
+  assign filter_scene = '用途'
+  assign option_bag = 'バッグ'
+  assign option_shawl = 'ショール'
+  assign option_blanket = 'ブランケット'
+  assign option_beginner = 'はじめて向け'
+  assign option_one_ball = '1玉で完成'
+  assign option_weekend = '週末に完成'
+  assign option_slow = 'ゆっくり作る'
+  assign option_crochet = 'かぎ針'
+  assign option_knit = '棒針'
+  assign option_myself = '自分用'
+  assign option_gift = '贈りもの'
+
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign discovery_search_label = '搜索作品或毛线'
+      assign discovery_search_placeholder = '搜索想做的作品或毛线'
+      assign filter_type = '作品类型'
+      assign filter_difficulty = '难度'
+      assign filter_time = '完成时间'
+      assign filter_method = '编织方式'
+      assign filter_scene = '使用场景'
+      assign option_bag = '包袋'
+      assign option_shawl = '披肩'
+      assign option_blanket = '毯子'
+      assign option_beginner = '第一次制作'
+      assign option_one_ball = '一团完成'
+      assign option_weekend = '周末完成'
+      assign option_slow = '慢慢制作'
+      assign option_crochet = '钩针'
+      assign option_knit = '棒针'
+      assign option_myself = '自己使用'
+      assign option_gift = '亲手送礼'
+    when 'en'
+      assign discovery_search_label = 'Search projects or yarn'
+      assign discovery_search_placeholder = 'Search for a project or yarn'
+      assign filter_type = 'Project type'
+      assign filter_difficulty = 'Difficulty'
+      assign filter_time = 'Time to finish'
+      assign filter_method = 'Method'
+      assign filter_scene = 'For'
+      assign option_bag = 'Bags'
+      assign option_shawl = 'Shawls'
+      assign option_blanket = 'Blankets'
+      assign option_beginner = 'First project'
+      assign option_one_ball = 'One-ball project'
+      assign option_weekend = 'Finish in a weekend'
+      assign option_slow = 'Take your time'
+      assign option_crochet = 'Crochet'
+      assign option_knit = 'Knitting'
+      assign option_myself = 'For myself'
+      assign option_gift = 'Make a gift'
+  endcase
 
   if section.settings.collection.all_products_count > section.settings.products_to_show
     assign products_to_display = section.settings.products_to_show
@@ -68,7 +127,7 @@
   class="color-{{ section.settings.color_scheme }} isolate gradient"
 >
   <div
-    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
+    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}{% if section.settings.show_discovery_tools %} yarn-discovery-collection{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
@@ -82,6 +141,13 @@
                 assign featured_title = '人气毛线与编织套装'
               when 'en'
                 assign featured_title = 'Popular yarns and kits'
+            endcase
+          elsif section.settings.title == '作品と材料を見つける'
+            case request.locale.iso_code
+              when 'zh-CN', 'zh'
+                assign featured_title = '发现作品与材料'
+              when 'en'
+                assign featured_title = 'Discover projects and materials'
             endcase
           endif
         -%}
@@ -102,6 +168,86 @@
         </div>
       {%- endif -%}
     </div>
+
+    {%- if section.settings.show_discovery_tools -%}
+      <div class="yarn-discovery page-width">
+        <form class="yarn-discovery__search" action="{{ routes.search_url }}" method="get" role="search">
+          <label class="visually-hidden" for="YarnDiscoverySearch-{{ section.id }}">{{ discovery_search_label | escape }}</label>
+          <span class="svg-wrapper" aria-hidden="true">{{- 'icon-search.svg' | inline_asset_content -}}</span>
+          <input
+            id="YarnDiscoverySearch-{{ section.id }}"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ discovery_search_placeholder | escape }}"
+            autocomplete="off"
+          >
+          <input type="hidden" name="type" value="product">
+          <button type="submit">
+            <span>{{ discovery_search_label | escape }}</span>
+            <span class="svg-wrapper" aria-hidden="true">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+          </button>
+        </form>
+
+        <div class="yarn-discovery__filters" aria-label="{{ filter_type | escape }}">
+          <form action="{{ routes.search_url }}" method="get">
+            <label class="visually-hidden" for="YarnFilterType-{{ section.id }}">{{ filter_type | escape }}</label>
+            <select id="YarnFilterType-{{ section.id }}" name="q" onchange="if (this.value) this.form.submit()">
+              <option value="" selected disabled>{{ filter_type | escape }}</option>
+              <option value="バッグ">{{ option_bag | escape }}</option>
+              <option value="ショール">{{ option_shawl | escape }}</option>
+              <option value="ブランケット">{{ option_blanket | escape }}</option>
+            </select>
+            <input type="hidden" name="type" value="product">
+            <button class="visually-hidden" type="submit">{{ filter_type | escape }}</button>
+          </form>
+
+          <form action="{{ routes.search_url }}" method="get">
+            <label class="visually-hidden" for="YarnFilterDifficulty-{{ section.id }}">{{ filter_difficulty | escape }}</label>
+            <select id="YarnFilterDifficulty-{{ section.id }}" name="q" onchange="if (this.value) this.form.submit()">
+              <option value="" selected disabled>{{ filter_difficulty | escape }}</option>
+              <option value="tag:編みものキット">{{ option_beginner | escape }}</option>
+              <option value="1玉">{{ option_one_ball | escape }}</option>
+            </select>
+            <input type="hidden" name="type" value="product">
+            <button class="visually-hidden" type="submit">{{ filter_difficulty | escape }}</button>
+          </form>
+
+          <form action="{{ routes.search_url }}" method="get">
+            <label class="visually-hidden" for="YarnFilterTime-{{ section.id }}">{{ filter_time | escape }}</label>
+            <select id="YarnFilterTime-{{ section.id }}" name="q" onchange="if (this.value) this.form.submit()">
+              <option value="" selected disabled>{{ filter_time | escape }}</option>
+              <option value="バッグ">{{ option_weekend | escape }}</option>
+              <option value="ブランケット">{{ option_slow | escape }}</option>
+            </select>
+            <input type="hidden" name="type" value="product">
+            <button class="visually-hidden" type="submit">{{ filter_time | escape }}</button>
+          </form>
+
+          <form action="{{ routes.search_url }}" method="get">
+            <label class="visually-hidden" for="YarnFilterMethod-{{ section.id }}">{{ filter_method | escape }}</label>
+            <select id="YarnFilterMethod-{{ section.id }}" name="q" onchange="if (this.value) this.form.submit()">
+              <option value="" selected disabled>{{ filter_method | escape }}</option>
+              <option value="かぎ針">{{ option_crochet | escape }}</option>
+              <option value="編み物">{{ option_knit | escape }}</option>
+            </select>
+            <input type="hidden" name="type" value="product">
+            <button class="visually-hidden" type="submit">{{ filter_method | escape }}</button>
+          </form>
+
+          <form action="{{ routes.search_url }}" method="get">
+            <label class="visually-hidden" for="YarnFilterScene-{{ section.id }}">{{ filter_scene | escape }}</label>
+            <select id="YarnFilterScene-{{ section.id }}" name="q" onchange="if (this.value) this.form.submit()">
+              <option value="" selected disabled>{{ filter_scene | escape }}</option>
+              <option value="tag:編みものキット">{{ option_myself | escape }}</option>
+              <option value="tag:ギフトセット OR tag:完成品">{{ option_gift | escape }}</option>
+            </select>
+            <input type="hidden" name="type" value="product">
+            <button class="visually-hidden" type="submit">{{ filter_scene | escape }}</button>
+          </form>
+        </div>
+      </div>
+    {%- endif -%}
 
     <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
@@ -226,6 +372,179 @@
   </div>
 </div>
 
+{% stylesheet %}
+  .yarn-discovery-collection {
+    background: #fffdf9;
+  }
+
+  .yarn-discovery-collection .collection__title {
+    margin-bottom: 14px;
+  }
+
+  .yarn-discovery-collection .collection__title .title {
+    color: #493d31;
+    font-family: 'Songti SC', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif CJK SC', Georgia, serif;
+    font-size: clamp(2.4rem, 2.4vw, 3.4rem);
+    letter-spacing: 0.01em;
+  }
+
+  .yarn-discovery {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .yarn-discovery__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    border-radius: 999px;
+    background: #f4f0e9;
+  }
+
+  .yarn-discovery__search > .svg-wrapper {
+    position: absolute;
+    left: 17px;
+    width: 18px;
+    height: 18px;
+    color: #493d31;
+    pointer-events: none;
+  }
+
+  .yarn-discovery__search input {
+    width: 100%;
+    height: 46px;
+    padding: 0 124px 0 47px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    outline: none;
+    background: transparent;
+    color: #493d31;
+    font: inherit;
+    font-size: 1.3rem;
+  }
+
+  .yarn-discovery__search input:focus-visible {
+    border-color: #7d9064;
+    box-shadow: 0 0 0 2px rgba(125, 144, 100, 0.2);
+  }
+
+  .yarn-discovery__search button {
+    position: absolute;
+    right: 5px;
+    min-width: 104px;
+    height: 36px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 999px;
+    background: #7d9064;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.15rem;
+  }
+
+  .yarn-discovery__search button .svg-wrapper {
+    display: none;
+  }
+
+  .yarn-discovery__filters {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .yarn-discovery__filters form {
+    flex: 0 0 auto;
+  }
+
+  .yarn-discovery__filters select {
+    min-height: 42px;
+    padding: 0 34px 0 15px;
+    border: 1px solid rgba(73, 61, 49, 0.2);
+    border-radius: 999px;
+    background-color: #fffdf9;
+    color: #493d31;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.2rem;
+  }
+
+  .yarn-discovery-collection .product-grid {
+    row-gap: 30px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .yarn-discovery {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .yarn-discovery__filters {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .yarn-discovery__filters::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .yarn-discovery-collection .collection__title {
+      margin-bottom: 10px;
+    }
+
+    .yarn-discovery-collection .collection__title .title {
+      font-size: 2rem;
+    }
+
+    .yarn-discovery {
+      margin-bottom: 20px;
+    }
+
+    .yarn-discovery__search input {
+      height: 44px;
+      padding-right: 48px;
+    }
+
+    .yarn-discovery__search button {
+      right: 4px;
+      width: 36px;
+      min-width: 36px;
+      height: 36px;
+      padding: 0;
+    }
+
+    .yarn-discovery__search button > span:first-child {
+      display: none;
+    }
+
+    .yarn-discovery__search button .svg-wrapper {
+      display: grid;
+      width: 16px;
+      height: 16px;
+      margin: auto;
+      place-items: center;
+    }
+
+    .yarn-discovery__filters select {
+      min-height: 38px;
+      font-size: 1.1rem;
+    }
+
+    .yarn-discovery-collection .product-grid {
+      row-gap: 22px;
+    }
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "t:sections.featured-collection.name",
@@ -239,6 +558,12 @@
       "type": "collection",
       "id": "collection",
       "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_discovery_tools",
+      "label": "显示作品搜索与筛选",
+      "default": false
     },
     {
       "type": "range",

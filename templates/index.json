@@ -12,12 +12,12 @@
     "yarn-hero": {
       "type": "yarn-hero",
       "settings": {
-        "eyebrow": "この夏、持ち歩く花畑",
-        "heading": "やさしい色で、毎日にときめきを。",
-        "text": "<p>ぷっくり花モチーフの手編みバッグや、軽やかな季節の毛糸。毎日のお出かけに、小さなときめきを。</p>",
-        "primary_label": "目的から探す",
+        "eyebrow": "手づくりを、毎日のそばに",
+        "heading": "つくりたい一品から、やさしい手づくりの時間を。",
+        "text": "<p>ぴったりの毛糸と道具、手順までひとつに。はじめてでも、迷わず始められます。</p>",
+        "primary_label": "作品からはじめる",
         "primary_link": "#shop-by-project",
-        "secondary_label": "毛糸を見る",
+        "secondary_label": "まずは毛糸を見る",
         "secondary_link": "shopify://collections/all",
         "color_scheme": "scheme-1"
       }
@@ -28,40 +28,30 @@
         "purpose-bag": {
           "type": "purpose",
           "settings": {
-            "title": "バッグを編む",
-            "caption": "毛糸・キットを見る",
             "link": "shopify://collections/all"
           }
         },
         "purpose-shawl": {
           "type": "purpose",
           "settings": {
-            "title": "ショール・マフラー",
-            "caption": "季節の糸を選ぶ",
             "link": "shopify://collections/all"
           }
         },
         "purpose-blanket": {
           "type": "purpose",
           "settings": {
-            "title": "ブランケット",
-            "caption": "人気キットを見る",
             "link": "shopify://collections/all"
           }
         },
         "purpose-gift": {
           "type": "purpose",
           "settings": {
-            "title": "贈りものをつくる",
-            "caption": "ギフト向け作品",
             "link": "shopify://collections/all"
           }
         },
         "purpose-one-ball": {
           "type": "purpose",
           "settings": {
-            "title": "1玉で完成",
-            "caption": "気軽に始める",
             "link": "shopify://collections/all"
           }
         }
@@ -74,20 +64,21 @@
         "purpose-one-ball"
       ],
       "settings": {
-        "eyebrow": "SHOP BY PROJECT",
-        "heading": "つくりたいものから探す",
-        "text": "<p>完成した姿を思い浮かべながら、作品に合う毛糸とキットを選べます。</p>",
+        "eyebrow": "FIRST PROJECTS",
+        "heading": "はじめてにおすすめの作品",
+        "text": "<p>小さな作品から一度完成させて、自分のペースで手づくりを好きになっていきましょう。</p>",
         "color_scheme": "scheme-1"
       }
     },
     "all-products": {
       "type": "featured-collection",
       "settings": {
-        "title": "人気の毛糸とキット",
+        "title": "作品と材料を見つける",
         "heading_size": "h1",
         "show_description": false,
         "description_style": "subtitle",
         "collection": "all",
+        "show_discovery_tools": true,
         "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
@@ -100,7 +91,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "standard",
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 48,
