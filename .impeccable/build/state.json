@@ -40,11 +40,15 @@
       "status": "open",
       "openedAt": "2026-09-05T18:31:30.146Z",
       "closedAt": null,
-      "attempts": 3,
+      "attempts": 5,
       "notes": [
         {
           "at": "2026-09-05T18:40:26.051Z",
           "text": "Plate 比较仅实际 Shopify tutu-bag Product 照片 38% 未通过。依据 AGENTS.md 的 Shopify 事实来源与不可生成假商品照片边界，保留真实媒体，不 force、不伪造通过；此项留给独立 finish review 单列判断。其他 14 个 raster 区域通过。继续用户已批准的 B 结构实现，不把生成示意商品作为销售事实。"
+        },
+        {
+          "at": "2026-09-05T21:07:27.396Z",
+          "text": "用户 2026-09-05 在获知真实 Product 图与示意稿差异后回复：可以接受这个, 可以发布到线上。工具的 --force 文本识别仍拒绝该中文指代；保留 gate 原始失败和拒绝记录，发布验收以用户明确授权及 Issue / PR 记录为准，不生成假商品图。"
         }
       ],
       "gate": {
@@ -53,7 +57,7 @@
           "plate .impeccable/references/work-bag.png: scores 38% against the comp region work-bag-image (structure 54%, color 29%, detail 33%); regenerate with the crop as --ref and the comp-spec plate prompt"
         ],
         "summary": "16/16 plates",
-        "at": "2026-09-05T19:16:40.505Z"
+        "at": "2026-09-05T21:07:04.973Z"
       },
       "forced": null
     },

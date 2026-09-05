@@ -42,6 +42,7 @@
 - 本轮缺少单独的 QUALITY BAR card，已对 reviewer 披露，未从旧 seed 或旧局部 ship 补造。
 - Shipped documenter 已从整改后源码与截图合并更新 DESIGN.md 和 design.json（schema v2）；保留共享规范，记录当前 B 的分类、筛选展开 / 焦点、套件标签、帮助条与手机文字。临时字标、参考素材、三段页面构图与未关闭 gate 未被升级为全站已验收规则。首次 documenter 因模型容量失败，同一 agent 恢复后完成；没有替代独立视觉复核。
 - 同一 reviewer 的最终文档 verdict 确认 #6 resolved（discovery-b-document-verdict.md）。原 #2–#6 已解决，仅 #1 unresolved；disposition 仍为 fix。没有再改 UI、重拍或跑 detector。
+- 用户随后明确回复“可以接受这个, 可以发布到线上”，接受上一轮所列唯一待确认项：真实 Product 图片与生成示意稿的差异，并授权生产发布。`build-phase advance --force` 先后以完整事实说明和用户原话尝试两次，工具仍因中文指代未识别为 downgrade 而拒绝；state 保留 plates=open、38% 原始失败及两次拒绝，不伪造机械闭环。随后用 build-phase note 记录用户授权，生产验收与机械 gate 状态分别陈述。
 - 草稿 PR 首个实现提交 `005b1ab` 的远端 theme-check 与 unpublished preview 均 SUCCESS；CI 创建 PR-18 未发布主题 `189706404153`，不改手工验证主题或线上主题。后续仅文档提交的 CI 状态以 PR 为准。
 - 使用无 Shopify 会话的新浏览器上下文验证共享地址：重定向到 `/zh/password`。因此该链接是需要店铺访问密码的内部预览，不是“所有人无需任何登录可看”的公开链接。没有擅自解除密码。
 - 未发布预览仍依赖现有未授权参考目录照片，只适合受保护内部演示；不得解除 storefront 密码或提交此类照片到公开仓库。
