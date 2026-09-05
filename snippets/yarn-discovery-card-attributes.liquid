@@ -1,0 +1,116 @@
+{%- comment -%}
+  Searchable copy and current MVP catalogue facets for the homepage discovery grid.
+
+  Product, price, availability and URLs still come directly from Shopify. The
+  facets below only describe the current catalogue and can later be replaced by
+  Project metaobject/metafield values when those definitions are introduced.
+{%- endcomment -%}
+
+{%- capture localized_title -%}{%- render 'yarn-product-title', product: product -%}{%- endcapture -%}
+{%- capture localized_description -%}{%- render 'yarn-product-description', product: product -%}{%- endcapture -%}
+
+{%- liquid
+  assign localized_title = localized_title | strip
+  assign localized_description = localized_description | strip_html | strip_newlines | strip
+  assign product_tags = product.tags | join: ' '
+  assign search_text = localized_title | append: ' ' | append: localized_description
+  assign search_text = search_text | append: ' ' | append: product.title
+  assign search_text = search_text | append: ' ' | append: product.type
+  assign search_text = search_text | append: ' ' | append: product_tags
+  assign search_text = search_text | append: ' ' | append: product.handle
+
+  assign facet_type = blank
+  if product.tags contains '毛糸'
+    assign facet_type = 'yarn'
+  elsif product.tags contains '編みものキット'
+    assign facet_type = 'kit'
+  elsif product.tags contains '完成品'
+    assign facet_type = 'finished'
+  elsif product.tags contains '編み物道具'
+    assign facet_type = 'tool'
+  elsif product.tags contains 'ギフトセット'
+    assign facet_type = 'bundle'
+  endif
+
+  assign facet_project = blank
+  assign facet_quantity = blank
+  assign facet_season = blank
+  assign facet_style = blank
+
+  case product.handle
+    when 'puni-yarn'
+      assign facet_season = 'cold'
+    when 'joyful-cake-yarn'
+      assign facet_project = 'shawl blanket'
+      assign facet_quantity = 'one-ball large-ball'
+      assign facet_season = 'summer'
+      assign facet_style = 'gradient'
+    when 'melody-cake-yarn'
+      assign facet_project = 'shawl blanket'
+      assign facet_quantity = 'one-ball large-ball'
+      assign facet_season = 'summer'
+      assign facet_style = 'gradient'
+    when 'knit-bouquet'
+      assign facet_project = 'gift'
+      assign facet_style = 'flower'
+    when 'bouquet-blanket-finished-80cm'
+      assign facet_project = 'blanket gift'
+      assign facet_style = 'flower'
+    when 'ami-uchiwa-lace-kit'
+      assign facet_project = 'fan'
+      assign facet_season = 'summer'
+      assign facet_style = 'lace'
+    when 'ami-uchiwa-sakura-kit'
+      assign facet_project = 'fan gift'
+      assign facet_season = 'spring summer'
+      assign facet_style = 'flower lace'
+    when 'ami-uchiwa-tsubaki-kit'
+      assign facet_project = 'fan gift'
+      assign facet_season = 'summer'
+      assign facet_style = 'flower'
+    when 'joyful-hanabi-shawl-crochet-kit'
+      assign facet_project = 'shawl'
+      assign facet_quantity = 'one-ball'
+      assign facet_season = 'summer'
+      assign facet_style = 'lace'
+    when 'melody-wave-blanket-crochet-kit'
+      assign facet_project = 'blanket'
+      assign facet_style = 'gradient'
+    when 'mousse-bag-crochet-kit'
+      assign facet_project = 'bag'
+    when 'nordic-blanket-niji-kit'
+      assign facet_project = 'blanket'
+      assign facet_season = 'cold'
+      assign facet_style = 'gradient'
+    when 'tutu-bag-kit'
+      assign facet_project = 'bag'
+      assign facet_style = 'sparkle'
+    when 'hoshiami-yume-o-tsumugu-spring-knitting-set-b-blanket-cushion'
+      assign facet_project = 'bag blanket gift'
+      assign facet_season = 'spring'
+      assign facet_style = 'flower'
+    when 'hoshiami-haru-o-matou-spring-knitting-set-c'
+      assign facet_project = 'bag shawl gift'
+      assign facet_season = 'spring'
+      assign facet_style = 'flower'
+    when 'milk-candy-gradient-cotton-yarn'
+      assign facet_season = 'summer'
+      assign facet_style = 'gradient'
+    when 'aurora-cotton-lame-yarn'
+      assign facet_project = 'bag shawl'
+      assign facet_season = 'summer'
+      assign facet_style = 'sparkle'
+    when 'ami-uchiwa-frame'
+      assign facet_project = 'fan'
+      assign facet_season = 'summer'
+    when 'baby-milk-yarn-12pack-50g-90m-standard-weight'
+      assign facet_project = 'gift'
+  endcase
+-%}
+
+data-yarn-search="{{ search_text | escape }}"
+data-yarn-type="{{ facet_type }}"
+data-yarn-project="{{ facet_project }}"
+data-yarn-quantity="{{ facet_quantity }}"
+data-yarn-season="{{ facet_season }}"
+data-yarn-style="{{ facet_style }}"
