@@ -1,0 +1,362 @@
+{% liquid
+  assign starter_product = section.settings.product
+
+  assign starter_heading = section.settings.heading
+  assign starter_text = section.settings.text
+  assign starter_label = section.settings.button_label
+  assign starter_fact_one = section.settings.fact_one
+  assign starter_fact_two = section.settings.fact_two
+  assign starter_fact_three = section.settings.fact_three
+
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+
+      assign starter_heading = section.settings.heading_zh
+      assign starter_text = section.settings.text_zh
+      assign starter_label = section.settings.label_zh
+      assign starter_fact_one = section.settings.fact_one_zh
+      assign starter_fact_two = section.settings.fact_two_zh
+      assign starter_fact_three = section.settings.fact_three_zh
+    when 'en'
+
+      assign starter_heading = section.settings.heading_en
+      assign starter_text = section.settings.text_en
+      assign starter_label = section.settings.label_en
+      assign starter_fact_one = section.settings.fact_one_en
+      assign starter_fact_two = section.settings.fact_two_en
+      assign starter_fact_three = section.settings.fact_three_en
+  endcase
+
+  if starter_product != blank
+    assign starter_url = starter_product.url
+  else
+    assign starter_url = routes.all_products_collection_url | append: '?discover_quantity=one-ball#discover-products'
+  endif
+%}
+
+<section id="starter-project" class="yarn-starter color-{{ section.settings.color_scheme }} gradient" aria-labelledby="YarnStarterHeading-{{ section.id }}">
+  <div class="page-width">
+    <div class="yarn-starter__card">
+      <a class="yarn-starter__media" href="{{ starter_url }}" aria-label="{{ starter_label | escape }}">
+        {% if starter_product.featured_media != blank %}
+          {{ starter_product.featured_media
+            | image_url: width: 1400
+            | image_tag:
+              loading: 'lazy',
+              widths: '420, 640, 900, 1200, 1400',
+              sizes: '(min-width: 990px) 52vw, 100vw',
+              alt: starter_product.featured_media.alt
+          }}
+        {% else %}
+          <div class="yarn-starter__placeholder" aria-hidden="true">
+            {{ 'product-apparel-1' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </a>
+
+      <div class="yarn-starter__copy">
+        <h2 id="YarnStarterHeading-{{ section.id }}">{{ starter_heading | escape }}</h2>
+        <div class="yarn-starter__text rte">{{ starter_text }}</div>
+
+        <ul class="yarn-starter__facts" role="list">
+          <li>{{ starter_fact_one | escape }}</li>
+          <li>{{ starter_fact_two | escape }}</li>
+          <li>{{ starter_fact_three | escape }}</li>
+        </ul>
+
+        <div class="yarn-starter__action">
+          <a href="{{ starter_url }}">{{ starter_label | escape }} <span aria-hidden="true">→</span></a>
+          {% if starter_product != blank %}
+            <span>{{ starter_product.price | money }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .yarn-starter.yarn-starter {
+    padding: clamp(72px, 8vw, 118px) 0;
+    background: #f5f7f3;
+  }
+
+  .yarn-starter__card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+    overflow: hidden;
+    border: 1px solid rgba(177, 166, 149, 0.24);
+    border-radius: 28px;
+    background: #fffefa;
+    box-shadow: 0 20px 54px rgba(112, 94, 73, 0.08);
+  }
+
+  .yarn-starter__media {
+    display: block;
+    min-height: 580px;
+    overflow: hidden;
+    background: #f6e9e5;
+  }
+
+  .yarn-starter__media img,
+  .yarn-starter__placeholder,
+  .yarn-starter__placeholder svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .yarn-starter__media img {
+    display: block;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .yarn-starter__media:hover img { transform: scale(1.025); }
+
+  .yarn-starter__copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(44px, 6vw, 86px);
+  }
+
+  .yarn-starter__eyebrow {
+    margin: 0 0 20px;
+    color: #d88276;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+  }
+
+  .yarn-starter__copy h2 {
+    max-width: 10em;
+    margin: 0;
+    color: #272927;
+    font-size: clamp(3.6rem, 4.4vw, 6.2rem);
+    font-weight: 500;
+    line-height: 1.22;
+    letter-spacing: 0.02em;
+  }
+
+  .yarn-starter__text {
+    max-width: 39rem;
+    margin-top: 22px;
+    color: #65645f;
+    font-size: 1.55rem;
+    line-height: 1.85;
+  }
+
+  .yarn-starter__text p { margin: 0; }
+
+  .yarn-starter__facts {
+    display: grid;
+    margin: 32px 0 0;
+    padding: 0;
+    border-top: 1px solid #e8e2da;
+    list-style: none;
+  }
+
+  .yarn-starter__facts li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    min-height: 48px;
+    border-bottom: 1px solid #e8e2da;
+    color: #353633;
+    font-size: 1.35rem;
+  }
+
+  .yarn-starter__facts li span {
+    color: #b7aca0;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+  }
+
+  .yarn-starter__action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-top: 34px;
+  }
+
+  .yarn-starter__action a {
+    display: inline-flex;
+    min-height: 52px;
+    align-items: center;
+    gap: 22px;
+    padding: 0 24px;
+    border-radius: 999px;
+    background: #f7e3a5;
+    color: #292a28;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 180ms ease, transform 260ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .yarn-starter__action a:hover { background: #f2d987; transform: translateY(-2px); }
+  .yarn-starter__action > span { color: #4c4d49; font-size: 1.45rem; }
+
+  @media screen and (max-width: 989px) {
+    .yarn-starter__card { grid-template-columns: minmax(0, 0.94fr) minmax(330px, 1.06fr); }
+    .yarn-starter__media { min-height: 610px; }
+    .yarn-starter__copy { padding: clamp(34px, 4.8vw, 46px); }
+    .yarn-starter__copy h2 { max-width: 11em; font-size: clamp(3.2rem, 5vw, 4.3rem); }
+  }
+
+  @media screen and (max-width: 749px) {
+    .yarn-starter__card { grid-template-columns: 1fr; }
+    .yarn-starter__media { min-height: min(84vw, 520px); }
+  }
+
+  @media screen and (max-width: 599px) {
+    .yarn-starter { padding: 56px 0 68px; }
+    .yarn-starter__card { border-radius: 20px; }
+    .yarn-starter__media { min-height: 84vw; }
+    .yarn-starter__copy { padding: 30px 24px 34px; }
+    .yarn-starter__action { align-items: flex-start; flex-direction: column; gap: 14px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "新手起点作品",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "推荐作品商品"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "小标题",
+      "default": "はじめての一作"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "1玉で編む、花火ショール。"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "说明",
+      "default": "<p>編み図と動画が付いたショールキット。材料と編み方を確認して、自分に合うか選びましょう。</p>"
+    },
+    {
+      "type": "text",
+      "id": "fact_one",
+      "label": "特点一",
+      "default": "1玉で完成"
+    },
+    {
+      "type": "text",
+      "id": "fact_two",
+      "label": "特点二",
+      "default": "編み図と動画"
+    },
+    {
+      "type": "text",
+      "id": "fact_three",
+      "label": "特点三",
+      "default": "選べるカラー"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "按钮",
+      "default": "ショールキットを見る"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "配色",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading_zh",
+      "label": "中文 · heading",
+      "default": "一团线，织一条花火披肩。"
+    },
+    {
+      "type": "richtext",
+      "id": "text_zh",
+      "label": "中文 · text",
+      "default": "<p>这款披肩套件附有编织图与视频。先看看材料和制作方法，再判断是否适合自己。</p>"
+    },
+    {
+      "type": "text",
+      "id": "label_zh",
+      "label": "中文 · label",
+      "default": "查看披肩套件"
+    },
+    {
+      "type": "text",
+      "id": "fact_one_zh",
+      "label": "中文 · fact_one",
+      "default": "一团线完成"
+    },
+    {
+      "type": "text",
+      "id": "fact_two_zh",
+      "label": "中文 · fact_two",
+      "default": "编织图 + 视频"
+    },
+    {
+      "type": "text",
+      "id": "fact_three_zh",
+      "label": "中文 · fact_three",
+      "default": "多种配色"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "英文 · heading",
+      "default": "One ball. A Hanabi shawl."
+    },
+    {
+      "type": "richtext",
+      "id": "text_en",
+      "label": "英文 · text",
+      "default": "<p>This shawl kit includes a chart and video. Check its materials and instructions to decide whether it suits your skills.</p>"
+    },
+    {
+      "type": "text",
+      "id": "label_en",
+      "label": "英文 · label",
+      "default": "Explore the shawl kit"
+    },
+    {
+      "type": "text",
+      "id": "fact_one_en",
+      "label": "英文 · fact_one",
+      "default": "One ball"
+    },
+    {
+      "type": "text",
+      "id": "fact_two_en",
+      "label": "英文 · fact_two",
+      "default": "Chart + video"
+    },
+    {
+      "type": "text",
+      "id": "fact_three_en",
+      "label": "英文 · fact_three",
+      "default": "Many colours"
+    }
+  ],
+  "presets": [
+    {
+      "name": "新手起点作品"
+    }
+  ]
+}
+{% endschema %}

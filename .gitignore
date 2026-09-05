@@ -19,3 +19,22 @@
 /design-qa.md
 /report-source.md
 /会议纪要-*.md
+
+# Impeccable runtime and non-publishable visual working evidence.
+/.github/skills/impeccable/scripts/bin/
+/.impeccable/questions/
+/.impeccable/references/
+/.impeccable/build/alpha-preview/
+/.impeccable/build/crops/
+/.impeccable/build/font-match/
+/.impeccable/build/scaffold/
+/.impeccable/build/texture-work/
+/.impeccable/build/*.png
+/.impeccable/review/*.png
+/.impeccable/review/*.jpg
+/.impeccable/review/diff/
+/.impeccable/mocks/*
+!/.impeccable/mocks/platform-navigation-zh.webp
+!/.impeccable/mocks/platform-navigation-zh.webp.json
+/.impeccable/build/hero-plates.html
+/.playwright-mcp/

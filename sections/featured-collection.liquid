@@ -60,7 +60,8 @@
   assign option_bag = 'バッグ'
   assign option_shawl = 'ショール'
   assign option_blanket = 'ブランケット'
-  assign option_fan = '編みうちわ'
+  assign option_toy = 'あみぐるみ'
+  assign option_fan = 'うちわ'
   assign option_gift = '贈りもの'
   assign option_one_ball = '1玉で完成'
   assign option_large_ball = '大玉毛糸'
@@ -76,6 +77,8 @@
   assign result_initial_template = '{total}件中{shown}件を表示'
   assign no_results_heading = '条件に合う商品がまだありません'
   assign no_results_text = '検索語を変えるか、条件をひとつ外してお試しください。'
+
+  assign discovery_intro = section.settings.discovery_intro
 
   case request.locale.iso_code
     when 'zh-CN', 'zh'
@@ -95,7 +98,8 @@
       assign option_bag = '包袋'
       assign option_shawl = '披肩 / 围巾'
       assign option_blanket = '毯子'
-      assign option_fan = '编织团扇'
+      assign option_toy = '玩偶'
+      assign option_fan = '团扇'
       assign option_gift = '礼物'
       assign option_one_ball = '一团完成'
       assign option_large_ball = '大团毛线'
@@ -111,6 +115,8 @@
       assign result_initial_template = '当前展示 {shown} 件，目录共 {total} 件'
       assign no_results_heading = '暂时没有符合条件的商品'
       assign no_results_text = '可以换一个关键词，或者少选一个条件试试。'
+
+      assign discovery_intro = section.settings.discovery_intro_zh
     when 'en'
       assign discovery_search_label = 'Search projects or yarn'
       assign discovery_search_placeholder = 'Search for a project or yarn'
@@ -128,7 +134,8 @@
       assign option_bag = 'Bags'
       assign option_shawl = 'Shawls & scarves'
       assign option_blanket = 'Blankets'
-      assign option_fan = 'Crochet fans'
+      assign option_toy = 'Amigurumi'
+      assign option_fan = 'Fans'
       assign option_gift = 'Gifts'
       assign option_one_ball = 'One-ball project'
       assign option_large_ball = 'Large yarn cakes'
@@ -144,6 +151,8 @@
       assign result_initial_template = 'Showing {shown} of {total} products'
       assign no_results_heading = 'No products match yet'
       assign no_results_text = 'Try another search term or remove one filter.'
+
+      assign discovery_intro = section.settings.discovery_intro_en
   endcase
 
   if section.settings.collection.all_products_count > section.settings.products_to_show
@@ -187,7 +196,15 @@
       {%- if section.settings.title != blank -%}
         {%- liquid
           assign featured_title = section.settings.title
-          if section.settings.title == '人気の毛糸とキット'
+          if section.settings.show_discovery_tools
+            assign featured_title = section.settings.title
+            case request.locale.iso_code
+              when 'zh-CN', 'zh'
+                assign featured_title = section.settings.discovery_title_zh
+              when 'en'
+                assign featured_title = section.settings.discovery_title_en
+            endcase
+          elsif section.settings.title == '人気の毛糸とキット'
             case request.locale.iso_code
               when 'zh-CN', 'zh'
                 assign featured_title = '人气毛线与编织套装'
@@ -206,6 +223,9 @@
         <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {{ featured_title }}
         </h2>
+        {% if section.settings.show_discovery_tools %}
+          <p class="yarn-discovery__intro">{{ discovery_intro | escape }}</p>
+        {% endif %}
       {%- endif -%}
       {%- if section.settings.description != blank
         or section.settings.show_description
@@ -265,6 +285,7 @@
                   <option value="bag">{{ option_bag | escape }}</option>
                   <option value="shawl">{{ option_shawl | escape }}</option>
                   <option value="blanket">{{ option_blanket | escape }}</option>
+                  <option value="toy">{{ option_toy | escape }}</option>
                   <option value="fan">{{ option_fan | escape }}</option>
                   <option value="gift">{{ option_gift | escape }}</option>
                 </select>
@@ -479,26 +500,44 @@
   }
 
   .yarn-discovery-collection {
-    background: #fffdf9;
+    background: #fffefa;
   }
 
   .yarn-discovery-collection .collection__title {
-    margin-bottom: 14px;
+    margin-bottom: 30px;
   }
 
   .yarn-discovery-collection .collection__title .title {
-    color: #493d31;
-    font-family: 'Songti SC', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif CJK SC', Georgia, serif;
-    font-size: clamp(2.4rem, 2.4vw, 3.4rem);
-    letter-spacing: 0.01em;
+    max-width: 720px;
+    color: #2b2925;
+    font-size: clamp(3.2rem, 3.8vw, 5.4rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.22;
+  }
+
+  .yarn-discovery__kicker {
+    margin: 0 0 16px;
+    color: #d88276;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+  }
+
+  .yarn-discovery__intro {
+    max-width: 58rem;
+    margin: 18px 0 0;
+    color: #65645f;
+    font-size: 1.5rem;
+    line-height: 1.75;
   }
 
   .yarn-discovery {
     display: grid;
-    grid-template-columns: minmax(260px, 1fr) auto;
-    gap: 24px;
-    align-items: center;
-    margin-bottom: 28px;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+    gap: 36px;
+    align-items: end;
+    margin-bottom: 34px;
   }
 
   .yarn-discovery__search {
@@ -506,8 +545,10 @@
     display: flex;
     align-items: center;
     min-width: 0;
-    border-radius: 999px;
-    background: #f4f0e9;
+    border: 1px solid #ded7ce;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(112, 94, 73, 0.05);
   }
 
   .yarn-discovery__search > .svg-wrapper {
@@ -515,7 +556,7 @@
     left: 17px;
     width: 18px;
     height: 18px;
-    color: #493d31;
+    color: #7aaeb6;
     pointer-events: none;
   }
 
@@ -523,33 +564,33 @@
     width: 100%;
     height: 46px;
     padding: 0 124px 0 47px;
-    border: 1px solid transparent;
-    border-radius: 999px;
+    border: 0;
+    border-radius: 14px;
     outline: none;
     background: transparent;
-    color: #493d31;
+    color: #2b2925;
     font: inherit;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   .yarn-discovery__search input:focus-visible {
-    border-color: #7d9064;
-    box-shadow: 0 0 0 2px rgba(125, 144, 100, 0.2);
+    outline: 2px solid #d88276;
+    outline-offset: -2px;
   }
 
   .yarn-discovery__search button {
     position: absolute;
-    right: 5px;
+    right: 4px;
     min-width: 104px;
-    height: 36px;
-    padding: 0 14px;
+    height: 38px;
+    padding: 0 16px;
     border: 0;
-    border-radius: 999px;
-    background: #7d9064;
-    color: #ffffff;
+    border-radius: 10px;
+    background: #f7e3a5;
+    color: #292a28;
     cursor: pointer;
     font: inherit;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
 
   .yarn-discovery__search button .svg-wrapper {
@@ -558,7 +599,7 @@
 
   .yarn-discovery__filters {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     justify-content: flex-end;
     align-items: center;
     min-width: 0;
@@ -576,21 +617,21 @@
   }
 
   .yarn-discovery__filters select {
-    min-height: 42px;
-    padding: 0 34px 0 15px;
-    border: 1px solid rgba(73, 61, 49, 0.2);
+    min-height: 44px;
+    padding: 0 34px 0 16px;
+    border: 1px solid #ded7ce;
     border-radius: 999px;
-    background-color: #fffdf9;
-    color: #493d31;
+    background-color: #fffefa;
+    color: #2b2925;
     cursor: pointer;
     font: inherit;
     font-size: 1.2rem;
   }
 
   .yarn-discovery__filters select.is-active {
-    border-color: #7d9064;
-    background-color: #eef2e8;
-    color: #53623f;
+    border-color: #d88276;
+    background-color: #faecea;
+    color: #7f4b43;
   }
 
   .yarn-discovery__summary {
@@ -604,7 +645,7 @@
 
   .yarn-discovery__result-count {
     margin: 0;
-    color: rgba(73, 61, 49, 0.72);
+    color: #6d6962;
     font-size: 1.2rem;
   }
 
@@ -613,7 +654,7 @@
     border: 0;
     border-bottom: 1px solid currentcolor;
     background: transparent;
-    color: #65784e;
+    color: #b5685e;
     cursor: pointer;
     font: inherit;
     font-size: 1.2rem;
@@ -633,7 +674,7 @@
   .yarn-discovery__empty p {
     margin-top: 8px;
     margin-bottom: 22px;
-    color: rgba(73, 61, 49, 0.72);
+    color: #6d6962;
   }
 
   .yarn-discovery-collection [data-yarn-results] .product-grid {
@@ -652,7 +693,13 @@
   }
 
   .yarn-discovery-collection .product-grid {
-    row-gap: 30px;
+    row-gap: 52px;
+  }
+
+  .yarn-discovery-collection .card__inner,
+  .yarn-discovery-collection .card__media,
+  .yarn-discovery-collection .media {
+    border-radius: 18px;
   }
 
   @media screen and (max-width: 989px) {
@@ -674,8 +721,8 @@
       display: grid;
       width: 42px;
       height: calc(100% - 4px);
-      background: linear-gradient(90deg, rgba(255, 253, 249, 0), #fffdf9 58%);
-      color: #65784e;
+      background: linear-gradient(90deg, rgba(247, 247, 244, 0), #f7f7f4 58%);
+      color: #2f5365;
       content: '\203A';
       font-size: 2.2rem;
       opacity: 0;
@@ -690,6 +737,7 @@
 
     .yarn-discovery__filters {
       justify-content: flex-start;
+      gap: 20px;
       overflow-x: auto;
       padding: 0 38px 4px 0;
       scrollbar-width: none;
@@ -706,7 +754,7 @@
     }
 
     .yarn-discovery-collection .collection__title .title {
-      font-size: 2rem;
+      font-size: 3rem;
     }
 
     .yarn-discovery {
@@ -749,7 +797,7 @@
     }
 
     .yarn-discovery-collection .product-grid {
-      row-gap: 22px;
+      row-gap: 32px;
     }
   }
 {% endstylesheet %}
@@ -763,6 +811,11 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    { "type": "text", "id": "discovery_title_zh", "label": "中文 · 发现区标题", "default": "继续按条件找作品与材料" },
+    { "type": "text", "id": "discovery_title_en", "label": "英文 · 发现区标题", "default": "Keep exploring by project and material" },
+    { "type": "text", "id": "discovery_intro", "label": "发现区说明", "default": "内部デモ用の商品一覧です。毛糸・キット・完成品・道具を表示しており、独立した作品レシピ集ではありません。" },
+    { "type": "text", "id": "discovery_intro_zh", "label": "中文 · 发现区说明", "default": "内部演示目录：这里展示毛线、套件、成品与工具，尚不是独立的作品教程库。" },
+    { "type": "text", "id": "discovery_intro_en", "label": "英文 · 发现区说明", "default": "Internal demo catalogue: yarn, kits, finished pieces and tools. This is not yet a standalone project tutorial library." },
     {
       "type": "collection",
       "id": "collection",

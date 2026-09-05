@@ -12,68 +12,61 @@
     "yarn-hero": {
       "type": "yarn-hero",
       "settings": {
-        "eyebrow": "手づくりを、毎日のそばに",
-        "heading": "つくりたい一品から、やさしい手づくりの時間を。",
-        "text": "<p>ぴったりの毛糸と道具、手順までひとつに。はじめてでも、迷わず始められます。</p>",
-        "primary_label": "作品からはじめる",
-        "primary_link": "#shop-by-project",
-        "secondary_label": "まずは毛糸を見る",
-        "secondary_link": "shopify://collections/all",
+        "heading": "作りたいものを選んだら、糸選びはおまかせ。",
+        "text": "<p>作りたいものから毛糸やキットを探せます。必要な材料や作り方は各商品ページでご確認ください。</p>",
+        "flow_select": "作品を選ぶ",
+        "flow_buy": "材料をそろえる",
+        "flow_make": "編み始める",
+        "flow_aria_label": "作品を選んでから作り始めるまで",
         "color_scheme": "scheme-1"
       }
     },
     "yarn-purpose": {
       "type": "yarn-purpose-grid",
-      "blocks": {
-        "purpose-bag": {
-          "type": "purpose",
-          "settings": {
-            "link": "shopify://collections/all"
-          }
-        },
-        "purpose-shawl": {
-          "type": "purpose",
-          "settings": {
-            "link": "shopify://collections/all"
-          }
-        },
-        "purpose-blanket": {
-          "type": "purpose",
-          "settings": {
-            "link": "shopify://collections/all"
-          }
-        },
-        "purpose-gift": {
-          "type": "purpose",
-          "settings": {
-            "link": "shopify://collections/all"
-          }
-        },
-        "purpose-one-ball": {
-          "type": "purpose",
-          "settings": {
-            "link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": [
-        "purpose-bag",
-        "purpose-shawl",
-        "purpose-blanket",
-        "purpose-gift",
-        "purpose-one-ball"
-      ],
       "settings": {
-        "eyebrow": "FIRST PROJECTS",
-        "heading": "はじめてにおすすめの作品",
-        "text": "<p>小さな作品から一度完成させて、自分のペースで手づくりを好きになっていきましょう。</p>",
+        "heading": "何を編みたいですか？",
+        "bag_label": "バッグ",
+        "bag_link": "",
+        "scarf_label": "マフラー・ショール",
+        "scarf_link": "",
+        "blanket_label": "ブランケット",
+        "blanket_link": "",
+        "doll_label": "あみぐるみ",
+        "doll_link": "",
+        "filter_aria_label": "目的から作品を探す",
+        "popular_label": "作品キット",
+        "popular_link": "?discover_type=kit#discover-products",
+        "one_ball_label": "1玉で完成",
+        "one_ball_link": "",
+        "gift_label": "ギフト",
+        "gift_link": "",
+        "season_label": "季節の作品",
+        "season_link": "",
+        "cta_label": "作品を見てみる",
+        "cta_link": "?discover_type=kit#discover-products",
+        "starter_label": "1玉で何が編める？",
+        "starter_link": "#starter-project",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "starter-project": {
+      "type": "yarn-starter-project",
+      "settings": {
+        "product": "joyful-hanabi-shawl-crochet-kit",
+        "eyebrow": "はじめての一作",
+        "heading": "1玉で編む、花火ショール。",
+        "text": "<p>編み図と動画が付いたショールキット。材料と編み方を確認して、自分に合うか選びましょう。</p>",
+        "fact_one": "1玉で完成",
+        "fact_two": "編み図と動画",
+        "fact_three": "選べるカラー",
+        "button_label": "ショールキットを見る",
         "color_scheme": "scheme-1"
       }
     },
     "all-products": {
       "type": "featured-collection",
       "settings": {
-        "title": "作品と材料を見つける",
+        "title": "条件から、作品と材料を探す",
         "heading_size": "h1",
         "show_description": false,
         "description_style": "subtitle",
@@ -83,7 +76,7 @@
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "solid",
+        "view_all_style": "link",
         "enable_desktop_slider": false,
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
@@ -94,17 +87,16 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 48,
-        "padding_bottom": 64
+        "padding_top": 72,
+        "padding_bottom": 96
       }
     },
     "seasonal-edit": {
       "type": "yarn-seasonal-feature",
       "settings": {
-        "eyebrow": "今季のおすすめ",
-        "heading": "季節の色を、ひとつずつ重ねる。",
-        "text": "<p>軽やかなコットンから、深みのある段染めまで。いま編みたい作品に合う、季節の毛糸とキットを集めました。</p>",
-        "button_label": "季節のおすすめを見る",
+        "heading": "秋冬に編みたい、糸と作品。",
+        "text": "<p>秋冬に使いたい毛糸やブランケットキットを集めました。</p>",
+        "button_label": "秋冬の作品を見る",
         "button_link": "#discover-products",
         "color_scheme": "scheme-1"
       }
@@ -125,6 +117,7 @@
   "order": [
     "yarn-hero",
     "yarn-purpose",
+    "starter-project",
     "seasonal-edit",
     "all-products",
     "line-support"

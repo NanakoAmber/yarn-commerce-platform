@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-05T17:05:03Z",
+  "title": "Design System: 毛线品牌",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "暖纸",
+        "tonalRamp": [
+          "oklch(15.00% 0.00264 106.45)",
+          "oklch(26.43% 0.00264 106.45)",
+          "oklch(37.86% 0.00264 106.45)",
+          "oklch(49.29% 0.00264 106.45)",
+          "oklch(60.71% 0.00264 106.45)",
+          "oklch(72.14% 0.00264 106.45)",
+          "oklch(83.57% 0.00264 106.45)",
+          "oklch(95.00% 0.00264 106.45)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "暖白表面",
+        "tonalRamp": [
+          "oklch(15.00% 0.00537 95.10)",
+          "oklch(26.43% 0.00537 95.10)",
+          "oklch(37.86% 0.00537 95.10)",
+          "oklch(49.29% 0.00537 95.10)",
+          "oklch(60.71% 0.00537 95.10)",
+          "oklch(72.14% 0.00537 95.10)",
+          "oklch(83.57% 0.00537 95.10)",
+          "oklch(95.00% 0.00537 95.10)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "炭黑",
+        "tonalRamp": [
+          "oklch(15.00% 0.00225 145.52)",
+          "oklch(26.43% 0.00225 145.52)",
+          "oklch(37.86% 0.00225 145.52)",
+          "oklch(49.29% 0.00225 145.52)",
+          "oklch(60.71% 0.00225 145.52)",
+          "oklch(72.14% 0.00225 145.52)",
+          "oklch(83.57% 0.00225 145.52)",
+          "oklch(95.00% 0.00225 145.52)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "柔灰",
+        "tonalRamp": [
+          "oklch(15.00% 0.00784 97.46)",
+          "oklch(26.43% 0.00784 97.46)",
+          "oklch(37.86% 0.00784 97.46)",
+          "oklch(49.29% 0.00784 97.46)",
+          "oklch(60.71% 0.00784 97.46)",
+          "oklch(72.14% 0.00784 97.46)",
+          "oklch(83.57% 0.00784 97.46)",
+          "oklch(95.00% 0.00784 97.46)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "暖灰细线",
+        "tonalRamp": [
+          "oklch(15.00% 0.01209 79.78)",
+          "oklch(26.43% 0.01209 79.78)",
+          "oklch(37.86% 0.01209 79.78)",
+          "oklch(49.29% 0.01209 79.78)",
+          "oklch(60.71% 0.01209 79.78)",
+          "oklch(72.14% 0.01209 79.78)",
+          "oklch(83.57% 0.01209 79.78)",
+          "oklch(95.00% 0.01209 79.78)"
+        ]
+      },
+      "butter": {
+        "role": "primary",
+        "displayName": "奶油黄",
+        "tonalRamp": [
+          "oklch(15.00% 0.07938 92.59)",
+          "oklch(26.43% 0.07938 92.59)",
+          "oklch(37.86% 0.07938 92.59)",
+          "oklch(49.29% 0.07938 92.59)",
+          "oklch(60.71% 0.07938 92.59)",
+          "oklch(72.14% 0.07938 92.59)",
+          "oklch(83.57% 0.07938 92.59)",
+          "oklch(95.00% 0.07938 92.59)"
+        ]
+      },
+      "butter-action": {
+        "role": "primary",
+        "displayName": "动作浅黄",
+        "tonalRamp": [
+          "oklch(15.00% 0.08200 92.31)",
+          "oklch(26.43% 0.08200 92.31)",
+          "oklch(37.86% 0.08200 92.31)",
+          "oklch(49.29% 0.08200 92.31)",
+          "oklch(60.71% 0.08200 92.31)",
+          "oklch(72.14% 0.08200 92.31)",
+          "oklch(83.57% 0.08200 92.31)",
+          "oklch(95.00% 0.08200 92.31)"
+        ]
+      },
+      "coral": {
+        "role": "primary",
+        "displayName": "珊瑚色",
+        "tonalRamp": [
+          "oklch(15.00% 0.11267 29.56)",
+          "oklch(26.43% 0.11267 29.56)",
+          "oklch(37.86% 0.11267 29.56)",
+          "oklch(49.29% 0.11267 29.56)",
+          "oklch(60.71% 0.11267 29.56)",
+          "oklch(72.14% 0.11267 29.56)",
+          "oklch(83.57% 0.11267 29.56)",
+          "oklch(95.00% 0.11267 29.56)"
+        ]
+      },
+      "indigo": {
+        "role": "secondary",
+        "displayName": "灰蓝墨色",
+        "tonalRamp": [
+          "oklch(15.00% 0.05790 226.94)",
+          "oklch(26.43% 0.05790 226.94)",
+          "oklch(37.86% 0.05790 226.94)",
+          "oklch(49.29% 0.05790 226.94)",
+          "oklch(60.71% 0.05790 226.94)",
+          "oklch(72.14% 0.05790 226.94)",
+          "oklch(83.57% 0.05790 226.94)",
+          "oklch(95.00% 0.05790 226.94)"
+        ]
+      },
+      "blush-surface": {
+        "role": "secondary",
+        "displayName": "柔粉纸面",
+        "tonalRamp": [
+          "oklch(15.00% 0.01547 27.28)",
+          "oklch(26.43% 0.01547 27.28)",
+          "oklch(37.86% 0.01547 27.28)",
+          "oklch(49.29% 0.01547 27.28)",
+          "oklch(60.71% 0.01547 27.28)",
+          "oklch(72.14% 0.01547 27.28)",
+          "oklch(83.57% 0.01547 27.28)",
+          "oklch(95.00% 0.01547 27.28)"
+        ]
+      },
+      "blue-surface": {
+        "role": "secondary",
+        "displayName": "粉蓝纸面",
+        "tonalRamp": [
+          "oklch(15.00% 0.00893 214.34)",
+          "oklch(26.43% 0.00893 214.34)",
+          "oklch(37.86% 0.00893 214.34)",
+          "oklch(49.29% 0.00893 214.34)",
+          "oklch(60.71% 0.00893 214.34)",
+          "oklch(72.14% 0.00893 214.34)",
+          "oklch(83.57% 0.00893 214.34)",
+          "oklch(95.00% 0.00893 214.34)"
+        ]
+      },
+      "mint-surface": {
+        "role": "secondary",
+        "displayName": "薄荷纸面",
+        "tonalRamp": [
+          "oklch(15.00% 0.01085 149.86)",
+          "oklch(26.43% 0.01085 149.86)",
+          "oklch(37.86% 0.01085 149.86)",
+          "oklch(49.29% 0.01085 149.86)",
+          "oklch(60.71% 0.01085 149.86)",
+          "oklch(72.14% 0.01085 149.86)",
+          "oklch(83.57% 0.01085 149.86)",
+          "oklch(95.00% 0.01085 149.86)"
+        ]
+      },
+      "cream-surface": {
+        "role": "secondary",
+        "displayName": "浅奶油纸面",
+        "tonalRamp": [
+          "oklch(15.00% 0.03162 89.14)",
+          "oklch(26.43% 0.03162 89.14)",
+          "oklch(37.86% 0.03162 89.14)",
+          "oklch(49.29% 0.03162 89.14)",
+          "oklch(60.71% 0.03162 89.14)",
+          "oklch(72.14% 0.03162 89.14)",
+          "oklch(83.57% 0.03162 89.14)",
+          "oklch(95.00% 0.03162 89.14)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "首屏展示标题",
+        "purpose": "宽屏首页主标题；自托管当前字符子集，不代表完整日文字库。"
+      },
+      "display-mobile": {
+        "displayName": "手机展示标题",
+        "purpose": "599 px 以下首页主标题。"
+      },
+      "headline-atlas": {
+        "displayName": "图谱标题",
+        "purpose": "首屏分类图谱标题，字重轻于主标题。"
+      },
+      "body-zh": {
+        "displayName": "中文正文",
+        "purpose": "季节与帮助区重复使用的正文角色；使用当前中文系统字体栈。"
+      },
+      "label-flow": {
+        "displayName": "流程标签",
+        "purpose": "选择、购买、制作三步标签，采用400展示字。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "flow-paper",
+        "value": "0 18px 46px rgba(127, 103, 82, 0.11)",
+        "purpose": "流程纸卡。"
+      },
+      {
+        "name": "atlas-paper",
+        "value": "0 18px 50px rgba(127, 103, 82, 0.09)",
+        "purpose": "分类图谱纸卡。"
+      },
+      {
+        "name": "content-paper",
+        "value": "0 20px 54px rgba(112, 94, 73, 0.08)",
+        "purpose": "套件内容纸卡；季节透明度为0.07。"
+      },
+      {
+        "name": "category-lift",
+        "value": "0 15px 34px rgba(99, 82, 66, 0.12)",
+        "purpose": "分类hover和focus-visible。"
+      },
+      {
+        "name": "search-low",
+        "value": "0 8px 22px rgba(112, 94, 73, 0.05)",
+        "purpose": "搜索框的轻层。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "intro",
+        "value": "620ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "首屏入场，说明/流程/图谱分别延后90/170/260ms；减少动态偏好下关闭。"
+      },
+      {
+        "name": "thread-forward",
+        "value": "520ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "三步方向箭头；减少动态偏好下关闭。"
+      },
+      {
+        "name": "direction",
+        "value": "260ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "分类抬升及动作方向变化；已实现的减少动态规则并未覆盖全部卡片。"
+      },
+      {
+        "name": "action-color",
+        "value": "180ms ease",
+        "purpose": "宽幅与胶囊动作的背景变化。"
+      },
+      {
+        "name": "shared-control",
+        "value": "140ms ease",
+        "purpose": "共享Rise按钮背景、边框、颜色与透明度变化。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-home",
+        "value": "599px"
+      },
+      {
+        "name": "stacked-content",
+        "value": "749px"
+      },
+      {
+        "name": "collapsed-navigation",
+        "value": "989px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "宽幅主动作",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "来自分类图谱的暖黄动作面；展示片段只显示文字，现有字形箭头不作为新图标规范。",
+      "html": "<a class=\"ds-scope ds-primary\" href=\"#作品\">看看有哪些作品</a>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-primary{display:grid;min-height:72px;align-items:center;text-align:center;padding:16px clamp(24px,3.5vw,52px);border-radius:15px;background:var(--yarn-butter,#f8e5a9);color:#2c2e2c;font-size:28px;text-decoration:none;transition:background-color 180ms ease,transform 260ms cubic-bezier(.16,1,.3,1)}.ds-primary:hover{background:#f5dda0;transform:translateY(-2px)}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+    },
+    {
+      "name": "套件胶囊动作",
+      "kind": "button",
+      "refersTo": "button-pill",
+      "description": "来自真实套件卡，暖黄胶囊按钮；略去现有字形箭头。",
+      "html": "<a class=\"ds-scope ds-pill\" href=\"#套件\">查看披肩套件</a>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-pill{display:inline-flex;min-height:52px;align-items:center;gap:22px;padding:0 24px;border-radius:999px;background:#f7e3a5;color:#292a28;font-size:14px;font-weight:600;text-decoration:none;transition:background-color 180ms ease,transform 260ms cubic-bezier(.16,1,.3,1)}.ds-pill:hover{background:#f2d987;transform:translateY(-2px)}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+    },
+    {
+      "name": "季节文字入口",
+      "kind": "button",
+      "description": "来自季节 Inspiration 卡，细珊瑚下划线表达入口。",
+      "html": "<a class=\"ds-scope ds-season\" href=\"#季节\">查看秋冬作品</a>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-season{display:inline-flex;gap:8px;align-items:center;padding-bottom:5px;border-bottom:1px solid #d88276;color:#353633;font-size:14px;font-weight:600;text-decoration:none;transition:transform 260ms cubic-bezier(.16,1,.3,1)}.ds-season:hover{transform:translateX(5px)}@media(prefers-reduced-motion:reduce){.ds-season{transition:none}}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+    },
+    {
+      "name": "发现搜索",
+      "kind": "input",
+      "refersTo": "field-search",
+      "description": "首页桌面搜索的输入与内嵌提交控件；按钮无新增 hover 色，焦点来自现有共享规则。",
+      "html": "<div class=\"ds-scope ds-search\"><input type=\"search\" aria-label=\"搜索想做的作品或毛线\" placeholder=\"搜索想做的作品或毛线\"><button type=\"button\">搜索作品或材料</button></div>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-search{position:relative;display:flex;align-items:center;min-width:0;border:1px solid #ded7ce;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgba(112,94,73,.05)}.ds-search input{width:100%;height:46px;padding:0 124px 0 47px;border:0;border-radius:14px;outline:none;background:transparent;color:#2b2925;font:inherit;font-size:14px}.ds-search input:focus-visible{outline:2px solid #d88276;outline-offset:-2px}.ds-search button{position:absolute;right:4px;min-width:104px;height:38px;padding:0 16px;border:0;border-radius:10px;background:#f7e3a5;color:#292a28;cursor:pointer;font:inherit;font-size:12px}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+    },
+    {
+      "name": "筛选下拉",
+      "kind": "input",
+      "refersTo": "field-filter",
+      "description": "真实 select 的默认与已激活外观；并非可切换芯片组件。片段展示源代码已有两种状态。",
+      "html": "<div class=\"ds-scope ds-filters\"><select aria-label=\"商品类型\"><option>商品类型</option><option>套件</option></select><select class=\"ds-selected\" aria-label=\"已选商品类型\"><option>套件</option></select></div>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.ds-filters select{min-height:44px;padding:0 34px 0 16px;border:1px solid #ded7ce;border-radius:999px;background-color:var(--yarn-surface,#fffefa);color:#2b2925;cursor:pointer;font:inherit;font-size:12px}.ds-filters select.ds-selected{border-color:#d88276;background-color:#faecea;color:#7f4b43}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+    },
+    {
+      "name": "文字导航",
+      "kind": "nav",
+      "description": "桌面顶栏文字链接的实际字色、字距与 hover / focus；临时字标和菜单布局不纳入可复用片段。",
+      "html": "<nav class=\"ds-scope ds-nav\" aria-label=\"商品导航\"><a href=\"#新品\"><span>新品</span></a><a href=\"#毛线\"><span>毛线</span></a><a href=\"#工具\"><span>工具与针具</span></a></nav>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-nav{display:flex;align-items:center;background:var(--yarn-surface,#fffefa);border-bottom:1px solid var(--yarn-line,#e4dfd7)}.ds-nav a{padding:12px 8px;color:var(--yarn-ink,#2f302f);font-size:15px;font-weight:400;letter-spacing:.02em;text-decoration:none}.ds-nav a:hover span,.ds-nav a:focus-visible span{color:var(--yarn-indigo,#426f82);text-decoration:underline;text-decoration-color:#d96f67;text-underline-offset:6px}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+    },
+    {
+      "name": "内容纸卡",
+      "kind": "card",
+      "refersTo": "card-content",
+      "description": "套件纸卡的表面与文字区；示例不嵌入受限制的参考商品图片，不代表完整套件卡。静态容器没有新增交互状态。",
+      "html": "<article class=\"ds-scope ds-card\"><div class=\"ds-copy\"><h2>一团线，织一条花火披肩。</h2><p>这款披肩套件附图解与视频，先看看制作方法，再判断是否适合自己。</p></div></article>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-card{overflow:hidden;border:1px solid rgba(177,166,149,.24);border-radius:28px;background:var(--yarn-surface,#fffefa);box-shadow:0 20px 54px rgba(112,94,73,.08);color:var(--yarn-ink,#2f302f)}.ds-copy{padding:clamp(44px,6vw,86px)}.ds-copy h2{max-width:10em;margin:0;font-size:clamp(36px,4.4vw,62px);font-weight:500;line-height:1.22}.ds-copy p{max-width:390px;font-size:15.5px;line-height:1.85}@media(max-width:599px){.ds-card{border-radius:20px}.ds-copy{padding:30px 24px 34px}}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "编织图解图谱",
+    "overview": "暖白纸面承接真实织物，粉红、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心，奶油黄标记行动。针目轮廓、细线图标与线团花枝让界面有手作温度；柔和色彩与清楚字重共同避免儿童手工网站的观感。\n\n本规范从 2026-09-05 已实现并经独立复核的首页提取。范围是首页定制系统及已存在的共享样式；商品详情、购物车、结账入口仍继承 Rise 骨架，不能据此视为已完成相同深度的改版。首页构图与模块顺序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。当前“毛线工作室”是临时字标，不是正式品牌资产。",
+    "keyCharacteristics": [
+      "暖纸底、浅色分类面与炭黑正文形成稳定层级。",
+      "真实织物和完整针目轮廓共同表达材料与作品。",
+      "展示标题有重量，流程标签保持较轻，正文留足行距。",
+      "大内容纸卡使用柔圆角与扩散阴影，购物控件保留紧凑尺度。",
+      "简体中文、日文、英文的文字保持可编辑，图像承担材质与图解。"
+    ],
+    "rules": [
+      {
+        "name": "The 暖黄行动 Rule",
+        "body": "在已实现首页中，用暖黄建立清楚的动作面，用深色文字保持可读；分类浅色不能被误用为价格、热度或难度的事实证明。",
+        "section": "colors"
+      },
+      {
+        "name": "The 标题与正文分工 Rule",
+        "body": "自托管展示字服务首屏识别，正文优先语言覆盖与阅读；不得把现有中文系统正文误判为展示字体已经覆盖所有区域。",
+        "section": "typography"
+      },
+      {
+        "name": "The 柔纸叠层 Rule",
+        "body": "延续已有的低透明度扩散阴影与浅面差；不能把这种世界改写为硬偏移投影，也不能规定所有卡片必须无阴影。",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** 以暖纸、柔色分类面、炭黑文字和奶油黄动作延续已批准的视觉世界。",
+      "**Do** 让针目轮廓完整、标签独立可读，并让装饰避开正文。",
+      "**Do** 保留真实照片、细线图解与可编辑的三语 HTML 文案各自的职责。",
+      "**Do** 在新增文案后检查字体子集覆盖、三语断行与手机焦点和触控路径。",
+      "**Do** 从对应 surface brief 决定页面构图，从本规范复用已经实现的材料、字体角色和组件语言。"
+    ],
+    "donts": [
+      "**Don't** 将普通商品网格主导的电商首屏或 Hoshiami 仿站作为本首页的视觉方向。",
+      "**Don't** 把临时彩色字标、参考商品图、图上品牌字样当作已授权正式品牌系统。",
+      "**Don't** 将当前商品演示目录包装为已建成的 Project / Tutorial 库，或虚构热度、难度、销量与完成时长。",
+      "**Don't** 将字形箭头、遗留 eyebrow 样式、单处定位补偿或未复核的购买页面状态升级为可复用视觉规则。",
+      "**Don't** 把视觉整改的 ship、组件展示片段或本文档当作真实交易与正式发布的验收凭据。"
+    ]
+  }
+}
