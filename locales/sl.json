@@ -8,6 +8,7 @@
  * ------------------------------------------------------------
  */
 {
+  "yarn_content": {"gallery":"More photos","products":"Related products","from":"From","internal":"Internal reference only · not cleared for public use","empty":"Select an active Inspiration with a title and cover. Internal references require internal preview mode."},
   "general": {
     "password_page": {
       "login_form_heading": "Vstopite v trgovino z geslom:",

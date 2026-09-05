@@ -18,6 +18,11 @@
   assign search_text = search_text | append: ' ' | append: product.type
   assign search_text = search_text | append: ' ' | append: product_tags
   assign search_text = search_text | append: ' ' | append: product.handle
+  assign content_fields = 'suitable_projects,craft_methods,seasons,visual_styles' | split: ','
+  for field_key in content_fields
+    assign field_text = product.metafields.custom[field_key].value | join: ' '
+    assign search_text = search_text | append: ' ' | append: field_text
+  endfor
 
   assign facet_type = blank
   if product.tags contains '毛糸'
@@ -106,11 +111,20 @@
     when 'baby-milk-yarn-12pack-50g-90m-standard-weight'
       assign facet_project = 'gift'
   endcase
+
+  if product.metafields.custom.suitable_projects != blank
+    assign facet_project = product.metafields.custom.suitable_projects.value | join: ' '
+    assign facet_project = facet_project | replace: '包袋', 'bag' | replace: '围巾/披肩', 'shawl' | replace: '毯子', 'blanket' | replace: '玩偶', 'toy' | replace: '礼物', 'gift'
+  endif
+  if product.metafields.custom.seasons != blank
+    assign facet_season = product.metafields.custom.seasons.value | join: ' '
+    assign facet_season = facet_season | replace: '春季', 'spring' | replace: '夏季', 'summer' | replace: '秋季', 'cold' | replace: '冬季', 'cold' | replace: '全年', 'spring summer cold'
+  endif
 -%}
 
 data-yarn-search="{{ search_text | escape }}"
-data-yarn-type="{{ facet_type }}"
-data-yarn-project="{{ facet_project }}"
-data-yarn-quantity="{{ facet_quantity }}"
-data-yarn-season="{{ facet_season }}"
-data-yarn-style="{{ facet_style }}"
+data-yarn-type="{{ facet_type | escape }}"
+data-yarn-project="{{ facet_project | escape }}"
+data-yarn-quantity="{{ facet_quantity | escape }}"
+data-yarn-season="{{ facet_season | escape }}"
+data-yarn-style="{{ facet_style | escape }}"
