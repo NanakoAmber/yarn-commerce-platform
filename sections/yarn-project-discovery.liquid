@@ -1,0 +1,340 @@
+{% comment %}
+  Section-local translations use Shopify's documented sections.<file> prefix.
+  Theme Check currently tests that full prefix against the unprefixed schema.
+  The exact keys and all three locales are validated by the discovery contract test.
+{% endcomment %}
+{% # theme-check-disable TranslationKeyExists %}
+{{ 'yarn-project-discovery.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'yarn-project-discovery.js' | asset_url }}" defer="defer"></script>
+{% liquid
+  assign heading = section.settings.heading
+  assign intro = section.settings.intro
+  case request.locale.iso_code
+    when 'zh', 'zh-CN'
+      assign heading = section.settings.heading_zh
+      assign intro = section.settings.intro_zh
+    when 'en'
+      assign heading = section.settings.heading_en
+      assign intro = section.settings.intro_en
+  endcase
+  assign catalogue = section.settings.collection
+  assign featured_products = section.settings.featured_products
+  assign featured_handles = featured_products | map: 'handle'
+%}
+<section id="shop-by-project" class="yarn-project-discovery" aria-labelledby="DiscoveryHeading-{{ section.id }}">
+  <yarn-project-discovery id="discover-products" class="yarn-project-discovery__inner" data-initial-limit="4" data-default-type="kit">
+    <header class="yarn-project-discovery__heading">
+      <img src="{{ 'impeccable-category-heading-flourish.png' | asset_url }}" alt="" width="1706" height="368" loading="lazy">
+      <h2 id="DiscoveryHeading-{{ section.id }}">{{ heading | escape }}</h2>
+      {% if intro != blank %}<p>{{ intro | escape }}</p>{% endif %}
+    </header>
+    <form class="yarn-project-discovery__form" data-yarn-form action="{{ routes.search_url }}" role="search">
+      <div class="yarn-project-discovery__search">
+        <label class="visually-hidden" for="DiscoveryQuery-{{ section.id }}">{{ 'sections.yarn-project-discovery.search' | t }}</label>
+        <input id="DiscoveryQuery-{{ section.id }}" data-yarn-query type="search" name="q" placeholder="{{ 'sections.yarn-project-discovery.search' | t }}" autocomplete="off">
+        <button type="submit" aria-label="{{ 'sections.yarn-project-discovery.submit' | t }}">{{ 'icon-search.svg' | inline_asset_content }}</button>
+      </div>
+      <nav class="yarn-project-discovery__categories" aria-label="{{ 'sections.yarn-project-discovery.categories' | t }}">
+        {% assign category_keys = 'bag,shawl,blanket,toy' | split: ',' %}
+        {% for key in category_keys %}
+          {% liquid
+            assign asset_name = 'impeccable-category-bag-plate.png'
+            case key
+              when 'shawl'
+                assign asset_name = 'impeccable-category-scarf-plate.png'
+              when 'blanket'
+                assign asset_name = 'impeccable-b-category-blanket-plate.png'
+              when 'toy'
+                assign asset_name = 'impeccable-category-doll-plate.png'
+            endcase
+            assign label_key = 'sections.yarn-project-discovery.' | append: key
+          %}
+          <a class="yarn-project-discovery__category" href="?discover_type=kit&amp;discover_project={{ key }}#discover-products" data-yarn-pick="project" data-value="{{ key }}" aria-controls="DiscoveryResults-{{ section.id }}">
+            <span class="yarn-project-discovery__category-art yarn-project-discovery__category-art--{{ key }}"><img src="{{ asset_name | asset_url }}" alt="" width="1479" height="1064" loading="lazy"></span>
+            <span>{{ label_key | t }}</span>
+          </a>
+        {% endfor %}
+      </nav>
+      <div class="yarn-project-discovery__types" role="group" aria-label="{{ 'sections.yarn-project-discovery.types' | t }}">
+        {% assign type_keys = 'kit,yarn,tool' | split: ',' %}
+        {% for key in type_keys %}
+          {% assign label_key = 'sections.yarn-project-discovery.' | append: key %}
+          <button type="button" data-yarn-pick="type" data-value="{{ key }}" aria-controls="DiscoveryResults-{{ section.id }}" aria-pressed="{% if key == 'kit' %}true{% else %}false{% endif %}">{{ label_key | t }}</button>
+        {% endfor %}
+      </div>
+      <div class="yarn-project-discovery__fallback-filters">
+        <label>{{ 'sections.yarn-project-discovery.types' | t }}
+          <select data-yarn-filter="type" name="discover_type">
+            <option value="">{{ 'sections.yarn-project-discovery.all' | t }}</option>
+            {% assign type_keys = 'kit,yarn,tool,finished,bundle' | split: ',' %}
+            {% for key in type_keys %}{% assign label_key = 'sections.yarn-project-discovery.' | append: key %}<option value="{{ key }}" {% if key == 'kit' %}selected{% endif %}>{{ label_key | t }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>{{ 'sections.yarn-project-discovery.project' | t }}
+          <select data-yarn-filter="project" name="discover_project">
+            <option value="">{{ 'sections.yarn-project-discovery.all' | t }}</option>
+            {% assign project_keys = 'bag,shawl,blanket,toy,fan,gift' | split: ',' %}
+            {% for key in project_keys %}{% assign label_key = 'sections.yarn-project-discovery.' | append: key %}<option value="{{ key }}">{{ label_key | t }}</option>{% endfor %}
+          </select>
+        </label>
+      </div>
+      <div class="yarn-project-discovery__filters">
+        {% assign filter_keys = 'quantity,season,style' | split: ',' %}
+        {% for key in filter_keys %}
+          {% liquid
+            assign label_key = 'sections.yarn-project-discovery.' | append: key
+            case key
+              when 'quantity'
+                assign default_key = 'sections.yarn-project-discovery.all_quantity'
+                assign values = 'one-ball,large-ball' | split: ','
+                assign labels = 'one_ball,large_ball' | split: ','
+              when 'season'
+                assign default_key = 'sections.yarn-project-discovery.all_seasons'
+                assign values = 'spring,summer,cold' | split: ','
+                assign labels = values
+              when 'style'
+                assign default_key = 'sections.yarn-project-discovery.all_styles'
+                assign values = 'gradient,flower,lace,sparkle' | split: ','
+                assign labels = values
+            endcase
+          %}
+          <div class="yarn-project-discovery__filter" data-yarn-dropdown>
+            <label class="visually-hidden" for="DiscoveryFilter-{{ key }}-{{ section.id }}">{{ label_key | t }}</label>
+            <select id="DiscoveryFilter-{{ key }}-{{ section.id }}" data-yarn-filter="{{ key }}" name="discover_{{ key }}">
+              <option value="">{{ default_key | t }}</option>
+              {% for value in values %}{% assign option_key = 'sections.yarn-project-discovery.' | append: labels[forloop.index0] %}<option value="{{ value }}">{{ option_key | t }}</option>{% endfor %}
+            </select>
+            <button class="yarn-project-discovery__filter-trigger" type="button" data-yarn-trigger aria-expanded="false" aria-controls="DiscoveryOptions-{{ key }}-{{ section.id }}" hidden><span data-yarn-filter-label>{{ default_key | t }}</span>{{ 'icon-caret.svg' | inline_asset_content }}</button>
+            <div class="yarn-project-discovery__options" id="DiscoveryOptions-{{ key }}-{{ section.id }}" data-yarn-options role="group" aria-label="{{ label_key | t }}" hidden></div>
+          </div>
+        {% endfor %}
+      </div>
+    </form>
+    <div class="yarn-project-discovery__status">
+      <p role="status" aria-live="polite" data-yarn-result-count data-template="{{ 'sections.yarn-project-discovery.count' | t }}"></p>
+      <button type="button" data-yarn-clear hidden>{{ 'sections.yarn-project-discovery.clear' | t }}</button>
+    </div>
+    <div id="DiscoveryResults-{{ section.id }}" data-yarn-results>
+      <ul class="yarn-project-discovery__grid" role="list">
+        {% for product in featured_products %}{% render 'yarn-work-card', product: product %}{% endfor %}
+        {% paginate catalogue.products by 50 %}
+          {% for product in catalogue.products %}
+            {% unless featured_handles contains product.handle %}{% render 'yarn-work-card', product: product %}{% endunless %}
+          {% endfor %}
+        {% endpaginate %}
+      </ul>
+      <div class="yarn-project-discovery__empty" data-yarn-empty hidden>
+        <h3>{{ 'sections.yarn-project-discovery.empty' | t }}</h3>
+        <p>{{ 'sections.yarn-project-discovery.empty_help' | t }}</p>
+        <button type="button" data-yarn-related hidden>{{ 'sections.yarn-project-discovery.related_yarn' | t }}</button>
+        <button type="button" data-yarn-clear>{{ 'sections.yarn-project-discovery.clear' | t }}</button>
+      </div>
+    </div>
+    <div class="yarn-project-discovery__end">
+      <button type="button" data-yarn-more hidden>{{ 'sections.yarn-project-discovery.more' | t }} {{ 'icon-caret.svg' | inline_asset_content }}</button>
+      <a href="{{ catalogue.url | default: routes.all_products_collection_url }}">{{ 'sections.yarn-project-discovery.catalogue' | t }} {{ 'icon-arrow.svg' | inline_asset_content }}</a>
+    </div>
+    <noscript><p>{{ 'sections.yarn-project-discovery.noscript' | t }}</p></noscript>
+  </yarn-project-discovery>
+</section>
+
+{% schema %}
+{
+  "name": "作品发现 · B",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "完整目录（当前最多加载 50 件）"
+    },
+    {
+      "type": "product_list",
+      "id": "featured_products",
+      "label": "优先展示的作品套件",
+      "limit": 4,
+      "info": "按此顺序展示；请选实际套件，图片和链接来自 Shopify 商品。"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "日文 · 标题",
+      "default": "何を編みたいですか？"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "日文 · 原型说明",
+      "default": "内部デモ：キットから探せます。材料や作り方は商品ページでご確認ください。"
+    },
+    {
+      "type": "text",
+      "id": "heading_zh",
+      "label": "中文 · 标题",
+      "default": "你想做什么？"
+    },
+    {
+      "type": "text",
+      "id": "intro_zh",
+      "label": "中文 · 原型说明",
+      "default": "内部演示：先看套件，材料与教程以商品页为准。"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "英文 · 标题",
+      "default": "What would you like to make?"
+    },
+    {
+      "type": "text",
+      "id": "intro_en",
+      "label": "英文 · 原型说明",
+      "default": "Internal demo: start with a kit. Check its product page for materials and instructions."
+    }
+  ],
+  "presets": [
+    {
+      "name": "作品发现 · B"
+    }
+  ],
+  "locales": {
+    "en": {
+      "search": "Search for a project",
+      "submit": "Search projects",
+      "categories": "Filter by project",
+      "types": "Choose a material type",
+      "bag": "Bags",
+      "shawl": "Scarves & shawls",
+      "blanket": "Blankets",
+      "toy": "Toys",
+      "kit": "Project kits",
+      "yarn": "Yarn",
+      "tool": "Tools",
+      "finished": "Finished pieces",
+      "bundle": "Gift sets",
+      "all": "All",
+      "project": "Project",
+      "quantity": "Quantity",
+      "season": "Season",
+      "style": "Style",
+      "all_quantity": "Any quantity",
+      "one_ball": "One-ball projects",
+      "large_ball": "Large yarn cakes",
+      "all_seasons": "Any season",
+      "spring": "Spring",
+      "summer": "Summer",
+      "cold": "Autumn & winter",
+      "all_styles": "Any style",
+      "gradient": "Gradient",
+      "flower": "Floral",
+      "lace": "Openwork",
+      "sparkle": "Sparkle",
+      "fan": "Fans",
+      "gift": "Gifts",
+      "clear": "Clear filters",
+      "empty": "No projects match these filters",
+      "empty_help": "Try fewer filters, or switch to yarn to explore materials.",
+      "related_yarn": "See matching yarn",
+      "materials": "View materials",
+      "details": "View details",
+      "kit_label": "Material kit",
+      "catalogue": "Browse the full catalogue",
+      "more": "Show more projects",
+      "count": "{shown} of {total} matches shown",
+      "noscript": "Enable JavaScript to filter. You can also browse the projects below or the full catalogue."
+    },
+    "zh-CN": {
+      "search": "搜索想做的作品",
+      "submit": "搜索作品",
+      "categories": "按作品类型筛选",
+      "types": "选择材料类型",
+      "bag": "包袋",
+      "shawl": "围巾与披肩",
+      "blanket": "毯子",
+      "toy": "玩偶",
+      "kit": "作品套件",
+      "yarn": "毛线",
+      "tool": "工具",
+      "finished": "成品",
+      "bundle": "礼盒",
+      "all": "全部",
+      "project": "作品类型",
+      "quantity": "用量",
+      "season": "季节",
+      "style": "风格",
+      "all_quantity": "全部用量",
+      "one_ball": "一团完成",
+      "large_ball": "大团毛线",
+      "all_seasons": "不限季节",
+      "spring": "春季",
+      "summer": "夏季",
+      "cold": "秋冬",
+      "all_styles": "全部风格",
+      "gradient": "渐变",
+      "flower": "花卉",
+      "lace": "镂空",
+      "sparkle": "细闪",
+      "fan": "团扇",
+      "gift": "礼物",
+      "clear": "清除条件",
+      "empty": "暂时没有符合条件的作品",
+      "empty_help": "试试减少条件，或切换到毛线查看可用材料。",
+      "related_yarn": "查看相关毛线",
+      "materials": "查看材料",
+      "details": "查看详情",
+      "kit_label": "材料套件",
+      "catalogue": "查看完整目录",
+      "more": "展开更多作品",
+      "count": "找到 {total} 件，已展示 {shown} 件",
+      "noscript": "筛选需要启用 JavaScript。你也可以直接浏览下方作品或完整目录。"
+    },
+    "ja": {
+      "search": "作りたい作品を検索",
+      "submit": "作品を検索",
+      "categories": "作品の種類から絞り込む",
+      "types": "材料の種類を選ぶ",
+      "bag": "バッグ",
+      "shawl": "マフラー・ショール",
+      "blanket": "ブランケット",
+      "toy": "あみぐるみ",
+      "kit": "作品キット",
+      "yarn": "毛糸",
+      "tool": "道具",
+      "finished": "完成品",
+      "bundle": "ギフトセット",
+      "all": "すべて",
+      "project": "作品の種類",
+      "quantity": "使用量",
+      "season": "季節",
+      "style": "スタイル",
+      "all_quantity": "使用量を選ぶ",
+      "one_ball": "1玉で完成",
+      "large_ball": "大玉毛糸",
+      "all_seasons": "季節を問わない",
+      "spring": "春",
+      "summer": "夏",
+      "cold": "秋冬",
+      "all_styles": "スタイルを選ぶ",
+      "gradient": "グラデーション",
+      "flower": "花柄",
+      "lace": "透かし模様",
+      "sparkle": "ラメ",
+      "fan": "うちわ",
+      "gift": "ギフト",
+      "clear": "条件をクリア",
+      "empty": "条件に合う作品がありません",
+      "empty_help": "条件を減らすか、毛糸に切り替えて材料を探してみてください。",
+      "related_yarn": "関連する毛糸を見る",
+      "materials": "材料を見る",
+      "details": "詳細を見る",
+      "kit_label": "材料キット",
+      "catalogue": "すべての商品を見る",
+      "more": "作品をもっと見る",
+      "count": "{total} 件中 {shown} 件を表示",
+      "noscript": "絞り込みには JavaScript が必要です。下の作品や商品一覧からもご覧いただけます。"
+    }
+  }
+}
+{% endschema %}
+{% # theme-check-enable TranslationKeyExists %}

@@ -12,6 +12,7 @@
     "yarn-hero": {
       "type": "yarn-hero",
       "settings": {
+        "discovery_layout": true,
         "heading": "作りたいものを選んだら、糸選びはおまかせ。",
         "text": "<p>作りたいものから毛糸やキットを探せます。必要な材料や作り方は各商品ページでご確認ください。</p>",
         "flow_select": "作品を選ぶ",
@@ -23,6 +24,7 @@
     },
     "yarn-purpose": {
       "type": "yarn-purpose-grid",
+      "disabled": true,
       "settings": {
         "heading": "何を編みたいですか？",
         "bag_label": "バッグ",
@@ -51,6 +53,7 @@
     },
     "starter-project": {
       "type": "yarn-starter-project",
+      "disabled": true,
       "settings": {
         "product": "joyful-hanabi-shawl-crochet-kit",
         "eyebrow": "はじめての一作",
@@ -65,6 +68,7 @@
     },
     "all-products": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "条件から、作品と材料を探す",
         "heading_size": "h1",
@@ -93,6 +97,7 @@
     },
     "seasonal-edit": {
       "type": "yarn-seasonal-feature",
+      "disabled": true,
       "settings": {
         "heading": "秋冬に編みたい、糸と作品。",
         "text": "<p>秋冬に使いたい毛糸やブランケットキットを集めました。</p>",
@@ -101,9 +106,17 @@
         "color_scheme": "scheme-1"
       }
     },
+    "project-discovery": {
+      "type": "yarn-project-discovery",
+      "settings": {
+        "collection": "all",
+        "featured_products": ["mousse-bag-crochet-kit", "joyful-hanabi-shawl-crochet-kit", "melody-wave-blanket-crochet-kit", "tutu-bag-kit"]
+      }
+    },
     "line-support": {
       "type": "yarn-line-contact",
       "settings": {
+        "compact_layout": true,
         "heading": "糸選びの相談を、LINEで。",
         "text": "<p>在庫、色合わせ、作品に必要な量など。選ぶ前に確認したいことを、気軽にご相談いただけます。</p>",
         "primary_label": "LINEで相談する",
@@ -116,6 +129,7 @@
   },
   "order": [
     "yarn-hero",
+    "project-discovery",
     "yarn-purpose",
     "starter-project",
     "seasonal-edit",

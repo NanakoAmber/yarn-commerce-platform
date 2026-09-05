@@ -1,0 +1,329 @@
+{
+  "regions": [
+    {
+      "id": "page-paper",
+      "kind": "texture",
+      "grid": "A0:A0",
+      "note": "Reusable subtle warm graph paper, measured from blank margins; existing supplied texture."
+    },
+    {
+      "id": "header-bar",
+      "kind": "chrome",
+      "grid": "A0:J0",
+      "note": "Warm white header with menu wordmark search and cart",
+      "container": true
+    },
+    {
+      "id": "header-menu",
+      "kind": "control",
+      "grid": "A0:A0",
+      "note": "Semantic interface control: Menu control"
+    },
+    {
+      "id": "header-search",
+      "kind": "control",
+      "grid": "I0:I0",
+      "note": "Semantic interface control: Search control"
+    },
+    {
+      "id": "header-cart",
+      "kind": "control",
+      "grid": "J0:J0",
+      "note": "Semantic interface control: Cart control"
+    },
+    {
+      "id": "header-wordmark",
+      "kind": "text",
+      "grid": "D0:G0",
+      "note": "Visible Chinese label: 毛线工作室"
+    },
+    {
+      "id": "hero-notation-doodles",
+      "kind": "plate",
+      "grid": "E0:H1",
+      "note": "Existing taupe stitch notation and flower line drawing; no text"
+    },
+    {
+      "id": "hero-textile",
+      "kind": "plate",
+      "grid": "G0:J1",
+      "note": "Existing ivory pastel crochet fabric with peach yarn at right",
+      "bleed": true
+    },
+    {
+      "id": "hero-headline",
+      "kind": "text",
+      "grid": "A0:E1",
+      "note": "Visible Chinese label: 先选喜欢的作品，选线交给我们。"
+    },
+    {
+      "id": "hero-support",
+      "kind": "text",
+      "grid": "A1:E1",
+      "note": "从想做的作品出发，找到合适的毛线与套件。购买前，先确认材料用量和教程。"
+    },
+    {
+      "id": "flow-panel",
+      "kind": "chrome",
+      "grid": "A2:J2",
+      "note": "One white rounded three-step surface",
+      "container": true
+    },
+    {
+      "id": "flow-select-plate",
+      "kind": "plate",
+      "grid": "B2:C2",
+      "note": "Existing complete select monoline illustration on pastel circular ground"
+    },
+    {
+      "id": "flow-select-label",
+      "kind": "text",
+      "grid": "B2:D2",
+      "note": "Visible Chinese label: 选择作品"
+    },
+    {
+      "id": "flow-buy-plate",
+      "kind": "plate",
+      "grid": "E2:F2",
+      "note": "Existing complete buy monoline illustration on pastel circular ground"
+    },
+    {
+      "id": "flow-buy-label",
+      "kind": "text",
+      "grid": "E2:G2",
+      "note": "Visible Chinese label: 购买材料"
+    },
+    {
+      "id": "flow-make-plate",
+      "kind": "plate",
+      "grid": "G2:H2",
+      "note": "Existing complete make monoline illustration on pastel circular ground"
+    },
+    {
+      "id": "flow-make-label",
+      "kind": "text",
+      "grid": "G2:I2",
+      "note": "Visible Chinese label: 开始制作"
+    },
+    {
+      "id": "flow-arrow-one",
+      "kind": "control",
+      "grid": "D2:D2",
+      "note": "Semantic interface control: Right arrow"
+    },
+    {
+      "id": "flow-arrow-two",
+      "kind": "control",
+      "grid": "G2:G2",
+      "note": "Semantic interface control: Right arrow"
+    },
+    {
+      "id": "category-heading-flourish",
+      "kind": "plate",
+      "grid": "B2:I3",
+      "note": "Existing thin taupe flower and yarn line path",
+      "bleed": true
+    },
+    {
+      "id": "category-heading",
+      "kind": "text",
+      "grid": "D2:G3",
+      "note": "Visible Chinese label: 你想做什么？"
+    },
+    {
+      "id": "discovery-disclaimer",
+      "kind": "text",
+      "grid": "D3:G3",
+      "note": "Internal demonstration disclaimer; actual storefront wording uses product truth"
+    },
+    {
+      "id": "search-field",
+      "kind": "control",
+      "grid": "B3:I3",
+      "note": "Search for a desired work"
+    },
+    {
+      "id": "category-bag-plate",
+      "kind": "plate",
+      "grid": "B3:C3",
+      "note": "Existing complete bag stitch-symbol silhouette on a small pastel circle"
+    },
+    {
+      "id": "category-bag-label",
+      "kind": "text",
+      "grid": "B4:C4",
+      "note": "Visible Chinese label: 包袋"
+    },
+    {
+      "id": "category-scarf-plate",
+      "kind": "plate",
+      "grid": "D3:E3",
+      "note": "Existing complete scarf stitch-symbol silhouette on a small pastel circle"
+    },
+    {
+      "id": "category-scarf-label",
+      "kind": "text",
+      "grid": "D4:E4",
+      "note": "Visible Chinese label: 围巾与披肩"
+    },
+    {
+      "id": "category-blanket-plate",
+      "kind": "plate",
+      "grid": "F3:G3",
+      "note": "Existing complete blanket stitch-symbol silhouette on a small pastel circle"
+    },
+    {
+      "id": "category-blanket-label",
+      "kind": "text",
+      "grid": "F4:G4",
+      "note": "Visible Chinese label: 毯子"
+    },
+    {
+      "id": "category-doll-plate",
+      "kind": "plate",
+      "grid": "H3:I3",
+      "note": "Existing complete doll stitch-symbol silhouette on a small pastel circle"
+    },
+    {
+      "id": "category-doll-label",
+      "kind": "text",
+      "grid": "H4:I4",
+      "note": "Visible Chinese label: 玩偶"
+    },
+    {
+      "id": "type-tabs",
+      "kind": "control",
+      "grid": "A4:J4",
+      "note": "Three content type controls: 作品套件 毛线 工具"
+    },
+    {
+      "id": "filter-quantity",
+      "kind": "control",
+      "grid": "A4:C4",
+      "note": "Semantic interface control: 全部用量"
+    },
+    {
+      "id": "filter-season",
+      "kind": "control",
+      "grid": "D4:F4",
+      "note": "Semantic interface control: 季节"
+    },
+    {
+      "id": "filter-style",
+      "kind": "control",
+      "grid": "G4:J4",
+      "note": "Semantic interface control: 全部风格"
+    },
+    {
+      "id": "season-menu",
+      "kind": "control",
+      "grid": "D5:G5",
+      "note": "Open warm-white filter popover with three options, first selected"
+    },
+    {
+      "id": "help-icon",
+      "kind": "control",
+      "grid": "A9:B9",
+      "note": "Small speech bubble question and yarn pictogram"
+    },
+    {
+      "id": "help-action",
+      "kind": "control",
+      "grid": "H9:I9",
+      "note": "Semantic interface control: 问问我们"
+    },
+    {
+      "id": "work-mousse-image",
+      "kind": "image",
+      "grid": "A5:E6",
+      "note": "Finished 淡彩抽绳包 photo: comp is explicitly illustrative; use the actual Shopify Product media, not generated photo",
+      "bleed": true,
+      "plate": "hoshiami-reference-20/products/12-mousse-bag-crochet-kit/images/01-main.jpg"
+    },
+    {
+      "id": "work-mousse-title",
+      "kind": "text",
+      "grid": "A6:C6",
+      "note": "Actual Shopify localized product title corresponding to 淡彩抽绳包"
+    },
+    {
+      "id": "work-mousse-action",
+      "kind": "control",
+      "grid": "A6:E6",
+      "note": "Material kit label and view materials action"
+    },
+    {
+      "id": "work-shawl-image",
+      "kind": "image",
+      "grid": "F5:J6",
+      "note": "Finished 花火镂空披肩 photo: comp is explicitly illustrative; use the actual Shopify Product media, not generated photo",
+      "bleed": true,
+      "plate": "hoshiami-reference-20/products/11-joyful-hanabi-shawl-crochet-kit/images/01-main.jpg"
+    },
+    {
+      "id": "work-shawl-title",
+      "kind": "text",
+      "grid": "F6:I6",
+      "note": "Actual Shopify localized product title corresponding to 花火镂空披肩"
+    },
+    {
+      "id": "work-shawl-action",
+      "kind": "control",
+      "grid": "F6:J6",
+      "note": "Material kit label and view materials action"
+    },
+    {
+      "id": "work-blanket-image",
+      "kind": "image",
+      "grid": "A7:E8",
+      "note": "Finished 渐变波纹毯 photo: comp is explicitly illustrative; use the actual Shopify Product media, not generated photo",
+      "bleed": true,
+      "plate": "hoshiami-reference-20/products/13-melody-wave-blanket-crochet-kit/images/01-main.jpg"
+    },
+    {
+      "id": "work-blanket-title",
+      "kind": "text",
+      "grid": "A8:D9",
+      "note": "Actual Shopify localized product title corresponding to 渐变波纹毯"
+    },
+    {
+      "id": "work-blanket-action",
+      "kind": "control",
+      "grid": "A9:E9",
+      "note": "Material kit label and view materials action"
+    },
+    {
+      "id": "work-bag-image",
+      "kind": "image",
+      "grid": "F7:J8",
+      "note": "Finished 荷叶边肩背包 photo: comp is explicitly illustrative; use the actual Shopify Product media, not generated photo",
+      "bleed": true,
+      "plate": "hoshiami-reference-20/products/07-tutu-bag-kit/images/01-main.jpg"
+    },
+    {
+      "id": "work-bag-title",
+      "kind": "text",
+      "grid": "F8:I9",
+      "note": "Actual Shopify localized product title corresponding to 荷叶边肩背包"
+    },
+    {
+      "id": "work-bag-action",
+      "kind": "control",
+      "grid": "F9:J9",
+      "note": "Material kit label and view materials action"
+    },
+    {
+      "id": "help-panel",
+      "kind": "chrome",
+      "grid": "A9:J9",
+      "note": "Compact pale blue support surface",
+      "container": true
+    },
+    {
+      "id": "help-heading",
+      "kind": "text",
+      "grid": "C9:F9",
+      "note": "Visible Chinese label: 选材料拿不准？"
+    }
+  ]
+}

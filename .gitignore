@@ -36,5 +36,7 @@
 /.impeccable/mocks/*
 !/.impeccable/mocks/platform-navigation-zh.webp
 !/.impeccable/mocks/platform-navigation-zh.webp.json
+!/.impeccable/mocks/discovery-b-zh.png
+!/.impeccable/mocks/discovery-b-zh.png.json
 /.impeccable/build/hero-plates.html
 /.playwright-mcp/

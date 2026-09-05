@@ -1,4 +1,9 @@
-{{ 'impeccable-hero-textile.png' | asset_url | preload_tag: as: 'image' }}
+{% if section.settings.discovery_layout %}
+  {{ 'impeccable-b-hero-textile.png' | asset_url | preload_tag: as: 'image' }}
+  {{ 'yarn-hero-b.css' | asset_url | stylesheet_tag }}
+{% else %}
+  {{ 'impeccable-hero-textile.png' | asset_url | preload_tag: as: 'image' }}
+{% endif %}
 
 {% liquid
   assign hero_heading = section.settings.heading
@@ -6,6 +11,12 @@
   assign flow_select = section.settings.flow_select
   assign flow_buy = section.settings.flow_buy
   assign flow_make = section.settings.flow_make
+  assign textile_asset = 'impeccable-hero-textile.png'
+  assign notation_asset = 'impeccable-hero-notation-doodles.png'
+  if section.settings.discovery_layout
+    assign textile_asset = 'impeccable-b-hero-textile.png'
+    assign notation_asset = 'impeccable-b-hero-notation-doodles.png'
+  endif
 
   case request.locale.iso_code
     when 'zh-CN', 'zh'
@@ -23,12 +34,12 @@
   endcase
 %}
 
-<section class="yarn-hero color-{{ section.settings.color_scheme }} gradient" aria-labelledby="YarnHeroHeading-{{ section.id }}">
+<section class="yarn-hero{% if section.settings.discovery_layout %} yarn-hero--discovery{% endif %} color-{{ section.settings.color_scheme }} gradient" aria-labelledby="YarnHeroHeading-{{ section.id }}">
   <div class="yarn-hero__visual">
     <div class="yarn-hero__paper" aria-hidden="true" style="background-image: url('{{ 'impeccable-page-paper.png' | asset_url }}');"></div>
-    <img class="yarn-hero__notation" src="{{ 'impeccable-hero-notation-doodles.png' | asset_url }}" alt="" width="1024" height="1536" loading="eager">
-    <span class="yarn-hero__flowers" aria-hidden="true"><img src="{{ 'impeccable-hero-notation-doodles.png' | asset_url }}" alt="" width="1024" height="1536" loading="eager"></span>
-    <img class="yarn-hero__textile" src="{{ 'impeccable-hero-textile.png' | asset_url }}" alt="" width="682" height="1476" loading="eager" fetchpriority="high">
+    <img class="yarn-hero__notation" src="{{ notation_asset | asset_url }}" alt="" width="1283" height="1226" loading="eager">
+    {% unless section.settings.discovery_layout %}<span class="yarn-hero__flowers" aria-hidden="true"><img src="{{ notation_asset | asset_url }}" alt="" width="1024" height="1536" loading="eager"></span>{% endunless %}
+    <img class="yarn-hero__textile" src="{{ textile_asset | asset_url }}" alt="" width="1191" height="1321" loading="eager" fetchpriority="high">
 
     <div class="yarn-hero__copy">
       <h1 id="YarnHeroHeading-{{ section.id }}" class="yarn-hero__heading" lang="{{ request.locale.iso_code }}">{{ hero_heading | escape }}</h1>
@@ -268,6 +279,7 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    { "type": "checkbox", "id": "discovery_layout", "label": "作品发现 B · 紧凑首屏", "default": false },
     {
       "type": "text",
       "id": "heading",

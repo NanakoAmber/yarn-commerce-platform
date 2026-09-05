@@ -1,0 +1,2388 @@
+{
+  "tool": "comp-spec",
+  "version": 1,
+  "createdAt": "2026-09-05T05:01:58.845Z",
+  "comp": ".impeccable/mocks/platform-navigation-zh.webp",
+  "warnings": [
+    "region hero-textile: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
+    "region flow-panel: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region category-bag-card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region category-scarf-card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region category-blanket-card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region category-doll-card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region filter-strip: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+  ],
+  "uncoveredInkCells": [],
+  "compSize": {
+    "width": 853,
+    "height": 1844
+  },
+  "aspect": 0.4626,
+  "orientation": "portrait",
+  "palette": [
+    {
+      "hex": "#f7f7f5",
+      "coverage": 0.8915
+    },
+    {
+      "hex": "#f7eabd",
+      "coverage": 0.0557
+    },
+    {
+      "hex": "#c4bfb7",
+      "coverage": 0.0213
+    },
+    {
+      "hex": "#3c3c3b",
+      "coverage": 0.0169
+    },
+    {
+      "hex": "#e5c3ac",
+      "coverage": 0.0146
+    }
+  ],
+  "bands": [
+    {
+      "y": 0.1408,
+      "strength": 0.3486
+    },
+    {
+      "y": 0.1841,
+      "strength": 0.4061
+    },
+    {
+      "y": 0.213,
+      "strength": 0.5946
+    },
+    {
+      "y": 0.2635,
+      "strength": 0.378
+    },
+    {
+      "y": 0.3213,
+      "strength": 0.2474
+    },
+    {
+      "y": 0.4332,
+      "strength": 0.3781
+    },
+    {
+      "y": 0.5523,
+      "strength": 0.2838
+    },
+    {
+      "y": 0.722,
+      "strength": 0.2146
+    },
+    {
+      "y": 0.8123,
+      "strength": 0.3103
+    },
+    {
+      "y": 0.8556,
+      "strength": 0.2483
+    },
+    {
+      "y": 0.9097,
+      "strength": 0.4409
+    },
+    {
+      "y": 0.9819,
+      "strength": 0.4499
+    }
+  ],
+  "regions": [
+    {
+      "id": "page-paper",
+      "kind": "texture",
+      "note": "clean warm off-white graph-paper texture with very faint square lines and no ink",
+      "grid": "A1:B1",
+      "box": {
+        "x": 0,
+        "y": 0.1,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "px": {
+        "x": 0,
+        "y": 184,
+        "w": 171,
+        "h": 184
+      },
+      "aspect": 0.9293,
+      "palette": [
+        {
+          "hex": "#f8f8f7",
+          "coverage": 0.8547
+        },
+        {
+          "hex": "#414141",
+          "coverage": 0.0688
+        },
+        {
+          "hex": "#1d1d1d",
+          "coverage": 0.0525
+        },
+        {
+          "hex": "#b4b4b4",
+          "coverage": 0.0174
+        },
+        {
+          "hex": "#797979",
+          "coverage": 0.0066
+        }
+      ],
+      "detail": {
+        "energy": 17.7953
+      },
+      "medium": "raster",
+      "plate": "assets/plates/page-paper.png",
+      "text": null
+    },
+    {
+      "id": "header-bar",
+      "kind": "chrome",
+      "note": "quiet warm-white navigation bar",
+      "grid": "A0:J0",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 0.1
+      },
+      "px": {
+        "x": 0,
+        "y": 0,
+        "w": 853,
+        "h": 184
+      },
+      "aspect": 4.6359,
+      "palette": [
+        {
+          "hex": "#f8f8f7",
+          "coverage": 0.9383
+        },
+        {
+          "hex": "#eec4b3",
+          "coverage": 0.0284
+        },
+        {
+          "hex": "#c7c3c3",
+          "coverage": 0.0238
+        },
+        {
+          "hex": "#ebe6cf",
+          "coverage": 0.0049
+        },
+        {
+          "hex": "#cd927a",
+          "coverage": 0.0046
+        }
+      ],
+      "detail": {
+        "energy": 11.6858
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "header-menu",
+      "kind": "control",
+      "note": "three-line menu control",
+      "grid": "A0:A0",
+      "coverBox": {
+        "x": 0,
+        "y": 0,
+        "w": 0.1,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.0352,
+        "y": 0.0195,
+        "w": 0.0633,
+        "h": 0.026
+      },
+      "px": {
+        "x": 30,
+        "y": 36,
+        "w": 54,
+        "h": 48
+      },
+      "aspect": 1.125,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8362
+        },
+        {
+          "hex": "#2a292a",
+          "coverage": 0.0732
+        },
+        {
+          "hex": "#999999",
+          "coverage": 0.0418
+        },
+        {
+          "hex": "#6b6c69",
+          "coverage": 0.0383
+        },
+        {
+          "hex": "#d8d3cd",
+          "coverage": 0.0105
+        }
+      ],
+      "detail": {
+        "energy": 8.9842
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "header-wordmark",
+      "kind": "text",
+      "note": "pastel multicolor Chinese wordmark 毛线工作室",
+      "grid": "C0:G0",
+      "coverBox": {
+        "x": 0.2,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.1
+      },
+  "box": {
+    "x": 0.3200,
+    "y": 0.0174,
+    "w": 0.3517,
+    "h": 0.0260
+  },
+  "px": {
+    "x": 273,
+    "y": 32,
+    "w": 300,
+    "h": 48
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.7025
+        },
+        {
+          "hex": "#cebcb8",
+          "coverage": 0.2975
+        }
+      ],
+      "detail": {
+        "energy": 5.154
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-09-05T05:02:47.638Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "header-search",
+      "kind": "control",
+      "note": "search control",
+      "grid": "I0:I0",
+      "coverBox": {
+        "x": 0.8,
+        "y": 0,
+        "w": 0.1,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.8136,
+        "y": 0.0195,
+        "w": 0.0633,
+        "h": 0.0293
+      },
+      "px": {
+        "x": 694,
+        "y": 36,
+        "w": 54,
+        "h": 54
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8727
+        },
+        {
+          "hex": "#212120",
+          "coverage": 0.0839
+        },
+        {
+          "hex": "#4e4e4e",
+          "coverage": 0.0155
+        },
+        {
+          "hex": "#b8b8b8",
+          "coverage": 0.0155
+        },
+        {
+          "hex": "#787878",
+          "coverage": 0.0124
+        }
+      ],
+      "detail": {
+        "energy": 8.8497
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "header-cart",
+      "kind": "control",
+      "note": "shopping cart control",
+      "grid": "J0:J0",
+      "coverBox": {
+        "x": 0.9,
+        "y": 0,
+        "w": 0.1,
+        "h": 0.1
+      },
+  "box": {
+    "x": 0.9121,
+    "y": 0.0217,
+    "w": 0.0492,
+    "h": 0.0233
+  },
+  "px": {
+    "x": 778,
+    "y": 40,
+    "w": 42,
+    "h": 43
+      },
+      "aspect": 1.2143,
+      "palette": [
+        {
+          "hex": "#f3d2c0",
+          "coverage": 0.417
+        },
+        {
+          "hex": "#e1b19a",
+          "coverage": 0.2379
+        },
+        {
+          "hex": "#f8f6f4",
+          "coverage": 0.1747
+        },
+        {
+          "hex": "#c4886f",
+          "coverage": 0.1322
+        },
+        {
+          "hex": "#a25a44",
+          "coverage": 0.0382
+        }
+      ],
+      "detail": {
+        "energy": 25.1595
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "hero-notation-doodles",
+      "kind": "plate",
+      "note": "tan crochet stitch notation drifting above small flower and yarn-line doodles, transparent background, no text",
+      "grid": "D0:H3",
+      "box": {
+        "x": 0.3,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.4
+      },
+      "px": {
+        "x": 256,
+        "y": 0,
+        "w": 427,
+        "h": 738
+      },
+      "aspect": 0.5786,
+      "palette": [
+        {
+          "hex": "#f7f7f6",
+          "coverage": 0.8508
+        },
+        {
+          "hex": "#cbc2ba",
+          "coverage": 0.0549
+        },
+        {
+          "hex": "#efe4c9",
+          "coverage": 0.0543
+        },
+        {
+          "hex": "#3d3d3c",
+          "coverage": 0.0278
+        },
+        {
+          "hex": "#11100e",
+          "coverage": 0.0123
+        }
+      ],
+      "detail": {
+        "energy": 29.7757
+      },
+      "medium": "raster",
+      "plate": "assets/plates/hero-notation-doodles.png",
+      "text": null
+    },
+    {
+      "id": "hero-textile",
+      "kind": "plate",
+      "note": "close tactile pastel crochet fabric with one blush yarn ball and crochet hook along the top-right and right edge, no text",
+      "grid": "G0:J3",
+      "bleed": true,
+      "box": {
+        "x": 0.6,
+        "y": 0,
+        "w": 0.4,
+        "h": 0.4
+      },
+      "px": {
+        "x": 512,
+        "y": 0,
+        "w": 341,
+        "h": 738
+      },
+      "aspect": 0.4621,
+      "palette": [
+        {
+          "hex": "#f7f5f1",
+          "coverage": 0.7157
+        },
+        {
+          "hex": "#dcc9bb",
+          "coverage": 0.1367
+        },
+        {
+          "hex": "#f4eccc",
+          "coverage": 0.0667
+        },
+        {
+          "hex": "#daac94",
+          "coverage": 0.0497
+        },
+        {
+          "hex": "#a89d90",
+          "coverage": 0.0312
+        }
+      ],
+      "detail": {
+        "energy": 36.1866
+      },
+      "medium": "raster",
+      "plate": "assets/plates/hero-textile.png",
+      "text": null
+    },
+    {
+      "id": "hero-headline",
+      "kind": "text",
+      "note": "two-line bold charcoal headline 先选喜欢的作品，选线交给我们。",
+      "grid": "A1:F2",
+      "coverBox": {
+        "x": 0,
+        "y": 0.1,
+        "w": 0.6,
+        "h": 0.2
+      },
+      "box": {
+        "x": 0.0563,
+        "y": 0.1307,
+        "w": 0.544,
+        "h": 0.1334
+      },
+      "px": {
+        "x": 48,
+        "y": 241,
+        "w": 464,
+        "h": 246
+      },
+      "aspect": 1.8862,
+      "palette": [
+        {
+          "hex": "#f8f8f7",
+          "coverage": 0.785
+        },
+        {
+          "hex": "#414140",
+          "coverage": 0.0874
+        },
+        {
+          "hex": "#1b1b1b",
+          "coverage": 0.0704
+        },
+        {
+          "hex": "#c6c4c1",
+          "coverage": 0.037
+        },
+        {
+          "hex": "#7f7f7e",
+          "coverage": 0.0202
+        }
+      ],
+      "detail": {
+        "energy": 58.2229
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 18,
+          "capHeightPx": 54.8,
+          "inkIsDark": true,
+          "allCaps": true,
+          "advance": 0.9573,
+          "advTall": 0.9674,
+          "advX": null,
+          "gap": 0.1826,
+          "xRatio": null,
+          "stemW": 0.1172,
+          "contrast": 1.0657,
+          "serif": 1.0166,
+          "densTall": 0.4748,
+          "densX": null,
+          "weight": 0.4748
+        },
+        "widthClass": "wide",
+        "weightClass": "regular",
+        "chosen": {
+          "family": "M PLUS 1",
+          "weight": 400,
+          "fontSizePx": 63,
+          "source": "index",
+          "fp": {
+            "lines": 1,
+            "glyphs": 19,
+            "capHeightPx": 56.2,
+            "inkIsDark": true,
+            "allCaps": true,
+            "advance": 0.7293,
+            "advTall": 0.9783,
+            "advX": null,
+            "gap": 0.1067,
+            "xRatio": null,
+            "stemW": 0.0989,
+            "contrast": 1.1258,
+            "serif": 1,
+            "densTall": 0.42,
+            "densX": null,
+            "weight": 0.42
+          },
+          "stamp": "268490799077"
+        }
+      }
+    },
+    {
+      "id": "hero-support",
+      "kind": "text",
+      "note": "two-line charcoal supporting copy about yarn tools tutorials and beginner confidence",
+      "grid": "A2:F3",
+      "coverBox": {
+        "x": 0,
+        "y": 0.2,
+        "w": 0.6,
+        "h": 0.2
+      },
+      "box": {
+        "x": 0.0563,
+        "y": 0.231,
+        "w": 0.4889,
+        "h": 0.07
+      },
+      "px": {
+        "x": 48,
+        "y": 426,
+        "w": 417,
+        "h": 129
+      },
+      "aspect": 3.2326,
+      "palette": [
+        {
+          "hex": "#f8f8f7",
+          "coverage": 0.864
+        },
+        {
+          "hex": "#141313",
+          "coverage": 0.0486
+        },
+        {
+          "hex": "#c2c0bf",
+          "coverage": 0.0359
+        },
+        {
+          "hex": "#464646",
+          "coverage": 0.0266
+        },
+        {
+          "hex": "#818180",
+          "coverage": 0.0249
+        }
+      ],
+      "detail": {
+        "energy": 49.7555
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 37,
+          "capHeightPx": 24.6,
+          "inkIsDark": true,
+          "allCaps": true,
+          "advance": 0.6887,
+          "advTall": 0.6921,
+          "advX": null,
+          "gap": 0.2025,
+          "xRatio": null,
+          "stemW": 0.0988,
+          "contrast": 1.1038,
+          "serif": 0.7309,
+          "densTall": 0.4314,
+          "densX": null,
+          "weight": 0.4314
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "flow-panel",
+      "kind": "chrome",
+      "note": "white raised three-step panel with restrained corners and soft shadow",
+      "grid": "A3:J4",
+      "container": true,
+      "box": {
+        "x": 0,
+        "y": 0.3,
+        "w": 1,
+        "h": 0.2
+      },
+      "px": {
+        "x": 0,
+        "y": 553,
+        "w": 853,
+        "h": 369
+      },
+      "aspect": 2.3117,
+      "palette": [
+        {
+          "hex": "#f7f8f6",
+          "coverage": 0.9056
+        },
+        {
+          "hex": "#f6efd3",
+          "coverage": 0.0575
+        },
+        {
+          "hex": "#c7c0b4",
+          "coverage": 0.0193
+        },
+        {
+          "hex": "#141412",
+          "coverage": 0.0102
+        },
+        {
+          "hex": "#5f5f5e",
+          "coverage": 0.0073
+        }
+      ],
+      "detail": {
+        "energy": 17.7635
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "flow-select-plate",
+      "kind": "plate",
+      "note": "friendly line illustration for selecting a crochet project, blush circular field, no text",
+      "grid": "A3:C4",
+      "box": {
+        "x": 0.1125,
+        "y": 0.3362,
+        "w": 0.1876,
+        "h": 0.0868
+      },
+      "px": {
+        "x": 96,
+        "y": 620,
+        "w": 160,
+        "h": 160
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#f8f8f6",
+          "coverage": 0.9702
+        },
+        {
+          "hex": "#151413",
+          "coverage": 0.0104
+        },
+        {
+          "hex": "#afafae",
+          "coverage": 0.0083
+        },
+        {
+          "hex": "#6f6f6f",
+          "coverage": 0.0076
+        },
+        {
+          "hex": "#414141",
+          "coverage": 0.0035
+        }
+      ],
+      "detail": {
+        "energy": 15.6956
+      },
+      "medium": "raster",
+      "plate": "assets/plates/flow-select-plate.png",
+      "text": null
+    },
+    {
+      "id": "flow-buy-plate",
+      "kind": "plate",
+      "note": "friendly line illustration of a shopping basket holding yarn and a crochet hook, pale blue circular field, no text",
+      "grid": "D3:F4",
+      "box": {
+        "x": 0.3,
+        "y": 0.3,
+        "w": 0.3,
+        "h": 0.2
+      },
+      "px": {
+        "x": 256,
+        "y": 553,
+        "w": 256,
+        "h": 369
+      },
+      "aspect": 0.6938,
+      "palette": [
+        {
+          "hex": "#f6f8f7",
+          "coverage": 0.9361
+        },
+        {
+          "hex": "#f7ebc9",
+          "coverage": 0.0349
+        },
+        {
+          "hex": "#bfbfbd",
+          "coverage": 0.0129
+        },
+        {
+          "hex": "#141413",
+          "coverage": 0.0102
+        },
+        {
+          "hex": "#696966",
+          "coverage": 0.006
+        }
+      ],
+      "detail": {
+        "energy": 16.4822
+      },
+      "medium": "raster",
+      "plate": "assets/plates/flow-buy-plate.png",
+      "text": null
+    },
+    {
+      "id": "flow-make-plate",
+      "kind": "plate",
+      "note": "friendly line illustration of hands crocheting, pale yellow circular field, no text",
+      "grid": "G3:J4",
+      "box": {
+        "x": 0.6,
+        "y": 0.3,
+        "w": 0.4,
+        "h": 0.2
+      },
+      "px": {
+        "x": 512,
+        "y": 553,
+        "w": 341,
+        "h": 369
+      },
+      "aspect": 0.9241,
+      "palette": [
+        {
+          "hex": "#f8f7f7",
+          "coverage": 0.7586
+        },
+        {
+          "hex": "#f5f2db",
+          "coverage": 0.1924
+        },
+        {
+          "hex": "#c5bdaf",
+          "coverage": 0.0318
+        },
+        {
+          "hex": "#12110f",
+          "coverage": 0.0096
+        },
+        {
+          "hex": "#8d8b82",
+          "coverage": 0.0077
+        }
+      ],
+      "detail": {
+        "energy": 19.4306
+      },
+      "medium": "raster",
+      "plate": "assets/plates/flow-make-plate.png",
+      "text": null
+    },
+    {
+      "id": "flow-arrow-one",
+      "kind": "control",
+      "note": "thin right arrow between first and second steps",
+      "grid": "D3:D3",
+      "coverBox": {
+        "x": 0.3,
+        "y": 0.3,
+        "w": 0.1,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.3212,
+        "y": 0.3715,
+        "w": 0.0563,
+        "h": 0.0195
+      },
+      "px": {
+        "x": 274,
+        "y": 685,
+        "w": 48,
+        "h": 36
+      },
+      "aspect": 1.3333,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8429
+        },
+        {
+          "hex": "#757575",
+          "coverage": 0.0628
+        },
+        {
+          "hex": "#bdbdbd",
+          "coverage": 0.0471
+        },
+        {
+          "hex": "#353535",
+          "coverage": 0.0314
+        },
+        {
+          "hex": "#181818",
+          "coverage": 0.0157
+        }
+      ],
+      "detail": {
+        "energy": 7.372
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "flow-arrow-two",
+      "kind": "control",
+      "note": "thin right arrow between second and third steps",
+      "grid": "G3:G3",
+      "coverBox": {
+        "x": 0.6,
+        "y": 0.3,
+        "w": 0.1,
+        "h": 0.1
+      },
+  "box": {
+    "x": 0.5791,
+    "y": 0.3742,
+    "w": 0.0399,
+    "h": 0.0130
+  },
+  "px": {
+    "x": 494,
+    "y": 690,
+    "w": 34,
+    "h": 24
+      },
+      "aspect": 2.0238,
+      "palette": [
+        {
+          "hex": "#eae3d7",
+          "coverage": 0.6704
+        },
+        {
+          "hex": "#a6a494",
+          "coverage": 0.1648
+        },
+        {
+          "hex": "#e1c0a6",
+          "coverage": 0.081
+        },
+        {
+          "hex": "#332c15",
+          "coverage": 0.0503
+        },
+        {
+          "hex": "#87755d",
+          "coverage": 0.0335
+        }
+      ],
+      "detail": {
+        "energy": 22.848
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "flow-select-label",
+      "kind": "text",
+      "note": "label 选择作品",
+      "grid": "B4:C4",
+      "coverBox": {
+        "x": 0.1,
+        "y": 0.4,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.1278,
+        "y": 0.4295,
+        "w": 0.1477,
+        "h": 0.0228
+      },
+      "px": {
+        "x": 109,
+        "y": 792,
+        "w": 126,
+        "h": 42
+      },
+      "aspect": 3,
+      "palette": [
+        {
+          "hex": "#f6f6f6",
+          "coverage": 0.7853
+        },
+        {
+          "hex": "#161616",
+          "coverage": 0.0801
+        },
+        {
+          "hex": "#787878",
+          "coverage": 0.0562
+        },
+        {
+          "hex": "#b0b0af",
+          "coverage": 0.0426
+        },
+        {
+          "hex": "#484847",
+          "coverage": 0.0358
+        }
+      ],
+      "detail": {
+        "energy": 39.3054
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 5,
+          "capHeightPx": 24.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.856,
+          "advTall": 0.856,
+          "advX": null,
+          "gap": 0.2038,
+          "xRatio": 0.829,
+          "stemW": 0.0931,
+          "contrast": 1.006,
+          "serif": null,
+          "densTall": 0.4293,
+          "densX": null,
+          "weight": 0.4293
+        },
+        "widthClass": "wide",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "flow-buy-label",
+      "kind": "text",
+      "note": "label 购买材料",
+      "grid": "E4:F4",
+      "coverBox": {
+        "x": 0.4,
+        "y": 0.4,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.4279,
+        "y": 0.4295,
+        "w": 0.1407,
+        "h": 0.0228
+      },
+      "px": {
+        "x": 365,
+        "y": 792,
+        "w": 120,
+        "h": 42
+      },
+      "aspect": 2.8571,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.7554
+        },
+        {
+          "hex": "#171717",
+          "coverage": 0.0821
+        },
+        {
+          "hex": "#4d4d4d",
+          "coverage": 0.0804
+        },
+        {
+          "hex": "#939494",
+          "coverage": 0.0661
+        },
+        {
+          "hex": "#c1c1c1",
+          "coverage": 0.0161
+        }
+      ],
+      "detail": {
+        "energy": 40.3031
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 4,
+          "capHeightPx": 25.6,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.9182,
+          "advTall": 0.9182,
+          "advX": null,
+          "gap": 0.1954,
+          "xRatio": 0.7704,
+          "stemW": 0.0916,
+          "contrast": 0.9943,
+          "serif": null,
+          "densTall": 0.3968,
+          "densX": null,
+          "weight": 0.3968
+        },
+        "widthClass": "wide",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "flow-make-label",
+      "kind": "text",
+      "note": "label 开始制作",
+      "grid": "H4:I4",
+      "coverBox": {
+        "x": 0.7,
+        "y": 0.4,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.714,
+        "y": 0.4295,
+        "w": 0.1477,
+        "h": 0.0228
+      },
+      "px": {
+        "x": 609,
+        "y": 792,
+        "w": 126,
+        "h": 42
+      },
+      "aspect": 3,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.7883
+        },
+        {
+          "hex": "#131414",
+          "coverage": 0.105
+        },
+        {
+          "hex": "#646464",
+          "coverage": 0.0465
+        },
+        {
+          "hex": "#a1a1a1",
+          "coverage": 0.0379
+        },
+        {
+          "hex": "#3f3f3f",
+          "coverage": 0.0224
+        }
+      ],
+      "detail": {
+        "energy": 37.8509
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 6,
+          "capHeightPx": 25.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5878,
+          "advTall": 0.5878,
+          "advX": null,
+          "gap": 0.1959,
+          "xRatio": 0.8286,
+          "stemW": 0.087,
+          "contrast": 0.9952,
+          "serif": null,
+          "densTall": 0.4134,
+          "densX": null,
+          "weight": 0.4134
+        },
+        "widthClass": "condensed",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "category-heading-flourish",
+      "kind": "plate",
+      "note": "thin dashed yarn path with a small flower at left and yarn ball at right, transparent background, no text",
+      "grid": "A5:J5",
+      "box": {
+        "x": 0,
+        "y": 0.5,
+        "w": 1,
+        "h": 0.1
+      },
+      "px": {
+        "x": 0,
+        "y": 922,
+        "w": 853,
+        "h": 184
+      },
+      "aspect": 4.6359,
+      "palette": [
+        {
+          "hex": "#f7f8f7",
+          "coverage": 0.9657
+        },
+        {
+          "hex": "#b6b2ae",
+          "coverage": 0.0153
+        },
+        {
+          "hex": "#2f2f2f",
+          "coverage": 0.0136
+        },
+        {
+          "hex": "#6a6a6a",
+          "coverage": 0.0043
+        },
+        {
+          "hex": "#080808",
+          "coverage": 0.0012
+        }
+      ],
+      "detail": {
+        "energy": 13.006
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-heading-flourish.png",
+      "text": null
+    },
+    {
+      "id": "category-heading",
+      "kind": "text",
+      "note": "centered section heading 你想做什么？",
+      "grid": "C5:G5",
+      "coverBox": {
+        "x": 0.2,
+        "y": 0.5,
+        "w": 0.5,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.2005,
+        "y": 0.526,
+        "w": 0.5006,
+        "h": 0.0488
+      },
+      "px": {
+        "x": 171,
+        "y": 970,
+        "w": 427,
+        "h": 90
+      },
+      "aspect": 4.7444,
+      "palette": [
+        {
+          "hex": "#f8f8f7",
+          "coverage": 0.8939
+        },
+        {
+          "hex": "#2f2f2f",
+          "coverage": 0.0569
+        },
+        {
+          "hex": "#b4b2b0",
+          "coverage": 0.0267
+        },
+        {
+          "hex": "#6a6a6a",
+          "coverage": 0.0176
+        },
+        {
+          "hex": "#080808",
+          "coverage": 0.0049
+        }
+      ],
+      "detail": {
+        "energy": 36.1102
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 8,
+          "capHeightPx": 39.3,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6615,
+          "advTall": 0.6615,
+          "advX": null,
+          "gap": 0.2036,
+          "xRatio": 0.817,
+          "stemW": 0.1064,
+          "contrast": 0.967,
+          "serif": 0.9687,
+          "densTall": 0.4155,
+          "densX": null,
+          "weight": 0.4155
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "category-bag-card",
+      "kind": "chrome",
+      "note": "soft blush category tile",
+      "grid": "A6:C7",
+      "container": true,
+      "box": {
+        "x": 0,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.2
+      },
+      "px": {
+        "x": 0,
+        "y": 1106,
+        "w": 256,
+        "h": 369
+      },
+      "aspect": 0.6938,
+      "palette": [
+        {
+          "hex": "#f7f7f2",
+          "coverage": 0.9726
+        },
+        {
+          "hex": "#efd5d9",
+          "coverage": 0.0083
+        },
+        {
+          "hex": "#cba9ac",
+          "coverage": 0.0074
+        },
+        {
+          "hex": "#a98284",
+          "coverage": 0.0063
+        },
+        {
+          "hex": "#121212",
+          "coverage": 0.0054
+        }
+      ],
+      "detail": {
+        "energy": 11.4529
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "category-scarf-card",
+      "kind": "chrome",
+      "note": "soft powder-blue category tile",
+      "grid": "C6:E7",
+      "container": true,
+      "box": {
+        "x": 0.2,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.2
+      },
+      "px": {
+        "x": 171,
+        "y": 1106,
+        "w": 256,
+        "h": 369
+      },
+      "aspect": 0.6938,
+      "palette": [
+        {
+          "hex": "#f1f7f5",
+          "coverage": 0.9686
+        },
+        {
+          "hex": "#beccd6",
+          "coverage": 0.012
+        },
+        {
+          "hex": "#5a7383",
+          "coverage": 0.0077
+        },
+        {
+          "hex": "#0c0c0c",
+          "coverage": 0.007
+        },
+        {
+          "hex": "#8ba5b5",
+          "coverage": 0.0047
+        }
+      ],
+      "detail": {
+        "energy": 17.6015
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "category-blanket-card",
+      "kind": "chrome",
+      "note": "soft pale-mint category tile",
+      "grid": "F6:H7",
+      "container": true,
+      "box": {
+        "x": 0.5,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.2
+      },
+      "px": {
+        "x": 427,
+        "y": 1106,
+        "w": 256,
+        "h": 369
+      },
+      "aspect": 0.6938,
+      "palette": [
+        {
+          "hex": "#f5f7f0",
+          "coverage": 0.936
+        },
+        {
+          "hex": "#afbcb5",
+          "coverage": 0.0246
+        },
+        {
+          "hex": "#7d8c84",
+          "coverage": 0.02
+        },
+        {
+          "hex": "#4f6258",
+          "coverage": 0.0128
+        },
+        {
+          "hex": "#383e3a",
+          "coverage": 0.0066
+        }
+      ],
+      "detail": {
+        "energy": 25.6427
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "category-doll-card",
+      "kind": "chrome",
+      "note": "soft butter-cream category tile",
+      "grid": "H6:J7",
+      "container": true,
+      "box": {
+        "x": 0.7,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.2
+      },
+      "px": {
+        "x": 597,
+        "y": 1106,
+        "w": 256,
+        "h": 369
+      },
+      "aspect": 0.6938,
+      "palette": [
+        {
+          "hex": "#f8f8f0",
+          "coverage": 0.9637
+        },
+        {
+          "hex": "#cec9c6",
+          "coverage": 0.0107
+        },
+        {
+          "hex": "#7a776f",
+          "coverage": 0.0104
+        },
+        {
+          "hex": "#a7a59c",
+          "coverage": 0.0101
+        },
+        {
+          "hex": "#55524d",
+          "coverage": 0.0051
+        }
+      ],
+      "detail": {
+        "energy": 15.9373
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "category-bag-plate",
+      "kind": "plate",
+      "note": "coral crochet-stitch chart forming a bag silhouette, transparent background, no text",
+      "grid": "A6:C6",
+      "box": {
+        "x": 0,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "px": {
+        "x": 0,
+        "y": 1106,
+        "w": 256,
+        "h": 184
+      },
+      "aspect": 1.3913,
+      "palette": [
+        {
+          "hex": "#f7f5f0",
+          "coverage": 0.9517
+        },
+        {
+          "hex": "#ae898c",
+          "coverage": 0.0192
+        },
+        {
+          "hex": "#d4b5b7",
+          "coverage": 0.0177
+        },
+        {
+          "hex": "#9b6a74",
+          "coverage": 0.0072
+        },
+        {
+          "hex": "#f5ccd9",
+          "coverage": 0.0042
+        }
+      ],
+      "detail": {
+        "energy": 14.8969
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-bag-plate.png",
+      "text": null
+    },
+    {
+      "id": "category-scarf-plate",
+      "kind": "plate",
+      "note": "blue crochet-stitch chart forming a shawl silhouette, transparent background, no text",
+      "grid": "C6:E6",
+      "box": {
+        "x": 0.2,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "px": {
+        "x": 171,
+        "y": 1106,
+        "w": 256,
+        "h": 184
+      },
+      "aspect": 1.3913,
+      "palette": [
+        {
+          "hex": "#eff7f5",
+          "coverage": 0.9421
+        },
+        {
+          "hex": "#c0d4e0",
+          "coverage": 0.0231
+        },
+        {
+          "hex": "#5b7483",
+          "coverage": 0.0164
+        },
+        {
+          "hex": "#8ca6b1",
+          "coverage": 0.0126
+        },
+        {
+          "hex": "#dbc1c1",
+          "coverage": 0.0059
+        }
+      ],
+      "detail": {
+        "energy": 19.6391
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-scarf-plate.png",
+      "text": null
+    },
+    {
+      "id": "category-blanket-plate",
+      "kind": "plate",
+      "note": "green crochet-stitch chart forming a square blanket motif, transparent background, no text",
+      "grid": "F6:H6",
+      "box": {
+        "x": 0.5,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "px": {
+        "x": 427,
+        "y": 1106,
+        "w": 256,
+        "h": 184
+      },
+      "aspect": 1.3913,
+      "palette": [
+        {
+          "hex": "#f4f7ee",
+          "coverage": 0.887
+        },
+        {
+          "hex": "#afbdb6",
+          "coverage": 0.0451
+        },
+        {
+          "hex": "#7b8c83",
+          "coverage": 0.0351
+        },
+        {
+          "hex": "#4d6359",
+          "coverage": 0.0226
+        },
+        {
+          "hex": "#304138",
+          "coverage": 0.0102
+        }
+      ],
+      "detail": {
+        "energy": 41.4725
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-blanket-plate.png",
+      "text": null
+    },
+    {
+      "id": "category-doll-plate",
+      "kind": "plate",
+      "note": "charcoal crochet-stitch chart forming a small rabbit doll silhouette, transparent background, no text",
+      "grid": "H6:J6",
+      "box": {
+        "x": 0.7,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "px": {
+        "x": 597,
+        "y": 1106,
+        "w": 256,
+        "h": 184
+      },
+      "aspect": 1.3913,
+      "palette": [
+        {
+          "hex": "#f8f8ee",
+          "coverage": 0.9374
+        },
+        {
+          "hex": "#adaaa2",
+          "coverage": 0.0189
+        },
+        {
+          "hex": "#d3d0c7",
+          "coverage": 0.0168
+        },
+        {
+          "hex": "#79766d",
+          "coverage": 0.016
+        },
+        {
+          "hex": "#4d4a42",
+          "coverage": 0.0109
+        }
+      ],
+      "detail": {
+        "energy": 21.3997
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-doll-plate.png",
+      "text": null
+    },
+    {
+      "id": "category-bag-label",
+      "kind": "text",
+      "note": "category label 包袋",
+      "grid": "B7:C7",
+      "coverBox": {
+        "x": 0.1,
+        "y": 0.7,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.1208,
+        "y": 0.7164,
+        "w": 0.0844,
+        "h": 0.0228
+      },
+      "px": {
+        "x": 103,
+        "y": 1321,
+        "w": 72,
+        "h": 42
+      },
+      "aspect": 1.7143,
+      "palette": [
+        {
+          "hex": "#f7f6ed",
+          "coverage": 0.7321
+        },
+        {
+          "hex": "#c8c7c6",
+          "coverage": 0.1131
+        },
+        {
+          "hex": "#7c7c7c",
+          "coverage": 0.0595
+        },
+        {
+          "hex": "#171616",
+          "coverage": 0.0595
+        },
+        {
+          "hex": "#4c4947",
+          "coverage": 0.0357
+        }
+      ],
+      "detail": {
+        "energy": 24.2619
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-09-05T05:02:47.911Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "category-scarf-label",
+      "kind": "text",
+      "note": "category label 围巾与披肩",
+      "grid": "C7:E7",
+      "coverBox": {
+        "x": 0.2,
+        "y": 0.7,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.2849,
+        "y": 0.7164,
+        "w": 0.1758,
+        "h": 0.0228
+      },
+      "px": {
+        "x": 243,
+        "y": 1321,
+        "w": 150,
+        "h": 42
+      },
+      "aspect": 3.5714,
+      "palette": [
+        {
+          "hex": "#edf5f6",
+          "coverage": 0.726
+        },
+        {
+          "hex": "#101011",
+          "coverage": 0.1033
+        },
+        {
+          "hex": "#545656",
+          "coverage": 0.0918
+        },
+        {
+          "hex": "#848787",
+          "coverage": 0.043
+        },
+        {
+          "hex": "#b4b7b8",
+          "coverage": 0.0359
+        }
+      ],
+      "detail": {
+        "energy": 48.953
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 5,
+          "capHeightPx": 26.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.8302,
+          "advTall": 0.8302,
+          "advX": null,
+          "gap": 0.2264,
+          "xRatio": 0.8168,
+          "stemW": 0.0859,
+          "contrast": 1.0297,
+          "serif": 0.9384,
+          "densTall": 0.4378,
+          "densX": null,
+          "weight": 0.4378
+        },
+        "widthClass": "wide",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "category-blanket-label",
+      "kind": "text",
+      "note": "category label 毯子",
+      "grid": "F7:G7",
+      "coverBox": {
+        "x": 0.5,
+        "y": 0.7,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.5569,
+        "y": 0.7164,
+        "w": 0.0844,
+        "h": 0.0228
+      },
+      "px": {
+        "x": 475,
+        "y": 1321,
+        "w": 72,
+        "h": 42
+      },
+      "aspect": 1.7143,
+      "palette": [
+        {
+          "hex": "#f0f6ed",
+          "coverage": 0.8084
+        },
+        {
+          "hex": "#505050",
+          "coverage": 0.0539
+        },
+        {
+          "hex": "#b6b8b6",
+          "coverage": 0.0479
+        },
+        {
+          "hex": "#121313",
+          "coverage": 0.0449
+        },
+        {
+          "hex": "#898d8a",
+          "coverage": 0.0449
+        }
+      ],
+      "detail": {
+        "energy": 21.4862
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-09-05T05:02:47.999Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "category-doll-label",
+      "kind": "text",
+      "note": "category label 玩偶",
+      "grid": "I7:J7",
+      "coverBox": {
+        "x": 0.8,
+        "y": 0.7,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.7995,
+        "y": 0.7164,
+        "w": 0.0703,
+        "h": 0.0228
+      },
+      "px": {
+        "x": 682,
+        "y": 1321,
+        "w": 60,
+        "h": 42
+      },
+      "aspect": 1.4286,
+      "palette": [
+        {
+          "hex": "#f5f5ea",
+          "coverage": 0.7628
+        },
+        {
+          "hex": "#878784",
+          "coverage": 0.0803
+        },
+        {
+          "hex": "#3d3d3d",
+          "coverage": 0.073
+        },
+        {
+          "hex": "#0f0f0b",
+          "coverage": 0.0693
+        },
+        {
+          "hex": "#c0c0c0",
+          "coverage": 0.0146
+        }
+      ],
+      "detail": {
+        "energy": 21.583
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 3,
+          "capHeightPx": 27.3,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6605,
+          "advTall": 0.6605,
+          "advX": null,
+          "gap": 0.1284,
+          "xRatio": 0.6724,
+          "stemW": 0.0865,
+          "contrast": 1.0459,
+          "serif": null,
+          "densTall": 0.4508,
+          "densX": null,
+          "weight": 0.4508
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "filter-strip",
+      "kind": "chrome",
+      "note": "quiet white bordered secondary filter strip",
+      "grid": "A7:J8",
+      "container": true,
+      "box": {
+        "x": 0,
+        "y": 0.7,
+        "w": 1,
+        "h": 0.2
+      },
+      "px": {
+        "x": 0,
+        "y": 1291,
+        "w": 853,
+        "h": 369
+      },
+      "aspect": 2.3117,
+      "palette": [
+        {
+          "hex": "#f7f8f5",
+          "coverage": 0.8093
+        },
+        {
+          "hex": "#f8e8b9",
+          "coverage": 0.1691
+        },
+        {
+          "hex": "#141413",
+          "coverage": 0.0101
+        },
+        {
+          "hex": "#505050",
+          "coverage": 0.0061
+        },
+        {
+          "hex": "#b7b7b4",
+          "coverage": 0.0054
+        }
+      ],
+      "detail": {
+        "energy": 13.1842
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "filter-popular",
+      "kind": "control",
+      "note": "small line icon and label 热门作品",
+      "grid": "A8:C8",
+      "coverBox": {
+        "x": 0,
+        "y": 0.8,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.0985,
+        "y": 0.7999,
+        "w": 0.1336,
+        "h": 0.0293
+      },
+      "px": {
+        "x": 84,
+        "y": 1475,
+        "w": 114,
+        "h": 54
+      },
+      "aspect": 2.1111,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.864
+        },
+        {
+          "hex": "#111111",
+          "coverage": 0.0439
+        },
+        {
+          "hex": "#b9b8b8",
+          "coverage": 0.0424
+        },
+        {
+          "hex": "#373737",
+          "coverage": 0.0307
+        },
+        {
+          "hex": "#747473",
+          "coverage": 0.019
+        }
+      ],
+      "detail": {
+        "energy": 22.7366
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "filter-one-ball",
+      "kind": "control",
+      "note": "small line icon and label 一团完成",
+      "grid": "C8:E8",
+      "coverBox": {
+        "x": 0.2,
+        "y": 0.8,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.32,
+        "y": 0.7999,
+        "w": 0.1336,
+        "h": 0.0293
+      },
+      "px": {
+        "x": 273,
+        "y": 1475,
+        "w": 114,
+        "h": 54
+      },
+      "aspect": 2.1111,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.863
+        },
+        {
+          "hex": "#141414",
+          "coverage": 0.0663
+        },
+        {
+          "hex": "#cbcac9",
+          "coverage": 0.0353
+        },
+        {
+          "hex": "#414140",
+          "coverage": 0.025
+        },
+        {
+          "hex": "#9f9f9f",
+          "coverage": 0.0103
+        }
+      ],
+      "detail": {
+        "energy": 22.6189
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "filter-gift",
+      "kind": "control",
+      "note": "small line icon and label 礼物",
+      "grid": "F8:G8",
+      "coverBox": {
+        "x": 0.5,
+        "y": 0.8,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.5569,
+        "y": 0.7999,
+        "w": 0.0703,
+        "h": 0.0293
+      },
+      "px": {
+        "x": 475,
+        "y": 1475,
+        "w": 60,
+        "h": 54
+      },
+      "aspect": 1.1111,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8278
+        },
+        {
+          "hex": "#403d3b",
+          "coverage": 0.0639
+        },
+        {
+          "hex": "#c0c0c0",
+          "coverage": 0.0444
+        },
+        {
+          "hex": "#0d0d0d",
+          "coverage": 0.0361
+        },
+        {
+          "hex": "#868686",
+          "coverage": 0.0278
+        }
+      ],
+      "detail": {
+        "energy": 14.3501
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "filter-season",
+      "kind": "control",
+      "note": "small line icon and label 季节作品",
+      "grid": "H8:J8",
+      "coverBox": {
+        "x": 0.7,
+        "y": 0.8,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.7421,
+        "y": 0.7999,
+        "w": 0.1336,
+        "h": 0.0293
+      },
+      "px": {
+        "x": 633,
+        "y": 1475,
+        "w": 114,
+        "h": 54
+      },
+      "aspect": 2.1111,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8733
+        },
+        {
+          "hex": "#171717",
+          "coverage": 0.0457
+        },
+        {
+          "hex": "#b6b6b5",
+          "coverage": 0.0383
+        },
+        {
+          "hex": "#868683",
+          "coverage": 0.0236
+        },
+        {
+          "hex": "#5f5f5e",
+          "coverage": 0.0191
+        }
+      ],
+      "detail": {
+        "energy": 22.8885
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "project-cta",
+      "kind": "control",
+      "note": "wide soft butter-yellow button with charcoal label 看看有哪些作品 and coral arrow",
+      "grid": "A8:J9",
+      "coverBox": {
+        "x": 0,
+        "y": 0.8,
+        "w": 1,
+        "h": 0.2
+      },
+  "box": {
+    "x": 0.0739,
+    "y": 0.8563,
+    "w": 0.8389,
+    "h": 0.0531
+  },
+  "px": {
+    "x": 63,
+    "y": 1579,
+    "w": 715,
+    "h": 98
+      },
+      "aspect": 7.7895,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.7999
+        },
+        {
+          "hex": "#252525",
+          "coverage": 0.1074
+        },
+        {
+          "hex": "#b4b4b4",
+          "coverage": 0.0407
+        },
+        {
+          "hex": "#777777",
+          "coverage": 0.0285
+        },
+        {
+          "hex": "#4d4d4d",
+          "coverage": 0.0235
+        }
+      ],
+      "detail": {
+        "energy": 73.9783
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "next-section-flourish",
+      "kind": "plate",
+      "note": "cropped next-section dashed yarn line with yarn ball and flower endpoints, transparent background, no text",
+      "grid": "A9:J9",
+      "box": {
+        "x": 0,
+        "y": 0.9,
+        "w": 1,
+        "h": 0.1
+      },
+      "px": {
+        "x": 0,
+        "y": 1660,
+        "w": 853,
+        "h": 184
+      },
+      "aspect": 4.6359,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8864
+        },
+        {
+          "hex": "#f8e8b9",
+          "coverage": 0.0827
+        },
+        {
+          "hex": "#232323",
+          "coverage": 0.0172
+        },
+        {
+          "hex": "#afaba9",
+          "coverage": 0.0084
+        },
+        {
+          "hex": "#cececc",
+          "coverage": 0.0053
+        }
+      ],
+      "detail": {
+        "energy": 15.4718
+      },
+      "medium": "raster",
+      "plate": "assets/plates/next-section-flourish.png",
+      "text": null
+    },
+    {
+      "id": "next-section-heading",
+      "kind": "text",
+      "note": "next section heading 第一次做？从一团完成开始",
+      "grid": "C9:H9",
+      "coverBox": {
+        "x": 0.2,
+        "y": 0.9,
+        "w": 0.6,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.2427,
+        "y": 0.9588,
+        "w": 0.5275,
+        "h": 0.0293
+      },
+      "px": {
+        "x": 207,
+        "y": 1768,
+        "w": 450,
+        "h": 54
+      },
+      "aspect": 8.3333,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.7879
+        },
+        {
+          "hex": "#232323",
+          "coverage": 0.1147
+        },
+        {
+          "hex": "#c1c1c1",
+          "coverage": 0.0425
+        },
+        {
+          "hex": "#4c4c4c",
+          "coverage": 0.0275
+        },
+        {
+          "hex": "#717171",
+          "coverage": 0.0275
+        }
+      ],
+      "detail": {
+        "energy": 75.4475
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 11,
+          "capHeightPx": 17.8,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": null,
+          "advTall": null,
+          "advX": null,
+          "gap": 0.449,
+          "xRatio": 0.8045,
+          "stemW": 0.1969,
+          "contrast": 1.0364,
+          "serif": 1.0345,
+          "densTall": null,
+          "densX": null,
+          "weight": null
+        },
+        "widthClass": "normal",
+        "weightClass": "bold"
+      }
+    }
+  ]
+}
