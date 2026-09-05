@@ -1,139 +1,161 @@
 {
   "tool": "comp-spec",
   "version": 1,
-  "createdAt": "2026-09-05T05:01:58.845Z",
-  "comp": ".impeccable/mocks/platform-navigation-zh.webp",
+  "createdAt": "2026-09-05T18:29:06.350Z",
+  "comp": ".impeccable/mocks/discovery-b-zh.png",
   "warnings": [
+    "region header-bar: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
     "region hero-textile: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
     "region flow-panel: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
-    "region category-bag-card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
-    "region category-scarf-card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
-    "region category-blanket-card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
-    "region category-doll-card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
-    "region filter-strip: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+    "region category-heading-flourish: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
+    "region work-mousse-image: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
+    "region work-shawl-image: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
+    "region work-blanket-image: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
+    "region work-bag-image: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)",
+    "region help-panel: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
   ],
   "uncoveredInkCells": [],
   "compSize": {
-    "width": 853,
-    "height": 1844
+    "width": 756,
+    "height": 2079
   },
-  "aspect": 0.4626,
+  "aspect": 0.3636,
   "orientation": "portrait",
   "palette": [
     {
-      "hex": "#f7f7f5",
-      "coverage": 0.8915
+      "hex": "#f7f7f6",
+      "coverage": 0.7661
     },
     {
-      "hex": "#f7eabd",
-      "coverage": 0.0557
+      "hex": "#dfd5c9",
+      "coverage": 0.1685
     },
     {
-      "hex": "#c4bfb7",
-      "coverage": 0.0213
+      "hex": "#cab49c",
+      "coverage": 0.03
     },
     {
-      "hex": "#3c3c3b",
-      "coverage": 0.0169
+      "hex": "#cd947b",
+      "coverage": 0.0191
     },
     {
-      "hex": "#e5c3ac",
-      "coverage": 0.0146
+      "hex": "#a5a49e",
+      "coverage": 0.0163
     }
   ],
   "bands": [
     {
-      "y": 0.1408,
-      "strength": 0.3486
+      "y": 0.0142,
+      "strength": 0.2304
     },
     {
-      "y": 0.1841,
-      "strength": 0.4061
+      "y": 0.0426,
+      "strength": 0.2372
     },
     {
-      "y": 0.213,
-      "strength": 0.5946
+      "y": 0.0795,
+      "strength": 0.3683
     },
     {
-      "y": 0.2635,
-      "strength": 0.378
+      "y": 0.1023,
+      "strength": 0.3788
     },
     {
-      "y": 0.3213,
-      "strength": 0.2474
+      "y": 0.142,
+      "strength": 0.3615
     },
     {
-      "y": 0.4332,
-      "strength": 0.3781
+      "y": 0.1875,
+      "strength": 0.3842
     },
     {
-      "y": 0.5523,
-      "strength": 0.2838
+      "y": 0.2614,
+      "strength": 0.266
     },
     {
-      "y": 0.722,
-      "strength": 0.2146
+      "y": 0.3011,
+      "strength": 0.2289
     },
     {
-      "y": 0.8123,
-      "strength": 0.3103
+      "y": 0.4716,
+      "strength": 0.26
     },
     {
-      "y": 0.8556,
-      "strength": 0.2483
+      "y": 0.4943,
+      "strength": 0.2745
     },
     {
-      "y": 0.9097,
-      "strength": 0.4409
+      "y": 0.5852,
+      "strength": 0.2646
     },
     {
-      "y": 0.9819,
-      "strength": 0.4499
+      "y": 0.6563,
+      "strength": 0.3209
+    },
+    {
+      "y": 0.6818,
+      "strength": 0.2865
+    },
+    {
+      "y": 0.7102,
+      "strength": 0.4764
+    },
+    {
+      "y": 0.8722,
+      "strength": 0.2555
+    },
+    {
+      "y": 0.9006,
+      "strength": 0.2109
+    },
+    {
+      "y": 0.9517,
+      "strength": 0.2836
     }
   ],
   "regions": [
     {
       "id": "page-paper",
       "kind": "texture",
-      "note": "clean warm off-white graph-paper texture with very faint square lines and no ink",
-      "grid": "A1:B1",
+      "note": "Reusable subtle warm graph paper, measured from blank margins; existing supplied texture.",
+      "grid": "A0:A0",
       "box": {
-        "x": 0,
-        "y": 0.1,
-        "w": 0.2,
-        "h": 0.1
+        "x": 0.006613756613756613,
+        "y": 0.0456950456950457,
+        "w": 0.046296296296296294,
+        "h": 0.02886002886002886
       },
       "px": {
-        "x": 0,
-        "y": 184,
-        "w": 171,
-        "h": 184
+        "x": 5,
+        "y": 95,
+        "w": 35,
+        "h": 60
       },
-      "aspect": 0.9293,
+      "aspect": 0.5833,
       "palette": [
         {
-          "hex": "#f8f8f7",
-          "coverage": 0.8547
+          "hex": "#f8f7f4",
+          "coverage": 0.9588
         },
         {
-          "hex": "#414141",
-          "coverage": 0.0688
+          "hex": "#302f2d",
+          "coverage": 0.0286
         },
         {
-          "hex": "#1d1d1d",
-          "coverage": 0.0525
+          "hex": "#696967",
+          "coverage": 0.006
         },
         {
-          "hex": "#b4b4b4",
-          "coverage": 0.0174
+          "hex": "#9b9b93",
+          "coverage": 0.0033
         },
         {
-          "hex": "#797979",
-          "coverage": 0.0066
+          "hex": "#cdcbc5",
+          "coverage": 0.0033
         }
       ],
       "detail": {
-        "energy": 17.7953
+        "energy": 3.2892
       },
       "medium": "raster",
       "plate": "assets/plates/page-paper.png",
@@ -142,45 +164,46 @@
     {
       "id": "header-bar",
       "kind": "chrome",
-      "note": "quiet warm-white navigation bar",
+      "note": "Warm white header with menu wordmark search and cart",
       "grid": "A0:J0",
+      "container": true,
       "box": {
         "x": 0,
         "y": 0,
         "w": 1,
-        "h": 0.1
+        "h": 0.04136604136604136
       },
       "px": {
         "x": 0,
         "y": 0,
-        "w": 853,
-        "h": 184
+        "w": 756,
+        "h": 86
       },
-      "aspect": 4.6359,
+      "aspect": 8.7907,
       "palette": [
         {
-          "hex": "#f8f8f7",
-          "coverage": 0.9383
+          "hex": "#f8f7f3",
+          "coverage": 0.8743
         },
         {
-          "hex": "#eec4b3",
-          "coverage": 0.0284
+          "hex": "#e2cec2",
+          "coverage": 0.0589
         },
         {
-          "hex": "#c7c3c3",
-          "coverage": 0.0238
+          "hex": "#e1a890",
+          "coverage": 0.034
         },
         {
-          "hex": "#ebe6cf",
-          "coverage": 0.0049
+          "hex": "#303130",
+          "coverage": 0.02
         },
         {
-          "hex": "#cd927a",
-          "coverage": 0.0046
+          "hex": "#ca7e62",
+          "coverage": 0.0128
         }
       ],
       "detail": {
-        "energy": 11.6858
+        "energy": 22.9403
       },
       "medium": "semantic",
       "plate": null,
@@ -189,7 +212,7 @@
     {
       "id": "header-menu",
       "kind": "control",
-      "note": "three-line menu control",
+      "note": "Semantic interface control: Menu control",
       "grid": "A0:A0",
       "coverBox": {
         "x": 0,
@@ -198,97 +221,39 @@
         "h": 0.1
       },
       "box": {
-        "x": 0.0352,
-        "y": 0.0195,
-        "w": 0.0633,
-        "h": 0.026
+        "x": 0.031746031746031744,
+        "y": 0.011544011544011544,
+        "w": 0.042328042328042326,
+        "h": 0.020202020202020204
       },
       "px": {
-        "x": 30,
-        "y": 36,
-        "w": 54,
-        "h": 48
+        "x": 24,
+        "y": 24,
+        "w": 32,
+        "h": 42
       },
-      "aspect": 1.125,
+      "aspect": 0.7619,
       "palette": [
         {
-          "hex": "#f7f7f7",
-          "coverage": 0.8362
+          "hex": "#f6f6f6",
+          "coverage": 0.9082
         },
         {
-          "hex": "#2a292a",
-          "coverage": 0.0732
-        },
-        {
-          "hex": "#999999",
-          "coverage": 0.0418
-        },
-        {
-          "hex": "#6b6c69",
-          "coverage": 0.0383
-        },
-        {
-          "hex": "#d8d3cd",
-          "coverage": 0.0105
+          "hex": "#2d2c26",
+          "coverage": 0.0918
         }
       ],
       "detail": {
-        "energy": 8.9842
+        "energy": 6.7662
       },
       "medium": "semantic",
       "plate": null,
       "text": null
     },
     {
-      "id": "header-wordmark",
-      "kind": "text",
-      "note": "pastel multicolor Chinese wordmark 毛线工作室",
-      "grid": "C0:G0",
-      "coverBox": {
-        "x": 0.2,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.1
-      },
-  "box": {
-    "x": 0.3200,
-    "y": 0.0174,
-    "w": 0.3517,
-    "h": 0.0260
-  },
-  "px": {
-    "x": 273,
-    "y": 32,
-    "w": 300,
-    "h": 48
-      },
-      "aspect": 1,
-      "palette": [
-        {
-          "hex": "#f7f7f7",
-          "coverage": 0.7025
-        },
-        {
-          "hex": "#cebcb8",
-          "coverage": 0.2975
-        }
-      ],
-      "detail": {
-        "energy": 5.154
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null,
-      "type": {
-        "comp": null,
-        "measuredAt": "2026-09-05T05:02:47.638Z",
-        "note": "no separable lettering in the crop; size by the region box"
-      }
-    },
-    {
       "id": "header-search",
       "kind": "control",
-      "note": "search control",
+      "note": "Semantic interface control: Search control",
       "grid": "I0:I0",
       "coverBox": {
         "x": 0.8,
@@ -297,42 +262,42 @@
         "h": 0.1
       },
       "box": {
-        "x": 0.8136,
-        "y": 0.0195,
-        "w": 0.0633,
-        "h": 0.0293
+        "x": 0.8359788359788359,
+        "y": 0.012506012506012507,
+        "w": 0.041005291005291,
+        "h": 0.016835016835016835
       },
       "px": {
-        "x": 694,
-        "y": 36,
-        "w": 54,
-        "h": 54
+        "x": 632,
+        "y": 26,
+        "w": 31,
+        "h": 35
       },
-      "aspect": 1,
+      "aspect": 0.8857,
       "palette": [
         {
-          "hex": "#f7f7f7",
-          "coverage": 0.8727
+          "hex": "#f2ece8",
+          "coverage": 0.5368
         },
         {
-          "hex": "#212120",
-          "coverage": 0.0839
+          "hex": "#f3cebf",
+          "coverage": 0.1963
         },
         {
-          "hex": "#4e4e4e",
-          "coverage": 0.0155
+          "hex": "#eab097",
+          "coverage": 0.1325
         },
         {
-          "hex": "#b8b8b8",
-          "coverage": 0.0155
+          "hex": "#d98b70",
+          "coverage": 0.0832
         },
         {
-          "hex": "#787878",
-          "coverage": 0.0124
+          "hex": "#b95e42",
+          "coverage": 0.0513
         }
       ],
       "detail": {
-        "energy": 8.8497
+        "energy": 14.9684
       },
       "medium": "semantic",
       "plate": null,
@@ -341,7 +306,7 @@
     {
       "id": "header-cart",
       "kind": "control",
-      "note": "shopping cart control",
+      "note": "Semantic interface control: Cart control",
       "grid": "J0:J0",
       "coverBox": {
         "x": 0.9,
@@ -349,811 +314,96 @@
         "w": 0.1,
         "h": 0.1
       },
-  "box": {
-    "x": 0.9121,
-    "y": 0.0217,
-    "w": 0.0492,
-    "h": 0.0233
-  },
-  "px": {
-    "x": 778,
-    "y": 40,
-    "w": 42,
-    "h": 43
+      "box": {
+        "x": 0.9153439153439153,
+        "y": 0.011544011544011544,
+        "w": 0.04497354497354497,
+        "h": 0.01827801827801828
       },
-      "aspect": 1.2143,
+      "px": {
+        "x": 692,
+        "y": 24,
+        "w": 34,
+        "h": 38
+      },
+      "aspect": 0.8947,
       "palette": [
         {
-          "hex": "#f3d2c0",
-          "coverage": 0.417
+          "hex": "#daa38a",
+          "coverage": 0.4338
         },
         {
-          "hex": "#e1b19a",
-          "coverage": 0.2379
+          "hex": "#d7c0af",
+          "coverage": 0.2711
         },
         {
-          "hex": "#f8f6f4",
-          "coverage": 0.1747
+          "hex": "#be6f52",
+          "coverage": 0.1746
         },
         {
-          "hex": "#c4886f",
-          "coverage": 0.1322
+          "hex": "#f8f7f6",
+          "coverage": 0.09
         },
         {
-          "hex": "#a25a44",
-          "coverage": 0.0382
+          "hex": "#9b3e21",
+          "coverage": 0.0304
         }
       ],
       "detail": {
-        "energy": 25.1595
+        "energy": 14.9159
       },
       "medium": "semantic",
       "plate": null,
       "text": null
     },
     {
-      "id": "hero-notation-doodles",
-      "kind": "plate",
-      "note": "tan crochet stitch notation drifting above small flower and yarn-line doodles, transparent background, no text",
-      "grid": "D0:H3",
-      "box": {
+      "id": "header-wordmark",
+      "kind": "text",
+      "note": "Visible Chinese label: 毛线工作室",
+      "grid": "D0:G0",
+      "coverBox": {
         "x": 0.3,
         "y": 0,
-        "w": 0.5,
-        "h": 0.4
+        "w": 0.4,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.3386243386243386,
+        "y": 0.012025012025012025,
+        "w": 0.31746031746031744,
+        "h": 0.01924001924001924
       },
       "px": {
         "x": 256,
-        "y": 0,
-        "w": 427,
-        "h": 738
+        "y": 25,
+        "w": 240,
+        "h": 40
       },
-      "aspect": 0.5786,
-      "palette": [
-        {
-          "hex": "#f7f7f6",
-          "coverage": 0.8508
-        },
-        {
-          "hex": "#cbc2ba",
-          "coverage": 0.0549
-        },
-        {
-          "hex": "#efe4c9",
-          "coverage": 0.0543
-        },
-        {
-          "hex": "#3d3d3c",
-          "coverage": 0.0278
-        },
-        {
-          "hex": "#11100e",
-          "coverage": 0.0123
-        }
-      ],
-      "detail": {
-        "energy": 29.7757
-      },
-      "medium": "raster",
-      "plate": "assets/plates/hero-notation-doodles.png",
-      "text": null
-    },
-    {
-      "id": "hero-textile",
-      "kind": "plate",
-      "note": "close tactile pastel crochet fabric with one blush yarn ball and crochet hook along the top-right and right edge, no text",
-      "grid": "G0:J3",
-      "bleed": true,
-      "box": {
-        "x": 0.6,
-        "y": 0,
-        "w": 0.4,
-        "h": 0.4
-      },
-      "px": {
-        "x": 512,
-        "y": 0,
-        "w": 341,
-        "h": 738
-      },
-      "aspect": 0.4621,
-      "palette": [
-        {
-          "hex": "#f7f5f1",
-          "coverage": 0.7157
-        },
-        {
-          "hex": "#dcc9bb",
-          "coverage": 0.1367
-        },
-        {
-          "hex": "#f4eccc",
-          "coverage": 0.0667
-        },
-        {
-          "hex": "#daac94",
-          "coverage": 0.0497
-        },
-        {
-          "hex": "#a89d90",
-          "coverage": 0.0312
-        }
-      ],
-      "detail": {
-        "energy": 36.1866
-      },
-      "medium": "raster",
-      "plate": "assets/plates/hero-textile.png",
-      "text": null
-    },
-    {
-      "id": "hero-headline",
-      "kind": "text",
-      "note": "two-line bold charcoal headline 先选喜欢的作品，选线交给我们。",
-      "grid": "A1:F2",
-      "coverBox": {
-        "x": 0,
-        "y": 0.1,
-        "w": 0.6,
-        "h": 0.2
-      },
-      "box": {
-        "x": 0.0563,
-        "y": 0.1307,
-        "w": 0.544,
-        "h": 0.1334
-      },
-      "px": {
-        "x": 48,
-        "y": 241,
-        "w": 464,
-        "h": 246
-      },
-      "aspect": 1.8862,
+      "aspect": 6,
       "palette": [
         {
           "hex": "#f8f8f7",
-          "coverage": 0.785
+          "coverage": 0.815
         },
         {
-          "hex": "#414140",
-          "coverage": 0.0874
+          "hex": "#bca39d",
+          "coverage": 0.0494
         },
         {
-          "hex": "#1b1b1b",
-          "coverage": 0.0704
+          "hex": "#8cb0bd",
+          "coverage": 0.0487
         },
         {
-          "hex": "#c6c4c1",
-          "coverage": 0.037
+          "hex": "#e79590",
+          "coverage": 0.0459
         },
         {
-          "hex": "#7f7f7e",
-          "coverage": 0.0202
+          "hex": "#d8a94c",
+          "coverage": 0.041
         }
       ],
       "detail": {
-        "energy": 58.2229
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null,
-      "type": {
-        "comp": {
-          "lines": 2,
-          "glyphs": 18,
-          "capHeightPx": 54.8,
-          "inkIsDark": true,
-          "allCaps": true,
-          "advance": 0.9573,
-          "advTall": 0.9674,
-          "advX": null,
-          "gap": 0.1826,
-          "xRatio": null,
-          "stemW": 0.1172,
-          "contrast": 1.0657,
-          "serif": 1.0166,
-          "densTall": 0.4748,
-          "densX": null,
-          "weight": 0.4748
-        },
-        "widthClass": "wide",
-        "weightClass": "regular",
-        "chosen": {
-          "family": "M PLUS 1",
-          "weight": 400,
-          "fontSizePx": 63,
-          "source": "index",
-          "fp": {
-            "lines": 1,
-            "glyphs": 19,
-            "capHeightPx": 56.2,
-            "inkIsDark": true,
-            "allCaps": true,
-            "advance": 0.7293,
-            "advTall": 0.9783,
-            "advX": null,
-            "gap": 0.1067,
-            "xRatio": null,
-            "stemW": 0.0989,
-            "contrast": 1.1258,
-            "serif": 1,
-            "densTall": 0.42,
-            "densX": null,
-            "weight": 0.42
-          },
-          "stamp": "268490799077"
-        }
-      }
-    },
-    {
-      "id": "hero-support",
-      "kind": "text",
-      "note": "two-line charcoal supporting copy about yarn tools tutorials and beginner confidence",
-      "grid": "A2:F3",
-      "coverBox": {
-        "x": 0,
-        "y": 0.2,
-        "w": 0.6,
-        "h": 0.2
-      },
-      "box": {
-        "x": 0.0563,
-        "y": 0.231,
-        "w": 0.4889,
-        "h": 0.07
-      },
-      "px": {
-        "x": 48,
-        "y": 426,
-        "w": 417,
-        "h": 129
-      },
-      "aspect": 3.2326,
-      "palette": [
-        {
-          "hex": "#f8f8f7",
-          "coverage": 0.864
-        },
-        {
-          "hex": "#141313",
-          "coverage": 0.0486
-        },
-        {
-          "hex": "#c2c0bf",
-          "coverage": 0.0359
-        },
-        {
-          "hex": "#464646",
-          "coverage": 0.0266
-        },
-        {
-          "hex": "#818180",
-          "coverage": 0.0249
-        }
-      ],
-      "detail": {
-        "energy": 49.7555
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null,
-      "type": {
-        "comp": {
-          "lines": 2,
-          "glyphs": 37,
-          "capHeightPx": 24.6,
-          "inkIsDark": true,
-          "allCaps": true,
-          "advance": 0.6887,
-          "advTall": 0.6921,
-          "advX": null,
-          "gap": 0.2025,
-          "xRatio": null,
-          "stemW": 0.0988,
-          "contrast": 1.1038,
-          "serif": 0.7309,
-          "densTall": 0.4314,
-          "densX": null,
-          "weight": 0.4314
-        },
-        "widthClass": "normal",
-        "weightClass": "regular"
-      }
-    },
-    {
-      "id": "flow-panel",
-      "kind": "chrome",
-      "note": "white raised three-step panel with restrained corners and soft shadow",
-      "grid": "A3:J4",
-      "container": true,
-      "box": {
-        "x": 0,
-        "y": 0.3,
-        "w": 1,
-        "h": 0.2
-      },
-      "px": {
-        "x": 0,
-        "y": 553,
-        "w": 853,
-        "h": 369
-      },
-      "aspect": 2.3117,
-      "palette": [
-        {
-          "hex": "#f7f8f6",
-          "coverage": 0.9056
-        },
-        {
-          "hex": "#f6efd3",
-          "coverage": 0.0575
-        },
-        {
-          "hex": "#c7c0b4",
-          "coverage": 0.0193
-        },
-        {
-          "hex": "#141412",
-          "coverage": 0.0102
-        },
-        {
-          "hex": "#5f5f5e",
-          "coverage": 0.0073
-        }
-      ],
-      "detail": {
-        "energy": 17.7635
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "flow-select-plate",
-      "kind": "plate",
-      "note": "friendly line illustration for selecting a crochet project, blush circular field, no text",
-      "grid": "A3:C4",
-      "box": {
-        "x": 0.1125,
-        "y": 0.3362,
-        "w": 0.1876,
-        "h": 0.0868
-      },
-      "px": {
-        "x": 96,
-        "y": 620,
-        "w": 160,
-        "h": 160
-      },
-      "aspect": 1,
-      "palette": [
-        {
-          "hex": "#f8f8f6",
-          "coverage": 0.9702
-        },
-        {
-          "hex": "#151413",
-          "coverage": 0.0104
-        },
-        {
-          "hex": "#afafae",
-          "coverage": 0.0083
-        },
-        {
-          "hex": "#6f6f6f",
-          "coverage": 0.0076
-        },
-        {
-          "hex": "#414141",
-          "coverage": 0.0035
-        }
-      ],
-      "detail": {
-        "energy": 15.6956
-      },
-      "medium": "raster",
-      "plate": "assets/plates/flow-select-plate.png",
-      "text": null
-    },
-    {
-      "id": "flow-buy-plate",
-      "kind": "plate",
-      "note": "friendly line illustration of a shopping basket holding yarn and a crochet hook, pale blue circular field, no text",
-      "grid": "D3:F4",
-      "box": {
-        "x": 0.3,
-        "y": 0.3,
-        "w": 0.3,
-        "h": 0.2
-      },
-      "px": {
-        "x": 256,
-        "y": 553,
-        "w": 256,
-        "h": 369
-      },
-      "aspect": 0.6938,
-      "palette": [
-        {
-          "hex": "#f6f8f7",
-          "coverage": 0.9361
-        },
-        {
-          "hex": "#f7ebc9",
-          "coverage": 0.0349
-        },
-        {
-          "hex": "#bfbfbd",
-          "coverage": 0.0129
-        },
-        {
-          "hex": "#141413",
-          "coverage": 0.0102
-        },
-        {
-          "hex": "#696966",
-          "coverage": 0.006
-        }
-      ],
-      "detail": {
-        "energy": 16.4822
-      },
-      "medium": "raster",
-      "plate": "assets/plates/flow-buy-plate.png",
-      "text": null
-    },
-    {
-      "id": "flow-make-plate",
-      "kind": "plate",
-      "note": "friendly line illustration of hands crocheting, pale yellow circular field, no text",
-      "grid": "G3:J4",
-      "box": {
-        "x": 0.6,
-        "y": 0.3,
-        "w": 0.4,
-        "h": 0.2
-      },
-      "px": {
-        "x": 512,
-        "y": 553,
-        "w": 341,
-        "h": 369
-      },
-      "aspect": 0.9241,
-      "palette": [
-        {
-          "hex": "#f8f7f7",
-          "coverage": 0.7586
-        },
-        {
-          "hex": "#f5f2db",
-          "coverage": 0.1924
-        },
-        {
-          "hex": "#c5bdaf",
-          "coverage": 0.0318
-        },
-        {
-          "hex": "#12110f",
-          "coverage": 0.0096
-        },
-        {
-          "hex": "#8d8b82",
-          "coverage": 0.0077
-        }
-      ],
-      "detail": {
-        "energy": 19.4306
-      },
-      "medium": "raster",
-      "plate": "assets/plates/flow-make-plate.png",
-      "text": null
-    },
-    {
-      "id": "flow-arrow-one",
-      "kind": "control",
-      "note": "thin right arrow between first and second steps",
-      "grid": "D3:D3",
-      "coverBox": {
-        "x": 0.3,
-        "y": 0.3,
-        "w": 0.1,
-        "h": 0.1
-      },
-      "box": {
-        "x": 0.3212,
-        "y": 0.3715,
-        "w": 0.0563,
-        "h": 0.0195
-      },
-      "px": {
-        "x": 274,
-        "y": 685,
-        "w": 48,
-        "h": 36
-      },
-      "aspect": 1.3333,
-      "palette": [
-        {
-          "hex": "#f8f8f8",
-          "coverage": 0.8429
-        },
-        {
-          "hex": "#757575",
-          "coverage": 0.0628
-        },
-        {
-          "hex": "#bdbdbd",
-          "coverage": 0.0471
-        },
-        {
-          "hex": "#353535",
-          "coverage": 0.0314
-        },
-        {
-          "hex": "#181818",
-          "coverage": 0.0157
-        }
-      ],
-      "detail": {
-        "energy": 7.372
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "flow-arrow-two",
-      "kind": "control",
-      "note": "thin right arrow between second and third steps",
-      "grid": "G3:G3",
-      "coverBox": {
-        "x": 0.6,
-        "y": 0.3,
-        "w": 0.1,
-        "h": 0.1
-      },
-  "box": {
-    "x": 0.5791,
-    "y": 0.3742,
-    "w": 0.0399,
-    "h": 0.0130
-  },
-  "px": {
-    "x": 494,
-    "y": 690,
-    "w": 34,
-    "h": 24
-      },
-      "aspect": 2.0238,
-      "palette": [
-        {
-          "hex": "#eae3d7",
-          "coverage": 0.6704
-        },
-        {
-          "hex": "#a6a494",
-          "coverage": 0.1648
-        },
-        {
-          "hex": "#e1c0a6",
-          "coverage": 0.081
-        },
-        {
-          "hex": "#332c15",
-          "coverage": 0.0503
-        },
-        {
-          "hex": "#87755d",
-          "coverage": 0.0335
-        }
-      ],
-      "detail": {
-        "energy": 22.848
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "flow-select-label",
-      "kind": "text",
-      "note": "label 选择作品",
-      "grid": "B4:C4",
-      "coverBox": {
-        "x": 0.1,
-        "y": 0.4,
-        "w": 0.2,
-        "h": 0.1
-      },
-      "box": {
-        "x": 0.1278,
-        "y": 0.4295,
-        "w": 0.1477,
-        "h": 0.0228
-      },
-      "px": {
-        "x": 109,
-        "y": 792,
-        "w": 126,
-        "h": 42
-      },
-      "aspect": 3,
-      "palette": [
-        {
-          "hex": "#f6f6f6",
-          "coverage": 0.7853
-        },
-        {
-          "hex": "#161616",
-          "coverage": 0.0801
-        },
-        {
-          "hex": "#787878",
-          "coverage": 0.0562
-        },
-        {
-          "hex": "#b0b0af",
-          "coverage": 0.0426
-        },
-        {
-          "hex": "#484847",
-          "coverage": 0.0358
-        }
-      ],
-      "detail": {
-        "energy": 39.3054
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null,
-      "type": {
-        "comp": {
-          "lines": 1,
-          "glyphs": 5,
-          "capHeightPx": 24.5,
-          "inkIsDark": true,
-          "allCaps": false,
-          "advance": 0.856,
-          "advTall": 0.856,
-          "advX": null,
-          "gap": 0.2038,
-          "xRatio": 0.829,
-          "stemW": 0.0931,
-          "contrast": 1.006,
-          "serif": null,
-          "densTall": 0.4293,
-          "densX": null,
-          "weight": 0.4293
-        },
-        "widthClass": "wide",
-        "weightClass": "regular"
-      }
-    },
-    {
-      "id": "flow-buy-label",
-      "kind": "text",
-      "note": "label 购买材料",
-      "grid": "E4:F4",
-      "coverBox": {
-        "x": 0.4,
-        "y": 0.4,
-        "w": 0.2,
-        "h": 0.1
-      },
-      "box": {
-        "x": 0.4279,
-        "y": 0.4295,
-        "w": 0.1407,
-        "h": 0.0228
-      },
-      "px": {
-        "x": 365,
-        "y": 792,
-        "w": 120,
-        "h": 42
-      },
-      "aspect": 2.8571,
-      "palette": [
-        {
-          "hex": "#f7f7f7",
-          "coverage": 0.7554
-        },
-        {
-          "hex": "#171717",
-          "coverage": 0.0821
-        },
-        {
-          "hex": "#4d4d4d",
-          "coverage": 0.0804
-        },
-        {
-          "hex": "#939494",
-          "coverage": 0.0661
-        },
-        {
-          "hex": "#c1c1c1",
-          "coverage": 0.0161
-        }
-      ],
-      "detail": {
-        "energy": 40.3031
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null,
-      "type": {
-        "comp": {
-          "lines": 1,
-          "glyphs": 4,
-          "capHeightPx": 25.6,
-          "inkIsDark": true,
-          "allCaps": false,
-          "advance": 0.9182,
-          "advTall": 0.9182,
-          "advX": null,
-          "gap": 0.1954,
-          "xRatio": 0.7704,
-          "stemW": 0.0916,
-          "contrast": 0.9943,
-          "serif": null,
-          "densTall": 0.3968,
-          "densX": null,
-          "weight": 0.3968
-        },
-        "widthClass": "wide",
-        "weightClass": "regular"
-      }
-    },
-    {
-      "id": "flow-make-label",
-      "kind": "text",
-      "note": "label 开始制作",
-      "grid": "H4:I4",
-      "coverBox": {
-        "x": 0.7,
-        "y": 0.4,
-        "w": 0.2,
-        "h": 0.1
-      },
-      "box": {
-        "x": 0.714,
-        "y": 0.4295,
-        "w": 0.1477,
-        "h": 0.0228
-      },
-      "px": {
-        "x": 609,
-        "y": 792,
-        "w": 126,
-        "h": 42
-      },
-      "aspect": 3,
-      "palette": [
-        {
-          "hex": "#f7f7f7",
-          "coverage": 0.7883
-        },
-        {
-          "hex": "#131414",
-          "coverage": 0.105
-        },
-        {
-          "hex": "#646464",
-          "coverage": 0.0465
-        },
-        {
-          "hex": "#a1a1a1",
-          "coverage": 0.0379
-        },
-        {
-          "hex": "#3f3f3f",
-          "coverage": 0.0224
-        }
-      ],
-      "detail": {
-        "energy": 37.8509
+        "energy": 19.2486
       },
       "medium": "semantic",
       "plate": null,
@@ -1162,120 +412,463 @@
         "comp": {
           "lines": 1,
           "glyphs": 6,
-          "capHeightPx": 25.5,
+          "capHeightPx": 34,
           "inkIsDark": true,
-          "allCaps": false,
-          "advance": 0.5878,
-          "advTall": 0.5878,
+          "allCaps": true,
+          "advance": 1.0289,
+          "advTall": 1.0289,
           "advX": null,
-          "gap": 0.1959,
-          "xRatio": 0.8286,
-          "stemW": 0.087,
-          "contrast": 0.9952,
-          "serif": null,
-          "densTall": 0.4134,
+          "gap": 0.3822,
+          "xRatio": null,
+          "stemW": 0.1357,
+          "contrast": 1.119,
+          "serif": 1.1131,
+          "densTall": 0.506,
           "densX": null,
-          "weight": 0.4134
+          "weight": 0.506
         },
-        "widthClass": "condensed",
-        "weightClass": "regular"
+        "widthClass": "wide",
+        "weightClass": "medium",
+        "chosen": {
+          "family": "Noto Sans SC",
+          "weight": 600,
+          "fontSizePx": 38,
+          "source": "index",
+          "fp": {
+            "lines": 1,
+            "glyphs": 5,
+            "capHeightPx": 34.7,
+            "inkIsDark": true,
+            "allCaps": false,
+            "advance": 1.0223,
+            "advTall": 1.0223,
+            "advX": null,
+            "gap": 0.072,
+            "xRatio": 0.8425,
+            "stemW": 0.1458,
+            "contrast": 1.1459,
+            "serif": null,
+            "densTall": 0.5044,
+            "densX": null,
+            "weight": 0.5044
+          },
+          "stamp": "04976db73b28"
+        }
       }
     },
     {
-      "id": "category-heading-flourish",
+      "id": "hero-notation-doodles",
       "kind": "plate",
-      "note": "thin dashed yarn path with a small flower at left and yarn ball at right, transparent background, no text",
-      "grid": "A5:J5",
+      "note": "Existing taupe stitch notation and flower line drawing; no text",
+      "grid": "E0:H1",
       "box": {
-        "x": 0,
-        "y": 0.5,
-        "w": 1,
-        "h": 0.1
+        "x": 0.40476190476190477,
+        "y": 0.04136604136604136,
+        "w": 0.3968253968253968,
+        "h": 0.13756613756613756
       },
       "px": {
-        "x": 0,
-        "y": 922,
-        "w": 853,
-        "h": 184
+        "x": 306,
+        "y": 86,
+        "w": 300,
+        "h": 286
       },
-      "aspect": 4.6359,
+      "aspect": 1.049,
       "palette": [
         {
-          "hex": "#f7f8f7",
-          "coverage": 0.9657
+          "hex": "#f7f6f0",
+          "coverage": 0.864
         },
         {
-          "hex": "#b6b2ae",
-          "coverage": 0.0153
+          "hex": "#e3cebb",
+          "coverage": 0.0793
         },
         {
-          "hex": "#2f2f2f",
-          "coverage": 0.0136
+          "hex": "#b4aba6",
+          "coverage": 0.033
         },
         {
-          "hex": "#6a6a6a",
-          "coverage": 0.0043
+          "hex": "#d7ae95",
+          "coverage": 0.0143
         },
         {
-          "hex": "#080808",
-          "coverage": 0.0012
+          "hex": "#211a16",
+          "coverage": 0.0095
         }
       ],
       "detail": {
-        "energy": 13.006
+        "energy": 26.4399
       },
       "medium": "raster",
-      "plate": "assets/plates/category-heading-flourish.png",
+      "plate": "assets/plates/b-hero-notation-doodles.png",
       "text": null
     },
     {
-      "id": "category-heading",
+      "id": "hero-textile",
+      "kind": "plate",
+      "note": "Existing ivory pastel crochet fabric with peach yarn at right",
+      "grid": "G0:J1",
+      "bleed": true,
+      "box": {
+        "x": 0.541005291005291,
+        "y": 0.04136604136604136,
+        "w": 0.458994708994709,
+        "h": 0.18518518518518517
+      },
+      "px": {
+        "x": 409,
+        "y": 86,
+        "w": 347,
+        "h": 385
+      },
+      "aspect": 0.9013,
+      "palette": [
+        {
+          "hex": "#f6f4f1",
+          "coverage": 0.6594
+        },
+        {
+          "hex": "#e5cebb",
+          "coverage": 0.1825
+        },
+        {
+          "hex": "#dcab90",
+          "coverage": 0.0892
+        },
+        {
+          "hex": "#b1aca5",
+          "coverage": 0.04
+        },
+        {
+          "hex": "#ce8066",
+          "coverage": 0.0287
+        }
+      ],
+      "detail": {
+        "energy": 43.3137
+      },
+      "medium": "raster",
+      "plate": "assets/plates/b-hero-textile.png",
+      "text": null
+    },
+    {
+      "id": "hero-headline",
       "kind": "text",
-      "note": "centered section heading 你想做什么？",
-      "grid": "C5:G5",
+      "note": "Visible Chinese label: 先选喜欢的作品，选线交给我们。",
+      "grid": "A0:E1",
       "coverBox": {
-        "x": 0.2,
-        "y": 0.5,
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.2
+      },
+      "box": {
+        "x": 0.06613756613756613,
+        "y": 0.07744107744107744,
+        "w": 0.373015873015873,
+        "h": 0.03848003848003848
+      },
+      "px": {
+        "x": 50,
+        "y": 161,
+        "w": 282,
+        "h": 80
+      },
+      "aspect": 3.525,
+      "palette": [
+        {
+          "hex": "#f7f6ee",
+          "coverage": 0.6998
+        },
+        {
+          "hex": "#302f2f",
+          "coverage": 0.1994
+        },
+        {
+          "hex": "#6a6968",
+          "coverage": 0.0501
+        },
+        {
+          "hex": "#b4b2ae",
+          "coverage": 0.0441
+        },
+        {
+          "hex": "#534d43",
+          "coverage": 0.0067
+        }
+      ],
+      "detail": {
+        "energy": 69.3325
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 18,
+          "capHeightPx": 30.5,
+          "inkIsDark": true,
+          "allCaps": true,
+          "advance": 0.9913,
+          "advTall": 0.9913,
+          "advX": null,
+          "gap": 0.1239,
+          "xRatio": null,
+          "stemW": 0.1416,
+          "contrast": 1.095,
+          "serif": 1.0223,
+          "densTall": 0.5306,
+          "densX": null,
+          "weight": 0.5306
+        },
+        "widthClass": "wide",
+        "weightClass": "medium",
+        "chosen": {
+          "family": "Noto Sans SC",
+          "weight": 600,
+          "fontSizePx": 36,
+          "source": "index",
+          "fp": {
+            "lines": 1,
+            "glyphs": 11,
+            "capHeightPx": 32,
+            "inkIsDark": true,
+            "allCaps": false,
+            "advance": 0.4688,
+            "advTall": 0.4688,
+            "advX": null,
+            "gap": 0.1094,
+            "xRatio": 0.4961,
+            "stemW": 0.1376,
+            "contrast": 1.0842,
+            "serif": 0.3326,
+            "densTall": 0.5492,
+            "densX": null,
+            "weight": 0.5492
+          },
+          "stamp": "5c510ea4e31f"
+        }
+      }
+    },
+    {
+      "id": "hero-support",
+      "kind": "text",
+      "note": "从想做的作品出发，找到合适的毛线与套件。购买前，先确认材料用量和教程。",
+      "grid": "A1:E1",
+      "coverBox": {
+        "x": 0,
+        "y": 0.1,
         "w": 0.5,
         "h": 0.1
       },
       "box": {
-        "x": 0.2005,
-        "y": 0.526,
-        "w": 0.5006,
-        "h": 0.0488
+        "x": 0.0701058201058201,
+        "y": 0.13227513227513227,
+        "w": 0.42857142857142855,
+        "h": 0.04136604136604136
       },
       "px": {
-        "x": 171,
-        "y": 970,
-        "w": 427,
-        "h": 90
+        "x": 53,
+        "y": 275,
+        "w": 324,
+        "h": 86
       },
-      "aspect": 4.7444,
+      "aspect": 3.7674,
       "palette": [
         {
-          "hex": "#f8f8f7",
-          "coverage": 0.8939
+          "hex": "#f7f7f2",
+          "coverage": 0.8499
         },
         {
-          "hex": "#2f2f2f",
-          "coverage": 0.0569
+          "hex": "#b1b0ae",
+          "coverage": 0.052
         },
         {
-          "hex": "#b4b2b0",
-          "coverage": 0.0267
+          "hex": "#737170",
+          "coverage": 0.0474
         },
         {
-          "hex": "#6a6a6a",
-          "coverage": 0.0176
+          "hex": "#383736",
+          "coverage": 0.0443
         },
         {
-          "hex": "#080808",
-          "coverage": 0.0049
+          "hex": "#555747",
+          "coverage": 0.0063
         }
       ],
       "detail": {
-        "energy": 36.1102
+        "energy": 51.9799
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 39,
+          "capHeightPx": 17.3,
+          "inkIsDark": true,
+          "allCaps": true,
+          "advance": 0.8228,
+          "advTall": 0.8837,
+          "advX": null,
+          "gap": 0.1172,
+          "xRatio": null,
+          "stemW": 0.1262,
+          "contrast": 1.0354,
+          "serif": 0.321,
+          "densTall": 0.509,
+          "densX": null,
+          "weight": 0.509
+        },
+        "widthClass": "wide",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "flow-panel",
+      "kind": "chrome",
+      "note": "One white rounded three-step surface",
+      "grid": "A2:J2",
+      "container": true,
+      "box": {
+        "x": 0.0873015873015873,
+        "y": 0.18662818662818662,
+        "w": 0.828042328042328,
+        "h": 0.08561808561808562
+      },
+      "px": {
+        "x": 66,
+        "y": 388,
+        "w": 626,
+        "h": 178
+      },
+      "aspect": 3.5169,
+      "palette": [
+        {
+          "hex": "#f7f7f6",
+          "coverage": 0.9338
+        },
+        {
+          "hex": "#f5f1d2",
+          "coverage": 0.0289
+        },
+        {
+          "hex": "#bcb7b4",
+          "coverage": 0.0146
+        },
+        {
+          "hex": "#2f2e2e",
+          "coverage": 0.0145
+        },
+        {
+          "hex": "#70706e",
+          "coverage": 0.0081
+        }
+      ],
+      "detail": {
+        "energy": 17.3741
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "flow-select-plate",
+      "kind": "plate",
+      "note": "Existing complete select monoline illustration on pastel circular ground",
+      "grid": "B2:C2",
+      "box": {
+        "x": 0.1455026455026455,
+        "y": 0.1924001924001924,
+        "w": 0.16137566137566137,
+        "h": 0.05387205387205387
+      },
+      "px": {
+        "x": 110,
+        "y": 400,
+        "w": 122,
+        "h": 112
+      },
+      "aspect": 1.0893,
+      "palette": [
+        {
+          "hex": "#f8f5f4",
+          "coverage": 0.9333
+        },
+        {
+          "hex": "#d6cdc8",
+          "coverage": 0.0234
+        },
+        {
+          "hex": "#83817f",
+          "coverage": 0.0211
+        },
+        {
+          "hex": "#484747",
+          "coverage": 0.014
+        },
+        {
+          "hex": "#232122",
+          "coverage": 0.0083
+        }
+      ],
+      "detail": {
+        "energy": 15.4109
+      },
+      "medium": "raster",
+      "plate": "assets/plates/flow-select-plate.png",
+      "text": null
+    },
+    {
+      "id": "flow-select-label",
+      "kind": "text",
+      "note": "Visible Chinese label: 选择作品",
+      "grid": "B2:D2",
+      "coverBox": {
+        "x": 0.1,
+        "y": 0.2,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.17592592592592593,
+        "y": 0.253006253006253,
+        "w": 0.12037037037037036,
+        "h": 0.012987012987012988
+      },
+      "px": {
+        "x": 133,
+        "y": 526,
+        "w": 91,
+        "h": 27
+      },
+      "aspect": 3.3704,
+      "palette": [
+        {
+          "hex": "#f7ece6",
+          "coverage": 0.827
+        },
+        {
+          "hex": "#bdb7b2",
+          "coverage": 0.055
+        },
+        {
+          "hex": "#908b88",
+          "coverage": 0.0485
+        },
+        {
+          "hex": "#5a5655",
+          "coverage": 0.0459
+        },
+        {
+          "hex": "#2f2d2d",
+          "coverage": 0.0236
+        }
+      ],
+      "detail": {
+        "energy": 26.3939
       },
       "medium": "semantic",
       "plate": null,
@@ -1283,512 +876,243 @@
       "type": {
         "comp": {
           "lines": 1,
-          "glyphs": 8,
-          "capHeightPx": 39.3,
+          "glyphs": 4,
+          "capHeightPx": 18.8,
           "inkIsDark": true,
           "allCaps": false,
-          "advance": 0.6615,
-          "advTall": 0.6615,
+          "advance": 0.9827,
+          "advTall": 0.9827,
           "advX": null,
-          "gap": 0.2036,
-          "xRatio": 0.817,
-          "stemW": 0.1064,
-          "contrast": 0.967,
-          "serif": 0.9687,
-          "densTall": 0.4155,
+          "gap": 0.0797,
+          "xRatio": 0.8066,
+          "stemW": 0.1189,
+          "contrast": 1.1667,
+          "serif": 0.6985,
+          "densTall": 0.4889,
           "densX": null,
-          "weight": 0.4155
+          "weight": 0.4889
         },
-        "widthClass": "normal",
-        "weightClass": "regular"
+        "widthClass": "wide",
+        "weightClass": "medium"
       }
     },
     {
-      "id": "category-bag-card",
-      "kind": "chrome",
-      "note": "soft blush category tile",
-      "grid": "A6:C7",
-      "container": true,
-      "box": {
-        "x": 0,
-        "y": 0.6,
-        "w": 0.3,
-        "h": 0.2
-      },
-      "px": {
-        "x": 0,
-        "y": 1106,
-        "w": 256,
-        "h": 369
-      },
-      "aspect": 0.6938,
-      "palette": [
-        {
-          "hex": "#f7f7f2",
-          "coverage": 0.9726
-        },
-        {
-          "hex": "#efd5d9",
-          "coverage": 0.0083
-        },
-        {
-          "hex": "#cba9ac",
-          "coverage": 0.0074
-        },
-        {
-          "hex": "#a98284",
-          "coverage": 0.0063
-        },
-        {
-          "hex": "#121212",
-          "coverage": 0.0054
-        }
-      ],
-      "detail": {
-        "energy": 11.4529
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "category-scarf-card",
-      "kind": "chrome",
-      "note": "soft powder-blue category tile",
-      "grid": "C6:E7",
-      "container": true,
-      "box": {
-        "x": 0.2,
-        "y": 0.6,
-        "w": 0.3,
-        "h": 0.2
-      },
-      "px": {
-        "x": 171,
-        "y": 1106,
-        "w": 256,
-        "h": 369
-      },
-      "aspect": 0.6938,
-      "palette": [
-        {
-          "hex": "#f1f7f5",
-          "coverage": 0.9686
-        },
-        {
-          "hex": "#beccd6",
-          "coverage": 0.012
-        },
-        {
-          "hex": "#5a7383",
-          "coverage": 0.0077
-        },
-        {
-          "hex": "#0c0c0c",
-          "coverage": 0.007
-        },
-        {
-          "hex": "#8ba5b5",
-          "coverage": 0.0047
-        }
-      ],
-      "detail": {
-        "energy": 17.6015
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "category-blanket-card",
-      "kind": "chrome",
-      "note": "soft pale-mint category tile",
-      "grid": "F6:H7",
-      "container": true,
-      "box": {
-        "x": 0.5,
-        "y": 0.6,
-        "w": 0.3,
-        "h": 0.2
-      },
-      "px": {
-        "x": 427,
-        "y": 1106,
-        "w": 256,
-        "h": 369
-      },
-      "aspect": 0.6938,
-      "palette": [
-        {
-          "hex": "#f5f7f0",
-          "coverage": 0.936
-        },
-        {
-          "hex": "#afbcb5",
-          "coverage": 0.0246
-        },
-        {
-          "hex": "#7d8c84",
-          "coverage": 0.02
-        },
-        {
-          "hex": "#4f6258",
-          "coverage": 0.0128
-        },
-        {
-          "hex": "#383e3a",
-          "coverage": 0.0066
-        }
-      ],
-      "detail": {
-        "energy": 25.6427
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "category-doll-card",
-      "kind": "chrome",
-      "note": "soft butter-cream category tile",
-      "grid": "H6:J7",
-      "container": true,
-      "box": {
-        "x": 0.7,
-        "y": 0.6,
-        "w": 0.3,
-        "h": 0.2
-      },
-      "px": {
-        "x": 597,
-        "y": 1106,
-        "w": 256,
-        "h": 369
-      },
-      "aspect": 0.6938,
-      "palette": [
-        {
-          "hex": "#f8f8f0",
-          "coverage": 0.9637
-        },
-        {
-          "hex": "#cec9c6",
-          "coverage": 0.0107
-        },
-        {
-          "hex": "#7a776f",
-          "coverage": 0.0104
-        },
-        {
-          "hex": "#a7a59c",
-          "coverage": 0.0101
-        },
-        {
-          "hex": "#55524d",
-          "coverage": 0.0051
-        }
-      ],
-      "detail": {
-        "energy": 15.9373
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "category-bag-plate",
+      "id": "flow-buy-plate",
       "kind": "plate",
-      "note": "coral crochet-stitch chart forming a bag silhouette, transparent background, no text",
-      "grid": "A6:C6",
+      "note": "Existing complete buy monoline illustration on pastel circular ground",
+      "grid": "E2:F2",
       "box": {
-        "x": 0,
-        "y": 0.6,
-        "w": 0.3,
-        "h": 0.1
+        "x": 0.42328042328042326,
+        "y": 0.1924001924001924,
+        "w": 0.16137566137566137,
+        "h": 0.05387205387205387
       },
       "px": {
-        "x": 0,
-        "y": 1106,
-        "w": 256,
-        "h": 184
+        "x": 320,
+        "y": 400,
+        "w": 122,
+        "h": 112
       },
-      "aspect": 1.3913,
+      "aspect": 1.0893,
       "palette": [
         {
-          "hex": "#f7f5f0",
-          "coverage": 0.9517
+          "hex": "#f6f8f8",
+          "coverage": 0.8772
         },
         {
-          "hex": "#ae898c",
-          "coverage": 0.0192
+          "hex": "#f7eeca",
+          "coverage": 0.0375
         },
         {
-          "hex": "#d4b5b7",
-          "coverage": 0.0177
+          "hex": "#303131",
+          "coverage": 0.0372
         },
         {
-          "hex": "#9b6a74",
-          "coverage": 0.0072
+          "hex": "#999b9c",
+          "coverage": 0.0249
         },
         {
-          "hex": "#f5ccd9",
-          "coverage": 0.0042
+          "hex": "#64645e",
+          "coverage": 0.0232
         }
       ],
       "detail": {
-        "energy": 14.8969
+        "energy": 21.9064
       },
       "medium": "raster",
-      "plate": "assets/plates/category-bag-plate.png",
+      "plate": "assets/plates/flow-buy-plate.png",
       "text": null
     },
     {
-      "id": "category-scarf-plate",
-      "kind": "plate",
-      "note": "blue crochet-stitch chart forming a shawl silhouette, transparent background, no text",
-      "grid": "C6:E6",
-      "box": {
-        "x": 0.2,
-        "y": 0.6,
-        "w": 0.3,
-        "h": 0.1
-      },
-      "px": {
-        "x": 171,
-        "y": 1106,
-        "w": 256,
-        "h": 184
-      },
-      "aspect": 1.3913,
-      "palette": [
-        {
-          "hex": "#eff7f5",
-          "coverage": 0.9421
-        },
-        {
-          "hex": "#c0d4e0",
-          "coverage": 0.0231
-        },
-        {
-          "hex": "#5b7483",
-          "coverage": 0.0164
-        },
-        {
-          "hex": "#8ca6b1",
-          "coverage": 0.0126
-        },
-        {
-          "hex": "#dbc1c1",
-          "coverage": 0.0059
-        }
-      ],
-      "detail": {
-        "energy": 19.6391
-      },
-      "medium": "raster",
-      "plate": "assets/plates/category-scarf-plate.png",
-      "text": null
-    },
-    {
-      "id": "category-blanket-plate",
-      "kind": "plate",
-      "note": "green crochet-stitch chart forming a square blanket motif, transparent background, no text",
-      "grid": "F6:H6",
-      "box": {
-        "x": 0.5,
-        "y": 0.6,
-        "w": 0.3,
-        "h": 0.1
-      },
-      "px": {
-        "x": 427,
-        "y": 1106,
-        "w": 256,
-        "h": 184
-      },
-      "aspect": 1.3913,
-      "palette": [
-        {
-          "hex": "#f4f7ee",
-          "coverage": 0.887
-        },
-        {
-          "hex": "#afbdb6",
-          "coverage": 0.0451
-        },
-        {
-          "hex": "#7b8c83",
-          "coverage": 0.0351
-        },
-        {
-          "hex": "#4d6359",
-          "coverage": 0.0226
-        },
-        {
-          "hex": "#304138",
-          "coverage": 0.0102
-        }
-      ],
-      "detail": {
-        "energy": 41.4725
-      },
-      "medium": "raster",
-      "plate": "assets/plates/category-blanket-plate.png",
-      "text": null
-    },
-    {
-      "id": "category-doll-plate",
-      "kind": "plate",
-      "note": "charcoal crochet-stitch chart forming a small rabbit doll silhouette, transparent background, no text",
-      "grid": "H6:J6",
-      "box": {
-        "x": 0.7,
-        "y": 0.6,
-        "w": 0.3,
-        "h": 0.1
-      },
-      "px": {
-        "x": 597,
-        "y": 1106,
-        "w": 256,
-        "h": 184
-      },
-      "aspect": 1.3913,
-      "palette": [
-        {
-          "hex": "#f8f8ee",
-          "coverage": 0.9374
-        },
-        {
-          "hex": "#adaaa2",
-          "coverage": 0.0189
-        },
-        {
-          "hex": "#d3d0c7",
-          "coverage": 0.0168
-        },
-        {
-          "hex": "#79766d",
-          "coverage": 0.016
-        },
-        {
-          "hex": "#4d4a42",
-          "coverage": 0.0109
-        }
-      ],
-      "detail": {
-        "energy": 21.3997
-      },
-      "medium": "raster",
-      "plate": "assets/plates/category-doll-plate.png",
-      "text": null
-    },
-    {
-      "id": "category-bag-label",
+      "id": "flow-buy-label",
       "kind": "text",
-      "note": "category label 包袋",
-      "grid": "B7:C7",
+      "note": "Visible Chinese label: 购买材料",
+      "grid": "E2:G2",
       "coverBox": {
-        "x": 0.1,
-        "y": 0.7,
-        "w": 0.2,
+        "x": 0.4,
+        "y": 0.2,
+        "w": 0.3,
         "h": 0.1
       },
       "box": {
-        "x": 0.1208,
-        "y": 0.7164,
-        "w": 0.0844,
-        "h": 0.0228
+        "x": 0.42724867724867727,
+        "y": 0.253006253006253,
+        "w": 0.12037037037037036,
+        "h": 0.012987012987012988
       },
       "px": {
-        "x": 103,
-        "y": 1321,
-        "w": 72,
-        "h": 42
+        "x": 323,
+        "y": 526,
+        "w": 91,
+        "h": 27
       },
-      "aspect": 1.7143,
+      "aspect": 3.3704,
       "palette": [
         {
-          "hex": "#f7f6ed",
-          "coverage": 0.7321
+          "hex": "#ecf6f6",
+          "coverage": 0.6846
         },
         {
-          "hex": "#c8c7c6",
-          "coverage": 0.1131
+          "hex": "#f7eeca",
+          "coverage": 0.1812
         },
         {
-          "hex": "#7c7c7c",
-          "coverage": 0.0595
+          "hex": "#a7adb0",
+          "coverage": 0.0498
         },
         {
-          "hex": "#171616",
-          "coverage": 0.0595
+          "hex": "#605440",
+          "coverage": 0.047
         },
         {
-          "hex": "#4c4947",
-          "coverage": 0.0357
+          "hex": "#373a3b",
+          "coverage": 0.0373
         }
       ],
       "detail": {
-        "energy": 24.2619
+        "energy": 26.3102
       },
       "medium": "semantic",
       "plate": null,
       "text": null,
       "type": {
-        "comp": null,
-        "measuredAt": "2026-09-05T05:02:47.911Z",
-        "note": "no separable lettering in the crop; size by the region box"
+        "comp": {
+          "lines": 1,
+          "glyphs": 4,
+          "capHeightPx": 18.8,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.9291,
+          "advTall": 0.9291,
+          "advX": null,
+          "gap": 0.0796,
+          "xRatio": 0.7798,
+          "stemW": 0.115,
+          "contrast": 1.0906,
+          "serif": null,
+          "densTall": 0.4702,
+          "densX": null,
+          "weight": 0.4702
+        },
+        "widthClass": "wide",
+        "weightClass": "regular"
       }
     },
     {
-      "id": "category-scarf-label",
+      "id": "flow-make-plate",
+      "kind": "plate",
+      "note": "Existing complete make monoline illustration on pastel circular ground",
+      "grid": "G2:H2",
+      "box": {
+        "x": 0.6746031746031746,
+        "y": 0.1924001924001924,
+        "w": 0.15608465608465608,
+        "h": 0.05387205387205387
+      },
+      "px": {
+        "x": 510,
+        "y": 400,
+        "w": 118,
+        "h": 112
+      },
+      "aspect": 1.0536,
+      "palette": [
+        {
+          "hex": "#f8f6f4",
+          "coverage": 0.8823
+        },
+        {
+          "hex": "#f7f5d5",
+          "coverage": 0.0825
+        },
+        {
+          "hex": "#232122",
+          "coverage": 0.0134
+        },
+        {
+          "hex": "#494743",
+          "coverage": 0.0134
+        },
+        {
+          "hex": "#bfbab4",
+          "coverage": 0.0083
+        }
+      ],
+      "detail": {
+        "energy": 12.1465
+      },
+      "medium": "raster",
+      "plate": "assets/plates/flow-make-plate.png",
+      "text": null
+    },
+    {
+      "id": "flow-make-label",
       "kind": "text",
-      "note": "category label 围巾与披肩",
-      "grid": "C7:E7",
+      "note": "Visible Chinese label: 开始制作",
+      "grid": "G2:I2",
       "coverBox": {
-        "x": 0.2,
-        "y": 0.7,
+        "x": 0.6,
+        "y": 0.2,
         "w": 0.3,
         "h": 0.1
       },
       "box": {
-        "x": 0.2849,
-        "y": 0.7164,
-        "w": 0.1758,
-        "h": 0.0228
+        "x": 0.6904761904761905,
+        "y": 0.253006253006253,
+        "w": 0.12433862433862433,
+        "h": 0.012987012987012988
       },
       "px": {
-        "x": 243,
-        "y": 1321,
-        "w": 150,
-        "h": 42
+        "x": 522,
+        "y": 526,
+        "w": 94,
+        "h": 27
       },
-      "aspect": 3.5714,
+      "aspect": 3.4815,
       "palette": [
         {
-          "hex": "#edf5f6",
-          "coverage": 0.726
+          "hex": "#f8f1e0",
+          "coverage": 0.9197
         },
         {
-          "hex": "#101011",
-          "coverage": 0.1033
+          "hex": "#292829",
+          "coverage": 0.0265
         },
         {
-          "hex": "#545656",
-          "coverage": 0.0918
+          "hex": "#6b655b",
+          "coverage": 0.018
         },
         {
-          "hex": "#848787",
-          "coverage": 0.043
+          "hex": "#989082",
+          "coverage": 0.018
         },
         {
-          "hex": "#b4b7b8",
-          "coverage": 0.0359
+          "hex": "#bfbaa6",
+          "coverage": 0.018
         }
       ],
       "detail": {
-        "energy": 48.953
+        "energy": 17.7825
       },
       "medium": "semantic",
       "plate": null,
@@ -1797,131 +1121,793 @@
         "comp": {
           "lines": 1,
           "glyphs": 5,
-          "capHeightPx": 26.5,
+          "capHeightPx": 18.9,
           "inkIsDark": true,
           "allCaps": false,
-          "advance": 0.8302,
-          "advTall": 0.8302,
+          "advance": 0.9549,
+          "advTall": 0.9549,
           "advX": null,
-          "gap": 0.2264,
-          "xRatio": 0.8168,
-          "stemW": 0.0859,
-          "contrast": 1.0297,
-          "serif": 0.9384,
-          "densTall": 0.4378,
+          "gap": 0.0663,
+          "xRatio": 0.8087,
+          "stemW": 0.1158,
+          "contrast": 1.0925,
+          "serif": 0.7248,
+          "densTall": 0.4865,
           "densX": null,
-          "weight": 0.4378
+          "weight": 0.4865
         },
         "widthClass": "wide",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "flow-arrow-one",
+      "kind": "control",
+      "note": "Semantic interface control: Right arrow",
+      "grid": "D2:D2",
+      "coverBox": {
+        "x": 0.3,
+        "y": 0.2,
+        "w": 0.1,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.3492063492063492,
+        "y": 0.21741221741221742,
+        "w": 0.041005291005291,
+        "h": 0.010101010101010102
+      },
+      "px": {
+        "x": 264,
+        "y": 452,
+        "w": 31,
+        "h": 21
+      },
+      "aspect": 1.4762,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.9188
+        },
+        {
+          "hex": "#262526",
+          "coverage": 0.0625
+        },
+        {
+          "hex": "#686868",
+          "coverage": 0.0125
+        },
+        {
+          "hex": "#989898",
+          "coverage": 0.0062
+        }
+      ],
+      "detail": {
+        "energy": 4.4015
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "flow-arrow-two",
+      "kind": "control",
+      "note": "Semantic interface control: Right arrow",
+      "grid": "G2:G2",
+      "coverBox": {
+        "x": 0.6,
+        "y": 0.2,
+        "w": 0.1,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.6031746031746031,
+        "y": 0.21741221741221742,
+        "w": 0.041005291005291,
+        "h": 0.010101010101010102
+      },
+      "px": {
+        "x": 456,
+        "y": 452,
+        "w": 31,
+        "h": 21
+      },
+      "aspect": 1.4762,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.9
+        },
+        {
+          "hex": "#221e20",
+          "coverage": 0.0833
+        },
+        {
+          "hex": "#b0b0b0",
+          "coverage": 0.0167
+        }
+      ],
+      "detail": {
+        "energy": 4.7031
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "category-heading-flourish",
+      "kind": "plate",
+      "note": "Existing thin taupe flower and yarn line path",
+      "grid": "B2:I3",
+      "bleed": true,
+      "box": {
+        "x": 0.11904761904761904,
+        "y": 0.2818662818662819,
+        "w": 0.7605820105820106,
+        "h": 0.03511303511303511
+      },
+      "px": {
+        "x": 90,
+        "y": 586,
+        "w": 575,
+        "h": 73
+      },
+      "aspect": 7.8767,
+      "palette": [
+        {
+          "hex": "#f7f7f6",
+          "coverage": 0.9413
+        },
+        {
+          "hex": "#c7c8c3",
+          "coverage": 0.0196
+        },
+        {
+          "hex": "#f5f2d4",
+          "coverage": 0.0185
+        },
+        {
+          "hex": "#949593",
+          "coverage": 0.0131
+        },
+        {
+          "hex": "#292928",
+          "coverage": 0.0075
+        }
+      ],
+      "detail": {
+        "energy": 18.123
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-heading-flourish.png",
+      "text": null
+    },
+    {
+      "id": "category-heading",
+      "kind": "text",
+      "note": "Visible Chinese label: 你想做什么？",
+      "grid": "D2:G3",
+      "coverBox": {
+        "x": 0.3,
+        "y": 0.2,
+        "w": 0.4,
+        "h": 0.2
+      },
+      "box": {
+        "x": 0.37037037037037035,
+        "y": 0.28475228475228476,
+        "w": 0.23677248677248677,
+        "h": 0.016354016354016353
+      },
+      "px": {
+        "x": 280,
+        "y": 592,
+        "w": 179,
+        "h": 34
+      },
+      "aspect": 5.2647,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8029
+        },
+        {
+          "hex": "#b0b1b0",
+          "coverage": 0.1069
+        },
+        {
+          "hex": "#202020",
+          "coverage": 0.0542
+        },
+        {
+          "hex": "#808081",
+          "coverage": 0.0282
+        },
+        {
+          "hex": "#4d4d4e",
+          "coverage": 0.0078
+        }
+      ],
+      "detail": {
+        "energy": 41.1832
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 9,
+          "capHeightPx": 25.9,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.7334,
+          "advTall": 0.7334,
+          "advX": null,
+          "gap": 0.0965,
+          "xRatio": 0.8106,
+          "stemW": 0.1079,
+          "contrast": 0.9532,
+          "serif": 1.0667,
+          "densTall": 0.3993,
+          "densX": null,
+          "weight": 0.3993
+        },
+        "widthClass": "normal",
         "weightClass": "regular"
       }
     },
     {
-      "id": "category-blanket-label",
+      "id": "discovery-disclaimer",
       "kind": "text",
-      "note": "category label 毯子",
-      "grid": "F7:G7",
+      "note": "Internal demonstration disclaimer; actual storefront wording uses product truth",
+      "grid": "D3:G3",
       "coverBox": {
-        "x": 0.5,
-        "y": 0.7,
+        "x": 0.3,
+        "y": 0.3,
+        "w": 0.4,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.3439153439153439,
+        "y": 0.3063973063973064,
+        "w": 0.29365079365079366,
+        "h": 0.011063011063011063
+      },
+      "px": {
+        "x": 260,
+        "y": 637,
+        "w": 222,
+        "h": 23
+      },
+      "aspect": 9.6522,
+      "palette": [
+        {
+          "hex": "#eff6f1",
+          "coverage": 0.7522
+        },
+        {
+          "hex": "#b7c7bd",
+          "coverage": 0.135
+        },
+        {
+          "hex": "#8a9c94",
+          "coverage": 0.106
+        },
+        {
+          "hex": "#607470",
+          "coverage": 0.0045
+        },
+        {
+          "hex": "#385848",
+          "coverage": 0.0022
+        }
+      ],
+      "detail": {
+        "energy": 22.136
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 14,
+          "capHeightPx": 14.4,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.9732,
+          "advTall": 0.9732,
+          "advX": null,
+          "gap": 0.139,
+          "xRatio": 0.8326,
+          "stemW": 0.1527,
+          "contrast": 1.0332,
+          "serif": 0.6896,
+          "densTall": 0.5802,
+          "densX": null,
+          "weight": 0.5802
+        },
+        "widthClass": "wide",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "search-field",
+      "kind": "control",
+      "note": "Search for a desired work",
+      "grid": "B3:I3",
+      "coverBox": {
+        "x": 0.1,
+        "y": 0.3,
+        "w": 0.8,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.10449735449735449,
+        "y": 0.3246753246753247,
+        "w": 0.7883597883597884,
+        "h": 0.02405002405002405
+      },
+      "px": {
+        "x": 79,
+        "y": 675,
+        "w": 596,
+        "h": 50
+      },
+      "aspect": 11.92,
+      "palette": [
+        {
+          "hex": "#eef5f0",
+          "coverage": 0.7455
+        },
+        {
+          "hex": "#92a39d",
+          "coverage": 0.1283
+        },
+        {
+          "hex": "#bccac0",
+          "coverage": 0.1016
+        },
+        {
+          "hex": "#677c71",
+          "coverage": 0.0246
+        }
+      ],
+      "detail": {
+        "energy": 22.1677
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "category-bag-plate",
+      "kind": "plate",
+      "note": "Existing complete bag stitch-symbol silhouette on a small pastel circle",
+      "grid": "B3:C3",
+      "box": {
+        "x": 0.12301587301587301,
+        "y": 0.35353535353535354,
+        "w": 0.14153439153439154,
+        "h": 0.05291005291005291
+      },
+      "px": {
+        "x": 93,
+        "y": 735,
+        "w": 107,
+        "h": 110
+      },
+      "aspect": 0.9727,
+      "palette": [
+        {
+          "hex": "#f7f7f6",
+          "coverage": 0.9424
+        },
+        {
+          "hex": "#b2b3b2",
+          "coverage": 0.0205
+        },
+        {
+          "hex": "#f0d0d0",
+          "coverage": 0.0145
+        },
+        {
+          "hex": "#e9aaad",
+          "coverage": 0.014
+        },
+        {
+          "hex": "#df7680",
+          "coverage": 0.0086
+        }
+      ],
+      "detail": {
+        "energy": 8.9825
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-bag-plate.png",
+      "text": null
+    },
+    {
+      "id": "category-bag-label",
+      "kind": "text",
+      "note": "Visible Chinese label: 包袋",
+      "grid": "B4:C4",
+      "coverBox": {
+        "x": 0.1,
+        "y": 0.4,
         "w": 0.2,
         "h": 0.1
       },
       "box": {
-        "x": 0.5569,
-        "y": 0.7164,
-        "w": 0.0844,
-        "h": 0.0228
+        "x": 0.1626984126984127,
+        "y": 0.41125541125541126,
+        "w": 0.05423280423280423,
+        "h": 0.011544011544011544
       },
       "px": {
-        "x": 475,
-        "y": 1321,
-        "w": 72,
-        "h": 42
+        "x": 123,
+        "y": 855,
+        "w": 41,
+        "h": 24
       },
-      "aspect": 1.7143,
+      "aspect": 1.7083,
       "palette": [
         {
-          "hex": "#f0f6ed",
-          "coverage": 0.8084
+          "hex": "#f7f7f7",
+          "coverage": 0.7731
         },
         {
-          "hex": "#505050",
-          "coverage": 0.0539
+          "hex": "#4c4c4c",
+          "coverage": 0.112
         },
         {
-          "hex": "#b6b8b6",
-          "coverage": 0.0479
+          "hex": "#969695",
+          "coverage": 0.0588
         },
         {
-          "hex": "#121313",
-          "coverage": 0.0449
+          "hex": "#1d1b1e",
+          "coverage": 0.028
         },
         {
-          "hex": "#898d8a",
-          "coverage": 0.0449
+          "hex": "#c5c5c3",
+          "coverage": 0.028
         }
       ],
       "detail": {
-        "energy": 21.4862
+        "energy": 25.5281
       },
       "medium": "semantic",
       "plate": null,
       "text": null,
       "type": {
         "comp": null,
-        "measuredAt": "2026-09-05T05:02:47.999Z",
+        "measuredAt": "2026-09-05T18:31:02.406Z",
         "note": "no separable lettering in the crop; size by the region box"
       }
     },
     {
-      "id": "category-doll-label",
+      "id": "category-scarf-plate",
+      "kind": "plate",
+      "note": "Existing complete scarf stitch-symbol silhouette on a small pastel circle",
+      "grid": "D3:E3",
+      "box": {
+        "x": 0.328042328042328,
+        "y": 0.35353535353535354,
+        "w": 0.14153439153439154,
+        "h": 0.05291005291005291
+      },
+      "px": {
+        "x": 248,
+        "y": 735,
+        "w": 107,
+        "h": 110
+      },
+      "aspect": 0.9727,
+      "palette": [
+        {
+          "hex": "#f5f7f7",
+          "coverage": 0.9444
+        },
+        {
+          "hex": "#abb1b4",
+          "coverage": 0.031
+        },
+        {
+          "hex": "#b8cdda",
+          "coverage": 0.0186
+        },
+        {
+          "hex": "#888688",
+          "coverage": 0.0042
+        },
+        {
+          "hex": "#505050",
+          "coverage": 0.0017
+        }
+      ],
+      "detail": {
+        "energy": 8.6607
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-scarf-plate.png",
+      "text": null
+    },
+    {
+      "id": "category-scarf-label",
       "kind": "text",
-      "note": "category label 玩偶",
-      "grid": "I7:J7",
+      "note": "Visible Chinese label: 围巾与披肩",
+      "grid": "D4:E4",
       "coverBox": {
-        "x": 0.8,
-        "y": 0.7,
+        "x": 0.3,
+        "y": 0.4,
         "w": 0.2,
         "h": 0.1
       },
       "box": {
-        "x": 0.7995,
-        "y": 0.7164,
-        "w": 0.0703,
-        "h": 0.0228
+        "x": 0.32275132275132273,
+        "y": 0.41125541125541126,
+        "w": 0.13624338624338625,
+        "h": 0.011544011544011544
       },
       "px": {
-        "x": 682,
-        "y": 1321,
-        "w": 60,
-        "h": 42
+        "x": 244,
+        "y": 855,
+        "w": 103,
+        "h": 24
       },
-      "aspect": 1.4286,
+      "aspect": 4.2917,
       "palette": [
         {
-          "hex": "#f5f5ea",
-          "coverage": 0.7628
+          "hex": "#f6f6f6",
+          "coverage": 0.8137
         },
         {
-          "hex": "#878784",
-          "coverage": 0.0803
+          "hex": "#353535",
+          "coverage": 0.0843
         },
         {
-          "hex": "#3d3d3d",
-          "coverage": 0.073
+          "hex": "#c4c4c4",
+          "coverage": 0.0443
         },
         {
-          "hex": "#0f0f0b",
-          "coverage": 0.0693
+          "hex": "#9a9a99",
+          "coverage": 0.0288
         },
         {
-          "hex": "#c0c0c0",
-          "coverage": 0.0146
+          "hex": "#61635f",
+          "coverage": 0.0288
         }
       ],
       "detail": {
-        "energy": 21.583
+        "energy": 31.1063
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 5,
+          "capHeightPx": 17.1,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.967,
+          "advTall": 0.967,
+          "advX": null,
+          "gap": 0.1758,
+          "xRatio": 0.8225,
+          "stemW": 0.1283,
+          "contrast": 1.15,
+          "serif": 0.9127,
+          "densTall": 0.5299,
+          "densX": null,
+          "weight": 0.5299
+        },
+        "widthClass": "wide",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "category-blanket-plate",
+      "kind": "plate",
+      "note": "Existing complete blanket stitch-symbol silhouette on a small pastel circle",
+      "grid": "F3:G3",
+      "box": {
+        "x": 0.533068783068783,
+        "y": 0.35353535353535354,
+        "w": 0.14153439153439154,
+        "h": 0.05291005291005291
+      },
+      "px": {
+        "x": 403,
+        "y": 735,
+        "w": 107,
+        "h": 110
+      },
+      "aspect": 0.9727,
+      "palette": [
+        {
+          "hex": "#f5f7f5",
+          "coverage": 0.9145
+        },
+        {
+          "hex": "#b8c3bd",
+          "coverage": 0.043
+        },
+        {
+          "hex": "#8d9994",
+          "coverage": 0.0388
+        },
+        {
+          "hex": "#65786e",
+          "coverage": 0.0031
+        },
+        {
+          "hex": "#383838",
+          "coverage": 0.0006
+        }
+      ],
+      "detail": {
+        "energy": 11.8235
+      },
+      "medium": "raster",
+      "plate": "assets/plates/b-category-blanket-plate.png",
+      "text": null
+    },
+    {
+      "id": "category-blanket-label",
+      "kind": "text",
+      "note": "Visible Chinese label: 毯子",
+      "grid": "F4:G4",
+      "coverBox": {
+        "x": 0.5,
+        "y": 0.4,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.5753968253968254,
+        "y": 0.41125541125541126,
+        "w": 0.0582010582010582,
+        "h": 0.011544011544011544
+      },
+      "px": {
+        "x": 435,
+        "y": 855,
+        "w": 44,
+        "h": 24
+      },
+      "aspect": 1.8333,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8
+        },
+        {
+          "hex": "#8e8f8e",
+          "coverage": 0.0837
+        },
+        {
+          "hex": "#c9c9c9",
+          "coverage": 0.0512
+        },
+        {
+          "hex": "#312f2f",
+          "coverage": 0.0326
+        },
+        {
+          "hex": "#58585a",
+          "coverage": 0.0326
+        }
+      ],
+      "detail": {
+        "energy": 12.9729
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-09-05T18:31:02.512Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "category-doll-plate",
+      "kind": "plate",
+      "note": "Existing complete doll stitch-symbol silhouette on a small pastel circle",
+      "grid": "H3:I3",
+      "box": {
+        "x": 0.7473544973544973,
+        "y": 0.35353535353535354,
+        "w": 0.14153439153439154,
+        "h": 0.05291005291005291
+      },
+      "px": {
+        "x": 565,
+        "y": 735,
+        "w": 107,
+        "h": 110
+      },
+      "aspect": 0.9727,
+      "palette": [
+        {
+          "hex": "#f7f7f4",
+          "coverage": 0.9554
+        },
+        {
+          "hex": "#d3c8bf",
+          "coverage": 0.0149
+        },
+        {
+          "hex": "#736b65",
+          "coverage": 0.0115
+        },
+        {
+          "hex": "#9b948a",
+          "coverage": 0.0109
+        },
+        {
+          "hex": "#f3f3d3",
+          "coverage": 0.0073
+        }
+      ],
+      "detail": {
+        "energy": 6.6386
+      },
+      "medium": "raster",
+      "plate": "assets/plates/category-doll-plate.png",
+      "text": null
+    },
+    {
+      "id": "category-doll-label",
+      "kind": "text",
+      "note": "Visible Chinese label: 玩偶",
+      "grid": "H4:I4",
+      "coverBox": {
+        "x": 0.7,
+        "y": 0.4,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.7883597883597884,
+        "y": 0.41125541125541126,
+        "w": 0.0582010582010582,
+        "h": 0.011544011544011544
+      },
+      "px": {
+        "x": 596,
+        "y": 855,
+        "w": 44,
+        "h": 24
+      },
+      "aspect": 1.8333,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8053
+        },
+        {
+          "hex": "#2b2b2c",
+          "coverage": 0.0842
+        },
+        {
+          "hex": "#adabab",
+          "coverage": 0.0526
+        },
+        {
+          "hex": "#4f5050",
+          "coverage": 0.0447
+        },
+        {
+          "hex": "#757275",
+          "coverage": 0.0132
+        }
+      ],
+      "detail": {
+        "energy": 26.5442
       },
       "medium": "semantic",
       "plate": null,
@@ -1930,227 +1916,114 @@
         "comp": {
           "lines": 1,
           "glyphs": 3,
-          "capHeightPx": 27.3,
+          "capHeightPx": 17.4,
           "inkIsDark": true,
-          "allCaps": false,
-          "advance": 0.6605,
-          "advTall": 0.6605,
+          "allCaps": true,
+          "advance": 0.6889,
+          "advTall": 0.6889,
           "advX": null,
-          "gap": 0.1284,
-          "xRatio": 0.6724,
-          "stemW": 0.0865,
-          "contrast": 1.0459,
+          "gap": 0.0718,
+          "xRatio": null,
+          "stemW": 0.1167,
+          "contrast": 1.0016,
           "serif": null,
-          "densTall": 0.4508,
+          "densTall": 0.4789,
           "densX": null,
-          "weight": 0.4508
+          "weight": 0.4789
         },
         "widthClass": "normal",
         "weightClass": "regular"
       }
     },
     {
-      "id": "filter-strip",
-      "kind": "chrome",
-      "note": "quiet white bordered secondary filter strip",
-      "grid": "A7:J8",
-      "container": true,
-      "box": {
+      "id": "type-tabs",
+      "kind": "control",
+      "note": "Three content type controls: 作品套件 毛线 工具",
+      "grid": "A4:J4",
+      "coverBox": {
         "x": 0,
-        "y": 0.7,
+        "y": 0.4,
         "w": 1,
-        "h": 0.2
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.0701058201058201,
+        "y": 0.4329004329004329,
+        "w": 0.8505291005291006,
+        "h": 0.025493025493025494
       },
       "px": {
-        "x": 0,
-        "y": 1291,
-        "w": 853,
-        "h": 369
+        "x": 53,
+        "y": 900,
+        "w": 643,
+        "h": 53
       },
-      "aspect": 2.3117,
+      "aspect": 12.1321,
       "palette": [
         {
-          "hex": "#f7f8f5",
-          "coverage": 0.8093
+          "hex": "#c4b5a4",
+          "coverage": 0.5824
         },
         {
-          "hex": "#f8e8b9",
-          "coverage": 0.1691
-        },
-        {
-          "hex": "#141413",
-          "coverage": 0.0101
-        },
-        {
-          "hex": "#505050",
-          "coverage": 0.0061
-        },
-        {
-          "hex": "#b7b7b4",
-          "coverage": 0.0054
+          "hex": "#f8f8f8",
+          "coverage": 0.4176
         }
       ],
       "detail": {
-        "energy": 13.1842
+        "energy": 4.427
       },
       "medium": "semantic",
       "plate": null,
       "text": null
     },
     {
-      "id": "filter-popular",
+      "id": "filter-quantity",
       "kind": "control",
-      "note": "small line icon and label 热门作品",
-      "grid": "A8:C8",
+      "note": "Semantic interface control: 全部用量",
+      "grid": "A4:C4",
       "coverBox": {
         "x": 0,
-        "y": 0.8,
+        "y": 0.4,
         "w": 0.3,
         "h": 0.1
       },
       "box": {
-        "x": 0.0985,
-        "y": 0.7999,
-        "w": 0.1336,
-        "h": 0.0293
+        "x": 0.07142857142857142,
+        "y": 0.4636844636844637,
+        "w": 0.24206349206349206,
+        "h": 0.020202020202020204
       },
       "px": {
-        "x": 84,
-        "y": 1475,
-        "w": 114,
-        "h": 54
+        "x": 54,
+        "y": 964,
+        "w": 183,
+        "h": 42
       },
-      "aspect": 2.1111,
+      "aspect": 4.3571,
       "palette": [
         {
-          "hex": "#f7f7f7",
-          "coverage": 0.864
+          "hex": "#f6f6f6",
+          "coverage": 0.7765
         },
         {
-          "hex": "#111111",
-          "coverage": 0.0439
+          "hex": "#595958",
+          "coverage": 0.067
         },
         {
-          "hex": "#b9b8b8",
-          "coverage": 0.0424
+          "hex": "#2c2c2d",
+          "coverage": 0.0615
         },
         {
-          "hex": "#373737",
-          "coverage": 0.0307
+          "hex": "#868787",
+          "coverage": 0.0475
         },
         {
-          "hex": "#747473",
-          "coverage": 0.019
+          "hex": "#bdbdba",
+          "coverage": 0.0475
         }
       ],
       "detail": {
-        "energy": 22.7366
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "filter-one-ball",
-      "kind": "control",
-      "note": "small line icon and label 一团完成",
-      "grid": "C8:E8",
-      "coverBox": {
-        "x": 0.2,
-        "y": 0.8,
-        "w": 0.3,
-        "h": 0.1
-      },
-      "box": {
-        "x": 0.32,
-        "y": 0.7999,
-        "w": 0.1336,
-        "h": 0.0293
-      },
-      "px": {
-        "x": 273,
-        "y": 1475,
-        "w": 114,
-        "h": 54
-      },
-      "aspect": 2.1111,
-      "palette": [
-        {
-          "hex": "#f8f8f8",
-          "coverage": 0.863
-        },
-        {
-          "hex": "#141414",
-          "coverage": 0.0663
-        },
-        {
-          "hex": "#cbcac9",
-          "coverage": 0.0353
-        },
-        {
-          "hex": "#414140",
-          "coverage": 0.025
-        },
-        {
-          "hex": "#9f9f9f",
-          "coverage": 0.0103
-        }
-      ],
-      "detail": {
-        "energy": 22.6189
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "filter-gift",
-      "kind": "control",
-      "note": "small line icon and label 礼物",
-      "grid": "F8:G8",
-      "coverBox": {
-        "x": 0.5,
-        "y": 0.8,
-        "w": 0.2,
-        "h": 0.1
-      },
-      "box": {
-        "x": 0.5569,
-        "y": 0.7999,
-        "w": 0.0703,
-        "h": 0.0293
-      },
-      "px": {
-        "x": 475,
-        "y": 1475,
-        "w": 60,
-        "h": 54
-      },
-      "aspect": 1.1111,
-      "palette": [
-        {
-          "hex": "#f8f8f8",
-          "coverage": 0.8278
-        },
-        {
-          "hex": "#403d3b",
-          "coverage": 0.0639
-        },
-        {
-          "hex": "#c0c0c0",
-          "coverage": 0.0444
-        },
-        {
-          "hex": "#0d0d0d",
-          "coverage": 0.0361
-        },
-        {
-          "hex": "#868686",
-          "coverage": 0.0278
-        }
-      ],
-      "detail": {
-        "energy": 14.3501
+        "energy": 25.5671
       },
       "medium": "semantic",
       "plate": null,
@@ -2159,204 +2032,364 @@
     {
       "id": "filter-season",
       "kind": "control",
-      "note": "small line icon and label 季节作品",
-      "grid": "H8:J8",
+      "note": "Semantic interface control: 季节",
+      "grid": "D4:F4",
       "coverBox": {
-        "x": 0.7,
-        "y": 0.8,
+        "x": 0.3,
+        "y": 0.4,
         "w": 0.3,
         "h": 0.1
       },
       "box": {
-        "x": 0.7421,
-        "y": 0.7999,
-        "w": 0.1336,
-        "h": 0.0293
+        "x": 0.37037037037037035,
+        "y": 0.4636844636844637,
+        "w": 0.2208994708994709,
+        "h": 0.020202020202020204
       },
       "px": {
-        "x": 633,
-        "y": 1475,
-        "w": 114,
-        "h": 54
+        "x": 280,
+        "y": 964,
+        "w": 167,
+        "h": 42
       },
-      "aspect": 2.1111,
+      "aspect": 3.9762,
       "palette": [
         {
-          "hex": "#f7f7f7",
-          "coverage": 0.8733
+          "hex": "#f6f6f6",
+          "coverage": 0.8137
         },
         {
-          "hex": "#171717",
-          "coverage": 0.0457
+          "hex": "#353535",
+          "coverage": 0.0843
         },
         {
-          "hex": "#b6b6b5",
-          "coverage": 0.0383
+          "hex": "#c4c4c4",
+          "coverage": 0.0443
         },
         {
-          "hex": "#868683",
-          "coverage": 0.0236
+          "hex": "#9a9a99",
+          "coverage": 0.0288
         },
         {
-          "hex": "#5f5f5e",
-          "coverage": 0.0191
+          "hex": "#61635f",
+          "coverage": 0.0288
         }
       ],
       "detail": {
-        "energy": 22.8885
+        "energy": 31.1063
       },
       "medium": "semantic",
       "plate": null,
       "text": null
     },
     {
-      "id": "project-cta",
+      "id": "filter-style",
       "kind": "control",
-      "note": "wide soft butter-yellow button with charcoal label 看看有哪些作品 and coral arrow",
-      "grid": "A8:J9",
+      "note": "Semantic interface control: 全部风格",
+      "grid": "G4:J4",
       "coverBox": {
-        "x": 0,
-        "y": 0.8,
-        "w": 1,
-        "h": 0.2
-      },
-  "box": {
-    "x": 0.0739,
-    "y": 0.8563,
-    "w": 0.8389,
-    "h": 0.0531
-  },
-  "px": {
-    "x": 63,
-    "y": 1579,
-    "w": 715,
-    "h": 98
-      },
-      "aspect": 7.7895,
-      "palette": [
-        {
-          "hex": "#f7f7f7",
-          "coverage": 0.7999
-        },
-        {
-          "hex": "#252525",
-          "coverage": 0.1074
-        },
-        {
-          "hex": "#b4b4b4",
-          "coverage": 0.0407
-        },
-        {
-          "hex": "#777777",
-          "coverage": 0.0285
-        },
-        {
-          "hex": "#4d4d4d",
-          "coverage": 0.0235
-        }
-      ],
-      "detail": {
-        "energy": 73.9783
-      },
-      "medium": "semantic",
-      "plate": null,
-      "text": null
-    },
-    {
-      "id": "next-section-flourish",
-      "kind": "plate",
-      "note": "cropped next-section dashed yarn line with yarn ball and flower endpoints, transparent background, no text",
-      "grid": "A9:J9",
-      "box": {
-        "x": 0,
-        "y": 0.9,
-        "w": 1,
+        "x": 0.6,
+        "y": 0.4,
+        "w": 0.4,
         "h": 0.1
       },
-      "px": {
-        "x": 0,
-        "y": 1660,
-        "w": 853,
-        "h": 184
+      "box": {
+        "x": 0.671957671957672,
+        "y": 0.4636844636844637,
+        "w": 0.25132275132275134,
+        "h": 0.020202020202020204
       },
-      "aspect": 4.6359,
+      "px": {
+        "x": 508,
+        "y": 964,
+        "w": 190,
+        "h": 42
+      },
+      "aspect": 4.5238,
       "palette": [
         {
-          "hex": "#f8f8f8",
-          "coverage": 0.8864
+          "hex": "#f7f7f7",
+          "coverage": 0.7921
         },
         {
-          "hex": "#f8e8b9",
-          "coverage": 0.0827
+          "hex": "#2b2b2c",
+          "coverage": 0.0899
         },
         {
-          "hex": "#232323",
-          "coverage": 0.0172
+          "hex": "#adabab",
+          "coverage": 0.0562
         },
         {
-          "hex": "#afaba9",
-          "coverage": 0.0084
+          "hex": "#4f5050",
+          "coverage": 0.0478
         },
         {
-          "hex": "#cececc",
-          "coverage": 0.0053
+          "hex": "#757275",
+          "coverage": 0.014
         }
       ],
       "detail": {
-        "energy": 15.4718
+        "energy": 26.8628
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "season-menu",
+      "kind": "control",
+      "note": "Open warm-white filter popover with three options, first selected",
+      "grid": "D5:G5",
+      "coverBox": {
+        "x": 0.3,
+        "y": 0.5,
+        "w": 0.4,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.36507936507936506,
+        "y": 0.4843674843674844,
+        "w": 0.2962962962962963,
+        "h": 0.09764309764309764
+      },
+      "px": {
+        "x": 276,
+        "y": 1007,
+        "w": 224,
+        "h": 203
+      },
+      "aspect": 1.1034,
+      "palette": [
+        {
+          "hex": "#f7f7f5",
+          "coverage": 0.5671
+        },
+        {
+          "hex": "#c3b7a4",
+          "coverage": 0.3241
+        },
+        {
+          "hex": "#d2dac7",
+          "coverage": 0.0618
+        },
+        {
+          "hex": "#839478",
+          "coverage": 0.0283
+        },
+        {
+          "hex": "#9a9990",
+          "coverage": 0.0187
+        }
+      ],
+      "detail": {
+        "energy": 13.3211
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "help-icon",
+      "kind": "plate",
+      "note": "Fine-line yarn ball and question-mark outline, generated from approved B crop with no readable text.",
+      "grid": "A9:B9",
+      "coverBox": {
+        "x": 0,
+        "y": 0.9,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.10052910052910052,
+        "y": 0.9365079365079365,
+        "w": 0.09391534391534391,
+        "h": 0.03463203463203463
+      },
+      "px": {
+        "x": 76,
+        "y": 1947,
+        "w": 71,
+        "h": 72
+      },
+      "aspect": 0.9861,
+      "palette": [
+        {
+          "hex": "#edf7f7",
+          "coverage": 0.8466
+        },
+        {
+          "hex": "#454949",
+          "coverage": 0.0556
+        },
+        {
+          "hex": "#77797a",
+          "coverage": 0.0346
+        },
+        {
+          "hex": "#9da0a2",
+          "coverage": 0.0331
+        },
+        {
+          "hex": "#bdc2c4",
+          "coverage": 0.0301
+        }
+      ],
+      "detail": {
+        "energy": 19.8772
       },
       "medium": "raster",
-      "plate": "assets/plates/next-section-flourish.png",
+      "plate": "assets/plates/b-help-icon.png",
       "text": null
     },
     {
-      "id": "next-section-heading",
-      "kind": "text",
-      "note": "next section heading 第一次做？从一团完成开始",
-      "grid": "C9:H9",
+      "id": "help-action",
+      "kind": "control",
+      "note": "Semantic interface control: 问问我们",
+      "grid": "H9:I9",
       "coverBox": {
-        "x": 0.2,
+        "x": 0.7,
         "y": 0.9,
-        "w": 0.6,
+        "w": 0.2,
         "h": 0.1
       },
       "box": {
-        "x": 0.2427,
-        "y": 0.9588,
-        "w": 0.5275,
-        "h": 0.0293
+        "x": 0.7288359788359788,
+        "y": 0.9456469456469456,
+        "w": 0.1626984126984127,
+        "h": 0.01443001443001443
       },
       "px": {
-        "x": 207,
-        "y": 1768,
-        "w": 450,
-        "h": 54
+        "x": 551,
+        "y": 1966,
+        "w": 123,
+        "h": 30
       },
-      "aspect": 8.3333,
+      "aspect": 4.1,
       "palette": [
         {
-          "hex": "#f8f8f8",
-          "coverage": 0.7879
+          "hex": "#ecf7f7",
+          "coverage": 0.8512
         },
         {
-          "hex": "#232323",
-          "coverage": 0.1147
+          "hex": "#a5acae",
+          "coverage": 0.0675
         },
         {
-          "hex": "#c1c1c1",
-          "coverage": 0.0425
+          "hex": "#424447",
+          "coverage": 0.0417
         },
         {
-          "hex": "#4c4c4c",
-          "coverage": 0.0275
+          "hex": "#787b7b",
+          "coverage": 0.0377
         },
         {
-          "hex": "#717171",
-          "coverage": 0.0275
+          "hex": "#181818",
+          "coverage": 0.002
         }
       ],
       "detail": {
-        "energy": 75.4475
+        "energy": 23.3084
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "work-mousse-image",
+      "kind": "image",
+      "note": "Finished 淡彩抽绳包 photo: comp is explicitly illustrative; use the actual Shopify Product media, not generated photo",
+      "grid": "A5:E6",
+      "bleed": true,
+      "box": {
+        "x": 0.07142857142857142,
+        "y": 0.49254449254449256,
+        "w": 0.4113756613756614,
+        "h": 0.1620971620971621
+      },
+      "px": {
+        "x": 54,
+        "y": 1024,
+        "w": 311,
+        "h": 337
+      },
+      "aspect": 0.9228,
+      "palette": [
+        {
+          "hex": "#f6f4f0",
+          "coverage": 0.6532
+        },
+        {
+          "hex": "#cec5b4",
+          "coverage": 0.244
+        },
+        {
+          "hex": "#a4a88d",
+          "coverage": 0.0676
+        },
+        {
+          "hex": "#6c7d64",
+          "coverage": 0.0222
+        },
+        {
+          "hex": "#e6e8c8",
+          "coverage": 0.013
+        }
+      ],
+      "detail": {
+        "energy": 20.8652
+      },
+      "medium": "raster",
+      "plate": ".impeccable/references/work-mousse.png",
+      "text": null
+    },
+    {
+      "id": "work-mousse-title",
+      "kind": "text",
+      "note": "Actual Shopify localized product title corresponding to 淡彩抽绳包",
+      "grid": "A6:C6",
+      "coverBox": {
+        "x": 0,
+        "y": 0.6,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.07142857142857142,
+        "y": 0.6604136604136605,
+        "w": 0.2976190476190476,
+        "h": 0.012506012506012507
+      },
+      "px": {
+        "x": 54,
+        "y": 1373,
+        "w": 225,
+        "h": 26
+      },
+      "aspect": 8.6538,
+      "palette": [
+        {
+          "hex": "#cbc5b2",
+          "coverage": 0.549
+        },
+        {
+          "hex": "#f4eee2",
+          "coverage": 0.2779
+        },
+        {
+          "hex": "#9a9d82",
+          "coverage": 0.1271
+        },
+        {
+          "hex": "#5f6d53",
+          "coverage": 0.0334
+        },
+        {
+          "hex": "#2b3b28",
+          "coverage": 0.0127
+        }
+      ],
+      "detail": {
+        "energy": 20.3745
       },
       "medium": "semantic",
       "plate": null,
@@ -2364,25 +2397,730 @@
       "type": {
         "comp": {
           "lines": 1,
-          "glyphs": 11,
-          "capHeightPx": 17.8,
+          "glyphs": 6,
+          "capHeightPx": 18,
           "inkIsDark": true,
           "allCaps": false,
-          "advance": null,
-          "advTall": null,
+          "advance": 1.0144,
+          "advTall": 1.0144,
           "advX": null,
-          "gap": 0.449,
-          "xRatio": 0.8045,
-          "stemW": 0.1969,
-          "contrast": 1.0364,
-          "serif": 1.0345,
-          "densTall": null,
+          "gap": 0.0834,
+          "xRatio": 0.7674,
+          "stemW": 0.1278,
+          "contrast": 1.0787,
+          "serif": null,
+          "densTall": 0.4644,
           "densX": null,
-          "weight": null
+          "weight": 0.4644
         },
-        "widthClass": "normal",
-        "weightClass": "bold"
+        "widthClass": "wide",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "work-mousse-action",
+      "kind": "control",
+      "note": "Material kit label and view materials action",
+      "grid": "A6:E6",
+      "coverBox": {
+        "x": 0,
+        "y": 0.6,
+        "w": 0.5,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.07142857142857142,
+        "y": 0.6734006734006734,
+        "w": 0.4113756613756614,
+        "h": 0.01875901875901876
+      },
+      "px": {
+        "x": 54,
+        "y": 1400,
+        "w": 311,
+        "h": 39
+      },
+      "aspect": 7.9744,
+      "palette": [
+        {
+          "hex": "#f4efe2",
+          "coverage": 0.453
+        },
+        {
+          "hex": "#cec8b7",
+          "coverage": 0.3481
+        },
+        {
+          "hex": "#afad90",
+          "coverage": 0.1522
+        },
+        {
+          "hex": "#7c846b",
+          "coverage": 0.0309
+        },
+        {
+          "hex": "#536248",
+          "coverage": 0.0158
+        }
+      ],
+      "detail": {
+        "energy": 29.263
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "work-shawl-image",
+      "kind": "image",
+      "note": "Finished 花火镂空披肩 photo: comp is explicitly illustrative; use the actual Shopify Product media, not generated photo",
+      "grid": "F5:J6",
+      "bleed": true,
+      "box": {
+        "x": 0.5105820105820106,
+        "y": 0.49254449254449256,
+        "w": 0.414021164021164,
+        "h": 0.1620971620971621
+      },
+      "px": {
+        "x": 386,
+        "y": 1024,
+        "w": 313,
+        "h": 337
+      },
+      "aspect": 0.9288,
+      "palette": [
+        {
+          "hex": "#f3f2ef",
+          "coverage": 0.8041
+        },
+        {
+          "hex": "#dbc2ba",
+          "coverage": 0.1089
+        },
+        {
+          "hex": "#abaeb9",
+          "coverage": 0.0522
+        },
+        {
+          "hex": "#b89598",
+          "coverage": 0.0184
+        },
+        {
+          "hex": "#848198",
+          "coverage": 0.0165
+        }
+      ],
+      "detail": {
+        "energy": 19.1421
+      },
+      "medium": "raster",
+      "plate": ".impeccable/references/work-shawl.png",
+      "text": null
+    },
+    {
+      "id": "work-shawl-title",
+      "kind": "text",
+      "note": "Actual Shopify localized product title corresponding to 花火镂空披肩",
+      "grid": "F6:I6",
+      "coverBox": {
+        "x": 0.5,
+        "y": 0.6,
+        "w": 0.4,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.5105820105820106,
+        "y": 0.6604136604136605,
+        "w": 0.2976190476190476,
+        "h": 0.012506012506012507
+      },
+      "px": {
+        "x": 386,
+        "y": 1373,
+        "w": 225,
+        "h": 26
+      },
+      "aspect": 8.6538,
+      "palette": [
+        {
+          "hex": "#ebe5df",
+          "coverage": 0.6793
+        },
+        {
+          "hex": "#d4b9b2",
+          "coverage": 0.2463
+        },
+        {
+          "hex": "#ba9aa3",
+          "coverage": 0.0641
+        },
+        {
+          "hex": "#cda08b",
+          "coverage": 0.0072
+        },
+        {
+          "hex": "#a49ab4",
+          "coverage": 0.003
+        }
+      ],
+      "detail": {
+        "energy": 18.0931
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 8,
+          "capHeightPx": 18.1,
+          "inkIsDark": true,
+          "allCaps": true,
+          "advance": 0.8162,
+          "advTall": 0.8162,
+          "advX": null,
+          "gap": 0.1107,
+          "xRatio": null,
+          "stemW": 0.1326,
+          "contrast": 1.1594,
+          "serif": null,
+          "densTall": 0.5093,
+          "densX": null,
+          "weight": 0.5093
+        },
+        "widthClass": "wide",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "work-shawl-action",
+      "kind": "control",
+      "note": "Material kit label and view materials action",
+      "grid": "F6:J6",
+      "coverBox": {
+        "x": 0.5,
+        "y": 0.6,
+        "w": 0.5,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.5105820105820106,
+        "y": 0.6734006734006734,
+        "w": 0.414021164021164,
+        "h": 0.01875901875901876
+      },
+      "px": {
+        "x": 386,
+        "y": 1400,
+        "w": 313,
+        "h": 39
+      },
+      "aspect": 8.0256,
+      "palette": [
+        {
+          "hex": "#ebe5df",
+          "coverage": 0.6793
+        },
+        {
+          "hex": "#d4b9b2",
+          "coverage": 0.2463
+        },
+        {
+          "hex": "#ba9aa3",
+          "coverage": 0.0641
+        },
+        {
+          "hex": "#cda08b",
+          "coverage": 0.0072
+        },
+        {
+          "hex": "#a49ab4",
+          "coverage": 0.003
+        }
+      ],
+      "detail": {
+        "energy": 18.0931
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "work-blanket-image",
+      "kind": "image",
+      "note": "Finished 渐变波纹毯 photo: comp is explicitly illustrative; use the actual Shopify Product media, not generated photo",
+      "grid": "A7:E8",
+      "bleed": true,
+      "box": {
+        "x": 0.07142857142857142,
+        "y": 0.7085137085137085,
+        "w": 0.4113756613756614,
+        "h": 0.16257816257816257
+      },
+      "px": {
+        "x": 54,
+        "y": 1473,
+        "w": 311,
+        "h": 338
+      },
+      "aspect": 0.9201,
+      "palette": [
+        {
+          "hex": "#d9cfc1",
+          "coverage": 0.4572
+        },
+        {
+          "hex": "#f8f7f7",
+          "coverage": 0.3834
+        },
+        {
+          "hex": "#bba694",
+          "coverage": 0.0685
+        },
+        {
+          "hex": "#e2c79a",
+          "coverage": 0.0611
+        },
+        {
+          "hex": "#a6b1ab",
+          "coverage": 0.0298
+        }
+      ],
+      "detail": {
+        "energy": 19.8932
+      },
+      "medium": "raster",
+      "plate": ".impeccable/references/work-blanket.png",
+      "text": null
+    },
+    {
+      "id": "work-blanket-title",
+      "kind": "text",
+      "note": "Actual Shopify localized product title corresponding to 渐变波纹毯",
+      "grid": "A8:D9",
+      "coverBox": {
+        "x": 0,
+        "y": 0.8,
+        "w": 0.4,
+        "h": 0.2
+      },
+      "box": {
+        "x": 0.07142857142857142,
+        "y": 0.8778258778258778,
+        "w": 0.31746031746031744,
+        "h": 0.012506012506012507
+      },
+      "px": {
+        "x": 54,
+        "y": 1825,
+        "w": 240,
+        "h": 26
+      },
+      "aspect": 9.2308,
+      "palette": [
+        {
+          "hex": "#d4c6b4",
+          "coverage": 0.4554
+        },
+        {
+          "hex": "#f6f4f2",
+          "coverage": 0.4396
+        },
+        {
+          "hex": "#dfc598",
+          "coverage": 0.0767
+        },
+        {
+          "hex": "#b09475",
+          "coverage": 0.017
+        },
+        {
+          "hex": "#a7af9a",
+          "coverage": 0.0113
+        }
+      ],
+      "detail": {
+        "energy": 20.5294
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 5,
+          "capHeightPx": 18.5,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.9995,
+          "advTall": 0.9995,
+          "advX": null,
+          "gap": 0.081,
+          "xRatio": 0.8434,
+          "stemW": 0.1304,
+          "contrast": 1.0332,
+          "serif": null,
+          "densTall": 0.5109,
+          "densX": null,
+          "weight": 0.5109
+        },
+        "widthClass": "wide",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "work-blanket-action",
+      "kind": "control",
+      "note": "Material kit label and view materials action",
+      "grid": "A9:E9",
+      "coverBox": {
+        "x": 0,
+        "y": 0.9,
+        "w": 0.5,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.07142857142857142,
+        "y": 0.8946608946608947,
+        "w": 0.4113756613756614,
+        "h": 0.01827801827801828
+      },
+      "px": {
+        "x": 54,
+        "y": 1860,
+        "w": 311,
+        "h": 38
+      },
+      "aspect": 8.1842,
+      "palette": [
+        {
+          "hex": "#f0f7f7",
+          "coverage": 0.7539
+        },
+        {
+          "hex": "#bac1c4",
+          "coverage": 0.0836
+        },
+        {
+          "hex": "#7f8485",
+          "coverage": 0.0666
+        },
+        {
+          "hex": "#474a4b",
+          "coverage": 0.0557
+        },
+        {
+          "hex": "#181a1b",
+          "coverage": 0.0402
+        }
+      ],
+      "detail": {
+        "energy": 45.8796
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "work-bag-image",
+      "kind": "image",
+      "note": "Finished 荷叶边肩背包 photo: comp is explicitly illustrative; use the actual Shopify Product media, not generated photo",
+      "grid": "F7:J8",
+      "bleed": true,
+      "box": {
+        "x": 0.5105820105820106,
+        "y": 0.7085137085137085,
+        "w": 0.414021164021164,
+        "h": 0.16257816257816257
+      },
+      "px": {
+        "x": 386,
+        "y": 1473,
+        "w": 313,
+        "h": 338
+      },
+      "aspect": 0.926,
+      "palette": [
+        {
+          "hex": "#f8f7f6",
+          "coverage": 0.4183
+        },
+        {
+          "hex": "#e8d8cc",
+          "coverage": 0.3958
+        },
+        {
+          "hex": "#c88e75",
+          "coverage": 0.1337
+        },
+        {
+          "hex": "#a76651",
+          "coverage": 0.0303
+        },
+        {
+          "hex": "#e9b9a5",
+          "coverage": 0.0218
+        }
+      ],
+      "detail": {
+        "energy": 18.608
+      },
+      "medium": "raster",
+      "plate": ".impeccable/references/work-bag.png",
+      "text": null
+    },
+    {
+      "id": "work-bag-title",
+      "kind": "text",
+      "note": "Actual Shopify localized product title corresponding to 荷叶边肩背包",
+      "grid": "F8:I9",
+      "coverBox": {
+        "x": 0.5,
+        "y": 0.8,
+        "w": 0.4,
+        "h": 0.2
+      },
+      "box": {
+        "x": 0.5105820105820106,
+        "y": 0.8778258778258778,
+        "w": 0.31746031746031744,
+        "h": 0.012506012506012507
+      },
+      "px": {
+        "x": 386,
+        "y": 1825,
+        "w": 240,
+        "h": 26
+      },
+      "aspect": 9.2308,
+      "palette": [
+        {
+          "hex": "#c88e75",
+          "coverage": 0.4948
+        },
+        {
+          "hex": "#ece1d6",
+          "coverage": 0.2518
+        },
+        {
+          "hex": "#9c5e4a",
+          "coverage": 0.1168
+        },
+        {
+          "hex": "#dfb7a2",
+          "coverage": 0.0994
+        },
+        {
+          "hex": "#6e3b29",
+          "coverage": 0.0372
+        }
+      ],
+      "detail": {
+        "energy": 35.7381
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 7,
+          "capHeightPx": 18.7,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.911,
+          "advTall": 0.911,
+          "advX": null,
+          "gap": 0.1072,
+          "xRatio": 0.639,
+          "stemW": 0.1231,
+          "contrast": 1.0973,
+          "serif": null,
+          "densTall": 0.4739,
+          "densX": null,
+          "weight": 0.4739
+        },
+        "widthClass": "wide",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "work-bag-action",
+      "kind": "control",
+      "note": "Material kit label and view materials action",
+      "grid": "F9:J9",
+      "coverBox": {
+        "x": 0.5,
+        "y": 0.9,
+        "w": 0.5,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.5105820105820106,
+        "y": 0.8946608946608947,
+        "w": 0.414021164021164,
+        "h": 0.01827801827801828
+      },
+      "px": {
+        "x": 386,
+        "y": 1860,
+        "w": 313,
+        "h": 38
+      },
+      "aspect": 8.2368,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.7098
+        },
+        {
+          "hex": "#939393",
+          "coverage": 0.1329
+        },
+        {
+          "hex": "#51504f",
+          "coverage": 0.0804
+        },
+        {
+          "hex": "#c7c7c5",
+          "coverage": 0.0664
+        },
+        {
+          "hex": "#232323",
+          "coverage": 0.0105
+        }
+      ],
+      "detail": {
+        "energy": 28.8071
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "help-panel",
+      "kind": "chrome",
+      "note": "Compact pale blue support surface",
+      "grid": "A9:J9",
+      "container": true,
+      "box": {
+        "x": 0.07142857142857142,
+        "y": 0.9268879268879269,
+        "w": 0.8531746031746031,
+        "h": 0.05291005291005291
+      },
+      "px": {
+        "x": 54,
+        "y": 1927,
+        "w": 645,
+        "h": 110
+      },
+      "aspect": 5.8636,
+      "palette": [
+        {
+          "hex": "#f2f8f8",
+          "coverage": 0.9756
+        },
+        {
+          "hex": "#5e6060",
+          "coverage": 0.0076
+        },
+        {
+          "hex": "#979999",
+          "coverage": 0.0074
+        },
+        {
+          "hex": "#c4c8c8",
+          "coverage": 0.0059
+        },
+        {
+          "hex": "#2c2c2c",
+          "coverage": 0.0035
+        }
+      ],
+      "detail": {
+        "energy": 9.5291
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "help-heading",
+      "kind": "text",
+      "note": "Visible Chinese label: 选材料拿不准？",
+      "grid": "C9:F9",
+      "coverBox": {
+        "x": 0.2,
+        "y": 0.9,
+        "w": 0.4,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.24338624338624337,
+        "y": 0.9456469456469456,
+        "w": 0.21164021164021163,
+        "h": 0.01443001443001443
+      },
+      "px": {
+        "x": 184,
+        "y": 1966,
+        "w": 160,
+        "h": 30
+      },
+      "aspect": 5.3333,
+      "palette": [
+        {
+          "hex": "#eff7f7",
+          "coverage": 0.7781
+        },
+        {
+          "hex": "#aab1b2",
+          "coverage": 0.0844
+        },
+        {
+          "hex": "#6e7171",
+          "coverage": 0.075
+        },
+        {
+          "hex": "#252a2a",
+          "coverage": 0.0391
+        },
+        {
+          "hex": "#46514b",
+          "coverage": 0.0234
+        }
+      ],
+      "detail": {
+        "energy": 45.8781
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 7,
+          "capHeightPx": 19.3,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 1.0376,
+          "advTall": 1.0376,
+          "advX": null,
+          "gap": 0.1297,
+          "xRatio": 0.8113,
+          "stemW": 0.1274,
+          "contrast": 1.1272,
+          "serif": 2.3195,
+          "densTall": 0.4347,
+          "densX": null,
+          "weight": 0.4347
+        },
+        "widthClass": "wide",
+        "weightClass": "regular"
       }
     }
-  ]
+  ],
+  "measurementNote": "Main agent measured pixel boxes from original approved B and opened grid; replaces coarse auto-snap boxes which selected neighboring ink. No font choice or gate result was edited. Product photos remain explicitly illustrative references, real Shopify images are the scoped source."
 }

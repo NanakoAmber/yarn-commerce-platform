@@ -1,383 +1,96 @@
 {
   "tool": "build-phase",
   "version": 2,
-  "startedAt": "2026-09-05T04:32:13.153Z",
-  "comp": ".impeccable/mocks/platform-navigation-zh.webp",
-  "direction": "873712c1",
-  "breakpoint": "853x1844",
+  "startedAt": "2026-09-05T18:23:22.440Z",
+  "comp": ".impeccable/mocks/discovery-b-zh.png",
+  "direction": null,
+  "breakpoint": "756x2079",
   "artifact": null,
-  "phase": "responsive",
+  "phase": "plates",
   "phases": {
     "comps": {
-      "status": "closed",
-      "openedAt": "2026-09-05T04:32:13.153Z",
-      "closedAt": "2026-09-05T04:59:45.823Z",
-      "attempts": 1,
-      "notes": [],
-      "gate": {
-        "ok": true,
-        "reasons": [],
-        "summary": "5 comps, 1 approved",
-        "approved": ".impeccable/mocks/platform-navigation-zh.webp",
-        "at": "2026-09-05T04:59:45.823Z"
-      },
+      "status": "skipped",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [
+        {
+          "at": "2026-09-05T18:23:22.440Z",
+          "text": "started with an approved comp; the comp round happened before this state (surface round or manual)"
+        }
+      ],
+      "gate": null,
       "forced": null
     },
     "spec": {
       "status": "closed",
-      "openedAt": "2026-09-05T04:59:45.935Z",
-      "closedAt": "2026-09-05T05:03:19.637Z",
-      "attempts": 1,
+      "openedAt": "2026-09-05T18:23:22.439Z",
+      "closedAt": "2026-09-05T18:31:30.146Z",
+      "attempts": 2,
       "notes": [],
       "gate": {
         "ok": true,
         "reasons": [],
-        "summary": "41 regions, 12 plates, 12 text regions measured",
-        "at": "2026-09-05T05:03:19.637Z"
+        "summary": "52 regions, 15 plates, 17 text regions measured",
+        "at": "2026-09-05T18:31:30.146Z"
       },
       "forced": null
     },
     "plates": {
-      "status": "closed",
-      "openedAt": "2026-09-05T05:03:19.637Z",
-      "closedAt": "2026-09-05T05:27:55.954Z",
-      "attempts": 1,
-      "notes": [],
-      "gate": {
-        "ok": true,
-        "reasons": [],
-        "summary": "12/12 plates",
-        "at": "2026-09-05T05:27:55.954Z"
-      },
-      "forced": null
-    },
-    "hero": {
-      "status": "closed",
-      "openedAt": "2026-09-05T05:27:55.954Z",
-      "closedAt": "2026-09-05T06:26:15.307Z",
-      "attempts": 2,
-      "notes": [
-        {
-          "at": "2026-09-05T06:02:10.252Z",
-          "text": "Hero side-by-side manual review accepted: overall 78% exceeds the 72% bar and all 12 plates are present. Remaining hard flags come from snapped header/filter/control regions that do not cover the visible comp ink consistently; changing the UI to satisfy those boxes would reduce fidelity to the approved comp."
-        }
-      ],
-      "gate": {
-        "ok": true,
-        "reasons": [],
-        "summary": "hero 83% (match)",
-        "score": 0.8309,
-        "verdict": "match",
-        "report": ".impeccable/review/diff/hero/report.json",
-        "sideBySide": "/Users/jinchen/Documents/ChatGPT/毛线/.impeccable/review/diff/hero/side-by-side.png",
-        "worst": [
-          "category-heading-flourish drift 54%",
-          "category-bag-label drift 56%",
-          "hero-support drift 56%"
-        ],
-        "worstIds": [
-          "category-heading-flourish",
-          "category-bag-label",
-          "hero-support"
-        ],
-        "worstCrops": [
-          {
-            "id": "category-heading-flourish",
-            "verdict": "drift",
-            "score": {
-              "overall": 0.5416,
-              "structure": 0.8247,
-              "color": 0.9772,
-              "colorIntersection": 0.9587,
-              "paletteMatch": 0.9872,
-              "detail": 0.28,
-              "detailRaw": 0.3529,
-              "detailAdded": 0.1458,
-              "bands": 0
-            },
-            "file": ".impeccable/review/diff/hero/regions/category-heading-flourish.png"
-          },
-          {
-            "id": "category-bag-label",
-            "verdict": "drift",
-            "score": {
-              "overall": 0.5589,
-              "structure": 0.5159,
-              "color": 0.5698,
-              "colorIntersection": 0.3113,
-              "paletteMatch": 0.709,
-              "detail": 0.4902,
-              "detailRaw": 0.5787,
-              "detailAdded": 0.1771,
-              "bands": 0.85
-            },
-            "file": ".impeccable/review/diff/hero/regions/category-bag-label.png"
-          },
-          {
-            "id": "hero-support",
-            "verdict": "drift",
-            "score": {
-              "overall": 0.5593,
-              "structure": 0.5141,
-              "color": 0.9581,
-              "colorIntersection": 0.946,
-              "paletteMatch": 0.9645,
-              "detail": 0.1583,
-              "detailRaw": 0.2573,
-              "detailAdded": 0.1979,
-              "bands": 0.39
-            },
-            "file": ".impeccable/review/diff/hero/regions/hero-support.png"
-          }
-        ],
-        "advisories": [
-          "(advisory, above the 72% bar) plate category-heading-flourish is placed but not at the comp's box: its ink spans 694x96px at (83,34) in the comp region and 604x83px at (122,54) in the build; size and position the <img> to the spec box (object-fit: cover), not to the surrounding layout",
-          "(advisory, above the 72% bar) region flow-arrow-one: its ink sits in a 32x24px box in the comp and 36x16px in the build (padding, row height, or size); match the box, not only the position",
-          "(advisory, above the 72% bar) region flow-arrow-two: its ink sits in a 3x4px box in the comp and 32x16px in the build (padding, row height, or size); match the box, not only the position",
-          "(advisory, unchanged for 3+ attempts) text category-heading: letter-spacing is tighter than the comp's (gap 0.075 vs 0.204 of the cap height); set letter-spacing to open it by about 5px",
-          "(advisory, unchanged for 3+ attempts) text next-section-heading: cap height 27.9px in the build, 17.8px in the comp (+57%); set font-size so the cap height renders at 17.8px",
-          "(advisory, unchanged for 3+ attempts) text header-wordmark: ink is #90a9b1 in the build, #edc989 in the comp; use the comp's colour",
-          "(advisory, unchanged for 3+ attempts) text category-doll-label: ink is #2e2c20 in the build, #878784 in the comp; use the comp's colour",
-          "(advisory, unchanged for 3+ attempts) text category-heading: its first line starts 21px lower than in the comp (30px vs 9px into the region box); the spacing above it is too large"
-        ],
-        "regionVerdicts": {
-          "page-paper": "drift",
-          "header-bar": "drift",
-          "header-menu": "drift",
-          "header-wordmark": "drift",
-          "header-search": "match",
-          "header-cart": "drift",
-          "hero-notation-doodles": "drift",
-          "hero-textile": "drift",
-          "hero-headline": "drift",
-          "hero-support": "drift",
-          "flow-panel": "match",
-          "flow-select-plate": "drift",
-          "flow-buy-plate": "match",
-          "flow-make-plate": "drift",
-          "flow-arrow-one": "match",
-          "flow-arrow-two": "match",
-          "flow-select-label": "drift",
-          "flow-buy-label": "drift",
-          "flow-make-label": "drift",
-          "category-heading-flourish": "drift",
-          "category-heading": "drift",
-          "category-bag-card": "drift",
-          "category-scarf-card": "drift",
-          "category-blanket-card": "drift",
-          "category-doll-card": "match",
-          "category-bag-plate": "drift",
-          "category-scarf-plate": "drift",
-          "category-blanket-plate": "drift",
-          "category-doll-plate": "drift",
-          "category-bag-label": "drift",
-          "category-scarf-label": "drift",
-          "category-blanket-label": "drift",
-          "category-doll-label": "drift",
-          "filter-strip": "match",
-          "filter-popular": "drift",
-          "filter-one-ball": "match",
-          "filter-gift": "drift",
-          "filter-season": "match",
-          "project-cta": "match",
-          "next-section-flourish": "drift",
-          "next-section-heading": "drift"
-        },
-        "at": "2026-09-05T06:26:15.307Z"
-      },
-      "forced": null,
-      "records": 19,
-      "readingsSeen": {
-        "text hero-headline: cap height 9.7px in the build, 54.8px in the comp (-82%); set font-size so the cap height renders at 54.8px (font-match ranked M PLUS 1 400 at 63px)": 2,
-        "text category-heading: cap height 17.5px in the build, 39.3px in the comp (-55%); set font-size so the cap height renders at 39.3px": 2,
-        "text hero-headline: 1 line in the build, 2 in the comp; the measure (max-width, font-size, letter-spacing) wraps it differently, so the block is a different shape": 2,
-        "text flow-buy-label: ink is #f7e7c4 in the build, #171717 in the comp; use the comp's colour": 2,
-        "text hero-headline: it starts 314px further right than in the comp": 2,
-        "text category-heading: its first line starts 63px lower than in the comp (72px vs 9px into the region box); the spacing above it is too large": 2,
-        "text hero-headline: letter-spacing is tighter than the comp's (gap 0.030 vs 0.183 of the cap height); set letter-spacing to open it by about 8px": 1,
-        "text hero-headline: letter-spacing is tighter than the comp's (gap 0.089 vs 0.183 of the cap height); set letter-spacing to open it by about 5px": 5,
-        "text hero-support: letter-spacing is tighter than the comp's (gap 0.092 vs 0.203 of the cap height); set letter-spacing to open it by about 3px": 1,
-        "text category-heading: cap height 50.1px in the build, 39.3px in the comp (+27%); set font-size so the cap height renders at 39.3px": 1,
-        "text next-section-heading: cap height 26px in the build, 17.8px in the comp (+46%); set font-size so the cap height renders at 17.8px": 1,
-        "text hero-support: the face renders 47% heavier than the comp's (ink density 0.64 vs 0.43); drop a weight step or use the ranked face": 1,
-        "text hero-support: ink is #84837e in the build, #141313 in the comp; use the comp's colour": 1,
-        "text flow-select-label: ink is #b1b1b1 in the build, #161616 in the comp; use the comp's colour": 3,
-        "text flow-buy-label: ink is #838382 in the build, #171717 in the comp; use the comp's colour": 3,
-        "text flow-make-label: ink is #60615f in the build, #131414 in the comp; use the comp's colour": 3,
-        "text category-scarf-label: ink is #8b9093 in the build, #101011 in the comp; use the comp's colour": 3,
-        "text next-section-heading: ink is #b2b1af in the build, #232323 in the comp; use the comp's colour": 1,
-        "text category-heading: letter-spacing is tighter than the comp's (gap 0.076 vs 0.204 of the cap height); set letter-spacing to open it by about 5px": 4,
-        "text next-section-heading: cap height 22.4px in the build, 17.8px in the comp (+26%); set font-size so the cap height renders at 17.8px": 3,
-        "text hero-support: the face renders 43% heavier than the comp's (ink density 0.62 vs 0.43); drop a weight step or use the ranked face": 4,
-        "text hero-support: ink is #83827d in the build, #141313 in the comp; use the comp's colour": 2,
-        "text next-section-heading: ink is #898884 in the build, #232323 in the comp; use the comp's colour": 2,
-        "text header-wordmark: ink is #b0b0af in the build, #edc989 in the comp; use the comp's colour": 2,
-        "text hero-support: ink is #bdbcb5 in the build, #141313 in the comp; use the comp's colour": 2,
-        "text flow-buy-label: ink is #4e4e4d in the build, #171717 in the comp; use the comp's colour": 2,
-        "text flow-make-label: ink is #8f8f8d in the build, #131414 in the comp; use the comp's colour": 2,
-        "text category-scarf-label: ink is #545a5d in the build, #101011 in the comp; use the comp's colour": 1,
-        "text category-blanket-label: ink is #b3b5b3 in the build, #505050 in the comp; use the comp's colour": 1,
-        "text next-section-heading: ink is #878481 in the build, #232323 in the comp; use the comp's colour": 1,
-        "text category-heading: its first line starts 22px lower than in the comp (31px vs 9px into the region box); the spacing above it is too large": 2,
-        "text next-section-heading: its first line starts 17px lower than in the comp (26px vs 9px into the region box); the spacing above it is too large": 1,
-        "text next-section-heading: cap height 22.9px in the build, 17.8px in the comp (+29%); set font-size so the cap height renders at 17.8px": 2,
-        "text category-scarf-label: ink is #5f6465 in the build, #101011 in the comp; use the comp's colour": 1,
-        "text category-blanket-label: ink is #afb3ae in the build, #505050 in the comp; use the comp's colour": 1,
-        "text category-doll-label: ink is #565346 in the build, #878784 in the comp; use the comp's colour": 1,
-        "text next-section-heading: ink is #979691 in the build, #232323 in the comp; use the comp's colour": 1,
-        "text hero-headline: letter-spacing is tighter than the comp's (gap 0.036 vs 0.183 of the cap height); set letter-spacing to open it by about 8px": 1,
-        "text hero-support: letter-spacing is tighter than the comp's (gap 0.074 vs 0.203 of the cap height); set letter-spacing to open it by about 3px": 1,
-        "text hero-support: 1 line in the build, 2 in the comp; the measure (max-width, font-size, letter-spacing) wraps it differently, so the block is a different shape": 1,
-        "text header-wordmark: ink is #bfb6b2 in the build, #edc989 in the comp; use the comp's colour": 1,
-        "text hero-headline: ink is #bbb4a9 in the build, #414140 in the comp; use the comp's colour": 1,
-        "text hero-support: ink is #575757 in the build, #141313 in the comp; use the comp's colour": 1,
-        "text flow-select-label: ink is #847b61 in the build, #161616 in the comp; use the comp's colour": 1,
-        "text flow-buy-label: ink is #f7e7b2 in the build, #171717 in the comp; use the comp's colour": 1,
-        "text hero-support: its first line starts 51px lower than in the comp (64px vs 13px into the region box); the spacing above it is too large": 1,
-        "control project-cta: its ink is 12px tall in the build and 31px in the comp (-19px); match the height, not only the position": 1,
-        "text category-heading: letter-spacing is tighter than the comp's (gap 0.075 vs 0.204 of the cap height); set letter-spacing to open it by about 5px": 9,
-        "text header-wordmark: ink is #90a8b1 in the build, #edc989 in the comp; use the comp's colour": 1,
-        "text category-doll-label: ink is #2e2c20 in the build, #878784 in the comp; use the comp's colour": 9,
-        "text next-section-heading: ink is #afafad in the build, #232323 in the comp; use the comp's colour": 1,
-        "text category-heading: its first line starts 21px lower than in the comp (30px vs 9px into the region box); the spacing above it is too large": 9,
-        "text next-section-heading: letter-spacing is tighter than the comp's (gap 0.104 vs 0.449 of the cap height); set letter-spacing to open it by about 6px": 1,
-        "text header-wordmark: ink is #90a9b1 in the build, #edc989 in the comp; use the comp's colour": 8,
-        "text next-section-heading: ink is #939292 in the build, #232323 in the comp; use the comp's colour": 1,
-        "text next-section-heading: cap height 27.9px in the build, 17.8px in the comp (+57%); set font-size so the cap height renders at 17.8px": 6
-      },
-      "history": [
-        {
-          "at": "2026-09-05T06:26:15.307Z",
-          "score": 0.8309,
-          "worstIds": [
-            "category-heading-flourish",
-            "category-bag-label",
-            "hero-support"
-          ],
-          "regionVerdicts": {
-            "page-paper": "drift",
-            "header-bar": "drift",
-            "header-menu": "drift",
-            "header-wordmark": "drift",
-            "header-search": "match",
-            "header-cart": "drift",
-            "hero-notation-doodles": "drift",
-            "hero-textile": "drift",
-            "hero-headline": "drift",
-            "hero-support": "drift",
-            "flow-panel": "match",
-            "flow-select-plate": "drift",
-            "flow-buy-plate": "match",
-            "flow-make-plate": "drift",
-            "flow-arrow-one": "match",
-            "flow-arrow-two": "match",
-            "flow-select-label": "drift",
-            "flow-buy-label": "drift",
-            "flow-make-label": "drift",
-            "category-heading-flourish": "drift",
-            "category-heading": "drift",
-            "category-bag-card": "drift",
-            "category-scarf-card": "drift",
-            "category-blanket-card": "drift",
-            "category-doll-card": "match",
-            "category-bag-plate": "drift",
-            "category-scarf-plate": "drift",
-            "category-blanket-plate": "drift",
-            "category-doll-plate": "drift",
-            "category-bag-label": "drift",
-            "category-scarf-label": "drift",
-            "category-blanket-label": "drift",
-            "category-doll-label": "drift",
-            "filter-strip": "match",
-            "filter-popular": "drift",
-            "filter-one-ball": "match",
-            "filter-gift": "drift",
-            "filter-season": "match",
-            "project-cta": "match",
-            "next-section-flourish": "drift",
-            "next-section-heading": "drift"
-          },
-          "artifactHash": null
-        }
-      ]
-    },
-    "sections": {
-      "status": "closed",
-      "openedAt": "2026-09-05T06:26:15.307Z",
-      "closedAt": "2026-09-05T06:34:35.481Z",
-      "attempts": 1,
-      "notes": [],
-      "gate": {
-        "ok": true,
-        "reasons": [],
-        "summary": "no mechanical gate",
-        "at": "2026-09-05T06:34:35.481Z"
-      },
-      "forced": null
-    },
-    "motion": {
-      "status": "closed",
-      "openedAt": "2026-09-05T06:34:35.481Z",
-      "closedAt": "2026-09-05T06:35:24.750Z",
-      "attempts": 1,
-      "notes": [],
-      "gate": {
-        "ok": true,
-        "reasons": [],
-        "summary": "no mechanical gate",
-        "at": "2026-09-05T06:35:24.749Z"
-      },
-      "forced": null
-    },
-    "responsive": {
       "status": "open",
-      "openedAt": "2026-09-05T06:35:24.750Z",
+      "openedAt": "2026-09-05T18:31:30.146Z",
       "closedAt": null,
-      "attempts": 1,
+      "attempts": 3,
       "notes": [
         {
-          "at": "2026-09-05T17:03:42.036Z",
-          "text": "用户于2026-09-05明确批准第三轮定点整改；verdict-3为ship，仅覆盖已评分视觉整改。853等尺寸diff与1440/390响应式截图分别使用，不强制用宽屏全页套竖版comp。最新截图、报告与DESIGN.md为当前证据；不以旧hero分数冒充当前通过。"
+          "at": "2026-09-05T18:40:26.051Z",
+          "text": "Plate 比较仅实际 Shopify tutu-bag Product 照片 38% 未通过。依据 AGENTS.md 的 Shopify 事实来源与不可生成假商品照片边界，保留真实媒体，不 force、不伪造通过；此项留给独立 finish review 单列判断。其他 14 个 raster 区域通过。继续用户已批准的 B 结构实现，不把生成示意商品作为销售事实。"
         }
       ],
       "gate": {
         "ok": false,
         "reasons": [
-          "the desktop capture (1440x6192; the top 853x1844 rows scaled to the comp's width are compared, a full-page capture is fine) scores 61% against the comp, under 65%: the first viewport does not survive a common desktop width. The hero passed at 853x1844; the layout must hold from ~1280 up, not only at the comp's exact width (grid columns in fr / minmax, not fixed px that overflow and wrap).",
-          "at desktop width, region header-menu is missing",
-          "at desktop width, region hero-textile is missing",
-          "at desktop width, region hero-headline is missing",
-          "at desktop width, region hero-support is missing",
-          "at desktop width, region flow-select-plate is missing",
-          "at desktop width, region flow-make-plate is missing",
-          "at desktop width, region flow-arrow-one is missing",
-          "at desktop width, region flow-buy-label is missing",
-          "at desktop width, region category-heading-flourish is missing",
-          "at desktop width, region category-bag-card is missing",
-          "at desktop width, region category-scarf-card is missing",
-          "at desktop width, region category-blanket-card is missing",
-          "at desktop width, region category-doll-card is missing",
-          "at desktop width, region category-bag-plate is missing",
-          "at desktop width, region category-scarf-plate is missing",
-          "at desktop width, region category-blanket-plate is missing",
-          "at desktop width, region category-doll-plate is missing",
-          "at desktop width, region category-bag-label is missing",
-          "at desktop width, region category-scarf-label is missing",
-          "at desktop width, region category-blanket-label is missing",
-          "at desktop width, region category-doll-label is missing",
-          "at desktop width, region filter-popular is missing",
-          "at desktop width, region project-cta is missing",
-          "at desktop width, region next-section-flourish is missing",
-          "at desktop width, region next-section-heading is missing",
-          "at desktop width, region header-wordmark (text) is contradicted (structure 56%)",
-          "at desktop width, region flow-select-label (text) is contradicted (structure 27%)",
-          "at desktop width, region flow-make-label (text) is contradicted (structure 34%)"
+          "plate .impeccable/references/work-bag.png: scores 38% against the comp region work-bag-image (structure 54%, color 29%, detail 33%); regenerate with the crop as --ref and the comp-spec plate prompt"
         ],
-        "summary": "desktop 61% (drift)",
-        "score": 0.6148,
-        "sideBySide": "/Users/jinchen/Documents/ChatGPT/毛线/.impeccable/review/diff/desktop/side-by-side.png",
-        "at": "2026-09-05T17:08:16.195Z"
+        "summary": "16/16 plates",
+        "at": "2026-09-05T19:16:40.505Z"
       },
+      "forced": null
+    },
+    "hero": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
       "forced": null
     },
     "review": {
@@ -390,71 +103,87 @@
       "forced": null
     }
   },
-  "finish": {
-    "disposition": "fix",
-    "at": "2026-09-05T17:07:59.045Z",
-    "phaseAtFinish": "responsive"
-  },
+  "finish": null,
   "plates": {
     "page-paper": {
       "status": "ok",
-      "score": 0.9977,
+      "score": 0.9303,
       "size": "342x368"
     },
     "hero-notation-doodles": {
       "status": "ok",
-      "score": 0.4813,
-      "size": "854x1476"
+      "score": 0.4115,
+      "size": "1283x1226"
     },
     "hero-textile": {
       "status": "ok",
-      "score": 0.7503,
-      "size": "682x1476"
+      "score": 0.6343,
+      "size": "1191x1321"
     },
     "flow-select-plate": {
       "status": "ok",
-      "score": 0.7915,
+      "score": 0.6978,
       "size": "512x738"
     },
     "flow-buy-plate": {
       "status": "ok",
-      "score": 0.8173,
+      "score": 0.7317,
       "size": "512x738"
     },
     "flow-make-plate": {
       "status": "ok",
-      "score": 0.7385,
+      "score": 0.7197,
       "size": "682x738"
     },
     "category-heading-flourish": {
       "status": "ok",
-      "score": 0.5383,
+      "score": 0.6853,
       "size": "1706x368"
     },
     "category-bag-plate": {
       "status": "ok",
-      "score": 0.7835,
+      "score": 0.6567,
       "size": "1479x1064"
     },
     "category-scarf-plate": {
       "status": "ok",
-      "score": 0.7982,
+      "score": 0.6071,
       "size": "1479x1064"
     },
     "category-blanket-plate": {
       "status": "ok",
-      "score": 0.6557,
-      "size": "1479x1064"
+      "score": 0.6593,
+      "size": "1234x1275"
     },
     "category-doll-plate": {
       "status": "ok",
-      "score": 0.8361,
+      "score": 0.5972,
       "size": "1479x1064"
     },
-    "next-section-flourish": {
+    "help-icon": {
       "status": "ok",
-      "score": 0.4489,
-      "size": "1706x368"
+      "score": 0.6823,
+      "size": "1254x1254"
+    },
+    "work-mousse-image": {
+      "status": "ok",
+      "score": 0.4914,
+      "size": "1200x1200"
+    },
+    "work-shawl-image": {
+      "status": "ok",
+      "score": 0.4127,
+      "size": "1200x1200"
+    },
+    "work-blanket-image": {
+      "status": "ok",
+      "score": 0.4222,
+      "size": "1200x1200"
+    },
+    "work-bag-image": {
+      "status": "ok",
+      "score": 0.3786,
+      "size": "1200x1200"
     }
   }
 }

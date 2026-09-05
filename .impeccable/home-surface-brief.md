@@ -1,32 +1,35 @@
 # 首页 Surface Brief
 
-- Scope: Shopify 首页及其 `/`、`/zh`、`/en` 本地化版本。
+- Scope: Shopify 首页，日文、简体中文、英文；Issue #13。
 - Mode: Persuade。
-- Audience: 第一次购买毛线或编织套件的新手；当前由合作方评审内部原型。
-- Job: 在数秒内理解这是“围绕作品选毛线”的平台，而不是单品店，并找到适合自己的作品入口。
-- Action: 浏览公开 Project，再查看 Material Requirements、Product Recommendations 或 Project Kit。
-- Proof: 公开 Project 必须包含材料要求和主要 Tutorial；首页分类只使用 `PRODUCT.md` 已确认的目的分类。
-- Constraints: 核心内容服务端渲染并可由 Shopify Section / Block 编辑；评审图片只用简体中文；不虚构评价、销量、折扣或承诺。
-- Approved comp: `.impeccable/mocks/platform-navigation-zh.webp`。
-- Memorable moment: 针目图谱形成作品分类索引，并通过“选择作品 → 购买材料 → 开始制作”把浏览和购买连成一条路径。
-- Unresolved: 正式品牌名与日本市场母语文案在合作方对齐后替换。
+- Audience: 围绕想做的作品选材料的新手；当前为合作方内部原型。
+- Approved comp: `.impeccable/mocks/discovery-b-zh.png`（756 × 2079）。
+- Approval: 2026-09-05 用户回复“B”，选择“作品先行”。取代旧 comp 的首页构图合同，不更换视觉身份。
+- Constraints: Shopify Product 与可编辑内容为事实来源；保留语言、商品和购买路径，不接入其他任务的新内容模型。
 
 ## Direction contract
 
-THESIS: 首页是一张可浏览的作品图谱；先解决“想做什么”，拒绝新品轮播和单品 Hero 主导。
+THESIS: 一体化作品发现是首页第二主区域，拒绝分类与结果之间插入单品、季节大广告。
 
-OWN-WORLD: 暖白纸面、粉蓝粉红薄荷分类区、炭黑字、奶油黄动作色、针目图解、细线图标与克制圆角。
+OWN-WORLD: 继承暖纸、柔粉柔蓝薄荷、炭黑字、针目图解、细线图标；分类为小圆面，操作克制。
 
-STORY: 新手先看懂价值承诺，再理解选择作品、购买材料、开始制作，最后按真实分类进入 Project。
+STORY: 看懂选择作品、购买材料、开始制作；从作品图片产生兴趣，以搜索和条件缩小选择，再查看材料。
 
-FIRST VIEWPORT: 顶部简洁导航；大标题配局部织物；三步路径居中；分类图谱占主要面积；奶油黄主按钮收束。
+FIRST VIEWPORT: 简洁导航、左文右织物、叠压三步纸面；下接居中发现标题、搜索、四圆形分类、商品类型及三项筛选；双列作品图紧跟控件。
 
-FORM: “编织图解图谱”，候选顺序第 1，direction seed `873712c1`；图解是导航语言，不是假装专业的装饰。
+FORM: “编织图解图谱 / 作品先行 B”，沿用 direction seed `873712c1`。移动端双列，宽屏同一信息次序、较宽图库。
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
-## 2026-09-05 复核后的事实纠正
+## 事实与交互翻译
 
-保留批准的主标题、三步顺序、四分类和奶油黄 CTA；不重新选择视觉世界。当前实现为 Product 演示目录而非独立 Project 库，因此副文案改为先确认材料用量和教程，发现区明确说明原型边界；“热门作品”改为“作品套件”并进入 kit 筛选；一团作品明确展示花火披肩套件，不声称适合所有新手或保证完成时长。这些是 finish reviewer 的事实修正，不改写原始批准 comp。
+- comp 内“内部视觉示意，非实际商品图”只解释生成稿；真实页面使用“内部演示：先看套件，材料与教程以商品页为准。”，可由 Section setting 编辑，不把目录冒充独立 Project 库。
+- comp 的四件织物是示意，不替代实际 Product 照片、标题、库存或价格。默认套件排序由 Shopify product_list 编辑；价格与规格在商品页确认。不可按图生成假商品照片。
+- 删除重复的宽幅浏览 CTA、独立辅助导航、一团大卡和季节大卡；老 Section 文件 / settings 保留可恢复，不破坏其他页面。
+- 小圆分类、搜索、类型和用量 / 季节 / 风格共同作用于同一个 Product 结果列表。成品、礼盒及其他用途仍可从完整目录或已有链接访问。
+- 下拉默认关闭，展开态对照 comp；实际选项来自现有目录，不虚构全季可用。保留键盘、选中、清除、无结果、数量与历史返回状态。
+- 生成稿过小文字不照搬；实际正文 / 操作保持可读尺寸并检验三语扩展。不在此文件提前改写 DESIGN.md 为未实现状态。
 
-853 × 1844 为 comp 等尺寸比对；1440 Desktop 与 390 Mobile 为响应式验收，不能将全页宽屏压到竖版 comp 坐标后据此判断区域缺失。
+## 本轮复核边界
+
+B 已在独立未发布 Theme 实现，2026-09-05 的 finish verdict 确认帮助图标、套件标签、纸面与手机字号四项整改 resolved。真实商品照片与生成示意有差异，plates gate 仍 open，整页 Comp-first 未完成；详情与后续验收以 Issue #13 和本轮 review 为准，不继承旧版局部 ship。

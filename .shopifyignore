@@ -2,6 +2,7 @@
 .impeccable/**
 assets/plates/**
 docs/**
+tests/**
 AGENTS.md
 CONTEXT.md
 PRODUCT.md
