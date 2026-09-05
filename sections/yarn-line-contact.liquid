@@ -34,15 +34,27 @@
         assign line_secondary = section.settings.secondary_en_fallback
     endcase
   endunless
+  if section.settings.compact_layout
+    assign line_heading = section.settings.compact_heading
+    assign line_secondary = section.settings.compact_action
+    case request.locale.iso_code
+      when 'zh', 'zh-CN'
+        assign line_heading = section.settings.compact_heading_zh
+        assign line_secondary = section.settings.compact_action_zh
+      when 'en'
+        assign line_heading = section.settings.compact_heading_en
+        assign line_secondary = section.settings.compact_action_en
+    endcase
+  endif
 %}
 
-<section id="line-support" class="yarn-line color-{{ section.settings.color_scheme }} gradient">
+<section id="line-support" class="yarn-line{% if section.settings.compact_layout %} yarn-line--compact{% endif %} color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width">
     <div class="yarn-line__inner">
-      <img class="yarn-line__flourish" src="{{ 'impeccable-next-section-flourish.png' | asset_url }}" alt="" width="1024" height="512" loading="lazy">
+      {% if section.settings.compact_layout %}<img class="yarn-line__help-icon" src="{{ 'impeccable-b-help-icon.png' | asset_url }}" alt="" width="1254" height="1254" loading="lazy">{% else %}<img class="yarn-line__flourish" src="{{ 'impeccable-next-section-flourish.png' | asset_url }}" alt="" width="1024" height="512" loading="lazy">{% endif %}
       <div class="yarn-line__copy">
         <h2>{{ line_heading | escape }}</h2>
-        <div class="rte">{{ line_text }}</div>
+        {% unless section.settings.compact_layout %}<div class="rte">{{ line_text }}</div>{% endunless %}
       </div>
       <div class="yarn-line__actions">
         {% if line_has_primary %}
@@ -54,7 +66,7 @@
           </a>
         {% else %}
           <a class="button yarn-line__fallback" href="{{ section.settings.secondary_link | default: routes.contact_url }}">
-            {{ line_secondary | escape }}
+            {{ line_secondary | escape }}{% if section.settings.compact_layout %}<span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>{% endif %}
           </a>
         {% endif %}
       </div>
@@ -175,6 +187,25 @@
       align-items: stretch;
     }
   }
+  .section:has(.yarn-line--compact) { margin-top: 0; }
+  .yarn-line.yarn-line--compact { padding: 28px 0 36px; background: #fffefa; }
+  .yarn-line--compact > .page-width { width: min(1160px, calc(100% - 64px)); max-width: none; padding: 0; }
+  .yarn-line--compact .yarn-line__inner { grid-template-columns: 58px minmax(0, 1fr) auto; padding: 24px 30px; gap: 22px; min-height: 110px; border: 0; border-radius: 16px; box-shadow: none; }
+  .yarn-line__help-icon { display: block; width: 58px; height: 58px; object-fit: contain; mix-blend-mode: multiply; }
+  .yarn-line--compact .yarn-line__copy h2 { font-size: 2rem; line-height: 1.4; }
+  .yarn-line--compact .yarn-line__actions { min-width: 0; }
+  .yarn-line--compact .yarn-line__fallback { padding: 8px 0; min-height: 44px; gap: 14px; background: transparent; border: 0; border-radius: 0; color: #343d3c; font-size: 1.5rem; box-shadow: none; }
+  .yarn-line--compact .yarn-line__fallback::before, .yarn-line--compact .yarn-line__fallback::after { display: none; }
+  .yarn-line--compact .yarn-line__fallback:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .yarn-line--compact .yarn-line__fallback svg { width: 16px; height: 16px; }
+  @media (max-width: 989px) { .yarn-line--compact > .page-width { width: calc(100% - 14%); } }
+  @media (max-width: 599px) {
+    .yarn-line--compact > .page-width { width: calc(100% - 32px); }
+    .yarn-line--compact .yarn-line__inner { grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; padding: 18px 16px; min-height: 90px; }
+    .yarn-line--compact .yarn-line__copy h2 { font-size: 1.6rem; }
+    .yarn-line--compact .yarn-line__fallback { font-size: 1.4rem; gap: 8px; }
+    .yarn-line__help-icon { width: 36px; height: 36px; }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -183,6 +214,13 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    { "type": "checkbox", "id": "compact_layout", "label": "作品发现 B · 紧凑帮助", "default": false },
+    { "type": "text", "id": "compact_heading", "label": "紧凑标题 · 日文", "default": "材料選びに迷ったら" },
+    { "type": "text", "id": "compact_action", "label": "紧凑链接 · 日文", "default": "相談する" },
+    { "type": "text", "id": "compact_heading_zh", "label": "紧凑标题 · 中文", "default": "选材料拿不准？" },
+    { "type": "text", "id": "compact_action_zh", "label": "紧凑链接 · 中文", "default": "问问我们" },
+    { "type": "text", "id": "compact_heading_en", "label": "紧凑标题 · 英文", "default": "Need help choosing materials?" },
+    { "type": "text", "id": "compact_action_en", "label": "紧凑链接 · 英文", "default": "Ask us" },
     { "type": "text", "id": "fallback_heading", "label": "未配置 LINE 时的标题", "default": "迷ったら、つくりたいものからご相談ください。" },
     { "type": "richtext", "id": "fallback_text", "label": "未配置 LINE 时的说明", "default": "<p>色合わせや必要量、在庫で迷ったときは、お問い合わせフォームから気軽にお知らせください。</p>" },
     {
