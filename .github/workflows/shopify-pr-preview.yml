@@ -36,6 +36,7 @@ jobs:
       SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
       SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
       THEME_NAME: PR-${{ github.event.pull_request.number }}
+      PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -95,7 +96,7 @@ jobs:
             echo
             echo "- 未发布主题：\`${THEME_NAME}\`"
             echo "- [打开预览](${preview_url})"
-            echo "- 本次提交：\`${GITHUB_SHA}\`"
+            echo "- PR 提交：\`${PR_HEAD_SHA}\`"
           } >>"${GITHUB_STEP_SUMMARY}"
 
       - name: Add preview link to pull request
@@ -111,7 +112,7 @@ jobs:
               '',
               `✅ 当前提交已部署到未发布主题 [${process.env.THEME_NAME}](${process.env.PREVIEW_URL})。`,
               '',
-              `- 提交：\`${context.sha}\``,
+              `- PR 提交：\`${context.payload.pull_request.head.sha}\``,
               '- PR 更新时会原地刷新；关闭 PR 后会自动删除该未发布主题。',
               '- 这个流程不会发布或修改线上主题。',
             ].join('\n');
