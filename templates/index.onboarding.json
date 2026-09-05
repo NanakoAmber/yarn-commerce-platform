@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "content": {
+      "type": "yarn-inspiration-gallery",
+      "settings": {
+        "heading": "给下一件手作，一点灵感",
+        "text": "<p>从喜欢的色彩和作品出发，再看看相关商品。</p>",
+        "use_featured": true,
+        "show_internal": false,
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": ["content"]
+}
