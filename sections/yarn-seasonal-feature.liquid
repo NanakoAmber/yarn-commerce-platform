@@ -1,14 +1,17 @@
 {% liquid
+  assign seasonal_eyebrow = section.settings.eyebrow
   assign seasonal_heading = section.settings.heading
   assign seasonal_heading_lead = '季節の色を、'
   assign seasonal_heading_trail = 'ひとつずつ重ねる。'
   assign seasonal_text = section.settings.text
   assign seasonal_button = section.settings.button_label
+  assign seasonal_button_link = section.settings.button_link | default: routes.all_products_collection_url
   assign seasonal_tag_1 = '季節の糸'
   assign seasonal_tag_2 = '1玉から'
   assign seasonal_tag_3 = '編み図付き'
   case request.locale.iso_code
     when 'zh-CN', 'zh'
+      assign seasonal_eyebrow = '当季推荐'
       assign seasonal_heading = '把季节的颜色，一层层织进去。'
       assign seasonal_heading_lead = '把季节的颜色，'
       assign seasonal_heading_trail = '一层层织进去。'
@@ -18,6 +21,7 @@
       assign seasonal_tag_2 = '一团起'
       assign seasonal_tag_3 = '附编织图解'
     when 'en'
+      assign seasonal_eyebrow = 'Seasonal picks'
       assign seasonal_heading = 'Layer in the colours of the season.'
       assign seasonal_heading_lead = 'Layer in the colours'
       assign seasonal_heading_trail = 'of the season.'
@@ -27,6 +31,10 @@
       assign seasonal_tag_2 = 'From one ball'
       assign seasonal_tag_3 = 'Pattern included'
   endcase
+
+  if section.settings.button_link contains 'discover-products'
+    assign seasonal_button_link = routes.root_url | append: '?discover_season=cold#discover-products'
+  endif
 %}
 
 <section class="yarn-seasonal color-{{ section.settings.color_scheme }} gradient">
@@ -43,7 +51,7 @@
       </div>
 
       <div class="yarn-seasonal__content">
-        <p class="yarn-seasonal__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <p class="yarn-seasonal__eyebrow">{{ seasonal_eyebrow | escape }}</p>
         <h2 aria-label="{{ seasonal_heading | escape }}">
           <span>{{ seasonal_heading_lead | escape }}</span>
           <span>{{ seasonal_heading_trail | escape }}</span>
@@ -55,7 +63,7 @@
           <li>{{ seasonal_tag_3 }}</li>
         </ul>
         {% if seasonal_button != blank %}
-          <a class="button button--primary" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+          <a class="button button--primary" href="{{ seasonal_button_link }}">
             {{ seasonal_button | escape }}
           </a>
         {% endif %}
@@ -110,7 +118,7 @@
     margin: 0 0 18px;
     font-size: 1.2rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.08em;
   }
 
   .yarn-seasonal__content h2 {
@@ -194,7 +202,7 @@
       "type": "text",
       "id": "eyebrow",
       "label": "眉题",
-      "default": "SEASONAL EDIT"
+      "default": "今季のおすすめ"
     },
     {
       "type": "text",

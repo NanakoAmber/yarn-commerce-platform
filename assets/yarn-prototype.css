@@ -249,6 +249,45 @@ body {
   -webkit-line-clamp: 2;
 }
 
+.yarn-discovery-collection .yarn-product-role {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 2.2rem;
+  align-items: center;
+  margin-top: 0.7rem;
+  padding: 0.28rem 0.72rem 0.25rem 0.62rem;
+  border-left: 3px solid currentcolor;
+  border-radius: 2px 7px 7px 2px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.yarn-discovery-collection .yarn-product-role--yarn {
+  background: #eff7fa;
+  color: #477f98;
+}
+
+.yarn-discovery-collection .yarn-product-role--kit {
+  background: #eef2e8;
+  color: #596f3f;
+}
+
+.yarn-discovery-collection .yarn-product-role--finished {
+  background: #f8eef1;
+  color: #9a5c6a;
+}
+
+.yarn-discovery-collection .yarn-product-role--tool {
+  background: #f4f0e9;
+  color: #6f624f;
+}
+
+.yarn-discovery-collection .yarn-product-role--bundle {
+  background: #fff7d5;
+  color: #806923;
+}
+
 .product-card-wrapper .quick-add__submit {
   min-height: 4.2rem;
   border-color: rgba(120, 185, 216, 0.45);

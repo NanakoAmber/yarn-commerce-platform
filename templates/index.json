@@ -101,60 +101,17 @@
     "seasonal-edit": {
       "type": "yarn-seasonal-feature",
       "settings": {
-        "eyebrow": "SEASONAL EDIT",
+        "eyebrow": "今季のおすすめ",
         "heading": "季節の色を、ひとつずつ重ねる。",
         "text": "<p>軽やかなコットンから、深みのある段染めまで。いま編みたい作品に合う、季節の毛糸とキットを集めました。</p>",
         "button_label": "季節のおすすめを見る",
-        "button_link": "shopify://collections/all",
-        "color_scheme": "scheme-1"
-      }
-    },
-    "shopping-paths": {
-      "type": "yarn-shopping-paths",
-      "blocks": {
-        "path-material": {
-          "type": "path",
-          "settings": {
-            "title": "素材から選ぶ",
-            "text": "<p>色、太さ、素材感。手にしたい風合いから、毛糸を比べて選べます。</p>",
-            "link_label": "毛糸を見る",
-            "link": "shopify://collections/all"
-          }
-        },
-        "path-project": {
-          "type": "path",
-          "settings": {
-            "title": "作品から選ぶ",
-            "text": "<p>バッグ、ショール、ブランケット。完成した姿から、必要な材料を探せます。</p>",
-            "link_label": "目的から探す",
-            "link": "#shop-by-project"
-          }
-        },
-        "path-support": {
-          "type": "path",
-          "settings": {
-            "title": "相談して選ぶ",
-            "text": "<p>色合わせや必要量に迷ったら、LINEで気軽にご相談ください。</p>",
-            "link_label": "相談窓口を見る",
-            "link": "#line-support"
-          }
-        }
-      },
-      "block_order": [
-        "path-material",
-        "path-project",
-        "path-support"
-      ],
-      "settings": {
-        "eyebrow": "HOW TO CHOOSE",
-        "heading": "選び方は、ひとつじゃない。",
+        "button_link": "#discover-products",
         "color_scheme": "scheme-1"
       }
     },
     "line-support": {
       "type": "yarn-line-contact",
       "settings": {
-        "eyebrow": "PERSONAL SUPPORT",
         "heading": "糸選びの相談を、LINEで。",
         "text": "<p>在庫、色合わせ、作品に必要な量など。選ぶ前に確認したいことを、気軽にご相談いただけます。</p>",
         "primary_label": "LINEで相談する",
@@ -168,9 +125,8 @@
   "order": [
     "yarn-hero",
     "yarn-purpose",
-    "all-products",
     "seasonal-edit",
-    "shopping-paths",
+    "all-products",
     "line-support"
   ]
 }

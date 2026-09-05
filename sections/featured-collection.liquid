@@ -175,6 +175,7 @@
 -%}
 
 <div
+  {% if section.settings.show_discovery_tools %}id="discover-products"{% endif %}
   class="color-{{ section.settings.color_scheme }} isolate gradient"
 >
   <div
@@ -241,63 +242,65 @@
             </button>
           </div>
 
-          <fieldset class="yarn-discovery__filters">
-            <legend class="visually-hidden">{{ discovery_filters_label | escape }}</legend>
+          <div class="yarn-discovery__filter-rail" data-yarn-filter-rail>
+            <fieldset class="yarn-discovery__filters">
+              <legend class="visually-hidden">{{ discovery_filters_label | escape }}</legend>
 
-            <label>
-              <span class="visually-hidden">{{ filter_type | escape }}</span>
-              <select name="discover_type" data-yarn-filter="type" aria-label="{{ filter_type | escape }}">
-                <option value="">{{ filter_type | escape }}</option>
-                <option value="yarn">{{ option_yarn | escape }}</option>
-                <option value="kit">{{ option_kit | escape }}</option>
-                <option value="finished">{{ option_finished | escape }}</option>
-                <option value="tool">{{ option_tool | escape }}</option>
-                <option value="bundle">{{ option_bundle | escape }}</option>
-              </select>
-            </label>
+              <label>
+                <span class="visually-hidden">{{ filter_type | escape }}</span>
+                <select name="discover_type" data-yarn-filter="type" aria-label="{{ filter_type | escape }}">
+                  <option value="">{{ filter_type | escape }}</option>
+                  <option value="yarn">{{ option_yarn | escape }}</option>
+                  <option value="kit">{{ option_kit | escape }}</option>
+                  <option value="finished">{{ option_finished | escape }}</option>
+                  <option value="tool">{{ option_tool | escape }}</option>
+                  <option value="bundle">{{ option_bundle | escape }}</option>
+                </select>
+              </label>
 
-            <label>
-              <span class="visually-hidden">{{ filter_project | escape }}</span>
-              <select name="discover_project" data-yarn-filter="project" aria-label="{{ filter_project | escape }}">
-                <option value="">{{ filter_project | escape }}</option>
-                <option value="bag">{{ option_bag | escape }}</option>
-                <option value="shawl">{{ option_shawl | escape }}</option>
-                <option value="blanket">{{ option_blanket | escape }}</option>
-                <option value="fan">{{ option_fan | escape }}</option>
-                <option value="gift">{{ option_gift | escape }}</option>
-              </select>
-            </label>
+              <label>
+                <span class="visually-hidden">{{ filter_project | escape }}</span>
+                <select name="discover_project" data-yarn-filter="project" aria-label="{{ filter_project | escape }}">
+                  <option value="">{{ filter_project | escape }}</option>
+                  <option value="bag">{{ option_bag | escape }}</option>
+                  <option value="shawl">{{ option_shawl | escape }}</option>
+                  <option value="blanket">{{ option_blanket | escape }}</option>
+                  <option value="fan">{{ option_fan | escape }}</option>
+                  <option value="gift">{{ option_gift | escape }}</option>
+                </select>
+              </label>
 
-            <label>
-              <span class="visually-hidden">{{ filter_quantity | escape }}</span>
-              <select name="discover_quantity" data-yarn-filter="quantity" aria-label="{{ filter_quantity | escape }}">
-                <option value="">{{ filter_quantity | escape }}</option>
-                <option value="one-ball">{{ option_one_ball | escape }}</option>
-                <option value="large-ball">{{ option_large_ball | escape }}</option>
-              </select>
-            </label>
+              <label>
+                <span class="visually-hidden">{{ filter_quantity | escape }}</span>
+                <select name="discover_quantity" data-yarn-filter="quantity" aria-label="{{ filter_quantity | escape }}">
+                  <option value="">{{ filter_quantity | escape }}</option>
+                  <option value="one-ball">{{ option_one_ball | escape }}</option>
+                  <option value="large-ball">{{ option_large_ball | escape }}</option>
+                </select>
+              </label>
 
-            <label>
-              <span class="visually-hidden">{{ filter_season | escape }}</span>
-              <select name="discover_season" data-yarn-filter="season" aria-label="{{ filter_season | escape }}">
-                <option value="">{{ filter_season | escape }}</option>
-                <option value="spring">{{ option_spring | escape }}</option>
-                <option value="summer">{{ option_summer | escape }}</option>
-                <option value="cold">{{ option_cold | escape }}</option>
-              </select>
-            </label>
+              <label>
+                <span class="visually-hidden">{{ filter_season | escape }}</span>
+                <select name="discover_season" data-yarn-filter="season" aria-label="{{ filter_season | escape }}">
+                  <option value="">{{ filter_season | escape }}</option>
+                  <option value="spring">{{ option_spring | escape }}</option>
+                  <option value="summer">{{ option_summer | escape }}</option>
+                  <option value="cold">{{ option_cold | escape }}</option>
+                </select>
+              </label>
 
-            <label>
-              <span class="visually-hidden">{{ filter_style | escape }}</span>
-              <select name="discover_style" data-yarn-filter="style" aria-label="{{ filter_style | escape }}">
-                <option value="">{{ filter_style | escape }}</option>
-                <option value="gradient">{{ option_gradient | escape }}</option>
-                <option value="flower">{{ option_flower | escape }}</option>
-                <option value="lace">{{ option_lace | escape }}</option>
-                <option value="sparkle">{{ option_sparkle | escape }}</option>
-              </select>
-            </label>
-          </fieldset>
+              <label>
+                <span class="visually-hidden">{{ filter_style | escape }}</span>
+                <select name="discover_style" data-yarn-filter="style" aria-label="{{ filter_style | escape }}">
+                  <option value="">{{ filter_style | escape }}</option>
+                  <option value="gradient">{{ option_gradient | escape }}</option>
+                  <option value="flower">{{ option_flower | escape }}</option>
+                  <option value="lace">{{ option_lace | escape }}</option>
+                  <option value="sparkle">{{ option_sparkle | escape }}</option>
+                </select>
+              </label>
+            </fieldset>
+          </div>
         </form>
 
         <div class="yarn-discovery__summary page-width">
@@ -368,6 +371,7 @@
                   skip_styles: skip_card_product_styles,
                   section_id: section.id,
                   quick_add: section.settings.quick_add,
+                  show_yarn_role_label: section.settings.show_discovery_tools,
                   product_view_context: 'collection'
                 %}
               </li>
@@ -563,6 +567,10 @@
     border: 0;
   }
 
+  .yarn-discovery__filter-rail {
+    min-width: 0;
+  }
+
   .yarn-discovery__filters label {
     flex: 0 0 auto;
   }
@@ -653,10 +661,37 @@
       gap: 12px;
     }
 
+    .yarn-discovery__filter-rail {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .yarn-discovery__filter-rail::after {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      display: grid;
+      width: 42px;
+      height: calc(100% - 4px);
+      background: linear-gradient(90deg, rgba(255, 253, 249, 0), #fffdf9 58%);
+      color: #65784e;
+      content: '\203A';
+      font-size: 2.2rem;
+      opacity: 0;
+      pointer-events: none;
+      place-items: center end;
+      transition: opacity 160ms ease;
+    }
+
+    .yarn-discovery__filter-rail.has-overflow:not(.is-at-end)::after {
+      opacity: 1;
+    }
+
     .yarn-discovery__filters {
       justify-content: flex-start;
       overflow-x: auto;
-      padding-bottom: 4px;
+      padding: 0 38px 4px 0;
       scrollbar-width: none;
     }
 
@@ -709,8 +744,8 @@
     }
 
     .yarn-discovery__filters select {
-      min-height: 38px;
-      font-size: 1.1rem;
+      min-height: 44px;
+      font-size: 1.2rem;
     }
 
     .yarn-discovery-collection .product-grid {

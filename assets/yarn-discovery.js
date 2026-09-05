@@ -9,6 +9,8 @@ class YarnDiscovery extends HTMLElement {
     this.emptyState = this.querySelector('[data-yarn-empty]');
     this.viewAll = this.querySelector('[data-yarn-view-all]');
     this.clearButtons = Array.from(this.querySelectorAll('[data-yarn-clear]'));
+    this.filterRail = this.querySelector('[data-yarn-filter-rail]');
+    this.filterScroller = this.filterRail?.querySelector('.yarn-discovery__filters');
     this.initialLimit = Number.parseInt(this.dataset.initialLimit, 10) || this.cards.length;
 
     if (!this.form || !this.queryInput || !this.results || this.cards.length === 0) return;
@@ -18,15 +20,19 @@ class YarnDiscovery extends HTMLElement {
     this.onSearchClear = this.handleSearchClear.bind(this);
     this.onClear = this.handleClear.bind(this);
     this.onPopState = this.handlePopState.bind(this);
+    this.onFilterRailScroll = this.updateFilterRail.bind(this);
 
     this.form.addEventListener('submit', this.onSubmit);
     this.filters.forEach((filter) => filter.addEventListener('change', this.onFilterChange));
     this.queryInput.addEventListener('search', this.onSearchClear);
     this.clearButtons.forEach((button) => button.addEventListener('click', this.onClear));
+    this.filterScroller?.addEventListener('scroll', this.onFilterRailScroll, { passive: true });
     window.addEventListener('popstate', this.onPopState);
+    window.addEventListener('resize', this.onFilterRailScroll);
 
     this.restoreControlsFromUrl();
     this.render();
+    this.updateFilterRail();
   }
 
   disconnectedCallback() {
@@ -36,7 +42,9 @@ class YarnDiscovery extends HTMLElement {
     this.filters.forEach((filter) => filter.removeEventListener('change', this.onFilterChange));
     this.queryInput.removeEventListener('search', this.onSearchClear);
     this.clearButtons.forEach((button) => button.removeEventListener('click', this.onClear));
+    this.filterScroller?.removeEventListener('scroll', this.onFilterRailScroll);
     window.removeEventListener('popstate', this.onPopState);
+    window.removeEventListener('resize', this.onFilterRailScroll);
 
     if (this.renderFrame) cancelAnimationFrame(this.renderFrame);
   }
@@ -151,6 +159,14 @@ class YarnDiscovery extends HTMLElement {
         option.disabled = count === 0 && filter.value !== option.value;
       });
     });
+  }
+
+  updateFilterRail() {
+    if (!this.filterRail || !this.filterScroller) return;
+
+    const remainingScroll = this.filterScroller.scrollWidth - this.filterScroller.clientWidth;
+    this.filterRail.classList.toggle('has-overflow', remainingScroll > 2);
+    this.filterRail.classList.toggle('is-at-end', this.filterScroller.scrollLeft >= remainingScroll - 2);
   }
 
   updateResultCount(active, visibleCount) {
