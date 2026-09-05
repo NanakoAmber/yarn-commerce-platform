@@ -17,6 +17,10 @@
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{%- if section.settings.show_discovery_tools -%}
+  <script src="{{ 'yarn-discovery.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 {%- if section.settings.quick_add == 'bulk' -%}
   <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
@@ -40,6 +44,107 @@
 
 {%- liquid
   assign products_to_display = section.settings.collection.all_products_count
+  assign discovery_search_label = '作品や毛糸を検索'
+  assign discovery_search_placeholder = 'つくりたい作品や毛糸を検索'
+  assign discovery_filters_label = '商品の絞り込み'
+  assign filter_type = '商品タイプ'
+  assign filter_project = '作りたいもの'
+  assign filter_quantity = '糸の量'
+  assign filter_season = '季節'
+  assign filter_style = '雰囲気'
+  assign option_yarn = '毛糸'
+  assign option_kit = '編みものキット'
+  assign option_finished = '完成品'
+  assign option_tool = '道具'
+  assign option_bundle = 'ギフトセット'
+  assign option_bag = 'バッグ'
+  assign option_shawl = 'ショール'
+  assign option_blanket = 'ブランケット'
+  assign option_fan = '編みうちわ'
+  assign option_gift = '贈りもの'
+  assign option_one_ball = '1玉で完成'
+  assign option_large_ball = '大玉毛糸'
+  assign option_spring = '春'
+  assign option_summer = '夏'
+  assign option_cold = '秋冬'
+  assign option_gradient = '段染め'
+  assign option_flower = '花モチーフ'
+  assign option_lace = 'レース'
+  assign option_sparkle = 'ラメ'
+  assign clear_filters = '条件をクリア'
+  assign result_active_template = '{count}件の商品が見つかりました'
+  assign result_initial_template = '{total}件中{shown}件を表示'
+  assign no_results_heading = '条件に合う商品がまだありません'
+  assign no_results_text = '検索語を変えるか、条件をひとつ外してお試しください。'
+
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign discovery_search_label = '搜索作品或毛线'
+      assign discovery_search_placeholder = '搜索想做的作品或毛线'
+      assign discovery_filters_label = '商品筛选'
+      assign filter_type = '商品类型'
+      assign filter_project = '想做什么'
+      assign filter_quantity = '毛线用量'
+      assign filter_season = '季节'
+      assign filter_style = '风格'
+      assign option_yarn = '毛线'
+      assign option_kit = '编织套装'
+      assign option_finished = '成品'
+      assign option_tool = '工具'
+      assign option_bundle = '礼盒组合'
+      assign option_bag = '包袋'
+      assign option_shawl = '披肩 / 围巾'
+      assign option_blanket = '毯子'
+      assign option_fan = '编织团扇'
+      assign option_gift = '礼物'
+      assign option_one_ball = '一团完成'
+      assign option_large_ball = '大团毛线'
+      assign option_spring = '春季'
+      assign option_summer = '夏季'
+      assign option_cold = '秋冬'
+      assign option_gradient = '渐变色'
+      assign option_flower = '花朵'
+      assign option_lace = '蕾丝'
+      assign option_sparkle = '闪丝'
+      assign clear_filters = '清除条件'
+      assign result_active_template = '找到 {count} 件商品'
+      assign result_initial_template = '当前展示 {shown} 件，目录共 {total} 件'
+      assign no_results_heading = '暂时没有符合条件的商品'
+      assign no_results_text = '可以换一个关键词，或者少选一个条件试试。'
+    when 'en'
+      assign discovery_search_label = 'Search projects or yarn'
+      assign discovery_search_placeholder = 'Search for a project or yarn'
+      assign discovery_filters_label = 'Product filters'
+      assign filter_type = 'Product type'
+      assign filter_project = 'What to make'
+      assign filter_quantity = 'Yarn quantity'
+      assign filter_season = 'Season'
+      assign filter_style = 'Style'
+      assign option_yarn = 'Yarn'
+      assign option_kit = 'Project kits'
+      assign option_finished = 'Finished pieces'
+      assign option_tool = 'Tools'
+      assign option_bundle = 'Gift bundles'
+      assign option_bag = 'Bags'
+      assign option_shawl = 'Shawls & scarves'
+      assign option_blanket = 'Blankets'
+      assign option_fan = 'Crochet fans'
+      assign option_gift = 'Gifts'
+      assign option_one_ball = 'One-ball project'
+      assign option_large_ball = 'Large yarn cakes'
+      assign option_spring = 'Spring'
+      assign option_summer = 'Summer'
+      assign option_cold = 'Autumn & winter'
+      assign option_gradient = 'Gradient'
+      assign option_flower = 'Florals'
+      assign option_lace = 'Lace'
+      assign option_sparkle = 'Sparkle'
+      assign clear_filters = 'Clear filters'
+      assign result_active_template = '{count} products found'
+      assign result_initial_template = 'Showing {shown} of {total} products'
+      assign no_results_heading = 'No products match yet'
+      assign no_results_text = 'Try another search term or remove one filter.'
+  endcase
 
   if section.settings.collection.all_products_count > section.settings.products_to_show
     assign products_to_display = section.settings.products_to_show
@@ -62,13 +167,18 @@
   if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
     assign show_desktop_slider = true
   endif
+
+  if section.settings.show_discovery_tools
+    assign show_mobile_slider = false
+    assign show_desktop_slider = false
+  endif
 -%}
 
 <div
   class="color-{{ section.settings.color_scheme }} isolate gradient"
 >
   <div
-    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
+    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}{% if section.settings.show_discovery_tools %} yarn-discovery-collection{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
@@ -82,6 +192,13 @@
                 assign featured_title = '人气毛线与编织套装'
               when 'en'
                 assign featured_title = 'Popular yarns and kits'
+            endcase
+          elsif section.settings.title == '作品と材料を見つける'
+            case request.locale.iso_code
+              when 'zh-CN', 'zh'
+                assign featured_title = '发现作品与材料'
+              when 'en'
+                assign featured_title = 'Discover projects and materials'
             endcase
           endif
         -%}
@@ -103,7 +220,107 @@
       {%- endif -%}
     </div>
 
-    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if section.settings.show_discovery_tools -%}
+      <yarn-discovery data-initial-limit="{{ products_to_display }}">
+        <form class="yarn-discovery page-width" action="{{ routes.search_url }}" method="get" role="search" data-yarn-form>
+          <div class="yarn-discovery__search">
+            <label class="visually-hidden" for="YarnDiscoverySearch-{{ section.id }}">{{ discovery_search_label | escape }}</label>
+            <span class="svg-wrapper" aria-hidden="true">{{- 'icon-search.svg' | inline_asset_content -}}</span>
+            <input
+              id="YarnDiscoverySearch-{{ section.id }}"
+              type="search"
+              name="q"
+              placeholder="{{ discovery_search_placeholder | escape }}"
+              autocomplete="off"
+              data-yarn-query
+            >
+            <input type="hidden" name="type" value="product">
+            <button type="submit" aria-label="{{ discovery_search_label | escape }}">
+              <span>{{ discovery_search_label | escape }}</span>
+              <span class="svg-wrapper" aria-hidden="true">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+            </button>
+          </div>
+
+          <fieldset class="yarn-discovery__filters">
+            <legend class="visually-hidden">{{ discovery_filters_label | escape }}</legend>
+
+            <label>
+              <span class="visually-hidden">{{ filter_type | escape }}</span>
+              <select name="discover_type" data-yarn-filter="type" aria-label="{{ filter_type | escape }}">
+                <option value="">{{ filter_type | escape }}</option>
+                <option value="yarn">{{ option_yarn | escape }}</option>
+                <option value="kit">{{ option_kit | escape }}</option>
+                <option value="finished">{{ option_finished | escape }}</option>
+                <option value="tool">{{ option_tool | escape }}</option>
+                <option value="bundle">{{ option_bundle | escape }}</option>
+              </select>
+            </label>
+
+            <label>
+              <span class="visually-hidden">{{ filter_project | escape }}</span>
+              <select name="discover_project" data-yarn-filter="project" aria-label="{{ filter_project | escape }}">
+                <option value="">{{ filter_project | escape }}</option>
+                <option value="bag">{{ option_bag | escape }}</option>
+                <option value="shawl">{{ option_shawl | escape }}</option>
+                <option value="blanket">{{ option_blanket | escape }}</option>
+                <option value="fan">{{ option_fan | escape }}</option>
+                <option value="gift">{{ option_gift | escape }}</option>
+              </select>
+            </label>
+
+            <label>
+              <span class="visually-hidden">{{ filter_quantity | escape }}</span>
+              <select name="discover_quantity" data-yarn-filter="quantity" aria-label="{{ filter_quantity | escape }}">
+                <option value="">{{ filter_quantity | escape }}</option>
+                <option value="one-ball">{{ option_one_ball | escape }}</option>
+                <option value="large-ball">{{ option_large_ball | escape }}</option>
+              </select>
+            </label>
+
+            <label>
+              <span class="visually-hidden">{{ filter_season | escape }}</span>
+              <select name="discover_season" data-yarn-filter="season" aria-label="{{ filter_season | escape }}">
+                <option value="">{{ filter_season | escape }}</option>
+                <option value="spring">{{ option_spring | escape }}</option>
+                <option value="summer">{{ option_summer | escape }}</option>
+                <option value="cold">{{ option_cold | escape }}</option>
+              </select>
+            </label>
+
+            <label>
+              <span class="visually-hidden">{{ filter_style | escape }}</span>
+              <select name="discover_style" data-yarn-filter="style" aria-label="{{ filter_style | escape }}">
+                <option value="">{{ filter_style | escape }}</option>
+                <option value="gradient">{{ option_gradient | escape }}</option>
+                <option value="flower">{{ option_flower | escape }}</option>
+                <option value="lace">{{ option_lace | escape }}</option>
+                <option value="sparkle">{{ option_sparkle | escape }}</option>
+              </select>
+            </label>
+          </fieldset>
+        </form>
+
+        <div class="yarn-discovery__summary page-width">
+          <p
+            class="yarn-discovery__result-count"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            data-yarn-result-count
+            data-initial-template="{{ result_initial_template | escape }}"
+            data-active-template="{{ result_active_template | escape }}"
+          ></p>
+          <button class="yarn-discovery__clear" type="button" data-yarn-clear hidden>{{ clear_filters | escape }}</button>
+        </div>
+    {%- endif -%}
+
+    <slider-component
+      class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      {% if section.settings.show_discovery_tools %}
+        data-yarn-results
+        aria-busy="false"
+      {% endif %}
+    >
       <ul
         id="Slider-{{ section.id }}"
         data-id="{{ section.id }}"
@@ -115,15 +332,27 @@
 
         {%- if section.settings.collection.products.size > 0 -%}
           {% assign lazy_load = false %}
-          {% paginate section.settings.collection.products by section.settings.products_to_show %}
-            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+          {% liquid
+            assign products_render_limit = section.settings.products_to_show
+            if section.settings.show_discovery_tools
+              assign products_render_limit = 50
+            endif
+          %}
+          {% paginate section.settings.collection.products by 50 %}
+            {%- for product in section.settings.collection.products limit: products_render_limit -%}
               {% if lazy_load == false and forloop.index > max_columns_to_show %}
                 {% assign lazy_load = true %}
               {% endif %}
               <li
                 id="Slide-{{ section.id }}-{{ forloop.index }}"
-                class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {% if settings.animations_reveal_on_scroll %}
+                class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll and section.settings.show_discovery_tools == false %} scroll-trigger animate--slide-in{% endif %}"
+                {% if section.settings.show_discovery_tools %}
+                  data-yarn-catalog-item
+                  data-yarn-initial-visible="{% if forloop.index <= section.settings.products_to_show %}true{% else %}false{% endif %}"
+                  {% render 'yarn-discovery-card-attributes', product: product %}
+                  {% if forloop.index > section.settings.products_to_show %}hidden{% endif %}
+                {% endif %}
+                {% if settings.animations_reveal_on_scroll and section.settings.show_discovery_tools == false %}
                   data-cascade
                   style="--animation-order: {{ forloop.index }};"
                 {% endif %}
@@ -209,8 +438,19 @@
       {%- endif -%}
     </slider-component>
 
+    {%- if section.settings.show_discovery_tools -%}
+      <div class="yarn-discovery__empty page-width" data-yarn-empty hidden>
+        <h3>{{ no_results_heading | escape }}</h3>
+        <p>{{ no_results_text | escape }}</p>
+        <button class="button button--secondary" type="button" data-yarn-clear>{{ clear_filters | escape }}</button>
+      </div>
+    {%- endif -%}
+
     {%- if section.settings.show_view_all and more_in_collection -%}
-      <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div
+        class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if section.settings.show_discovery_tools %}data-yarn-view-all{% endif %}
+      >
         <a
           href="{{ section.settings.collection.url }}"
           class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
@@ -220,11 +460,264 @@
         </a>
       </div>
     {%- endif -%}
+    {%- if section.settings.show_discovery_tools -%}
+      </yarn-discovery>
+    {%- endif -%}
     {% if section.settings.image_shape == 'arch' %}
       {{ 'mask-arch.svg' | inline_asset_content }}
     {%- endif -%}
   </div>
 </div>
+
+{% stylesheet %}
+  yarn-discovery {
+    display: block;
+  }
+
+  .yarn-discovery-collection {
+    background: #fffdf9;
+  }
+
+  .yarn-discovery-collection .collection__title {
+    margin-bottom: 14px;
+  }
+
+  .yarn-discovery-collection .collection__title .title {
+    color: #493d31;
+    font-family: 'Songti SC', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif CJK SC', Georgia, serif;
+    font-size: clamp(2.4rem, 2.4vw, 3.4rem);
+    letter-spacing: 0.01em;
+  }
+
+  .yarn-discovery {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .yarn-discovery__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    border-radius: 999px;
+    background: #f4f0e9;
+  }
+
+  .yarn-discovery__search > .svg-wrapper {
+    position: absolute;
+    left: 17px;
+    width: 18px;
+    height: 18px;
+    color: #493d31;
+    pointer-events: none;
+  }
+
+  .yarn-discovery__search input {
+    width: 100%;
+    height: 46px;
+    padding: 0 124px 0 47px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    outline: none;
+    background: transparent;
+    color: #493d31;
+    font: inherit;
+    font-size: 1.3rem;
+  }
+
+  .yarn-discovery__search input:focus-visible {
+    border-color: #7d9064;
+    box-shadow: 0 0 0 2px rgba(125, 144, 100, 0.2);
+  }
+
+  .yarn-discovery__search button {
+    position: absolute;
+    right: 5px;
+    min-width: 104px;
+    height: 36px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 999px;
+    background: #7d9064;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.15rem;
+  }
+
+  .yarn-discovery__search button .svg-wrapper {
+    display: none;
+  }
+
+  .yarn-discovery__filters {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .yarn-discovery__filters label {
+    flex: 0 0 auto;
+  }
+
+  .yarn-discovery__filters select {
+    min-height: 42px;
+    padding: 0 34px 0 15px;
+    border: 1px solid rgba(73, 61, 49, 0.2);
+    border-radius: 999px;
+    background-color: #fffdf9;
+    color: #493d31;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.2rem;
+  }
+
+  .yarn-discovery__filters select.is-active {
+    border-color: #7d9064;
+    background-color: #eef2e8;
+    color: #53623f;
+  }
+
+  .yarn-discovery__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 28px;
+    margin-top: -14px;
+    margin-bottom: 18px;
+  }
+
+  .yarn-discovery__result-count {
+    margin: 0;
+    color: rgba(73, 61, 49, 0.72);
+    font-size: 1.2rem;
+  }
+
+  .yarn-discovery__clear {
+    padding: 3px 0;
+    border: 0;
+    border-bottom: 1px solid currentcolor;
+    background: transparent;
+    color: #65784e;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.2rem;
+  }
+
+  .yarn-discovery__empty {
+    padding-top: 42px;
+    padding-bottom: 48px;
+    text-align: center;
+  }
+
+  .yarn-discovery__empty h3,
+  .yarn-discovery__empty p {
+    margin: 0;
+  }
+
+  .yarn-discovery__empty p {
+    margin-top: 8px;
+    margin-bottom: 22px;
+    color: rgba(73, 61, 49, 0.72);
+  }
+
+  .yarn-discovery-collection [data-yarn-results] .product-grid {
+    transition: opacity 120ms ease;
+  }
+
+  yarn-discovery.is-updating [data-yarn-results] .product-grid {
+    opacity: 0.55;
+  }
+
+  .yarn-discovery-collection [data-yarn-catalog-item][hidden],
+  .yarn-discovery-collection [data-yarn-empty][hidden],
+  .yarn-discovery-collection [data-yarn-view-all][hidden],
+  .yarn-discovery-collection [data-yarn-clear][hidden] {
+    display: none !important;
+  }
+
+  .yarn-discovery-collection .product-grid {
+    row-gap: 30px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .yarn-discovery {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .yarn-discovery__filters {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .yarn-discovery__filters::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .yarn-discovery-collection .collection__title {
+      margin-bottom: 10px;
+    }
+
+    .yarn-discovery-collection .collection__title .title {
+      font-size: 2rem;
+    }
+
+    .yarn-discovery {
+      margin-bottom: 20px;
+    }
+
+    .yarn-discovery__summary {
+      margin-top: -8px;
+      margin-bottom: 14px;
+    }
+
+    .yarn-discovery__search input {
+      height: 44px;
+      padding-right: 48px;
+    }
+
+    .yarn-discovery__search button {
+      right: 4px;
+      width: 36px;
+      min-width: 36px;
+      height: 36px;
+      padding: 0;
+    }
+
+    .yarn-discovery__search button > span:first-child {
+      display: none;
+    }
+
+    .yarn-discovery__search button .svg-wrapper {
+      display: grid;
+      width: 16px;
+      height: 16px;
+      margin: auto;
+      place-items: center;
+    }
+
+    .yarn-discovery__filters select {
+      min-height: 38px;
+      font-size: 1.1rem;
+    }
+
+    .yarn-discovery-collection .product-grid {
+      row-gap: 22px;
+    }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -239,6 +732,12 @@
       "type": "collection",
       "id": "collection",
       "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_discovery_tools",
+      "label": "显示作品搜索与筛选",
+      "default": false
     },
     {
       "type": "range",
