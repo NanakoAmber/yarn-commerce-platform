@@ -210,7 +210,9 @@
             }}
           </div>
         {%- else -%}
-          {%- if yarn_brand_name == 'YARN STUDIO' -%}
+          {%- if request.locale.iso_code contains 'zh' -%}
+            <span class="h2 yarn-wordmark yarn-wordmark--zh" aria-label="毛线工作室"><span>毛</span><span>线</span><span>工</span><span>作</span><span>室</span></span>
+          {%- elsif yarn_brand_name == 'YARN STUDIO' -%}
             <span class="h2 yarn-wordmark"><span>YARN</span><span>STUDIO</span></span>
           {%- else -%}
             <span class="h2">{{ yarn_brand_name }}</span>
@@ -257,7 +259,9 @@
             }}
           </div>
         {%- else -%}
-          {%- if yarn_brand_name == 'YARN STUDIO' -%}
+          {%- if request.locale.iso_code contains 'zh' -%}
+            <span class="h2 yarn-wordmark yarn-wordmark--zh" aria-label="毛线工作室"><span>毛</span><span>线</span><span>工</span><span>作</span><span>室</span></span>
+          {%- elsif yarn_brand_name == 'YARN STUDIO' -%}
             <span class="h2 yarn-wordmark"><span>YARN</span><span>STUDIO</span></span>
           {%- else -%}
             <span class="h2">{{ yarn_brand_name }}</span>

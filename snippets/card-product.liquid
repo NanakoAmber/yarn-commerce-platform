@@ -13,6 +13,7 @@
   - skip_styles: {Boolean} Don't include component styles. Useful when rendering multiple product cards in a loop. Default: false (optional)
   - quick_add: {Boolean} Show the quick add button.
   - section_id: {String} The ID of the section that contains this card.
+  - show_yarn_role_label: {Boolean} Show the localized Product role label used by homepage discovery.
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
@@ -32,6 +33,57 @@
   {%- capture localized_product_title -%}{%- render 'yarn-product-title', product: card_product -%}{%- endcapture -%}
   {%- assign localized_product_title = localized_product_title | strip -%}
   {%- liquid
+    assign yarn_role_type = blank
+    assign yarn_role_label = blank
+
+    if show_yarn_role_label
+      if card_product.tags contains '毛糸'
+        assign yarn_role_type = 'yarn'
+        assign yarn_role_label = '毛糸'
+      elsif card_product.tags contains '編みものキット'
+        assign yarn_role_type = 'kit'
+        assign yarn_role_label = '編みものキット'
+      elsif card_product.tags contains '完成品'
+        assign yarn_role_type = 'finished'
+        assign yarn_role_label = '完成品'
+      elsif card_product.tags contains '編み物道具'
+        assign yarn_role_type = 'tool'
+        assign yarn_role_label = '編みもの道具'
+      elsif card_product.tags contains 'ギフトセット'
+        assign yarn_role_type = 'bundle'
+        assign yarn_role_label = 'ギフトセット'
+      endif
+
+      case request.locale.iso_code
+        when 'zh-CN', 'zh'
+          case yarn_role_type
+            when 'yarn'
+              assign yarn_role_label = '毛线'
+            when 'kit'
+              assign yarn_role_label = '编织套装'
+            when 'finished'
+              assign yarn_role_label = '成品'
+            when 'tool'
+              assign yarn_role_label = '工具'
+            when 'bundle'
+              assign yarn_role_label = '礼盒组合'
+          endcase
+        when 'en'
+          case yarn_role_type
+            when 'yarn'
+              assign yarn_role_label = 'Yarn'
+            when 'kit'
+              assign yarn_role_label = 'Project kit'
+            when 'finished'
+              assign yarn_role_label = 'Finished piece'
+            when 'tool'
+              assign yarn_role_label = 'Tools'
+            when 'bundle'
+              assign yarn_role_label = 'Gift set'
+          endcase
+      endcase
+    endif
+
     assign ratio = 1
     if card_product.featured_media and media_aspect_ratio == 'portrait'
       assign ratio = 0.8
@@ -165,6 +217,11 @@
               </a>
             </h3>
             <div class="card-information">
+              {%- if yarn_role_label != blank -%}
+                <span class="yarn-product-role yarn-product-role--{{ yarn_role_type }}">
+                  {{- yarn_role_label | escape -}}
+                </span>
+              {%- endif -%}
               {%- if show_vendor -%}
                 <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
                 <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
