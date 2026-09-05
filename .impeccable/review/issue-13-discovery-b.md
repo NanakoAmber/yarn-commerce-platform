@@ -25,15 +25,17 @@
 - [x] 390、1440、756 等尺寸截图已打开核对；日中英布局与关键操作回归。
 - [x] Theme Check 196 files / 0 error / 8 个既有 warning；6 个合约测试通过。
 - [x] 目标 detector 运行一次，59 项均 advisory；独立初审与整改 verdict 已完成。
-- [ ] DESIGN 从复核成品同步，保留未关闭 gate 边界。
+- [x] DESIGN 与 design.json 从复核成品同步，保留未关闭 gate 边界。
 - [ ] Comp-first 机械 gates 闭合（目前 plates=open，不强制通过）。
-- [ ] 新 PR 留证据、风险、未解决项与回滚方式。
+- [x] 新草稿 PR #18 留证据、风险、未解决项与回滚方式；未合并 / 发布。
 
 ## 当前验证与下一步
 
 本地预览：`http://127.0.0.1:9292/zh`；独立未发布主题：`189705093433`（Issue 13 - Discovery B）。正式店铺与 Issue #15 的主题未变。
 
-独立复核 disposition=fix；原 #2–#5 四项视觉整改均 resolved。实际 Shopify Tutu 包照片不同于生成示意图，plate 比对 38%，本轮 15/16 raster 比较通过而总 gate 仍失败；hero 与后续 phases 未闭合，没有 force，不生成假商品凑相似度。待用户查看实际 B 后确认此事实适配和下一步验收，不把页面能运行等同整页 Comp-first 完成。
+当前实现：https://github.com/NanakoAmber/yarn-commerce-platform/pull/18 。从该 PR、当前 surface brief 和本轮 review 可恢复，不依赖本地对话。
+
+独立复核 disposition=fix；原 #2–#5 四项视觉整改均 resolved，最终文档 verdict 确认 #6 resolved。仅 #1 未关闭：实际 Shopify Tutu 包照片不同于生成示意图，plate 比对 38%，本轮 15/16 raster 比较通过而总 gate 仍失败；hero 与后续 phases 未闭合，没有 force，不生成假商品凑相似度。待用户查看实际 B 后确认此事实适配和下一步验收，不把页面能运行等同整页 Comp-first 完成。
 
 外部普通预览链接经无登录上下文验证仍到店铺密码页；免密码分享验收未满足，不解除素材保护。自动化与实际浏览器证据见 `.impeccable/review/discovery-b-implementation-evidence.md`；原有购物车数量问题未在本轮改动。
 

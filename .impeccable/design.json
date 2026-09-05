@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-05T17:05:03Z",
+  "generatedAt": "2026-09-05T19:25:44.118Z",
   "title": "Design System: 毛线品牌",
   "extensions": {
     "colorMeta": {
@@ -76,7 +76,7 @@
       },
       "butter": {
         "role": "primary",
-        "displayName": "奶油黄",
+        "displayName": "奶油黄（继承动作）",
         "tonalRamp": [
           "oklch(15.00% 0.07938 92.59)",
           "oklch(26.43% 0.07938 92.59)",
@@ -90,7 +90,7 @@
       },
       "butter-action": {
         "role": "primary",
-        "displayName": "动作浅黄",
+        "displayName": "动作浅黄（保留组件）",
         "tonalRamp": [
           "oklch(15.00% 0.08200 92.31)",
           "oklch(26.43% 0.08200 92.31)",
@@ -132,7 +132,7 @@
       },
       "blush-surface": {
         "role": "secondary",
-        "displayName": "柔粉纸面",
+        "displayName": "柔粉纸面（旧图谱）",
         "tonalRamp": [
           "oklch(15.00% 0.01547 27.28)",
           "oklch(26.43% 0.01547 27.28)",
@@ -160,7 +160,7 @@
       },
       "mint-surface": {
         "role": "secondary",
-        "displayName": "薄荷纸面",
+        "displayName": "薄荷纸面（旧图谱）",
         "tonalRamp": [
           "oklch(15.00% 0.01085 149.86)",
           "oklch(26.43% 0.01085 149.86)",
@@ -174,7 +174,7 @@
       },
       "cream-surface": {
         "role": "secondary",
-        "displayName": "浅奶油纸面",
+        "displayName": "浅奶油纸面（旧图谱）",
         "tonalRamp": [
           "oklch(15.00% 0.03162 89.14)",
           "oklch(26.43% 0.03162 89.14)",
@@ -185,82 +185,126 @@
           "oklch(83.57% 0.03162 89.14)",
           "oklch(95.00% 0.03162 89.14)"
         ]
+      },
+      "discovery-ink": {
+        "role": "neutral",
+        "displayName": "发现炭黑",
+        "tonalRamp": [
+          "oklch(15.00% 0.00670 145.42)",
+          "oklch(26.43% 0.00670 145.42)",
+          "oklch(37.86% 0.00670 145.42)",
+          "oklch(49.29% 0.00670 145.42)",
+          "oklch(60.71% 0.00670 145.42)",
+          "oklch(72.14% 0.00670 145.42)",
+          "oklch(83.57% 0.00670 145.42)",
+          "oklch(95.00% 0.00670 145.42)"
+        ]
+      },
+      "selected-paper": {
+        "role": "secondary",
+        "displayName": "选中浅粉纸面",
+        "tonalRamp": [
+          "oklch(15.00% 0.01362 34.30)",
+          "oklch(26.43% 0.01362 34.30)",
+          "oklch(37.86% 0.01362 34.30)",
+          "oklch(49.29% 0.01362 34.30)",
+          "oklch(60.71% 0.01362 34.30)",
+          "oklch(72.14% 0.01362 34.30)",
+          "oklch(83.57% 0.01362 34.30)",
+          "oklch(95.00% 0.01362 34.30)"
+        ]
+      },
+      "selected-ink": {
+        "role": "primary",
+        "displayName": "选中暖墨",
+        "tonalRamp": [
+          "oklch(15.00% 0.09691 21.63)",
+          "oklch(26.43% 0.09691 21.63)",
+          "oklch(37.86% 0.09691 21.63)",
+          "oklch(49.29% 0.09691 21.63)",
+          "oklch(60.71% 0.09691 21.63)",
+          "oklch(72.14% 0.09691 21.63)",
+          "oklch(83.57% 0.09691 21.63)",
+          "oklch(95.00% 0.09691 21.63)"
+        ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "首屏展示标题",
-        "purpose": "宽屏首页主标题；自托管当前字符子集，不代表完整日文字库。"
+        "displayName": "B 首屏展示标题",
+        "purpose": "当前 B 宽屏主标题；采用 600 展示字，B 覆盖后字距为 0。"
       },
       "display-mobile": {
-        "displayName": "手机展示标题",
-        "purpose": "599 px 以下首页主标题。"
+        "displayName": "B 手机展示标题",
+        "purpose": "599 px 以下，26 px / 1.35；不再沿用旧首页 30 px。"
       },
-      "headline-atlas": {
-        "displayName": "图谱标题",
-        "purpose": "首屏分类图谱标题，字重轻于主标题。"
+      "headline-discovery": {
+        "displayName": "发现标题",
+        "purpose": "当前居中发现标题；源码请求 500 字重，中文字距 -0.01em 来自语言层叠。"
+      },
+      "title-work": {
+        "displayName": "作品名称",
+        "purpose": "真实 Product 名称；手机为 15 px，允许长标题继续换行。"
       },
       "body-zh": {
-        "displayName": "中文正文",
-        "purpose": "季节与帮助区重复使用的正文角色；使用当前中文系统字体栈。"
+        "displayName": "继承中文正文",
+        "purpose": "原有内容和帮助组件的正文角色；B 首屏说明另有实际响应式尺寸。"
+      },
+      "body-hero-mobile": {
+        "displayName": "B 手机主说明",
+        "purpose": "本 Theme 下为 14 px；不能将辅助计数尺度推广为正文。"
       },
       "label-flow": {
-        "displayName": "流程标签",
-        "purpose": "选择、购买、制作三步标签，采用400展示字。"
+        "displayName": "B 流程标签",
+        "purpose": "桌面 16 px / 400，手机 14 px；当前字符子集仅有 400 / 600 文件。"
+      },
+      "label-control": {
+        "displayName": "B 操作文字",
+        "purpose": "当前筛选、材料动作及手机分类、联系操作为 14 px。"
       }
     },
     "shadows": [
       {
-        "name": "flow-paper",
-        "value": "0 18px 46px rgba(127, 103, 82, 0.11)",
-        "purpose": "流程纸卡。"
+        "name": "flow-paper-b",
+        "value": "0 8px 20px rgba(127, 103, 82, 0.05)",
+        "purpose": "当前 B 流程纸面轻叠压。"
       },
       {
-        "name": "atlas-paper",
-        "value": "0 18px 50px rgba(127, 103, 82, 0.09)",
-        "purpose": "分类图谱纸卡。"
+        "name": "filter-overlay",
+        "value": "0 12px 28px rgba(103, 81, 68, 0.14)",
+        "purpose": "当前筛选展开面板覆盖作品结果时的深度。"
       },
       {
-        "name": "content-paper",
+        "name": "content-paper-retained",
         "value": "0 20px 54px rgba(112, 94, 73, 0.08)",
-        "purpose": "套件内容纸卡；季节透明度为0.07。"
-      },
-      {
-        "name": "category-lift",
-        "value": "0 15px 34px rgba(99, 82, 66, 0.12)",
-        "purpose": "分类hover和focus-visible。"
-      },
-      {
-        "name": "search-low",
-        "value": "0 8px 22px rgba(112, 94, 73, 0.05)",
-        "purpose": "搜索框的轻层。"
+        "purpose": "保留的旧独立套件卡；B 首页未显示。"
       }
     ],
     "motion": [
       {
         "name": "intro",
         "value": "620ms cubic-bezier(.16, 1, .3, 1)",
-        "purpose": "首屏入场，说明/流程/图谱分别延后90/170/260ms；减少动态偏好下关闭。"
+        "purpose": "当前首屏入场，说明 / 流程延后 90 / 170 ms；减少动态偏好下关闭。"
       },
       {
         "name": "thread-forward",
         "value": "520ms cubic-bezier(.16, 1, .3, 1)",
-        "purpose": "三步方向箭头；减少动态偏好下关闭。"
+        "purpose": "两支流程箭头，分别延后 520 / 700 ms；减少动态偏好下关闭。"
       },
       {
-        "name": "direction",
+        "name": "filter-caret",
+        "value": "160ms ease-out",
+        "purpose": "筛选展开箭头旋转；减少动态偏好下关闭 transition。"
+      },
+      {
+        "name": "retained-direction",
         "value": "260ms cubic-bezier(.16, 1, .3, 1)",
-        "purpose": "分类抬升及动作方向变化；已实现的减少动态规则并未覆盖全部卡片。"
-      },
-      {
-        "name": "action-color",
-        "value": "180ms ease",
-        "purpose": "宽幅与胶囊动作的背景变化。"
+        "purpose": "保留的旧分类 / 套件 / 季节方向变化；B 首页未显示这些旧 Section。"
       },
       {
         "name": "shared-control",
         "value": "140ms ease",
-        "purpose": "共享Rise按钮背景、边框、颜色与透明度变化。"
+        "purpose": "继承的 Rise 按钮背景、边框、颜色和透明度变化。"
       }
     ],
     "breakpoints": [
@@ -269,54 +313,77 @@
         "value": "599px"
       },
       {
-        "name": "stacked-content",
+        "name": "retained-stacked-content",
         "value": "749px"
       },
       {
-        "name": "collapsed-navigation",
+        "name": "collapsed-navigation-and-two-column-results",
         "value": "989px"
       }
     ]
   },
   "components": [
     {
-      "name": "宽幅主动作",
+      "name": "保留的宽幅主动作",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "来自分类图谱的暖黄动作面；展示片段只显示文字，现有字形箭头不作为新图标规范。",
+      "description": "已确认的旧图谱动作；B 首页不显示此入口，不能用面板示例要求重新加入。",
       "html": "<a class=\"ds-scope ds-primary\" href=\"#作品\">看看有哪些作品</a>",
       "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-primary{display:grid;min-height:72px;align-items:center;text-align:center;padding:16px clamp(24px,3.5vw,52px);border-radius:15px;background:var(--yarn-butter,#f8e5a9);color:#2c2e2c;font-size:28px;text-decoration:none;transition:background-color 180ms ease,transform 260ms cubic-bezier(.16,1,.3,1)}.ds-primary:hover{background:#f5dda0;transform:translateY(-2px)}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
     },
     {
-      "name": "套件胶囊动作",
+      "name": "保留的套件胶囊动作",
       "kind": "button",
       "refersTo": "button-pill",
-      "description": "来自真实套件卡，暖黄胶囊按钮；略去现有字形箭头。",
+      "description": "已确认的旧独立套件卡动作；B 首页已禁用该 Section，此片段保留继承规范。",
       "html": "<a class=\"ds-scope ds-pill\" href=\"#套件\">查看披肩套件</a>",
       "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-pill{display:inline-flex;min-height:52px;align-items:center;gap:22px;padding:0 24px;border-radius:999px;background:#f7e3a5;color:#292a28;font-size:14px;font-weight:600;text-decoration:none;transition:background-color 180ms ease,transform 260ms cubic-bezier(.16,1,.3,1)}.ds-pill:hover{background:#f2d987;transform:translateY(-2px)}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
     },
     {
-      "name": "季节文字入口",
-      "kind": "button",
-      "description": "来自季节 Inspiration 卡，细珊瑚下划线表达入口。",
-      "html": "<a class=\"ds-scope ds-season\" href=\"#季节\">查看秋冬作品</a>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-season{display:inline-flex;gap:8px;align-items:center;padding-bottom:5px;border-bottom:1px solid #d88276;color:#353633;font-size:14px;font-weight:600;text-decoration:none;transition:transform 260ms cubic-bezier(.16,1,.3,1)}.ds-season:hover{transform:translateX(5px)}@media(prefers-reduced-motion:reduce){.ds-season{transition:none}}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
-    },
-    {
-      "name": "发现搜索",
+      "name": "B 发现搜索",
       "kind": "input",
       "refersTo": "field-search",
-      "description": "首页桌面搜索的输入与内嵌提交控件；按钮无新增 hover 色，焦点来自现有共享规则。",
-      "html": "<div class=\"ds-scope ds-search\"><input type=\"search\" aria-label=\"搜索想做的作品或毛线\" placeholder=\"搜索想做的作品或毛线\"><button type=\"button\">搜索作品或材料</button></div>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-search{position:relative;display:flex;align-items:center;min-width:0;border:1px solid #ded7ce;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgba(112,94,73,.05)}.ds-search input{width:100%;height:46px;padding:0 124px 0 47px;border:0;border-radius:14px;outline:none;background:transparent;color:#2b2925;font:inherit;font-size:14px}.ds-search input:focus-visible{outline:2px solid #d88276;outline-offset:-2px}.ds-search button{position:absolute;right:4px;min-width:104px;height:38px;padding:0 16px;border:0;border-radius:10px;background:#f7e3a5;color:#292a28;cursor:pointer;font:inherit;font-size:12px}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+      "description": "当前暖白圆角搜索与右端 SVG 提交入口；没有旧暖黄文字提交按钮或搜索阴影。",
+      "html": "<div class=\"ds-scope ds-search\"><input type=\"search\" aria-label=\"搜索想做的作品\" placeholder=\"搜索想做的作品\"><button type=\"button\" aria-label=\"搜索\"><svg fill=\"none\" viewBox=\"0 0 18 19\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M11.03 11.68A5.784 5.784 0 1 1 2.85 3.5a5.784 5.784 0 0 1 8.18 8.18m.26 1.12a6.78 6.78 0 1 1 .72-.7l5.4 5.4a.5.5 0 1 1-.71.7z\" clip-rule=\"evenodd\"/></svg></button></div>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-search{position:relative;width:min(680px,100%);color:#303330}.ds-search input{width:100%;min-height:48px;padding:12px 48px 12px 18px;border:1px solid #dfdfd5;border-radius:12px;background:var(--yarn-surface,#fffefa);font:inherit;font-size:15px;caret-color:#9e5554}.ds-search input::placeholder{color:#636c67;opacity:1}.ds-search button{position:absolute;top:0;right:3px;width:44px;height:48px;padding:12px;border:0;background:transparent;color:inherit;cursor:pointer}.ds-search svg{width:20px;height:20px}.ds-scope:focus-visible,.ds-scope :is(button,a,input,select):focus-visible{outline:2px solid #597f88;outline-offset:4px;box-shadow:none}"
     },
     {
-      "name": "筛选下拉",
+      "name": "B 筛选与展开面板",
       "kind": "input",
       "refersTo": "field-filter",
-      "description": "真实 select 的默认与已激活外观；并非可切换芯片组件。片段展示源代码已有两种状态。",
-      "html": "<div class=\"ds-scope ds-filters\"><select aria-label=\"商品类型\"><option>商品类型</option><option>套件</option></select><select class=\"ds-selected\" aria-label=\"已选商品类型\"><option>套件</option></select></div>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.ds-filters select{min-height:44px;padding:0 34px 0 16px;border:1px solid #ded7ce;border-radius:999px;background-color:var(--yarn-surface,#fffefa);color:#2b2925;cursor:pointer;font:inherit;font-size:12px}.ds-filters select.ds-selected{border-color:#d88276;background-color:#faecea;color:#7f4b43}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+      "description": "当前自定义触发器与已展开菜单的状态示例；真实页面提供键盘、选中、数量和关闭行为，片段只展示外观。",
+      "html": "<div class=\"ds-scope ds-filter\"><button class=\"ds-trigger\" type=\"button\" aria-expanded=\"true\"><span>不限季节</span><svg viewBox=\"0 0 10 6\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708\" clip-rule=\"evenodd\"/></svg></button><div class=\"ds-options\" role=\"group\" aria-label=\"季节\"><button type=\"button\" aria-pressed=\"true\"><span>不限季节</span></button><button type=\"button\" aria-pressed=\"false\"><span>春季</span></button><button type=\"button\" aria-pressed=\"false\"><span>夏季</span></button><button type=\"button\" aria-pressed=\"false\"><span>秋冬</span></button></div></div>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-filter{position:relative;min-width:210px;max-width:280px;padding-bottom:208px;color:#303330}.ds-trigger{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:44px;padding:10px 13px;border:1px solid #deded5;border-radius:11px;background:var(--yarn-surface,#fffefa);font:inherit;font-size:14px;text-align:left;cursor:pointer}.ds-trigger svg{width:11px;height:8px;transition:transform 160ms ease-out}.ds-trigger[aria-expanded=true]{border-color:#cb9690;background:#fcf0ed}.ds-trigger[aria-expanded=true] svg{transform:rotate(180deg)}.ds-options{position:absolute;top:50px;left:0;width:100%;padding:8px;border:1px solid #e5dcd4;border-radius:13px;background:var(--yarn-surface,#fffefa);box-shadow:0 12px 28px rgba(103,81,68,.14)}.ds-options button{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:44px;padding:10px 12px 10px 30px;border:0;border-radius:7px;background:none;color:inherit;font:inherit;font-size:14px;text-align:left;cursor:pointer}.ds-options button:hover{background:#f5f0e8}.ds-options button[aria-pressed=true]{background:#f8e7e2;color:#874e4c}.ds-options button[aria-pressed=true]::before{content:'';position:absolute;left:12px;top:16px;width:6px;height:10px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}@media(prefers-reduced-motion:reduce){.ds-trigger svg{transition:none}}.ds-scope:focus-visible,.ds-scope :is(button,a,input,select):focus-visible{outline:2px solid #597f88;outline-offset:4px;box-shadow:none}"
+    },
+    {
+      "name": "B 商品类型",
+      "kind": "nav",
+      "description": "真实按钮组的文字与选中下划线；不添加胶囊或营销卡。",
+      "html": "<div class=\"ds-scope ds-types\" role=\"group\" aria-label=\"商品类型\"><button type=\"button\" aria-pressed=\"true\">作品套件</button><button type=\"button\" aria-pressed=\"false\">毛线</button><button type=\"button\" aria-pressed=\"false\">工具</button></div>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-types{display:flex;gap:clamp(32px,9vw,90px);border-bottom:1px solid #e5e2db;color:#303330}.ds-types button{position:relative;min-height:48px;padding:8px 4px 12px;border:0;background:none;color:inherit;font:inherit;font-size:16px;cursor:pointer}.ds-types button[aria-pressed=true]{color:#9e5554}.ds-types button[aria-pressed=true]::after{content:'';position:absolute;inset:auto 0 0;height:2px;background:#d28c86}.ds-scope:focus-visible,.ds-scope :is(button,a,input,select):focus-visible{outline:2px solid #597f88;outline-offset:4px;box-shadow:none}"
+    },
+    {
+      "name": "材料套件身份标签",
+      "kind": "chip",
+      "refersTo": "kit-label",
+      "description": "实际套件商品才显示的静态身份标签；不表示难度、促销或库存，没有伪造交互状态。",
+      "html": "<span class=\"ds-scope ds-kit-label\">材料套件</span>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-kit-label{display:inline-block;padding:3px 6px;border:1px solid #f1d5d0;border-radius:5px;background:#fcf0ed;color:#94514c;font-size:12px}"
+    },
+    {
+      "name": "B 作品卡文字区",
+      "kind": "card",
+      "description": "来自实际作品卡的标题、标签和文字动作；只展示文字区，不嵌入未授权 Product 图，不替代完整商品照片。",
+      "html": "<article class=\"ds-scope ds-work\"><a href=\"#材料\"><h3>花火镂空披肩套装</h3><div class=\"ds-meta\"><span class=\"ds-kit-label\">材料套件</span><span class=\"ds-action\">查看材料<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 14 10\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></span></div></a></article>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-work{max-width:280px;color:#303330}.ds-work a{display:block;color:inherit;text-decoration:none}.ds-work h3{margin:12px 0 8px;min-height:2.9em;font-family:var(--yarn-display,'Yarn Display','Noto Sans SC',sans-serif);font-size:16.5px;font-weight:500;line-height:1.45;letter-spacing:-.01em;overflow-wrap:anywhere}.ds-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 8px;color:#696b61;font-size:12px}.ds-kit-label{padding:3px 6px;border:1px solid #f1d5d0;border-radius:5px;background:#fcf0ed;color:#94514c}.ds-action{display:inline-flex;align-items:center;gap:10px;min-height:30px;color:#343d35;font-size:14px}.ds-action svg{width:16px;height:16px}.ds-work a:hover h3{text-decoration:underline;text-underline-offset:4px}@media(max-width:599px){.ds-work h3{font-size:15px}.ds-meta{gap:0}}.ds-scope:focus-visible,.ds-scope :is(button,a,input,select):focus-visible{outline:2px solid #597f88;outline-offset:4px;box-shadow:none}"
+    },
+    {
+      "name": "B 紧凑帮助文字区",
+      "kind": "card",
+      "refersTo": "card-help",
+      "description": "当前帮助条的浅蓝纸面、标题和联系动作；真实页面左侧为线团问号 raster，面板省略该受来源管理的图像，未配置 LINE 主链接。",
+      "html": "<aside class=\"ds-scope ds-help\"><h2>选材料拿不准？</h2><a href=\"#联系\">问问我们<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 14 10\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></a></aside>",
+      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-help{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:110px;padding:24px 30px;border:0;border-radius:16px;background:#edf5f7;box-shadow:none}.ds-help h2{margin:0;color:#292b29;font-size:20px;font-weight:500;line-height:1.4;letter-spacing:-.01em}.ds-help a{display:inline-flex;align-items:center;gap:14px;min-height:44px;padding:8px 0;color:#343d3c;font-size:15px;text-decoration:none}.ds-help a svg{width:16px;height:16px}.ds-help a:hover{text-decoration:underline;text-underline-offset:5px}@media(max-width:599px){.ds-help{min-height:90px;padding:18px 16px;gap:12px}.ds-help h2{font-size:16px}.ds-help a{font-size:14px;gap:8px}}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
     },
     {
       "name": "文字导航",
@@ -324,56 +391,49 @@
       "description": "桌面顶栏文字链接的实际字色、字距与 hover / focus；临时字标和菜单布局不纳入可复用片段。",
       "html": "<nav class=\"ds-scope ds-nav\" aria-label=\"商品导航\"><a href=\"#新品\"><span>新品</span></a><a href=\"#毛线\"><span>毛线</span></a><a href=\"#工具\"><span>工具与针具</span></a></nav>",
       "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-nav{display:flex;align-items:center;background:var(--yarn-surface,#fffefa);border-bottom:1px solid var(--yarn-line,#e4dfd7)}.ds-nav a{padding:12px 8px;color:var(--yarn-ink,#2f302f);font-size:15px;font-weight:400;letter-spacing:.02em;text-decoration:none}.ds-nav a:hover span,.ds-nav a:focus-visible span{color:var(--yarn-indigo,#426f82);text-decoration:underline;text-decoration-color:#d96f67;text-underline-offset:6px}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
-    },
-    {
-      "name": "内容纸卡",
-      "kind": "card",
-      "refersTo": "card-content",
-      "description": "套件纸卡的表面与文字区；示例不嵌入受限制的参考商品图片，不代表完整套件卡。静态容器没有新增交互状态。",
-      "html": "<article class=\"ds-scope ds-card\"><div class=\"ds-copy\"><h2>一团线，织一条花火披肩。</h2><p>这款披肩套件附图解与视频，先看看制作方法，再判断是否适合自己。</p></div></article>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-card{overflow:hidden;border:1px solid rgba(177,166,149,.24);border-radius:28px;background:var(--yarn-surface,#fffefa);box-shadow:0 20px 54px rgba(112,94,73,.08);color:var(--yarn-ink,#2f302f)}.ds-copy{padding:clamp(44px,6vw,86px)}.ds-copy h2{max-width:10em;margin:0;font-size:clamp(36px,4.4vw,62px);font-weight:500;line-height:1.22}.ds-copy p{max-width:390px;font-size:15.5px;line-height:1.85}@media(max-width:599px){.ds-card{border-radius:20px}.ds-copy{padding:30px 24px 34px}}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
     }
   ],
   "narrative": {
     "northStar": "编织图解图谱",
-    "overview": "暖白纸面承接真实织物，粉红、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心，奶油黄标记行动。针目轮廓、细线图标与线团花枝让界面有手作温度；柔和色彩与清楚字重共同避免儿童手工网站的观感。\n\n本规范从 2026-09-05 已实现并经独立复核的首页提取。范围是首页定制系统及已存在的共享样式；商品详情、购物车、结账入口仍继承 Rise 骨架，不能据此视为已完成相同深度的改版。首页构图与模块顺序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。当前“毛线工作室”是临时字标，不是正式品牌资产。",
+    "overview": "暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。针目轮廓、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄延续为已有动作色；作品先行 B 的主要操作实际采用文字、细线和浅粉选中态，不要求每个入口都铺暖黄按钮。\n\n本次为合并刷新：保留已确认的视觉世界与共享购买骨架规范，从 2026-09-05 已实现的首页 B 和整改后截图提取当前首页事实。B 的帮助图标、套件标签、暖白纸面和移动可读性已通过独立局部整改复核；整页 Comp-first 流程仍未闭合，本文不授予 ship，也不代表商品详情、购物车或整个网站完成同等深度的视觉验收。首页三主区域与次序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。\n\n当前仅为受保护内部预览。普通外部 Theme 预览仍进入 `/zh/password`，店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。中文“毛线工作室”与其他语言的临时字标均不是正式品牌资产。\n\n提取依据为 `templates/index.json`、首屏与 B 样式覆盖、一体化作品发现 Section / CSS / JS、作品卡片 snippet、紧凑帮助 Section 和 `assets/yarn-prototype.css`。视觉依据为 `.impeccable/review/desktop.png`、`mobile.png`、`user-756.png` 及三张同名 `-filter-open.png`；方向为 `.impeccable/mocks/discovery-b-zh.png`。独立 [finish review](.impeccable/review/discovery-b-finish-review.md) 与 [verdict](.impeccable/review/discovery-b-finish-verdict.md) 仍记录 `plates=open`、`gate.ok=false`、后续 phases pending；真实 Tutu Product 照片适配不能被写成机械 gate 已通过。文档提取完成不自动关闭这些状态。",
     "keyCharacteristics": [
-      "暖纸底、浅色分类面与炭黑正文形成稳定层级。",
+      "暖白底、浅色分类面与炭黑正文形成稳定层级。",
       "真实织物和完整针目轮廓共同表达材料与作品。",
-      "展示标题有重量，流程标签保持较轻，正文留足行距。",
-      "大内容纸卡使用柔圆角与扩散阴影，购物控件保留紧凑尺度。",
-      "简体中文、日文、英文的文字保持可编辑，图像承担材质与图解。"
+      "展示标题有重量，流程标签较轻，手机主说明与主要操作保持可读。",
+      "流程纸面轻叠压，发现结果平铺，帮助条使用柔蓝浅面。",
+      "简体中文、日文、英文文案保持可编辑，图像承担材质与图解。"
     ],
     "rules": [
       {
-        "name": "The 暖黄行动 Rule",
-        "body": "在已实现首页中，用暖黄建立清楚的动作面，用深色文字保持可读；分类浅色不能被误用为价格、热度或难度的事实证明。",
+        "name": "The 颜色说明角色 Rule",
+        "body": "浅色面与暖色强调用于分类、选中和动作层级；它们不构成价格、热度、难度或库存的事实证明。",
         "section": "colors"
       },
       {
         "name": "The 标题与正文分工 Rule",
-        "body": "自托管展示字服务首屏识别，正文优先语言覆盖与阅读；不得把现有中文系统正文误判为展示字体已经覆盖所有区域。",
+        "body": "自托管展示字服务标题识别，正文优先语言覆盖与阅读；字体来源、声明字重和实际覆盖范围分别核实。",
         "section": "typography"
       },
       {
         "name": "The 柔纸叠层 Rule",
-        "body": "延续已有的低透明度扩散阴影与浅面差；不能把这种世界改写为硬偏移投影，也不能规定所有卡片必须无阴影。",
+        "body": "深度来自浅面差与低透明度扩散阴影；按实际角色区分平铺内容和覆盖面板，不把旧大卡阴影施加到所有新内容上。",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** 以暖纸、柔色分类面、炭黑文字和奶油黄动作延续已批准的视觉世界。",
+      "**Do** 以暖白纸面、柔色分类面、炭黑文字和细线语言延续已批准的视觉世界。",
       "**Do** 让针目轮廓完整、标签独立可读，并让装饰避开正文。",
-      "**Do** 保留真实照片、细线图解与可编辑的三语 HTML 文案各自的职责。",
-      "**Do** 在新增文案后检查字体子集覆盖、三语断行与手机焦点和触控路径。",
-      "**Do** 从对应 surface brief 决定页面构图，从本规范复用已经实现的材料、字体角色和组件语言。"
+      "**Do** 保留真实 Product 照片与标题、装饰图解和可编辑三语 HTML 文案各自的职责。",
+      "**Do** 在新增文案后检查字体覆盖、三语断行、手机可读性、焦点和触控路径。",
+      "**Do** 从对应 surface brief 决定构图，从本规范复用已实现的材料、字体角色和组件语言。"
     ],
     "donts": [
       "**Don't** 将普通商品网格主导的电商首屏或 Hoshiami 仿站作为本首页的视觉方向。",
-      "**Don't** 把临时彩色字标、参考商品图、图上品牌字样当作已授权正式品牌系统。",
-      "**Don't** 将当前商品演示目录包装为已建成的 Project / Tutorial 库，或虚构热度、难度、销量与完成时长。",
-      "**Don't** 将字形箭头、遗留 eyebrow 样式、单处定位补偿或未复核的购买页面状态升级为可复用视觉规则。",
-      "**Don't** 把视觉整改的 ship、组件展示片段或本文档当作真实交易与正式发布的验收凭据。"
+      "**Don't** 把临时字标、参考商品图、图上品牌或色数文字当作已授权正式品牌资产。",
+      "**Don't** 为匹配 comp 颜色生成假商品照片、修改商品名称，或将演示目录冒充独立 Project / Tutorial 库。",
+      "**Don't** 将字形箭头、遗留 eyebrow 样式、单处定位补偿、辅助极小文字或未复核的购买页面状态升级为全站规范。",
+      "**Don't** 将首页三主区域、四个分类或两列移动图库强推为其他 surface 的固定模板。",
+      "**Don't** 把局部整改复核、本文档或面板组件片段当作 Comp-first 全部 gate、免密码访客分享、素材授权或正式发布已通过的凭据。"
     ]
   }
 }
