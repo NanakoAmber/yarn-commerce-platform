@@ -1,0 +1,178 @@
+name: Shopify PR Preview
+
+on:
+  pull_request:
+    branches:
+      - main
+      - production
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shopify-pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    if: >-
+      github.event.action != 'closed' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    environment:
+      name: shopify-pr-${{ github.event.pull_request.number }}
+      url: ${{ steps.deploy.outputs.preview_url }}
+    env:
+      SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+      SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
+      THEME_NAME: PR-${{ github.event.pull_request.number }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check preview configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${SHOPIFY_CLI_THEME_TOKEN}" ]]; then
+            echo "Missing repository secret: SHOPIFY_CLI_THEME_TOKEN" >&2
+            exit 1
+          fi
+          if [[ -z "${SHOPIFY_FLAG_STORE}" ]]; then
+            echo "Missing repository variable: SHOPIFY_FLAG_STORE" >&2
+            exit 1
+          fi
+
+      - name: Verify theme
+        run: npm run verify
+
+      - name: Create or update unpublished preview theme
+        id: deploy
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          themes_json="$(npx shopify theme list --role unpublished --name "${THEME_NAME}" --json)"
+          theme_id="$(jq -r --arg name "${THEME_NAME}" '[.[] | select(.name == $name)][0].id // empty' <<<"${themes_json}")"
+
+          if [[ -n "${theme_id}" ]]; then
+            deploy_json="$(npx shopify theme push --theme "${theme_id}" --strict --json)"
+          else
+            deploy_json="$(npx shopify theme push --unpublished --theme "${THEME_NAME}" --strict --json)"
+          fi
+
+          preview_url="$(jq -r '.theme.preview_url // empty' <<<"${deploy_json}")"
+          theme_id="$(jq -r '.theme.id // empty' <<<"${deploy_json}")"
+
+          if [[ -z "${preview_url}" || -z "${theme_id}" ]]; then
+            echo "Shopify CLI did not return a preview URL and theme ID." >&2
+            exit 1
+          fi
+
+          echo "preview_url=${preview_url}" >>"${GITHUB_OUTPUT}"
+          echo "theme_id=${theme_id}" >>"${GITHUB_OUTPUT}"
+          {
+            echo "## Shopify PR 预览"
+            echo
+            echo "- 未发布主题：\`${THEME_NAME}\`"
+            echo "- [打开预览](${preview_url})"
+            echo "- 本次提交：\`${GITHUB_SHA}\`"
+          } >>"${GITHUB_STEP_SUMMARY}"
+
+      - name: Add preview link to pull request
+        uses: actions/github-script@v7
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.preview_url }}
+        with:
+          script: |
+            const marker = '<!-- shopify-pr-preview -->';
+            const body = [
+              marker,
+              '## Shopify PR 预览',
+              '',
+              `✅ 当前提交已部署到未发布主题 [${process.env.THEME_NAME}](${process.env.PREVIEW_URL})。`,
+              '',
+              `- 提交：\`${context.sha}\``,
+              '- PR 更新时会原地刷新；关闭 PR 后会自动删除该未发布主题。',
+              '- 这个流程不会发布或修改线上主题。',
+            ].join('\n');
+
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number,
+              per_page: 100,
+            });
+            const existing = comments.find(
+              (comment) => comment.user?.type === 'Bot' && comment.body?.includes(marker),
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
+
+  cleanup:
+    if: >-
+      github.event.action == 'closed' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+      SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
+      THEME_NAME: PR-${{ github.event.pull_request.number }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Delete unpublished preview theme
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          themes_json="$(npx shopify theme list --role unpublished --name "${THEME_NAME}" --json)"
+          theme_id="$(jq -r --arg name "${THEME_NAME}" '[.[] | select(.name == $name)][0].id // empty' <<<"${themes_json}")"
+
+          if [[ -z "${theme_id}" ]]; then
+            echo "No unpublished preview theme named ${THEME_NAME}; nothing to delete."
+            exit 0
+          fi
+
+          npx shopify theme delete --theme "${theme_id}" --force
