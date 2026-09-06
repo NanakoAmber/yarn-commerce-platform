@@ -12,7 +12,7 @@
   <a class="yp-back" href="{{ routes.root_url }}#shop-by-project">{{ 'yarn_project.back' | t }}</a>
   {% if visible == 'true' %}
     <div class="yp-intro">
-      <div class="yp-cover">{{ project.cover.value | image_url: width: 1400 | image_tag: widths: '390, 600, 900, 1400', sizes: '(min-width: 990px) 560px, 100vw', loading: 'eager', fetchpriority: 'high', alt: project.title.value }}</div>
+      <div class="yp-cover{% if project.cover.value == blank %} yp-cover--placeholder{% endif %}">{% if project.cover.value != blank %}{{ project.cover.value | image_url: width: 1400 | image_tag: widths: '390, 600, 900, 1400', sizes: '(min-width: 990px) 560px, 100vw', loading: 'eager', fetchpriority: 'high', alt: project.title.value }}{% endif %}</div>
       <header class="yp-title">
         <h1>{{ project.title.value | escape }}</h1>
         {% if project.summary.value != blank %}<p class="yp-summary">{{ project.summary.value | escape | newline_to_br }}</p>{% endif %}
@@ -22,7 +22,6 @@
           {% if project.time_minutes.value != blank %}<div><dt>{{ 'yarn_project.time' | t }}</dt><dd>{{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</dd></div>{% endif %}
           {% if project.hook_size.value != blank %}<div><dt>{{ 'yarn_project.hook_size' | t }}</dt><dd>{{ project.hook_size.value | escape }}</dd></div>{% endif %}
         </dl>
-        {% if project.release_scope.value == '仅内部原型' %}<p class="yp-notice"><strong>{{ 'yarn_project.internal' | t }}</strong><br>{{ 'yarn_project.internal_note' | t }}</p>{% endif %}
         <nav class="yp-jump" aria-label="{{ 'yarn_project.prepare' | t }}"><a href="#ProjectPrepare">{{ 'yarn_project.prepare' | t }}</a>{% if project.finished_products.value != blank %}<a href="#ProjectFinished">{{ finished_label | t }}</a>{% endif %}{% if project.customization_enabled.value %}<a href="#ProjectCustom">{{ 'yarn_project.customize' | t }}</a>{% endif %}</nav>
       </header>
     </div>

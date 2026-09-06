@@ -69,16 +69,16 @@
 | 花片双拼小袋｜内部示例 | `279382294841` | `demo-granny-pouch` | `/pages/projects/demo-granny-pouch` |
 | 花片盖毯 | `279382851897` | `demo-flower-blanket` | `/pages/projects/demo-flower-blanket` |
 
-三条 Entry 均已保存中文名称，Shopify 平台展示状态目前为 Active，`release_scope` 仍为 `仅内部原型`。上述路径由当前 Handle 推导，仅作内容接线记录，不能作为前台可访问、已验收或业务 ready 的证明。独立 `curl` 访问仍被店铺密码拦截。
+三条 Entry 均已保存中文名称，Shopify 平台展示状态目前为 Active，`release_scope` 仍为 `仅内部原型`。团队演示期间，具有标题的记录会在 live Theme 中展示；上述路径由当前 Handle 推导，仅作内容接线记录，不代表材料、教程、版权或业务 ready 已获确认。
 
 Shopify 的 Active / Draft 是平台提供的展示开关；`release_scope` 是独立的业务门槛。两者不能合并为同一种状态：
 
-- `仅内部原型` 只允许在密码保护的店铺与未发布 Theme 中演示，并且必须显式开启 Theme setting `settings.yarn_internal_projects`。该设置默认值为 `false`，不能替代密码保护。
+- 团队演示期间，Theme setting `settings.yarn_internal_projects` 默认开启并展示所有具有标题的 Project；正式上线前关闭它，才恢复已核实公开作品的完整性检查。
 - `已核实可公开` 只用于严格核实过的作品。至少需要有效的 `title`、单张 `cover`、`preparation`，以及来源与教程内容（`source_credit` 配合 `tutorial`、`tutorial_url` 或 `video_url`）。字段存在不等于内容已经通过实物、版权、材料适配或发布复核。
 
 这套门槛不是权限系统。Metaobject、Product 或 File CDN 中不能存放秘密、凭证、私人资料或依赖“页面没有链接就看不到”的内容。
 
-未发布 Theme `189727637817` 当前已开启 `settings.yarn_internal_projects`，定制咨询发送仍关闭。菜单 `318482252089`（handle `issue-23`）只绑定该未发布 Theme；首页 `metaobject_list` 当前按“方形篮 → 花片双拼小袋｜内部示例”的顺序选择两条精选。这里记录的是后台配置，不代表商品编辑或咨询收件已经验收。
+live Theme `189727637817` 当前已开启 `settings.yarn_internal_projects`，定制咨询发送仍关闭。菜单 `318482252089`（handle `issue-23`）当前用于团队演示；首页 `metaobject_list` 当前按“方形篮 → 花片双拼小袋｜内部示例”的顺序选择两条精选。这里记录的是后台配置，不代表商品编辑或咨询收件已经验收。
 
 ## 教程与商品编辑规则
 

@@ -11,27 +11,29 @@ const products = read('snippets/yarn-project-products.liquid');
 const projectCss = read('assets/yarn-project.css');
 const settingsSchema = JSON.parse(read('config/settings_schema.json').replace(/\/\*[\s\S]*?\*\//g, ''));
 
-test('detail, library and card share the same fail-closed visibility gate', () => {
+test('detail, library and card share the reversible team-demo visibility gate', () => {
   for (const [name, source] of Object.entries({ detail, library, card })) {
     assert.match(source, /render 'yarn-project-visible', project: project/, `${name} must use yarn-project-visible`);
   }
-  assert.match(visible, /project\.release_scope\.value == '仅内部原型' and settings\.yarn_internal_projects/);
+  assert.match(visible, /if settings\.yarn_internal_projects/);
   assert.match(visible, /project\.release_scope\.value == '已核实可公开'/);
   for (const requiredField of ['project.preparation.value', 'project.source_credit.value']) {
     assert.ok(visible.includes(`${requiredField} != blank`), `${requiredField} must be required for public visibility`);
   }
   assert.match(visible, /project\.tutorial\.value != blank or project\.tutorial_url\.value != blank or project\.video_url\.value != blank/);
-  assert.doesNotMatch(visible, /release_scope[^\n|]*\|\s*default|release_scope\.value\s*==\s*blank/);
+  assert.doesNotMatch(visible, /project\.cover\.value != blank/);
 });
 
-test('internal visibility and contact sending are fail-closed theme settings', () => {
+test('team-demo visibility is on by default while contact sending stays off', () => {
   const allSettings = settingsSchema.flatMap((group) => group.settings || []);
-  for (const id of ['yarn_internal_projects', 'yarn_customization_contact_enabled']) {
-    const setting = allSettings.find((candidate) => candidate.id === id);
-    assert.ok(setting, `${id} setting missing`);
-    assert.equal(setting.type, 'checkbox');
-    assert.equal(setting.default, false);
-  }
+  const demoVisibility = allSettings.find((candidate) => candidate.id === 'yarn_internal_projects');
+  assert.ok(demoVisibility, 'yarn_internal_projects setting missing');
+  assert.equal(demoVisibility.type, 'checkbox');
+  assert.equal(demoVisibility.default, true);
+  const contactSending = allSettings.find((candidate) => candidate.id === 'yarn_customization_contact_enabled');
+  assert.ok(contactSending, 'yarn_customization_contact_enabled setting missing');
+  assert.equal(contactSending.type, 'checkbox');
+  assert.equal(contactSending.default, false);
 });
 
 test('project cards link to the Project URL rather than a referenced Product', () => {

@@ -17,12 +17,11 @@
   data-made-for="{{ project.made_for.value | escape }}" data-holiday="{{ project.holiday.value | escape }}"
   data-hook-size="{{ project.hook_size.value | escape }}">
   <a class="yp-card__link" href="{{ project.system.url }}">
-    <div class="yp-card__image">{{ project.cover.value | image_url: width: 800 | image_tag: loading: 'lazy', widths: '240, 400, 600, 800', sizes: '(min-width: 990px) 280px, 46vw', alt: project.title.value }}</div>
+    <div class="yp-card__image">{% if project.cover.value != blank %}{{ project.cover.value | image_url: width: 800 | image_tag: loading: 'lazy', widths: '240, 400, 600, 800', sizes: '(min-width: 990px) 280px, 46vw', alt: project.title.value }}{% endif %}</div>
     <h3>{{ project.title.value | escape }}</h3>
     <div class="yp-card__facts">
       {% if project.difficulty.value != blank %}<span>{% render 'yarn-project-label', value: project.difficulty.value %}</span>{% endif %}
       {% if project.time_minutes.value != blank %}<span>{{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</span>{% endif %}
-      {% if project.release_scope.value == '仅内部原型' %}<span class="yp-internal">{{ 'yarn_project.internal' | t }}</span>{% endif %}
     </div>
   </a>
 </article>

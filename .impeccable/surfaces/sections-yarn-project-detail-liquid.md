@@ -15,7 +15,7 @@ related_targets: ["assets/yarn-project.css", "templates/metaobject/yarn_project.
 - Composition: 手机单列顺读，桌面作品图与介绍两列；准备、教程、成品和定制下接。信息以细分隔线与留白组织，不堆叠嵌套卡片。
 - Data: 同一 Shopify yarn_project 记录；价格库存与可售配置从真实 Product 读取。没有证据的耗时、用量与适配不补造。
 - Behavior: 外部教程明确跳转；图文渐进展开；工具自愿选购；成品与材料路径分开；咨询不下单、不收费。
-- Safety: 默认隐藏仅内部原型记录，只有未发布主题显式打开演示开关才展示；未开放页面给出返回路径。
+- Team demo: 当前已发布主题打开演示模式，展示所有有标题的作品；正式上线前关闭该模式，恢复已核实公开作品的完整性检查。
 - Finish: 需真实双端、三语、后台修改、购买入口与独立 finish review；本 brief 不是完工证明。
 
 ## Direction contract
