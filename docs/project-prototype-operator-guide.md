@@ -6,7 +6,7 @@
 
 - 只在密码保护的店铺和未发布 Theme 中演示 `release_scope = 仅内部原型` 的作品。
 - Metaobject 的 Active 只是 Shopify 平台展示状态，不代表材料、教程、版权、语言或商品已经达到公开标准。
-- 未发布 Theme `189727637817` 的内部作品开关当前已开启；定制咨询发送保持关闭。接收位置与通知方式尚未验证，不要发送测试咨询。
+- 未发布 Theme `189727637817` 的内部作品开关当前已开启；定制咨询发送保持关闭。接收目标已在后台核对，但实际收件尚未获准测试，不要发送测试咨询。
 - 不发布 Theme、不提交订单、不修改真实价格或库存。不要把秘密、凭证或私人资料放入 Metaobject、Product、Theme 或 File CDN。
 
 ## 新建 Project
@@ -45,6 +45,15 @@
 - 菜单 ID `318482252089`、handle `issue-23` 只绑定未发布 Theme `189727637817`。编辑时确认目标仍是这份菜单，不要替换线上 Theme 的主菜单。
 - 菜单项指向作品路径时使用保存后的 ASCII Handle，例如 `/pages/projects/demo-square-basket`。先在受保护预览中检查目标；路径能保存不表示页面已经通过前台验收。
 - 新增、删除或重排菜单不会自动证明桌面、移动端和三语标签一致，相关浏览器复核仍需单独执行。
+
+## 翻译与保存确认
+
+- 在作品 Entry 的页面操作中打开“翻译”，使用 Shopify Translate & Adapt 维护 `Title`、`Summary`、`Preparation`、`Tutorial` 和 `Source credit`。中文原文只在 Entry 编辑，译文放在对应语言列，不粘进原文。
+- 不翻译 `Category`、`Difficulty`、`Release scope` 等稳定枚举，也不翻译 `Hook size` 或 URL；枚举的前台标签由 Theme locale 负责。改变内部范围值会破坏作品展示门槛。
+- 富文本译文保留真实 H3 和段落结构。输入后移出字段，再点保存；重新加载确认值仍存在。只看到输入内容或“已保存”提示不充分：本轮遇到过 Summary / Tutorial 没有触发有效保存的情况。
+- 菜单翻译逐行核对“中文原文 → 译文 → 前台目标链接”。菜单标题与四个导航项是不同字段，不能按输入框序号批量错位填入。
+- 首页标题的翻译在 Translate & Adapt 的“模板”中选择 **Issue 23 - Project prototype**，只编辑 `Project Discovery: Featured Heading`。工具默认可能选中线上 Theme，保存前务必核对目标。
+- 保存英文译文不等于启用英文；当前三条内部作品已有五个叙述字段的英文译文，仍需授权发布语言后才能验证真实英文路径。
 
 ## 当前不能代为确认的事项
 
