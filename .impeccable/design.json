@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-05T19:25:44.118Z",
+  "generatedAt": "2026-09-06T20:24:00Z",
   "title": "Design System: 毛线品牌",
   "extensions": {
     "colorMeta": {
@@ -246,6 +246,10 @@
         "displayName": "作品名称",
         "purpose": "真实 Product 名称；手机为 15 px，允许长标题继续换行。"
       },
+      "title-project-mobile": {
+        "displayName": "Project 手机标题",
+        "purpose": "749 px 以下为 2.4rem / 1.3，完整显示真实 Project 名称；依宿主根字号缩放，不固定换算为 px。"
+      },
       "body-zh": {
         "displayName": "继承中文正文",
         "purpose": "原有内容和帮助组件的正文角色；B 首屏说明另有实际响应式尺寸。"
@@ -313,7 +317,7 @@
         "value": "599px"
       },
       {
-        "name": "retained-stacked-content",
+        "name": "project-cart-stacked-content",
         "value": "749px"
       },
       {
@@ -391,17 +395,32 @@
       "description": "桌面顶栏文字链接的实际字色、字距与 hover / focus；临时字标和菜单布局不纳入可复用片段。",
       "html": "<nav class=\"ds-scope ds-nav\" aria-label=\"商品导航\"><a href=\"#新品\"><span>新品</span></a><a href=\"#毛线\"><span>毛线</span></a><a href=\"#工具\"><span>工具与针具</span></a></nav>",
       "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-nav{display:flex;align-items:center;background:var(--yarn-surface,#fffefa);border-bottom:1px solid var(--yarn-line,#e4dfd7)}.ds-nav a{padding:12px 8px;color:var(--yarn-ink,#2f302f);font-size:15px;font-weight:400;letter-spacing:.02em;text-decoration:none}.ds-nav a:hover span,.ds-nav a:focus-visible span{color:var(--yarn-indigo,#426f82);text-decoration:underline;text-decoration-color:#d96f67;text-underline-offset:6px}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+    },
+    {
+      "name": "Project 移动首屏",
+      "kind": "custom",
+      "description": "Issue #23 已复核的 paper_flow 首屏骨架：完整作品、2.4rem 标题、三列事实、完整演示披露与露出的制作准备；只适用于 Project 详情，rem 依宿主根字号缩放。",
+      "html": "<article class=\"ds-project\"><div class=\"ds-project-cover\" role=\"img\" aria-label=\"作品图片占位\"></div><h1>花片双拼小袋｜内部示例</h1><p>把两片祖母方格连接成一个小袋，体验查阅图文教程和查看材料规格。</p><dl><div><dt>类别</dt><dd>配饰</dd></div><div><dt>难度</dt><dd>待核实</dd></div><div><dt>钩针规格</dt><dd>5/0</dd></div></dl><aside><strong>内部演示</strong><br>此作品用于流程演示；材料适配、用量及跟做效果尚未核实。</aside><h2>制作准备</h2><p>原教程使用 5/0 钩针、缝合针、剪刀和中等粗细毛线。</p><a href=\"#教程\">开始制作</a></article>",
+      "css": ".ds-project{max-width:390px;padding:18px;color:var(--yarn-ink,#2f302f);background:var(--yarn-paper,#f7f7f5);font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif)}.ds-project-cover{height:clamp(140px,19svh,180px);border-radius:14px;background:var(--yarn-surface,#fffefa)}.ds-project h1,.ds-project h2{font-family:var(--yarn-display,'Yarn Display','Noto Sans SC',sans-serif)}.ds-project h1{margin:12px 0 8px;font-size:2.4rem;font-weight:600;line-height:1.3}.ds-project p{margin:8px 0;font-size:1.4rem;line-height:1.5}.ds-project dl{display:grid;grid-template-columns:repeat(3,minmax(84px,1fr));gap:12px;padding-block:10px;margin:12px 0 10px;border-block:1px solid var(--yarn-line,#e4dfd7)}.ds-project dt{margin-bottom:5px;color:var(--yarn-muted,#686762);font-size:1.3rem}.ds-project dd{margin:0;font-size:1.4rem}.ds-project aside{padding:8px 12px;background:var(--yarn-butter,#f8e5a9);font-size:1.3rem;line-height:1.5}.ds-project h2{margin:20px 0 12px;font-size:2.4rem}.ds-project>a{position:sticky;bottom:0;display:flex;min-height:52px;align-items:center;justify-content:center;margin-top:12px;background:#98534e;color:#fffefa;text-decoration:none}.ds-project :focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:4px}"
+    },
+    {
+      "name": "移动购物车条目",
+      "kind": "custom",
+      "description": "390 px 抽屉的两列三行条目：长标题与控件分行，14rem 数量步进器不收缩，删除和行总价保持稳定位置；rem 依宿主根字号缩放。",
+      "html": "<article class=\"ds-cart-item\"><div class=\"ds-cart-media\" role=\"img\" aria-label=\"商品图片占位\"></div><div class=\"ds-cart-details\"><a href=\"#商品\">Joyful Cake Yarn 100% Cotton</a><p>¥2,200</p><p>选项: 02</p></div><div class=\"ds-cart-quantity\"><div class=\"ds-stepper\"><button type=\"button\" aria-label=\"减少数量\">−</button><span aria-label=\"当前数量\">2</span><button type=\"button\" aria-label=\"增加数量\">+</button></div><button class=\"ds-remove\" type=\"button\">删除</button></div><strong class=\"ds-cart-total\">¥4,400</strong></article>",
+      "css": ".ds-cart-item{display:grid;grid-template:auto auto auto/8rem minmax(0,1fr);column-gap:1.2rem;max-width:340px;color:#2f302f;font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif)}.ds-cart-media{grid-column:1;grid-row:1/4;width:8rem;height:9.6rem;background:#f7f7f5}.ds-cart-details{grid-column:2;grid-row:1;min-width:0}.ds-cart-details a{display:-webkit-box;overflow:hidden;overflow-wrap:anywhere;-webkit-box-orient:vertical;-webkit-line-clamp:3;color:inherit;font-size:1.6rem;line-height:1.35}.ds-cart-details p{margin:8px 0 0;color:#686762}.ds-cart-quantity{grid-column:2;grid-row:2;display:flex;align-items:center;gap:.8rem;min-width:0}.ds-stepper{display:grid;grid-template-columns:1fr 1fr 1fr;flex:0 0 14rem;min-width:14rem;width:14rem;height:5.8rem;border:1px solid #bdbeb5}.ds-stepper button,.ds-stepper span{display:grid;place-items:center;border:0;background:transparent;font:inherit}.ds-remove{flex:0 0 auto;min-height:44px;border:0;background:transparent;text-decoration:underline}.ds-cart-total{grid-column:2;grid-row:3;justify-self:end;padding-top:16px}.ds-cart-item :focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:2px}"
     }
   ],
   "narrative": {
     "northStar": "编织图解图谱",
-    "overview": "暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。针目轮廓、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄延续为已有动作色；作品先行 B 的主要操作实际采用文字、细线和浅粉选中态，不要求每个入口都铺暖黄按钮。\n\n本次为合并刷新：保留已确认的视觉世界与共享购买骨架规范，从 2026-09-05 已实现的首页 B 和整改后截图提取当前首页事实。B 的帮助图标、套件标签、暖白纸面和移动可读性已通过独立局部整改复核；整页 Comp-first 流程仍未闭合，本文不授予 ship，也不代表商品详情、购物车或整个网站完成同等深度的视觉验收。首页三主区域与次序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。\n\n当前仅为受保护内部预览。普通外部 Theme 预览仍进入 `/zh/password`，店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。中文“毛线工作室”与其他语言的临时字标均不是正式品牌资产。\n\n提取依据为 `templates/index.json`、首屏与 B 样式覆盖、一体化作品发现 Section / CSS / JS、作品卡片 snippet、紧凑帮助 Section 和 `assets/yarn-prototype.css`。视觉依据为 `.impeccable/review/desktop.png`、`mobile.png`、`user-756.png` 及三张同名 `-filter-open.png`；方向为 `.impeccable/mocks/discovery-b-zh.png`。独立 [finish review](.impeccable/review/discovery-b-finish-review.md) 与 [verdict](.impeccable/review/discovery-b-finish-verdict.md) 仍记录 `plates=open`、`gate.ok=false`、后续 phases pending；真实 Tutu Product 照片适配不能被写成机械 gate 已通过。文档提取完成不自动关闭这些状态。",
+    "overview": "暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。针目轮廓、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄延续为已有动作色；作品先行 B 的主要操作实际采用文字、细线和浅粉选中态，不要求每个入口都铺暖黄按钮。\n\n本次为合并刷新：保留已确认的视觉世界与共享购买骨架规范，从 2026-09-05 已实现的首页 B 和整改后截图提取当前首页事实。B 的帮助图标、套件标签、暖白纸面和移动可读性已通过独立局部整改复核；整页 Comp-first 流程仍未闭合，本文不授予 ship，也不代表商品详情、购物车或整个网站完成同等深度的视觉验收。首页三主区域与次序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。\n\nIssue #23 在这个既有世界内新增 Project 库与详情：列表继续以真实织物为入口，详情采用用户已批准的 `paper_flow` 移动首屏，并把作品事实、制作准备、同页 Tutorial 与购买分流放在顺读纸面中。独立 finish review 的两项修复——390 px 首屏露出制作准备，以及移动购物车数量控件完整——在最终复拍中均为 `resolved`，verdict 为 `ship`；此结论只覆盖这两项，不代表英文发布、咨询发送、旧首页 build gate 或整体技术验收通过。\n\n当前仅为受保护内部预览。普通外部 Theme 预览仍进入 `/zh/password`，店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。中文“毛线工作室”与其他语言的临时字标均不是正式品牌资产。\n\n提取依据为 `templates/index.json`、首屏与 B 样式覆盖、一体化作品发现 Section / CSS / JS、作品卡片 snippet、紧凑帮助 Section 和 `assets/yarn-prototype.css`。视觉依据为 `.impeccable/review/desktop.png`、`mobile.png`、`user-756.png` 及三张同名 `-filter-open.png`；方向为 `.impeccable/mocks/discovery-b-zh.png`。独立 [finish review](.impeccable/review/discovery-b-finish-review.md) 与 [verdict](.impeccable/review/discovery-b-finish-verdict.md) 仍记录 `plates=open`、`gate.ok=false`、后续 phases pending；真实 Tutu Product 照片适配不能被写成机械 gate 已通过。文档提取完成不自动关闭这些状态。",
     "keyCharacteristics": [
       "暖白底、浅色分类面与炭黑正文形成稳定层级。",
       "真实织物和完整针目轮廓共同表达材料与作品。",
       "展示标题有重量，流程标签较轻，手机主说明与主要操作保持可读。",
       "流程纸面轻叠压，发现结果平铺，帮助条使用柔蓝浅面。",
-      "简体中文、日文、英文文案保持可编辑，图像承担材质与图解。"
+      "简体中文、日文、英文文案保持可编辑，图像承担材质与图解。",
+      "Project 详情以真实作品图、紧凑事实和可见制作准备兑现移动首屏，底部制作入口持续可达。"
     ],
     "rules": [
       {
@@ -425,7 +444,9 @@
       "**Do** 让针目轮廓完整、标签独立可读，并让装饰避开正文。",
       "**Do** 保留真实 Product 照片与标题、装饰图解和可编辑三语 HTML 文案各自的职责。",
       "**Do** 在新增文案后检查字体覆盖、三语断行、手机可读性、焦点和触控路径。",
-      "**Do** 从对应 surface brief 决定构图，从本规范复用已实现的材料、字体角色和组件语言。"
+      "**Do** 从对应 surface brief 决定构图，从本规范复用已实现的材料、字体角色和组件语言。",
+      "**Do** 在 390 px Project 详情首屏保留完整标题、事实、演示披露，并让制作准备的标题与首条信息出现在 sticky 制作动作上方。",
+      "**Do** 让移动购物车每个条目的减号、当前数量、加号、删除与行总价完整可见且可滚动到达。"
     ],
     "donts": [
       "**Don't** 将普通商品网格主导的电商首屏或 Hoshiami 仿站作为本首页的视觉方向。",
@@ -433,7 +454,9 @@
       "**Don't** 为匹配 comp 颜色生成假商品照片、修改商品名称，或将演示目录冒充独立 Project / Tutorial 库。",
       "**Don't** 将字形箭头、遗留 eyebrow 样式、单处定位补偿、辅助极小文字或未复核的购买页面状态升级为全站规范。",
       "**Don't** 将首页三主区域、四个分类或两列移动图库强推为其他 surface 的固定模板。",
-      "**Don't** 把局部整改复核、本文档或面板组件片段当作 Comp-first 全部 gate、免密码访客分享、素材授权或正式发布已通过的凭据。"
+      "**Don't** 把局部整改复核、本文档或面板组件片段当作 Comp-first 全部 gate、免密码访客分享、素材授权或正式发布已通过的凭据。",
+      "**Don't** 将 Issue #23 两项 `resolved` / `ship` 扩大解释为英文发布、咨询发送、旧首页 build gate 或整体技术验收通过。",
+      "**Don't** 将购物车最终复拍中的第三方店铺参考素材当作发布资产；它只用于本地视觉核对，不上传或提交。"
     ]
   }
 }
