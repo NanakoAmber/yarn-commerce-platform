@@ -2,7 +2,7 @@
 version: 1
 slug: "sections-yarn-project-detail-liquid"
 primary_target: "sections/yarn-project-detail.liquid"
-related_targets: ["assets/yarn-project.css", "templates/metaobject/yarn_project.json"]
+related_targets: ["assets/yarn-project.css", "templates/metaobject/yarn_project.json", "snippets/yarn-project-components.liquid", "assets/yarn-project-detail.js", "sections/main-product.liquid", "assets/yarn-product-context.js", "assets/yarn-product-context.css", "snippets/yarn-cart-project.liquid"]
 ---
 
 # 作品详情 Surface Brief
@@ -17,3 +17,13 @@ related_targets: ["assets/yarn-project.css", "templates/metaobject/yarn_project.
 - Behavior: 外部教程明确跳转；图文渐进展开；工具自愿选购；成品与材料路径分开；咨询不下单、不收费。
 - Safety: 默认隐藏仅内部原型记录，只有未发布主题显式打开演示开关才展示；未开放页面给出返回路径。
 - Finish: 需真实双端、三语、后台修改、购买入口与独立 finish review；本 brief 不是完工证明。
+
+## Direction contract
+
+- THESIS: 同一作品组织制作与购买；逐项展示配件和缺项，不将通用商品列表或齐套门槛当作制作准备。
+- OWN-WORLD: 继承暖纸、细线、灰蓝文字与珊瑚操作色；清单顺读，不新建品牌或嵌套卡片。
+- STORY: 喜欢作品，查看需要什么，按需购买本店提供的部分，再跟随步骤定位对应材料。
+- CONTINUITY: 原始商品页携带来源作品；换规格不丢来源，购物车可返回。来源仅作导航提示，不认证适配；非同款成品保留参考说明。
+- FIRST VIEWPORT: 保留 paper_flow 的作品图、名称与事实、演示标记；准备与成品入口保持作品身份，制作入口仍到同页教程。
+- FORM: 已批准构图 3 的局部扩展；用户确认部分配件销售及 Issue #23 自主排版例外，不运行新方向抽选，无新增 seed key。
+- FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

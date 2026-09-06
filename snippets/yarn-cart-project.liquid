@@ -1,0 +1,7 @@
+{%- comment -%}Resolve the handle back to Shopify; never trust a customer-supplied URL as a link.{%- endcomment -%}
+{%- assign project_handle = item.properties['_Project handle'] -%}
+{%- if project_handle != blank -%}
+  {%- assign cart_project = shop.metaobjects.yarn_project[project_handle] -%}
+  {%- capture project_visible -%}{%- render 'yarn-project-visible', project: cart_project -%}{%- endcapture -%}
+  {%- if project_visible == 'true' -%}<p class="product-option"><a href="{{ cart_project.system.url | escape }}">{{ 'yarn_project.part_return' | t }}</a></p>{%- endif -%}
+{%- endif -%}

@@ -1,10 +1,11 @@
 <ul class="yp-products" role="list">
   {% for product in products %}
+    {%- capture product_url -%}{%- render 'yarn-project-product-url', url: product.url, project: project, kind: kind -%}{%- endcapture -%}
     <li>
-      {% if product.featured_image != blank %}<a class="yp-products__image" href="{{ product.url }}" tabindex="-1" aria-hidden="true">{{ product.featured_image | image_url: width: 180 | image_tag: loading: 'lazy', alt: '', widths: '90, 180' }}</a>{% endif %}
-      <div><h3><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+      {% if product.featured_image != blank %}<a class="yp-products__image" href="{{ product_url | escape }}" tabindex="-1" aria-hidden="true">{{ product.featured_image | image_url: width: 180 | image_tag: loading: 'lazy', alt: '', widths: '90, 180' }}</a>{% endif %}
+      <div><h3><a href="{{ product_url | escape }}">{{ product.title | escape }}</a></h3>
         {% render 'price', product: product, show_compare_at_price: false %}
-        <a class="yp-product-action" href="{{ product.url }}">{% if product.available %}{{ 'yarn_project.product_details' | t }}{% else %}{{ 'yarn_project.unavailable' | t }}{% endif %}</a>
+        <a class="yp-product-action" href="{{ product_url | escape }}">{% if product.available %}{{ 'yarn_project.product_details' | t }}{% else %}{{ 'yarn_project.unavailable' | t }}{% endif %}</a>
       </div>
     </li>
   {% endfor %}

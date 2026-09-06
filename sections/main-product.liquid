@@ -41,6 +41,8 @@
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'yarn-product-context.js' | asset_url }}" defer="defer"></script>
+  {{ 'yarn-product-context.css' | asset_url | stylesheet_tag }}
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -87,6 +89,10 @@
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
             {%- capture product_title -%}{%- render 'yarn-product-title', product: product -%}{%- endcapture -%}
             {%- assign product_title = product_title | strip -%}
+            <yarn-product-context class="yp-product-context" hidden data-product-id="{{ product.id }}">
+              <p>{{ 'yarn_project.context_from' | t }} <a data-project-return></a></p>
+              <p data-project-reference hidden>{{ 'yarn_project.context_reference' | t }}</p>
+            </yarn-product-context>
 
             {%- for block in section.blocks -%}
               {%- case block.type -%}

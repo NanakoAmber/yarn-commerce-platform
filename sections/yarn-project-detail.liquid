@@ -30,14 +30,21 @@
       <section class="yp-section" id="ProjectPrepare">
         <h2>{{ 'yarn_project.prepare' | t }}</h2>
         {% if project.preparation.value != blank %}<div class="rte">{{ project.preparation | metafield_tag }}</div>{% endif %}
+        {% if project.components.value != blank %}
+          <h3>{{ 'yarn_project.components' | t }}</h3>
+          <p class="yp-small">{{ 'yarn_project.components_note' | t }}</p>
+          {% render 'yarn-project-components', components: project.components.value, project: project %}
+        {% else %}
         <h3>{{ 'yarn_project.materials' | t }}</h3>
-        {% if project.materials.value != blank %}{% render 'yarn-project-products', products: project.materials.value %}{% else %}<p>{{ 'yarn_project.no_materials' | t }}</p>{% endif %}
+        {% if project.materials.value != blank %}{% render 'yarn-project-products', products: project.materials.value, project: project %}{% else %}<p>{{ 'yarn_project.no_materials' | t }}</p>{% endif %}
         <p class="yp-small">{{ 'yarn_project.materials_note' | t }}</p>
-        {% if project.tools.value != blank %}<details class="yp-tool-list"><summary>{{ 'yarn_project.tools' | t }}</summary>{% render 'yarn-project-products', products: project.tools.value %}</details>{% endif %}
+        {% if project.tools.value != blank %}<details class="yp-tool-list"><summary>{{ 'yarn_project.tools' | t }}</summary>{% render 'yarn-project-products', products: project.tools.value, project: project %}</details>{% endif %}
+        {% endif %}
       </section>
       {% if project.tutorial.value != blank or project.tutorial_url.value != blank or project.video_url.value != blank %}
         <section class="yp-section" id="ProjectTutorial" tabindex="-1">
           <h2>{{ 'yarn_project.tutorial' | t }}</h2>
+          {% if project.components.value != blank %}<p><a href="#ProjectPrepare">{{ 'yarn_project.parts_from_tutorial' | t }}</a></p>{% endif %}
           {% if project.tutorial.value != blank %}<yarn-project-tutorial class="rte">{{ project.tutorial | metafield_tag }}</yarn-project-tutorial>{% endif %}
           {% if project.tutorial_url.value != blank or project.video_url.value != blank %}
             <div class="yp-source"><h3>{{ 'yarn_project.source' | t }}</h3>
@@ -49,7 +56,7 @@
           {% endif %}
         </section>
       {% endif %}
-      {% if project.finished_products.value != blank %}<section class="yp-section" id="ProjectFinished"><h2>{{ finished_label | t }}</h2>{% render 'yarn-project-products', products: project.finished_products.value %}</section>{% endif %}
+      {% if project.finished_products.value != blank %}<section class="yp-section" id="ProjectFinished"><h2>{{ finished_label | t }}</h2>{% render 'yarn-project-products', products: project.finished_products.value, project: project, kind: finished_label %}</section>{% endif %}
       {% if project.customization_enabled.value %}
         <section class="yp-section" id="ProjectCustom">
           <h2>{{ 'yarn_project.customize' | t }}</h2><p>{{ 'yarn_project.custom_note' | t }}</p>

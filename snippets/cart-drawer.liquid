@@ -228,6 +228,7 @@
 
                             <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
                           {%- endif -%}
+                          {% render 'yarn-cart-project', item: item %}
 
                           <ul
                             class="discounts list-unstyled"

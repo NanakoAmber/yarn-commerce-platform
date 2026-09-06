@@ -94,6 +94,7 @@ _Avoid_: Project, Product
 - **Draft Project** 达到可执行标准后才能成为公开 **Project**。
 - 公开 **Project** 至少包含一个或多个 **Material Requirement** 和一个主要 **Tutorial**；不满足可执行条件的展示内容称为 **Inspiration**。
 - 一个 **Material Requirement** 可以有零个或多个 **Product Recommendation**；推荐商品缺货、停售或替换不改变 Project 本身。
+- **Project** 是发现与购买的组织入口，不要求本店供应所有 Material Requirements；可单独销售已提供的配件，未供应、自备与信息待补项仍在清单中明确展示。作品方案不自动等同于固定 Project Kit。
 - 毛线 **Material Requirement** 可以使用重量和／或长度表达大致用量；具体商品需要购买几团可以在 **Product Recommendation** 中另行说明。
 - **Project Kit** 是满足 Project Material Requirements 的一种固定可购买配置，但不是完成 Project 的唯一方式。
 - **Inspiration** 可以推荐 **Product** 或关联可执行 **Project**，但不承诺 Visitor 或 Member 能仅凭该内容完成作品。

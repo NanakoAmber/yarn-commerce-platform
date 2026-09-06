@@ -15,7 +15,7 @@
 
 ## 固定字段
 
-当前 Definition 固定为以下 19 个字段。不要在 Theme 中另造同义字段，也不要根据缺失内容补造事实。
+当前 Definition 为以下 20 个字段。不要在 Theme 中另造同义字段；受保护内部演示可使用明确标注、可替换的示例，正式内容不根据缺失资料补造事实。
 
 | Key | Shopify 类型 | 必填或限制 | 用途 |
 | --- | --- | --- | --- |
@@ -30,6 +30,7 @@
 | `hook_size` | Single line text | 可选 | 钩针规格 |
 | `preparation` | Rich text | 可选 | 制作准备与已核实要求 |
 | `materials` | List of Product references | 可选 | 关联材料 Product |
+| `components` | List of Metaobject references | 可选；仅 `yarn_material` | 有序逐项配件清单，优先于旧 materials / tools 展示 |
 | `tools` | List of Product references | 可选 | 按需补齐的工具 Product |
 | `finished_products` | List of Product references | 可选 | 关联成品 Product |
 | `tutorial` | Rich text | 可选 | 作品内图文教程或引导内容 |
@@ -40,6 +41,23 @@
 | `release_scope` | Single line text | 必填；枚举：仅内部原型 / 已核实可公开 | 业务发布门槛 |
 
 `materials`、`tools` 与 `finished_products` 必须选择店铺中真实的 Product。它们不表达 Variant、采购数量或套件组成，也不证明商品已经适配教程。用量未知时保持未知，不用商品团数、默认 Variant 或推测值补齐。
+
+## 逐项配件 `yarn_material`
+
+后台显示名为「作品配件」，在[配件条目列表](https://admin.shopify.com/store/tutaka-54/content/metaobjects/entries/yarn_material)维护。定义已启用 Active / Draft、翻译与 Storefront API，不开启独立网页或 Customer Account API。它是作品需要什么的内容记录，不是新的商品或库存系统。
+
+| Key | 类型 | 用途 |
+| --- | --- | --- |
+| `title` | Single line text，必填 | 配件名称 |
+| `specification` | Multi-line text | 规格与用途 |
+| `supply` | Single line text，选项 | 本店提供 / 需自行准备 / 信息待补充 |
+| `variant` | Product variant reference，单个 | 准确的 Shopify 商品规格；不得自动换为其他 Variant |
+| `quantity` | Integer，可选 | 建议采购件数；不是已核实的制作耗用量 |
+| `note` | Multi-line text | 自备建议、缺项说明、内部演示和适配待核实事项 |
+
+「本店提供」且有效 Variant 已关联时，页面才读取该 Variant 的实时 `available`、价格和采购数量规则；缺货不显示加购表单。自备、待补或空引用仍作为清单行展示，均不妨碍作品展示、教程阅读和其他配件选购。工具也只能由顾客明确逐项加入。
+
+`components` 非空时不重复展示旧 `materials` / `tools`；没有迁移的作品继续使用原字段，不删除旧内容。四条小袋示例为 `demo-pouch-yarn`、`demo-pouch-hook`、`demo-pouch-finishing`、`demo-pouch-strap`，供给状态为可选购、自备、自备、待补充；不承诺完整材料包。购买行携带 Project、Component 和内部作品 handle，购物车通过 Shopify 元对象重新解析安全的作品返回链接。
 
 ## Entry、发布与可见性
 
@@ -66,7 +84,9 @@ Shopify 的 Active / Draft 是平台提供的展示开关；`release_scope` 是�
 
 `tutorial` 中的 Heading 3（标题 3）会在当前作品详情中成为可折叠的小节标题，后续正文作为该小节内容。首期不建立新的 Tutorial 实体；外部完整教程使用 `tutorial_url` 或 `video_url`，并在 `source_credit` 记录作者或来源。公开可访问的教程不自动获得转载、翻译、下载或嵌入许可。
 
-作品内的商品引用只连接 Shopify Product 真值。价格、库存、Variant 与购买能力继续由 Shopify 管理；作品记录不复制这些事实。不同设计的成品只能作为成品参考，不能暗示为教程同款。
+作品内的商品引用只连接 Shopify Product / Variant 真值。价格、库存与购买能力继续由 Shopify 管理；作品记录不复制这些事实。不同设计的成品只能作为成品参考，不能暗示为教程同款。
+
+作品到商品的 URL 可携带 `yarn_project`、`yarn_project_title`、`yarn_project_url`、`yarn_project_kind` 与可选 `yarn_component`。这些是当前浏览路径的导航提示，不新增持久实体或账号状态；访客可修改参数，不能用来证明商品适配或同款。商品页安全渲染来源并在切换 Variant 时保留参数；加购时写入条目属性，购物车通过可见 Project 解析回链。没有有效来源参数的普通商品页不显示来源。所有价格、可售性和最终规格仍来自 Shopify。
 
 ## 后台录入注意事项
 
@@ -93,6 +113,6 @@ Shopify 的 Active / Draft 是平台提供的展示开关；`release_scope` 是�
 - `snippets/yarn-project-products.liquid`
 - `snippets/yarn-project-label.liquid`
 
-31 个非 schema locale 均包含 `yarn_project` 的 67 个键。日文、简体中文与英文是当前三份实际翻译；其余 28 份暂用英文 fallback，这只避免未启用语言缺键，不表示这些语言已经翻译或发布。通过前台语言切换已实际验证日文根路径 `/`（`html lang="ja"`）与简体中文 `/zh` 正常；不能因后台以中文为 primary 就推断根路径语言异常。英文仍未发布，须待用户授权，不能写成已经通过 `/en` 验收。
+31 个非 schema locale 均包含相同的 `yarn_project` 键。日文、简体中文与英文是当前三份实际翻译；其余 28 份暂用英文 fallback，这只避免未启用语言缺键，不表示这些语言已经翻译或发布。根路径 `/` 为日文、`/zh` 为简体中文；不能因后台以中文为 primary 就推断根路径语言异常。英文已按用户本次授权发布，`/en` 可选择；每轮关键路径的实际验收以 Issue / PR 证据为准，不由字段已保存推定通过。
 
 本文不推定成品与教程同款关系、语言发布状态、公开 URL 可用性或 production 发布结果。

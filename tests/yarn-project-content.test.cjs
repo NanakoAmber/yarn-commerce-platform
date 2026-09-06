@@ -41,7 +41,8 @@ test('project cards link to the Project URL rather than a referenced Product', (
 
 test('Project and Product links use Shopify resource URLs without hand-built locale paths', () => {
   assert.match(card, /href="\{\{\s*project\.system\.url(?:\s*\|\s*escape)?\s*\}\}"/);
-  assert.match(products, /href="\{\{\s*product\.url(?:\s*\|\s*escape)?\s*\}\}"/);
+  assert.match(products, /render 'yarn-project-product-url', url: product\.url/);
+  assert.match(products, /href="\{\{\s*product_url\s*\|\s*escape\s*\}\}"/);
   for (const source of [card, products]) {
     assert.doesNotMatch(source, /request\.locale|localization\.language|routes\.root_url\s*\|\s*append/);
     assert.doesNotMatch(source, /\/zh\/|\/en\/|\/ja\//);
@@ -61,7 +62,7 @@ test('material, tool and finished references all render Shopify Product truth', 
   assert.match(detail, /project\.finished_products\.value[\s\S]*render 'yarn-project-products', products: project\.finished_products\.value/);
   assert.match(products, /for product in products/);
   assert.match(products, /product\.title \| escape/);
-  assert.match(products, /href="\{\{ product\.url \}\}"/);
+  assert.match(products, /href="\{\{ product_url \| escape \}\}"/);
   assert.match(products, /render 'price', product: product/);
   assert.doesNotMatch(products, /assign\s+quantity|name="quantity"|\b\d+\s*(?:balls?|skeins?|团|玉)\b/i);
 });
@@ -102,7 +103,8 @@ test('the three primary locales expose the same complete yarn_project key set', 
 });
 
 test('mobile preparation gains space without truncating Project truth', () => {
-  assert.match(projectCss, /height: clamp\(140px, 19svh, 180px\); aspect-ratio: auto; object-fit: contain/);
+  assert.match(projectCss, /grid-template-columns: 112px minmax\(0, 1fr\)/);
+  assert.match(projectCss, /height: 112px; aspect-ratio: auto; object-fit: contain/);
   assert.match(projectCss, /grid-template-columns: repeat\(auto-fit, minmax\(84px, 1fr\)\)/);
   assert.doesNotMatch(projectCss, /\.yp-(?:title|summary|facts|notice)[^{]*\{[^}]*line-clamp/);
   assert.match(detail, /project\.summary\.value \| escape \| newline_to_br/);
