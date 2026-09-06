@@ -50,6 +50,15 @@
 
 ## Design Workflow
 
+### 本轮内部原型例外（2026-09-06 用户批准，仅 Issue #23）
+
+- 以最新 Issue #23 的作品、购买与 Shopify 编辑闭环为范围，继承现有视觉系统及用户选定的作品详情构图 3（paper_flow）。普通页面布局和交互细节由执行代理自行决定，不要求逐页生成多案或取得新 comp 批准；这不是全站视觉重定义授权。
+- 本轮以可操作、可编辑的完整预览集中交付评审，不以像素级打磨作为前置条件。该例外优先于下文及 Impeccable 默认的逐页 Comp-first 审批门槛，不伪造工具 gate 已通过或尚未获得的人工批准。
+- 保留 `npm run verify`、适用的 detect、1440 / 390 截图打开检查、三语关键路径、后台编辑验证和 finish review；设计文档只记录实际实现与复核后的事实，不以此例外将失败检查标为通过。
+- 产品范围变化、权限缺失、无法安全隔离演示数据、真实交易或发布仍需停下来确认。其他任务继续遵守默认设计流程。
+
+### 默认流程
+
 - Rise 只提供 Shopify Section、Theme Editor、商品与购买流程骨架，不构成前台视觉上限；允许重写 Liquid 结构和 CSS，但内容仍须可由 Shopify 管理和编辑。
 - 新视觉世界或 replacement redesign 必须先确认 `PRODUCT.md`，完成人工方向选择；默认采用 `.impeccable/config.json` 中的 Comp-first 流程，在任何 Theme UI 代码之前批准视觉稿。
 - 局部 polish 必须继承现有 `DESIGN.md`。Impeccable 用来 critique、detect、harden 和 polish，不得自行推翻已批准的视觉世界。

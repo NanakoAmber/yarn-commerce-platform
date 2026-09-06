@@ -107,11 +107,8 @@
       }
     },
     "project-discovery": {
-      "type": "yarn-project-discovery",
-      "settings": {
-        "collection": "all",
-        "featured_products": ["mousse-bag-crochet-kit", "joyful-hanabi-shawl-crochet-kit", "melody-wave-blanket-crochet-kit", "tutu-bag-kit"]
-      }
+      "type": "yarn-project-library",
+      "settings": {}
     },
     "line-support": {
       "type": "yarn-line-contact",

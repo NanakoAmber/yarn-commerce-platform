@@ -7,6 +7,10 @@ related_targets: ["sections/yarn-hero.liquid","assets/yarn-hero-b.css","sections
 
 # 首页 Surface Brief
 
+## Issue #23 本轮覆盖合同（2026-09-06）
+
+用户已批准以作品为中心的内部原型及自主实现普通布局的例外。保留原首页品牌开场与紧凑帮助；第二主区域改为同一 `yarn_project` 数据源上的新手精选（后台选择排序）和找灵感作品库。作品卡跳作品详情，不再将 Product 套件当作 Project。搜索、类别、难度与教程类型优先，其他筛选按需展开；未知字段不作默认承诺。先完整加载所有分页，失败时明确提示，不假装已搜索全库。继承现有纸面和配色，不继续生成方向卡。以下 Issue #13 记录保留作为历史，不覆盖本轮明确合同；双端、三语和 finish review 仍必需。
+
 - Scope: Shopify 首页，日文、简体中文、英文；Issue #13。
 - Mode: Persuade。
 - Audience: 围绕想做的作品选材料的新手；当前为合作方内部原型。

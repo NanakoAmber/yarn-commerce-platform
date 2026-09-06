@@ -1,0 +1,82 @@
+{{ 'yarn-project.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'yarn-project-detail.js' | asset_url }}" defer="defer"></script>
+{%- assign project = metaobject -%}
+{%- liquid
+  assign finished_label = 'yarn_project.finished'
+  if project.release_scope.value == '仅内部原型'
+    assign finished_label = 'yarn_project.internal_finished'
+  endif
+-%}
+{%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+<article class="yp-detail yp-shell">
+  <a class="yp-back" href="{{ routes.root_url }}#shop-by-project">{{ 'yarn_project.back' | t }}</a>
+  {% if visible == 'true' %}
+    <div class="yp-intro">
+      <div class="yp-cover">{{ project.cover.value | image_url: width: 1400 | image_tag: widths: '390, 600, 900, 1400', sizes: '(min-width: 990px) 560px, 100vw', loading: 'eager', fetchpriority: 'high', alt: project.title.value }}</div>
+      <header class="yp-title">
+        <h1>{{ project.title.value | escape }}</h1>
+        {% if project.summary.value != blank %}<p class="yp-summary">{{ project.summary.value | escape | newline_to_br }}</p>{% endif %}
+        <dl class="yp-facts">
+          {% if project.category.value != blank %}<div><dt>{{ 'yarn_project.category' | t }}</dt><dd>{% render 'yarn-project-label', value: project.category.value %}</dd></div>{% endif %}
+          {% if project.difficulty.value != blank %}<div><dt>{{ 'yarn_project.difficulty' | t }}</dt><dd>{% render 'yarn-project-label', value: project.difficulty.value %}</dd></div>{% endif %}
+          {% if project.time_minutes.value != blank %}<div><dt>{{ 'yarn_project.time' | t }}</dt><dd>{{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</dd></div>{% endif %}
+          {% if project.hook_size.value != blank %}<div><dt>{{ 'yarn_project.hook_size' | t }}</dt><dd>{{ project.hook_size.value | escape }}</dd></div>{% endif %}
+        </dl>
+        {% if project.release_scope.value == '仅内部原型' %}<p class="yp-notice"><strong>{{ 'yarn_project.internal' | t }}</strong><br>{{ 'yarn_project.internal_note' | t }}</p>{% endif %}
+        <nav class="yp-jump" aria-label="{{ 'yarn_project.prepare' | t }}"><a href="#ProjectPrepare">{{ 'yarn_project.prepare' | t }}</a>{% if project.finished_products.value != blank %}<a href="#ProjectFinished">{{ finished_label | t }}</a>{% endif %}{% if project.customization_enabled.value %}<a href="#ProjectCustom">{{ 'yarn_project.customize' | t }}</a>{% endif %}</nav>
+      </header>
+    </div>
+    <div class="yp-reading">
+      <section class="yp-section" id="ProjectPrepare">
+        <h2>{{ 'yarn_project.prepare' | t }}</h2>
+        {% if project.preparation.value != blank %}<div class="rte">{{ project.preparation | metafield_tag }}</div>{% endif %}
+        <h3>{{ 'yarn_project.materials' | t }}</h3>
+        {% if project.materials.value != blank %}{% render 'yarn-project-products', products: project.materials.value %}{% else %}<p>{{ 'yarn_project.no_materials' | t }}</p>{% endif %}
+        <p class="yp-small">{{ 'yarn_project.materials_note' | t }}</p>
+        {% if project.tools.value != blank %}<details class="yp-tool-list"><summary>{{ 'yarn_project.tools' | t }}</summary>{% render 'yarn-project-products', products: project.tools.value %}</details>{% endif %}
+      </section>
+      {% if project.tutorial.value != blank or project.tutorial_url.value != blank or project.video_url.value != blank %}
+        <section class="yp-section" id="ProjectTutorial" tabindex="-1">
+          <h2>{{ 'yarn_project.tutorial' | t }}</h2>
+          {% if project.tutorial.value != blank %}<yarn-project-tutorial class="rte">{{ project.tutorial | metafield_tag }}</yarn-project-tutorial>{% endif %}
+          {% if project.tutorial_url.value != blank or project.video_url.value != blank %}
+            <div class="yp-source"><h3>{{ 'yarn_project.source' | t }}</h3>
+              {% if project.source_credit.value != blank %}<p>{{ project.source_credit.value | escape }}</p>{% endif %}
+              {% if project.tutorial_url.value != blank %}<p><a href="{{ project.tutorial_url.value | escape }}" target="_blank" rel="noopener noreferrer">{{ 'yarn_project.open_tutorial' | t }}</a></p>{% endif %}
+              {% if project.video_url.value != blank %}<p><a href="{{ project.video_url.value | escape }}" target="_blank" rel="noopener noreferrer">{{ 'yarn_project.open_video' | t }}</a></p>{% endif %}
+              <p class="yp-small">{{ 'yarn_project.source_note' | t }}</p>
+            </div>
+          {% endif %}
+        </section>
+      {% endif %}
+      {% if project.finished_products.value != blank %}<section class="yp-section" id="ProjectFinished"><h2>{{ finished_label | t }}</h2>{% render 'yarn-project-products', products: project.finished_products.value %}</section>{% endif %}
+      {% if project.customization_enabled.value %}
+        <section class="yp-section" id="ProjectCustom">
+          <h2>{{ 'yarn_project.customize' | t }}</h2><p>{{ 'yarn_project.custom_note' | t }}</p>
+          {% if settings.yarn_customization_contact_enabled %}
+            {% form 'contact', id: 'ProjectContact', class: 'yp-contact' %}
+              {% if form.posted_successfully? %}<p role="status" tabindex="-1" autofocus>{{ 'yarn_project.sent' | t }}</p>{% endif %}
+              {% if form.errors %}<div role="alert" tabindex="-1" autofocus>{{ form.errors | default_errors }}</div>{% endif %}
+              <input type="hidden" name="contact[Project ID]" value="{{ project.system.id | escape }}">
+              <input type="hidden" name="contact[Project]" value="{{ project.title.value | escape }}">
+              <input type="hidden" name="contact[Project URL]" value="{{ canonical_url | escape }}">
+              <label for="ProjectContactName">{{ 'yarn_project.name' | t }} ({{ 'yarn_project.required' | t }})</label>
+              <input id="ProjectContactName" name="contact[name]" autocomplete="name" value="{{ form.name | escape }}" maxlength="120" required>
+              <label for="ProjectContactEmail">{{ 'yarn_project.email' | t }} ({{ 'yarn_project.required' | t }})</label>
+              <input id="ProjectContactEmail" name="contact[email]" type="email" autocomplete="email" value="{{ form.email | escape }}" maxlength="254" required {% if form.errors contains 'email' %}aria-invalid="true"{% endif %}>
+              <label for="ProjectContactBody">{{ 'yarn_project.request' | t }} ({{ 'yarn_project.required' | t }})</label>
+              <textarea id="ProjectContactBody" name="contact[body]" rows="5" maxlength="2000" required>{{ form.body | escape }}</textarea>
+              <button class="button" type="submit">{{ 'yarn_project.send' | t }}</button>
+            {% endform %}
+          {% else %}<p class="yp-notice">{{ 'yarn_project.form_disabled' | t }}</p>{% endif %}
+        </section>
+      {% endif %}
+    </div>
+    {% if project.tutorial.value != blank or project.tutorial_url.value != blank or project.video_url.value != blank %}<div class="yp-start"><a class="button" href="#ProjectTutorial">{{ 'yarn_project.start' | t }}</a></div>{% endif %}
+  {% else %}
+    <div class="yp-empty"><h1>{{ 'yarn_project.missing' | t }}</h1><p>{{ 'yarn_project.missing_hint' | t }}</p></div>
+  {% endif %}
+</article>
+{% schema %}
+{"name":"编织作品详情","settings":[{"type":"paragraph","content":"正文在 内容 → 元对象 → 编织作品 中编辑。图文教程使用三级标题分步骤；来源网站只链接，不复制未经授权内容。定制接收位置未核实前保持主题发送开关关闭。"}]}
+{% endschema %}

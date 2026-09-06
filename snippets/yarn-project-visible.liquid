@@ -1,0 +1,8 @@
+{%- comment -%}Fail closed. Internal records require an explicit, per-theme preview setting.{%- endcomment -%}
+{%- if project != blank and project.title.value != blank and project.cover.value != blank -%}
+  {%- if project.release_scope.value == '仅内部原型' and settings.yarn_internal_projects -%}
+    true
+  {%- elsif project.release_scope.value == '已核实可公开' and project.preparation.value != blank and project.source_credit.value != blank -%}
+    {%- if project.tutorial.value != blank or project.tutorial_url.value != blank or project.video_url.value != blank -%}true{%- endif -%}
+  {%- endif -%}
+{%- endif -%}

@@ -44,6 +44,10 @@ _Avoid_: Variant, Copied Product
 用于帮助 Visitor 或 Member 完成 Project 的图解、视频或步骤内容；可以是 Project 专属指南，也可以是跨 Project 复用的通用技巧。
 _Avoid_: Project
 
+**Customization Inquiry**:
+顾客围绕目标作品提出、等待团队人工确认可制作性、报价与交期的定制意向，不是订单或已接受的报价。
+_Avoid_: Order, Confirmed Quote
+
 **Visitor**:
 尚未登录平台的访问者。
 _Avoid_: User, Customer
@@ -106,6 +110,7 @@ _Avoid_: Project, Product
 - 一个 **Project Kit** 的 **Variant** 由一个或多个 **Kit Components** 构成；其可售数量受所有组件 Variant 的共享库存约束。
 - 任一 **Kit Component** 缺货时，受影响的 **Project Kit** Variant 不可购买；材料不得被系统自动替换。
 - 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
+- **Customization Inquiry** 可以引用目标 **Project**，但其提交不表示已购买材料或成品，也不构成制作或交付承诺。
 - 一个通用 **Tutorial** 可以被多个 **Project** 复用。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 - **Member Work** 可以被品牌或编辑团队精选到 **Inspiration** 或 **Project** 页面中，但仍保持 Member Work 身份。
@@ -119,5 +124,7 @@ _Avoid_: Project, Product
 
 - 过去“Project”有时同时指教程和套件；现已拆分为 **Project**、**Tutorial** 和 **Project Kit**。
 - **Inspiration** 不是 **Draft Project** 的发布状态；前者有意提供非指导型展示内容，后者正在准备成为可执行 Project。
+- 面向顾客的「新手作品」和「找灵感」均指 **Project** 的发现入口，不是两类作品；「找灵感」这一栏目名不等于领域中的非指导型 **Inspiration**。
+- 查看 **Tutorial** 不等于发起 **Making**；「开始制作」不能仅凭按钮名称被解释为已经建立一次个人制作记录。
 - “用户”不是正式领域术语；涉及身份或权限时必须明确使用 **Visitor**、**Member**、**Buyer**、**Creator** 或 **Seller**。
 - Shopify API 中的 `Customer` 必须写作 **Shopify Customer**；不得用它指代已经购买的人，后者统一称为 **Buyer**。

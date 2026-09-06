@@ -16,18 +16,6 @@
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  {%- liquid
-    assign localized_caption = section.settings.caption
-    assign localized_heading = section.settings.heading
-    if request.page_type == 'product'
-      case request.locale.iso_code
-        when 'zh-CN', 'zh'
-          assign localized_heading = '购买前须知'
-        when 'en'
-          assign localized_heading = 'Before you order'
-      endcase
-    endif
-  -%}
   <div class="collapsible-content collapsible-{{ section.settings.layout }}-layout isolate{% if section.settings.layout == 'section' %} page-width{% elsif section.settings.layout == 'none' %} content-container content-container--full-width{% endif %}">
     <div class="collapsible-content__wrapper section-{{ section.id }}-padding{% if section.settings.layout == 'section' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}">
       <div class="{% if section.settings.image == blank %}collapsible-content-wrapper-narrow{% else %}page-width{% endif %}">
@@ -37,12 +25,12 @@
         >
           {%- if section.settings.caption != blank -%}
             <p class="caption-with-letter-spacing">
-              {{ localized_caption | escape }}
+              {{ section.settings.caption | escape }}
             </p>
           {% endif %}
           {%- if section.settings.heading != blank -%}
             <h2 class="collapsible-content__heading inline-richtext {{ section.settings.heading_size }}">
-              {{ localized_heading }}
+              {{ section.settings.heading }}
             </h2>
           {%- else -%}
             <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
@@ -82,38 +70,6 @@
           {% endif %}
           <div class="grid__item">
             {%- for block in section.blocks -%}
-              {%- liquid
-                assign localized_row_heading = block.settings.heading | default: block.settings.page.title
-                assign localized_row_content = block.settings.row_content
-                if request.page_type == 'product'
-                  case request.locale.iso_code
-                    when 'zh-CN', 'zh'
-                      case forloop.index
-                        when 1
-                          assign localized_row_heading = '关于商品'
-                          assign localized_row_content = '<p>材质、重量、建议针号与套装内容请查看商品说明。因颜色与批次不同，实物观感可能与照片略有差异。</p>'
-                        when 2
-                          assign localized_row_heading = '配送与运费'
-                          assign localized_row_content = '<p>支持日本全国配送。订单含税满9,900日元免运费；发货时间因商品与库存状态而异。</p>'
-                        when 3
-                          assign localized_row_heading = '退换货'
-                          assign localized_row_content = '<p>如遇商品瑕疵或误发，请在收货后7天内联系我们。非质量原因退货条件将在正式上线前确定。</p>'
-                      endcase
-                    when 'en'
-                      case forloop.index
-                        when 1
-                          assign localized_row_heading = 'About this item'
-                          assign localized_row_content = '<p>See the product description for fibre, weight, recommended needle size and kit contents. Colour and dye-lot differences may make the item look slightly different from the photographs.</p>'
-                        when 2
-                          assign localized_row_heading = 'Delivery & shipping'
-                          assign localized_row_content = '<p>We deliver across Japan. Orders of ¥9,900 or more including tax ship free. Dispatch timing varies by item and stock status.</p>'
-                        when 3
-                          assign localized_row_heading = 'Returns & exchanges'
-                          assign localized_row_content = '<p>For faulty or incorrectly shipped items, contact us within seven days of delivery. Change-of-mind return terms will be finalised before launch.</p>'
-                      endcase
-                  endcase
-                endif
-              -%}
               <div
                 class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
                 {{ block.shopify_attributes }}
@@ -127,7 +83,7 @@
                   <summary id="Summary-{{ block.id }}-{{ section.id }}">
                     {% render 'icon-accordion', icon: block.settings.icon %}
                     <h3 class="accordion__title inline-richtext h4">
-                      {{ localized_row_heading | escape }}
+                      {{ block.settings.heading | default: block.settings.page.title | escape }}
                     </h3>
                     {{- 'icon-caret.svg' | inline_asset_content -}}
                   </summary>
@@ -137,7 +93,7 @@
                     role="region"
                     aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
                   >
-                    {{ localized_row_content }}
+                    {{ block.settings.row_content }}
                     {{ block.settings.page.content }}
                   </div>
                 </details>

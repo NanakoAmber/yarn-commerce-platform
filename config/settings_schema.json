@@ -1400,6 +1400,13 @@
     ]
   },
   {
+    "name": "作品内部原型",
+    "settings": [
+      { "type": "checkbox", "id": "yarn_internal_projects", "label": "显示仅内部原型作品", "default": false, "info": "仅在受保护的未发布主题开启。发布前关闭；此开关不能代替商店密码保护。" },
+      { "type": "checkbox", "id": "yarn_customization_contact_enabled", "label": "开放定制咨询发送", "default": false, "info": "确认 Shopify 联系表单接收位置，并获准内部测试后才开启。不会创建订单或收款。" }
+    ]
+  },
+  {
     "name": "t:settings_schema.cart.name",
     "settings": [
       {
