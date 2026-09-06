@@ -558,6 +558,25 @@ customElements.define('menu-drawer', MenuDrawer);
 class HeaderDrawer extends MenuDrawer {
   constructor() {
     super();
+    this.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href]');
+      if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const destination = new URL(link.href, window.location.href);
+      if (
+        destination.origin !== window.location.origin ||
+        destination.pathname !== window.location.pathname ||
+        destination.search !== window.location.search ||
+        !destination.hash
+      ) return;
+      const target = document.getElementById(destination.hash.slice(1));
+      if (!target) return;
+      if (!target.hasAttribute('tabindex')) {
+        target.setAttribute('tabindex', '-1');
+        target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+      }
+      this.closeMenuDrawer(event, target);
+      this.mainDetailsToggle.querySelector('summary').setAttribute('aria-expanded', 'false');
+    });
   }
 
   openMenuDrawer(summaryElement) {

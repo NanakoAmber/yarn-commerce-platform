@@ -29,7 +29,7 @@
   assign gift_query = 'tag:編み物道具 OR tag:ギフトセット OR tag:完成品' | url_encode
 -%}
 
-<header-drawer data-breakpoint="tablet">
+<header-drawer data-breakpoint="desktop">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
       <span>{{- 'icon-hamburger.svg' | inline_asset_content -}}{{- 'icon-close.svg' | inline_asset_content -}}</span>
@@ -40,7 +40,7 @@
           <nav class="menu-drawer__navigation" aria-label="{{ 'sections.header.menu' | t }}">
             <ul class="menu-drawer__menu list-menu" role="list">
               <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.all_products_collection_url }}">{{ label_new }}</a></li>
-              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.root_url }}#shop-by-project">{{ label_purpose }}</a></li>
+              <li><a class="menu-drawer__menu-item yarn-menu-project list-menu__item link link--text focus-inset" href="{{ routes.root_url }}#shop-by-project">{{ label_purpose }}</a></li>
               <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ yarn_query }}&type=product">{{ label_yarn }}</a></li>
               <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ kit_query }}&type=product">{{ label_kits }}</a></li>
               <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ gift_query }}&type=product">{{ label_gifts }}</a></li>

@@ -32,6 +32,7 @@
 /.impeccable/build/*.png
 /.impeccable/review/*.png
 /.impeccable/review/*.jpg
+/.impeccable/review/20-navigation/*.png
 /.impeccable/review/diff/
 /.impeccable/mocks/*
 !/.impeccable/mocks/platform-navigation-zh.webp
