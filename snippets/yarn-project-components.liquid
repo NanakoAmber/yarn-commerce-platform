@@ -1,64 +1,47 @@
-{% comment %}Requirements are editorial; price, stock and purchase rules belong to the exact Shopify Variant.{% endcomment %}
-<ul class="yp-components" role="list">
-  {% for component in components %}
-    {%- liquid
-      assign variant = component.variant.value
-      assign offered = false
-      if component.supply.value == '本店提供' and variant != blank and variant.product != blank
-        assign offered = true
-      endif
-      assign minimum = variant.quantity_rule.min | default: 1
-      assign increment = variant.quantity_rule.increment | default: 1
-      assign maximum = variant.quantity_rule.max
-      assign purchase_quantity = component.quantity.value | default: minimum | at_least: minimum
-      assign remainder = purchase_quantity | minus: minimum | modulo: increment
-      if remainder != 0
-        assign purchase_quantity = purchase_quantity | minus: remainder | plus: increment
-      endif
-      if maximum != blank
-        assign purchase_quantity = purchase_quantity | at_most: maximum
-      endif
-      assign item_image = variant.featured_image | default: variant.product.featured_image
-    -%}
-    {%- capture product_url -%}{%- render 'yarn-project-product-url', url: variant.url, project: project, component_title: component.title.value -%}{%- endcapture -%}
-    <li class="yp-component">
-      <div class="yp-component__heading">
-        <h4>{{ component.title.value | escape }}</h4>
-        <span class="yp-component__status">
-          {% if offered %}
-            {% if variant.available %}{{ 'yarn_project.part_available' | t }}{% else %}{{ 'yarn_project.part_sold_out' | t }}{% endif %}
-          {% elsif component.supply.value == '需自行准备' %}{{ 'yarn_project.part_bring' | t }}
-          {% else %}{{ 'yarn_project.part_pending' | t }}{% endif %}
-        </span>
-      </div>
-      {% if component.specification.value != blank %}<p>{{ component.specification.value | escape | newline_to_br }}</p>{% endif %}
-      {% if offered %}
-        <div class="yp-component__product">
-          {% if item_image != blank %}{{ item_image | image_url: width: 160 | image_tag: width: 64, height: 64, loading: 'lazy', alt: variant.product.title }}{% endif %}
-          <div>
-            <p>{% unless variant.title == 'Default Title' %}<span>{{ 'yarn_project.part_variant' | t }}: {{ variant.title | escape }}</span> · {% endunless %}<span class="yp-component__price">{{ variant.price | money_with_currency }}</span></p>
-            <a class="yp-product-action" href="{{ product_url | escape }}">{{ 'yarn_project.part_product' | t }}</a>
-          </div>
-        </div>
-        {% if variant.available %}
-          <yarn-material-purchase data-pending="{{ 'yarn_project.part_adding' | t | escape }}" data-success="{{ 'yarn_project.part_added' | t | escape }}" data-error="{{ 'yarn_project.part_add_error' | t | escape }}" data-uncertain="{{ 'yarn_project.part_uncertain' | t | escape }}">
-            <form method="post" action="{{ routes.cart_add_url }}" class="yp-component__form">
-              <input type="hidden" name="id" value="{{ variant.id }}">
-              <input type="hidden" name="properties[Project]" value="{{ project.title.value | escape }}">
-              <input type="hidden" name="properties[_Project ID]" value="{{ project.system.id | escape }}">
-              <input type="hidden" name="properties[_Project handle]" value="{{ project.system.handle | escape }}">
-              <input type="hidden" name="properties[Component]" value="{{ component.title.value | escape }}">
-              <label for="PartQuantity-{{ section.id }}-{{ forloop.index }}">{{ 'yarn_project.part_quantity' | t }}
-                <input id="PartQuantity-{{ section.id }}-{{ forloop.index }}" type="number" name="quantity" min="{{ minimum }}" step="{{ increment }}" {% if maximum != blank %}max="{{ maximum }}"{% endif %} value="{{ purchase_quantity }}" required inputmode="numeric">
-              </label>
-              <button class="button" type="submit">{{ 'yarn_project.part_add' | t }}</button>
-            </form>
-            <p class="yp-small" data-material-status role="status" aria-live="polite" hidden></p>
-            <a class="yp-product-action" data-material-cart href="{{ routes.cart_url }}" hidden>{{ 'yarn_project.part_cart' | t }}</a>
-          </yarn-material-purchase>
+{% comment %}
+  The component_type field is editorial presentation data. Exact price, stock and
+  purchase rules still come from the selected Shopify Variant.
+{% endcomment %}
+{%- liquid
+  assign yarn_count = 0
+  assign supporting_count = 0
+  for component in components
+    if component.component_type.value == '毛线'
+      assign yarn_count = yarn_count | plus: 1
+    else
+      assign supporting_count = supporting_count | plus: 1
+    endif
+  endfor
+-%}
+
+{% if yarn_count > 0 %}
+  <div class="yp-yarn-prep">
+    <div class="yp-yarn-prep__intro">
+      <h3>{{ 'yarn_project.yarn_heading' | t }}</h3>
+      <p>{{ 'yarn_project.yarn_note' | t }}</p>
+    </div>
+    <ul class="yp-components yp-components--yarn" role="list">
+      {% for component in components %}
+        {% if component.component_type.value == '毛线' %}
+          {% render 'yarn-project-component', component: component, project: project, mode: 'yarn', item_index: forloop.index %}
         {% endif %}
-      {% endif %}
-      {% if component.note.value != blank %}<p class="yp-small">{{ component.note.value | escape | newline_to_br }}</p>{% endif %}
-    </li>
-  {% endfor %}
-</ul>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+{% if supporting_count > 0 %}
+  <div class="yp-supporting-prep">
+    <div class="yp-supporting-prep__intro">
+      <h3>{% if yarn_count > 0 %}{{ 'yarn_project.supporting_heading' | t }}{% else %}{{ 'yarn_project.components' | t }}{% endif %}</h3>
+      <p>{% if yarn_count > 0 %}{{ 'yarn_project.supporting_note' | t }}{% else %}{{ 'yarn_project.components_note' | t }}{% endif %}</p>
+    </div>
+    <ul class="yp-components yp-components--supporting" role="list">
+      {% for component in components %}
+        {% unless component.component_type.value == '毛线' %}
+          {% render 'yarn-project-component', component: component, project: project, mode: 'supporting', item_index: forloop.index %}
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

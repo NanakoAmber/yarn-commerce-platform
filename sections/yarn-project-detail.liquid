@@ -30,8 +30,6 @@
         <h2>{{ 'yarn_project.prepare' | t }}</h2>
         {% if project.preparation.value != blank %}<div class="rte">{{ project.preparation | metafield_tag }}</div>{% endif %}
         {% if project.components.value != blank %}
-          <h3>{{ 'yarn_project.components' | t }}</h3>
-          <p class="yp-small">{{ 'yarn_project.components_note' | t }}</p>
           {% render 'yarn-project-components', components: project.components.value, project: project %}
         {% else %}
         <h3>{{ 'yarn_project.materials' | t }}</h3>

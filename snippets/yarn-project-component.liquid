@@ -1,0 +1,72 @@
+{%- liquid
+  assign variant = component.variant.value
+  assign offered = false
+  if component.supply.value == '本店提供' and variant != blank and variant.product != blank
+    assign offered = true
+  endif
+  assign minimum = variant.quantity_rule.min | default: 1
+  assign increment = variant.quantity_rule.increment | default: 1
+  assign maximum = variant.quantity_rule.max
+  assign purchase_quantity = component.quantity.value | default: minimum | at_least: minimum
+  assign remainder = purchase_quantity | minus: minimum | modulo: increment
+  if remainder != 0
+    assign purchase_quantity = purchase_quantity | minus: remainder | plus: increment
+  endif
+  if maximum != blank
+    assign purchase_quantity = purchase_quantity | at_most: maximum
+  endif
+  assign item_image = component.image.value
+  if item_image == blank
+    assign item_image = variant.featured_image | default: variant.product.featured_image
+  endif
+-%}
+{%- capture product_url -%}{%- render 'yarn-project-product-url', url: variant.url, project: project, component_title: component.title.value -%}{%- endcapture -%}
+<li class="yp-component yp-component--{{ mode }}{% if item_image != blank %} yp-component--has-media{% endif %}">
+  {% if item_image != blank %}
+    <div class="yp-component__media">
+      {% if mode == 'yarn' %}
+        {{ item_image | image_url: width: 384 | image_tag: widths: '128, 192, 256, 384', sizes: '(min-width: 750px) 128px, 104px', width: 128, height: 128, loading: 'lazy', alt: component.title.value }}
+      {% else %}
+        {{ item_image | image_url: width: 144 | image_tag: width: 56, height: 56, loading: 'lazy', alt: component.title.value }}
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="yp-component__body">
+    <div class="yp-component__heading">
+      <h4>{{ component.title.value | escape }}</h4>
+      <span class="yp-component__status">
+        {% if offered %}
+          {% if variant.available %}{{ 'yarn_project.part_available' | t }}{% else %}{{ 'yarn_project.part_sold_out' | t }}{% endif %}
+        {% elsif component.supply.value == '需自行准备' %}{{ 'yarn_project.part_bring' | t }}
+        {% else %}{{ 'yarn_project.part_pending' | t }}{% endif %}
+      </span>
+    </div>
+    {% if component.specification.value != blank %}<p class="yp-component__spec">{{ component.specification.value | escape | newline_to_br }}</p>{% endif %}
+    {% if offered %}
+      <div class="yp-component__product">
+        <div>
+          <p>{% unless variant.title == 'Default Title' %}<span>{{ 'yarn_project.part_variant' | t }}: {{ variant.title | escape }}</span> <span aria-hidden="true">·</span> {% endunless %}<span class="yp-component__price">{{ variant.price | money_with_currency }}</span></p>
+          <a class="yp-product-action" href="{{ product_url | escape }}">{{ 'yarn_project.part_product' | t }}</a>
+        </div>
+      </div>
+      {% if variant.available %}
+        <yarn-material-purchase data-pending="{{ 'yarn_project.part_adding' | t | escape }}" data-success="{{ 'yarn_project.part_added' | t | escape }}" data-error="{{ 'yarn_project.part_add_error' | t | escape }}" data-uncertain="{{ 'yarn_project.part_uncertain' | t | escape }}">
+          <form method="post" action="{{ routes.cart_add_url }}" class="yp-component__form">
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            <input type="hidden" name="properties[Project]" value="{{ project.title.value | escape }}">
+            <input type="hidden" name="properties[_Project ID]" value="{{ project.system.id | escape }}">
+            <input type="hidden" name="properties[_Project handle]" value="{{ project.system.handle | escape }}">
+            <input type="hidden" name="properties[Component]" value="{{ component.title.value | escape }}">
+            <label for="PartQuantity-{{ section.id }}-{{ item_index }}">{{ 'yarn_project.part_quantity' | t }}
+              <input id="PartQuantity-{{ section.id }}-{{ item_index }}" type="number" name="quantity" min="{{ minimum }}" step="{{ increment }}" {% if maximum != blank %}max="{{ maximum }}"{% endif %} value="{{ purchase_quantity }}" required inputmode="numeric">
+            </label>
+            <button class="button" type="submit">{{ 'yarn_project.part_add' | t }}</button>
+          </form>
+          <p class="yp-small" data-material-status role="status" aria-live="polite" hidden></p>
+          <a class="yp-product-action" data-material-cart href="{{ routes.cart_url }}" hidden>{{ 'yarn_project.part_cart' | t }}</a>
+        </yarn-material-purchase>
+      {% endif %}
+    {% endif %}
+    {% if component.note.value != blank %}<p class="yp-small yp-component__note">{{ component.note.value | escape | newline_to_br }}</p>{% endif %}
+  </div>
+</li>
