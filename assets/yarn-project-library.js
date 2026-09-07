@@ -96,6 +96,7 @@
       this.form = this.querySelector('form[data-project-filters]');
       this.queryInput = this.querySelector('input[name="q"]');
       this.selects = Object.fromEntries(FILTER_NAMES.map((name) => [name, this.querySelector(`select[name="${name}"]`)]));
+      this.categoryButtons = Array.from(this.querySelectorAll('[data-project-category]'));
       this.clearButton = this.querySelector('[data-project-clear]');
       this.count = this.querySelector('[data-project-count]');
       this.empty = this.querySelector('[data-project-empty]');
@@ -124,6 +125,13 @@
         clearTimeout(this.inputTimer);
         this.inputTimer = setTimeout(() => this.update(), 200);
       });
+      this.categoryButtons.forEach((button) => listen(button, 'click', (event) => {
+        event.preventDefault();
+        if (!this.loaded) return;
+        const value = button.dataset.projectCategory || '';
+        this.selects.category.value = this.selects.category.value === value ? '' : value;
+        this.update();
+      }));
       listen(this.clearButton, 'click', (event) => {
         event.preventDefault();
         if (!this.loaded) return;
@@ -277,6 +285,14 @@
         const select = this.selects[name];
         select.value = Array.from(select.options).some((option) => option.value === state[name]) ? state[name] : '';
       });
+      this.syncCategoryButtons();
+    }
+
+    syncCategoryButtons() {
+      const selected = this.selects.category.value;
+      this.categoryButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.projectCategory === selected));
+      });
     }
 
     update() {
@@ -289,6 +305,7 @@
     render() {
       if (!this.loaded) return;
       const state = this.state();
+      this.syncCategoryButtons();
       let visible = 0;
       for (const card of this.cards) {
         const matches = matchesProject(projectFromCard(card), state);

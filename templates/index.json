@@ -12,14 +12,28 @@
     "yarn-hero": {
       "type": "yarn-hero",
       "settings": {
-        "discovery_layout": true,
-        "heading": "作りたいものを選んだら、糸選びはおまかせ。",
-        "text": "<p>作りたいものから毛糸やキットを探せます。必要な材料や作り方は各商品ページでご確認ください。</p>",
-        "flow_select": "作品を選ぶ",
-        "flow_buy": "材料をそろえる",
-        "flow_make": "編み始める",
-        "flow_aria_label": "作品を選んでから作り始めるまで",
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-1",
+        "heading": "好きな作品から、\n手づくりを始めよう。",
+        "text": "<p>作品に合わせて、毛糸・使用量・道具・作り方をひとつずつ準備できます。</p>",
+        "cta_label": "作品を見つける",
+        "flow_project": "作品を選ぶ",
+        "flow_yarn": "毛糸を選ぶ",
+        "flow_tools": "道具をそろえる",
+        "flow_tutorial": "作り方を見る",
+        "heading_zh": "从喜欢的作品，\n开始你的手作。",
+        "text_zh": "<p>毛线、用量、工具与教程，跟着作品慢慢准备。</p>",
+        "cta_label_zh": "发现作品",
+        "flow_project_zh": "选作品",
+        "flow_yarn_zh": "挑毛线",
+        "flow_tools_zh": "找工具",
+        "flow_tutorial_zh": "看教程",
+        "heading_en": "Start making from\na project you love.",
+        "text_en": "<p>Follow the project to prepare your yarn, quantity, tools, and tutorial one step at a time.</p>",
+        "cta_label_en": "Discover projects",
+        "flow_project_en": "Choose a project",
+        "flow_yarn_en": "Pick yarn",
+        "flow_tools_en": "Find tools",
+        "flow_tutorial_en": "View tutorial"
       }
     },
     "yarn-purpose": {

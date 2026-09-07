@@ -14,24 +14,59 @@
   {% endif %}
   <yarn-project-library>
     <header class="yp-library__heading">
-      <h2>{% if section.settings.heading != blank %}{{ section.settings.heading | escape }}{% else %}{{ 'yarn_project.library' | t }}{% endif %}</h2>
+      <div class="yp-library__heading-row">
+        <h2>{% if section.settings.heading != blank %}{{ section.settings.heading | escape }}{% else %}{{ 'yarn_project.library' | t }}{% endif %}</h2>
+        <a href="#ProjectResults-{{ section.id }}">{{ 'yarn_project.browse_all' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+      </div>
       {% if section.settings.description != blank %}<div class="rte">{{ section.settings.description }}</div>{% endif %}
     </header>
     <form data-project-filters role="search">
       <fieldset class="yp-filterset">
         <legend class="visually-hidden">{{ 'yarn_project.filters' | t }}</legend>
-        <label class="yp-search" for="ProjectSearch-{{ section.id }}"><span>{{ 'yarn_project.search' | t }}</span>
+        <div class="yp-search">
+          <label class="visually-hidden" for="ProjectSearch-{{ section.id }}">{{ 'yarn_project.search' | t }}</label>
           <input type="search" id="ProjectSearch-{{ section.id }}" name="q" placeholder="{{ 'yarn_project.search_placeholder' | t }}" autocomplete="off">
-        </label>
-        <div class="yp-filters">
-          <label>{{ 'yarn_project.category' | t }}<select name="category"><option value="">{{ 'yarn_project.all' | t }}</option>{% assign categories = '配饰,服装,家居,花片,玩偶' | split: ',' %}{% for category in categories %}<option value="{{ category }}">{% render 'yarn-project-label', value: category %}</option>{% endfor %}</select></label>
-          <label>{{ 'yarn_project.difficulty' | t }}<select name="difficulty"><option value="">{{ 'yarn_project.all' | t }}</option>{% assign difficulties = '新手,简单,进阶,待核实' | split: ',' %}{% for difficulty in difficulties %}<option value="{{ difficulty }}">{% render 'yarn-project-label', value: difficulty %}</option>{% endfor %}</select></label>
-          <label>{{ 'yarn_project.tutorial_type' | t }}<select name="tutorial"><option value="">{{ 'yarn_project.all' | t }}</option><option value="图文">{{ 'yarn_project.text_tutorial' | t }}</option><option value="视频">{{ 'yarn_project.video_tutorial' | t }}</option></select></label>
+          <button type="submit" aria-label="{{ 'yarn_project.search' | t }}">{{ 'icon-search.svg' | inline_asset_content }}</button>
         </div>
-        <details class="yp-filter-more"><summary>{{ 'yarn_project.filters' | t }}</summary>
+
+        <div class="yp-category-filters" role="group" aria-label="{{ 'yarn_project.category' | t }}">
+          {% assign category_keys = 'bag,scarf,home,toy' | split: ',' %}
+          {% assign category_values = '配饰,服装,家居,玩偶' | split: ',' %}
+          {% for key in category_keys %}
+            {% liquid
+              assign category_asset = 'impeccable-category-bag-plate.png'
+              case key
+                when 'scarf'
+                  assign category_asset = 'impeccable-category-scarf-plate.png'
+                when 'home'
+                  assign category_asset = 'impeccable-b-category-blanket-plate.png'
+                when 'toy'
+                  assign category_asset = 'impeccable-category-doll-plate.png'
+              endcase
+              assign category_label_key = 'yarn_project.category_' | append: key
+              if key == 'home'
+                assign category_label_key = 'yarn_project.category_living'
+              endif
+            %}
+            <button type="button" data-project-category="{{ category_values[forloop.index0] }}" aria-pressed="false">
+              <span class="yp-category-filters__art yp-category-filters__art--{{ key }}"><img src="{{ category_asset | asset_url }}" alt="" width="1479" height="1064" loading="lazy"></span>
+              <span>{{ category_label_key | t }}</span>
+            </button>
+          {% endfor %}
+        </div>
+
+        <details class="yp-filter-more">
+          <summary>{{ 'yarn_project.filters' | t }}</summary>
+          <div class="yp-filter-panel">
+            <div class="yp-filters">
+              <label>{{ 'yarn_project.category' | t }}<select name="category"><option value="">{{ 'yarn_project.all' | t }}</option>{% assign categories = '配饰,服装,家居,花片,玩偶' | split: ',' %}{% for category in categories %}<option value="{{ category }}">{% render 'yarn-project-label', value: category %}</option>{% endfor %}</select></label>
+              <label>{{ 'yarn_project.difficulty' | t }}<select name="difficulty"><option value="">{{ 'yarn_project.all' | t }}</option>{% assign difficulties = '新手,简单,进阶,待核实' | split: ',' %}{% for difficulty in difficulties %}<option value="{{ difficulty }}">{% render 'yarn-project-label', value: difficulty %}</option>{% endfor %}</select></label>
+              <label>{{ 'yarn_project.tutorial_type' | t }}<select name="tutorial"><option value="">{{ 'yarn_project.all' | t }}</option><option value="图文">{{ 'yarn_project.text_tutorial' | t }}</option><option value="视频">{{ 'yarn_project.video_tutorial' | t }}</option></select></label>
+            </div>
           <div class="yp-filters yp-filters--more">
             <label>{{ 'yarn_project.time' | t }}<select name="time"><option value="">{{ 'yarn_project.all' | t }}</option><option value="under60">{{ 'yarn_project.under60' | t }}</option><option value="60to180">{{ 'yarn_project.60to180' | t }}</option><option value="over180">{{ 'yarn_project.over180' | t }}</option></select></label>
             {% assign extra_filters = 'made_for,holiday,hook_size' | split: ',' %}{% for filter in extra_filters %}<label>{{ filter | prepend: 'yarn_project.' | t }}<select name="{{ filter }}"><option value="">{{ 'yarn_project.all' | t }}</option></select></label>{% endfor %}
+          </div>
           </div>
         </details>
         <button class="yp-text-button" type="button" data-project-clear>{{ 'yarn_project.clear' | t }}</button>
@@ -46,7 +81,7 @@
         {% if visible == 'true' %}{% assign visible_count = visible_count | plus: 1 %}{% render 'yarn-project-card', project: project %}{% endif %}
       {% endfor %}{% endcapture %}
       <p class="yp-count"><span data-project-count aria-live="polite">{{ visible_count }}</span> {{ 'yarn_project.results' | t }}</p>
-      <div class="yp-grid" data-project-results>{{ project_cards }}</div>
+      <div id="ProjectResults-{{ section.id }}" class="yp-grid" data-project-results>{{ project_cards }}</div>
       {% if paginate.next %}<a data-project-next href="{{ paginate.next.url | escape }}&amp;section_id={{ section.id | url_encode }}">{{ 'yarn_project.more' | t }}</a>{% endif %}
       <div class="yp-empty" data-project-empty {% if visible_count > 0 %}hidden{% endif %}><h3>{{ 'yarn_project.empty' | t }}</h3><p>{{ 'yarn_project.empty_hint' | t }}</p></div>
     {% endpaginate %}
