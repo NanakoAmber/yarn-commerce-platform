@@ -4,6 +4,7 @@
 {{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{{ 'yarn-footer.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .footer {
@@ -27,7 +28,7 @@
   }
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<footer class="footer yarn-footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -50,6 +51,13 @@
   -%}
     {%- unless only_empty_brand -%}
       <div class="footer__content-top page-width">
+        <a class="yarn-footer__brand" href="{{ routes.root_url }}" aria-label="MewoolMew">
+          {%- if settings.logo != blank -%}
+            {{ settings.logo | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 600', alt: shop.name }}
+          {%- else -%}
+            {% render 'yarn-wordmark' %}
+          {%- endif -%}
+        </a>
         {%- if section.blocks.size > 0 -%}
           {%- liquid
             if section.blocks.size == 9

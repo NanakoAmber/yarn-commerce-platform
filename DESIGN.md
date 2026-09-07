@@ -12,6 +12,11 @@ colors:
   coral: "#e58b7d"
   mew-terra: "#bf5a38"
   project-row-action: "#a6472e"
+  action-soft: "#fff9e9"
+  action-hover: "#fff3de"
+  primary-hover: "#f6dfa0"
+  primary-line: "#efd68d"
+  copy: "#4a4b48"
   indigo: "#426f82"
   blush-surface: "#faecea"
   blue-surface: "#edf5f7"
@@ -21,6 +26,17 @@ colors:
   selected-paper: "#fcf0ed"
   selected-ink: "#9e5554"
 typography:
+  shared-section:
+    fontFamily: "'Yarn Display', 'Noto Sans SC', sans-serif"
+    fontSize: "clamp(2.5rem, 2.5vw, 3.2rem)"
+    fontWeight: 600
+    lineHeight: 1.4
+  shared-control:
+    fontSize: "1.5rem"
+  shared-meta:
+    fontSize: "1.3rem"
+  shell-input:
+    fontSize: "16px"
   display:
     fontFamily: "'Yarn Display', 'Noto Sans SC', sans-serif"
     fontSize: "clamp(3.4rem, 4.75vw, 5.4rem)"
@@ -83,22 +99,12 @@ typography:
     lineHeight: 1.45
   label-control:
     fontSize: "1.4rem"
-  wordmark-desktop:
-    fontFamily: "ui-rounded, 'Arial Rounded MT Bold', 'Nunito', var(--yarn-display)"
-    fontSize: "2.15rem"
-    fontWeight: 700
-    letterSpacing: "-0.045em"
-  wordmark-name:
-    fontSize: "1.85rem"
-    letterSpacing: "-0.055em"
-  wordmark-mobile:
-    fontSize: "1.45rem"
-    letterSpacing: "-0.05em"
 rounded:
   control: "3px"
   kit-label: "5px"
   filter: "11px"
   field: "12px"
+  shared-field: "24px"
   work-media: "14px"
   project-yarn-image: "10px"
   project-supporting-image: "8px"
@@ -111,10 +117,35 @@ rounded:
   circle: "50%"
   pill: "999px"
 spacing:
+  fine: "4px"
+  small: "8px"
   compact: "12px"
   control: "16px"
   content: "24px"
+  section: "32px"
+  wide: "48px"
 components:
+  button-hero:
+    backgroundColor: "{colors.butter}"
+    textColor: "#292a28"
+    rounded: "{rounded.pill}"
+    padding: "12px 28px"
+  button-hero-hover:
+    backgroundColor: "{colors.primary-hover}"
+  nav-selected:
+    backgroundColor: "{colors.action-soft}"
+    textColor: "{colors.project-row-action}"
+    rounded: "{rounded.pill}"
+    padding: "10px 11px"
+  field-shell:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.shared-field}"
+    typography: "{typography.shell-input}"
+    height: "56px"
+  footer-paper:
+    backgroundColor: "{colors.action-soft}"
+    textColor: "{colors.ink}"
   button-primary:
     backgroundColor: "{colors.butter}"
     textColor: "#2c2e2c"
@@ -131,9 +162,10 @@ components:
     backgroundColor: "#f2d987"
   field-search:
     backgroundColor: "{colors.surface}"
-    textColor: "{colors.discovery-ink}"
-    rounded: "{rounded.field}"
-    padding: "12px 48px 12px 18px"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.shared-field}"
+    padding: "12px 58px 12px 22px"
+    height: "56px"
   field-filter:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.discovery-ink}"
@@ -150,7 +182,7 @@ components:
     backgroundColor: "#f5f3ef"
     rounded: "{rounded.work-media}"
   card-help:
-    backgroundColor: "{colors.blue-surface}"
+    backgroundColor: "{colors.action-soft}"
     rounded: "{rounded.compact-paper}"
     padding: "24px 30px"
   card-content:
@@ -166,7 +198,9 @@ components:
 
 **Creative North Star: "编织图解图谱"**
 
-暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。实体手作插画、既有针目图解、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄延续为已有动作色；作品先行 B 的主要操作实际采用文字、细线和浅粉选中态，不要求每个入口都铺暖黄按钮。
+暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。实体手作插画、既有针目图解、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄承接当前 Hero 主动作，陶土色承接可点击文字，浅奶油纸面连接导航选中态、帮助和页脚。浅粉选中态属于保留的历史 B 筛选与套件标签，不再描述当前导航。
+
+Issue #32（2026-09-07）从成品提取共享角色并统一导航、帮助与页脚，继承当前 Hero 和四分类作品构图。documenter 已打开本轮[中文桌面](.impeccable/review/32-home-system/desktop.png)、[中文手机](.impeccable/review/32-home-system/mobile.png)、[英文桌面](.impeccable/review/32-home-system/en-desktop.png)、[英文手机](.impeccable/review/32-home-system/en-mobile.png)、[日文桌面](.impeccable/review/32-home-system/ja-desktop.png)、[日文手机](.impeccable/review/32-home-system/ja-mobile.png)，与 token、foundation、导航、页脚、Hero、分类行和紧凑帮助代码核对。独立 [finish review](.impeccable/review/32-home-system/finish-review.md) 的剩余项为本次文档持久化，关闭以限定文档 verdict 为准。截图验证范围为三语 1440 / 390 px 的未发布 Theme `189759848761`；不据此宣称后台编辑、订阅发送、全站本地化或生产发布通过。 上述六张为导航翻译修复后重新捕获的最终版，本角色已重新打开全部六张，并打开[中文展开菜单](.impeccable/review/32-home-system/mobile-menu.png)、[英文展开菜单](.impeccable/review/32-home-system/en-mobile-menu.png)、[日文展开菜单](.impeccable/review/32-home-system/ja-mobile-menu.png)：三语桌面导航和手机菜单均与对应 Section 的页面语言一致，关键文案完整可读。修复前中文 / 日文页仍显示英文菜单的旧图不作为最终语言证据；菜单资源保存与后台重载由主代理验证，不由截图推定。
 
 本文件合并保留已确认的视觉世界与共享购买骨架规范。2026-09-05 首页 B 的提取是历史基线；2026-09-07 首页已采用串联 Hero 与分类 Project 行，下文标为历史 B 的组件不再描述当前发现区。B 的帮助图标、套件标签、暖白纸面和移动可读性已通过独立局部整改复核；整页 Comp-first 流程仍未闭合，本文不授予 ship，也不代表商品详情、购物车或整个网站完成同等深度的视觉验收。首页三主区域与次序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。
 
@@ -189,7 +223,7 @@ Issue #28 的作品详情后续在同一 `paper_flow` 世界中落实“主毛�
 - 暖白底、浅色分类面与炭黑正文形成稳定层级。
 - Shopify 作品图片与有来源的手作插画表达材料与作品；针目图解保留在其适用的历史组件中。
 - 展示标题有重量，流程标签较轻，手机主说明与主要操作保持可读。
-- 当前首页以连线和波浪串联，分类作品行平铺，帮助条使用柔蓝浅面；叠压流程纸面属于保留的历史 B 组件。
+- 当前首页以连线和波浪串联，分类作品行平铺，帮助与页脚使用浅奶油纸面，导航使用陶土动作色；叠压流程纸面属于保留的历史 B 组件。
 - 简体中文、日文、英文文案保持可编辑，图像承担材质与图解。
 - Project 详情以完整作品图与标题、紧凑事实和可见制作准备兑现移动首屏，底部制作入口持续可达；生成示意明确披露。
 - 部分供给清单以细线顺读，商品与购物车保留来源作品和必要参考说明。
@@ -197,30 +231,31 @@ Issue #28 的作品详情后续在同一 `paper_flow` 世界中落实“主毛�
 
 ## Colors
 
-色彩以接近纸面的中性底为主，柔色面区分内容角色，深色文字承载阅读；数值以前言令牌为准。当前首页与保留旧 Section 的同色系细微差异按真实实现记录，不把所有柔粉或粉蓝强行合并为一个色值。
+色彩以接近纸面的中性底为主，柔色面区分内容角色，深色文字承载阅读；数值以前言令牌为准。当前新页面优先复用 `surface`、`ink`、`muted`、`line`、`butter`、`project-row-action`、`action-soft` 与灰蓝焦点；它们分别对应代码中的同名或语义 `--yarn-*` 角色。`paper`、`coral`、`butter-action`、旧柔色分类面与选中粉色保留兼容其已有组件，不是新页面默认调色板。局部插画描边、禁用态与滚动条值保留在 token 源码及组件说明，不为消除 detector 提示全部升级为全站色阶。
 
 `.impeccable/design.json` 补充组件展示片段、阴影、动效和断点。其色阶条按已提取颜色合成，仅供面板比较，不是新增的发布色板。
 
 ### Primary
 
-- **奶油黄**（`butter`）与 **动作浅黄**（`butter-action`）：继承的宽幅及胶囊动作色。它们保留在可恢复旧 Section 与共享样式中；B 已移除首页宽幅浏览动作、独立套件与季节大卡，当前紧凑帮助入口为文字链接。
-- **珊瑚色**（`coral`）：共享焦点与已有动作强调的来源。
-- **作品行动陶土色**（`project-row-action`）：分类作品行的浏览全部、行内展开与滚动箭头共同采用的动作色；不替换 Logo 的品牌陶土橘。
-- **Mew 陶土橘**（`mew-terra`）：MewoolMew 猫标、字标与小范围交互的深暖橘；只承担品牌识别，不表示价格、库存或促销。
-- **选中暖墨**（`selected-ink`）：发现类型的选中态及搜索光标；分类描边和标签文字沿用同色系的实际局部变体。
+- **奶油黄**（`butter`）：当前串联 Hero 胶囊主按钮与底部波浪；`primary-hover` 和 `primary-line` 为其悬停与边线。**动作浅黄**（`butter-action`）仅保留旧独立套件动作。
+- **珊瑚色**（`coral`）：尚未迁移的历史购买骨架焦点与已有动作强调来源；本轮共享导航、页脚及首页已使用灰蓝焦点。
+- **行动陶土色**（`project-row-action`，代码 `--yarn-action`）：作品行链接 / 箭头、导航交互、帮助动作、页脚链接与表单按钮共同采用；`action-hover` 为轻量按钮的浅底悬停。
+- **Mew 陶土橘**（`mew-terra`）：MewoolMew 猫标、字标、Hero 连线与作品箭头轮廓使用的深暖橘（代码 `--yarn-thread`）；装饰轮廓色不直接用作小字号动作文字，也不表示价格、库存或促销。
+- **选中暖墨**（`selected-ink`）：历史 B 发现类型与搜索光标；当前首页和共享导航 / 页脚输入光标使用行动陶土色。
 
 ### Secondary
 
-- **选中浅粉纸面**（`selected-paper`）：当前展开 / 已选筛选与材料套件标签共同使用的底色。
-- **粉蓝纸面**（`blue-surface`）：当前紧凑人工帮助条的底色。
+- **浅奶油动作纸面**（`action-soft`）：Hero 标签、导航选中 / hover、紧凑帮助与页脚共同采用的连续浅面。
+- **选中浅粉纸面**（`selected-paper`）：历史 B 展开 / 已选筛选与材料套件标签的底色。
+- **粉蓝纸面**（`blue-surface`）：保留旧帮助与图谱组件色系，不再是当前紧凑帮助底色。
 - **柔粉、薄荷与浅奶油纸面**（`blush-surface`、`mint-surface`、`cream-surface`）：保留旧图谱组件的已确认色系。各版分类插图按对应 surface 使用局部色面，不能将旧色值或旧大分类卡当作当前外观。
-- **灰蓝墨色**（`indigo`）：已有导航交互与购买骨架中的强调文字。B 发现区使用自己的灰蓝焦点轮廓。
+- **灰蓝墨色**（`indigo`，共享焦点 `--yarn-focus`）：当前导航、页脚、Hero、作品行与紧凑帮助的键盘焦点；不混同陶土 hover。历史购买骨架仍有自身强调与焦点覆盖。
 
 ### Neutral
 
 - **暖纸**（`paper`）：共享页面底层。B 主区域使用暖白表面；首屏格纸由图像叠加，不能只凭底色判断最终纸感。
 - **暖白表面**（`surface`）：导航、发现区、搜索、筛选和帮助区外层的连续底色。流程纸面使用近白半透明层。
-- **炭黑**（`ink`）与 **发现炭黑**（`discovery-ink`）：分别用于共享正文 / 首屏和发现区内容；**柔灰**（`muted`）为已有辅助说明色。
+- **炭黑**（`ink`）与 **发现炭黑**（`discovery-ink`）：分别用于共享正文 / 首屏和发现区内容；**柔灰**（`muted`）为辅助说明及当前共享字段边线；`copy` 是 Hero 说明文字。
 - **暖灰细线**（`line`）：共享导航、购买骨架和控件边界。B 筛选与标签另有低对比暖灰或浅珊瑚边线。
 
 **The 颜色说明角色 Rule.** 浅色面与暖色强调用于分类、选中和动作层级；它们不构成价格、热度、难度或库存的事实证明。
@@ -229,18 +264,19 @@ Issue #28 的作品详情后续在同一 `paper_flow` 世界中落实“主毛�
 
 **Display Font:** `Yarn Display`，为自托管 Noto Sans SC 当前字符子集，文件实际提供 400 / 600 字重，后备为 Noto Sans SC / sans-serif。
 
-**Body Font:** Theme 配置为 Murecho 400；中文通过语言规则改用前言所列系统中文字体栈。历史 B 首屏、当前发现标题与作品标题使用展示字体；帮助标题及正文继续继承 Theme / 中文字体栈，不能宣称整站已切换同一自托管字体。
+**Body Font:** Theme 配置为 Murecho 400；中文通过语言规则改用前言所列系统中文字体栈。历史 B 首屏、当前发现标题与作品标题使用展示字体；导航、紧凑帮助与页脚标题也使用展示字体；正文继续继承 Theme / 中文字体栈，不能宣称整站已切换同一自托管字体。
 
 **Character:** 主标题使用较重黑体感，流程与卡片标题更轻；字号随用途调整，没有固定倍率的全站阶梯，也没有独立等宽标签字体。源码中的 500 字重是请求值，不表示仓库另有一份 500 字重字体文件。
 
 ### Hierarchy
 
 - **Display**：`display` 与 `display-mobile` 保留历史 B 首屏角色；当前串联 Hero 的流式标题及三语上限见 Layout 和对应首屏 brief，不把旧值描述成当前标题。
-- **Headline**：`headline-discovery` 保留历史 B 的居中发现标题。当前分类行区域标题左对齐，桌面使用 clamp(2.5rem, 2.5vw, 3.2rem) / 1.4，749 px 以下为 2.5rem；这是首页局部层级。
+- **Headline**：`headline-discovery` 保留历史 B 的居中发现标题。当前分类行区域标题左对齐，桌面使用 clamp(2.5rem, 2.5vw, 3.2rem) / 1.4，749 px 以下为 2.5rem；当前通过 `shared-section` / `--yarn-type-section` 表达可复用的 Section 标题角色，手机覆盖仍属于当前页面。
 - **Title**：`title-work` 保留历史 Product 卡角色；当前首页 Project 名称同样请求 1.65rem / 500，但行高为 1.5，749 px 以下为 1.5rem，允许完整换行。分类行标题桌面为 2.2rem / 1.5，手机为 2rem；图名层级不新增全站字号阶梯。
 - **Project Title**：详情桌面使用响应式展示标题；749 px 以下使用 `title-project-mobile`，与完整作品图并排，完整换行显示 Project 名称。简介为 1.3rem / 1.4，内部演示披露为 1.2rem / 1.5，均保留全文；这些是该手机首段的局部阅读层级，不推广为全站正文尺度。源码 rem 依宿主根字号缩放，不把当前浏览器换算值写成固定像素规范。
 - **Project Preparation**：主毛线名称在桌面使用 `project-yarn-title`（2.1rem / 1.35），749 px 以下使用 `project-yarn-title-mobile`（1.75rem / 1.35）；辅助区标题为 1.7rem，辅助条目名称为 1.55rem。四项只服务作品详情的“主毛线 / 辅助清单”信息差，不建立新的全站字号阶梯。
-- **Body**：`body-zh` 保留原有帮助 / 内容组件正文角色。B 首屏说明使用流式字号，手机为 `body-hero-mobile`；搜索输入为 1.5rem。
+- **Body**：`body-zh` 保留原有帮助 / 内容组件正文角色。B 首屏说明使用流式字号，手机为 `body-hero-mobile`；首页搜索桌面为 1.5rem、749 px 以下为 16px；导航搜索和页脚邮件输入明确为 `shell-input`（16px），不把它误写成全站正文。
+- **Shared Control / Meta**：`shared-control` 为导航与紧凑帮助动作的 1.5rem；`shared-meta` 为语言选择及页脚辅助信息的 1.3rem。页脚标题桌面 2.2rem、手机 2rem，帮助标题桌面 2rem、手机 1.6rem；这些组件覆盖保持各自阅读密度，不添加一个新全站字号阶梯。
 - **Label**：流程桌面为 `label-flow`，手机为 1.4rem；历史 B 手机分类、筛选、查看材料和联系动作同为 1.4rem，商品类型入口为 1.6rem。当前首页分类标签桌面为 1.55rem，手机为 1.4rem；日文手机标签单独为 1.25rem，以保留短分类完整词语，不能将其推广为通用正文。浏览全部和行内展开桌面为 1.4rem、手机为 1.3rem。计数、内部演示说明与套件身份标签保留辅助文字尺度，不升级为全站正文标准。
 
 Theme 的 `--font-body-scale` 为 1.0，但源码 `rem` 仍取决于宿主根字号。本轮用户 Chrome 实测 `document.documentElement` 根字号为 12.5 px；这只是当前预览环境证据，不是全站默认。新增文案仍须检查三语断行，不能把源码 rem 在未知根字号的环境中直接当作固定 px。
@@ -255,7 +291,9 @@ Theme 的 `--font-body-scale` 为 1.0，但源码 `rem` 仍取决于宿主根字
 
 本次实物复核为三语 1440 / 390 px、英文 320 px 与中文 768 px，独立 [局部 finish verdict](.impeccable/review/13-connected-landing/layout-finish-review.md) 为 ship。新增首屏颜色为正文 `#4a4b48`、圆框 `#e9bd51`、标签 `#fff9e9`，沿用暖白 `#fffefa`、奶油黄 `#f8e5a9` 和连线赭色 `#bf5a38`。圆面使用 1 px 轮廓与 6 px 半透明奶油黄外圈，标签为胶囊；无叠压纸卡阴影。标题按画布宽度流式缩放并为日英调整上限，手机日文工具标签和 320 px 英文标签保留完整短语。这些是首屏局部尺寸，不扩充全站字号规范。资产来源见 [生成记录](.impeccable/review/13-connected-landing/asset-provenance.md)。
 
-复用的空间语言是居中内容、图文之间的清楚净空与按内容角色分配密度。历史 B 发现区与当前帮助条使用最大宽度 1160 px、宽屏两侧合计 64 px；989 px 以下为总宽度的 86%，599 px 以下两侧各留 16 px。历史流程纸面另有最大宽度 1080 px。当前分类作品行独立使用最大 1320 px、宽屏两侧合计 96 px；750–989 px 两侧各留 24 px，749 px 以下各留 16 px。其余共享购买骨架继续使用 Theme 当前 1300 px page-width，不强推首页专用宽度。
+复用的空间语言是居中内容、图文之间的清楚净空与按内容角色分配密度。当前作品行、紧凑帮助与页脚共用最大内容宽度 1320 px，两侧 gutter 在 990 px 以上为 48 px、750–989 px 为 24 px、749 px 以下为 16 px。导航使用同一 gutter 与内容上限，外层最大宽度包含两侧内距。历史 B 发现区仍为最大 1160 px、历史流程纸面为 1080 px；其余购买骨架保留 Theme 当前 1300 px page-width，不全局覆盖 `.page-width`。首页 Hero 艺术画布的 1340 px 与独立定位不纳入共享容器。
+
+共享 spacing 使用 4 / 8 / 12 / 16 / 24 / 32 / 48 px 角色，已由导航、帮助与页脚消费；不据此改写旧 Project detail 的所有局部间距。新页面接入与加载顺序见 [首页设计系统接入](docs/design/home-system.md)：`yarn-design-tokens.css` 在旧 `yarn-prototype.css` 前加载，导航样式随后，`yarn-foundation.css` 统一限定范围内的交互，页脚与页面 CSS 各自掌管构图。字体与共享值只在 tokens 定义，foundation 不全局改写所有按钮、输入或页面容器。`work-media` / `--yarn-radius-media` 当前供作品卡封面和详情封面使用；制作准备纸面的 14 px 仍是局部面板值，没有因同值而完成媒体角色迁移。
 
 当前首页在全局导航与页脚之间保留首屏四节点路径、一体化作品发现、紧凑购买前帮助三个主区域。旧分类大卡、独立一团套件、季节大卡与旧目录 Section 的设置保留但已禁用；它们不是当前首页的中间段。首页合同不推广为全站必须三段的规则。
 
@@ -271,7 +309,7 @@ Theme 的 `--font-body-scale` 为 1.0，但源码 `rem` 仍取决于宿主根字
 
 ## Elevation & Depth
 
-当前首页作品行平铺且无外框阴影，帮助条以浅蓝面区分，串联 Hero 不使用叠压纸卡阴影。历史 B 仍保留柔纸叠层：流程纸面使用轻扩散阴影，自定义筛选展开面板因覆盖结果区而使用更清楚的扩散阴影；这些不是当前原生 details 筛选的默认深度。Project 主毛线纸面不用新增阴影，只靠暖白表面、14 px 局部圆角、细边线和内距建立一层焦点；辅助清单回到无卡片的分隔线。共享焦点外圈是交互状态，不是卡片深度。
+当前首页作品行平铺且无外框阴影，帮助与页脚以浅奶油面及细边线区分，串联 Hero 不使用叠压纸卡阴影。历史 B 仍保留柔纸叠层：流程纸面使用轻扩散阴影，自定义筛选展开面板因覆盖结果区而使用更清楚的扩散阴影；这些不是当前原生 details 筛选的默认深度。Project 主毛线纸面不用新增阴影，只靠暖白表面、14 px 局部圆角、细边线和内距建立一层焦点；辅助清单回到无卡片的分隔线。共享焦点外圈是交互状态，不是卡片深度。
 
 ### Shadow Vocabulary
 
@@ -296,11 +334,13 @@ Project 详情的主毛线图使用 `project-yarn-image`（10 px），辅助清�
 
 ### Buttons
 
-当前分类行用图片与名称组成一个 Project 详情链接，不再重复逐卡“查看作品”CTA。浏览全部为页内链接；各行“查看全部 / 收起”为原行展开按钮。双箭头放在该行图片与名称下方、右对齐，44×44 px 圆形触控区，陶土描边与动作色；只有溢出时出现，端点禁用，展开后隐藏箭头。禁用态采用 #8c8880 文字与 #d3cfc7 描边，hover 为 #fff3de；这三项是已复核控件的局部状态，不是新全站色板。轨道支持原生横向滚动，减少动态偏好下按钮滚动不使用平滑动画。历史 B 的查看材料、类型按钮组和对应选中线保留在旧组件中。
+当前分类行用图片与名称组成一个 Project 详情链接，不再重复逐卡“查看作品”CTA。浏览全部为页内链接；各行“查看全部 / 收起”为原行展开按钮。双箭头放在该行图片与名称下方、右对齐，44×44 px 圆形触控区，陶土描边与动作色；只有溢出时出现，端点禁用，展开后隐藏箭头。禁用态采用 token 源码中的 #8c8880 文字与 #d3cfc7 描边，不提升为推荐内容色；hover 复用 `action-hover`。轨道支持原生横向滚动，减少动态偏好下按钮滚动不使用平滑动画。历史 B 的查看材料、类型按钮组和对应选中线保留在旧组件中。
+
+当前 Hero 主动作使用 `button-hero`：奶油黄胶囊、桌面至少 48 px 高、手机至少 44 px，高亮仅改变背景，无抬升。
 
 旧 `button-primary` 与 `button-pill` 令牌保留已确认的暖黄动作形态及 hover 变体，当前首页不显示旧宽幅浏览按钮与独立套件按钮。不能从这些保留令牌推导出 B 需要新增一个宽幅 CTA。
 
-发现区键盘焦点为灰蓝色 2 px 轮廓、4 px 外偏移且无额外阴影；共享区域继续采用珊瑚半透明 3 px 轮廓、3 px 外偏移及暖白内衬。联系链接 hover 使用下划线，不新增抬升动画。
+当前首页、导航与页脚的共享键盘焦点为灰蓝色 2 px 轮廓、4 px 外偏移且无额外阴影；44 px 是已接入图标、语言选择和动作的最小触控角色。尚未迁移的购买 / 历史区域保留原焦点，不声称整个 Theme 已完成迁移。联系链接 hover 使用下划线，不新增抬升动画。
 
 ### Chips / Tags
 
@@ -310,21 +350,31 @@ Project 详情的主毛线图使用 `project-yarn-image`（10 px），辅助清�
 
 当前首页作品卡以 Shopify `yarn_project.cover` 与完整名称为主体，媒体宽高比为 1.12，cover 填充，下面仅保留名称；分类、难度、摘要与重复 CTA 不占首页卡片空间，事实继续在详情展示。Hover 为名称下划线，无外卡框、阴影或抬升。历史 B Product 卡的 0.93 媒体比例、contain 与“查看材料”仍留在旧组件，不能作为当前分类行的卡片合同。
 
-紧凑帮助条由线团问号、短标题和联系入口组成，浅蓝底、无阴影，桌面横排；手机保持同一阅读次序并缩小图标与间隔。当前未配置 LINE 主链接，实际显示联系页入口，不能据此声称在线聊天或 LINE 服务已接通。
+紧凑帮助条由线团问号、短标题和联系入口组成，浅奶油底、浅黄细边、16 px 圆角且无阴影，桌面横排；599 px 以下图标与标题并排，联系动作落在标题下方，保留自然换行。当前未配置 LINE 主链接，实际显示联系页入口，不能据此声称在线聊天或 LINE 服务已接通。
 
 ### Inputs / Fields
 
-当前首页搜索为暖白底、暖灰细边（#b9b8af），桌面 16 px 圆角、最小高度 54 px；749 px 以下为 14 px、50 px。右端为有可访问名称的 SVG 搜索提交按钮。搜索留在首页，筛选同一完整 `yarn_project` 作品库；分类快捷入口清除条件并定位对应作品行，不再作为历史 Product 类型按钮。
+当前首页搜索为暖白底、柔灰 1 px 边线，桌面和手机均为 24 px 圆角、最小高度 56 px，内距为 12px 58px 12px 22px；最终级联覆盖旧 54 / 50 px 高度与 16 / 14 px 圆角。右端为有可访问名称的 SVG 搜索提交按钮。搜索留在首页，筛选同一完整 `yarn_project` 作品库；分类快捷入口清除条件并定位对应作品行，不再作为历史 Product 类型按钮。
 
 高级筛选使用原生 details / summary 与带标签的 select；当前可按作品类别、难度、教程类型及可用扩展事实缩小结果。清除恢复作品库；无结果明确给出说明，分页加载失败提供重试，不能在全库未加载时暗示已搜索完整内容。这里不继承历史 B 自定义浮层的方向键 / Home / End 合同，也不建立未实现的全站表单规范。
 
 ### Navigation
 
-导航在 Issue #20 中沿用首页视觉世界调整：暖白底、暖灰底线，桌面最小高度 84 px，1339 px 以下折叠为菜单、字标、搜索与购物袋，599 px 以下最小高度 68 px。较早折叠为三语长文案和浏览器放大字体留出空间。“按作品挑选”用浅粉纸面与暖墨文字强调，其他入口保持文字链接。图标统一为 24 px 轮廓和 44 px 触控区，购物袋继续打开原有购物车抽屉；页内导航会关闭手机菜单、解锁滚动并把焦点交给目标区域。
+导航在 Issue #20 中沿用首页视觉世界调整：暖白底、暖灰底线，桌面最小高度 84 px，1339 px 以下折叠为菜单、字标、搜索与购物袋，599 px 以下最小高度 68 px。较早折叠为三语长文案和浏览器放大字体留出空间。作品入口与当前页使用浅奶油胶囊和行动陶土色，hover 延续同一浅面与文字色；桌面导航和手机菜单使用 Yarn Display，桌面为 `shared-control`，其他入口保持文字链接。图标统一为 24 px 轮廓和 44 px 触控区，购物袋继续打开原有购物车抽屉；页内导航会关闭手机菜单、解锁滚动并把焦点交给目标区域。
 
 MewoolMew 的导航 Logo 直接继承用户选择的第一款橘色猫抱毛线球图稿：歪头闭眼、橘色斑块、环抱线团和回环线尾，配合同一张图中的圆润小写 `mewoolmew` 字标。正式名称与无障碍名称仍为 `MewoolMew`，三语共用。桌面图像显示区为 252×57.27 px，390 px 手机为 184×41.81 px；保持图片比例，以 `object-fit: cover` / `object-position: 50% 42%` 取出原始图像的有效内容，窄手机按可用空间收缩。暖白背景通过 multiply 混合融入现有页眉；这不是通用深色背景资产。页眉仍为桌面 84 px、手机 68 px，Logo 链接保留至少 44 px 高的触控区。Shopify 上传 Logo 仍优先。源码为 `assets/mewoolmew-logo-reference.png`、`snippets/yarn-wordmark.liquid`、`assets/yarn-header.css`；Shopify CDN 提供 600 / 900 px 图片，来源和生成过程见 `docs/brand/logo-reference.md`。此事实已由本轮三语桌面 / 手机截图复核。
 
+桌面导航、手机菜单与页面 Section 必须使用同一整页语言。菜单项原文及译文以 Shopify Navigation 菜单资源与 Translate & Adapt 为唯一来源，链接目标继续来自同一菜单；不得在 Liquid 写死英文，或另建一份硬编码菜单覆盖缺失翻译。中文页出现 `Home / Catalog / Contact` 等英文回退属于待修内容，不能作为三语验证通过的状态。当前 Main menu 的中文原文为“首页 / 商品目录 / 联系我们”，日文译文为“ホーム / 商品一覧 / お問い合わせ”（首页 / 商品目录 / 联系我们），英文译文为“Home / Catalog / Contact”；这三项是可编辑菜单内容，不是全站固定栏目数量。
+
 语言菜单继续使用已有本地化链接和 Shopify 的可用语言集合。Issue #23 英文已按用户当次授权开放；本版中文、日文、英文的作品叙述、材料清单、教程锚点及购买关键操作已按主代理 QA 记录验证。语言开放和关键路径可用不等于整个目录已本地化：运营 Product 标题与部分既有 Theme Editor 文案仍为日文，购物车公开属性标签仍包含 `Project` / `Component` / `Reference`。这些边界须在运营翻译中逐项维护，不能由控件语言推定商品内容已经翻译。
+
+### Footer
+
+共享页脚以浅奶油纸面和暖灰分隔线收尾。桌面品牌图与订阅区各占一列，749 px 以下改为品牌、订阅、语言和政策的单列顺序；内容与作品 / 帮助容器对齐。Logo 复用同一获批原图，桌面宽 252 px、手机宽 200 px，不以文字近似或新绘图替换。
+
+邮件字段与导航搜索继承暖白底、24 px 圆角、56 px 最小输入高度、16px 输入文字；语言选择至少 44 px 高，展开面板为暖白底、暖灰线与 16 px 圆角。政策和菜单链接使用行动陶土色及至少 44 px 高的可达区域，表单成功 / 错误文案保留 Shopify 语义。
+
+页脚继续使用 Shopify `customer` 表单、`contact[email]` 与 `newsletter` tag；标题、显示开关、运营 block、语言 / 国家、政策与支付图标来自原设置及 Shopify 数据。当前截图的内容数量不是固定模板；禁用订阅时不显示输入表单。本轮仅确认视觉与既有表单边界，不宣称真实订阅发送或后台编辑已验证。
 
 ### Project Library / Detail
 
@@ -368,7 +418,8 @@ Documenter 已打开新版中文 1440 px 与日文 390 px 全页截图：四种�
 - **Do** 让手作插画与针目图解在各自使用场景完整可辨、标签独立可读，并让装饰避开正文。
 - **Do** 保留 Shopify 管理的 Project / Product 图片与标题、装饰图解和可编辑三语 HTML 文案各自的职责。
 - **Do** 在新增文案后检查字体覆盖、三语断行、手机可读性、焦点和触控路径。
-- **Do** 从对应 surface brief 决定构图，从本规范复用已实现的材料、字体角色和组件语言。
+- **Do** 让桌面导航、手机菜单、Section 与页脚遵从整页语言；在 Shopify 菜单资源维护原文及译文，逐语检查可见文本，不以英文回退替代缺失翻译。
+- **Do** 从对应 surface brief 决定构图，从本规范复用已实现的材料、字体角色和组件语言；代码按 [接入指南](docs/design/home-system.md) 消费共享角色，保持 tokens 的单一来源。
 - **Do** 在 390 px Project 详情首屏保留完整标题、事实、演示披露，并让制作准备的标题与首条信息出现在 sticky 制作动作上方。
 - **Do** 让移动购物车每个条目的减号、当前数量、加号、删除与行总价完整可见且可滚动到达。
 - **Do** 保留自备和待补配件，区分采购数量与制作所需用量，并在商品和购物车中延续来源作品与非同款参考说明。
@@ -380,7 +431,7 @@ Documenter 已打开新版中文 1440 px 与日文 390 px 全页截图：四种�
 - **Don't** 把临时字标、参考商品图、图上品牌或色数文字当作已授权正式品牌资产。
 - **Don't** 为匹配 comp 的数量或颜色复制作品、生成假商品照片或修改真实名称；当前内部样例也不能被写成已验证可执行的正式教程。
 - **Don't** 将字形箭头、遗留 eyebrow 样式、单处定位补偿、辅助极小文字或未复核的购买页面状态升级为全站规范。
-- **Don't** 将首页三主区域、四个分类或两列移动图库强推为其他 surface 的固定模板。
+- **Don't** 将首页三主区域、四个分类、Hero 绝对定位或两列移动图库强推为其他 surface 的固定模板，也不要将兼容旧颜色视为新页面推荐色板。
 - **Don't** 把局部整改复核、本文档或面板组件片段当作 Comp-first 全部 gate、免密码访客分享、素材授权或正式发布已通过的凭据。
 - **Don't** 将本轮局部 verdict、三语操作验证或英文开放扩大解释为全站完整本地化、实际跟做与适配认证、真实供货、咨询发送、旧首页 build gate 或生产发布通过。
 - **Don't** 将购物车最终复拍中的第三方店铺参考素材当作发布资产；它只用于本地视觉核对，不上传或提交。

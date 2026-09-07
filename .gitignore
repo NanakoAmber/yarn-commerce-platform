@@ -41,3 +41,6 @@
 !/.impeccable/mocks/discovery-b-zh.png.json
 /.impeccable/build/hero-plates.html
 /.playwright-mcp/
+
+# Issue 32 local screenshots contain protected internal sample media.
+/.impeccable/review/32-home-system/*.png

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-07T20:01:44.522181+00:00",
+  "generatedAt": "2026-09-07T20:56:49.557656+00:00",
   "title": "Design System: 毛线品牌",
   "extensions": {
     "colorMeta": {
@@ -76,7 +76,7 @@
       },
       "butter": {
         "role": "primary",
-        "displayName": "奶油黄（继承动作）",
+        "displayName": "奶油黄（当前 Hero 动作）",
         "tonalRamp": [
           "oklch(15.00% 0.07938 92.59)",
           "oklch(26.43% 0.07938 92.59)",
@@ -104,7 +104,7 @@
       },
       "coral": {
         "role": "primary",
-        "displayName": "珊瑚色",
+        "displayName": "珊瑚色（历史兼容）",
         "tonalRamp": [
           "oklch(15.00% 0.11267 29.56)",
           "oklch(26.43% 0.11267 29.56)",
@@ -146,7 +146,7 @@
       },
       "blue-surface": {
         "role": "secondary",
-        "displayName": "粉蓝纸面",
+        "displayName": "粉蓝纸面（保留旧组件）",
         "tonalRamp": [
           "oklch(15.00% 0.00893 214.34)",
           "oklch(26.43% 0.00893 214.34)",
@@ -202,7 +202,7 @@
       },
       "selected-paper": {
         "role": "secondary",
-        "displayName": "选中浅粉纸面",
+        "displayName": "浅粉纸面（历史筛选与标签）",
         "tonalRamp": [
           "oklch(15.00% 0.01362 34.30)",
           "oklch(26.43% 0.01362 34.30)",
@@ -216,7 +216,7 @@
       },
       "selected-ink": {
         "role": "primary",
-        "displayName": "选中暖墨",
+        "displayName": "暖墨（历史 B 选中）",
         "tonalRamp": [
           "oklch(15.00% 0.09691 21.63)",
           "oklch(26.43% 0.09691 21.63)",
@@ -230,7 +230,7 @@
       },
       "project-row-action": {
         "role": "primary",
-        "displayName": "作品行动陶土色",
+        "displayName": "行动陶土色（共享动作）",
         "tonalRamp": [
           "oklch(15.00% 0.13164 35.76)",
           "oklch(26.43% 0.13164 35.76)",
@@ -240,6 +240,76 @@
           "oklch(72.14% 0.13164 35.76)",
           "oklch(83.57% 0.13164 35.76)",
           "oklch(95.00% 0.13164 35.76)"
+        ]
+      },
+      "action-soft": {
+        "role": "secondary",
+        "displayName": "浅奶油动作纸面",
+        "tonalRamp": [
+          "oklch(15.00% 0.02196 89.79)",
+          "oklch(26.43% 0.02196 89.79)",
+          "oklch(37.86% 0.02196 89.79)",
+          "oklch(49.29% 0.02196 89.79)",
+          "oklch(60.71% 0.02196 89.79)",
+          "oklch(72.14% 0.02196 89.79)",
+          "oklch(83.57% 0.02196 89.79)",
+          "oklch(95.00% 0.02196 89.79)"
+        ]
+      },
+      "action-hover": {
+        "role": "secondary",
+        "displayName": "轻量动作悬停",
+        "tonalRamp": [
+          "oklch(15.00% 0.03047 81.76)",
+          "oklch(26.43% 0.03047 81.76)",
+          "oklch(37.86% 0.03047 81.76)",
+          "oklch(49.29% 0.03047 81.76)",
+          "oklch(60.71% 0.03047 81.76)",
+          "oklch(72.14% 0.03047 81.76)",
+          "oklch(83.57% 0.03047 81.76)",
+          "oklch(95.00% 0.03047 81.76)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Hero 奶油黄悬停",
+        "tonalRamp": [
+          "oklch(15.00% 0.08411 90.31)",
+          "oklch(26.43% 0.08411 90.31)",
+          "oklch(37.86% 0.08411 90.31)",
+          "oklch(49.29% 0.08411 90.31)",
+          "oklch(60.71% 0.08411 90.31)",
+          "oklch(72.14% 0.08411 90.31)",
+          "oklch(83.57% 0.08411 90.31)",
+          "oklch(95.00% 0.08411 90.31)"
+        ]
+      },
+      "primary-line": {
+        "role": "secondary",
+        "displayName": "奶油黄边线",
+        "tonalRamp": [
+          "oklch(15.00% 0.09604 91.28)",
+          "oklch(26.43% 0.09604 91.28)",
+          "oklch(37.86% 0.09604 91.28)",
+          "oklch(49.29% 0.09604 91.28)",
+          "oklch(60.71% 0.09604 91.28)",
+          "oklch(72.14% 0.09604 91.28)",
+          "oklch(83.57% 0.09604 91.28)",
+          "oklch(95.00% 0.09604 91.28)"
+        ]
+      },
+      "copy": {
+        "role": "neutral",
+        "displayName": "Hero 正文灰",
+        "tonalRamp": [
+          "oklch(15.00% 0.00507 121.69)",
+          "oklch(26.43% 0.00507 121.69)",
+          "oklch(37.86% 0.00507 121.69)",
+          "oklch(49.29% 0.00507 121.69)",
+          "oklch(60.71% 0.00507 121.69)",
+          "oklch(72.14% 0.00507 121.69)",
+          "oklch(83.57% 0.00507 121.69)",
+          "oklch(95.00% 0.00507 121.69)"
         ]
       }
     },
@@ -279,6 +349,22 @@
       "label-control": {
         "displayName": "B 操作文字",
         "purpose": "历史 B 组件角色，保留尺寸以 rem 为准；当前串联 Hero 与 Project 分类行按 DESIGN.md 的局部合同。"
+      },
+      "shared-section": {
+        "displayName": "共享区域标题",
+        "purpose": "当前首页区域标题消费的角色；移动覆盖仍由页面样式决定。"
+      },
+      "shared-control": {
+        "displayName": "共享操作文字",
+        "purpose": "导航及紧凑帮助动作；不覆盖每个历史按钮。"
+      },
+      "shared-meta": {
+        "displayName": "共享辅助文字",
+        "purpose": "导航和页脚语言控件、页脚政策与辅助信息。"
+      },
+      "shell-input": {
+        "displayName": "导航与页脚输入文字",
+        "purpose": "明确 16px；首页搜索手机同为 16px，桌面保留 1.5rem。"
       }
     },
     "shadows": [
@@ -332,15 +418,15 @@
     ],
     "breakpoints": [
       {
-        "name": "compact-home",
+        "name": "compact-help-and-header",
         "value": "599px"
       },
       {
-        "name": "project-rows-two-column-and-detail-mobile",
+        "name": "mobile-gutter-footer-and-project-rows",
         "value": "749px"
       },
       {
-        "name": "project-rows-three-column",
+        "name": "tablet-gutter-and-project-rows",
         "value": "989px"
       },
       {
@@ -351,43 +437,44 @@
   },
   "components": [
     {
-      "name": "保留的宽幅主动作",
+      "name": "当前 Hero 主动作",
       "kind": "button",
-      "refersTo": "button-primary",
-      "description": "已确认的旧图谱动作；B 首页不显示此入口，不能用面板示例要求重新加入。",
-      "html": "<a class=\"ds-scope ds-primary\" href=\"#作品\">看看有哪些作品</a>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-primary{display:grid;min-height:72px;align-items:center;text-align:center;padding:16px clamp(24px,3.5vw,52px);border-radius:15px;background:var(--yarn-butter,#f8e5a9);color:#2c2e2c;font-size:28px;text-decoration:none;transition:background-color 180ms ease,transform 260ms cubic-bezier(.16,1,.3,1)}.ds-primary:hover{background:#f5dda0;transform:translateY(-2px)}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+      "refersTo": "button-hero",
+      "description": "继承获批 Hero 的奶油黄胶囊，不改变首页艺术画布或节点构图。",
+      "html": "<a class=\"ds-hero-action\" href=\"#作品\">发现作品</a>",
+      "css": ".ds-hero-action{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif);display:inline-flex;align-items:center;justify-content:center;min-width:154px;min-height:48px;padding:12px 28px;border:1px solid var(--yarn-primary-line,#efd68d);border-radius:var(--yarn-radius-pill,999px);background:var(--yarn-butter,#f8e5a9);color:var(--yarn-primary-ink,#292a28);font-size:16px;font-weight:600;text-decoration:none}.ds-hero-action:hover{background:var(--yarn-primary-hover,#f6dfa0)}.ds-hero-action:focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px);box-shadow:none}@media(max-width:749px){.ds-hero-action{min-width:122px;min-height:var(--yarn-touch,44px);padding:10px 22px;font-size:14px}}"
     },
     {
-      "name": "保留的套件胶囊动作",
-      "kind": "button",
-      "refersTo": "button-pill",
-      "description": "已确认的旧独立套件卡动作；B 首页已禁用该 Section，此片段保留继承规范。",
-      "html": "<a class=\"ds-scope ds-pill\" href=\"#套件\">查看披肩套件</a>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-pill{display:inline-flex;min-height:52px;align-items:center;gap:22px;padding:0 24px;border-radius:999px;background:#f7e3a5;color:#292a28;font-size:14px;font-weight:600;text-decoration:none;transition:background-color 180ms ease,transform 260ms cubic-bezier(.16,1,.3,1)}.ds-pill:hover{background:#f2d987;transform:translateY(-2px)}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
-    },
-    {
-      "name": "历史 B 发现搜索",
+      "name": "当前作品搜索",
       "kind": "input",
       "refersTo": "field-search",
-      "description": "历史 B 保留组件，当前首页 Project 分类行不显示此版本。",
+      "description": "当前首页 Project 搜索，桌面 / 手机均为 56px 最小高度和 24px 圆角；面板只呈现字段，不连接真实搜索。",
       "html": "<div class=\"ds-scope ds-search\"><input type=\"search\" aria-label=\"搜索想做的作品\" placeholder=\"搜索想做的作品\"><button type=\"button\" aria-label=\"搜索\"><svg fill=\"none\" viewBox=\"0 0 18 19\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M11.03 11.68A5.784 5.784 0 1 1 2.85 3.5a5.784 5.784 0 0 1 8.18 8.18m.26 1.12a6.78 6.78 0 1 1 .72-.7l5.4 5.4a.5.5 0 1 1-.71.7z\" clip-rule=\"evenodd\"/></svg></button></div>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-search{position:relative;width:min(680px,100%);color:#303330}.ds-search input{width:100%;min-height:48px;padding:12px 48px 12px 18px;border:1px solid #dfdfd5;border-radius:12px;background:var(--yarn-surface,#fffefa);font:inherit;font-size:15px;caret-color:#9e5554}.ds-search input::placeholder{color:#636c67;opacity:1}.ds-search button{position:absolute;top:0;right:3px;width:44px;height:48px;padding:12px;border:0;background:transparent;color:inherit;cursor:pointer}.ds-search svg{width:20px;height:20px}.ds-scope:focus-visible,.ds-scope :is(button,a,input,select):focus-visible{outline:2px solid #597f88;outline-offset:4px;box-shadow:none}"
+      "css": ".ds-search{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif);position:relative;width:min(680px,100%);color:var(--yarn-ink,#2f302f)}.ds-search input{width:100%;min-height:var(--yarn-field-height,56px);padding:12px 58px 12px 22px;border:1px solid var(--yarn-control-line,#686762);border-radius:var(--yarn-radius-field,24px);background:var(--yarn-surface,#fffefa);color:inherit;font:inherit;font-size:1.5rem;caret-color:var(--yarn-action,#a6472e)}.ds-search button{position:absolute;top:0;right:4px;display:grid;place-items:center;width:48px;height:var(--yarn-field-height,56px);padding:13px;border:0;background:transparent;color:#303330;cursor:pointer}.ds-search svg{width:21px;height:21px}.ds-search :is(input,button):focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px);box-shadow:none}@media(max-width:749px){.ds-search input{font-size:16px}}"
     },
     {
-      "name": "历史 B 筛选与展开面板",
-      "kind": "input",
-      "refersTo": "field-filter",
-      "description": "历史 B 保留组件，当前首页 Project 分类行不显示此版本。",
-      "html": "<div class=\"ds-scope ds-filter\"><button class=\"ds-trigger\" type=\"button\" aria-expanded=\"true\"><span>不限季节</span><svg viewBox=\"0 0 10 6\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708\" clip-rule=\"evenodd\"/></svg></button><div class=\"ds-options\" role=\"group\" aria-label=\"季节\"><button type=\"button\" aria-pressed=\"true\"><span>不限季节</span></button><button type=\"button\" aria-pressed=\"false\"><span>春季</span></button><button type=\"button\" aria-pressed=\"false\"><span>夏季</span></button><button type=\"button\" aria-pressed=\"false\"><span>秋冬</span></button></div></div>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-filter{position:relative;min-width:210px;max-width:280px;padding-bottom:208px;color:#303330}.ds-trigger{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:44px;padding:10px 13px;border:1px solid #deded5;border-radius:11px;background:var(--yarn-surface,#fffefa);font:inherit;font-size:14px;text-align:left;cursor:pointer}.ds-trigger svg{width:11px;height:8px;transition:transform 160ms ease-out}.ds-trigger[aria-expanded=true]{border-color:#cb9690;background:#fcf0ed}.ds-trigger[aria-expanded=true] svg{transform:rotate(180deg)}.ds-options{position:absolute;top:50px;left:0;width:100%;padding:8px;border:1px solid #e5dcd4;border-radius:13px;background:var(--yarn-surface,#fffefa);box-shadow:0 12px 28px rgba(103,81,68,.14)}.ds-options button{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:44px;padding:10px 12px 10px 30px;border:0;border-radius:7px;background:none;color:inherit;font:inherit;font-size:14px;text-align:left;cursor:pointer}.ds-options button:hover{background:#f5f0e8}.ds-options button[aria-pressed=true]{background:#f8e7e2;color:#874e4c}.ds-options button[aria-pressed=true]::before{content:'';position:absolute;left:12px;top:16px;width:6px;height:10px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}@media(prefers-reduced-motion:reduce){.ds-trigger svg{transition:none}}.ds-scope:focus-visible,.ds-scope :is(button,a,input,select):focus-visible{outline:2px solid #597f88;outline-offset:4px;box-shadow:none}"
-    },
-    {
-      "name": "历史 B 商品类型",
+      "name": "共享文字导航",
       "kind": "nav",
-      "description": "历史 B 保留组件，当前首页 Project 分类行不显示此版本。",
-      "html": "<div class=\"ds-scope ds-types\" role=\"group\" aria-label=\"商品类型\"><button type=\"button\" aria-pressed=\"true\">作品套件</button><button type=\"button\" aria-pressed=\"false\">毛线</button><button type=\"button\" aria-pressed=\"false\">工具</button></div>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-types{display:flex;gap:clamp(32px,9vw,90px);border-bottom:1px solid #e5e2db;color:#303330}.ds-types button{position:relative;min-height:48px;padding:8px 4px 12px;border:0;background:none;color:inherit;font:inherit;font-size:16px;cursor:pointer}.ds-types button[aria-pressed=true]{color:#9e5554}.ds-types button[aria-pressed=true]::after{content:'';position:absolute;inset:auto 0 0;height:2px;background:#d28c86}.ds-scope:focus-visible,.ds-scope :is(button,a,input,select):focus-visible{outline:2px solid #597f88;outline-offset:4px;box-shadow:none}"
+      "refersTo": "nav-selected",
+      "description": "当前桌面导航的展示字体、奶油胶囊当前页 / hover 与陶土文字。此片段使用中文示例；实际桌面 / 手机导航与 Section 必须跟整页语言，原文、译文与目标只来自 Shopify 菜单资源及 Translate & Adapt；英文回退不算三语通过。",
+      "html": "<nav class=\"ds-nav\" aria-label=\"主导航\"><a href=\"#首页\" aria-current=\"page\">首页</a><a href=\"#目录\">商品目录</a><a href=\"#联系\">联系我们</a></nav>",
+      "css": ".ds-nav{display:flex;gap:var(--yarn-space-1,4px);align-items:center;background:var(--yarn-surface,#fffefa)}.ds-nav a{font-family:var(--yarn-display,'Yarn Display','Noto Sans SC',sans-serif);display:inline-flex;align-items:center;min-height:var(--yarn-touch,44px);padding:10px 11px;border-radius:var(--yarn-radius-pill,999px);color:var(--yarn-ink,#2f302f);font-size:var(--yarn-type-control,1.5rem);letter-spacing:0;text-decoration:none}.ds-nav a:is(:hover,[aria-current=page]){background:var(--yarn-action-soft,#fff9e9);color:var(--yarn-action,#a6472e)}.ds-nav a:hover{text-decoration:underline;text-underline-offset:5px}.ds-nav a:focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px);box-shadow:none}"
+    },
+    {
+      "name": "当前紧凑帮助文字区",
+      "kind": "card",
+      "refersTo": "card-help",
+      "description": "当前浅奶油纸面与陶土联系动作；面板省略真实线团问号 raster，不以新图标替换。手机动作落在标题下方。",
+      "html": "<aside class=\"ds-scope ds-help\"><h2>选材料拿不准？</h2><a href=\"#联系\">问问我们<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 14 10\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></a></aside>",
+      "css": ".ds-help{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif);display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:110px;padding:24px 30px;border:1px solid var(--yarn-primary-line,#efd68d);border-radius:var(--yarn-radius-panel,16px);background:var(--yarn-action-soft,#fff9e9);color:var(--yarn-ink,#2f302f);box-shadow:none}.ds-help h2{font-family:var(--yarn-display,'Yarn Display','Noto Sans SC',sans-serif);margin:0;color:inherit;font-size:2rem;line-height:1.4}.ds-help a{display:inline-flex;align-items:center;gap:14px;min-height:44px;padding:8px 0;color:var(--yarn-action,#a6472e);font-size:var(--yarn-type-control,1.5rem);text-decoration:none}.ds-help svg{width:16px;height:16px}.ds-help a:hover{text-decoration:underline;text-underline-offset:5px}.ds-help a:focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px);box-shadow:none}@media(max-width:599px){.ds-help{align-items:start;flex-direction:column;gap:4px;min-height:90px;padding:18px 16px}.ds-help h2{font-size:1.6rem}.ds-help a{font-size:1.4rem;gap:8px}}"
+    },
+    {
+      "name": "页脚订阅字段",
+      "kind": "input",
+      "refersTo": "field-shell",
+      "description": "当前页脚标题与邮件输入的视觉片段；无表单发送。真实 customer 表单、显示开关与反馈由 Shopify 保留。",
+      "html": "<section class=\"ds-footer-field\"><h2>订阅我们的电子邮件</h2><div class=\"ds-email\"><label for=\"ds-email\">电子邮件</label><input id=\"ds-email\" type=\"email\" autocomplete=\"email\" placeholder=\"电子邮件\"><button type=\"button\" aria-label=\"订阅\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 14 10\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></button></div></section>",
+      "css": ".ds-footer-field{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif);background:var(--yarn-action-soft,#fff9e9);color:var(--yarn-ink,#2f302f);padding:24px}.ds-footer-field h2{font-family:var(--yarn-display,'Yarn Display','Noto Sans SC',sans-serif);margin:0 0 16px;font-size:2.2rem;font-weight:600;line-height:1.5;overflow-wrap:anywhere}.ds-email{position:relative;border:1px solid var(--yarn-control-line,#686762);border-radius:var(--yarn-radius-field,24px);background:var(--yarn-surface,#fffefa)}.ds-email label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.ds-email input{width:100%;min-height:var(--yarn-field-height,56px);padding:12px 58px 12px 22px;border:0;border-radius:var(--yarn-radius-field,24px);background:transparent;color:inherit;font:inherit;font-size:16px;caret-color:var(--yarn-action,#a6472e)}.ds-email button{position:absolute;right:4px;top:6px;display:grid;place-items:center;width:44px;min-height:44px;border:0;border-radius:var(--yarn-radius-pill,999px);background:transparent;color:var(--yarn-action,#a6472e)}.ds-email button:hover{background:var(--yarn-action-hover,#fff3de)}.ds-email svg{width:16px;height:16px}.ds-email :is(input,button):focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px);box-shadow:none}@media(max-width:749px){.ds-footer-field h2{font-size:2rem}}"
     },
     {
       "name": "材料套件身份标签",
@@ -398,26 +485,11 @@
       "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-kit-label{display:inline-block;padding:3px 6px;border:1px solid #f1d5d0;border-radius:5px;background:#fcf0ed;color:#94514c;font-size:12px}"
     },
     {
-      "name": "历史 B 作品卡文字区",
-      "kind": "card",
-      "description": "历史 B 保留组件，当前首页 Project 分类行不显示此版本。",
-      "html": "<article class=\"ds-scope ds-work\"><a href=\"#材料\"><h3>花火镂空披肩套装</h3><div class=\"ds-meta\"><span class=\"ds-kit-label\">材料套件</span><span class=\"ds-action\">查看材料<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 14 10\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></span></div></a></article>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-work{max-width:280px;color:#303330}.ds-work a{display:block;color:inherit;text-decoration:none}.ds-work h3{margin:12px 0 8px;min-height:2.9em;font-family:var(--yarn-display,'Yarn Display','Noto Sans SC',sans-serif);font-size:16.5px;font-weight:500;line-height:1.45;letter-spacing:-.01em;overflow-wrap:anywhere}.ds-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 8px;color:#696b61;font-size:12px}.ds-kit-label{padding:3px 6px;border:1px solid #f1d5d0;border-radius:5px;background:#fcf0ed;color:#94514c}.ds-action{display:inline-flex;align-items:center;gap:10px;min-height:30px;color:#343d35;font-size:14px}.ds-action svg{width:16px;height:16px}.ds-work a:hover h3{text-decoration:underline;text-underline-offset:4px}@media(max-width:599px){.ds-work h3{font-size:15px}.ds-meta{gap:0}}.ds-scope:focus-visible,.ds-scope :is(button,a,input,select):focus-visible{outline:2px solid #597f88;outline-offset:4px;box-shadow:none}"
-    },
-    {
-      "name": "B 紧凑帮助文字区",
-      "kind": "card",
-      "refersTo": "card-help",
-      "description": "当前帮助条的浅蓝纸面、标题和联系动作；真实页面左侧为线团问号 raster，面板省略该受来源管理的图像，未配置 LINE 主链接。",
-      "html": "<aside class=\"ds-scope ds-help\"><h2>选材料拿不准？</h2><a href=\"#联系\">问问我们<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 14 10\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></a></aside>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-help{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:110px;padding:24px 30px;border:0;border-radius:16px;background:#edf5f7;box-shadow:none}.ds-help h2{margin:0;color:#292b29;font-size:20px;font-weight:500;line-height:1.4;letter-spacing:-.01em}.ds-help a{display:inline-flex;align-items:center;gap:14px;min-height:44px;padding:8px 0;color:#343d3c;font-size:15px;text-decoration:none}.ds-help a svg{width:16px;height:16px}.ds-help a:hover{text-decoration:underline;text-underline-offset:5px}@media(max-width:599px){.ds-help{min-height:90px;padding:18px 16px;gap:12px}.ds-help h2{font-size:16px}.ds-help a{font-size:14px;gap:8px}}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
-    },
-    {
-      "name": "文字导航",
-      "kind": "nav",
-      "description": "桌面顶栏文字链接的实际字色、字距与 hover / focus；临时字标和菜单布局不纳入可复用片段。",
-      "html": "<nav class=\"ds-scope ds-nav\" aria-label=\"商品导航\"><a href=\"#新品\"><span>新品</span></a><a href=\"#毛线\"><span>毛线</span></a><a href=\"#工具\"><span>工具与针具</span></a></nav>",
-      "css": ".ds-scope{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif);}.ds-nav{display:flex;align-items:center;background:var(--yarn-surface,#fffefa);border-bottom:1px solid var(--yarn-line,#e4dfd7)}.ds-nav a{padding:12px 8px;color:var(--yarn-ink,#2f302f);font-size:15px;font-weight:400;letter-spacing:.02em;text-decoration:none}.ds-nav a:hover span,.ds-nav a:focus-visible span{color:var(--yarn-indigo,#426f82);text-decoration:underline;text-decoration-color:#d96f67;text-underline-offset:6px}.ds-scope:focus-visible,.ds-scope :focus-visible{outline:3px solid rgba(229,139,125,.6);outline-offset:3px;box-shadow:0 0 0 2px var(--yarn-surface,#fffefa)}"
+      "name": "Project 行底部滚动控件",
+      "kind": "custom",
+      "description": "图片与名称下方右对齐的 44px 双箭头；片段演示左端禁用与右端可用的外观，不发送请求或模拟已连接的滚动行为。仅实际溢出且未展开的行显示。",
+      "html": "<div class=\"ds-row-controls\"><button type=\"button\" disabled aria-label=\"上一组作品\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" aria-hidden=\"true\" viewBox=\"0 0 14 10\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></button><button type=\"button\" aria-label=\"下一组作品\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" aria-hidden=\"true\" viewBox=\"0 0 14 10\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></button></div>",
+      "css": ".ds-row-controls{display:flex;justify-content:flex-end;gap:12px;margin-top:16px}.ds-row-controls button{display:grid;place-items:center;width:var(--yarn-touch,44px);height:var(--yarn-touch,44px);padding:12px;border:1px solid var(--yarn-thread,#bf5a38);border-radius:50%;background:transparent;color:var(--yarn-action,#a6472e);cursor:pointer}.ds-row-controls button:hover:not(:disabled){background:var(--yarn-action-hover,#fff3de)}.ds-row-controls button:disabled{color:var(--yarn-disabled,#8c8880);border-color:var(--yarn-disabled-line,#d3cfc7);cursor:default}.ds-row-controls svg{display:block;width:18px;height:18px}.ds-row-controls button:focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:4px}@media(max-width:749px){.ds-row-controls{gap:10px;margin-top:12px}}.ds-row-controls button:first-child svg{transform:rotate(180deg)}"
     },
     {
       "name": "Project 移动首屏",
@@ -434,35 +506,21 @@
       "css": ".ds-cart-item{display:grid;grid-template:auto auto auto/8rem minmax(0,1fr);column-gap:1.2rem;max-width:340px;color:#2f302f;font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif)}.ds-cart-media{grid-column:1;grid-row:1/4;width:8rem;height:9.6rem;background:#f7f7f5}.ds-cart-details{grid-column:2;grid-row:1;min-width:0}.ds-cart-details a{display:-webkit-box;overflow:hidden;overflow-wrap:anywhere;-webkit-box-orient:vertical;-webkit-line-clamp:3;color:inherit;font-size:1.6rem;line-height:1.35}.ds-cart-details p{margin:8px 0 0;color:#686762}.ds-cart-quantity{grid-column:2;grid-row:2;display:flex;align-items:center;gap:.8rem;min-width:0}.ds-stepper{display:grid;grid-template-columns:1fr 1fr 1fr;flex:0 0 14rem;min-width:14rem;width:14rem;height:5.8rem;border:1px solid #bdbeb5}.ds-stepper button,.ds-stepper span{display:grid;place-items:center;border:0;background:transparent;font:inherit}.ds-remove{flex:0 0 auto;min-height:44px;border:0;background:transparent;text-decoration:underline}.ds-cart-total{grid-column:2;grid-row:3;justify-self:end;padding-top:16px}.ds-cart-item :focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:2px}.ds-cart-details .ds-cart-project-return{display:inline;overflow:visible;font-size:inherit;line-height:inherit;text-decoration:underline;text-underline-offset:4px;-webkit-line-clamp:unset}"
     },
     {
-      "name": "Project 部分供给清单",
-      "kind": "custom",
-      "description": "实际配件行的名称、供给文字、规格、采购数量和明确单项加购；自备或待补项保留文字、不生成购买入口。此静态片段无购物请求，具体商品、价格和库存仅由 Shopify 实际数据提供。",
-      "html": "<section class=\"ds-parts\"><h3>所需材料与工具</h3><p>先看作品需要什么，再按需购买本店提供的部分；已有工具可自备，缺项可另行准备。这不是整套材料包。</p><ul><li><div class=\"ds-part-heading\"><h4>小袋花片线材</h4><span>本店可购买</span></div><p>用于小袋花片与连接边。线材粗细、密度和实际用量由团队后续核实。</p><a href=\"#商品\">查看原始商品与其他规格</a><div class=\"ds-part-form\"><label>本次购买数量<input type=\"number\" min=\"1\" step=\"1\" value=\"1\"></label><button type=\"button\">加入这项材料</button></div><p class=\"ds-part-note\">内部演示：采购 1 件仅用于展示购买流程，不代表已核实能完成该作品。</p></li><li><div class=\"ds-part-heading\"><h4>5/0 号钩针</h4><span>需自行准备</span></div><p>已有合适钩针可继续使用，无需重复购买。</p></li><li><div class=\"ds-part-heading\"><h4>可选挂绳</h4><span>信息待补充</span></div><p>暂无购买入口，也不影响其他材料选购。</p></li></ul></section>",
-      "css": ".ds-parts{max-width:760px;color:var(--yarn-ink,#2f302f);font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif)}.ds-parts p{line-height:1.75}.ds-parts ul{list-style:none;padding:0;margin:24px 0 0}.ds-parts li{padding-block:24px;border-top:1px solid var(--yarn-line,#e4dfd7)}.ds-part-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px}.ds-part-heading h4{margin:0;font:600 1.8rem/1.5 var(--font-body-family,sans-serif);overflow-wrap:anywhere}.ds-part-heading span{font-size:1.3rem;color:var(--yarn-muted,#686762)}.ds-parts a{display:inline-flex;align-items:center;min-height:44px;color:inherit;font-size:1.4rem;text-underline-offset:5px}.ds-part-form{display:flex;align-items:end;flex-wrap:wrap;gap:12px 20px}.ds-part-form label{display:grid;gap:6px;width:110px;font-size:1.3rem}.ds-part-form input{width:100%;min-height:46px;border:1px solid #bdbeb5;border-radius:8px;padding:10px 12px;background:var(--yarn-surface,#fffefa);color:inherit;font:inherit}.ds-part-form button{min-height:46px;padding:10px 16px;border:1px solid var(--yarn-indigo,#426f82);border-radius:3px;background:#98534e;color:#fffefa;font:inherit}.ds-part-form button:disabled{opacity:.65;cursor:not-allowed}.ds-part-note{color:var(--yarn-muted,#686762);font-size:1.4rem}.ds-parts :focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:4px}"
-    },
-    {
       "name": "商品来源与非同款说明",
       "kind": "custom",
       "description": "商品标题上方的轻量来源区，普通无参数访问隐藏；有效同源作品导航提示显示回链，非同款成品附完整说明。不是适配认证，所购 Variant、价格及库存仍归 Shopify。",
       "html": "<aside class=\"ds-product-context\"><p>来自作品：<a href=\"#作品\">花片毯｜内部示例</a></p><p>仅作成品参考，并非本教程同款。</p></aside>",
       "css": ".ds-product-context{display:block;padding-block:12px;margin-bottom:20px;border-block:1px solid var(--yarn-line,#e4dfd7);color:var(--yarn-ink,#2f302f);font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif);font-size:1.4rem}.ds-product-context[hidden]{display:none}.ds-product-context p{margin:6px 0;line-height:1.6}.ds-product-context a{color:inherit;text-underline-offset:4px;overflow-wrap:anywhere}.ds-product-context a:focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:4px}"
-    },
-    {
-      "name": "Project 行底部滚动控件",
-      "kind": "custom",
-      "description": "图片与名称下方右对齐的 44px 双箭头；片段演示左端禁用与右端可用的外观，不发送请求或模拟已连接的滚动行为。仅实际溢出且未展开的行显示。",
-      "html": "<div class=\"ds-row-controls\"><button type=\"button\" disabled aria-label=\"上一组作品\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" aria-hidden=\"true\" viewBox=\"0 0 14 10\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></button><button type=\"button\" aria-label=\"下一组作品\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" aria-hidden=\"true\" viewBox=\"0 0 14 10\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></button></div>",
-      "css": ".ds-row-controls{display:flex;justify-content:flex-end;gap:12px;margin-top:16px}.ds-row-controls button{display:grid;place-items:center;width:44px;height:44px;padding:12px;border:1px solid #bf5a38;border-radius:50%;background:transparent;color:#a6472e;cursor:pointer}.ds-row-controls button:hover:not(:disabled){background:#fff3de}.ds-row-controls button:disabled{color:#8c8880;border-color:#d3cfc7;cursor:default}.ds-row-controls svg{display:block;width:18px;height:18px}.ds-row-controls button:focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:4px}@media(max-width:749px){.ds-row-controls{gap:10px;margin-top:12px}}.ds-row-controls button:first-child svg{transform:rotate(180deg)}"
     }
   ],
   "narrative": {
     "northStar": "编织图解图谱",
-    "overview": "暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。实体手作插画、既有针目图解、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄延续为已有动作色；作品先行 B 的主要操作实际采用文字、细线和浅粉选中态，不要求每个入口都铺暖黄按钮。\n\n本文件合并保留已确认的视觉世界与共享购买骨架规范。2026-09-05 首页 B 的提取是历史基线；2026-09-07 首页已采用串联 Hero 与分类 Project 行，下文标为历史 B 的组件不再描述当前发现区。B 的帮助图标、套件标签、暖白纸面和移动可读性已通过独立局部整改复核；整页 Comp-first 流程仍未闭合，本文不授予 ship，也不代表商品详情、购物车或整个网站完成同等深度的视觉验收。首页三主区域与次序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。\n\nIssue #23 在这个既有世界内新增 Project 库与详情：列表继续以织物作品图为入口，详情采用用户已批准的 `paper_flow`，把作品事实、制作准备、同页 Tutorial 与购买分流放在顺读纸面中。较早的详情 / 购物车两项修复已获局部 `ship`；本次部分配件销售扩展另有独立 [finish review](.impeccable/review/23-project-components/finish-review.md) 与 [verdict](.impeccable/review/23-project-components/finish-verdict.md)。三语移动首屏修复已为 `resolved`，本文完成其第 2 项设计事实同步，文档 finding 的关闭状态以同一 reviewer 的 verdict 为准；这不改变旧首页 gate 或生产状态。\n\n本次提取覆盖完整作品图与标题并排的移动首段、部分供给清单、商品来源提示、非同款成品说明与购物车回链。代码依据为 `assets/yarn-project.css`、配件 snippet、作品购买脚本、商品来源脚本 / 样式与购物车 Project snippet；documenter 已打开本目录三语 390 px 首屏与全页、中文 1440 px 详情及商品 / 成品 / 购物车代表截图。三语关键操作、后台编辑及 `npm run verify` 50/50 通过来自主代理的 [本轮 QA 输入](.impeccable/review/23-project-components/review-input.md)，不是 documenter 独立浏览器验证。范围只到受保护内部原型，不认证实际跟做、材料适配与用量、真实供货、素材公开权利或队友试用。\n\nIssue #28 的作品详情后续在同一 `paper_flow` 世界中落实“主毛线单层纸面 + 工具辅助清单”：制作准备先以一张暖白编辑纸面呈现主毛线图、名称、供给状态、规格与可用的单项采购，再以无嵌套卡片的细线清单承接工具和其他材料。独立 [finish review](.impeccable/review/28-project-yarn-first/finish-review.md) 为 `disposition: ship`，仅批准合入受密码保护的未发布 Theme / 内部原型；不等于 production 发布、材料适配、真实供货或生成示意公开权利获批。\n\n当前规范只覆盖受密码保护的内部模板；发布与回滚状态以本轮 Issue / PR 为准，文档不替代发布记录。店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。MewoolMew 的名称和猫抱毛线球标识为原创 Theme 资产，但不改变参考商品图片的公开授权边界。\n\n提取依据为 `templates/index.json`、首屏与 B 样式覆盖、一体化作品发现 Section / CSS / JS、作品卡片 snippet、紧凑帮助 Section 和 `assets/yarn-prototype.css`。视觉依据为 `.impeccable/review/desktop.png`、`mobile.png`、`user-756.png` 及三张同名 `-filter-open.png`；方向为 `.impeccable/mocks/discovery-b-zh.png`。独立 [finish review](.impeccable/review/discovery-b-finish-review.md) 与 [verdict](.impeccable/review/discovery-b-finish-verdict.md) 仍记录 `plates=open`、`gate.ok=false`、后续 phases pending；真实 Tutu Product 照片适配不能被写成机械 gate 已通过。文档提取完成不自动关闭这些状态。\n\n2026-09-07 Issue #13 的本轮提取只覆盖 Hero 下方分类作品行：Shopify `yarn_project` 提供作品，图片和名称进入 Project 详情；各分类独立排列，溢出时在图片与名称下方提供箭头，并可原行展开。数据源、分组、真实数量和最新用户反馈见 [本轮 surface brief](.impeccable/home-surface-brief.md)。布局与类型依据 `sections/yarn-project-library.liquid`、`snippets/yarn-project-row.liquid`、`snippets/yarn-project-card.liquid` 和 `assets/yarn-project-rows.css`；本轮主代理的三语操作、后台编辑与测试证据见 [verification](.impeccable/review/13-category-rows/verification.md)，独立结论见 [finish review](.impeccable/review/13-category-rows/finish-review.md)。文档刷新不把 detector 的 advisory 自动变成通过：新增值按真实角色记录，局部字号和禁用态不扩充全站尺度。\n\n历史 discovery B 的 `plates=open`、`gate.ok=false` 等机械状态保留；本轮初次 scoped comp-diff 为 54.53%、`contradicted`，受真实 9 件与示意 16 件、用户移动箭头和删除卡片 CTA 等差异影响，不能称为像素还原通过。盖毯样例封面与标题不一致仍是既有内容缺陷；照片由 Shopify 管理，不能从页面完成推导出内容正确或公开商用权利。",
+    "overview": "暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。实体手作插画、既有针目图解、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄承接当前 Hero 主动作，陶土色承接可点击文字，浅奶油纸面连接导航选中态、帮助和页脚。浅粉选中态属于保留的历史 B 筛选与套件标签，不再描述当前导航。\n\nIssue #32（2026-09-07）从成品提取共享角色并统一导航、帮助与页脚，继承当前 Hero 和四分类作品构图。documenter 已打开本轮[中文桌面](.impeccable/review/32-home-system/desktop.png)、[中文手机](.impeccable/review/32-home-system/mobile.png)、[英文桌面](.impeccable/review/32-home-system/en-desktop.png)、[英文手机](.impeccable/review/32-home-system/en-mobile.png)、[日文桌面](.impeccable/review/32-home-system/ja-desktop.png)、[日文手机](.impeccable/review/32-home-system/ja-mobile.png)，与 token、foundation、导航、页脚、Hero、分类行和紧凑帮助代码核对。独立 [finish review](.impeccable/review/32-home-system/finish-review.md) 的剩余项为本次文档持久化，关闭以限定文档 verdict 为准。截图验证范围为三语 1440 / 390 px 的未发布 Theme `189759848761`；不据此宣称后台编辑、订阅发送、全站本地化或生产发布通过。 上述六张为导航翻译修复后重新捕获的最终版，本角色已重新打开全部六张，并打开[中文展开菜单](.impeccable/review/32-home-system/mobile-menu.png)、[英文展开菜单](.impeccable/review/32-home-system/en-mobile-menu.png)、[日文展开菜单](.impeccable/review/32-home-system/ja-mobile-menu.png)：三语桌面导航和手机菜单均与对应 Section 的页面语言一致，关键文案完整可读。修复前中文 / 日文页仍显示英文菜单的旧图不作为最终语言证据；菜单资源保存与后台重载由主代理验证，不由截图推定。\n\n本文件合并保留已确认的视觉世界与共享购买骨架规范。2026-09-05 首页 B 的提取是历史基线；2026-09-07 首页已采用串联 Hero 与分类 Project 行，下文标为历史 B 的组件不再描述当前发现区。B 的帮助图标、套件标签、暖白纸面和移动可读性已通过独立局部整改复核；整页 Comp-first 流程仍未闭合，本文不授予 ship，也不代表商品详情、购物车或整个网站完成同等深度的视觉验收。首页三主区域与次序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。\n\nIssue #23 在这个既有世界内新增 Project 库与详情：列表继续以织物作品图为入口，详情采用用户已批准的 `paper_flow`，把作品事实、制作准备、同页 Tutorial 与购买分流放在顺读纸面中。较早的详情 / 购物车两项修复已获局部 `ship`；本次部分配件销售扩展另有独立 [finish review](.impeccable/review/23-project-components/finish-review.md) 与 [verdict](.impeccable/review/23-project-components/finish-verdict.md)。三语移动首屏修复已为 `resolved`，本文完成其第 2 项设计事实同步，文档 finding 的关闭状态以同一 reviewer 的 verdict 为准；这不改变旧首页 gate 或生产状态。\n\n本次提取覆盖完整作品图与标题并排的移动首段、部分供给清单、商品来源提示、非同款成品说明与购物车回链。代码依据为 `assets/yarn-project.css`、配件 snippet、作品购买脚本、商品来源脚本 / 样式与购物车 Project snippet；documenter 已打开本目录三语 390 px 首屏与全页、中文 1440 px 详情及商品 / 成品 / 购物车代表截图。三语关键操作、后台编辑及 `npm run verify` 50/50 通过来自主代理的 [本轮 QA 输入](.impeccable/review/23-project-components/review-input.md)，不是 documenter 独立浏览器验证。范围只到受保护内部原型，不认证实际跟做、材料适配与用量、真实供货、素材公开权利或队友试用。\n\nIssue #28 的作品详情后续在同一 `paper_flow` 世界中落实“主毛线单层纸面 + 工具辅助清单”：制作准备先以一张暖白编辑纸面呈现主毛线图、名称、供给状态、规格与可用的单项采购，再以无嵌套卡片的细线清单承接工具和其他材料。独立 [finish review](.impeccable/review/28-project-yarn-first/finish-review.md) 为 `disposition: ship`，仅批准合入受密码保护的未发布 Theme / 内部原型；不等于 production 发布、材料适配、真实供货或生成示意公开权利获批。\n\n当前规范只覆盖受密码保护的内部模板；发布与回滚状态以本轮 Issue / PR 为准，文档不替代发布记录。店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。MewoolMew 的名称和猫抱毛线球标识为原创 Theme 资产，但不改变参考商品图片的公开授权边界。\n\n提取依据为 `templates/index.json`、首屏与 B 样式覆盖、一体化作品发现 Section / CSS / JS、作品卡片 snippet、紧凑帮助 Section 和 `assets/yarn-prototype.css`。视觉依据为 `.impeccable/review/desktop.png`、`mobile.png`、`user-756.png` 及三张同名 `-filter-open.png`；方向为 `.impeccable/mocks/discovery-b-zh.png`。独立 [finish review](.impeccable/review/discovery-b-finish-review.md) 与 [verdict](.impeccable/review/discovery-b-finish-verdict.md) 仍记录 `plates=open`、`gate.ok=false`、后续 phases pending；真实 Tutu Product 照片适配不能被写成机械 gate 已通过。文档提取完成不自动关闭这些状态。\n\n2026-09-07 Issue #13 的本轮提取只覆盖 Hero 下方分类作品行：Shopify `yarn_project` 提供作品，图片和名称进入 Project 详情；各分类独立排列，溢出时在图片与名称下方提供箭头，并可原行展开。数据源、分组、真实数量和最新用户反馈见 [本轮 surface brief](.impeccable/home-surface-brief.md)。布局与类型依据 `sections/yarn-project-library.liquid`、`snippets/yarn-project-row.liquid`、`snippets/yarn-project-card.liquid` 和 `assets/yarn-project-rows.css`；本轮主代理的三语操作、后台编辑与测试证据见 [verification](.impeccable/review/13-category-rows/verification.md)，独立结论见 [finish review](.impeccable/review/13-category-rows/finish-review.md)。文档刷新不把 detector 的 advisory 自动变成通过：新增值按真实角色记录，局部字号和禁用态不扩充全站尺度。\n\n历史 discovery B 的 `plates=open`、`gate.ok=false` 等机械状态保留；本轮初次 scoped comp-diff 为 54.53%、`contradicted`，受真实 9 件与示意 16 件、用户移动箭头和删除卡片 CTA 等差异影响，不能称为像素还原通过。盖毯样例封面与标题不一致仍是既有内容缺陷；照片由 Shopify 管理，不能从页面完成推导出内容正确或公开商用权利。",
     "keyCharacteristics": [
       "暖白底、浅色分类面与炭黑正文形成稳定层级。",
       "Shopify 作品图片与有来源的手作插画表达材料与作品；针目图解保留在其适用的历史组件中。",
       "展示标题有重量，流程标签较轻，手机主说明与主要操作保持可读。",
-      "当前首页以连线和波浪串联，分类作品行平铺，帮助条使用柔蓝浅面；叠压流程纸面属于保留的历史 B 组件。",
+      "当前首页以连线和波浪串联，分类作品行平铺，帮助与页脚使用浅奶油纸面，导航使用陶土动作色；叠压流程纸面属于保留的历史 B 组件。",
       "简体中文、日文、英文文案保持可编辑，图像承担材质与图解。",
       "Project 详情以完整作品图与标题、紧凑事实和可见制作准备兑现移动首屏，底部制作入口持续可达；生成示意明确披露。",
       "部分供给清单以细线顺读，商品与购物车保留来源作品和必要参考说明。",
@@ -490,7 +548,8 @@
       "**Do** 让手作插画与针目图解在各自使用场景完整可辨、标签独立可读，并让装饰避开正文。",
       "**Do** 保留 Shopify 管理的 Project / Product 图片与标题、装饰图解和可编辑三语 HTML 文案各自的职责。",
       "**Do** 在新增文案后检查字体覆盖、三语断行、手机可读性、焦点和触控路径。",
-      "**Do** 从对应 surface brief 决定构图，从本规范复用已实现的材料、字体角色和组件语言。",
+      "**Do** 让桌面导航、手机菜单、Section 与页脚遵从整页语言；在 Shopify 菜单资源维护原文及译文，逐语检查可见文本，不以英文回退替代缺失翻译。",
+      "**Do** 从对应 surface brief 决定构图，从本规范复用已实现的材料、字体角色和组件语言；代码按 [接入指南](docs/design/home-system.md) 消费共享角色，保持 tokens 的单一来源。",
       "**Do** 在 390 px Project 详情首屏保留完整标题、事实、演示披露，并让制作准备的标题与首条信息出现在 sticky 制作动作上方。",
       "**Do** 让移动购物车每个条目的减号、当前数量、加号、删除与行总价完整可见且可滚动到达。",
       "**Do** 保留自备和待补配件，区分采购数量与制作所需用量，并在商品和购物车中延续来源作品与非同款参考说明。",
@@ -501,7 +560,7 @@
       "**Don't** 把临时字标、参考商品图、图上品牌或色数文字当作已授权正式品牌资产。",
       "**Don't** 为匹配 comp 的数量或颜色复制作品、生成假商品照片或修改真实名称；当前内部样例也不能被写成已验证可执行的正式教程。",
       "**Don't** 将字形箭头、遗留 eyebrow 样式、单处定位补偿、辅助极小文字或未复核的购买页面状态升级为全站规范。",
-      "**Don't** 将首页三主区域、四个分类或两列移动图库强推为其他 surface 的固定模板。",
+      "**Don't** 将首页三主区域、四个分类、Hero 绝对定位或两列移动图库强推为其他 surface 的固定模板，也不要将兼容旧颜色视为新页面推荐色板。",
       "**Don't** 把局部整改复核、本文档或面板组件片段当作 Comp-first 全部 gate、免密码访客分享、素材授权或正式发布已通过的凭据。",
       "**Don't** 将本轮局部 verdict、三语操作验证或英文开放扩大解释为全站完整本地化、实际跟做与适配认证、真实供货、咨询发送、旧首页 build gate 或生产发布通过。",
       "**Don't** 将购物车最终复拍中的第三方店铺参考素材当作发布资产；它只用于本地视觉核对，不上传或提交。",

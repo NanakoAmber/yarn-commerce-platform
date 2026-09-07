@@ -19,7 +19,7 @@
 .yp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 52px 28px; }
 .yp-card { min-width: 0; }
 .yp-card__link { display: flex; flex-direction: column; height: 100%; text-decoration: none; }
-.yp-card__image { aspect-ratio: 1.12; overflow: hidden; border-radius: 14px; background: var(--yarn-surface); }
+.yp-card__image { aspect-ratio: 1.12; overflow: hidden; border-radius: var(--yarn-radius-media); background: var(--yarn-surface); }
 .yp-card__image img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .yp-card__image--placeholder { display: grid; place-items: center; background: var(--yarn-blue); }
 .yp-card__placeholder { width: 34%; color: var(--yarn-indigo); opacity: .62; }
@@ -76,7 +76,7 @@ yarn-project-library, yarn-project-tutorial { display: block; }
 .yp-empty { padding: 48px 20px; text-align: center; background: var(--yarn-surface); }
 .yp-back { display: inline-flex; align-items: center; min-height: 44px; margin-block: 16px 24px; font-size: 1.4rem; }
 .yp-intro { display: grid; grid-template-columns: 1.05fr 1fr; align-items: start; gap: 64px; }
-.yp-cover { overflow: hidden; border-radius: 14px; background: var(--yarn-surface); }
+.yp-cover { overflow: hidden; border-radius: var(--yarn-radius-media); background: var(--yarn-surface); }
 .yp-cover--placeholder { aspect-ratio: 1; }
 .yp-cover img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; display: block; }
 .yp-title h1 { font-size: clamp(2.8rem, 3.2vw, 4rem); font-weight: 600; line-height: 1.3; margin: 8px 0 20px; }
@@ -218,10 +218,10 @@ yarn-material-purchase { display: block; }
 }
 
 /* Connected landing: keep discovery controls close to their results. */
-.yp-library { background: #fffefa; }
-body:has(.yarn-hero--connected) { background: #fffefa; }
-.yp-shell .yp-search input { min-height: 56px; padding: 12px 58px 12px 22px; border: 1px solid #686762; border-radius: 24px; }
-.yp-search button { height: 56px; }
+.yp-library { background: var(--yarn-surface); }
+body:has(.yarn-hero--connected) { background: var(--yarn-surface); }
+.yp-shell .yp-search input { min-height: var(--yarn-field-height); padding: 12px 58px 12px 22px; border: 1px solid var(--yarn-control-line); border-radius: var(--yarn-radius-field); }
+.yp-search button { height: var(--yarn-field-height); }
 .yp-filter-more { border-top: 0; }
 .yp-filterset { display: grid; grid-template-columns: 1fr auto; align-items: start; column-gap: 24px; }
 .yp-filterset > .yp-search, .yp-filterset > .yp-category-filters { grid-column: 1 / -1; width: 100%; }
