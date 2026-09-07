@@ -1,10 +1,10 @@
 disposition: fix
 
-未提供独立 QUALITY BAR card（父代理确认本轮以用户选择的 comp 为视觉标杆）；三语与单模式补充截图尚待本轮续审。本评审由独立子代理执行，仅采用 degraded 文件中的角色契约，并非主执行代理自评。
+未提供独立 QUALITY BAR card（父代理确认本轮以用户选择的 comp 为视觉标杆）；中文、日文、英文双端、首页有成品筛选双端及三种单模式最终截图均已打开复核。本评审由独立子代理执行，仅采用 degraded 文件中的角色契约，并非主执行代理自评。
 
 ## persistence
 
-fail。`PRODUCT.md` 与 surface brief 均记录 Issue #34 的用户选择；FORM 明确为用户直接指定第二轮方案 2，沿用已批准世界，无须重新抽选 seed。`comps=skipped` 有既往 comp 轮说明且 surface 有明确批准记录；`spec`、`plates` closed，6/6 plates 有记录，无 forced。`hero` 仍 open、gate=false；旧 hero diff 为 0.7153，最新 final 为 0.7411，不能把 final 分数或实页素材存在当作 hero gate 已通过。`hero-repro.png` 存在并已打开。现有 DESIGN.md 的暖纸、陶土动作、奶油黄及 Yarn Display 与页面世界一致，后续应从复核后的成品补入新控件事实。
+fail。`PRODUCT.md` 与 surface brief 均记录 Issue #34 的用户选择；FORM 明确为用户直接指定第二轮方案 2，沿用已批准世界，无须重新抽选 seed。`comps=skipped` 有既往 comp 轮说明且 surface 有明确批准记录；`spec`、`plates` closed，6/6 plates 有记录，无 forced。`hero` 仍 open、gate=false；真实 DOM 的 `rendered-source.html` 配合 advance --artifact 已能识别 6 张素材，旧 unreferenced 原因已不再是当前根因。当前失败包括旧 hero diff 0.7153 < 0.72、固定区域坐标比较与 Shopify 66px spinner 被当成插画。最新 final 为 0.7411，不能把 final 分数或实页素材存在当作 hero gate 已通过。`hero-repro.png` 存在并已打开。现有 DESIGN.md 的暖纸、陶土动作、奶油黄及 Yarn Display 与页面世界一致，后续应从复核后的成品补入新控件事实。
 
 ## fidelity
 
@@ -31,15 +31,33 @@ fail。`PRODUCT.md` 与 surface brief 均记录 Issue #34 的用户选择；FORM
 
 THESIS、OWN-WORLD、STORY、FIRST VIEWPORT、FORM 五项均有对应实现；材料摄影与双拥有路径是首视口可记住的特征。静态代码显示 Tab/方向键选择、可见焦点、数量规则、库存禁用和状态提示；交易执行与后台编辑采用父代理单独的实测证据，本评审不声称重新操作过浏览器。
 
+补充截图已打开：`ja-desktop.png`（1440×3006）、`ja-mobile.png`（390×3687）、`home-desktop.png`（1440×2896）、`home-mobile.png`（390×2502）、`finished-basket.png`、`inspiration-window-basket.png`。均有文档顶部及真实内容，无空白加载失败、可见横向溢出；日文标签正常换行。首页选中“有成品”后显示同时支持两种方式与仅支持成品的两条作品，标签一致；单模式详情没有无用切换器，灵感没有购买按钮。单模式的教程命名问题曾列入补充 material fix，随后按同名最终截图复核为 resolved。英文补充 `en-desktop.png`（1440×3088）、`en-mobile.png`（390×3730）已打开；标题、模式、规格、选项、数量合计、教程与页脚英文完整，正常换行，无可见溢出或缺图。最终三种单模式截图均为 390px 全页、文档顶部可见；材料模式保留实际图文演示，成品和灵感不再错误承诺教程。
+
 ## ceiling
 
 以批准 comp 为标杆；大图、手绘双卡、奶油黄制作入口均已使用。没有独立 QUALITY BAR card，因此不虚构另一个视觉上限，也不要求新增装饰、层叠或动效。可读规格标签与真实采购信息优先于模拟色片和假视频动作。
 
 ## material_fixes
 
-1. [Persistence] 以真实渲染内容解决 hero 的 Liquid/CDN 引用扫描证据缺口，记录可追溯的资源对应并重跑 gate；当前 hero open / false 不能宣称完成，不得用 force 或手写状态伪装通过。
-2. [Floor / STORY] `sections/yarn-project-detail.liquid` 的返回 `←`、选中 `✓`、教程 `↗` 为 Unicode 图标，替换为既有或同笔画 SVG；教程为页内定位，应去掉暗示外跳的箭头或改为适用的页内图标，保留可见选择标记。
+1. [Persistence — partial] 真实 DOM 适配已补齐素材引用证据；自动 hero gate 仍因固定区域比较及 Shopify spinner 等检查失败。当前 hero open / false，完成条件仍未满足；不得 force 或手写状态，PR 保留草稿、Issue 设计验收不勾选。
+2. [Floor / STORY — resolved] 新 desktop/mobile.png 与源码共同确认返回与选中使用 SVG，教程外跳箭头已移除；可见选择标记保留，未见修复引入的回归。
+3. [Truth / 单模式补充 — resolved] 最终 `finished-basket.png` 已移除非教程正文，`inspiration-window-basket.png` 已移除假教程入口和正文；成品采购、灵感说明仍在。`materials-basket.png` 保留材料采购、教程照片及制作入口，未把无购买能力与无教程错误绑定。
 
 ## keep
 
 保留蓝篮宽幅照片、手绘双意图卡片、真实 SKU/数量/合计、自愿工具购买、明确内部演示标识及无需购买即可开始制作的完整路径。
+
+
+## verdict
+
+1. **partial — Persistence**：真实 DOM 适配后的检查已识别全部 6 张素材，实际截图也确认图片存在；自动 hero gate 仍为 open / false，0.7153 的旧 hero 对比、固定区域坐标及 Shopify spinner 等自动检查尚未关闭。这是未完成的工具验收，不是页面摄影素材缺失或重建结论。
+2. **resolved — Floor / STORY**：重新打开同名 desktop.png、mobile.png 并核对源码，返回和选中标记已使用 SVG，教程不再使用外跳箭头；选择状态与教程动作仍清楚。
+3. **resolved — Truth**：重新打开最终 finished-basket.png、inspiration-window-basket.png，非教程正文及假教程入口均已移除；materials-basket.png 的材料与制作路径保留。
+
+本批修复未发现新增视觉或语义回归；中、日、英双端、首页有成品筛选和三种单模式补充证据有效。
+
+## remaining
+
+仅自动 hero gate 未关闭；PR 应保持草稿，Issue 设计验收不勾选。已发现的视觉与内容语义修复完成，不据此宣称整体验收 ship，也不把工具失败转述为已获用户批准。
+
+disposition: fix

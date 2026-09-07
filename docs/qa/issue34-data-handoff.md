@@ -37,6 +37,8 @@
 
 三个条目均为 Active、发布范围为“仅内部原型”，并使用独立教程预览图。材料案例的主封面已与教程图分离，分别使用 `project-blue-basket-cover.webp` 和 `project-blue-basket-tutorial.webp`。加上主案例后，可分别覆盖成品＋材料、只成品、只材料和只灵感四种组合。
 
+finished-only 与 inspiration-only 的 `tutorial` 源字段为空，日语、英语也不保留教程翻译；店面不会对这两种模式承诺不存在的完整制作教程。主案例与 materials-only 保留真实制作教程。
+
 ## 配件条目
 
 | 显示名 | Metaobject ID | handle | 供给方式 | 关联 |
@@ -62,6 +64,7 @@
 - 商品、价格、库存与变体：Shopify Admin → 产品。
 - 图片：Shopify Admin → 内容 → 文件。
 - 翻译：Shopify Admin → Translate & Adapt。四个 Project、三个配件和三件演示商品已生成并保存英语、日语的面向用户内容；简体中文继续作为源内容。控制分支的 `purchase_modes`、`release_scope`、`category`、`difficulty`、配件 `supply`与 `component_type` 在日语、英语中均保持与源数据完全相同的机器值，不做语义翻译。
+- 英语店面复验：主案例显示 `Internal sample`、`Beginner`、`Buy finished`、`Make it`；配件显示 `Chenille yarn`、`7.0 mm crochet hook`、`Scissors and tapestry needle`；毛线变体显示 `Mist blue`、`Blush pink`、`Off-white`。毛线备注明确写为不包工具，不得翻译成“不需要工具”。
 
 ## 回滚
 

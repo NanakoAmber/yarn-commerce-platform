@@ -4,7 +4,7 @@ Issue #34 使用用户批准的第二轮方案 2。作品是前台统一内容�
 
 ## 单一能力来源
 
-`yarn_project.purchase_modes` 为 `list.single_line_text_field`，后台名称「购买方式标签」，固定值 `finished`、`materials`、`inspiration`。`finished` 与 `materials` 可以同时选择；`inspiration` 单独使用。不翻译这些机器值，前台标签由 Theme locales 翻译。
+`yarn_project.purchase_modes` 为 `list.single_line_text_field`，后台名称「购买方式标签」，固定值 `finished`、`materials`、`inspiration`。`finished` 与 `materials` 可以同时选择；`inspiration` 单独使用。不翻译这些机器值，前台标签由 Theme locales 翻译。Translate & Adapt 中若已有控制字段译值，须清除或精确保持源值；自动翻译后逐个语言验证，而不能只检查后台保存成功。`release_scope`、`category`、`difficulty`、配件 `supply` / `component_type` 同样属于控制枚举。
 
 - `finished`：开启关联成品入口，必须有 `finished_products` Product 引用。
 - `materials`：开启手作入口与材料采购，必须有 `components` 中本店提供的有效 Variant，或兼容的旧 `materials` Product 引用。

@@ -1,0 +1,43 @@
+{
+  "theme": 189762732345,
+  "page": "/zh/pages/projects/issue-34-demo-cross-stitch-basket",
+  "evidence": "Read-only rendered DOM: all images complete=true and naturalWidth>0; opened 1440/390 and comp-size screenshot. Optimized WebP derivatives share the authored source PNG; no substituted UI image.",
+  "bindings": [
+    {
+      "region": "project-cover",
+      "asset": "assets/project-blue-basket-cover.webp",
+      "runtime_source": "Shopify Files",
+      "loaded": true
+    },
+    {
+      "region": "mode-finished",
+      "asset": "assets/project-mode-finished.png",
+      "runtime_source": "Theme asset",
+      "loaded": true
+    },
+    {
+      "region": "mode-materials",
+      "asset": "assets/project-mode-materials.png",
+      "runtime_source": "Theme asset",
+      "loaded": true
+    },
+    {
+      "region": "yarn-media",
+      "asset": "assets/project-blue-chenille.webp",
+      "runtime_source": "Shopify Files",
+      "loaded": true
+    },
+    {
+      "region": "hook-media",
+      "asset": "assets/project-yellow-hook.webp",
+      "runtime_source": "Shopify Files",
+      "loaded": true
+    },
+    {
+      "region": "tutorial-cover",
+      "asset": "assets/project-blue-basket-tutorial.webp",
+      "runtime_source": "Shopify Files",
+      "loaded": true
+    }
+  ]
+}

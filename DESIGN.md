@@ -225,11 +225,11 @@ Issue #28 的作品详情后续在同一 `paper_flow` 世界中落实“主毛�
 - 展示标题有重量，流程标签较轻，手机主说明与主要操作保持可读。
 - 当前首页以连线和波浪串联，分类作品行平铺，帮助与页脚使用浅奶油纸面，导航使用陶土动作色；叠压流程纸面属于保留的历史 B 组件。
 - 简体中文、日文、英文文案保持可编辑，图像承担材质与图解。
-- 当前 Project 详情以名称、宽幅作品图和购买意图组织首段；制作入口随教程预览顺读可达，生成示意保留披露。历史 sticky 首屏合同不再约束双模式页面。
+- 当前 Project 详情以名称、宽幅作品图和购买意图组织首段；有教程内容时，制作入口随教程预览顺读可达，生成示意保留披露。历史 sticky 首屏合同不再约束双模式页面。
 - 部分供给清单以细线顺读，商品与购物车保留来源作品和必要参考说明。
 - 当前 Project 材料与可选工具共用细线清单，采购规格随后展示，自备其他材料以文字保留；视觉权重不改变 Shopify 商品真值或自愿购买边界。
 
-Issue #34（2026-09-07）在现有首页视觉世界内采用用户指定的第二轮方案 2，替代详情的历史 `paper_flow` 构图。当前详情使用名称、宽幅作品图、按实际能力显示的「买成品 / 自己做」入口、采购控件和同页教程；首页增加同源购买能力标签与筛选。本次文档依据 `sections/yarn-project-detail.liquid`、`assets/yarn-project-modes.css`、`assets/yarn-header.css`、`sections/yarn-project-library.liquid`、`assets/yarn-project-rows.css` 与对应 capability、材料和购买 snippet。documenter 已打开本轮[桌面](.impeccable/review/34-project-modes/desktop.jpg)、[手机](.impeccable/review/34-project-modes/mobile.jpg)、[comp 尺寸](.impeccable/review/34-project-modes/comp-size.jpg)截图；最后一张是较早的布局对照，旧外跳字形不作最终图标依据，最新桌面 / 手机图与源码显示同页教程入口已移除该箭头。
+Issue #34（2026-09-07）在现有首页视觉世界内采用用户指定的第二轮方案 2，替代详情的历史 `paper_flow` 构图。当前详情使用名称、宽幅作品图、按实际能力显示的「买成品 / 自己做」入口、采购控件及内容存在时的同页教程；首页增加同源购买能力标签与筛选。本次文档依据 `sections/yarn-project-detail.liquid`、`assets/yarn-project-modes.css`、`assets/yarn-header.css`、`sections/yarn-project-library.liquid`、`assets/yarn-project-rows.css` 与对应 capability、材料和购买 snippet。documenter 已打开本轮[桌面](.impeccable/review/34-project-modes/desktop.jpg)、[手机](.impeccable/review/34-project-modes/mobile.jpg)、[comp 尺寸](.impeccable/review/34-project-modes/comp-size.jpg)截图；最后一张是较早的布局对照，旧外跳字形不作最终图标依据，最新桌面 / 手机图与源码显示同页教程入口已移除该箭头。
 
 本次记录是实现事实，不是 gate 通过证明。方向与范围见[当前 surface brief](.impeccable/surfaces/sections-yarn-project-detail-liquid.md)，最终状态以独立 [finish review](.impeccable/review/34-project-modes/finish-review.md) 及本轮 verdict 为准；静态 hero gate 的解析 / 测量限制不能由文档关闭。真实 SKU 数量、教程图文入口和随内容增长的位置适配不被改写成逐像素匹配。本文不认证三语、后台编辑、真实供货、人工验收或生产发布已经完成；演示图文仍属于受保护内部原型。
 
@@ -398,7 +398,7 @@ MewoolMew 的导航 Logo 直接继承用户选择的第一款橘色猫抱毛线�
 
 自己做模式把材料与工具放在同一细线清单；材料图名可链接至来源商品，工具以原生 details 按需展开采购，其他自备材料在清单后用文字保留。规格少于等于 8 个且多于 1 个时使用带可见选中态的 radio 胶囊，超过 8 个使用带标签的 select，只有 1 个时不显示多余选择。数量与合计同行，金额、数量约束和可售状态来自 Shopify Variant；不复制一套作品价格或库存。材料加购用浅奶油面，成品加购用陶土实底，禁用态用纸灰面及文字说明；操作反馈保留可读状态区。
 
-教程预览与奶油黄「开始制作」按钮均锚定同页 Tutorial，处于正常文档流，不再采用旧版深暖红 sticky 按钮。已有材料可直接进入，不以购买为门槛；页内教程不附外跳箭头。外部教程 / 视频来源仍使用真实链接并提供来源说明，不伪装成页内播放器。原生链接、按钮、输入与 summary 延续共享灰蓝焦点轮廓；实际样例内容长度不转化为固定屏数规则。
+仅在作品提供图文教程或教程 / 视频来源时展示对应教程区与入口；保养文案和灵感笔记不自动当作教程。自己做模式的教程预览与奶油黄「开始制作」按钮均锚定同页 Tutorial，处于正常文档流，不再采用旧版深暖红 sticky 按钮。已有材料可直接进入，不以购买为门槛；页内教程不附外跳箭头。外部教程 / 视频来源仍使用真实链接并提供来源说明，不伪装成页内播放器。原生链接、按钮、输入与 summary 延续共享灰蓝焦点轮廓；实际样例内容长度不转化为固定屏数规则。
 
 ### Project Materials / Purchase Context
 
@@ -440,7 +440,7 @@ Documenter 已打开新版中文 1440 px 与日文 390 px 全页截图：四种�
 - **Do** 在新增文案后检查字体覆盖、三语断行、手机可读性、焦点和触控路径。
 - **Do** 让桌面导航、手机菜单、Section 与页脚遵从整页语言；在 Shopify 菜单资源维护原文及译文，逐语检查可见文本，不以英文回退替代缺失翻译。
 - **Do** 从对应 surface brief 决定构图，从本规范复用已实现的材料、字体角色和组件语言；代码按 [接入指南](docs/design/home-system.md) 消费共享角色，保持 tokens 的单一来源。
-- **Do** 在当前 Project 详情保留完整标题、演示披露和按真实能力显示的模式入口，教程动作位于正常阅读流；不复用旧版 sticky 首屏高度合同。
+- **Do** 在当前 Project 详情保留完整标题、演示披露和按真实能力显示的模式入口；有教程内容时，教程动作位于正常阅读流；不复用旧版 sticky 首屏高度合同。
 - **Do** 让移动购物车每个条目的减号、当前数量、加号、删除与行总价完整可见且可滚动到达。
 - **Do** 保留自备和待补配件，区分采购数量与制作所需用量，并在商品和购物车中延续来源作品与非同款参考说明。
 - **Do** 依据明确的材料类型组织当前清单、可选工具与自备文字；单模式直接呈现内容，无购买能力的灵感仍保留已有教程。

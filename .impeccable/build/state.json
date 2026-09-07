@@ -55,7 +55,12 @@
       "openedAt": "2026-09-07T22:09:28.706Z",
       "closedAt": null,
       "attempts": 1,
-      "notes": [],
+      "notes": [
+        {
+          "at": "2026-09-07T23:33:11.234Z",
+          "text": "Issue34 actual implementation verified at 1440/390 in zh/en/ja; 66 tests and CI pass. Independent reviewer accepts product-driven comp adaptations and resolved SVGs; non-tutorial demo content corrected. Automatic hero gate remains open due static/adaptation heuristics; no force or false pass. Draft PR35 and unpublished Theme189762732345 are the review delivery."
+        }
+      ],
       "gate": {
         "ok": false,
         "reasons": [
@@ -229,7 +234,11 @@
       "forced": null
     }
   },
-  "finish": null,
+  "finish": {
+    "disposition": "fix",
+    "at": "2026-09-07T23:38:16.084Z",
+    "phaseAtFinish": "hero"
+  },
   "plates": {
     "project-cover": {
       "status": "ok",
