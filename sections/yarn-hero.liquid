@@ -1,5 +1,5 @@
 {% if section.settings.discovery_layout %}
-  {{ 'impeccable-b-hero-textile.png' | asset_url | preload_tag: as: 'image' }}
+  {{ 'yarn-hero-editorial.png' | asset_url | preload_tag: as: 'image' }}
   {{ 'yarn-hero-b.css' | asset_url | stylesheet_tag }}
 {% else %}
   {{ 'impeccable-hero-textile.png' | asset_url | preload_tag: as: 'image' }}
@@ -12,10 +12,13 @@
   assign flow_buy = section.settings.flow_buy
   assign flow_make = section.settings.flow_make
   assign textile_asset = 'impeccable-hero-textile.png'
+  assign textile_width = 1191
+  assign textile_height = 1321
   assign notation_asset = 'impeccable-hero-notation-doodles.png'
   if section.settings.discovery_layout
-    assign textile_asset = 'impeccable-b-hero-textile.png'
-    assign notation_asset = 'impeccable-b-hero-notation-doodles.png'
+    assign textile_asset = 'yarn-hero-editorial.png'
+    assign textile_width = 1536
+    assign textile_height = 1024
   endif
 
   case request.locale.iso_code
@@ -36,10 +39,12 @@
 
 <section class="yarn-hero{% if section.settings.discovery_layout %} yarn-hero--discovery{% endif %} color-{{ section.settings.color_scheme }} gradient" aria-labelledby="YarnHeroHeading-{{ section.id }}">
   <div class="yarn-hero__visual">
-    <div class="yarn-hero__paper" aria-hidden="true" style="background-image: url('{{ 'impeccable-page-paper.png' | asset_url }}');"></div>
-    <img class="yarn-hero__notation" src="{{ notation_asset | asset_url }}" alt="" width="1283" height="1226" loading="eager">
-    {% unless section.settings.discovery_layout %}<span class="yarn-hero__flowers" aria-hidden="true"><img src="{{ notation_asset | asset_url }}" alt="" width="1024" height="1536" loading="eager"></span>{% endunless %}
-    <img class="yarn-hero__textile" src="{{ textile_asset | asset_url }}" alt="" width="1191" height="1321" loading="eager" fetchpriority="high">
+    {% unless section.settings.discovery_layout %}
+      <div class="yarn-hero__paper" aria-hidden="true" style="background-image: url('{{ 'impeccable-page-paper.png' | asset_url }}');"></div>
+      <img class="yarn-hero__notation" src="{{ notation_asset | asset_url }}" alt="" width="1283" height="1226" loading="eager">
+      <span class="yarn-hero__flowers" aria-hidden="true"><img src="{{ notation_asset | asset_url }}" alt="" width="1024" height="1536" loading="eager"></span>
+    {% endunless %}
+    <img class="yarn-hero__textile" src="{{ textile_asset | asset_url }}" alt="" width="{{ textile_width }}" height="{{ textile_height }}" loading="eager" fetchpriority="high">
 
     <div class="yarn-hero__copy">
       <h1 id="YarnHeroHeading-{{ section.id }}" class="yarn-hero__heading" lang="{{ request.locale.iso_code }}">{{ hero_heading | escape }}</h1>
@@ -284,13 +289,13 @@
       "type": "text",
       "id": "heading",
       "label": "主标题",
-      "default": "作りたいものを選んだら、糸選びはおまかせ。"
+      "default": "作りたい気持ちを、材料選びで止めない。"
     },
     {
       "type": "richtext",
       "id": "text",
       "label": "说明",
-      "default": "<p>作りたいものから毛糸やキットを探せます。必要な材料や作り方は各商品ページでご確認ください。</p>"
+      "default": "<p>作品から選べば、必要な糸・使用量・道具・作り方をひとつずつ確認できます。準備の迷いを減らし、手を動かす時間をもっと楽しく。</p>"
     },
     {
       "type": "text",
@@ -326,13 +331,13 @@
       "type": "text",
       "id": "heading_zh",
       "label": "中文 · heading",
-      "default": "先选喜欢的作品，选线交给我们。"
+      "default": "喜欢的作品，不该卡在选材料。"
     },
     {
       "type": "richtext",
       "id": "text_zh",
       "label": "中文 · text",
-      "default": "<p>从想做的作品出发，找到合适的毛线与套件。购买前，先确认材料用量和教程。</p>"
+      "default": "<p>从作品出发，帮你逐项确认毛线、用量、工具与教程。少一点准备时的犹豫，多一点真正动手的乐趣。</p>"
     },
     {
       "type": "text",
@@ -356,13 +361,13 @@
       "type": "text",
       "id": "heading_en",
       "label": "英文 · heading",
-      "default": "Choose what to make. We will match the yarn."
+      "default": "Don't let materials stall your next make."
     },
     {
       "type": "richtext",
       "id": "text_en",
       "label": "英文 · text",
-      "default": "<p>Start with what you want to make, then explore yarn and kits. Check materials and instructions on each product page.</p>"
+      "default": "<p>Start with a project, then check the yarn, quantity, tools, and tutorial in one clear flow. Spend less time second-guessing and more time making.</p>"
     },
     {
       "type": "text",
