@@ -6,7 +6,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 6,
+    "line": 7,
     "snippet": "font-size: clamp(30px, 4.5cqw, 60px) has fluid endpoint 60px off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "60px"
@@ -18,7 +18,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 7,
+    "line": 8,
     "snippet": "Undocumented color #4a4b48 is outside DESIGN.md colors",
     "advisory": true,
     "ignoreValue": "#4a4b48"
@@ -30,7 +30,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 7,
+    "line": 8,
     "snippet": "font-size: clamp(14px, 1.55cqw, 20px) has fluid endpoints 14px and 20px off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "14px"
@@ -42,7 +42,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 9,
+    "line": 10,
     "snippet": "Undocumented color #efd68d is outside DESIGN.md colors",
     "advisory": true,
     "ignoreValue": "#efd68d"
@@ -54,7 +54,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 9,
+    "line": 10,
     "snippet": "font-size: 16px is off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "16px"
@@ -66,7 +66,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 17,
+    "line": 18,
     "snippet": "Undocumented color #e9bd51 is outside DESIGN.md colors",
     "advisory": true,
     "ignoreValue": "#e9bd51"
@@ -78,7 +78,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 25,
+    "line": 26,
     "snippet": "Undocumented color #e9bd51 is outside DESIGN.md colors",
     "advisory": true,
     "ignoreValue": "#e9bd51"
@@ -90,7 +90,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 25,
+    "line": 26,
     "snippet": "Undocumented color #fff9e9 is outside DESIGN.md colors",
     "advisory": true,
     "ignoreValue": "#fff9e9"
@@ -102,7 +102,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 25,
+    "line": 26,
     "snippet": "font-size: clamp(16px, 2.2cqw, 28px) has fluid endpoint 16px off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "16px"
@@ -114,7 +114,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 32,
+    "line": 33,
     "snippet": "font-size: 13px is off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "13px"
@@ -126,7 +126,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 33,
+    "line": 34,
     "snippet": "font-size: 14px is off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "14px"
@@ -138,7 +138,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 38,
+    "line": 39,
     "snippet": "font-size: 14px is off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "14px"
@@ -150,7 +150,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 54,
+    "line": 55,
     "snippet": "font-size: clamp(18px, 5.8cqw, 30px) has fluid endpoint 18px off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "18px"
@@ -162,7 +162,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 55,
+    "line": 56,
     "snippet": "font-size: 12px is off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "12px"
@@ -174,7 +174,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 60,
+    "line": 61,
     "snippet": "font-size: clamp(25px, 3.2cqw, 43px) has fluid endpoint 43px off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "43px"
@@ -186,7 +186,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 61,
+    "line": 62,
     "snippet": "font-size: clamp(28px, 3.85cqw, 52px) has fluid endpoint 52px off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "52px"
@@ -198,7 +198,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 64,
+    "line": 65,
     "snippet": "font-size: 20px is off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "20px"
@@ -210,7 +210,7 @@
     "severity": "advisory",
     "category": "quality",
     "file": "/Users/jinchen/Documents/ChatGPT/毛线-issue-13-connected/assets/yarn-hero-b.css",
-    "line": 65,
+    "line": 66,
     "snippet": "font-size: 12px is off the DESIGN.md type ramp",
     "advisory": true,
     "ignoreValue": "12px"

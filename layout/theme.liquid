@@ -23,12 +23,12 @@
 
     {%- liquid
       assign yarn_page_title = page_title
-      assign yarn_shop_name = 'mewool'
+      assign yarn_shop_name = 'MewoolMew'
       if template.name == 'product' and yarn_product_page_title != blank
         assign yarn_page_title = yarn_product_page_title | strip
       endif
       if page_title == 'My Store'
-        assign yarn_page_title = 'mewool'
+        assign yarn_page_title = 'MewoolMew'
       endif
       if template.name == 'search'
         case search.terms

@@ -1,5 +1,6 @@
 .yarn-hero.yarn-hero--connected { position: relative; overflow: hidden; background: #fffefa; color: #2f302f; }
 .yarn-hero--connected ::selection { background: #f8e5a9; color: #2f302f; }
+.yarn-hero.yarn-hero--connected :is(.yarn-hero__heading, .yarn-hero__text) { animation: none; }
 .yarn-hero--connected :is(a, button):focus-visible { outline: 2px solid #426f82; outline-offset: 4px; }
 .yarn-hero--connected .yarn-hero__visual { position: relative; width: min(1340px, calc(100% - 64px)); aspect-ratio: 1.2; margin: 20px auto 0; isolation: isolate; container-type: inline-size; }
 .yarn-hero--connected .yarn-hero__copy { position: absolute; z-index: 3; left: 0; top: 18%; width: 35%; }
