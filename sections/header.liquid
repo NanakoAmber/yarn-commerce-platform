@@ -164,43 +164,9 @@
       assign language_selector = true
     endif
 
-    assign yarn_brand_name = 'mewool'
+    assign yarn_brand_name = 'MewoolMew'
 
     assign navigation_menu = section.settings.menu
-
-    assign yarn_home_label = 'ホーム'
-    assign yarn_finished_label = '完成品'
-    assign yarn_materials_label = '素材'
-    assign yarn_contact_label = 'お問い合わせ'
-    case request.locale.iso_code
-      when 'zh-CN', 'zh'
-        assign yarn_home_label = '首页'
-        assign yarn_finished_label = '成品'
-        assign yarn_materials_label = '原材料'
-        assign yarn_contact_label = '联系方式'
-      when 'en'
-        assign yarn_home_label = 'Home'
-        assign yarn_finished_label = 'Finished pieces'
-        assign yarn_materials_label = 'Materials'
-        assign yarn_contact_label = 'Contact'
-    endcase
-
-    assign yarn_home_url = routes.root_url
-    assign yarn_finished_url = section.settings.finished_products_link
-    if yarn_finished_url == blank
-      assign yarn_finished_url = routes.search_url | append: '?q=tag%3A%E5%AE%8C%E6%88%90%E5%93%81'
-    endif
-    assign yarn_materials_url = section.settings.materials_link
-    if yarn_materials_url == blank
-      assign yarn_materials_url = routes.search_url | append: '?q=tag%3A%E6%AF%9B%E7%B3%B8'
-    endif
-    assign yarn_contact_url = section.settings.contact_link
-    if yarn_contact_url == blank
-      assign yarn_contact_url = pages['contact'].url
-    endif
-    if yarn_contact_url == blank
-      assign yarn_contact_url = routes.root_url | append: 'pages/contact'
-    endif
   -%}
   <header id="YarnHeader" class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if navigation_menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
     {%- liquid
@@ -210,7 +176,7 @@
       endif
 
       if navigation_menu != blank
-        render 'yarn-header-drawer', home_label: yarn_home_label, finished_label: yarn_finished_label, materials_label: yarn_materials_label, contact_label: yarn_contact_label, home_url: yarn_home_url, finished_url: yarn_finished_url, materials_url: yarn_materials_url, contact_url: yarn_contact_url, show_country_selector: country_selector, show_language_selector: language_selector, show_social_links: social_links
+        render 'yarn-header-drawer', navigation_menu: navigation_menu, show_country_selector: country_selector, show_language_selector: language_selector, show_social_links: social_links
       endif
 
       if render_search_left
@@ -253,7 +219,7 @@
 
     {%- liquid
       if navigation_menu != blank and section.settings.menu_type_desktop != 'drawer'
-        render 'yarn-header-menu', home_label: yarn_home_label, finished_label: yarn_finished_label, materials_label: yarn_materials_label, contact_label: yarn_contact_label, home_url: yarn_home_url, finished_url: yarn_finished_url, materials_url: yarn_materials_url, contact_url: yarn_contact_url
+        render 'yarn-header-menu', navigation_menu: navigation_menu
       endif
     %}
 
@@ -584,21 +550,6 @@
       "id": "menu",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
-    },
-    {
-      "type": "url",
-      "id": "finished_products_link",
-      "label": "成品入口"
-    },
-    {
-      "type": "url",
-      "id": "materials_link",
-      "label": "原材料入口"
-    },
-    {
-      "type": "url",
-      "id": "contact_link",
-      "label": "联系方式入口"
     },
     {
       "type": "select",

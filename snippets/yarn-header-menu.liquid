@@ -1,9 +1,73 @@
-{%- comment -%}Localized flat navigation for the four approved visitor destinations.{%- endcomment -%}
+{%- comment -%}Desktop navigation. Menu labels and URLs come from Shopify Navigation.{%- endcomment -%}
 <nav class="header__inline-menu" aria-label="{{ 'sections.header.menu' | t }}">
   <ul class="list-menu list-menu--inline yarn-main-menu" role="list">
-    <li><a id="YarnHeaderMenu-home" href="{{ home_url }}" class="header__menu-item list-menu__item link link--text focus-inset{% if request.page_type == 'index' %} header__active-menu-item{% endif %}"{% if request.page_type == 'index' %} aria-current="page"{% endif %}><span>{{ home_label | escape }}</span></a></li>
-    <li><a id="YarnHeaderMenu-finished" href="{{ finished_url }}" class="header__menu-item list-menu__item link link--text focus-inset{% if request.page_type == 'search' and search.terms == 'tag:完成品' %} header__active-menu-item{% endif %}"{% if request.page_type == 'search' and search.terms == 'tag:完成品' %} aria-current="page"{% endif %}><span>{{ finished_label | escape }}</span></a></li>
-    <li><a id="YarnHeaderMenu-materials" href="{{ materials_url }}" class="header__menu-item list-menu__item link link--text focus-inset{% if request.page_type == 'search' and search.terms == 'tag:毛糸' %} header__active-menu-item{% endif %}"{% if request.page_type == 'search' and search.terms == 'tag:毛糸' %} aria-current="page"{% endif %}><span>{{ materials_label | escape }}</span></a></li>
-    <li><a id="YarnHeaderMenu-contact" href="{{ contact_url }}" class="header__menu-item list-menu__item link link--text focus-inset{% if request.page_type == 'page' and page.handle == 'contact' %} header__active-menu-item{% endif %}"{% if request.page_type == 'page' and page.handle == 'contact' %} aria-current="page"{% endif %}><span>{{ contact_label | escape }}</span></a></li>
+    {%- for link in navigation_menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-YarnHeaderMenu-{{ forloop.index }}">
+              <summary
+                id="YarnHeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset{% if link.child_active %} header__active-menu-item{% endif %}"
+              >
+                <span>{{ link.title | escape }}</span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <ul
+                id="YarnHeaderMenu-MenuList-{{ forloop.index }}"
+                class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+                role="list"
+                tabindex="-1"
+              >
+                {%- for childlink in link.links -%}
+                  <li>
+                    {%- if childlink.links == blank -%}
+                      <a
+                        id="YarnHeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url | escape }}"
+                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                        {% if childlink.current %}aria-current="page"{% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+                    {%- else -%}
+                      <details id="Details-YarnHeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                        <summary class="header__menu-item link link--text list-menu__item focus-inset caption-large">
+                          <span>{{ childlink.title | escape }}</span>
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </summary>
+                        <ul class="header__submenu list-menu motion-reduce" role="list">
+                          {%- for grandchildlink in childlink.links -%}
+                            <li>
+                              <a
+                                id="YarnHeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url | escape }}"
+                                class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                                {% if grandchildlink.current %}aria-current="page"{% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </details>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="YarnHeaderMenu-{{ link.handle }}"
+            href="{{ link.url | escape }}"
+            class="header__menu-item list-menu__item link link--text focus-inset{% if link.current %} header__active-menu-item{% endif %}"
+            {% if link.current %}aria-current="page"{% endif %}
+          >
+            <span>{{ link.title | escape }}</span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
   </ul>
 </nav>
