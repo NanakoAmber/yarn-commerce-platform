@@ -54,6 +54,10 @@
 | `variant` | Product variant reference，单个 | 准确的 Shopify 商品规格；不得自动换为其他 Variant |
 | `quantity` | Integer，可选 | 建议采购件数；不是已核实的制作耗用量 |
 | `note` | Multi-line text | 自备建议、缺项说明、内部演示和适配待核实事项 |
+| `component_type` | Single line text，选项 | 毛线 / 工具 / 其他材料；只是详情展示层级，不改变商品事实 |
+| `image` | File reference，单个 IMAGE | 该作品中的配件图；毛线优先用这张图展示 |
+
+每个正式演示作品至少有一条标为「毛线」的配件并配图。毛线条目先以大图和规格显示，工具、其他材料以紧凑清单显示；缺少 `component_type` 的旧条目安全留在辅助清单，Theme 不根据名称猜测类型。毛线图缺失时 Theme 可回退到精确 Variant / Product 图，但内容录入仍应为毛线配件保存图片。生成示意图必须在 `note` 披露，不能因为有图就推定粗细、用量或替代适配已核实。
 
 「本店提供」且有效 Variant 已关联时，页面才读取该 Variant 的实时 `available`、价格和采购数量规则；缺货不显示加购表单。自备、待补或空引用仍作为清单行展示，均不妨碍作品展示、教程阅读和其他配件选购。工具也只能由顾客明确逐项加入。
 
@@ -61,15 +65,21 @@
 
 ## Entry、发布与可见性
 
-当前实际保存了三条内部样例 Entry：
+当前实际保存了九条 Active 内部样例 Entry：
 
 | 内部样例 | Shopify Entry ID | Handle | 预期网页路径 |
 | --- | --- | --- | --- |
 | 方形篮 | `279381770553` | `demo-square-basket` | `/pages/projects/demo-square-basket` |
 | 花片双拼小袋｜内部示例 | `279382294841` | `demo-granny-pouch` | `/pages/projects/demo-granny-pouch` |
 | 花片盖毯 | `279382851897` | `demo-flower-blanket` | `/pages/projects/demo-flower-blanket` |
+| 雨色方格托特包｜内部样例 | `279455170873` | `rain-check-tote` | `/pages/projects/rain-check-tote` |
+| 柚子花杯垫｜内部样例 | `279455793465` | `yuzu-flower-coasters` | `/pages/projects/yuzu-flower-coasters` |
+| 云朵纹靠垫套｜内部样例 | `279455990073` | `cloud-cushion-cover` | `/pages/projects/cloud-cushion-cover` |
+| 雾粉短围巾｜内部样例 | `279456153913` | `mist-pink-short-scarf` | `/pages/projects/mist-pink-short-scarf` |
+| 午睡小猫玩偶｜内部样例 | `279456186681` | `nap-cat-amigurumi` | `/pages/projects/nap-cat-amigurumi` |
+| 秋叶挂饰｜内部样例 | `279456219449` | `autumn-leaf-garland` | `/pages/projects/autumn-leaf-garland` |
 
-三条 Entry 均已保存中文名称，Shopify 平台展示状态目前为 Active，`release_scope` 仍为 `仅内部原型`。团队演示期间，具有标题的记录会在 live Theme 中展示；上述路径由当前 Handle 推导，仅作内容接线记录，不代表材料、教程、版权或业务 ready 已获确认。
+九条 Entry 均已保存中文名称，Shopify 平台展示状态目前为 Active，`release_scope` 仍为 `仅内部原型`。团队演示期间，具有标题的记录会在 live Theme 中展示；上述路径由当前 Handle 推导，仅作内容接线记录，不代表材料、教程、版权或业务 ready 已获确认。
 
 Shopify 的 Active / Draft 是平台提供的展示开关；`release_scope` 是独立的业务门槛。两者不能合并为同一种状态：
 

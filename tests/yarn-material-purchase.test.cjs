@@ -127,7 +127,10 @@ test('double submit and invalid quantities do not send a second request', async 
 });
 
 test('components use exact Variant truth, preserve project identity, and never gate project visibility', () => {
-  const source = fs.readFileSync('snippets/yarn-project-components.liquid', 'utf8');
+  const source = [
+    'snippets/yarn-project-components.liquid',
+    'snippets/yarn-project-component.liquid',
+  ].map((path) => fs.readFileSync(path, 'utf8')).join('\n');
   for (const expression of ['component.variant.value', 'variant.available', 'variant.price', 'variant.id', 'variant.url', 'variant.quantity_rule.min', 'variant.quantity_rule.increment', 'variant.quantity_rule.max']) {
     assert.ok(source.includes(expression), expression);
   }
@@ -138,4 +141,17 @@ test('components use exact Variant truth, preserve project identity, and never g
   const cart = fs.readFileSync('snippets/yarn-cart-project.liquid', 'utf8');
   assert.match(cart, /shop\.metaobjects\.yarn_project\[project_handle\]/);
   assert.match(cart, /render 'yarn-project-visible'/);
+});
+
+test('component presentation makes typed yarn primary without guessing legacy item types', () => {
+  const list = fs.readFileSync('snippets/yarn-project-components.liquid', 'utf8');
+  const item = fs.readFileSync('snippets/yarn-project-component.liquid', 'utf8');
+  const detail = fs.readFileSync('sections/yarn-project-detail.liquid', 'utf8');
+  assert.match(list, /component\.component_type\.value == '毛线'/);
+  assert.match(list, /yp-components--yarn[\s\S]*mode: 'yarn'/);
+  assert.match(list, /yp-components--supporting[\s\S]*unless component\.component_type\.value == '毛线'/);
+  assert.match(item, /assign item_image = component\.image\.value[\s\S]*variant\.featured_image \| default: variant\.product\.featured_image/);
+  assert.match(item, /yp-component--\{\{ mode \}\}/);
+  assert.doesNotMatch(list, /component\.title[^\n]*(contains|downcase)/);
+  assert.match(detail, /render 'yarn-project-components'/);
 });

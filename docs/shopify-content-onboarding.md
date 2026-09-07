@@ -7,7 +7,7 @@
 | 内容 | Shopify 入口 | 维护什么 |
 | --- | --- | --- |
 | 编织作品（Project） | [内容 → 元对象 → 编织作品](https://admin.shopify.com/store/tutaka-54/content/metaobjects/entries/yarn_project) | 作品名称、图片、难度、制作准备、教程、配件与成品关系 |
-| 作品配件 | [内容 → 元对象 → 作品配件](https://admin.shopify.com/store/tutaka-54/content/metaobjects/entries/yarn_material) | 每项材料或工具的规格、供给方式、建议采购数量和具体 Variant |
+| 作品配件 | [内容 → 元对象 → 作品配件](https://admin.shopify.com/store/tutaka-54/content/metaobjects/entries/yarn_material) | 每项毛线、工具或其他材料的类型、图片、规格、供给方式、建议采购数量和具体 Variant |
 | 商品与 Variant | [Products](https://admin.shopify.com/store/tutaka-54/products) | 商品标题、图片、规格、价格和可售配置 |
 | 库存 | [Inventory](https://admin.shopify.com/store/tutaka-54/products/inventory) | 每个 Variant 在各地点的真实库存 |
 
@@ -26,7 +26,7 @@ Shopify Product、Variant、价格和库存始终是交易事实来源。作品�
 
 ## 添加或替换一项配件
 
-1. 打开“作品配件”，填写名称、规格与用途。
+1. 打开“作品配件”，填写名称、规格与用途，并选择毛线、工具或其他材料。每个作品的毛线配件必须配图。
 2. 选择供给方式：本店提供、需自行准备或信息待补充。
 3. 本店提供的配件关联具体商品 Variant。缺少有效关联时不显示购买按钮；缺货状态直接读取 Shopify 库存。
 4. 填写建议采购数量和必要说明。采购件数不等于作品实际耗用量；未经核实的数量必须标记待核实。
