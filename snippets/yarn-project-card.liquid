@@ -29,6 +29,7 @@
     <div class="yp-card__body">
       {% if project.category.value != blank %}<p class="yp-card__category">{% render 'yarn-project-label', value: project.category.value %}</p>{% endif %}
       <h3>{{ project.title.value | escape }}</h3>
+      <p class="yp-card__action">{{ 'yarn_project.view_materials' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></p>
       {% if project.summary.value != blank %}<p class="yp-card__summary">{{ project.summary.value | escape }}</p>{% endif %}
       {% if project.difficulty.value != blank or project.time_minutes.value != blank %}
         <dl class="yp-card__facts">

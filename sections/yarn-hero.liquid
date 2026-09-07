@@ -1,397 +1,98 @@
-{% if section.settings.discovery_layout %}
-  {{ 'yarn-hero-editorial.png' | asset_url | preload_tag: as: 'image' }}
-  {{ 'yarn-hero-b.css' | asset_url | stylesheet_tag }}
-{% else %}
-  {{ 'impeccable-hero-textile.png' | asset_url | preload_tag: as: 'image' }}
-{% endif %}
+{{ 'mewool-hero-project-node-v2.png' | asset_url | preload_tag: as: 'image' }}
+{{ 'yarn-hero-b.css' | asset_url | stylesheet_tag }}
 
 {% liquid
   assign hero_heading = section.settings.heading
   assign hero_text = section.settings.text
-  assign flow_select = section.settings.flow_select
-  assign flow_buy = section.settings.flow_buy
-  assign flow_make = section.settings.flow_make
-  assign textile_asset = 'impeccable-hero-textile.png'
-  assign textile_width = 1191
-  assign textile_height = 1321
-  assign notation_asset = 'impeccable-hero-notation-doodles.png'
-  if section.settings.discovery_layout
-    assign textile_asset = 'yarn-hero-editorial.png'
-    assign textile_width = 1536
-    assign textile_height = 1024
-  endif
+  assign hero_cta = section.settings.cta_label
+  assign flow_project = section.settings.flow_project
+  assign flow_yarn = section.settings.flow_yarn
+  assign flow_tools = section.settings.flow_tools
+  assign flow_tutorial = section.settings.flow_tutorial
 
   case request.locale.iso_code
     when 'zh-CN', 'zh'
       assign hero_heading = section.settings.heading_zh
       assign hero_text = section.settings.text_zh
-      assign flow_select = section.settings.flow_select_zh
-      assign flow_buy = section.settings.flow_buy_zh
-      assign flow_make = section.settings.flow_make_zh
+      assign hero_cta = section.settings.cta_label_zh
+      assign flow_project = section.settings.flow_project_zh
+      assign flow_yarn = section.settings.flow_yarn_zh
+      assign flow_tools = section.settings.flow_tools_zh
+      assign flow_tutorial = section.settings.flow_tutorial_zh
     when 'en'
       assign hero_heading = section.settings.heading_en
       assign hero_text = section.settings.text_en
-      assign flow_select = section.settings.flow_select_en
-      assign flow_buy = section.settings.flow_buy_en
-      assign flow_make = section.settings.flow_make_en
+      assign hero_cta = section.settings.cta_label_en
+      assign flow_project = section.settings.flow_project_en
+      assign flow_yarn = section.settings.flow_yarn_en
+      assign flow_tools = section.settings.flow_tools_en
+      assign flow_tutorial = section.settings.flow_tutorial_en
   endcase
 %}
 
-<section class="yarn-hero{% if section.settings.discovery_layout %} yarn-hero--discovery{% endif %} color-{{ section.settings.color_scheme }} gradient" aria-labelledby="YarnHeroHeading-{{ section.id }}">
+<section class="yarn-hero yarn-hero--connected color-{{ section.settings.color_scheme }}" aria-labelledby="YarnHeroHeading-{{ section.id }}">
   <div class="yarn-hero__visual">
-    {% unless section.settings.discovery_layout %}
-      <div class="yarn-hero__paper" aria-hidden="true" style="background-image: url('{{ 'impeccable-page-paper.png' | asset_url }}');"></div>
-      <img class="yarn-hero__notation" src="{{ notation_asset | asset_url }}" alt="" width="1283" height="1226" loading="eager">
-      <span class="yarn-hero__flowers" aria-hidden="true"><img src="{{ notation_asset | asset_url }}" alt="" width="1024" height="1536" loading="eager"></span>
-    {% endunless %}
-    <img class="yarn-hero__textile" src="{{ textile_asset | asset_url }}" alt="" width="{{ textile_width }}" height="{{ textile_height }}" loading="eager" fetchpriority="high">
-
     <div class="yarn-hero__copy">
-      <h1 id="YarnHeroHeading-{{ section.id }}" class="yarn-hero__heading" lang="{{ request.locale.iso_code }}">{{ hero_heading | escape }}</h1>
+      <h1 id="YarnHeroHeading-{{ section.id }}" class="yarn-hero__heading" lang="{{ request.locale.iso_code }}">{{ hero_heading | escape | newline_to_br }}</h1>
       {% if hero_text != blank %}<div class="yarn-hero__text rte">{{ hero_text }}</div>{% endif %}
+      <a class="button yarn-hero__cta" href="#shop-by-project">{{ hero_cta | escape }}</a>
     </div>
+
+    <ol class="yarn-hero__journey" aria-label="{{ flow_project | escape }} → {{ flow_yarn | escape }} → {{ flow_tools | escape }} → {{ flow_tutorial | escape }}">
+      <svg class="yarn-hero__thread yarn-hero__thread--desktop" viewBox="0 0 900 750" preserveAspectRatio="none" aria-hidden="true"><path d="M 530 204 C 595 209 628 153 612 143 C 592 131 590 159 612 163 C 654 173 660 113 700 98 S 864 83 877 140 C 890 190 855 199 853 180 C 851 156 899 175 888 211 C 882 231 862 237 849 264 L 795 370 C 786 412 757 433 745 416 C 731 395 749 381 758 393 C 777 419 795 442 825 445 C 850 452 860 470 866 493 C 884 552 853 564 847 545 C 839 520 882 536 875 565 C 868 604 830 619 779 619"/></svg>
+      <svg class="yarn-hero__thread yarn-hero__thread--mobile" viewBox="0 0 354 660" preserveAspectRatio="none" aria-hidden="true"><path d="M 173 346 C 220 320 245 300 252 255 C 261 220 281 230 276 245 C 268 266 246 246 253 218 C 265 174 260 120 290 76 C 341 87 349 163 338 176 C 322 194 315 169 329 167 C 356 163 350 237 335 280 L 318 359 C 329 423 349 428 344 457 C 340 480 319 474 322 461 C 327 440 350 462 342 492 C 337 515 315 542 298 551"/></svg>
+      <li class="yarn-hero__node yarn-hero__node--project">
+        <a href="#shop-by-project">
+          <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-project-node-v2.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager" fetchpriority="high"></span>
+          <strong>{{ flow_project | escape }}</strong>
+        </a>
+      </li>
+      <li class="yarn-hero__node yarn-hero__node--yarn">
+        <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-yarn-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
+        <strong>{{ flow_yarn | escape }}</strong>
+      </li>
+      <li class="yarn-hero__node yarn-hero__node--tools">
+        <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-tools-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
+        <strong>{{ flow_tools | escape }}</strong>
+      </li>
+      <li class="yarn-hero__node yarn-hero__node--tutorial">
+        <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-tutorial-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
+        <strong>{{ flow_tutorial | escape }}</strong>
+      </li>
+    </ol>
   </div>
-
-  <ol class="yarn-hero__flow" aria-label="{{ flow_select | escape }} → {{ flow_buy | escape }} → {{ flow_make | escape }}">
-    <li class="yarn-hero__step">
-      <span class="yarn-hero__step-art"><img src="{{ 'impeccable-flow-select-plate.png' | asset_url }}" alt="" width="512" height="738" loading="eager"></span>
-      <strong>{{ flow_select | escape }}</strong>
-    </li>
-    <li class="yarn-hero__step">
-      <span class="yarn-hero__step-art"><img src="{{ 'impeccable-flow-buy-plate.png' | asset_url }}" alt="" width="512" height="738" loading="eager"></span>
-      <strong>{{ flow_buy | escape }}</strong>
-    </li>
-    <li class="yarn-hero__step">
-      <span class="yarn-hero__step-art"><img src="{{ 'impeccable-flow-make-plate.png' | asset_url }}" alt="" width="682" height="738" loading="eager"></span>
-      <strong>{{ flow_make | escape }}</strong>
-    </li>
-  </ol>
+  <svg class="yarn-hero__wave" viewBox="0 0 1440 130" preserveAspectRatio="none" aria-hidden="true"><path opacity=".65" d="M0 0C330 0 480 145 900 111S1240 45 1440 54V130H0Z"/><path fill="#fffefa" d="M0 54C350 13 509 161 939 122S1255 83 1440 88V130H0Z"/></svg>
 </section>
-
-{% stylesheet %}
-  .yarn-hero.yarn-hero {
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    background: #f7f7f5;
-    color: #2f302f;
-  }
-
-  .yarn-hero__visual {
-    position: relative;
-    min-height: clamp(500px, 48vw, 690px);
-    overflow: hidden;
-    background-color: #fbf9f4;
-    isolation: isolate;
-  }
-
-  .yarn-hero .yarn-hero__paper {
-    display: block;
-    position: absolute;
-    inset: 0;
-    z-index: -3;
-    background-repeat: repeat;
-    background-size: 171px 184px;
-    opacity: 1;
-    mix-blend-mode: multiply;
-  }
-
-  .yarn-hero__notation,
-  .yarn-hero__textile {
-    position: absolute;
-    display: block;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .yarn-hero__notation {
-    clip-path: inset(0 0 60% 0);
-    mix-blend-mode: multiply;
-    z-index: 0;
-    top: -6%;
-    right: 22%;
-    width: min(49vw, 700px);
-    height: 100%;
-    object-fit: contain;
-    object-position: center top;
-  }
-
-  .yarn-hero__textile {
-    z-index: -1;
-    top: -8%;
-    right: 0;
-    width: min(48vw, 690px);
-    height: 116%;
-    object-fit: cover;
-    object-position: left 44%;
-  }
-
-  .yarn-hero__flowers {
-    position: absolute;
-    z-index: 0;
-    top: 49%;
-    left: 56%;
-    width: 110px;
-    height: 205px;
-    overflow: hidden;
-    mix-blend-mode: multiply;
-    pointer-events: none;
-  }
-
-  .yarn-hero__flowers img {
-    position: absolute;
-    width: 450px;
-    max-width: none;
-    height: 675px;
-    left: -320px;
-    top: -250px;
-  }
-
-  .yarn-hero__copy {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    width: min(100%, 1420px);
-    min-height: inherit;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    padding-left: clamp(32px, 5vw, 72px);
-    padding-top: clamp(56px, 7vw, 100px);
-    padding-right: min(45vw, 650px);
-    padding-bottom: clamp(130px, 13vw, 190px);
-  }
-
-  .yarn-hero__heading {
-    max-width: 9.4em;
-    margin: 0;
-    color: #2f302f;
-    font-family: var(--yarn-display);
-    font-size: clamp(4.6rem, 4.5vw, 6.3rem);
-    font-weight: 600;
-    line-height: 1.32;
-    letter-spacing: 0.02em;
-    text-wrap: balance;
-  }
-
-  .yarn-hero__text {
-    max-width: 29em;
-    margin-top: clamp(24px, 2.4vw, 34px);
-    color: #424341;
-    font-size: clamp(1.65rem, 1.75vw, 2.35rem);
-    line-height: 1.85;
-  }
-
-  .yarn-hero__text p { margin: 0; }
-
-  .yarn-hero__flow {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    width: min(calc(100% - 96px), 1220px);
-    min-height: clamp(240px, 25vw, 330px);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0;
-    margin: clamp(-156px, -10vw, -92px) auto 0;
-    padding: clamp(25px, 3vw, 42px) clamp(30px, 4vw, 64px) clamp(24px, 2.5vw, 36px);
-    border: 1px solid rgba(173, 163, 149, 0.2);
-    border-radius: 24px;
-    background: rgba(255, 255, 254, 0.97);
-    box-shadow: 0 18px 46px rgba(127, 103, 82, 0.11);
-    list-style: none;
-  }
-
-  .yarn-hero__step {
-    position: relative;
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .yarn-hero__step:not(:last-child)::after {
-    position: absolute;
-    top: 33%;
-    right: -12px;
-    width: 32px;
-    height: 24px;
-    background: #242625;
-    clip-path: polygon(0 45%, 72% 45%, 72% 12%, 100% 50%, 72% 88%, 72% 55%, 0 55%);
-    content: '';
-  }
-
-  .yarn-hero__step-art {
-    display: block;
-    width: clamp(120px, 12.5vw, 176px);
-    aspect-ratio: 1;
-    overflow: hidden;
-    border-radius: 50%;
-  }
-
-  .yarn-hero__step-art img { width: 100%; height: 100%; object-fit: cover; }
-
-  .yarn-hero__step strong {
-    font-family: var(--yarn-display);
-    margin-top: clamp(12px, 1.4vw, 20px);
-    color: #222321;
-    font-size: clamp(1.8rem, 2vw, 2.8rem);
-    font-weight: 400;
-    line-height: 1.35;
-  }
-
-  @media screen and (max-width: 989px) {
-    .yarn-hero__visual { min-height: clamp(390px, 68vw, 580px); }
-    .yarn-hero__paper { background-size: 171px 184px; opacity: 1; }
-    .yarn-hero__notation { top: -8%; right: 13%; width: 52%; height: 116%; }
-    .yarn-hero__flowers { left: 53%; top: 50%; }
-    .yarn-hero__textile { top: -44.2%; right: 0; width: 43%; height: 175%; object-position: right top; mask-image: linear-gradient(to right, transparent, black 16%); }
-    .yarn-hero__copy { justify-content: flex-start; padding: clamp(116px, 15.1vw, 145px) 33% clamp(78px, 10vw, 96px) 6.3%; }
-    .yarn-hero__heading { max-width: 8.7em; font-size: clamp(3.3rem, 7.4vw, 6.3rem); line-height: 1.32; letter-spacing: 0.055em; }
-    .yarn-hero__text { max-width: 16em; margin-top: clamp(20px, 2.8vw, 27px); color: #242523; font-size: clamp(1.45rem, 2.8vw, 2.35rem); font-weight: 400; line-height: 1.9; letter-spacing: 0.045em; }
-    .yarn-hero__flow {
-      width: calc(100% - clamp(40px, 10.8vw, 92px));
-      min-height: clamp(210px, 32.2vw, 275px);
-      margin-top: clamp(-110px, -12.9vw, -52px);
-      padding: clamp(20px, 3vw, 28px) clamp(18px, 4.7vw, 40px) clamp(20px, 3vw, 28px);
-      border-radius: clamp(16px, 2.8vw, 24px);
-    }
-    .yarn-hero__step:not(:last-child)::after { right: clamp(-5px, -0.6vw, -2px); width: clamp(24px, 4.2vw, 36px); height: clamp(14px, 2.6vw, 22px); }
-    .yarn-hero__step-art { width: clamp(104px, 17.6vw, 150px); }
-    .yarn-hero__step:first-child .yarn-hero__step-art { transform: translate(-27px, -8px); }
-    .yarn-hero__step strong { margin-top: clamp(10px, 1.7vw, 15px); font-size: clamp(1.45rem, 3.4vw, 2.9rem); }
-  }
-
-  @media screen and (max-width: 599px) {
-    .yarn-hero__visual { min-height: 390px; }
-    .yarn-hero__notation { right: -2%; width: 78%; opacity: 0.58; }
-    .yarn-hero__flowers { display: none; }
-    .yarn-hero__textile { top: 0; right: -9%; width: 39%; height: 75%; object-position: left top; }
-    .yarn-hero__copy { padding: 58px 26% 100px 24px; }
-    .yarn-hero__heading { max-width: 10em; font-size: 3rem; line-height: 1.4; letter-spacing: 0; }
-    .yarn-hero__text { max-width: 22em; font-size: 1.45rem; line-height: 1.75; }
-    .yarn-hero__flow { width: calc(100% - 28px); min-height: 170px; margin-top: -48px; padding: 18px 8px 20px; border-radius: 18px; }
-    .yarn-hero__step-art { width: min(25vw, 96px); }
-    .yarn-hero__step:first-child .yarn-hero__step-art { transform: translateX(-7px); }
-    .yarn-hero__step strong { font-size: 1.35rem; }
-    .yarn-hero__step:not(:last-child)::after { right: -2px; width: 18px; height: 12px; }
-  }
-{% endstylesheet %}
 
 {% schema %}
 {
-  "name": "平台主视觉与三步路径",
+  "name": "首页 · 毛线串联主视觉",
   "tag": "section",
   "class": "section",
   "settings": [
-    { "type": "checkbox", "id": "discovery_layout", "label": "作品发现 B · 紧凑首屏", "default": false },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "主标题",
-      "default": "作りたい気持ちを、材料選びで止めない。"
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "说明",
-      "default": "<p>作品から選べば、必要な糸・使用量・道具・作り方をひとつずつ確認できます。準備の迷いを減らし、手を動かす時間をもっと楽しく。</p>"
-    },
-    {
-      "type": "text",
-      "id": "flow_select",
-      "label": "步骤一",
-      "default": "作品を選ぶ"
-    },
-    {
-      "type": "text",
-      "id": "flow_buy",
-      "label": "步骤二",
-      "default": "材料をそろえる"
-    },
-    {
-      "type": "text",
-      "id": "flow_make",
-      "label": "步骤三",
-      "default": "編み始める"
-    },
-    {
-      "type": "text",
-      "id": "flow_aria_label",
-      "label": "流程无障碍标签",
-      "default": "作品を選んでから作り始めるまで"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "配色",
-      "default": "scheme-1"
-    },
-    {
-      "type": "text",
-      "id": "heading_zh",
-      "label": "中文 · heading",
-      "default": "喜欢的作品，不该卡在选材料。"
-    },
-    {
-      "type": "richtext",
-      "id": "text_zh",
-      "label": "中文 · text",
-      "default": "<p>从作品出发，帮你逐项确认毛线、用量、工具与教程。少一点准备时的犹豫，多一点真正动手的乐趣。</p>"
-    },
-    {
-      "type": "text",
-      "id": "flow_select_zh",
-      "label": "中文 · flow_select",
-      "default": "选择作品"
-    },
-    {
-      "type": "text",
-      "id": "flow_buy_zh",
-      "label": "中文 · flow_buy",
-      "default": "购买材料"
-    },
-    {
-      "type": "text",
-      "id": "flow_make_zh",
-      "label": "中文 · flow_make",
-      "default": "开始制作"
-    },
-    {
-      "type": "text",
-      "id": "heading_en",
-      "label": "英文 · heading",
-      "default": "Don't let materials stall your next make."
-    },
-    {
-      "type": "richtext",
-      "id": "text_en",
-      "label": "英文 · text",
-      "default": "<p>Start with a project, then check the yarn, quantity, tools, and tutorial in one clear flow. Spend less time second-guessing and more time making.</p>"
-    },
-    {
-      "type": "text",
-      "id": "flow_select_en",
-      "label": "英文 · flow_select",
-      "default": "Choose a project"
-    },
-    {
-      "type": "text",
-      "id": "flow_buy_en",
-      "label": "英文 · flow_buy",
-      "default": "Get the materials"
-    },
-    {
-      "type": "text",
-      "id": "flow_make_en",
-      "label": "英文 · flow_make",
-      "default": "Start making"
-    }
+    { "type": "color_scheme", "id": "color_scheme", "label": "配色", "default": "scheme-1" },
+    { "type": "textarea", "id": "heading", "label": "日文 · 主标题", "default": "好きな作品から、\n手づくりを始めよう。" },
+    { "type": "richtext", "id": "text", "label": "日文 · 说明", "default": "<p>作品に合わせて、毛糸・使用量・道具・作り方をひとつずつ準備できます。</p>" },
+    { "type": "text", "id": "cta_label", "label": "日文 · 主操作", "default": "作品を見つける" },
+    { "type": "text", "id": "flow_project", "label": "日文 · 步骤一", "default": "作品を選ぶ" },
+    { "type": "text", "id": "flow_yarn", "label": "日文 · 步骤二", "default": "毛糸を選ぶ" },
+    { "type": "text", "id": "flow_tools", "label": "日文 · 步骤三", "default": "道具をそろえる" },
+    { "type": "text", "id": "flow_tutorial", "label": "日文 · 步骤四", "default": "作り方を見る" },
+    { "type": "textarea", "id": "heading_zh", "label": "中文 · 主标题", "default": "从喜欢的作品，\n开始你的手作。" },
+    { "type": "richtext", "id": "text_zh", "label": "中文 · 说明", "default": "<p>毛线、用量、工具与教程，跟着作品慢慢准备。</p>" },
+    { "type": "text", "id": "cta_label_zh", "label": "中文 · 主操作", "default": "发现作品" },
+    { "type": "text", "id": "flow_project_zh", "label": "中文 · 步骤一", "default": "选作品" },
+    { "type": "text", "id": "flow_yarn_zh", "label": "中文 · 步骤二", "default": "挑毛线" },
+    { "type": "text", "id": "flow_tools_zh", "label": "中文 · 步骤三", "default": "找工具" },
+    { "type": "text", "id": "flow_tutorial_zh", "label": "中文 · 步骤四", "default": "看教程" },
+    { "type": "textarea", "id": "heading_en", "label": "英文 · 主标题", "default": "Start making from\na project you love." },
+    { "type": "richtext", "id": "text_en", "label": "英文 · 说明", "default": "<p>Follow the project to prepare your yarn, quantity, tools, and tutorial one step at a time.</p>" },
+    { "type": "text", "id": "cta_label_en", "label": "英文 · 主操作", "default": "Discover projects" },
+    { "type": "text", "id": "flow_project_en", "label": "英文 · 步骤一", "default": "Choose a project" },
+    { "type": "text", "id": "flow_yarn_en", "label": "英文 · 步骤二", "default": "Pick yarn" },
+    { "type": "text", "id": "flow_tools_en", "label": "英文 · 步骤三", "default": "Find tools" },
+    { "type": "text", "id": "flow_tutorial_en", "label": "英文 · 步骤四", "default": "View tutorial" }
   ],
-  "presets": [
-    {
-      "name": "平台主视觉与三步路径"
-    }
-  ]
+  "presets": [{ "name": "首页 · 毛线串联主视觉" }]
 }
 {% endschema %}

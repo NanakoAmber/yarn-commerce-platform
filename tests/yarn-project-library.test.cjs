@@ -15,6 +15,7 @@ const {
   YarnProjectLibrary,
 } = require('../assets/yarn-project-library.js');
 const source = fs.readFileSync('assets/yarn-project-library.js', 'utf8');
+const section = fs.readFileSync('sections/yarn-project-library.liquid', 'utf8');
 
 test('only card-derived filters are marked dynamic', () => {
   assert.deepEqual(DYNAMIC_FILTER_NAMES, ['made_for', 'holiday', 'hook_size']);
@@ -24,6 +25,17 @@ test('only card-derived filters are marked dynamic', () => {
     { hook_size: '10mm' },
     { hook_size: '' },
   ], 'hook_size'), ['6mm', '10mm']);
+});
+
+test('homepage project filters expose four illustrated category shortcuts and a real search submit', () => {
+  assert.equal((section.match(/data-project-category=/g) || []).length, 1, 'category shortcuts are rendered from one Liquid loop');
+  for (const asset of ['impeccable-category-bag-plate.png', 'impeccable-category-scarf-plate.png', 'impeccable-b-category-blanket-plate.png', 'impeccable-category-doll-plate.png']) {
+    assert.match(section, new RegExp(asset.replaceAll('.', '\\.')));
+  }
+  assert.match(section, /button type="submit"[^>]*>[\s\S]*icon-search\.svg/);
+  assert.match(source, /categoryButtons/);
+  assert.match(source, /dataset\.projectCategory/);
+  assert.match(source, /selects\.category\.value/);
 });
 
 test('pagination accepts only same-origin section responses', () => {
