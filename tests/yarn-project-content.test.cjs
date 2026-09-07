@@ -51,6 +51,8 @@ test('project cards expose rich discovery fields and retain an intentional cover
   assert.match(projectCss, /@media \(max-width: 989px\)[\s\S]*\.yp-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
   assert.match(projectCss, /\.yp-card__summary \{[^}]*-webkit-line-clamp: 3/);
   assert.match(projectCss, /@media \(max-width: 989px\)[\s\S]*\.yp-card__summary \{ display: none; \}/);
+  assert.match(projectCss, /@media \(max-width: 749px\)[\s\S]*\.yp-card__facts \{ display: flex; flex-wrap: wrap;/);
+  assert.match(projectCss, /\.yp-card__facts dt \{[^}]*clip: rect\(0, 0, 0, 0\)/);
 });
 
 test('Project and Product links use Shopify resource URLs without hand-built locale paths', () => {
