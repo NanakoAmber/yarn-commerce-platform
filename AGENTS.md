@@ -41,6 +41,8 @@
 - 所有 AI 生成的评审图片，其画面内可读文案使用准确简体中文。生成前、提交评审前按 `docs/agents/visual-review.md` 核对；日文市场文案在方向获批后进入 Shopify 本地化内容层。
 - 新视觉世界或 replacement redesign 按 `.impeccable/config.json` 的 Comp-first 流程，先批准视觉稿，再写 Theme UI。已批准方向可继续实施；只有改变方向或范围才重新决策。
 - 局部 polish 继承已有 `DESIGN.md` 与批准方向。Impeccable 用于当前范围的设计和复核，不能自行推翻已批准视觉世界。
+- 后续 UI 开发先读 `docs/design/home-system.md`，复用 `yarn-design-tokens.css` 和已适用的共享控件；不得在新页面复制一套颜色或通用控件值。页面构图按 surface brief 决定，共享规则变更须同步真实实现与 `DESIGN.md`。
+- 导航、菜单、页脚和页面 section 必须跟随同一整页语言；通用控件使用 Theme locales，运营菜单使用 Shopify 对应资源译文。新增或修改入口须核对日/中/英桌面及手机菜单，不能把英文回退当作三语验收通过。
 
 ## 验证与完成
 

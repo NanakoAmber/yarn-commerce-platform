@@ -21,7 +21,7 @@ UI / UX 工作读取本文件。范围、数据归属与生产授权以根目录
 
 - Theme 代码运行 `npm run verify`。视觉改动运行 `.github/skills/impeccable/scripts/impeccable detect <changed-ui-files>`，只针对本次文件。
 - 在未发布 Shopify Theme 验证受影响的桌面与移动端路径。视觉截图用 1440 px Desktop 和 390 px Mobile，保存在 `.impeccable/review/` 并打开确认内容有效；公开提交前检查素材授权。
-- 回归日文 `/`、简体中文 `/zh`、英文 `/en` 的文字扩展、水平溢出和关键操作。实际语言未开放时记录未验证项，不能以翻译已保存代替真实预览。
+- 回归日文 `/`、简体中文 `/zh`、英文 `/en` 的文字扩展、水平溢出和关键操作；逐项核对桌面导航、手机展开菜单和页脚与当前 section 语言一致，不把缺失译文的英文回退勾为通过。实际语言未开放时记录未验证项，不能以翻译已保存代替真实预览。
 - 批量检查桌面与移动端，集中修复后确认。检查通过后停止润色；未通过项按影响修复或明确报告，不以检查轮数耗尽宣称完成。
 - Comp-first 工作完成独立 finish review 和 verdict 后，才从真实实现与截图复核结果提取最终 `DESIGN.md`。未完成这些步骤不得宣称改版完成。
 - 在 PR 留下批准方向、detector / 手工验证 / finish review 证据及未解决项；不得用历史截图替代本次验证。

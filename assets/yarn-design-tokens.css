@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'Yarn Display';
+  src: url('yarn-display-400.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Yarn Display';
+  src: url('yarn-display-600.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Compatibility names keep existing product and project pages stable. */
+  --yarn-display: 'Yarn Display', 'Noto Sans SC', sans-serif;
+  --yarn-paper: #f7f7f5;
+  --yarn-surface: #fffefa;
+  --yarn-ink: #2f302f;
+  --yarn-muted: #686762;
+  --yarn-blue: #dcecf0;
+  --yarn-blush: #f4dfdc;
+  --yarn-mint: #e4eee6;
+  --yarn-butter: #f8e5a9;
+  --yarn-coral: #e58b7d;
+  --yarn-indigo: #426f82;
+  --yarn-red: #d96f67;
+  --yarn-line: #e4dfd7;
+}
+
+/* Shared roles extracted from the approved connected Hero and project rows. */
+:root {
+  --yarn-action: #a6472e;
+  --yarn-thread: #bf5a38;
+  --yarn-action-soft: #fff9e9;
+  --yarn-action-hover: #fff3de;
+  --yarn-primary-hover: #f6dfa0;
+  --yarn-primary-line: #efd68d;
+  --yarn-art-line: #e9bd51;
+  --yarn-art-halo: rgba(248, 229, 169, .45);
+  --yarn-copy: #4a4b48;
+  --yarn-primary-ink: #292a28;
+  --yarn-label-ink: #252624;
+  --yarn-disabled: #8c8880;
+  --yarn-disabled-line: #d3cfc7;
+  --yarn-scroll-thumb: #b8b1a4;
+  --yarn-scroll-track: #f5f1e8;
+  --yarn-focus: var(--yarn-indigo);
+  --yarn-control-line: var(--yarn-muted);
+  --yarn-radius-media: 14px;
+  --yarn-radius-panel: 16px;
+  --yarn-radius-field: 24px;
+  --yarn-radius-pill: 999px;
+  --yarn-touch: 44px;
+  --yarn-field-height: 56px;
+  --yarn-icon: 24px;
+  --yarn-space-1: 4px;
+  --yarn-space-2: 8px;
+  --yarn-space-3: 12px;
+  --yarn-space-4: 16px;
+  --yarn-space-5: 24px;
+  --yarn-space-6: 32px;
+  --yarn-space-7: 48px;
+  --yarn-content-max: 1320px;
+  --yarn-gutter: 48px;
+  --yarn-type-control: 1.5rem;
+  --yarn-type-meta: 1.3rem;
+  --yarn-type-section: clamp(2.5rem, 2.5vw, 3.2rem);
+  --yarn-leading: 1.5;
+  --yarn-focus-width: 2px;
+  --yarn-focus-offset: 4px;
+}
+@media (max-width: 989px) { :root { --yarn-gutter: 24px; } }
+@media (max-width: 749px) { :root { --yarn-gutter: 16px; } }
