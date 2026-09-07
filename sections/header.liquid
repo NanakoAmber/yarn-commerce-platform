@@ -164,10 +164,7 @@
       assign language_selector = true
     endif
 
-    assign yarn_brand_name = shop.name
-    if shop.name == 'My Store'
-      assign yarn_brand_name = 'YARN STUDIO'
-    endif
+    assign yarn_brand_name = 'MewoolMew'
 
     assign navigation_menu = section.settings.menu
   -%}
@@ -465,7 +462,7 @@
   {
     "@context": "http://schema.org",
     "@type": "Organization",
-    "name": {{ shop.name | json }},
+    "name": {{ yarn_brand_name | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
@@ -490,7 +487,7 @@
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      "name": {{ shop.name | json }},
+      "name": {{ yarn_brand_name | json }},
       "potentialAction": {
         "@type": "SearchAction",
         "target": {{ potential_action_target | json }},

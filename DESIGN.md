@@ -10,6 +10,7 @@ colors:
   butter: "#f8e5a9"
   butter-action: "#f7e3a5"
   coral: "#e58b7d"
+  mew-terra: "#bf5a38"
   indigo: "#426f82"
   blush-surface: "#faecea"
   blue-surface: "#edf5f7"
@@ -67,6 +68,17 @@ typography:
     lineHeight: 1.45
   label-control:
     fontSize: "1.4rem"
+  wordmark-desktop:
+    fontFamily: "ui-rounded, 'Arial Rounded MT Bold', 'Nunito', var(--yarn-display)"
+    fontSize: "2.15rem"
+    fontWeight: 700
+    letterSpacing: "-0.045em"
+  wordmark-name:
+    fontSize: "1.85rem"
+    letterSpacing: "-0.055em"
+  wordmark-mobile:
+    fontSize: "1.45rem"
+    letterSpacing: "-0.05em"
 rounded:
   control: "3px"
   kit-label: "5px"
@@ -145,7 +157,7 @@ Issue #23 在这个既有世界内新增 Project 库与详情：列表继续以�
 
 本次提取覆盖完整作品图与标题并排的移动首段、部分供给清单、商品来源提示、非同款成品说明与购物车回链。代码依据为 `assets/yarn-project.css`、配件 snippet、作品购买脚本、商品来源脚本 / 样式与购物车 Project snippet；documenter 已打开本目录三语 390 px 首屏与全页、中文 1440 px 详情及商品 / 成品 / 购物车代表截图。三语关键操作、后台编辑及 `npm run verify` 50/50 通过来自主代理的 [本轮 QA 输入](.impeccable/review/23-project-components/review-input.md)，不是 documenter 独立浏览器验证。范围只到受保护内部原型，不认证实际跟做、材料适配与用量、真实供货、素材公开权利或队友试用。
 
-当前仅为受保护内部预览。普通外部 Theme 预览仍进入 `/zh/password`，店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。中文“毛线工作室”与其他语言的临时字标均不是正式品牌资产。
+当前仅为受保护内部预览。普通外部 Theme 预览仍进入 `/zh/password`，店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。MewoolMew 的名称和猫抱毛线球标识为原创 Theme 资产，但不改变参考商品图片的公开授权边界。
 
 提取依据为 `templates/index.json`、首屏与 B 样式覆盖、一体化作品发现 Section / CSS / JS、作品卡片 snippet、紧凑帮助 Section 和 `assets/yarn-prototype.css`。视觉依据为 `.impeccable/review/desktop.png`、`mobile.png`、`user-756.png` 及三张同名 `-filter-open.png`；方向为 `.impeccable/mocks/discovery-b-zh.png`。独立 [finish review](.impeccable/review/discovery-b-finish-review.md) 与 [verdict](.impeccable/review/discovery-b-finish-verdict.md) 仍记录 `plates=open`、`gate.ok=false`、后续 phases pending；真实 Tutu Product 照片适配不能被写成机械 gate 已通过。文档提取完成不自动关闭这些状态。
 
@@ -169,6 +181,7 @@ Issue #23 在这个既有世界内新增 Project 库与详情：列表继续以�
 
 - **奶油黄**（`butter`）与 **动作浅黄**（`butter-action`）：继承的宽幅及胶囊动作色。它们保留在可恢复旧 Section 与共享样式中；B 已移除首页宽幅浏览动作、独立套件与季节大卡，当前紧凑帮助入口为文字链接。
 - **珊瑚色**（`coral`）：共享焦点与已有动作强调的来源。
+- **Mew 陶土橘**（`mew-terra`）：MewoolMew 猫标、字标与小范围交互的深暖橘；只承担品牌识别，不表示价格、库存或促销。
 - **选中暖墨**（`selected-ink`）：发现类型的选中态及搜索光标；分类描边和标签文字沿用同色系的实际局部变体。
 
 ### Secondary
@@ -277,7 +290,7 @@ B 的查看材料、展开更多、完整目录与联系入口使用文字及 SV
 
 导航在 Issue #20 中沿用首页视觉世界调整：暖白底、暖灰底线，桌面最小高度 84 px，1339 px 以下折叠为菜单、字标、搜索与购物袋，599 px 以下最小高度 68 px。较早折叠为三语长文案和浏览器放大字体留出空间。“按作品挑选”用浅粉纸面与暖墨文字强调，其他入口保持文字链接。图标统一为 24 px 轮廓和 44 px 触控区，购物袋继续打开原有购物车抽屉；页内导航会关闭手机菜单、解锁滚动并把焦点交给目标区域。
 
-本轮预览 Logo 为原创 SVG 编织花结：四个针目环与线尾、灰蓝轮廓、珊瑚结心及浅粉中心留白。桌面图形 42 px，手机 32 px；中文工作名字标用 Yarn Display 400，桌面 2rem / 字距 0.12em，手机 1.7rem / 字距 0.07em。其他语言继续显示原工作名，Shopify 上传的 Logo 优先；不把这次预览替换认定为正式品牌定名或商标确认。源码为 `assets/yarn-stitch-mark.svg`、`snippets/yarn-wordmark.liquid`、`assets/yarn-header.css`；图形无外部素材依赖。
+MewoolMew 的导航 Logo 直接继承用户选择的第一款橘色猫抱毛线球图稿：歪头闭眼、橘色斑块、环抱线团和回环线尾，配合同一张图中的圆润小写 `mewoolmew` 字标。正式名称与无障碍名称仍为 `MewoolMew`，三语共用。桌面图像显示区为 252×57.27 px，390 px 手机为 184×41.81 px；保持图片比例，以 `object-fit: cover` / `object-position: 50% 42%` 取出原始图像的有效内容，窄手机按可用空间收缩。暖白背景通过 multiply 混合融入现有页眉；这不是通用深色背景资产。页眉仍为桌面 84 px、手机 68 px，Logo 链接保留至少 44 px 高的触控区。Shopify 上传 Logo 仍优先。源码为 `assets/mewoolmew-logo-reference.png`、`snippets/yarn-wordmark.liquid`、`assets/yarn-header.css`；Shopify CDN 提供 600 / 900 px 图片，来源和生成过程见 `docs/brand/logo-reference.md`。此事实已由本轮三语桌面 / 手机截图复核。
 
 语言菜单继续使用已有本地化链接和 Shopify 的可用语言集合。Issue #23 英文已按用户当次授权开放；本版中文、日文、英文的作品叙述、材料清单、教程锚点及购买关键操作已按主代理 QA 记录验证。语言开放和关键路径可用不等于整个目录已本地化：运营 Product 标题与部分既有 Theme Editor 文案仍为日文，购物车公开属性标签仍包含 `Project` / `Component` / `Reference`。这些边界须在运营翻译中逐项维护，不能由控件语言推定商品内容已经翻译。
 

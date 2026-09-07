@@ -1,11 +1,13 @@
-{%- comment -%}An original stitch-flower mark; the working brand name remains localized HTML.{%- endcomment -%}
-{%- liquid
-  assign wordmark_label = brand_name
-  if request.locale.iso_code contains 'zh'
-    assign wordmark_label = '毛线工作室'
-  endif
--%}
-<span class="yarn-wordmark{% if request.locale.iso_code contains 'zh' %} yarn-wordmark--zh{% endif %}" aria-label="{{ wordmark_label | escape }}">
-  <span class="yarn-wordmark__symbol" aria-hidden="true">{{ 'yarn-stitch-mark.svg' | inline_asset_content }}</span>
-  <span class="yarn-wordmark__name" aria-hidden="true">{{ wordmark_label | escape }}</span>
+{%- comment -%}The approved cat illustration and custom lettering are kept together as one source asset.{%- endcomment -%}
+<span class="yarn-wordmark">
+  <img
+    class="yarn-wordmark__image"
+    src="{{ 'mewoolmew-logo-reference.png' | asset_img_url: '600x' }}"
+    srcset="{{ 'mewoolmew-logo-reference.png' | asset_img_url: '600x' }} 600w, {{ 'mewoolmew-logo-reference.png' | asset_img_url: '900x' }} 900w"
+    sizes="(max-width: 599px) 184px, 252px"
+    width="1881"
+    height="836"
+    alt="MewoolMew"
+    fetchpriority="high"
+  >
 </span>
