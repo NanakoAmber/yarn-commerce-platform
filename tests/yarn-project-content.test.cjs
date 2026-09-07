@@ -41,6 +41,20 @@ test('project cards link to the Project URL rather than a referenced Product', (
   assert.doesNotMatch(card, /materials\.value\.first|finished_products\.value\.first|products?\.first|product\.url/);
 });
 
+test('project cards expose rich discovery fields and retain an intentional cover fallback', () => {
+  assert.match(card, /yp-card__category[\s\S]*project\.category\.value/);
+  assert.match(card, /yp-card__summary[\s\S]*project\.summary\.value \| escape/);
+  assert.match(card, /<dl class="yp-card__facts">[\s\S]*'yarn_project\.difficulty' \| t[\s\S]*'yarn_project\.time' \| t/);
+  assert.match(card, /project\.cover\.value == blank[\s\S]*yp-card__image--placeholder/);
+  assert.match(card, /<svg[^>]*viewBox="0 0 32 32"[^>]*focusable="false"/);
+  assert.match(projectCss, /\.yp-grid \{[^}]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(projectCss, /@media \(max-width: 989px\)[\s\S]*\.yp-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
+  assert.match(projectCss, /\.yp-card__summary \{[^}]*-webkit-line-clamp: 3/);
+  assert.match(projectCss, /@media \(max-width: 989px\)[\s\S]*\.yp-card__summary \{ display: none; \}/);
+  assert.match(projectCss, /@media \(max-width: 749px\)[\s\S]*\.yp-card__facts \{ display: flex; flex-wrap: wrap;/);
+  assert.match(projectCss, /\.yp-card__facts dt \{[^}]*clip: rect\(0, 0, 0, 0\)/);
+});
+
 test('Project and Product links use Shopify resource URLs without hand-built locale paths', () => {
   assert.match(card, /href="\{\{\s*project\.system\.url(?:\s*\|\s*escape)?\s*\}\}"/);
   assert.match(products, /render 'yarn-project-product-url', url: product\.url/);
@@ -56,6 +70,12 @@ test('rich text fields are rendered through metafield_tag and never emitted as r
   assert.match(detail, /project\.preparation\.value != blank[\s\S]*project\.preparation \| metafield_tag/);
   assert.match(detail, /project\.tutorial\.value != blank[\s\S]*project\.tutorial \| metafield_tag/);
   assert.doesNotMatch(detail, /\{\{\s*project\.(?:preparation|tutorial)\.value\s*\}\}/);
+});
+
+test('source credit remains visible without an external tutorial link', () => {
+  assert.match(detail, /if project\.source_credit\.value != blank or project\.tutorial_url\.value != blank or project\.video_url\.value != blank[\s\S]*<div class="yp-source">/);
+  assert.match(detail, /project\.source_credit\.value != blank[\s\S]*project\.source_credit\.value \| escape/);
+  assert.match(detail, /if project\.tutorial_url\.value != blank or project\.video_url\.value != blank[^%]*%\}<p class="yp-small">\{\{ 'yarn_project\.source_note' \| t \}\}<\/p>\{% endif %\}/);
 });
 
 test('material, tool and finished references all render Shopify Product truth', () => {

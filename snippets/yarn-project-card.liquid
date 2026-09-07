@@ -17,11 +17,25 @@
   data-made-for="{{ project.made_for.value | escape }}" data-holiday="{{ project.holiday.value | escape }}"
   data-hook-size="{{ project.hook_size.value | escape }}">
   <a class="yp-card__link" href="{{ project.system.url }}">
-    <div class="yp-card__image">{% if project.cover.value != blank %}{{ project.cover.value | image_url: width: 800 | image_tag: loading: 'lazy', widths: '240, 400, 600, 800', sizes: '(min-width: 990px) 280px, 46vw', alt: project.title.value }}{% endif %}</div>
-    <h3>{{ project.title.value | escape }}</h3>
-    <div class="yp-card__facts">
-      {% if project.difficulty.value != blank %}<span>{% render 'yarn-project-label', value: project.difficulty.value %}</span>{% endif %}
-      {% if project.time_minutes.value != blank %}<span>{{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</span>{% endif %}
+    <div class="yp-card__image{% if project.cover.value == blank %} yp-card__image--placeholder{% endif %}">
+      {% if project.cover.value != blank %}
+        {{ project.cover.value | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '240, 400, 600, 800, 1000', sizes: '(min-width: 990px) 370px, 46vw', alt: project.title.value }}
+      {% else %}
+        <span class="yp-card__placeholder" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false"><circle cx="14" cy="14" r="9"/><path d="M7 8c5 4 10 7 16 8M7 20c5-4 9-9 12-15M5 14c6 0 12 3 16 8m2 1c3 0 5 2 5 5"/></svg>
+        </span>
+      {% endif %}
+    </div>
+    <div class="yp-card__body">
+      {% if project.category.value != blank %}<p class="yp-card__category">{% render 'yarn-project-label', value: project.category.value %}</p>{% endif %}
+      <h3>{{ project.title.value | escape }}</h3>
+      {% if project.summary.value != blank %}<p class="yp-card__summary">{{ project.summary.value | escape }}</p>{% endif %}
+      {% if project.difficulty.value != blank or project.time_minutes.value != blank %}
+        <dl class="yp-card__facts">
+          {% if project.difficulty.value != blank %}<div><dt>{{ 'yarn_project.difficulty' | t }}</dt><dd>{% render 'yarn-project-label', value: project.difficulty.value %}</dd></div>{% endif %}
+          {% if project.time_minutes.value != blank %}<div><dt>{{ 'yarn_project.time' | t }}</dt><dd>{{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</dd></div>{% endif %}
+        </dl>
+      {% endif %}
     </div>
   </a>
 </article>

@@ -45,12 +45,12 @@
           <h2>{{ 'yarn_project.tutorial' | t }}</h2>
           {% if project.components.value != blank %}<p><a href="#ProjectPrepare">{{ 'yarn_project.parts_from_tutorial' | t }}</a></p>{% endif %}
           {% if project.tutorial.value != blank %}<yarn-project-tutorial class="rte">{{ project.tutorial | metafield_tag }}</yarn-project-tutorial>{% endif %}
-          {% if project.tutorial_url.value != blank or project.video_url.value != blank %}
+          {% if project.source_credit.value != blank or project.tutorial_url.value != blank or project.video_url.value != blank %}
             <div class="yp-source"><h3>{{ 'yarn_project.source' | t }}</h3>
               {% if project.source_credit.value != blank %}<p>{{ project.source_credit.value | escape }}</p>{% endif %}
               {% if project.tutorial_url.value != blank %}<p><a href="{{ project.tutorial_url.value | escape }}" target="_blank" rel="noopener noreferrer">{{ 'yarn_project.open_tutorial' | t }}</a></p>{% endif %}
               {% if project.video_url.value != blank %}<p><a href="{{ project.video_url.value | escape }}" target="_blank" rel="noopener noreferrer">{{ 'yarn_project.open_video' | t }}</a></p>{% endif %}
-              <p class="yp-small">{{ 'yarn_project.source_note' | t }}</p>
+              {% if project.tutorial_url.value != blank or project.video_url.value != blank %}<p class="yp-small">{{ 'yarn_project.source_note' | t }}</p>{% endif %}
             </div>
           {% endif %}
         </section>
