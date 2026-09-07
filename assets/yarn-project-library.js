@@ -105,6 +105,9 @@
       this.loading = this.querySelector('[data-project-loading]');
       this.results = this.querySelector('[data-project-results]');
       this.nextLink = this.querySelector('a[data-project-next]');
+      this.rows = Array.from(this.querySelectorAll('[data-project-row]'));
+      this.refine = this.querySelector('[data-project-refine]');
+      this.browseAll = this.querySelector('[data-project-browse-all]');
 
       if (!this.form || !this.queryInput || !this.results || !this.count || !this.empty || !this.error || !this.loading || FILTER_NAMES.some((name) => !this.selects[name])) return;
 
@@ -115,7 +118,10 @@
 
       listen(this.form, 'submit', (event) => {
         event.preventDefault();
-        if (this.loaded) this.update();
+        if (this.loaded) {
+          this.update();
+          if (this.rows.length) this.results.scrollIntoView({ block: 'start' });
+        }
       });
       listen(this.form, 'change', () => {
         if (this.loaded) this.update();
@@ -129,16 +135,33 @@
         event.preventDefault();
         if (!this.loaded) return;
         const value = button.dataset.projectCategory || '';
+        if (this.rows.length) {
+          const row = this.rows.find((candidate) => candidate.dataset.projectRow === value);
+          if (!row || !row.querySelector('[data-project-card]')) return;
+          this.clearFilters();
+          this.update();
+          row.scrollIntoView({ block: 'start' });
+          row.querySelector('h3')?.focus({ preventScroll: true });
+          return;
+        }
         this.selects.category.value = this.selects.category.value === value ? '' : value;
         this.update();
       }));
       listen(this.clearButton, 'click', (event) => {
         event.preventDefault();
         if (!this.loaded) return;
-        this.queryInput.value = '';
-        FILTER_NAMES.forEach((name) => { this.selects[name].value = ''; });
+        this.clearFilters();
         this.update();
         this.queryInput.focus({ preventScroll: true });
+      });
+      listen(this.browseAll, 'click', (event) => {
+        if (!this.loaded) return;
+        event.preventDefault();
+        this.clearFilters();
+        this.browsingAll = true;
+        this.update();
+        this.rows.forEach((row) => { if (!row.hidden) row.setExpanded?.(true); });
+        this.results.scrollIntoView({ block: 'start' });
       });
       listen(this.retryButton, 'click', (event) => {
         event.preventDefault();
@@ -174,6 +197,12 @@
 
     setFiltersDisabled(disabled) {
       Array.from(this.form.elements).forEach((control) => { control.disabled = disabled; });
+    }
+
+    clearFilters() {
+      this.queryInput.value = '';
+      FILTER_NAMES.forEach((name) => { this.selects[name].value = ''; });
+      this.browsingAll = false;
     }
 
     setLoading(loading) {
@@ -226,7 +255,9 @@
               const id = card.dataset.projectId;
               if (id && this.projectIds.has(id)) continue;
               if (id) this.projectIds.add(id);
-              this.results.append(document.importNode(card, true));
+              const targetRow = this.rows?.find((row) => row.dataset.projectRow === card.dataset.rowId);
+              const target = targetRow?.querySelector('[data-row-track]') || this.results;
+              target.append(document.importNode(card, true));
             }
 
             const followingLink = documentPage.querySelector('a[data-project-next]');
@@ -289,6 +320,13 @@
     }
 
     syncCategoryButtons() {
+      if (this.rows?.length) {
+        this.categoryButtons.forEach((button) => {
+          const row = this.rows.find((candidate) => candidate.dataset.projectRow === button.dataset.projectCategory);
+          button.setAttribute('aria-disabled', String(!row?.querySelector('[data-project-card]')));
+        });
+        return;
+      }
       const selected = this.selects.category.value;
       this.categoryButtons.forEach((button) => {
         button.setAttribute('aria-pressed', String(button.dataset.projectCategory === selected));
@@ -314,6 +352,16 @@
       }
       this.count.textContent = String(visible);
       this.empty.hidden = visible !== 0;
+      if (this.rows?.length) {
+        const filtered = Object.values(state).some((value) => String(value).trim());
+        this.countContainer.hidden = !filtered && !this.browsingAll;
+        if (this.refine) this.refine.hidden = !filtered && !this.browsingAll;
+        this.rows.forEach((row) => {
+          if (row.dataset.projectRow === 'featured') row.hidden = filtered || !row.querySelector('.yp-card');
+          else row.hidden = !row.querySelector('[data-project-card]:not([hidden])');
+          row.refresh?.();
+        });
+      }
     }
   }
 

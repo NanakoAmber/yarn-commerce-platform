@@ -29,7 +29,7 @@ test('only card-derived filters are marked dynamic', () => {
 
 test('homepage project filters expose four illustrated category shortcuts and a real search submit', () => {
   assert.equal((section.match(/data-project-category=/g) || []).length, 1, 'category shortcuts are rendered from one Liquid loop');
-  for (const asset of ['impeccable-category-bag-plate.png', 'impeccable-category-scarf-plate.png', 'impeccable-b-category-blanket-plate.png', 'impeccable-category-doll-plate.png']) {
+  for (const asset of ['yarn-category-bag-approved.png', 'yarn-category-scarf-approved.png', 'yarn-category-home-approved.png', 'yarn-category-toy-approved.png']) {
     assert.match(section, new RegExp(asset.replaceAll('.', '\\.')));
   }
   assert.match(section, /button type="submit"[^>]*>[\s\S]*icon-search\.svg/);
@@ -210,5 +210,32 @@ test('an aborted old generation cannot clear a newer connection task or loading 
     assert.equal(library.loading.hidden, false);
   } finally {
     global.fetch = originalFetch;
+  }
+});
+
+test('pagination places new projects into their server-assigned row and skips repeats', async () => {
+  const originals = { fetch: global.fetch, DOMParser: global.DOMParser, document: global.document };
+  const library = fakeLibrary('/zh?page=2&section_id=library');
+  const appended = [];
+  const freshCard = { dataset: { projectId: 'fresh', rowId: 'home' } };
+  library.projectIds.add('existing');
+  library.rows = [{ dataset: { projectRow: 'home' }, querySelector: () => ({ append: (node) => appended.push(node) }) }];
+  library.validatedPageUrl = () => new URL('https://example.test/zh?page=2&section_id=library');
+  global.fetch = async () => ({ ok: true, text: async () => '<section></section>' });
+  global.document = { importNode: (node) => node };
+  global.DOMParser = class {
+    parseFromString() {
+      return { querySelector: (selector) => selector === '[data-project-results]' ? {
+        querySelectorAll: () => [{ dataset: { projectId: 'existing', rowId: 'home' } }, freshCard],
+      } : null };
+    }
+  };
+  try {
+    await library.loadRemainingPages();
+    assert.deepEqual(appended, [freshCard]);
+    assert.equal(library.loaded, true);
+    assert.equal(library.projectIds.has('fresh'), true);
+  } finally {
+    Object.assign(global, originals);
   }
 });

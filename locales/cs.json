@@ -562,6 +562,11 @@
     }
   },
   "yarn_project": {
+    "row_view_all": "View all",
+    "row_collapse": "Show less",
+    "row_previous": "Previous {{ category }} projects",
+    "row_next": "Next {{ category }} projects",
+    "other_projects": "More projects",
     "context_from": "From this project:",
     "context_reference": "Finished-piece reference only; not the same design as this tutorial.",
     "components": "Materials & tools",

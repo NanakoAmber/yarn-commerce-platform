@@ -538,6 +538,11 @@
     }
   },
   "yarn_project": {
+    "row_view_all": "すべて見る",
+    "row_collapse": "閉じる",
+    "row_previous": "前の{{ category }}作品",
+    "row_next": "次の{{ category }}作品",
+    "other_projects": "その他の作品",
     "context_from": "この作品から：",
     "context_reference": "完成品の参考商品です。このレシピと同じデザインではありません。",
     "components": "必要な材料と道具",
