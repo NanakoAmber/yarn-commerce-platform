@@ -1,0 +1,13 @@
+{
+  "asset": "assets/project-mode-materials.png",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "prompt": "Use case: identity-preserve. This is a faithful image upscaling/edit request, not illustration design. Upscale the supplied 120x81 pixel approved yarn illustration to 720x486 pixels, preserving its exact 1.48148 width-to-height aspect ratio and precise composition. Match the reference drawing nearly pixel for pixel: THREE overlapping yarn balls, terracotta ball behind at upper left, terracotta ball front lower left, warm taupe ball on right, one terracotta trailing thread curving out to the lower right. Preserve the exact original silhouettes, ball positions and sizes, individual curved yarn strand pattern, warm terracotta and taupe ink colors, fine handdrawn outlines and line weights relative to the image. Artwork fills the frame with exactly the same tiny margins as reference. Maintain the same warm white #fffefa opaque ground. Do not reinterpret, simplify, thicken, rearrange, redraw into a new style, center on a square, add letterboxing or add transparent margins. No new objects, needles, shadows, labels or text. The result must read as the original reference faithfully enlarged.",
+  "reference_image": "/Users/jinchen/Documents/ChatGPT/毛线-issue-34-project-modes/.impeccable/build/crops/mode-materials-raw.png",
+  "reference_role": "Unmasked approved Issue #34 icon crop; near-faithful upscaling edit, preserving aspect and framing",
+  "original_generation_path": "/Users/jinchen/.codex/generated_images/01a07ddd-1eb8-7d71-8abb-52208eeeaf75/exec-ac01e66a-bccd-40f7-a8ed-a3ef37c5581d.png",
+  "processing": "Resized generated PNG to 720x486 with macOS sips to preserve approved reference aspect ratio. Exact prompt embedded using Impeccable embed-prompt.",
+  "width": 720,
+  "height": 486,
+  "background": "opaque warm white #fffefa requested"
+}

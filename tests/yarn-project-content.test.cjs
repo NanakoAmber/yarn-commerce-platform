@@ -7,6 +7,8 @@ const detail = read('sections/yarn-project-detail.liquid');
 const library = read('sections/yarn-project-library.liquid');
 const card = read('snippets/yarn-project-card.liquid');
 const visible = read('snippets/yarn-project-visible.liquid');
+const materials = read('snippets/yarn-project-mode-materials.liquid');
+const purchase = read('snippets/yarn-project-purchase.liquid');
 const products = read('snippets/yarn-project-products.liquid');
 const projectCss = read('assets/yarn-project.css');
 const settingsSchema = JSON.parse(read('config/settings_schema.json').replace(/\/\*[\s\S]*?\*\//g, ''));
@@ -79,9 +81,10 @@ test('source credit remains visible without an external tutorial link', () => {
 });
 
 test('material, tool and finished references all render Shopify Product truth', () => {
-  assert.match(detail, /project\.materials\.value[\s\S]*render 'yarn-project-products', products: project\.materials\.value/);
-  assert.match(detail, /project\.tools\.value[\s\S]*render 'yarn-project-products', products: project\.tools\.value/);
-  assert.match(detail, /project\.finished_products\.value[\s\S]*render 'yarn-project-products', products: project\.finished_products\.value/);
+  assert.match(materials, /for product in project\.materials\.value[\s\S]*render 'yarn-project-purchase', product: product/);
+  assert.match(materials, /project\.tools\.value[\s\S]*render 'yarn-project-products', products: project\.tools\.value/);
+  assert.match(detail, /for product in project\.finished_products\.value[\s\S]*render 'yarn-project-purchase', product: product/);
+  assert.match(purchase, /chosen_variant\.price[\s\S]*chosen_variant\.available/);
   assert.match(products, /for product in products/);
   assert.match(products, /product\.title \| escape/);
   assert.match(products, /href="\{\{ product_url \| escape \}\}"/);

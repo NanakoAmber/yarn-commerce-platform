@@ -44,3 +44,13 @@
 
 # Issue 32 local screenshots contain protected internal sample media.
 /.impeccable/review/32-home-system/*.png
+
+# Issue 34 private browser review captures and rendered DOM snapshots.
+/.impeccable/review/34-project-modes/*.png
+/.impeccable/review/34-project-modes/*.jpg
+/.impeccable/review/34-project-modes/rendered-source.html
+/.impeccable/review/34-project-modes/prior-build-state/
+
+# User-approved generated review composition for Issue 34.
+!/.impeccable/mocks/34-project-dual-mode.png
+!/.impeccable/mocks/34-project-dual-mode.json

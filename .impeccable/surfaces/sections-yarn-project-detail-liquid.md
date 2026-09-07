@@ -7,6 +7,27 @@ related_targets: ["assets/yarn-project.css", "templates/metaobject/yarn_project.
 
 # 作品详情 Surface Brief
 
+## 当前方向：Issue #34（2026-09-07 用户明确批准）
+
+本节替代下方历史 paper_flow 构图。用户明确选择第二轮方案 2，撤回混入方案 1 的建议，随后要求开始前端实现并由 Sol 子代理补齐 Shopify 演示数据。
+
+- Scope / mode: 作品详情与首页购买能力筛选；Operate / Experience；手机优先。
+- Approved comp: `.impeccable/mocks/34-project-dual-mode.png`。名称、大图、双意图卡片、制作准备和教程的顺序与组件样式为当前构图合同。
+- Data: 每条作品独立支持成品或材料购买；购买能力都无时按本次决定归为灵感。制作说明与可售范围分别表达；仅一种方式不显示切换器。
+- Demo: 用户允许合理演示图文、用量与配置；内容保存在 Shopify 供队友修改，演示标记保持可见。价格库存仍读 Product / Variant；不虚构评价、销量或促销。
+- Default: 两种都有时默认自己做；首页按成品或材料筛选后进入详情会保留选择。切换保留同页已选规格，不制造购买或制作进度。
+
+### Direction contract · Issue #34
+
+- THESIS: 一个作品、两条清楚的拥有路径；有成品与能买材料的标签共享详情与首页语义。
+- OWN-WORLD: 继承首页暖白、陶土色、奶油黄与 Yarn Display；图像圆角、双卡片选择和采购控件使用既有 token。
+- STORY: 被作品吸引，选择买成品或自己做，再选购对应商品或直接查看教程。
+- FIRST VIEWPORT: 手机使用同一设计系统的紧凑详情导航（返回、页名、搜索、购物车），名称、宽幅作品图，下接并列意图卡片；桌面保留同一顺序关系并将大图与操作列并排。
+- FORM: 用户指定第二轮方案 2，comp 已批准，不重新抽选。单模式和纯灵感继承该构图并去掉不适用入口。
+- FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+## 以下为历史合同
+
 ## Issue #28 毛线优先补充合同（2026-09-07）
 
 用户要求全量审查正式作品，确保每个作品的毛线都作为 Shopify `yarn_material` 条目存在且有图，并将详情中的毛线从通用材料清单提升为第一准备区。YarnPal 只提供“项目后先看主线、规格、颜色和采购”的信息层级参考；本站仍使用已批准的 paper_flow、Shopify Variant 事实与独立购买路径，不复制其视觉系统或整包承诺。

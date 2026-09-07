@@ -283,7 +283,6 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
@@ -557,7 +556,7 @@
     "part_bring": "Bring your own",
     "part_pending": "Details to follow",
     "part_variant": "Selected option",
-    "part_product": "View original product & other options",
+    "part_product": "View product details",
     "part_quantity": "Purchase quantity",
     "part_add": "Add this item",
     "part_adding": "Adding…",
@@ -639,6 +638,31 @@
     "no_featured": "No projects have been selected yet.",
     "no_materials": "No material products are linked yet.",
     "no_finished": "No finished products are linked yet.",
-    "internal_finished": "Finished-piece reference (different design)"
+    "internal_finished": "Finished-piece reference (different design)",
+    "demo_content": "Internal sample · Illustrative images and content",
+    "ownership_prompt": "How would you like it?",
+    "buy_finished": "Buy finished",
+    "ready_to_use": "Ready to enjoy",
+    "make_yourself": "Make it",
+    "buy_as_needed": "Buy what you need",
+    "finished_note": "Choose your favourite option and bring the finished piece home.",
+    "choose_variant": "Choose an option",
+    "selected_total": "Selected total",
+    "optional_tool": "Need a hook? Buy separately",
+    "view_full_tutorial": "View the full tutorial",
+    "start_without_purchase": "Have supplies? You can start right away",
+    "tag_finished": "Finished available",
+    "tag_materials": "Materials available",
+    "tag_inspiration": "Inspiration only",
+    "inspiration_heading": "A little handmade inspiration",
+    "inspiration_note": "Enjoy this piece as a reference. Finished items and materials are not offered for this project.",
+    "purchase_filter": "Purchase options",
+    "view_project": "View project",
+    "add_selected": "Add selected item to cart",
+    "selected_added": "The selected item was added to your cart.",
+    "detail_title": "Project details",
+    "material_reference": "Material reference",
+    "project_label": "Project",
+    "item_label": "Item"
   }
 }

@@ -13,7 +13,7 @@ _Avoid_: Item, Listing
 _Avoid_: SKU（除非明确指库存编码）
 
 **Project**:
-包含目标作品、难度、预计时间、所需材料与制作指导的编织目标。
+围绕一个目标作品组织展示、成品购买与手作准备的统一内容入口。可支持成品、材料购买或两者；没有这两种购买能力的记录在发现页归为 Inspiration。可跟做的手作内容再包含难度、时间、材料要求与制作指导。
 _Avoid_: Kit, Product
 
 **Draft Project**:
@@ -21,7 +21,7 @@ _Avoid_: Kit, Product
 _Avoid_: Inspiration, Published Project
 
 **Inspiration**:
-由品牌或编辑团队策划，通过成品图片、生活场景或推荐材料激发制作与购买兴趣的展示内容；它不提供足以独立完成作品的制作指导。
+由品牌或编辑团队策划的作品展示。按 2026-09-07 用户决定，在当前作品发现页中指没有成品与材料购买能力的作品；可以保留说明或教程来源，不承诺本店供货。这个分类与旧 `inspiration` Metaobject 载体不等同，旧记录不因此自动迁移。
 _Avoid_: Project, Tutorial
 
 **Project Kit**:
@@ -92,7 +92,7 @@ _Avoid_: Project, Product
 
 - 一个 **Product** 有一个或多个 **Variants**。
 - **Draft Project** 达到可执行标准后才能成为公开 **Project**。
-- 公开 **Project** 至少包含一个或多个 **Material Requirement** 和一个主要 **Tutorial**；不满足可执行条件的展示内容称为 **Inspiration**。
+- **Project** 的成品购买能力、材料购买能力与教程内容分别维护；可跟做内容的完整性要求不用于阻止仅成品作品展示。当前发现页对两种购买能力皆无的作品显示 **Inspiration**。
 - 一个 **Material Requirement** 可以有零个或多个 **Product Recommendation**；推荐商品缺货、停售或替换不改变 Project 本身。
 - **Project** 是发现与购买的组织入口，不要求本店供应所有 Material Requirements；可单独销售已提供的配件，未供应、自备与信息待补项仍在清单中明确展示。作品方案不自动等同于固定 Project Kit。
 - 毛线 **Material Requirement** 可以使用重量和／或长度表达大致用量；具体商品需要购买几团可以在 **Product Recommendation** 中另行说明。
