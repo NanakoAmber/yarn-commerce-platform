@@ -1,24 +1,6 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
 
-{%- liquid
-  assign collection_heading = collection.title
-  assign collection_intro = collection.description
-  assign collection_eyebrow = 'YARN · KIT · TOOL · GIFT'
-  if collection.handle == 'all'
-    assign collection_heading = 'すべての毛糸と編み物アイテム'
-    assign collection_intro = '<p>毛糸、キット、道具、贈りもの。色や素材、つくりたい作品から、今の気分に合うものを見つけてください。</p>'
-    case request.locale.iso_code
-      when 'zh-CN', 'zh'
-        assign collection_heading = '全部毛线与编织商品'
-        assign collection_intro = '<p>毛线、套装、工具与礼物。可以按颜色、材质或想完成的作品，找到此刻最适合你的选择。</p>'
-      when 'en'
-        assign collection_heading = 'All yarns and knitting essentials'
-        assign collection_intro = '<p>Yarns, kits, tools and gifts. Find what suits you now by colour, fibre or the project you want to make.</p>'
-    endcase
-  endif
--%}
-
 {%- style -%}
   @media screen and (max-width: 749px) {
     .collection-hero--with-image .collection-hero__inner {
@@ -30,14 +12,13 @@
 <div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
   <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="collection-hero__text-wrapper">
-      <p class="caption-with-letter-spacing yarn-collection-eyebrow">{{ collection_eyebrow }}</p>
       <h1 class="collection-hero__title">
         <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
-        {{- collection_heading | escape -}}
+        {{- collection.title | escape -}}
       </h1>
 
       {%- if section.settings.show_collection_description -%}
-        <div class="collection-hero__description rte">{{ collection_intro }}</div>
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
       {%- endif -%}
     </div>
 

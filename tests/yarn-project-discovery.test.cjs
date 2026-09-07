@@ -34,8 +34,13 @@ test('all literal and dynamic UI translations exist in the three section locales
 test('homepage has exactly the three approved main sections; removed sections remain recoverable', () => {
   assert.deepEqual(index.order.filter(id => !index.sections[id].disabled), ['yarn-hero', 'project-discovery', 'line-support']);
   for (const id of ['yarn-purpose', 'starter-project', 'seasonal-edit', 'all-products']) assert.equal(index.sections[id].disabled, true);
-  const products = index.sections['project-discovery'].settings.featured_products;
-  assert.equal(new Set(products).size, 4);
+  assert.equal(index.sections['project-discovery'].type, 'yarn-project-library');
+  assert.deepEqual(index.sections['project-discovery'].settings, {});
+  assert.equal('featured_products' in index.sections['project-discovery'].settings, false);
+  assert.match(fs.readFileSync('sections/yarn-project-library.liquid', 'utf8'), /shop\.metaobjects\.yarn_project\.values/);
+  assert.doesNotMatch(fs.readFileSync('sections/yarn-project-library.liquid', 'utf8'), /featured_products|product\.handle/);
+
+  // The disabled legacy section remains intact and testable for rollback/reuse.
   assert.match(section, /featured_handles contains product\.handle/);
   assert.match(card, /product\.featured_image/);
   assert.match(card, /product\.url/);

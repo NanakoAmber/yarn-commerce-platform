@@ -1,0 +1,5 @@
+{%- comment -%}Only navigation context is added. Shopify still owns the destination and selected Variant.{%- endcomment -%}
+{{- url -}}
+{%- if project != blank -%}
+  {%- if url contains '?' -%}&{%- else -%}?{%- endif -%}yarn_project={{ project.system.handle | url_encode }}&yarn_project_title={{ project.title.value | url_encode }}&yarn_project_url={{ project.system.url | url_encode }}&yarn_project_kind={{ kind | default: 'material' | url_encode }}{% if component_title != blank %}&yarn_component={{ component_title | url_encode }}{% endif %}
+{%- endif -%}

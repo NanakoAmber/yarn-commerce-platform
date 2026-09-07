@@ -300,8 +300,67 @@ cart-drawer-items {
 }
 
 @media screen and (max-width: 749px) {
+  .cart-drawer .cart-item {
+    grid-template: auto auto auto / 8rem minmax(0, 1fr);
+    column-gap: 1.2rem;
+  }
+
+  .cart-drawer .cart-item__media {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    width: 8rem;
+  }
+
+  .cart-drawer .cart-item__details {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .cart-drawer .cart-item__name {
+    display: -webkit-box;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .cart-drawer .cart-item__totals {
+    align-items: center;
+    display: flex;
+    grid-column: 2;
+    grid-row: 3;
+    justify-content: flex-end;
+    padding-top: 0;
+  }
+
+  .cart-drawer .cart-items .cart-item__quantity {
+    grid-column: 2;
+    grid-row: 2;
+    min-width: 0;
+  }
+
+  .cart-drawer .cart-item__quantity-wrapper {
+    align-items: center;
+    display: flex;
+    gap: 0.8rem;
+    min-width: 0;
+  }
+
+  .cart-drawer .cart-item__quantity .quantity-popover-container,
+  .cart-drawer .cart-item__quantity .quantity {
+    flex: 0 0 14rem;
+    min-width: 14rem;
+    width: 14rem;
+  }
+
   .cart-drawer .cart-item cart-remove-button {
+    flex: 0 0 auto;
     margin-left: 0;
+  }
+
+  .cart-drawer .cart-item:last-child {
+    margin-bottom: 2.4rem;
   }
 }
 

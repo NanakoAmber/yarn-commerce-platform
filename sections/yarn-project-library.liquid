@@ -1,0 +1,67 @@
+{{ 'yarn-project.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'yarn-project-library.js' | asset_url }}" defer="defer"></script>
+<section class="yp-library yp-shell" id="shop-by-project">
+  {% if section.settings.featured_projects != blank %}
+    <div class="yp-featured">
+      <h2>{{ section.settings.featured_heading | default: '' | escape }}{% if section.settings.featured_heading == blank %}{{ 'yarn_project.featured' | t }}{% endif %}</h2>
+      <div class="yp-grid">
+        {% for project in section.settings.featured_projects %}
+          {%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+          {% if visible == 'true' %}{% render 'yarn-project-card', project: project, featured: true %}{% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  <yarn-project-library>
+    <header class="yp-library__heading">
+      <h2>{% if section.settings.heading != blank %}{{ section.settings.heading | escape }}{% else %}{{ 'yarn_project.library' | t }}{% endif %}</h2>
+      {% if section.settings.description != blank %}<div class="rte">{{ section.settings.description }}</div>{% endif %}
+    </header>
+    <form data-project-filters role="search">
+      <fieldset class="yp-filterset">
+        <legend class="visually-hidden">{{ 'yarn_project.filters' | t }}</legend>
+        <label class="yp-search" for="ProjectSearch-{{ section.id }}"><span>{{ 'yarn_project.search' | t }}</span>
+          <input type="search" id="ProjectSearch-{{ section.id }}" name="q" placeholder="{{ 'yarn_project.search_placeholder' | t }}" autocomplete="off">
+        </label>
+        <div class="yp-filters">
+          <label>{{ 'yarn_project.category' | t }}<select name="category"><option value="">{{ 'yarn_project.all' | t }}</option>{% assign categories = '配饰,服装,家居,花片,玩偶' | split: ',' %}{% for category in categories %}<option value="{{ category }}">{% render 'yarn-project-label', value: category %}</option>{% endfor %}</select></label>
+          <label>{{ 'yarn_project.difficulty' | t }}<select name="difficulty"><option value="">{{ 'yarn_project.all' | t }}</option>{% assign difficulties = '新手,简单,进阶,待核实' | split: ',' %}{% for difficulty in difficulties %}<option value="{{ difficulty }}">{% render 'yarn-project-label', value: difficulty %}</option>{% endfor %}</select></label>
+          <label>{{ 'yarn_project.tutorial_type' | t }}<select name="tutorial"><option value="">{{ 'yarn_project.all' | t }}</option><option value="图文">{{ 'yarn_project.text_tutorial' | t }}</option><option value="视频">{{ 'yarn_project.video_tutorial' | t }}</option></select></label>
+        </div>
+        <details class="yp-filter-more"><summary>{{ 'yarn_project.filters' | t }}</summary>
+          <div class="yp-filters yp-filters--more">
+            <label>{{ 'yarn_project.time' | t }}<select name="time"><option value="">{{ 'yarn_project.all' | t }}</option><option value="under60">{{ 'yarn_project.under60' | t }}</option><option value="60to180">{{ 'yarn_project.60to180' | t }}</option><option value="over180">{{ 'yarn_project.over180' | t }}</option></select></label>
+            {% assign extra_filters = 'made_for,holiday,hook_size' | split: ',' %}{% for filter in extra_filters %}<label>{{ filter | prepend: 'yarn_project.' | t }}<select name="{{ filter }}"><option value="">{{ 'yarn_project.all' | t }}</option></select></label>{% endfor %}
+          </div>
+        </details>
+        <button class="yp-text-button" type="button" data-project-clear>{{ 'yarn_project.clear' | t }}</button>
+      </fieldset>
+    </form>
+    <p data-project-loading hidden role="status">{{ 'yarn_project.loading' | t }}</p>
+    <div data-project-error hidden role="alert"><p>{{ 'yarn_project.load_error' | t }}</p><button class="button button--secondary" type="button" data-project-retry>{{ 'yarn_project.retry' | t }}</button></div>
+    {% paginate shop.metaobjects.yarn_project.values by 250 %}
+      {% assign visible_count = 0 %}
+      {% capture project_cards %}{% for project in shop.metaobjects.yarn_project.values %}
+        {%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+        {% if visible == 'true' %}{% assign visible_count = visible_count | plus: 1 %}{% render 'yarn-project-card', project: project %}{% endif %}
+      {% endfor %}{% endcapture %}
+      <p class="yp-count"><span data-project-count aria-live="polite">{{ visible_count }}</span> {{ 'yarn_project.results' | t }}</p>
+      <div class="yp-grid" data-project-results>{{ project_cards }}</div>
+      {% if paginate.next %}<a data-project-next href="{{ paginate.next.url | escape }}&amp;section_id={{ section.id | url_encode }}">{{ 'yarn_project.more' | t }}</a>{% endif %}
+      <div class="yp-empty" data-project-empty {% if visible_count > 0 %}hidden{% endif %}><h3>{{ 'yarn_project.empty' | t }}</h3><p>{{ 'yarn_project.empty_hint' | t }}</p></div>
+    {% endpaginate %}
+  </yarn-project-library>
+</section>
+{% schema %}
+{
+  "name": "作品库与新手精选",
+  "settings": [
+    { "type": "paragraph", "content": "共用 内容 → 元对象 → 编织作品。团队演示模式会显示所有有标题的作品；正式上线前关闭该模式，并完成公开作品的内容核验。" },
+    { "type": "metaobject_list", "id": "featured_projects", "label": "新手精选及顺序", "metaobject_type": "yarn_project", "limit": 8 },
+    { "type": "text", "id": "featured_heading", "label": "精选标题（留空使用语言翻译）" },
+    { "type": "text", "id": "heading", "label": "作品库标题（留空使用语言翻译）" },
+    { "type": "richtext", "id": "description", "label": "作品库说明" }
+  ],
+  "presets": [{ "name": "作品库与新手精选" }]
+}
+{% endschema %}

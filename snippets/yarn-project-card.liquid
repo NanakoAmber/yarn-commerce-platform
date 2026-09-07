@@ -1,0 +1,28 @@
+{%- capture card_visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+{%- if card_visible == 'true' -%}
+{%- liquid
+  assign tutorial_type = ''
+  if project.tutorial.value != blank or project.tutorial_url.value != blank
+    assign tutorial_type = '图文'
+  endif
+  if project.video_url.value != blank
+    assign tutorial_type = tutorial_type | append: ',视频'
+  endif
+-%}
+<article class="yp-card" {% unless featured %}data-project-card{% endunless %}
+  data-project-id="{{ project.system.id | escape }}"
+  data-title="{{ project.title.value | escape }}" data-summary="{{ project.summary.value | escape }}"
+  data-category="{{ project.category.value | escape }}" data-difficulty="{{ project.difficulty.value | escape }}"
+  data-tutorial="{{ tutorial_type | escape }}" data-time="{{ project.time_minutes.value | escape }}"
+  data-made-for="{{ project.made_for.value | escape }}" data-holiday="{{ project.holiday.value | escape }}"
+  data-hook-size="{{ project.hook_size.value | escape }}">
+  <a class="yp-card__link" href="{{ project.system.url }}">
+    <div class="yp-card__image">{% if project.cover.value != blank %}{{ project.cover.value | image_url: width: 800 | image_tag: loading: 'lazy', widths: '240, 400, 600, 800', sizes: '(min-width: 990px) 280px, 46vw', alt: project.title.value }}{% endif %}</div>
+    <h3>{{ project.title.value | escape }}</h3>
+    <div class="yp-card__facts">
+      {% if project.difficulty.value != blank %}<span>{% render 'yarn-project-label', value: project.difficulty.value %}</span>{% endif %}
+      {% if project.time_minutes.value != blank %}<span>{{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</span>{% endif %}
+    </div>
+  </a>
+</article>
+{%- endif -%}

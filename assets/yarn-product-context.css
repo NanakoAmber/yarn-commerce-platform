@@ -1,0 +1,5 @@
+.yp-product-context { display: block; padding-block: 12px; margin-bottom: 20px; border-block: 1px solid var(--yarn-line); color: var(--yarn-ink); font-size: 1.4rem; }
+.yp-product-context[hidden], .yp-product-context [hidden] { display: none; }
+.yp-product-context p { margin: 6px 0; line-height: 1.6; }
+.yp-product-context a { color: inherit; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.yp-product-context a:focus-visible { outline: 2px solid var(--yarn-indigo); outline-offset: 4px; }

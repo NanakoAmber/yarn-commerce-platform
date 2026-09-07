@@ -1,34 +1,4 @@
-{%- liquid
-  assign label_new = '新着'
-  assign label_purpose = '目的から探す'
-  assign label_yarn = '毛糸'
-  assign label_kits = '編み物キット'
-  assign label_gifts = '道具・ギフト'
-  assign label_support = 'サポート'
-  assign label_search = '検索'
-  case request.locale.iso_code
-    when 'zh-CN', 'zh'
-      assign label_new = '新品'
-      assign label_purpose = '按作品挑选'
-      assign label_yarn = '毛线'
-      assign label_kits = '编织套装'
-      assign label_gifts = '工具与礼物'
-      assign label_support = '咨询与帮助'
-      assign label_search = '搜索'
-    when 'en'
-      assign label_new = 'New arrivals'
-      assign label_purpose = 'Shop by project'
-      assign label_yarn = 'Yarn'
-      assign label_kits = 'Knitting kits'
-      assign label_gifts = 'Tools & gifts'
-      assign label_support = 'Support'
-      assign label_search = 'Search'
-  endcase
-  assign yarn_query = 'tag:毛糸' | url_encode
-  assign kit_query = 'tag:編みものキット' | url_encode
-  assign gift_query = 'tag:編み物道具 OR tag:ギフトセット OR tag:完成品' | url_encode
--%}
-
+{%- comment -%}Mobile and drawer navigation. Menu labels and URLs come from Shopify Navigation.{%- endcomment -%}
 <header-drawer data-breakpoint="desktop">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
@@ -38,14 +8,84 @@
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
           <nav class="menu-drawer__navigation" aria-label="{{ 'sections.header.menu' | t }}">
-            <ul class="menu-drawer__menu list-menu" role="list">
-              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.all_products_collection_url }}">{{ label_new }}</a></li>
-              <li><a class="menu-drawer__menu-item yarn-menu-project list-menu__item link link--text focus-inset" href="{{ routes.root_url }}#shop-by-project">{{ label_purpose }}</a></li>
-              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ yarn_query }}&type=product">{{ label_yarn }}</a></li>
-              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ kit_query }}&type=product">{{ label_kits }}</a></li>
-              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}?q={{ gift_query }}&type=product">{{ label_gifts }}</a></li>
-              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.root_url }}#line-support">{{ label_support }}</a></li>
-              <li><a class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.search_url }}">{{ label_search }}</a></li>
+            <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+              {%- for link in navigation_menu.links -%}
+                <li>
+                  {%- if link.links != blank -%}
+                    <details id="Details-yarn-menu-drawer-item-{{ forloop.index }}">
+                      <summary
+                        id="YarnHeaderDrawer-{{ link.handle }}"
+                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
+                      >
+                        {{ link.title | escape }}
+                        <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                      </summary>
+                      <div id="yarn-link-{{ link.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce" tabindex="-1">
+                        <div class="menu-drawer__inner-submenu">
+                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                            <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                            {{ link.title | escape }}
+                          </button>
+                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {%- for childlink in link.links -%}
+                              <li>
+                                {%- if childlink.links == blank -%}
+                                  <a
+                                    id="YarnHeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                    href="{{ childlink.url | escape }}"
+                                    class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                    {% if childlink.current %}aria-current="page"{% endif %}
+                                  >
+                                    {{ childlink.title | escape }}
+                                  </a>
+                                {%- else -%}
+                                  <details id="Details-yarn-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
+                                    <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
+                                      {{ childlink.title | escape }}
+                                      <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                                      <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                                    </summary>
+                                    <div id="yarn-childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
+                                      <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                                        <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                                        {{ childlink.title | escape }}
+                                      </button>
+                                      <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                        {%- for grandchildlink in childlink.links -%}
+                                          <li>
+                                            <a
+                                              id="YarnHeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                              href="{{ grandchildlink.url | escape }}"
+                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                              {% if grandchildlink.current %}aria-current="page"{% endif %}
+                                            >
+                                              {{ grandchildlink.title | escape }}
+                                            </a>
+                                          </li>
+                                        {%- endfor -%}
+                                      </ul>
+                                    </div>
+                                  </details>
+                                {%- endif -%}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </div>
+                    </details>
+                  {%- else -%}
+                    <a
+                      id="YarnHeaderDrawer-{{ link.handle }}"
+                      href="{{ link.url | escape }}"
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                      {% if link.current %}aria-current="page"{% endif %}
+                    >
+                      {{ link.title | escape }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
             </ul>
           </nav>
           {%- if show_language_selector and localization.available_languages.size > 1 -%}

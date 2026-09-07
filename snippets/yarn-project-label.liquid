@@ -1,0 +1,24 @@
+{%- liquid
+  assign label_key = ''
+  case value
+    when '配饰'
+      assign label_key = 'category_accessories'
+    when '服装'
+      assign label_key = 'category_clothing'
+    when '家居'
+      assign label_key = 'category_home'
+    when '花片'
+      assign label_key = 'category_motif'
+    when '玩偶'
+      assign label_key = 'category_toys'
+    when '新手'
+      assign label_key = 'difficulty_beginner'
+    when '简单'
+      assign label_key = 'difficulty_easy'
+    when '进阶'
+      assign label_key = 'difficulty_intermediate'
+    when '待核实'
+      assign label_key = 'unknown'
+  endcase
+-%}
+{%- if label_key != blank -%}{{- label_key | prepend: 'yarn_project.' | t -}}{%- else -%}{{- value | escape -}}{%- endif -%}
