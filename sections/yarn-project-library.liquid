@@ -1,60 +1,57 @@
 {{ 'yarn-project.css' | asset_url | stylesheet_tag }}
+{{ 'yarn-project-rows.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'yarn-project-library.js' | asset_url }}" defer="defer"></script>
-<section class="yp-library yp-shell" id="shop-by-project">
-  {% if section.settings.featured_projects != blank %}
-    <div class="yp-featured">
-      <h2>{{ section.settings.featured_heading | default: '' | escape }}{% if section.settings.featured_heading == blank %}{{ 'yarn_project.featured' | t }}{% endif %}</h2>
-      <div class="yp-grid">
-        {% for project in section.settings.featured_projects %}
-          {%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
-          {% if visible == 'true' %}{% render 'yarn-project-card', project: project, featured: true %}{% endif %}
-        {% endfor %}
-      </div>
-    </div>
-  {% endif %}
+<script src="{{ 'yarn-project-row.js' | asset_url }}" defer="defer"></script>
+<section class="yp-library yp-library--rows yp-shell" id="shop-by-project">
   <yarn-project-library>
-    <header class="yp-library__heading">
-      <div class="yp-library__heading-row">
-        <h2>{% if section.settings.heading != blank %}{{ section.settings.heading | escape }}{% else %}{{ 'yarn_project.library' | t }}{% endif %}</h2>
-        <a href="#ProjectResults-{{ section.id }}">{{ 'yarn_project.browse_all' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
-      </div>
-      {% if section.settings.description != blank %}<div class="rte">{{ section.settings.description }}</div>{% endif %}
-    </header>
     <form data-project-filters role="search">
-      <fieldset class="yp-filterset">
+      <fieldset class="yp-filterset yp-discovery">
         <legend class="visually-hidden">{{ 'yarn_project.filters' | t }}</legend>
-        <div class="yp-search">
-          <label class="visually-hidden" for="ProjectSearch-{{ section.id }}">{{ 'yarn_project.search' | t }}</label>
-          <input type="search" id="ProjectSearch-{{ section.id }}" name="q" placeholder="{{ 'yarn_project.search_placeholder' | t }}" autocomplete="off">
-          <button type="submit" aria-label="{{ 'yarn_project.search' | t }}">{{ 'icon-search.svg' | inline_asset_content }}</button>
+        <a class="yp-discovery__all" href="#ProjectResults-{{ section.id }}" data-project-browse-all>{{ 'yarn_project.browse_all' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+        <div class="yp-discovery__search">
+          <h2>{% if section.settings.heading != blank %}{{ section.settings.heading | escape }}{% else %}{{ 'yarn_project.library' | t }}{% endif %}</h2>
+          {% if section.settings.description != blank %}<div class="rte">{{ section.settings.description }}</div>{% endif %}
+          <div class="yp-search">
+            <label class="visually-hidden" for="ProjectSearch-{{ section.id }}">{{ 'yarn_project.search' | t }}</label>
+            <input type="search" id="ProjectSearch-{{ section.id }}" name="q" placeholder="{{ 'yarn_project.search_placeholder' | t }}" autocomplete="off" aria-controls="ProjectResults-{{ section.id }}">
+            <button type="submit" aria-label="{{ 'yarn_project.search' | t }}">{{ 'icon-search.svg' | inline_asset_content }}</button>
+          </div>
         </div>
-
-        <div class="yp-category-filters" role="group" aria-label="{{ 'yarn_project.category' | t }}">
-          {% assign category_keys = 'bag,scarf,home,toy' | split: ',' %}
-          {% assign category_values = '配饰,服装,家居,玩偶' | split: ',' %}
-          {% for key in category_keys %}
+        <nav class="yp-category-filters" aria-label="{{ 'yarn_project.category' | t }}">
+          {% for block in section.blocks %}
             {% liquid
-              assign category_asset = 'impeccable-category-bag-plate.png'
+              assign key = block.settings.icon
+              assign category_asset = 'yarn-category-bag-approved.png'
               case key
                 when 'scarf'
-                  assign category_asset = 'impeccable-category-scarf-plate.png'
+                  assign category_asset = 'yarn-category-scarf-approved.png'
                 when 'home'
-                  assign category_asset = 'impeccable-b-category-blanket-plate.png'
+                  assign category_asset = 'yarn-category-home-approved.png'
                 when 'toy'
-                  assign category_asset = 'impeccable-category-doll-plate.png'
+                  assign category_asset = 'yarn-category-toy-approved.png'
               endcase
               assign category_label_key = 'yarn_project.category_' | append: key
               if key == 'home'
                 assign category_label_key = 'yarn_project.category_living'
               endif
+              assign category_label = block.settings.heading
+              if category_label == blank
+                assign category_label = category_label_key | t
+              endif
             %}
-            <button type="button" data-project-category="{{ category_values[forloop.index0] }}" aria-pressed="false">
-              <span class="yp-category-filters__art yp-category-filters__art--{{ key }}"><img src="{{ category_asset | asset_url }}" alt="" width="1479" height="1064" loading="lazy"></span>
-              <span>{{ category_label_key | t }}</span>
-            </button>
+            <a href="#ProjectRow-{{ section.id }}-{{ block.id }}" data-project-category="{{ block.id }}">
+              <span class="yp-category-filters__art yp-category-filters__art--{{ key }}">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 320 | image_tag: loading: 'lazy', widths: '160, 240, 320', sizes: '128px', alt: '' }}
+                {% else %}
+                  <img src="{{ category_asset | asset_url }}" alt="" width="120" height="117" loading="lazy">
+                {% endif %}
+              </span>
+              <span>{{ category_label | escape }}</span>
+            </a>
           {% endfor %}
-        </div>
-
+        </nav>
+<div class="yp-discovery__refine" data-project-refine hidden>
         <details class="yp-filter-more">
           <summary>{{ 'yarn_project.filters' | t }}</summary>
           <div class="yp-filter-panel">
@@ -70,18 +67,89 @@
           </div>
         </details>
         <button class="yp-text-button" type="button" data-project-clear>{{ 'yarn_project.clear' | t }}</button>
+
+</div>
       </fieldset>
     </form>
     <p data-project-loading hidden role="status">{{ 'yarn_project.loading' | t }}</p>
     <div data-project-error hidden role="alert"><p>{{ 'yarn_project.load_error' | t }}</p><button class="button button--secondary" type="button" data-project-retry>{{ 'yarn_project.retry' | t }}</button></div>
     {% paginate shop.metaobjects.yarn_project.values by 250 %}
-      {% assign visible_count = 0 %}
-      {% capture project_cards %}{% for project in shop.metaobjects.yarn_project.values %}
-        {%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
-        {% if visible == 'true' %}{% assign visible_count = visible_count | plus: 1 %}{% render 'yarn-project-card', project: project %}{% endif %}
-      {% endfor %}{% endcapture %}
-      <p class="yp-count"><span data-project-count aria-live="polite">{{ visible_count }}</span> {{ 'yarn_project.results' | t }}</p>
-      <div id="ProjectResults-{{ section.id }}" class="yp-grid" data-project-results>{{ project_cards }}</div>
+      {% liquid
+        assign visible_count = 0
+        assign assigned_ids = '|'
+      %}
+      <p class="yp-count" data-project-count-container hidden><span data-project-count aria-live="polite">0</span> {{ 'yarn_project.results' | t }}</p>
+      <div id="ProjectResults-{{ section.id }}" class="yp-rows" data-project-results>
+        {% if section.settings.featured_projects != blank %}
+          {% assign featured_count = 0 %}
+          {% capture featured_cards %}
+            {% for project in section.settings.featured_projects %}
+              {%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+              {% if visible == 'true' %}
+                {% assign featured_count = featured_count | plus: 1 %}
+                {% render 'yarn-project-card', project: project, featured: true, compact: true %}
+              {% endif %}
+            {% endfor %}
+          {% endcapture %}
+          {% assign featured_heading = section.settings.featured_heading | default: '' %}
+          {% if featured_heading == blank %}{% assign featured_heading = 'yarn_project.featured' | t %}{% endif %}
+          {% render 'yarn-project-row', row_id: 'featured', row_heading: featured_heading, cards: featured_cards, card_count: featured_count %}
+        {% endif %}
+        {% for block in section.blocks %}
+          {% liquid
+            assign categories = block.settings.categories | split: ','
+            assign row_count = 0
+            assign row_projects = shop.metaobjects.yarn_project.values
+            if block.settings.projects != blank
+              assign row_projects = block.settings.projects
+            endif
+          %}
+          {% capture row_cards %}
+            {% for project in row_projects %}
+              {% assign project_token = project.system.id | prepend: '|' | append: '|' %}
+              {%- capture project_category -%}{%- render 'yarn-project-canonical-value', value: project.category.value -%}{%- endcapture -%}
+              {% unless assigned_ids contains project_token %}
+                {% if block.settings.projects != blank or categories contains project_category %}
+                  {%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+                  {% if visible == 'true' %}
+                    {% assign assigned_ids = assigned_ids | append: project.system.id | append: '|' %}
+                    {% assign row_count = row_count | plus: 1 %}
+                    {% assign visible_count = visible_count | plus: 1 %}
+                    {% render 'yarn-project-card', project: project, row_id: block.id, compact: true %}
+                  {% endif %}
+                {% endif %}
+              {% endunless %}
+            {% endfor %}
+          {% endcapture %}
+          {% liquid
+            assign row_label_key = 'yarn_project.category_' | append: block.settings.icon
+            if block.settings.icon == 'home'
+              assign row_label_key = 'yarn_project.category_living'
+            endif
+            assign row_heading = block.settings.heading
+            if row_heading == blank
+              assign row_heading = row_label_key | t
+            endif
+          %}
+          {% render 'yarn-project-row', row_id: block.id, row_heading: row_heading, cards: row_cards, card_count: row_count, block: block %}
+        {% endfor %}
+        {% assign other_count = 0 %}
+        {% capture other_cards %}
+          {% for project in shop.metaobjects.yarn_project.values %}
+            {% assign project_token = project.system.id | prepend: '|' | append: '|' %}
+            {% unless assigned_ids contains project_token %}
+              {%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+              {% if visible == 'true' %}
+                {% assign visible_count = visible_count | plus: 1 %}
+                {% assign other_count = other_count | plus: 1 %}
+                {% render 'yarn-project-card', project: project, row_id: 'other', compact: true %}
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        {% endcapture %}
+        {% assign other_heading = 'yarn_project.other_projects' | t %}
+        {% render 'yarn-project-row', row_id: 'other', row_heading: other_heading, cards: other_cards, card_count: other_count %}
+      </div>
       {% if paginate.next %}<a data-project-next href="{{ paginate.next.url | escape }}&amp;section_id={{ section.id | url_encode }}">{{ 'yarn_project.more' | t }}</a>{% endif %}
       <div class="yp-empty" data-project-empty {% if visible_count > 0 %}hidden{% endif %}><h3>{{ 'yarn_project.empty' | t }}</h3><p>{{ 'yarn_project.empty_hint' | t }}</p></div>
     {% endpaginate %}
@@ -89,14 +157,155 @@
 </section>
 {% schema %}
 {
-  "name": "作品库与新手精选",
+  "name": "分类作品行",
   "settings": [
-    { "type": "paragraph", "content": "共用 内容 → 元对象 → 编织作品。团队演示模式会显示所有有标题的作品；正式上线前关闭该模式，并完成公开作品的内容核验。" },
-    { "type": "metaobject_list", "id": "featured_projects", "label": "新手精选及顺序", "metaobject_type": "yarn_project", "limit": 8 },
-    { "type": "text", "id": "featured_heading", "label": "精选标题（留空使用语言翻译）" },
-    { "type": "text", "id": "heading", "label": "作品库标题（留空使用语言翻译）" },
-    { "type": "richtext", "id": "description", "label": "作品库说明" }
+    {
+      "type": "paragraph",
+      "content": "作品来自 内容 → 元对象 → 编织作品。分类块按后台类别自动归组，也可手动挑选；同一作品归入首个匹配分类，未归组作品保留在更多作品。"
+    },
+    {
+      "type": "metaobject_list",
+      "id": "featured_projects",
+      "label": "额外精选及顺序（可留空）",
+      "metaobject_type": "yarn_project",
+      "limit": 8
+    },
+    {
+      "type": "text",
+      "id": "featured_heading",
+      "label": "精选标题（留空使用语言翻译）"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "作品库标题（留空使用语言翻译）"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "作品库说明"
+    }
   ],
-  "presets": [{ "name": "作品库与新手精选" }]
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "category",
+      "name": "分类作品行",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "分类名称与默认插图",
+          "options": [
+            {
+              "value": "bag",
+              "label": "包袋"
+            },
+            {
+              "value": "scarf",
+              "label": "围巾"
+            },
+            {
+              "value": "home",
+              "label": "家居"
+            },
+            {
+              "value": "toy",
+              "label": "玩偶"
+            }
+          ],
+          "default": "bag"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "自定义分类标题（留空使用三语名称）"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "分类插图（可替换）"
+        },
+        {
+          "type": "select",
+          "id": "categories",
+          "label": "自动归组的作品类别",
+          "options": [
+            {
+              "value": "配饰",
+              "label": "配饰（当前包袋）"
+            },
+            {
+              "value": "服装",
+              "label": "服装（当前围巾）"
+            },
+            {
+              "value": "家居,花片",
+              "label": "家居与花片"
+            },
+            {
+              "value": "家居",
+              "label": "仅家居"
+            },
+            {
+              "value": "花片",
+              "label": "仅花片"
+            },
+            {
+              "value": "玩偶",
+              "label": "玩偶"
+            }
+          ],
+          "default": "配饰"
+        },
+        {
+          "type": "metaobject_list",
+          "id": "projects",
+          "label": "手动选作品及排序（优先于自动归组）",
+          "metaobject_type": "yarn_project",
+          "limit": 50
+        },
+        {
+          "type": "paragraph",
+          "content": "包袋和围巾沿用当前作品的配饰、服装类别。若新增其他配饰或服装，请手动选作品或修改分类标题，避免误分。"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "分类作品行",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "icon": "bag",
+            "categories": "配饰"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "scarf",
+            "categories": "服装"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "home",
+            "categories": "家居,花片"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "toy",
+            "categories": "玩偶"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

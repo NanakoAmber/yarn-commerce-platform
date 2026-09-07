@@ -122,7 +122,14 @@
     },
     "project-discovery": {
       "type": "yarn-project-library",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "bags": { "type": "category", "settings": { "icon": "bag", "categories": "配饰" } },
+        "scarves": { "type": "category", "settings": { "icon": "scarf", "categories": "服装" } },
+        "home": { "type": "category", "settings": { "icon": "home", "categories": "家居,花片" } },
+        "toys": { "type": "category", "settings": { "icon": "toy", "categories": "玩偶" } }
+      },
+      "block_order": ["bags", "scarves", "home", "toys"]
     },
     "line-support": {
       "type": "yarn-line-contact",

@@ -538,6 +538,11 @@
     }
   },
   "yarn_project": {
+    "row_view_all": "查看全部",
+    "row_collapse": "收起",
+    "row_previous": "上一组{{ category }}作品",
+    "row_next": "下一组{{ category }}作品",
+    "other_projects": "更多作品",
     "context_from": "来自作品：",
     "context_reference": "这是成品参考，不是该教程的同款成品。",
     "components": "所需材料与工具",

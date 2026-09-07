@@ -1,0 +1,12 @@
+{%- comment -%}Normalize translated metaobject enums before grouping or filtering.{%- endcomment -%}
+{%- case value -%}
+  {%- when 'Accessories', 'アクセサリー' -%}配饰
+  {%- when 'Apparel', 'ウェア' -%}服装
+  {%- when 'Home', 'インテリア' -%}家居
+  {%- when 'Motif', 'モチーフ' -%}花片
+  {%- when 'Amigurumi', 'あみぐるみ' -%}玩偶
+  {%- when 'Beginner', '初心者' -%}新手
+  {%- when 'Easy', 'かんたん' -%}简单
+  {%- when 'Advanced', '上級' -%}进阶
+  {%- else -%}{{- value -}}
+{%- endcase -%}

@@ -1,35 +1,19 @@
 # 首页 Surface Brief
 
-- Scope: Shopify 首页，日文、简体中文、英文；Issue #13。
-- Mode: Persuade。
-- Audience: 围绕想做的作品选材料的新手；当前为合作方内部原型。
-- Approved comp: `.impeccable/mocks/discovery-b-zh.png`（756 × 2079）。
-- Approval: 2026-09-05 用户回复“B”，选择“作品先行”。取代旧 comp 的首页构图合同，不更换视觉身份。
-- Constraints: Shopify Product 与可编辑内容为事实来源；保留语言、商品和购买路径，不接入其他任务的新内容模型。
+本轮范围：Issue #13，2026-09-07 用户批准的 Hero 下方分类作品行。基线 main `8314209`；保留已批准导航、Hero 和波浪衔接。
 
-## Direction contract
+## 当前构图合同
 
-THESIS: 一体化作品发现是首页第二主区域，拒绝分类与结果之间插入单品、季节大广告。
+- 已批准稿：`.impeccable/review/13-category-rows/approved-home.png`。来源与原始提示词：同目录 `approved-home-prompt.md`。
+- 最新用户覆盖反馈：左右滑动箭头放在每行图片与名称下方；删除每张卡片的“查看作品 →”；不用再生成图，实施完成可以直接发布。
+- 继承暖白、炭黑、陶土操作色、柔色分类图与细线图标。桌面标题/搜索在左、四个大分类快捷入口在右；手机先搜索，再四分类。
+- 分类各自独立一行：包袋、围巾、家居、玩偶。图片与名称整体进入 Project；数量溢出时提供底部箭头和“查看全部”展开/收起。
+- Shopify `yarn_project` 是作品内容来源，真实数量与图片优先于示意稿；当前分组2/1/5/1，不复制内容凑满。四分类图按用户最新要求直接提取已批准原图中的包袋、围巾、靠垫与兔子，并提供后台 image picker。来源见本轮 `icon-provenance.md`。用户“不用再生成图片”覆盖 skill 默认重新生成 plate 的建议，未运行或强制通过 plates gate。
+- 作品标题、图片和 URL 来自 Metaobject；分组、手选作品与排序、分类名称/插图在 Section blocks 编辑。既有类别的中英日翻译先规范化再分组/筛选。
+- 搜索留在首页，独立搜索页延期。高级筛选、清除、无结果、分页失败/重试仍作用于同一完整作品库。
 
-OWN-WORLD: 继承暖纸、柔粉柔蓝薄荷、炭黑字、针目图解、细线图标；分类为小圆面，操作克制。
+## 复核边界
 
-STORY: 看懂选择作品、购买材料、开始制作；从作品图片产生兴趣，以搜索和条件缩小选择，再查看材料。
+当前实现与三语截图见 `.impeccable/review/13-category-rows/`；收尾结论以该目录 finish review 为准。店铺继续密码保护；原有盖毯样例封面与标题不符，属于既有运营内容，本轮未改。含该第三方图片的截图仅本地存档，不提交公开仓库。
 
-FIRST VIEWPORT: 简洁导航、左文右织物、叠压三步纸面；下接居中发现标题、搜索、四圆形分类、商品类型及三项筛选；双列作品图紧跟控件。
-
-FORM: “编织图解图谱 / 作品先行 B”，沿用 direction seed `873712c1`。移动端双列，宽屏同一信息次序、较宽图库。
-
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
-
-## 事实与交互翻译
-
-- comp 内“内部视觉示意，非实际商品图”只解释生成稿；真实页面使用“内部演示：先看套件，材料与教程以商品页为准。”，可由 Section setting 编辑，不把目录冒充独立 Project 库。
-- comp 的四件织物是示意，不替代实际 Product 照片、标题、库存或价格。默认套件排序由 Shopify product_list 编辑；价格与规格在商品页确认。不可按图生成假商品照片。
-- 删除重复的宽幅浏览 CTA、独立辅助导航、一团大卡和季节大卡；老 Section 文件 / settings 保留可恢复，不破坏其他页面。
-- 小圆分类、搜索、类型和用量 / 季节 / 风格共同作用于同一个 Product 结果列表。成品、礼盒及其他用途仍可从完整目录或已有链接访问。
-- 下拉默认关闭，展开态对照 comp；实际选项来自现有目录，不虚构全季可用。保留键盘、选中、清除、无结果、数量与历史返回状态。
-- 生成稿过小文字不照搬；实际正文 / 操作保持可读尺寸并检验三语扩展。不在此文件提前改写 DESIGN.md 为未实现状态。
-
-## 本轮复核边界
-
-B 已在独立未发布 Theme 实现，2026-09-05 的 finish verdict 确认帮助图标、套件标签、纸面与手机字号四项整改 resolved。真实商品照片与生成示意有差异，plates gate 仍 open，整页 Comp-first 未完成；详情与后续验收以 Issue #13 和本轮 review 为准，不继承旧版局部 ship。
+本轮为已明确批准的局部构图延伸，没有重建全站视觉世界。2026-09-05 的 discovery B 历史机械 gates 保留，不将本轮功能/视觉验收冒充其通过。新合并稿的辅助 comp-diff 默认 band 得分54.53%、contradicted，包含真实9件对示意16件、初版既有插图、用户删CTA/移箭头等差异；最新图标已按用户反馈替换原图提取版；该结果不是像素还原通过声明。最终以最新批准范围及独立评审列出差异。

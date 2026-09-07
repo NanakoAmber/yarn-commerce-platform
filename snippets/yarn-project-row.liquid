@@ -1,0 +1,16 @@
+{%- comment -%}One editable homepage group. Native overflow remains usable without JavaScript.{%- endcomment -%}
+<yarn-project-row id="ProjectRow-{{ section.id }}-{{ row_id }}" class="yp-row" data-project-row="{{ row_id }}" {% if card_count == 0 %}hidden{% endif %} {{ block.shopify_attributes }}>
+  <header class="yp-row__heading">
+    <h3 id="ProjectRowHeading-{{ section.id }}-{{ row_id }}" tabindex="-1">{{ row_heading | escape }}</h3>
+    <button type="button" class="yp-row__all" data-row-expand aria-expanded="false" aria-controls="ProjectTrack-{{ section.id }}-{{ row_id }}" hidden>
+      <span data-row-expand-label>{{ 'yarn_project.row_view_all' | t }}</span>
+      <span data-row-collapse-label hidden>{{ 'yarn_project.row_collapse' | t }}</span>
+      <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+    </button>
+  </header>
+  <div id="ProjectTrack-{{ section.id }}-{{ row_id }}" class="yp-row__track" data-row-track role="group" aria-labelledby="ProjectRowHeading-{{ section.id }}-{{ row_id }}" tabindex="0">{{ cards }}</div>
+  <div class="yp-row__controls" data-row-controls hidden>
+    <button type="button" data-row-previous aria-label="{{ 'yarn_project.row_previous' | t: category: row_heading | escape }}" aria-controls="ProjectTrack-{{ section.id }}-{{ row_id }}" disabled><span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></button>
+    <button type="button" data-row-next aria-label="{{ 'yarn_project.row_next' | t: category: row_heading | escape }}" aria-controls="ProjectTrack-{{ section.id }}-{{ row_id }}"><span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></button>
+  </div>
+</yarn-project-row>

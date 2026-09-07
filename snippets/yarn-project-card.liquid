@@ -1,5 +1,7 @@
 {%- capture card_visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
 {%- if card_visible == 'true' -%}
+{%- capture card_category -%}{%- render 'yarn-project-canonical-value', value: project.category.value -%}{%- endcapture -%}
+{%- capture card_difficulty -%}{%- render 'yarn-project-canonical-value', value: project.difficulty.value -%}{%- endcapture -%}
 {%- liquid
   assign tutorial_type = ''
   if project.tutorial.value != blank or project.tutorial_url.value != blank
@@ -11,8 +13,9 @@
 -%}
 <article class="yp-card" {% unless featured %}data-project-card{% endunless %}
   data-project-id="{{ project.system.id | escape }}"
+  {% if row_id != blank %}data-row-id="{{ row_id | escape }}"{% endif %}
   data-title="{{ project.title.value | escape }}" data-summary="{{ project.summary.value | escape }}"
-  data-category="{{ project.category.value | escape }}" data-difficulty="{{ project.difficulty.value | escape }}"
+  data-category="{{ card_category | escape }}" data-difficulty="{{ card_difficulty | escape }}"
   data-tutorial="{{ tutorial_type | escape }}" data-time="{{ project.time_minutes.value | escape }}"
   data-made-for="{{ project.made_for.value | escape }}" data-holiday="{{ project.holiday.value | escape }}"
   data-hook-size="{{ project.hook_size.value | escape }}">
@@ -27,6 +30,9 @@
       {% endif %}
     </div>
     <div class="yp-card__body">
+      {% if compact %}
+        <h4 class="yp-card__title">{{ project.title.value | escape }}</h4>
+      {% else %}
       {% if project.category.value != blank %}<p class="yp-card__category">{% render 'yarn-project-label', value: project.category.value %}</p>{% endif %}
       <h3>{{ project.title.value | escape }}</h3>
       <p class="yp-card__action">{{ 'yarn_project.view_materials' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></p>
@@ -36,6 +42,7 @@
           {% if project.difficulty.value != blank %}<div><dt>{{ 'yarn_project.difficulty' | t }}</dt><dd>{% render 'yarn-project-label', value: project.difficulty.value %}</dd></div>{% endif %}
           {% if project.time_minutes.value != blank %}<div><dt>{{ 'yarn_project.time' | t }}</dt><dd>{{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</dd></div>{% endif %}
         </dl>
+      {% endif %}
       {% endif %}
     </div>
   </a>
