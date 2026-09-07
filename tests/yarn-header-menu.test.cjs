@@ -5,6 +5,8 @@ const fs = require('node:fs');
 const header = fs.readFileSync('sections/header.liquid', 'utf8');
 const desktop = fs.readFileSync('snippets/yarn-header-menu.liquid', 'utf8');
 const drawer = fs.readFileSync('snippets/yarn-header-drawer.liquid', 'utf8');
+const wordmark = fs.readFileSync('snippets/yarn-wordmark.liquid', 'utf8');
+const headerCss = fs.readFileSync('assets/yarn-header.css', 'utf8');
 const schema = JSON.parse(header.match(/{% schema %}([\s\S]*?){% endschema %}/)[1]);
 
 test('header has one Shopify menu setting and uses it for prototype navigation', () => {
@@ -36,4 +38,14 @@ test('prototype navigation contains no locale, product-copy or tag-search overri
     assert.doesNotMatch(source, /request\.locale|url_encode|tag:|routes\.search_url|routes\.all_products_collection_url/);
     assert.doesNotMatch(source, /新品|新着|New arrivals|编织套装|編み物キット/);
   }
+});
+
+test('MewoolMew uses the original cat-and-yarn mark and a readable text wordmark', () => {
+  assert.match(wordmark, /MewoolMew/);
+  assert.match(wordmark, /mewoolmew-cat-yarn-mark\.svg/);
+  assert.doesNotMatch(wordmark, /yarn-stitch-mark\.svg|毛线工作室/);
+  assert.match(headerCss, /ui-rounded/);
+  assert.match(headerCss, /#bf5a38/i);
+  assert.match(header, /assign yarn_brand_name = 'MewoolMew'/);
+  assert.match(header, /"name": \{\{ yarn_brand_name \| json \}\}/);
 });

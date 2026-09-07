@@ -1,11 +1,5 @@
-{%- comment -%}An original stitch-flower mark; the working brand name remains localized HTML.{%- endcomment -%}
-{%- liquid
-  assign wordmark_label = brand_name
-  if request.locale.iso_code contains 'zh'
-    assign wordmark_label = '毛线工作室'
-  endif
--%}
-<span class="yarn-wordmark{% if request.locale.iso_code contains 'zh' %} yarn-wordmark--zh{% endif %}" aria-label="{{ wordmark_label | escape }}">
-  <span class="yarn-wordmark__symbol" aria-hidden="true">{{ 'yarn-stitch-mark.svg' | inline_asset_content }}</span>
-  <span class="yarn-wordmark__name" aria-hidden="true">{{ wordmark_label | escape }}</span>
+{%- comment -%}MewoolMew's original cat-and-yarn mark remains editable HTML beside the vector symbol.{%- endcomment -%}
+<span class="yarn-wordmark" aria-label="MewoolMew">
+  <span class="yarn-wordmark__symbol" aria-hidden="true">{{ 'mewoolmew-cat-yarn-mark.svg' | inline_asset_content }}</span>
+  <span class="yarn-wordmark__name" aria-hidden="true">MewoolMew</span>
 </span>
