@@ -40,12 +40,12 @@ test('prototype navigation contains no locale, product-copy or tag-search overri
   }
 });
 
-test('MewoolMew uses the original cat-and-yarn mark and a readable text wordmark', () => {
-  assert.match(wordmark, /MewoolMew/);
-  assert.match(wordmark, /mewoolmew-cat-yarn-mark\.svg/);
-  assert.doesNotMatch(wordmark, /yarn-stitch-mark\.svg|毛线工作室/);
-  assert.match(headerCss, /ui-rounded/);
-  assert.match(headerCss, /#bf5a38/i);
+test('MewoolMew keeps the approved illustration and lettering with an accessible image name', () => {
+  assert.match(wordmark, /alt="MewoolMew"/);
+  assert.match(wordmark, /mewoolmew-logo-reference\.png/);
+  assert.doesNotMatch(wordmark, /inline_asset_content|毛线工作室/);
+  assert.match(wordmark, /width="1881"[\s\S]*height="836"/);
+  assert.match(headerCss, /object-fit: cover/);
   assert.match(header, /assign yarn_brand_name = 'MewoolMew'/);
   assert.match(header, /"name": \{\{ yarn_brand_name \| json \}\}/);
 });

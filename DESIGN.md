@@ -290,7 +290,7 @@ B 的查看材料、展开更多、完整目录与联系入口使用文字及 SV
 
 导航在 Issue #20 中沿用首页视觉世界调整：暖白底、暖灰底线，桌面最小高度 84 px，1339 px 以下折叠为菜单、字标、搜索与购物袋，599 px 以下最小高度 68 px。较早折叠为三语长文案和浏览器放大字体留出空间。“按作品挑选”用浅粉纸面与暖墨文字强调，其他入口保持文字链接。图标统一为 24 px 轮廓和 44 px 触控区，购物袋继续打开原有购物车抽屉；页内导航会关闭手机菜单、解锁滚动并把焦点交给目标区域。
 
-MewoolMew 的导航 Logo 为原创 SVG：一只浅粉小猫抱着陶土橘毛线球，尾端拉出一小段线。桌面图形为 48×40 px、手机为 38×32 px；同色的 `MewoolMew` HTML 字标使用系统圆体优先、2.15rem / 紧凑负字距，手机为 1.45rem。三语共用品牌名，避免把本地语言翻译硬烘焙进 Logo；Shopify 上传的 Logo 仍优先。源码为 `assets/mewoolmew-cat-yarn-mark.svg`、`snippets/yarn-wordmark.liquid`、`assets/yarn-header.css`；图形无外部素材依赖。
+MewoolMew 的导航 Logo 直接继承用户选择的第一款橘色猫抱毛线球图稿：歪头闭眼、橘色斑块、环抱线团和回环线尾，配合同一张图中的圆润小写 `mewoolmew` 字标。正式名称与无障碍名称仍为 `MewoolMew`，三语共用。桌面图像显示区为 252×57.27 px，390 px 手机为 184×41.81 px；保持图片比例，以 `object-fit: cover` / `object-position: 50% 42%` 取出原始图像的有效内容，窄手机按可用空间收缩。暖白背景通过 multiply 混合融入现有页眉；这不是通用深色背景资产。页眉仍为桌面 84 px、手机 68 px，Logo 链接保留至少 44 px 高的触控区。Shopify 上传 Logo 仍优先。源码为 `assets/mewoolmew-logo-reference.png`、`snippets/yarn-wordmark.liquid`、`assets/yarn-header.css`；Shopify CDN 提供 600 / 900 px 图片，来源和生成过程见 `docs/brand/logo-reference.md`。此事实已由本轮三语桌面 / 手机截图复核。
 
 语言菜单继续使用已有本地化链接和 Shopify 的可用语言集合。Issue #23 英文已按用户当次授权开放；本版中文、日文、英文的作品叙述、材料清单、教程锚点及购买关键操作已按主代理 QA 记录验证。语言开放和关键路径可用不等于整个目录已本地化：运营 Product 标题与部分既有 Theme Editor 文案仍为日文，购物车公开属性标签仍包含 `Project` / `Component` / `Reference`。这些边界须在运营翻译中逐项维护，不能由控件语言推定商品内容已经翻译。
 

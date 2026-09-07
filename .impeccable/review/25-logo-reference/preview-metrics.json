@@ -1,0 +1,128 @@
+[
+  {
+    "view": "mobile",
+    "route": "zh",
+    "headerHeight": 68,
+    "height": 844,
+    "lang": "zh-CN",
+    "logo": {
+      "bottom": 53.8125,
+      "height": 41.8125,
+      "left": 76.80000305175781,
+      "right": 260.8000030517578,
+      "top": 12,
+      "width": 184,
+      "x": 76.80000305175781,
+      "y": 12
+    },
+    "logoLoaded": true,
+    "overflow": false,
+    "title": "MewoolMew",
+    "width": 390
+  },
+  {
+    "view": "mobile",
+    "route": "ja",
+    "headerHeight": 68,
+    "height": 844,
+    "lang": "ja",
+    "logo": {
+      "bottom": 53.8125,
+      "height": 41.8125,
+      "left": 76.80000305175781,
+      "right": 260.8000030517578,
+      "top": 12,
+      "width": 184,
+      "x": 76.80000305175781,
+      "y": 12
+    },
+    "logoLoaded": true,
+    "overflow": false,
+    "title": "MewoolMew",
+    "width": 390
+  },
+  {
+    "view": "mobile",
+    "route": "en",
+    "headerHeight": 68,
+    "height": 844,
+    "lang": "en",
+    "logo": {
+      "bottom": 53.8125,
+      "height": 41.8125,
+      "left": 76.80000305175781,
+      "right": 260.8000030517578,
+      "top": 12,
+      "width": 184,
+      "x": 76.80000305175781,
+      "y": 12
+    },
+    "logoLoaded": true,
+    "overflow": false,
+    "title": "MewoolMew",
+    "width": 390
+  },
+  {
+    "view": "desktop",
+    "route": "zh",
+    "headerHeight": 84,
+    "height": 900,
+    "lang": "zh-CN",
+    "logo": {
+      "bottom": 70.63124942779541,
+      "height": 57.26874923706055,
+      "left": 53.125,
+      "right": 305.125,
+      "top": 13.362500190734863,
+      "width": 252,
+      "x": 53.125,
+      "y": 13.362500190734863
+    },
+    "logoLoaded": true,
+    "overflow": false,
+    "title": "MewoolMew",
+    "width": 1440
+  },
+  {
+    "view": "desktop",
+    "route": "ja",
+    "headerHeight": 84,
+    "height": 900,
+    "lang": "ja",
+    "logo": {
+      "bottom": 70.63124942779541,
+      "height": 57.26874923706055,
+      "left": 53.125,
+      "right": 305.125,
+      "top": 13.362500190734863,
+      "width": 252,
+      "x": 53.125,
+      "y": 13.362500190734863
+    },
+    "logoLoaded": true,
+    "overflow": false,
+    "title": "MewoolMew",
+    "width": 1440
+  },
+  {
+    "view": "desktop",
+    "route": "en",
+    "headerHeight": 84,
+    "height": 900,
+    "lang": "en",
+    "logo": {
+      "bottom": 70.63124942779541,
+      "height": 57.26874923706055,
+      "left": 53.125,
+      "right": 305.125,
+      "top": 13.362500190734863,
+      "width": 252,
+      "x": 53.125,
+      "y": 13.362500190734863
+    },
+    "logoLoaded": true,
+    "overflow": false,
+    "title": "MewoolMew",
+    "width": 1440
+  }
+]

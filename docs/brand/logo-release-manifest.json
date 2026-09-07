@@ -1,0 +1,41 @@
+{
+  "live_theme_id": 189727637817,
+  "files": [
+    {
+      "file": "assets/mewoolmew-logo-reference.png",
+      "before_sha256": null,
+      "after_sha256": "b6c771dc59cabd7fe6eb90be4373b0b73a402fea564624dd0bc060e516f5502c"
+    },
+    {
+      "file": "assets/yarn-header.css",
+      "before_sha256": "16c31e9109c9720e87150e017e3b8fcc1fef12f6233c07c24003eed90bf1d7fc",
+      "after_sha256": "87a5c6ab7fc346c87249188af029c1da0698e58155ef47c8ee3c31fdc842dd04"
+    },
+    {
+      "file": "snippets/yarn-wordmark.liquid",
+      "before_sha256": "56e4c5a383a1f75245137275a54ee8e60f38bf2808d80b9efb019614c39284b1",
+      "after_sha256": "f54b24ad5fbe12febcf3232bf76ca3a6ae6f2f2ce2dd270e7df1f52329d1b6a7"
+    },
+    {
+      "file": "sections/header.liquid",
+      "before_sha256": "3bf2b55ae57f0188ac636531c262a4e1e8f5c35935af67e01a9d498e405c7f73",
+      "after_sha256": "45c0db16eb026424bf2f2dca037bed16242d2cf16c8517a5c7d8dc25d62ae0a0"
+    },
+    {
+      "file": "sections/footer.liquid",
+      "before_sha256": "0d20ddc7b770b9e5e4045498e990109ffa0d7fd2dd470b3eb37c768278d9f336",
+      "after_sha256": "54a570de385bb922cf154b7eb2239806dae1395006b0b611a4a0cf88a6b3cb16"
+    },
+    {
+      "file": "layout/theme.liquid",
+      "before_sha256": "dd3278df010279e89398e7c6f6216513a7f0a02cf0a77657bdb77a62b591e60b",
+      "after_sha256": "b6f6732e1f4cd904368db192b9abf946320ee9290f2eb7e2c1d0a5c0ab099944"
+    },
+    {
+      "file": "layout/password.liquid",
+      "before_sha256": "5db89e3acba833e1a5950b5f1a2d3e735da081b88710056094d6f2251e24db33",
+      "after_sha256": "776b3b199cff496d4517870c3707f188ce2ea5a5bd3f18dc00d52cdfada5d67e"
+    }
+  ],
+  "preview_theme_id": 189734420793
+}
