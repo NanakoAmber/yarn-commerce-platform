@@ -3,5 +3,8 @@
 {%- if project_handle != blank -%}
   {%- assign cart_project = shop.metaobjects.yarn_project[project_handle] -%}
   {%- capture project_visible -%}{%- render 'yarn-project-visible', project: cart_project -%}{%- endcapture -%}
-  {%- if project_visible == 'true' -%}<p class="product-option"><a href="{{ cart_project.system.url | escape }}">{{ 'yarn_project.part_return' | t }}</a></p>{%- endif -%}
+  {%- assign project_mode = item.properties['_Project mode'] -%}
+  {%- capture project_modes -%}{%- render 'yarn-project-capabilities', project: cart_project -%}{%- endcapture -%}
+  {%- capture return_url -%}{{ cart_project.system.url }}{% if project_mode == 'finished' or project_mode == 'materials' %}{% if project_modes contains project_mode %}?project_mode={{ project_mode }}{% endif %}{% endif %}{%- endcapture -%}
+  {%- if project_visible == 'true' -%}<p class="product-option"><a href="{{ return_url | escape }}">{{ 'yarn_project.part_return' | t }}</a></p>{%- endif -%}
 {%- endif -%}

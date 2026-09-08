@@ -1,0 +1,13 @@
+{
+  "asset": "assets/project-mode-finished.png",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "prompt": "Use case: identity-preserve. This is a faithful image upscaling/edit request, not illustration design. Upscale the supplied 99x83 pixel approved basket illustration to 594x498 pixels, preserving its exact 1.19277 width-to-height aspect ratio and precise composition. Match the reference drawing nearly pixel for pixel: same oval rim at top, same tall cylindrical basket silhouette, same rim thickness, same perspective, same woven marks, same fine warm taupe/brown linework and line weights relative to the image. Artwork fills the frame with the exact same very small margins as reference. Maintain the same warm white #fffefa opaque ground. Do not reinterpret, simplify, thicken, redraw into a new style, center on a square, add letterboxing or add transparent margins. No new objects, handles, shadows, labels or text. The result must read as the original reference faithfully enlarged.",
+  "reference_image": "/Users/jinchen/Documents/ChatGPT/毛线-issue-34-project-modes/.impeccable/build/crops/mode-finished-raw.png",
+  "reference_role": "Unmasked approved Issue #34 icon crop; near-faithful upscaling edit, preserving aspect and framing",
+  "original_generation_path": "/Users/jinchen/.codex/generated_images/01a07ddd-1eb8-7d71-8abb-52208eeeaf75/exec-cec7fab7-4ac8-44a0-b390-2c541aa865bb.png",
+  "processing": "Resized generated PNG to 594x498 with macOS sips to preserve approved reference aspect ratio. Exact prompt embedded using Impeccable embed-prompt.",
+  "width": 594,
+  "height": 498,
+  "background": "opaque warm white #fffefa requested"
+}

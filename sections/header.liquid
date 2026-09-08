@@ -168,7 +168,11 @@
 
     assign navigation_menu = section.settings.menu
   -%}
-  <header id="YarnHeader" class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if navigation_menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
+  <header id="YarnHeader" class="header {% if metaobject.system.type == 'yarn_project' %}header--project {% endif %}header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if navigation_menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
+    {% if metaobject.system.type == 'yarn_project' %}
+      <a class="yarn-project-nav-back" href="{{ routes.root_url }}#shop-by-project" aria-label="{{ 'yarn_project.back' | t }}"><span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+      <span class="yarn-project-nav-title">{{ 'yarn_project.detail_title' | t }}</span>
+    {% endif %}
     {%- liquid
       assign render_search_left = false
       if section.settings.logo_position == 'top-center' or navigation_menu == blank or shop.customer_accounts_enabled

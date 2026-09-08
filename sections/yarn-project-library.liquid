@@ -51,6 +51,13 @@
             </a>
           {% endfor %}
         </nav>
+<div class="yp-purchase-filters">
+          <label class="visually-hidden" for="ProjectPurchaseFilter-{{ section.id }}">{{ 'yarn_project.purchase_filter' | t }}</label>
+          <select hidden tabindex="-1" aria-hidden="true" name="purchase" id="ProjectPurchaseFilter-{{ section.id }}"><option value="">{{ 'yarn_project.all' | t }}</option><option value="finished">{{ 'yarn_project.tag_finished' | t }}</option><option value="materials">{{ 'yarn_project.tag_materials' | t }}</option><option value="inspiration">{{ 'yarn_project.tag_inspiration' | t }}</option></select>
+          <span class="visually-hidden">{{ 'yarn_project.purchase_filter' | t }}</span>
+          <button type="button" data-project-purchase="" aria-pressed="true">{{ 'yarn_project.all' | t }}</button>
+          {% assign purchase_filters = 'finished,materials,inspiration' | split: ',' %}{% for purchase_filter in purchase_filters %}<button type="button" data-project-purchase="{{ purchase_filter }}" aria-pressed="false">{{ purchase_filter | prepend: 'yarn_project.tag_' | t }}</button>{% endfor %}
+        </div>
 <div class="yp-discovery__refine" data-project-refine hidden>
         <details class="yp-filter-more">
           <summary>{{ 'yarn_project.filters' | t }}</summary>

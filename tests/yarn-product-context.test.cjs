@@ -37,3 +37,11 @@ test('context labels are text, metadata cannot choose a Variant, and return link
   assert.match(productInfo, /currentUrl\.pathname === nextUrl\.pathname/);
   assert.match(productInfo, /if \(variantId\) nextUrl\.searchParams\.set\('variant', variantId\)/);
 });
+
+test('known purchase intent survives Product and Cart navigation without trusting arbitrary mode values', () => {
+  const finished = readContext(url({ yarn_project_kind: 'finished' }), origin);
+  assert.equal(finished.mode, 'finished');
+  assert.equal(finished.url, '/zh/pages/projects/demo-pouch?project_mode=finished');
+  assert.equal(readContext(url({ yarn_project_kind: 'materials' }), origin).mode, 'materials');
+  assert.equal(readContext(url({ yarn_project_kind: 'redirect=external' }), origin).mode, undefined);
+});

@@ -1,0 +1,47 @@
+{%- comment -%}
+  Shared purchase tags for discovery and detail. Editorial modes can hide a
+  path but never create an offer without a referenced Shopify product.
+  Availability is deliberately separate: sold-out products retain their mode.
+{%- endcomment -%}
+{%- liquid
+  assign tags = project.purchase_modes.value
+  assign finished = false
+  assign materials = false
+  unless tags contains 'inspiration'
+    assign allow_finished = false
+    if tags contains 'finished'
+      assign allow_finished = true
+    elsif tags == blank and project.release_scope.value == '已核实可公开'
+      assign allow_finished = true
+    endif
+    if allow_finished
+      if project.finished_products.value != blank
+        assign finished = true
+      endif
+    endif
+    if tags == blank or tags contains 'materials'
+      if project.components.value != blank
+        for component in project.components.value
+          if component.supply.value == '本店提供' and component.variant.value != blank and component.variant.value.product != blank
+            assign materials = true
+            break
+          endif
+        endfor
+      elsif project.materials.value != blank or project.tools.value != blank
+        assign materials = true
+      endif
+    endif
+  endunless
+  if finished
+    echo 'finished'
+  endif
+  if materials
+    if finished
+      echo ','
+    endif
+    echo 'materials'
+  endif
+  unless finished or materials
+    echo 'inspiration'
+  endunless
+-%}

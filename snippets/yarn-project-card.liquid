@@ -11,7 +11,9 @@
     assign tutorial_type = tutorial_type | append: ',视频'
   endif
 -%}
+{%- capture purchase_modes -%}{%- render 'yarn-project-capabilities', project: project -%}{%- endcapture -%}
 <article class="yp-card" {% unless featured %}data-project-card{% endunless %}
+  data-purchase="{{ purchase_modes | escape }}"
   data-project-id="{{ project.system.id | escape }}"
   {% if row_id != blank %}data-row-id="{{ row_id | escape }}"{% endif %}
   data-title="{{ project.title.value | escape }}" data-summary="{{ project.summary.value | escape }}"
@@ -35,7 +37,7 @@
       {% else %}
       {% if project.category.value != blank %}<p class="yp-card__category">{% render 'yarn-project-label', value: project.category.value %}</p>{% endif %}
       <h3>{{ project.title.value | escape }}</h3>
-      <p class="yp-card__action">{{ 'yarn_project.view_materials' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></p>
+      <p class="yp-card__action">{{ 'yarn_project.view_project' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></p>
       {% if project.summary.value != blank %}<p class="yp-card__summary">{{ project.summary.value | escape }}</p>{% endif %}
       {% if project.difficulty.value != blank or project.time_minutes.value != blank %}
         <dl class="yp-card__facts">
@@ -44,6 +46,7 @@
         </dl>
       {% endif %}
       {% endif %}
+      <div class="yp-purchase-tags">{% assign purchase_tags = purchase_modes | split: ',' %}{% for purchase_tag in purchase_tags %}<span class="yp-purchase-tag">{{ purchase_tag | prepend: 'yarn_project.tag_' | t }}</span>{% endfor %}</div>
     </div>
   </a>
 </article>

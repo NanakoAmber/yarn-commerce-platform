@@ -89,6 +89,7 @@ if (!customElements.get('yarn-material-purchase')) {
           button.disabled = Boolean(this.uncertain);
           button.textContent = label;
           status.hidden = false;
+          this.dispatchEvent(new CustomEvent('purchase-settled'));
         }
       });
     }

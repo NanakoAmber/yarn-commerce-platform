@@ -97,3 +97,12 @@
   .yp-discovery__refine { flex-wrap: wrap; gap: 8px; }
   .yp-discovery__refine .yp-filter-more { min-width: 100%; }
 }
+
+/* Capability tags are shared with the Project detail's purchase modes. */
+.yp-purchase-filters { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--yarn-space-2); margin-top: var(--yarn-space-2); }
+.yp-purchase-filters button { min-height: var(--yarn-touch); padding: var(--yarn-space-2) var(--yarn-space-4); border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-pill); background: var(--yarn-surface); color: var(--yarn-copy); font: inherit; font-size: 1.4rem; cursor: pointer; }
+.yp-purchase-filters button[aria-pressed="true"] { background: var(--yarn-action-soft); border-color: var(--yarn-action); color: var(--yarn-action); }
+.yp-purchase-filters button:disabled { opacity: .6; cursor: wait; }
+.yp-purchase-tags { display: flex; flex-wrap: wrap; gap: var(--yarn-space-1); margin-top: var(--yarn-space-2); }
+.yp-purchase-tag { display: inline-block; font-size: 1.1rem; line-height: 1.6; padding: 2px var(--yarn-space-2); border-radius: var(--yarn-radius-pill); background: var(--yarn-action-soft); color: var(--yarn-action); }
+.yp-purchase-filters select[hidden] { display: none; }

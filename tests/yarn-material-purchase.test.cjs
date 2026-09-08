@@ -16,6 +16,8 @@ function setup(fetcher, valid = true, drawer = null) {
     addEventListener: (_, listener) => { form.submit = listener; },
   };
   class Element {
+    events = [];
+    dispatchEvent(event) { this.events.push(event.type); return true; }
     dataset = { pending: 'Adding', success: 'Added', error: 'Rejected', uncertain: 'Check cart first' };
     querySelector(selector) { return ({ form, '[data-material-status]': status, '[data-material-cart]': cart })[selector]; }
   }
@@ -25,7 +27,7 @@ function setup(fetcher, valid = true, drawer = null) {
     fetch: fetcher, FormData: class { constructor(value) { this.form = value; this.fields = {}; } append(key, value) { this.fields[key] = value; } },
     document: { querySelector: () => drawer },
     window: { location: { pathname: '/zh/pages/projects/demo', assign: (url) => navigations.push(url) } },
-    AbortController, setTimeout: () => 1, clearTimeout: () => {},
+    AbortController, CustomEvent, setTimeout: () => 1, clearTimeout: () => {},
   });
   const Purchase = registry.get('yarn-material-purchase');
   const element = new Purchase();
@@ -45,6 +47,7 @@ test('component purchase posts the current localized form exactly once and confi
   await ui.submit();
   assert.equal(calls, 1);
   assert.equal(ui.status.textContent, 'Added');
+  assert.deepEqual(ui.element.events, ['purchase-settled']);
   assert.equal(ui.cart.hidden, false);
   assert.equal(ui.button.disabled, false);
 });
@@ -76,6 +79,7 @@ test('successful adds refresh the existing theme drawer and icon from Shopify se
   assert.equal(active, ui.button);
   assert.equal(rendered, response);
   assert.equal(ui.status.textContent, 'Added');
+  assert.deepEqual(ui.element.events, ['purchase-settled']);
 });
 
 test('missing cart sections or drawer render errors keep confirmed adds confirmed and open the cart', async () => {
@@ -89,6 +93,7 @@ test('missing cart sections or drawer render errors keep confirmed adds confirme
     await ui.submit();
     assert.deepEqual(ui.navigations, [ui.cart.href]);
     assert.equal(ui.status.textContent, 'Added');
+  assert.deepEqual(ui.element.events, ['purchase-settled']);
     assert.equal(ui.button.disabled, false);
     assert.equal(Boolean(ui.element.uncertain), false);
   }
@@ -153,5 +158,5 @@ test('component presentation makes typed yarn primary without guessing legacy it
   assert.match(item, /assign item_image = component\.image\.value[\s\S]*variant\.featured_image \| default: variant\.product\.featured_image/);
   assert.match(item, /yp-component--\{\{ mode \}\}/);
   assert.doesNotMatch(list, /component\.title[^\n]*(contains|downcase)/);
-  assert.match(detail, /render 'yarn-project-components'/);
+  assert.match(detail, /render 'yarn-project-mode-materials'/);
 });

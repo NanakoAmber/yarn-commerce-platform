@@ -1,5 +1,5 @@
 (function () {
-  const FILTER_NAMES = ['category', 'difficulty', 'tutorial', 'time', 'made_for', 'holiday', 'hook_size'];
+  const FILTER_NAMES = ['category', 'difficulty', 'tutorial', 'time', 'made_for', 'holiday', 'hook_size', 'purchase'];
   const DYNAMIC_FILTER_NAMES = ['made_for', 'holiday', 'hook_size'];
   const PARAM_PREFIX = 'project_';
 
@@ -33,9 +33,9 @@
       if (!selected) continue;
       if (name === 'time') {
         if (!timeMatches(project.time, selected)) return false;
-      } else if (name === 'tutorial') {
-        const tutorials = String(project.tutorial || '').split(',').map((value) => value.trim()).filter(Boolean);
-        if (!tutorials.includes(selected)) return false;
+      } else if (name === 'tutorial' || name === 'purchase') {
+        const values = String(project[name] || '').split(',').map((value) => value.trim()).filter(Boolean);
+        if (!values.includes(selected)) return false;
       } else if (String(project[name] || '') !== selected) {
         return false;
       }
@@ -84,6 +84,7 @@
       made_for: card.dataset.madeFor || '',
       holiday: card.dataset.holiday || '',
       hook_size: card.dataset.hookSize || '',
+      purchase: card.dataset.purchase || 'inspiration',
     };
   }
 
@@ -97,6 +98,7 @@
       this.queryInput = this.querySelector('input[name="q"]');
       this.selects = Object.fromEntries(FILTER_NAMES.map((name) => [name, this.querySelector(`select[name="${name}"]`)]));
       this.categoryButtons = Array.from(this.querySelectorAll('[data-project-category]'));
+      this.purchaseButtons = Array.from(this.querySelectorAll('[data-project-purchase]'));
       this.clearButton = this.querySelector('[data-project-clear]');
       this.count = this.querySelector('[data-project-count]');
       this.empty = this.querySelector('[data-project-empty]');
@@ -126,6 +128,12 @@
       listen(this.form, 'change', () => {
         if (this.loaded) this.update();
       });
+      this.purchaseButtons.forEach((button) => listen(button, 'click', () => {
+        if (!this.loaded) return;
+        this.selects.purchase.value = button.dataset.projectPurchase || '';
+        this.browsingAll = false;
+        this.update();
+      }));
       listen(this.queryInput, 'input', () => {
         if (!this.loaded) return;
         clearTimeout(this.inputTimer);
@@ -137,9 +145,7 @@
         const value = button.dataset.projectCategory || '';
         if (this.rows.length) {
           const row = this.rows.find((candidate) => candidate.dataset.projectRow === value);
-          if (!row || !row.querySelector('[data-project-card]')) return;
-          this.clearFilters();
-          this.update();
+          if (!row || row.hidden || !row.querySelector('[data-project-card]:not([hidden])')) return;
           row.scrollIntoView({ block: 'start' });
           row.querySelector('h3')?.focus({ preventScroll: true });
           return;
@@ -317,6 +323,7 @@
         select.value = Array.from(select.options).some((option) => option.value === state[name]) ? state[name] : '';
       });
       this.syncCategoryButtons();
+      this.syncPurchaseButtons();
     }
 
     syncCategoryButtons() {
@@ -333,6 +340,13 @@
       });
     }
 
+    syncPurchaseButtons() {
+      const selected = this.selects.purchase?.value || '';
+      this.purchaseButtons?.forEach((button) => {
+        button.setAttribute('aria-pressed', String((button.dataset.projectPurchase || '') === selected));
+      });
+    }
+
     update() {
       clearTimeout(this.inputTimer);
       const url = urlWithState(window.location.href, this.state());
@@ -344,11 +358,19 @@
       if (!this.loaded) return;
       const state = this.state();
       this.syncCategoryButtons();
+      this.syncPurchaseButtons();
       let visible = 0;
       for (const card of this.cards) {
         const matches = matchesProject(projectFromCard(card), state);
         card.hidden = !matches;
         if (matches) visible += 1;
+        const link = card.querySelector('.yp-card__link');
+        if (link) {
+          const url = new URL(link.href, window.location.href);
+          if (state.purchase === 'finished' || state.purchase === 'materials') url.searchParams.set('project_mode', state.purchase);
+          else url.searchParams.delete('project_mode');
+          link.href = url.href;
+        }
       }
       this.count.textContent = String(visible);
       this.empty.hidden = visible !== 0;
