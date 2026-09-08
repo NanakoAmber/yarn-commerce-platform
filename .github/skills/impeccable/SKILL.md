@@ -11,6 +11,10 @@ license: Apache 2.0
 
 Design and review the requested surface within the approved product scope and visual direction. For this yarn project, read `docs/agents/visual-review.md` for image language, Comp-first approval and finish evidence; root `AGENTS.md` owns data and production boundaries.
 
+## Project retention override
+
+Root `AGENTS.md` owns what persists. Keep only current decisions, approved direction and required asset provenance in canonical documents. References and agents may require local review, verdict or build outputs for execution; these remain ignored temporary files, never committed or uploaded as process archives. Perform required checks and independent review, summarize final results in the PR, and do not create separate tracked review reports. Load only the current surface and relevant reference; do not recursively read historical review/build/content directories. New approved visuals belong in `docs/design/approved/` with a surface-brief link. Do not force-add process artifacts or duplicate them under another path.
+
 ## Start and select a workflow
 
 1. Run `<skill-base-dir>/scripts/impeccable context` once per session, keeping cwd at the project. The loaded skill base resolves command paths in this skill and its references; `.github/skills/impeccable` is the fallback. Pass `--target <path>` for a known route or source file. The launcher uses its bundled binary or downloads it on first run.
