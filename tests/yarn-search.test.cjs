@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { stateFromSearch, queryState, urlWithState, matchesEntity, paginationUrl } = require('../assets/yarn-search.js');
+const { stateFromSearch, queryState, urlWithState, matchesEntity, paginationUrl, YarnDiscoverySearch } = require('../assets/yarn-search.js');
 const { endpointUrl } = require('../assets/yarn-favorites.js');
 const project = { type: 'project', id: '1', title: '交叉针收纳篮', summary: '桌面上的篮子', category: '家居', purchase: 'finished,materials' };
 const yarn = { type: 'product', id: '2', title: '雪尼尔线', summary: '适合编织收纳篮子', category: '', purchase: 'materials' };
@@ -42,4 +42,17 @@ test('favorites endpoint must stay on the shop proxy path without credential-bea
   const href = 'https://shop.example/zh/search';
   assert.equal(endpointUrl('/apps/yarn-favorites', href).origin, 'https://shop.example');
   for (const value of ['', 'https://evil.example/apps/favorites', '/admin', '/apps/favorites?token=secret']) assert.throws(() => endpointUrl(value, href));
+});
+
+test('desktop and dialog purchase changes share query, category and browse semantics', () => {
+  const view = { state: { ...queryState('篮子'), category: 'home', browse: 'products' }, setState(next) { this.state = next; } };
+  YarnDiscoverySearch.prototype.setPurchase.call(view, 'finished');
+  assert.deepEqual(view.state, { q: '篮子', category: 'home', purchase: 'finished', browse: 'products' });
+  YarnDiscoverySearch.prototype.setPurchase.call(view, 'inspiration');
+  assert.equal(view.state.browse, 'all');
+  assert.equal(matchesEntity({ ...project, purchase: 'inspiration' }, view.state), true);
+  assert.equal(matchesEntity(yarn, view.state), false);
+  YarnDiscoverySearch.prototype.setPurchase.call(view, '');
+  assert.equal(view.state.q, '篮子');
+  assert.equal(view.state.category, 'home');
 });

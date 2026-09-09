@@ -61,6 +61,8 @@
 .yp-library--rows .yp-card__price, .yp-library--rows .yp-purchase-tags { grid-row: 3; align-self: end; }
 .yd-search .yp-card__kind { margin: var(--yarn-space-2) 0 0; color: var(--yarn-muted); font-size: 1.3rem; line-height: 1.6; }
 
+.yd-search__purchase { display: none; }
+
 /* Search is a separate route; its compact bar replaces the mobile site header. */
 .yarn-search-page { background: var(--yarn-surface); }
 .yd-search .yp-purchase-tags { display: flex; flex-wrap: wrap; gap: var(--yarn-space-1); margin-top: var(--yarn-space-2); }
@@ -168,4 +170,28 @@
   .yd-search__products .yp-card__image { aspect-ratio: 1.2; }
   .yd-search__dialog { position: fixed; inset: auto 0 0; width: 100%; max-width: none; margin: 0; padding: var(--yarn-space-5) var(--yarn-space-4) max(var(--yarn-space-5), env(safe-area-inset-bottom)); border-radius: var(--yarn-radius-panel) var(--yarn-radius-panel) 0 0; }
   .yd-search__option { font-size: 1.5rem; }
+}
+
+/* Desktop uses the full results width for a persistent search toolbar. */
+@media (min-width: 990px) {
+  .yd-search { padding-top: var(--yarn-space-6); }
+  .yd-search__bar { grid-template-columns: var(--yarn-touch) minmax(0, 1fr) auto; gap: var(--yarn-space-4); margin-bottom: var(--yarn-space-6); }
+  .yd-search__bar h1 { font-size: 3.2rem; }
+  .yd-search__toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--yarn-space-5) var(--yarn-space-6); margin-bottom: var(--yarn-space-6); }
+  .yd-search__form { flex: 1 1 400px; max-width: none; margin: 0; }
+  .yd-search__field { min-height: 64px; border-radius: var(--yarn-radius-field); }
+  .yd-search__field p, .yd-search__filter { display: none; }
+  .yd-search__purchase { display: flex; flex-wrap: wrap; align-items: center; gap: var(--yarn-space-2); min-width: 0; max-width: 100%; border: 0; padding: 0; margin: 0; }
+  .yd-search__purchase-label { margin-right: var(--yarn-space-2); color: var(--yarn-muted); font-size: 1.4rem; }
+  .yd-search__purchase label { position: relative; cursor: pointer; }
+  .yd-search__purchase label > span { display: flex; align-items: center; justify-content: center; min-height: var(--yarn-field-height); padding: var(--yarn-space-3) var(--yarn-space-4); border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-pill); color: var(--yarn-ink); font-size: 1.5rem; white-space: nowrap; }
+  .yd-search__purchase label:hover > span { background: var(--yarn-action-hover); }
+  .yd-search__purchase input:checked + span { border-color: var(--yarn-primary-line); background: var(--yarn-butter); }
+  .yd-search__purchase input:focus-visible + span { outline: var(--yarn-focus-width) solid var(--yarn-focus); outline-offset: var(--yarn-focus-offset); }
+  .yd-search__categories { max-width: none; gap: var(--yarn-space-5); padding-bottom: 0; }
+  .yd-search__category { flex-direction: row; justify-content: center; gap: var(--yarn-space-4); padding: var(--yarn-space-3) var(--yarn-space-2) var(--yarn-space-5); font-size: 1.8rem; }
+  .yd-search__category img { width: 64px; flex: 0 0 64px; }
+  .yd-search__category span { white-space: nowrap; }
+  .yd-search__default { max-width: none; margin-inline: 0; }
+  .yd-search__group { margin-top: var(--yarn-space-7); }
 }

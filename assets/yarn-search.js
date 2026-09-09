@@ -140,8 +140,16 @@
         event.preventDefault();
         const purchase = this.dialog.querySelector('[name="purchase"]:checked')?.value || '';
         this.dialog.close();
-        const browse = purchase === 'inspiration' && this.state.browse === 'products' ? 'all' : this.state.browse;
-        this.setState({ ...this.state, purchase, browse: browse || (this.state.q ? '' : 'all') });
+        this.setPurchase(purchase);
+      });
+      this.querySelectorAll('[data-inline-purchase]').forEach((radio) => listen(radio, 'change', () => {
+        if (radio.checked) this.setPurchase(radio.value);
+      }));
+      listen(window.matchMedia('(min-width: 990px)'), 'change', (event) => {
+        if (event.matches && this.dialog.open) {
+          this.dialog.close();
+          this.querySelector('[data-inline-purchase]:checked')?.focus();
+        }
       });
       listen(this.dialog, 'click', (event) => {
         if (event.target !== this.dialog) return;
@@ -166,6 +174,11 @@
       const url = urlWithState(window.location.href, state);
       if (url.href !== window.location.href) window.history.pushState({ discovery: true }, '', url.href);
       this.present();
+    }
+
+    setPurchase(purchase) {
+      const browse = purchase === 'inspiration' && this.state.browse === 'products' ? 'all' : this.state.browse;
+      this.setState({ ...this.state, purchase, browse: browse || (this.state.q ? '' : 'all') });
     }
 
     async loadCatalogs() {
@@ -211,6 +224,9 @@
         button.setAttribute('aria-pressed', String(active && button.dataset.searchCategory === this.state.category));
       });
       this.filterButton.dataset.active = String(Boolean(this.state.purchase));
+      this.querySelectorAll('[data-inline-purchase], [data-filter-form] [name="purchase"]').forEach((radio) => {
+        radio.checked = radio.value === this.state.purchase;
+      });
       this.defaultState.hidden = active;
       this.empty.hidden = true;
       this.favoritesEmpty.hidden = true;

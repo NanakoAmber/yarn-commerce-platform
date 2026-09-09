@@ -7,6 +7,7 @@
     <h1 data-search-title data-title="{{ 'yarn_discovery.search' | t }}" data-favorites-title="{{ 'yarn_discovery.favorites' | t }}">{{ 'yarn_discovery.search' | t }}</h1>
     <a class="yd-search__favorites" href="{{ routes.search_url }}?browse=favorites" data-favorites-link>{{ 'yarn_discovery.favorites' | t }}</a>
   </header>
+  <div class="yd-search__toolbar">
   <form class="yd-search__form" action="{{ routes.search_url }}" method="get" role="search" data-search-form>
     <div class="yd-search__field">
       <button class="yd-search__icon" type="submit" aria-label="{{ 'yarn_discovery.search' | t }}">{{ 'icon-search.svg' | inline_asset_content }}</button>
@@ -19,6 +20,16 @@
     </div>
     <button class="yd-search__icon yd-search__filter" type="button" data-search-filter aria-label="{{ 'yarn_discovery.filters' | t }}" aria-haspopup="dialog" aria-controls="DiscoveryFilters-{{ section.id }}">{{ 'icon-filter.svg' | inline_asset_content }}</button>
   </form>
+  <fieldset class="yd-search__purchase">
+    <legend class="visually-hidden">{{ 'yarn_project.purchase_filter' | t }}</legend>
+    <span class="yd-search__purchase-label" aria-hidden="true">{{ 'yarn_project.purchase_filter' | t }}</span>
+    <label><input class="visually-hidden" type="radio" name="inline_purchase" value="" data-inline-purchase checked><span>{{ 'yarn_project.all' | t }}</span></label>
+    {% assign inline_purchase_filters = 'finished,materials,inspiration' | split: ',' %}
+    {% for purchase_filter in inline_purchase_filters %}
+      <label><input class="visually-hidden" type="radio" name="inline_purchase" value="{{ purchase_filter }}" data-inline-purchase><span>{{ purchase_filter | prepend: 'yarn_project.tag_' | t }}</span></label>
+    {% endfor %}
+  </fieldset>
+  </div>
   <nav class="yd-search__categories" aria-label="{{ 'yarn_project.category' | t }}">
     {% assign category_keys = 'all,bag,scarf,home,toy' | split: ',' %}
     {% for key in category_keys %}
