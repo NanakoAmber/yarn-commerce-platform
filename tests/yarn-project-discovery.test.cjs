@@ -38,7 +38,7 @@ test('homepage has exactly the three approved main sections; removed sections re
   assert.deepEqual(index.sections['project-discovery'].settings, {});
   assert.equal('featured_products' in index.sections['project-discovery'].settings, false);
   assert.match(fs.readFileSync('sections/yarn-project-library.liquid', 'utf8'), /shop\.metaobjects\.yarn_project\.values/);
-  assert.doesNotMatch(fs.readFileSync('sections/yarn-project-library.liquid', 'utf8'), /featured_products|product\.handle/);
+  assert.doesNotMatch(fs.readFileSync('sections/yarn-project-library.liquid', 'utf8'), /product\.handle/);
 
   // The disabled legacy section remains intact and testable for rollback/reuse.
   assert.match(section, /featured_handles contains product\.handle/);

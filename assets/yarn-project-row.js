@@ -13,13 +13,13 @@
       this.previous = this.querySelector('[data-row-previous]');
       this.next = this.querySelector('[data-row-next]');
       this.expandButton = this.querySelector('[data-row-expand]');
-      if (!this.track || !this.controls || !this.expandButton) return;
+      if (!this.track || !this.controls) return;
       this.controller = new AbortController();
       const options = { signal: this.controller.signal };
       this.previous.addEventListener('click', () => this.move(-1), options);
       this.next.addEventListener('click', () => this.move(1), options);
       this.track.addEventListener('scroll', () => this.refresh(), { ...options, passive: true });
-      this.expandButton.addEventListener('click', () => this.setExpanded(!this.expanded), options);
+      this.expandButton?.addEventListener('click', () => this.setExpanded(!this.expanded), options);
       this.observer = new ResizeObserver(() => this.refresh());
       this.observer.observe(this.track);
       this.refresh();
@@ -56,7 +56,7 @@
       if (!this.track || this.hidden) return;
       const state = scrollState(this.track.scrollLeft, this.track.clientWidth, this.track.scrollWidth);
       this.controls.hidden = this.expanded || !state.overflowing;
-      this.expandButton.hidden = !this.expanded && !state.overflowing;
+      if (this.expandButton) this.expandButton.hidden = !this.expanded && !state.overflowing;
       this.previous.disabled = state.atStart;
       this.next.disabled = state.atEnd;
       this.track.tabIndex = state.overflowing && !this.expanded ? 0 : -1;

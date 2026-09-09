@@ -119,6 +119,16 @@
       const listen = (target, event, handler) => target?.addEventListener(event, handler, { signal });
 
       listen(this.form, 'submit', (event) => {
+        if (this.dataset.globalSearch) {
+          event.preventDefault();
+          const url = new URL(this.dataset.globalSearch, window.location.href);
+          const query = this.queryInput.value.trim();
+          if (query) url.searchParams.set('q', query);
+          const preview = new URL(window.location.href).searchParams.get('preview_theme_id');
+          if (preview) url.searchParams.set('preview_theme_id', preview);
+          window.location.assign(url.href);
+          return;
+        }
         event.preventDefault();
         if (this.loaded) {
           this.update();
@@ -135,6 +145,7 @@
         this.update();
       }));
       listen(this.queryInput, 'input', () => {
+        if (this.dataset.globalSearch) return;
         if (!this.loaded) return;
         clearTimeout(this.inputTimer);
         this.inputTimer = setTimeout(() => this.update(), 200);
@@ -295,7 +306,7 @@
 
     state() {
       return {
-        q: this.queryInput.value,
+        q: this.dataset?.globalSearch ? '' : this.queryInput.value,
         ...Object.fromEntries(FILTER_NAMES.map((name) => [name, this.selects[name].value])),
       };
     }
@@ -345,6 +356,12 @@
       this.purchaseButtons?.forEach((button) => {
         button.setAttribute('aria-pressed', String((button.dataset.projectPurchase || '') === selected));
       });
+      this.querySelectorAll?.('[data-row-browse]').forEach((link) => {
+        const url = new URL(link.href, window.location.href);
+        if (selected) url.searchParams.set('purchase', selected);
+        else url.searchParams.delete('purchase');
+        link.href = url.href;
+      });
     }
 
     update() {
@@ -360,10 +377,11 @@
       this.syncCategoryButtons();
       this.syncPurchaseButtons();
       let visible = 0;
+      const visibleIds = new Set();
       for (const card of this.cards) {
         const matches = matchesProject(projectFromCard(card), state);
         card.hidden = !matches;
-        if (matches) visible += 1;
+        if (matches && !visibleIds.has(card.dataset.projectId)) { visibleIds.add(card.dataset.projectId); visible += 1; }
         const link = card.querySelector('.yp-card__link');
         if (link) {
           const url = new URL(link.href, window.location.href);
@@ -379,8 +397,7 @@
         this.countContainer.hidden = !filtered && !this.browsingAll;
         if (this.refine) this.refine.hidden = !filtered && !this.browsingAll;
         this.rows.forEach((row) => {
-          if (row.dataset.projectRow === 'featured') row.hidden = filtered || !row.querySelector('.yp-card');
-          else row.hidden = !row.querySelector('[data-project-card]:not([hidden])');
+          row.hidden = !row.querySelector('[data-project-card]:not([hidden])');
           row.refresh?.();
         });
       }

@@ -1,20 +1,20 @@
 {{ 'yarn-project.css' | asset_url | stylesheet_tag }}
 {{ 'yarn-project-rows.css' | asset_url | stylesheet_tag }}
+{{ 'yarn-discovery.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'yarn-project-library.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'yarn-project-row.js' | asset_url }}" defer="defer"></script>
 <section class="yp-library yp-library--rows yp-shell" id="shop-by-project">
-  <yarn-project-library>
-    <form data-project-filters role="search">
+  <yarn-project-library data-global-search="{{ routes.search_url }}">
+    <form data-project-filters action="{{ routes.search_url }}" method="get" role="search">
       <fieldset class="yp-filterset yp-discovery">
         <legend class="visually-hidden">{{ 'yarn_project.filters' | t }}</legend>
-        <a class="yp-discovery__all" href="#ProjectResults-{{ section.id }}" data-project-browse-all>{{ 'yarn_project.browse_all' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
         <div class="yp-discovery__search">
           <h2>{% if section.settings.heading != blank %}{{ section.settings.heading | escape }}{% else %}{{ 'yarn_project.library' | t }}{% endif %}</h2>
           {% if section.settings.description != blank %}<div class="rte">{{ section.settings.description }}</div>{% endif %}
           <div class="yp-search">
-            <label class="visually-hidden" for="ProjectSearch-{{ section.id }}">{{ 'yarn_project.search' | t }}</label>
-            <input type="search" id="ProjectSearch-{{ section.id }}" name="q" placeholder="{{ 'yarn_project.search_placeholder' | t }}" autocomplete="off" aria-controls="ProjectResults-{{ section.id }}">
-            <button type="submit" aria-label="{{ 'yarn_project.search' | t }}">{{ 'icon-search.svg' | inline_asset_content }}</button>
+            <label class="visually-hidden" for="ProjectSearch-{{ section.id }}">{{ 'yarn_discovery.search_placeholder' | t }}</label>
+            <input type="search" id="ProjectSearch-{{ section.id }}" name="q" placeholder="{{ 'yarn_discovery.search_placeholder' | t }}" autocomplete="off">
+            <button type="submit" aria-label="{{ 'yarn_discovery.search' | t }}">{{ 'icon-search.svg' | inline_asset_content }}</button>
           </div>
         </div>
         <nav class="yp-category-filters" aria-label="{{ 'yarn_project.category' | t }}">
@@ -58,7 +58,7 @@
           <button type="button" data-project-purchase="" aria-pressed="true">{{ 'yarn_project.all' | t }}</button>
           {% assign purchase_filters = 'finished,materials,inspiration' | split: ',' %}{% for purchase_filter in purchase_filters %}<button type="button" data-project-purchase="{{ purchase_filter }}" aria-pressed="false">{{ purchase_filter | prepend: 'yarn_project.tag_' | t }}</button>{% endfor %}
         </div>
-<div class="yp-discovery__refine" data-project-refine hidden>
+<div class="yp-discovery__refine" hidden>
         <details class="yp-filter-more">
           <summary>{{ 'yarn_project.filters' | t }}</summary>
           <div class="yp-filter-panel">
@@ -87,20 +87,48 @@
       %}
       <p class="yp-count" data-project-count-container hidden><span data-project-count aria-live="polite">0</span> {{ 'yarn_project.results' | t }}</p>
       <div id="ProjectResults-{{ section.id }}" class="yp-rows" data-project-results>
-        {% if section.settings.featured_projects != blank %}
+        {% if section.settings.show_featured %}
           {% assign featured_count = 0 %}
+          {% assign featured_projects = section.settings.featured_projects | default: shop.metaobjects.yarn_project.values %}
           {% capture featured_cards %}
-            {% for project in section.settings.featured_projects %}
+            {% for project in featured_projects %}
               {%- capture visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
               {% if visible == 'true' %}
                 {% assign featured_count = featured_count | plus: 1 %}
                 {% render 'yarn-project-card', project: project, featured: true, compact: true %}
+                {% if featured_count == 4 %}{% break %}{% endif %}
               {% endif %}
             {% endfor %}
           {% endcapture %}
           {% assign featured_heading = section.settings.featured_heading | default: '' %}
-          {% if featured_heading == blank %}{% assign featured_heading = 'yarn_project.featured' | t %}{% endif %}
+          {% if featured_heading == blank %}{% assign featured_heading = 'yarn_discovery.featured_projects' | t %}{% endif %}
           {% render 'yarn-project-row', row_id: 'featured', row_heading: featured_heading, cards: featured_cards, card_count: featured_count %}
+        {% endif %}
+        {% if section.settings.show_finished %}
+          {% assign finished_products = section.settings.finished_products | default: collections.all.products %}
+          {% assign finished_count = 0 %}
+          {% capture finished_cards %}
+            {% for finished_product in finished_products %}
+              {%- capture product_kind -%}{%- render 'yarn-discovery-product-kind', product: finished_product -%}{%- endcapture -%}
+              {% if product_kind == 'finished' %}
+                {% render 'yarn-discovery-product-card', product: finished_product %}
+                {% assign finished_count = finished_count | plus: 1 %}
+                {% if finished_count == 4 %}{% break %}{% endif %}
+              {% endif %}
+            {% endfor %}
+          {% endcapture %}
+          {% if finished_count > 0 %}
+            <section class="yp-finished-section" aria-labelledby="FinishedHeading-{{ section.id }}">
+              <header class="yp-row__heading">
+                <div>
+                  <h3 id="FinishedHeading-{{ section.id }}">{% if section.settings.finished_heading != blank %}{{ section.settings.finished_heading | escape }}{% else %}{{ 'yarn_discovery.featured_products' | t }}{% endif %}</h3>
+                  <p>{{ 'yarn_discovery.finished_description' | t }}</p>
+                </div>
+                <a class="yp-row__all" href="{{ routes.search_url }}?browse=products&amp;purchase=finished">{{ 'yarn_project.row_view_all' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+              </header>
+              <div class="yp-finished-grid">{{ finished_cards }}</div>
+            </section>
+          {% endif %}
         {% endif %}
         {% for block in section.blocks %}
           {% liquid
@@ -166,6 +194,10 @@
 {
   "name": "分类作品行",
   "settings": [
+    { "type": "checkbox", "id": "show_featured", "label": "显示作品精选", "default": true },
+    { "type": "checkbox", "id": "show_finished", "label": "显示精选成品", "default": true },
+    { "type": "product_list", "id": "finished_products", "label": "精选成品及顺序（最多四款）", "limit": 4, "info": "留空时从目录读取成品。仅选择成品；价格和图片跟随商品。" },
+    { "type": "text", "id": "finished_heading", "label": "成品区标题（留空使用三语名称）" },
     {
       "type": "paragraph",
       "content": "作品来自 内容 → 元对象 → 编织作品。分类块按后台类别自动归组，也可手动挑选；同一作品归入首个匹配分类，未归组作品保留在更多作品。"

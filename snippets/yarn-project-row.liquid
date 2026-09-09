@@ -2,11 +2,10 @@
 <yarn-project-row id="ProjectRow-{{ section.id }}-{{ row_id }}" class="yp-row" data-project-row="{{ row_id }}" {% if card_count == 0 %}hidden{% endif %} {{ block.shopify_attributes }}>
   <header class="yp-row__heading">
     <h3 id="ProjectRowHeading-{{ section.id }}-{{ row_id }}" tabindex="-1">{{ row_heading | escape }}</h3>
-    <button type="button" class="yp-row__all" data-row-expand aria-expanded="false" aria-controls="ProjectTrack-{{ section.id }}-{{ row_id }}" hidden>
-      <span data-row-expand-label>{{ 'yarn_project.row_view_all' | t }}</span>
-      <span data-row-collapse-label hidden>{{ 'yarn_project.row_collapse' | t }}</span>
+    <a class="yp-row__all" data-row-browse href="{{ routes.search_url }}?browse=projects{% if block.settings.icon != blank %}&amp;category={{ block.settings.icon | url_encode }}{% endif %}">
+      <span>{{ 'yarn_project.row_view_all' | t }}</span>
       <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
-    </button>
+    </a>
   </header>
   <div id="ProjectTrack-{{ section.id }}-{{ row_id }}" class="yp-row__track" data-row-track role="group" aria-labelledby="ProjectRowHeading-{{ section.id }}-{{ row_id }}" tabindex="0">{{ cards }}</div>
   <div class="yp-row__controls" data-row-controls hidden>

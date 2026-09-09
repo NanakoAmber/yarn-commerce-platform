@@ -49,6 +49,7 @@
   --yarn-scroll-thumb: #b8b1a4;
   --yarn-scroll-track: #f5f1e8;
   --yarn-focus: var(--yarn-indigo);
+  --yarn-overlay: rgba(47, 48, 47, .32);
   --yarn-control-line: var(--yarn-muted);
   --yarn-radius-media: 14px;
   --yarn-radius-panel: 16px;

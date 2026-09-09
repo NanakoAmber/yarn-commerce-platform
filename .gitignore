@@ -8,6 +8,9 @@
 /node_modules/
 /tmp/
 /output/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
 
 # Local research and visual evidence. Keep these outside the product repository.
 /hoshiami-reference-20/
