@@ -5,8 +5,8 @@
 ## 开始任务
 
 - 先确认用户目标、当前 GitHub Issue 的范围与验收标准，并检查 `git status`。实施变更前如无对应 Issue，建立一个；只读咨询无需新建 Issue。
-- 首次进入项目读取 `PRODUCT.md` 和 `CONTEXT.md`；会话中已读且未变的内容不重复加载。领域名称以 `CONTEXT.md` 为准。
-- 按需追加上下文：UI / UX → `.github/skills/impeccable/SKILL.md`、`docs/agents/visual-review.md`、已有 `DESIGN.md` 和对应 surface brief；架构或数据边界 → `docs/ARCHITECTURE.md` 与相关 ADR。
+- 从当前 Issue 与目标文件开始；按任务读取 `PRODUCT.md` 的相关产品边界和 `CONTEXT.md` 的相关领域定义。纯文档 / Harness 维护不默认加载整份产品与设计资料；会话中已读且未变的内容不重复加载。领域名称以 `CONTEXT.md` 为准。
+- 按需追加上下文：UI / UX → `.github/skills/impeccable/SKILL.md`、`docs/agents/visual-review.md`、`DESIGN.md` 相关章节和对应 surface brief；架构或数据边界 → `docs/ARCHITECTURE.md` 与相关 ADR。默认不扫描历史 QA、`.impeccable/review/`、`build/`、`content/`、整套 skill references 或二进制素材；仅在当前任务确需追溯某项决定或来源时定向读取。
 - 首次修改 Theme 代码、依赖或验证脚本前运行 `./init.sh` 确认基线；纯文档和指令修改检查内容与引用即可。
 - 每个工作区一次实现一个 Issue，分支使用 `codex/<issue>-<slug>`。已有无关修改时使用独立工作区，保留用户工作。
 
@@ -25,6 +25,15 @@
 - `DESIGN.md`：真实实现且复核后的全局视觉系统；surface brief：单页面获批方向与构图。不得把意向稿提前写成成品规范。
 - 视觉权威：当前用户明确批准的方向 / surface brief > `DESIGN.md` > 当前实现 > 历史 QA、参考站和原型。`docs/qa/design-direction.md` 仅为历史审计。
 - 不另建与 GitHub Issue 重复的 feature / progress tracker。
+
+## 资料保留（2026-09-08 用户决定）
+
+- 长期资料只保留当前有效决定、获批方向、必要操作说明和素材来源；实现代码、测试与工具本体正常维护。本节优先于工具 / skill 中要求归档过程的默认建议。
+- 决定直接更新上述唯一权威文档，简记结论、适用范围和批准依据；替换失效规则，不追加讨论流水账。未决定问题只在当前 Issue 简记，不写入产品或设计规范。
+- 讨论草稿、候选方案、逐轮 QA / review / verdict、截图、DOM 快照、日志、检测 JSON 和 build 状态仅在当前任务本地按需生成，使用被忽略的目录；不提交、不复制到 docs，不上传 GitHub 作过程存档，也不强制 `git add -f`。
+- 新获批视觉稿与必要来源放 `docs/design/approved/`，由对应 surface brief 引用；实际发布资产仍放 Theme assets。已有获批稿及唯一来源可保留原路径。普通截图不会因“最终版”自动成为获批方向。
+- PR 只写简短验证结果、适用范围、未解决项及回滚方式；不另存 finish-review / verdict 文件。需要独立评审时照常执行，在 PR 记录最终结论，不保留逐轮往返。
+- 既有过程资料不再追加，清理前先把唯一有效决定 / 来源迁入权威文档并修复引用；历史缺陷与未完成验收不能因删档变为通过。任务结束检查暂存 diff，排除过程文件；只清理本任务临时文件，不动其他会话资料。
 
 ## Shopify 与内容边界
 
@@ -64,7 +73,7 @@
 完成必要检查后，只因新修改、失败或尚未解决的问题扩大或重复验证；不为低风险文案改动添加镜像测试。
 
 - 完成意味着 Issue 验收满足、适用检查通过、文档与实现一致；既有基线问题须注明，不能充当本次回归的豁免。
-- PR 记录验证证据、风险、未解决项和回滚方式。Comp-first 必须完成独立 finish review、verdict 和从成品提取的 `DESIGN.md`。
+- PR 简记验证结果、风险、未解决项和回滚方式。Comp-first 必须完成独立 finish review，并在 PR 记录最终 verdict；从成品提取的 `DESIGN.md` 只更新当前有效规范，不提交评审过程文件。
 - 结束时更新当前 Issue / PR，使下一步能从 GitHub 恢复；检查 `git status`，明确本次提交与尚未提交的文件。
 
 ## 生产安全

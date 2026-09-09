@@ -54,3 +54,14 @@
 # User-approved generated review composition for Issue 34.
 !/.impeccable/mocks/34-project-dual-mode.png
 !/.impeccable/mocks/34-project-dual-mode.json
+
+# Harness: new process artifacts stay local. Existing tracked decisions/provenance
+# are migrated deliberately; never force-add new process files.
+/.impeccable/build/
+/.impeccable/review/
+/.impeccable/content/
+/.impeccable/mocks/
+/.impeccable/questions/
+/.impeccable/references/
+/.impeccable/design.json
+# New approved visuals and minimal provenance belong in docs/design/approved/.
