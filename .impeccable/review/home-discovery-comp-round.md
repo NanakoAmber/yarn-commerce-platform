@@ -24,5 +24,5 @@
 - 这是构图选择，不是代码或可用性验收。生成图示意的是套件呈现形态；实际落地须使用真实 Shopify 内容，保留 Product / Project 边界，并补充选中、清除、无结果、结果数量与三语状态验证。
 - `./init.sh` 基线通过：192 文件，8 条既有 warning，无错误；`git diff --check` 通过。本轮没有主题代码变更，因此未跑新 detector 或 Theme 浏览器回归，也未重启已停止的本地 Theme 代理。
 - 发现 PR #14 已合并；Issue #13 仍打开。本轮仅在 Issue / PR 留构图证据，不向已合并 PR 推送代码。后续实现须先确认基于合并后的最新代码开工作分支，保留其他任务的 README 与内容运营文档修改。
-- 老机械状态保存在 `.impeccable/build/state-before-discovery-round.json`；当前 build state 新开 comps 阶段，三个候选均未批准。未抹去此前 responsive 未闭合的结论。
+- 老机械状态仅留在 Git 历史，不作为当前验收依据；当前 build state 新开 comps 阶段，三个候选均未批准。未抹去此前 responsive 未闭合的结论。
 - 目前未提交本轮 comp、surface brief 注记、review 文档与 build state；既有 README、`docs/shopify-admin.md` 与 `15-content-onboarding` 产物未改动。
