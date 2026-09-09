@@ -12,7 +12,7 @@
   endif
 -%}
 {%- capture purchase_modes -%}{%- render 'yarn-project-capabilities', project: project -%}{%- endcapture -%}
-<article class="yp-card" {% unless featured %}data-project-card{% endunless %}
+<article class="yp-card" data-project-card data-discovery-card data-entity-type="project" data-entity-id="{{ project.system.id | split: '/' | last }}"
   data-purchase="{{ purchase_modes | escape }}"
   data-project-id="{{ project.system.id | escape }}"
   {% if row_id != blank %}data-row-id="{{ row_id | escape }}"{% endif %}
@@ -33,7 +33,8 @@
     </div>
     <div class="yp-card__body">
       {% if compact %}
-        <h4 class="yp-card__title">{{ project.title.value | escape }}</h4>
+        {% if search_card %}<h3 class="yp-card__title">{{ project.title.value | escape }}</h3>{% else %}<h4 class="yp-card__title">{{ project.title.value | escape }}</h4>{% endif %}
+        {% if project.summary.value != blank %}<p class="yp-card__summary">{{ project.summary.value | escape }}</p>{% endif %}
       {% else %}
       {% if project.category.value != blank %}<p class="yp-card__category">{% render 'yarn-project-label', value: project.category.value %}</p>{% endif %}
       <h3>{{ project.title.value | escape }}</h3>
@@ -49,5 +50,6 @@
       <div class="yp-purchase-tags">{% assign purchase_tags = purchase_modes | split: ',' %}{% for purchase_tag in purchase_tags %}<span class="yp-purchase-tag">{{ purchase_tag | prepend: 'yarn_project.tag_' | t }}</span>{% endfor %}</div>
     </div>
   </a>
+  {% render 'yarn-favorite-button', entity_type: 'project', entity_id: project.system.id, entity_title: project.title.value %}
 </article>
 {%- endif -%}

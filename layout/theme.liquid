@@ -87,7 +87,7 @@
     -%}
 
     <title>
-      {{ yarn_page_title }}
+      {%- if template.name == 'search' -%}{{ 'yarn_discovery.search' | t }}{%- else -%}{{ yarn_page_title }}{%- endif -%}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless yarn_page_title contains yarn_shop_name %} &ndash; {{ yarn_shop_name }}{% endunless -%}
@@ -355,6 +355,8 @@
     {{ 'yarn-prototype.css' | asset_url | stylesheet_tag }}
     {{ 'yarn-header.css' | asset_url | stylesheet_tag }}
     {{ 'yarn-foundation.css' | asset_url | stylesheet_tag }}
+    {{ 'yarn-discovery.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'yarn-favorites.js' | asset_url }}" defer="defer"></script>
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -397,7 +399,8 @@
     </script>
   </head>
 
-  <body class="gradient{% if metaobject.system.type == 'yarn_project' %} yarn-project-page{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="gradient{% if request.page_type == 'search' %} yarn-search-page{% endif %}{% if metaobject.system.type == 'yarn_project' %} yarn-project-page{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+    {% render 'yarn-favorites-runtime' %}
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>

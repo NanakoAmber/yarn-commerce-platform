@@ -1400,6 +1400,12 @@
     ]
   },
   {
+    "name": "账号收藏",
+    "settings": [
+      { "type": "text", "id": "yarn_favorites_endpoint", "label": "Shopify App Proxy 收藏路径", "info": "收藏服务安装后填写同域路径，例如 /apps/mewool/favorites。不要填写密钥。留空时不会假装已保存收藏。" }
+    ]
+  },
+  {
     "name": "团队演示作品",
     "settings": [
       { "type": "checkbox", "id": "yarn_internal_projects", "label": "团队演示模式：显示所有有标题的作品", "default": true, "info": "演示阶段开启，让团队直接查看和修改作品草稿。正式上线前关闭，恢复已核实公开作品的完整性检查。" },

@@ -1,0 +1,18 @@
+<yarn-favorites-runtime
+  data-endpoint="{{ settings.yarn_favorites_endpoint | escape }}"
+  data-authenticated="{% if customer %}true{% else %}false{% endif %}"
+  data-login-url="{{ routes.storefront_login_url | escape }}"
+  data-saved="{{ 'yarn_discovery.saved' | t }}"
+  data-removed="{{ 'yarn_discovery.removed' | t }}"
+  data-error="{{ 'yarn_discovery.favorite_error' | t }}"
+>
+  <p class="yarn-favorites-notice" role="status" data-favorite-notice hidden></p>
+  <dialog class="yarn-favorites-dialog" aria-labelledby="FavoriteLoginTitle">
+    <h2 id="FavoriteLoginTitle">{{ 'yarn_discovery.login_title' | t }}</h2>
+    <p>{% if settings.yarn_favorites_endpoint == blank %}{{ 'yarn_discovery.favorites_unavailable' | t }}{% else %}{{ 'yarn_discovery.login_hint' | t }}{% endif %}</p>
+    <footer>
+      <button class="yd-search__reset" type="button" data-favorite-login-close>{{ 'yarn_discovery.not_now' | t }}</button>
+      <a class="yd-search__action" href="{{ routes.storefront_login_url }}" data-favorite-login-link>{{ 'customer.log_in' | t }}</a>
+    </footer>
+  </dialog>
+</yarn-favorites-runtime>

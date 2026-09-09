@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-07T23:37:57.466048+00:00",
+  "generatedAt": "2026-09-09T19:57:54.172194+00:00",
   "title": "Design System: 毛线品牌",
   "extensions": {
     "colorMeta": {
@@ -365,6 +365,22 @@
       "shell-input": {
         "displayName": "导航与页脚输入文字",
         "purpose": "明确 16px；首页搜索手机同为 16px，桌面保留 1.5rem。"
+      },
+      "discovery-card-title": {
+        "displayName": "发现卡片标题",
+        "purpose": "Issue #39 首页与搜索共用标题；首页行高局部覆盖为 1.6。"
+      },
+      "discovery-card-title-mobile": {
+        "displayName": "手机发现标题",
+        "purpose": "749px 以下首页与搜索卡片名称。"
+      },
+      "discovery-price": {
+        "displayName": "发现商品价格",
+        "purpose": "首页成品与搜索商品共用的炭黑价格。"
+      },
+      "discovery-price-mobile": {
+        "displayName": "手机商品价格",
+        "purpose": "749px 以下商品卡价格。"
       }
     },
     "shadows": [
@@ -452,6 +468,21 @@
           ".impeccable/review/34-project-modes/mobile.jpg",
           ".impeccable/review/34-project-modes/finish-review.md"
         ]
+      },
+      "home-and-search": {
+        "issue": 39,
+        "target": "sections/yarn-search.liquid",
+        "source": [
+          "assets/yarn-discovery.css",
+          "assets/yarn-design-tokens.css",
+          "sections/yarn-project-library.liquid",
+          "snippets/yarn-project-card.liquid",
+          "snippets/yarn-discovery-product-card.liquid"
+        ],
+        "scope": "覆盖旧首页原地搜索、卡片密度与分类图尺寸；继承既有 Hero。构图依据 docs/design/search-surface.md，不代表账号收藏或发布验收。",
+        "layout": "首页作品与成品四列同构图，手机两列；独立搜索作品桌面两列横行、989px 以下单列，商品四/三/两列；手机作品图114px。",
+        "imagery": "复用既有批准原画，桌面分类 CSS 上限112px；首页手机96px、搜索手机44px。不把低清方底升级为材质规范。",
+        "behavior": "首页搜索进入独立路由，作品与商品分组；爱心表达账号收藏意图，静态选中不证明跨设备保存成功。"
       }
     }
   },
@@ -465,12 +496,12 @@
       "css": ".ds-hero-action{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif);display:inline-flex;align-items:center;justify-content:center;min-width:154px;min-height:48px;padding:12px 28px;border:1px solid var(--yarn-primary-line,#efd68d);border-radius:var(--yarn-radius-pill,999px);background:var(--yarn-butter,#f8e5a9);color:var(--yarn-primary-ink,#292a28);font-size:16px;font-weight:600;text-decoration:none}.ds-hero-action:hover{background:var(--yarn-primary-hover,#f6dfa0)}.ds-hero-action:focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px);box-shadow:none}@media(max-width:749px){.ds-hero-action{min-width:122px;min-height:var(--yarn-touch,44px);padding:10px 22px;font-size:14px}}"
     },
     {
-      "name": "当前作品搜索",
+      "name": "当前首页搜索",
       "kind": "input",
       "refersTo": "field-search",
-      "description": "当前首页 Project 搜索，桌面 / 手机均为 56px 最小高度和 24px 圆角；面板只呈现字段，不连接真实搜索。",
-      "html": "<div class=\"ds-scope ds-search\"><input type=\"search\" aria-label=\"搜索想做的作品\" placeholder=\"搜索想做的作品\"><button type=\"button\" aria-label=\"搜索\"><svg fill=\"none\" viewBox=\"0 0 18 19\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M11.03 11.68A5.784 5.784 0 1 1 2.85 3.5a5.784 5.784 0 0 1 8.18 8.18m.26 1.12a6.78 6.78 0 1 1 .72-.7l5.4 5.4a.5.5 0 1 1-.71.7z\" clip-rule=\"evenodd\"/></svg></button></div>",
-      "css": ".ds-search{font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif);position:relative;width:min(680px,100%);color:var(--yarn-ink,#2f302f)}.ds-search input{width:100%;min-height:var(--yarn-field-height,56px);padding:12px 58px 12px 22px;border:1px solid var(--yarn-control-line,#686762);border-radius:var(--yarn-radius-field,24px);background:var(--yarn-surface,#fffefa);color:inherit;font:inherit;font-size:1.5rem;caret-color:var(--yarn-action,#a6472e)}.ds-search button{position:absolute;top:0;right:4px;display:grid;place-items:center;width:48px;height:var(--yarn-field-height,56px);padding:13px;border:0;background:transparent;color:#303330;cursor:pointer}.ds-search svg{width:21px;height:21px}.ds-search :is(input,button):focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px);box-shadow:none}@media(max-width:749px){.ds-search input{font-size:16px}}"
+      "description": "Issue #39 首页暖白胶囊、左侧搜索图标，至少56px高；真实表单进入独立搜索，片段仅呈现字段。",
+      "html": "<div class=\"ds-scope ds-search\"><input type=\"search\" aria-label=\"搜索作品或商品\" placeholder=\"搜索作品或商品\"><button type=\"button\" aria-label=\"搜索\"><svg fill=\"none\" viewBox=\"0 0 18 19\" aria-hidden=\"true\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M11.03 11.68A5.784 5.784 0 1 1 2.85 3.5a5.784 5.784 0 0 1 8.18 8.18m.26 1.12a6.78 6.78 0 1 1 .72-.7l5.4 5.4a.5.5 0 1 1-.71.7z\" clip-rule=\"evenodd\"/></svg></button></div>",
+      "css": ".ds-search{position:relative;width:min(680px,100%);min-height:var(--yarn-field-height,56px);border:1px solid var(--yarn-line,#e4dfd7);border-radius:var(--yarn-radius-pill,999px);background:var(--yarn-surface,#fffefa);color:var(--yarn-ink,#2f302f)}.ds-search input{width:100%;min-height:var(--yarn-field-height,56px);padding:16px 16px 16px 54px;border:0;border-radius:inherit;background:transparent;color:inherit;font-family:var(--font-body-family,sans-serif);font-size:1.6rem;caret-color:var(--yarn-action,#a6472e)}.ds-search button{position:absolute;top:50%;left:var(--yarn-space-2,8px);transform:translateY(-50%);display:grid;place-items:center;width:var(--yarn-touch,44px);height:var(--yarn-touch,44px);padding:12px;border:0;background:transparent;color:inherit;cursor:pointer}.ds-search svg{width:22px;height:22px}.ds-search button:hover{color:var(--yarn-action,#a6472e)}.ds-search :is(input,button):focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px)}"
     },
     {
       "name": "共享文字导航",
@@ -507,7 +538,7 @@
     {
       "name": "Project 行底部滚动控件",
       "kind": "custom",
-      "description": "图片与名称下方右对齐的 44px 双箭头；片段演示左端禁用与右端可用的外观，不发送请求或模拟已连接的滚动行为。仅实际溢出且未展开的行显示。",
+      "description": "图片与名称下方右对齐的 44px 双箭头；片段演示左端禁用与右端可用的外观，不发送请求或模拟已连接的滚动行为。仅实际溢出的分类预览行显示；查看全部进入独立搜索浏览。",
       "html": "<div class=\"ds-row-controls\"><button type=\"button\" disabled aria-label=\"上一组作品\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" aria-hidden=\"true\" viewBox=\"0 0 14 10\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></button><button type=\"button\" aria-label=\"下一组作品\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" aria-hidden=\"true\" viewBox=\"0 0 14 10\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546\" clip-rule=\"evenodd\"/></svg></button></div>",
       "css": ".ds-row-controls{display:flex;justify-content:flex-end;gap:12px;margin-top:16px}.ds-row-controls button{display:grid;place-items:center;width:var(--yarn-touch,44px);height:var(--yarn-touch,44px);padding:12px;border:1px solid var(--yarn-thread,#bf5a38);border-radius:50%;background:transparent;color:var(--yarn-action,#a6472e);cursor:pointer}.ds-row-controls button:hover:not(:disabled){background:var(--yarn-action-hover,#fff3de)}.ds-row-controls button:disabled{color:var(--yarn-disabled,#8c8880);border-color:var(--yarn-disabled-line,#d3cfc7);cursor:default}.ds-row-controls svg{display:block;width:18px;height:18px}.ds-row-controls button:focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:4px}@media(max-width:749px){.ds-row-controls{gap:10px;margin-top:12px}}.ds-row-controls button:first-child svg{transform:rotate(180deg)}"
     },
@@ -531,16 +562,24 @@
       "description": "商品标题上方的轻量来源区，普通无参数访问隐藏；有效同源作品导航提示显示回链，非同款成品附完整说明。不是适配认证，所购 Variant、价格及库存仍归 Shopify。",
       "html": "<aside class=\"ds-product-context\"><p>来自作品：<a href=\"#作品\">花片毯｜内部示例</a></p><p>仅作成品参考，并非本教程同款。</p></aside>",
       "css": ".ds-product-context{display:block;padding-block:12px;margin-bottom:20px;border-block:1px solid var(--yarn-line,#e4dfd7);color:var(--yarn-ink,#2f302f);font-family:var(--font-body-family,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif);font-size:1.4rem}.ds-product-context[hidden]{display:none}.ds-product-context p{margin:6px 0;line-height:1.6}.ds-product-context a{color:inherit;text-underline-offset:4px;overflow-wrap:anywhere}.ds-product-context a:focus-visible{outline:2px solid var(--yarn-indigo,#426f82);outline-offset:4px}"
+    },
+    {
+      "name": "发现卡片收藏",
+      "kind": "button",
+      "refersTo": "button-favorite",
+      "description": "首页与搜索共用的44px爱心；片段为外观示例，不连接账号或模拟保存成功。",
+      "html": "<button class=\"ds-favorite\" type=\"button\" aria-label=\"收藏作品\" aria-pressed=\"false\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon icon-accordion icon-heart\" viewBox=\"0 0 20 20\"><path fill-rule=\"evenodd\" d=\"M10 5.24 8.515 3.773a4.433 4.433 0 0 0-6.21 0 4.293 4.293 0 0 0 0 6.128L10 17.495l7.695-7.593a4.293 4.293 0 0 0 0-6.128 4.433 4.433 0 0 0-6.21 0zm.765-2.177c2.113-2.084 5.538-2.084 7.65 0a5.29 5.29 0 0 1 0 7.55l-7.695 7.593a1.03 1.03 0 0 1-1.44 0l-7.696-7.594a5.29 5.29 0 0 1 0-7.549C3.697.98 7.122.98 9.234 3.063l.766.755z\"/></svg></button>",
+      "css": ".ds-favorite{display:grid;place-items:center;width:var(--yarn-touch,44px);height:var(--yarn-touch,44px);padding:var(--yarn-space-3,12px);border:0;border-radius:var(--yarn-radius-pill,999px);background:var(--yarn-surface,#fffefa);color:var(--yarn-ink,#2f302f);cursor:pointer}.ds-favorite svg{width:22px;height:22px;fill:currentColor}.ds-favorite:hover,.ds-favorite[aria-pressed=true]{color:var(--yarn-action,#a6472e);background:var(--yarn-action-soft,#fff9e9)}.ds-favorite[aria-busy=true]{opacity:.55;cursor:progress}.ds-favorite:focus-visible{outline:var(--yarn-focus-width,2px) solid var(--yarn-focus,#426f82);outline-offset:var(--yarn-focus-offset,4px)}"
     }
   ],
   "narrative": {
     "northStar": "编织图解图谱",
-    "overview": "暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。实体手作插画、既有针目图解、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄承接当前 Hero 主动作，陶土色承接可点击文字，浅奶油纸面连接导航选中态、帮助和页脚。浅粉选中态属于保留的历史 B 筛选与套件标签，不再描述当前导航。\n\nIssue #32（2026-09-07）从成品提取共享角色并统一导航、帮助与页脚，继承当前 Hero 和四分类作品构图。documenter 已打开本轮[中文桌面](.impeccable/review/32-home-system/desktop.png)、[中文手机](.impeccable/review/32-home-system/mobile.png)、[英文桌面](.impeccable/review/32-home-system/en-desktop.png)、[英文手机](.impeccable/review/32-home-system/en-mobile.png)、[日文桌面](.impeccable/review/32-home-system/ja-desktop.png)、[日文手机](.impeccable/review/32-home-system/ja-mobile.png)，与 token、foundation、导航、页脚、Hero、分类行和紧凑帮助代码核对。独立 [finish review](.impeccable/review/32-home-system/finish-review.md) 的剩余项为本次文档持久化，关闭以限定文档 verdict 为准。截图验证范围为三语 1440 / 390 px 的未发布 Theme `189759848761`；不据此宣称后台编辑、订阅发送、全站本地化或生产发布通过。 上述六张为导航翻译修复后重新捕获的最终版，本角色已重新打开全部六张，并打开[中文展开菜单](.impeccable/review/32-home-system/mobile-menu.png)、[英文展开菜单](.impeccable/review/32-home-system/en-mobile-menu.png)、[日文展开菜单](.impeccable/review/32-home-system/ja-mobile-menu.png)：三语桌面导航和手机菜单均与对应 Section 的页面语言一致，关键文案完整可读。修复前中文 / 日文页仍显示英文菜单的旧图不作为最终语言证据；菜单资源保存与后台重载由主代理验证，不由截图推定。\n\n本文件合并保留已确认的视觉世界与共享购买骨架规范。2026-09-05 首页 B 的提取是历史基线；2026-09-07 首页已采用串联 Hero 与分类 Project 行，下文标为历史 B 的组件不再描述当前发现区。B 的帮助图标、套件标签、暖白纸面和移动可读性已通过独立局部整改复核；整页 Comp-first 流程仍未闭合，本文不授予 ship，也不代表商品详情、购物车或整个网站完成同等深度的视觉验收。首页三主区域与次序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。\n\nIssue #23 在这个既有世界内新增 Project 库与详情：列表继续以织物作品图为入口，详情采用用户已批准的 `paper_flow`，把作品事实、制作准备、同页 Tutorial 与购买分流放在顺读纸面中。较早的详情 / 购物车两项修复已获局部 `ship`；本次部分配件销售扩展另有独立 [finish review](.impeccable/review/23-project-components/finish-review.md) 与 [verdict](.impeccable/review/23-project-components/finish-verdict.md)。三语移动首屏修复已为 `resolved`，本文完成其第 2 项设计事实同步，文档 finding 的关闭状态以同一 reviewer 的 verdict 为准；这不改变旧首页 gate 或生产状态。\n\n本次提取覆盖完整作品图与标题并排的移动首段、部分供给清单、商品来源提示、非同款成品说明与购物车回链。代码依据为 `assets/yarn-project.css`、配件 snippet、作品购买脚本、商品来源脚本 / 样式与购物车 Project snippet；documenter 已打开本目录三语 390 px 首屏与全页、中文 1440 px 详情及商品 / 成品 / 购物车代表截图。三语关键操作、后台编辑及 `npm run verify` 50/50 通过来自主代理的 [本轮 QA 输入](.impeccable/review/23-project-components/review-input.md)，不是 documenter 独立浏览器验证。范围只到受保护内部原型，不认证实际跟做、材料适配与用量、真实供货、素材公开权利或队友试用。\n\nIssue #28 的作品详情后续在同一 `paper_flow` 世界中落实“主毛线单层纸面 + 工具辅助清单”：制作准备先以一张暖白编辑纸面呈现主毛线图、名称、供给状态、规格与可用的单项采购，再以无嵌套卡片的细线清单承接工具和其他材料。独立 [finish review](.impeccable/review/28-project-yarn-first/finish-review.md) 为 `disposition: ship`，仅批准合入受密码保护的未发布 Theme / 内部原型；不等于 production 发布、材料适配、真实供货或生成示意公开权利获批。\n\n当前规范只覆盖受密码保护的内部模板；发布与回滚状态以本轮 Issue / PR 为准，文档不替代发布记录。店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。MewoolMew 的名称和猫抱毛线球标识为原创 Theme 资产，但不改变参考商品图片的公开授权边界。\n\n提取依据为 `templates/index.json`、首屏与 B 样式覆盖、一体化作品发现 Section / CSS / JS、作品卡片 snippet、紧凑帮助 Section 和 `assets/yarn-prototype.css`。视觉依据为 `.impeccable/review/desktop.png`、`mobile.png`、`user-756.png` 及三张同名 `-filter-open.png`；方向为 `.impeccable/mocks/discovery-b-zh.png`。独立 [finish review](.impeccable/review/discovery-b-finish-review.md) 与 [verdict](.impeccable/review/discovery-b-finish-verdict.md) 仍记录 `plates=open`、`gate.ok=false`、后续 phases pending；真实 Tutu Product 照片适配不能被写成机械 gate 已通过。文档提取完成不自动关闭这些状态。\n\n2026-09-07 Issue #13 的本轮提取只覆盖 Hero 下方分类作品行：Shopify `yarn_project` 提供作品，图片和名称进入 Project 详情；各分类独立排列，溢出时在图片与名称下方提供箭头，并可原行展开。数据源、分组、真实数量和最新用户反馈见 [本轮 surface brief](.impeccable/home-surface-brief.md)。布局与类型依据 `sections/yarn-project-library.liquid`、`snippets/yarn-project-row.liquid`、`snippets/yarn-project-card.liquid` 和 `assets/yarn-project-rows.css`；本轮主代理的三语操作、后台编辑与测试证据见 [verification](.impeccable/review/13-category-rows/verification.md)，独立结论见 [finish review](.impeccable/review/13-category-rows/finish-review.md)。文档刷新不把 detector 的 advisory 自动变成通过：新增值按真实角色记录，局部字号和禁用态不扩充全站尺度。\n\n历史 discovery B 的 `plates=open`、`gate.ok=false` 等机械状态保留；本轮初次 scoped comp-diff 为 54.53%、`contradicted`，受真实 9 件与示意 16 件、用户移动箭头和删除卡片 CTA 等差异影响，不能称为像素还原通过。盖毯样例封面与标题不一致仍是既有内容缺陷；照片由 Shopify 管理，不能从页面完成推导出内容正确或公开商用权利。\n\nIssue #34（2026-09-07）在现有首页视觉世界内采用用户指定的第二轮方案 2，替代详情的历史 `paper_flow` 构图。当前详情使用名称、宽幅作品图、按实际能力显示的「买成品 / 自己做」入口、采购控件及内容存在时的同页教程；首页增加同源购买能力标签与筛选。本次文档依据 `sections/yarn-project-detail.liquid`、`assets/yarn-project-modes.css`、`assets/yarn-header.css`、`sections/yarn-project-library.liquid`、`assets/yarn-project-rows.css` 与对应 capability、材料和购买 snippet。documenter 已打开本轮[桌面](.impeccable/review/34-project-modes/desktop.jpg)、[手机](.impeccable/review/34-project-modes/mobile.jpg)、[comp 尺寸](.impeccable/review/34-project-modes/comp-size.jpg)截图；最后一张是较早的布局对照，旧外跳字形不作最终图标依据，最新桌面 / 手机图与源码显示同页教程入口已移除该箭头。\n\n本次记录是实现事实，不是 gate 通过证明。方向与范围见[当前 surface brief](.impeccable/surfaces/sections-yarn-project-detail-liquid.md)，最终状态以独立 [finish review](.impeccable/review/34-project-modes/finish-review.md) 及本轮 verdict 为准；静态 hero gate 的解析 / 测量限制不能由文档关闭。真实 SKU 数量、教程图文入口和随内容增长的位置适配不被改写成逐像素匹配。本文不认证三语、后台编辑、真实供货、人工验收或生产发布已经完成；演示图文仍属于受保护内部原型。",
+    "overview": "暖白纸面承接真实织物，柔粉、粉蓝、薄荷和浅奶油色组成轻柔的分类层；炭黑文字给出清楚的阅读重心。实体手作插画、既有针目图解、细线图标与线团花枝保留手作温度，文字与操作保持克制。奶油黄承接当前 Hero 主动作，陶土色承接可点击文字，浅奶油纸面连接导航选中态、帮助和页脚。浅粉选中态属于保留的历史 B 筛选与套件标签，不再描述当前导航。\n\nIssue #39（2026-09-09）的首页内容区与独立搜索继承此视觉世界，当前构图以[搜索与首页 surface brief](docs/design/search-surface.md)及其中两张获批稿为准。下文当前首页 / 搜索规则覆盖旧版原地搜索、旧卡片信息密度与分类图尺寸；Hero、共享导航、帮助、页脚和详情既有方向继续保留。此次提取依据 `yarn-discovery.css`、共享 tokens、Section / card snippets，并打开复核了未发布 Theme `189819093305` 在 CSS 1440 / 390 px、1x 浏览器下的中 / 日 / 英桌面与手机共 12 张成品截图。该范围只确认所见构图，不代表账号收藏跨设备、后台编辑、全目录翻译、全部 gates 或发布验收完成；完成状态以 Issue / PR 为准。\n\nIssue #32（2026-09-07）从成品提取共享角色并统一导航、帮助与页脚，继承当前 Hero 和四分类作品构图。documenter 已打开本轮[中文桌面](.impeccable/review/32-home-system/desktop.png)、[中文手机](.impeccable/review/32-home-system/mobile.png)、[英文桌面](.impeccable/review/32-home-system/en-desktop.png)、[英文手机](.impeccable/review/32-home-system/en-mobile.png)、[日文桌面](.impeccable/review/32-home-system/ja-desktop.png)、[日文手机](.impeccable/review/32-home-system/ja-mobile.png)，与 token、foundation、导航、页脚、Hero、分类行和紧凑帮助代码核对。独立 [finish review](.impeccable/review/32-home-system/finish-review.md) 的剩余项为本次文档持久化，关闭以限定文档 verdict 为准。截图验证范围为三语 1440 / 390 px 的未发布 Theme `189759848761`；不据此宣称后台编辑、订阅发送、全站本地化或生产发布通过。 上述六张为导航翻译修复后重新捕获的最终版，本角色已重新打开全部六张，并打开[中文展开菜单](.impeccable/review/32-home-system/mobile-menu.png)、[英文展开菜单](.impeccable/review/32-home-system/en-mobile-menu.png)、[日文展开菜单](.impeccable/review/32-home-system/ja-mobile-menu.png)：三语桌面导航和手机菜单均与对应 Section 的页面语言一致，关键文案完整可读。修复前中文 / 日文页仍显示英文菜单的旧图不作为最终语言证据；菜单资源保存与后台重载由主代理验证，不由截图推定。\n\n本文件合并保留已确认的视觉世界与共享购买骨架规范。2026-09-05 首页 B 的提取是历史基线；2026-09-07 首页已采用串联 Hero 与分类 Project 行，下文标为历史 B 的组件不再描述当前发现区。B 的帮助图标、套件标签、暖白纸面和移动可读性已通过独立局部整改复核；整页 Comp-first 流程仍未闭合，本文不授予 ship，也不代表商品详情、购物车或整个网站完成同等深度的视觉验收。首页三主区域与次序由 [surface brief](.impeccable/surfaces/templates-index-json.md) 管理，不推广为其他页面的固定模板。\n\nIssue #23 在这个既有世界内新增 Project 库与详情：列表继续以织物作品图为入口，详情采用用户已批准的 `paper_flow`，把作品事实、制作准备、同页 Tutorial 与购买分流放在顺读纸面中。较早的详情 / 购物车两项修复已获局部 `ship`；本次部分配件销售扩展另有独立 [finish review](.impeccable/review/23-project-components/finish-review.md) 与 [verdict](.impeccable/review/23-project-components/finish-verdict.md)。三语移动首屏修复已为 `resolved`，本文完成其第 2 项设计事实同步，文档 finding 的关闭状态以同一 reviewer 的 verdict 为准；这不改变旧首页 gate 或生产状态。\n\n本次提取覆盖完整作品图与标题并排的移动首段、部分供给清单、商品来源提示、非同款成品说明与购物车回链。代码依据为 `assets/yarn-project.css`、配件 snippet、作品购买脚本、商品来源脚本 / 样式与购物车 Project snippet；documenter 已打开本目录三语 390 px 首屏与全页、中文 1440 px 详情及商品 / 成品 / 购物车代表截图。三语关键操作、后台编辑及 `npm run verify` 50/50 通过来自主代理的 [本轮 QA 输入](.impeccable/review/23-project-components/review-input.md)，不是 documenter 独立浏览器验证。范围只到受保护内部原型，不认证实际跟做、材料适配与用量、真实供货、素材公开权利或队友试用。\n\nIssue #28 的作品详情后续在同一 `paper_flow` 世界中落实“主毛线单层纸面 + 工具辅助清单”：制作准备先以一张暖白编辑纸面呈现主毛线图、名称、供给状态、规格与可用的单项采购，再以无嵌套卡片的细线清单承接工具和其他材料。独立 [finish review](.impeccable/review/28-project-yarn-first/finish-review.md) 为 `disposition: ship`，仅批准合入受密码保护的未发布 Theme / 内部原型；不等于 production 发布、材料适配、真实供货或生成示意公开权利获批。\n\n当前规范只覆盖受密码保护的内部模板；发布与回滚状态以本轮 Issue / PR 为准，文档不替代发布记录。店铺保护未解除；参考 Product 图片及其中的品牌字样、色数文字没有因此获得公开发布授权。MewoolMew 的名称和猫抱毛线球标识为原创 Theme 资产，但不改变参考商品图片的公开授权边界。\n\n提取依据为 `templates/index.json`、首屏与 B 样式覆盖、一体化作品发现 Section / CSS / JS、作品卡片 snippet、紧凑帮助 Section 和 `assets/yarn-prototype.css`。视觉依据为 `.impeccable/review/desktop.png`、`mobile.png`、`user-756.png` 及三张同名 `-filter-open.png`；方向为 `.impeccable/mocks/discovery-b-zh.png`。独立 [finish review](.impeccable/review/discovery-b-finish-review.md) 与 [verdict](.impeccable/review/discovery-b-finish-verdict.md) 仍记录 `plates=open`、`gate.ok=false`、后续 phases pending；真实 Tutu Product 照片适配不能被写成机械 gate 已通过。文档提取完成不自动关闭这些状态。\n\n2026-09-07 Issue #13 的本轮提取只覆盖 Hero 下方分类作品行：Shopify `yarn_project` 提供作品，图片和名称进入 Project 详情；各分类独立排列，溢出时在图片与名称下方提供箭头，并可原行展开。数据源、分组、真实数量和最新用户反馈见 [本轮 surface brief](.impeccable/home-surface-brief.md)。布局与类型依据 `sections/yarn-project-library.liquid`、`snippets/yarn-project-row.liquid`、`snippets/yarn-project-card.liquid` 和 `assets/yarn-project-rows.css`；本轮主代理的三语操作、后台编辑与测试证据见 [verification](.impeccable/review/13-category-rows/verification.md)，独立结论见 [finish review](.impeccable/review/13-category-rows/finish-review.md)。文档刷新不把 detector 的 advisory 自动变成通过：新增值按真实角色记录，局部字号和禁用态不扩充全站尺度。\n\n历史 discovery B 的 `plates=open`、`gate.ok=false` 等机械状态保留；本轮初次 scoped comp-diff 为 54.53%、`contradicted`，受真实 9 件与示意 16 件、用户移动箭头和删除卡片 CTA 等差异影响，不能称为像素还原通过。盖毯样例封面与标题不一致仍是既有内容缺陷；照片由 Shopify 管理，不能从页面完成推导出内容正确或公开商用权利。\n\nIssue #34（2026-09-07）在现有首页视觉世界内采用用户指定的第二轮方案 2，替代详情的历史 `paper_flow` 构图。当前详情使用名称、宽幅作品图、按实际能力显示的「买成品 / 自己做」入口、采购控件及内容存在时的同页教程；首页增加同源购买能力标签与筛选。本次文档依据 `sections/yarn-project-detail.liquid`、`assets/yarn-project-modes.css`、`assets/yarn-header.css`、`sections/yarn-project-library.liquid`、`assets/yarn-project-rows.css` 与对应 capability、材料和购买 snippet。documenter 已打开本轮[桌面](.impeccable/review/34-project-modes/desktop.jpg)、[手机](.impeccable/review/34-project-modes/mobile.jpg)、[comp 尺寸](.impeccable/review/34-project-modes/comp-size.jpg)截图；最后一张是较早的布局对照，旧外跳字形不作最终图标依据，最新桌面 / 手机图与源码显示同页教程入口已移除该箭头。\n\n本次记录是实现事实，不是 gate 通过证明。方向与范围见[当前 surface brief](.impeccable/surfaces/sections-yarn-project-detail-liquid.md)，最终状态以独立 [finish review](.impeccable/review/34-project-modes/finish-review.md) 及本轮 verdict 为准；静态 hero gate 的解析 / 测量限制不能由文档关闭。真实 SKU 数量、教程图文入口和随内容增长的位置适配不被改写成逐像素匹配。本文不认证三语、后台编辑、真实供货、人工验收或生产发布已经完成；演示图文仍属于受保护内部原型。\n",
     "keyCharacteristics": [
       "暖白底、浅色分类面与炭黑正文形成稳定层级。",
       "Shopify 作品图片与有来源的手作插画表达材料与作品；针目图解保留在其适用的历史组件中。",
       "展示标题有重量，流程标签较轻，手机主说明与主要操作保持可读。",
-      "当前首页以连线和波浪串联，分类作品行平铺，帮助与页脚使用浅奶油纸面，导航使用陶土动作色；叠压流程纸面属于保留的历史 B 组件。",
+      "当前首页以连线和波浪串联，作品精选和分类行平铺，成品区、帮助与页脚使用浅奶油纸面，导航使用陶土动作色；叠压流程纸面属于保留的历史 B 组件。",
       "简体中文、日文、英文文案保持可编辑，图像承担材质与图解。",
       "当前 Project 详情以名称、宽幅作品图和购买意图组织首段；有教程内容时，制作入口随教程预览顺读可达，生成示意保留披露。历史 sticky 首屏合同不再约束双模式页面。",
       "部分供给清单以细线顺读，商品与购物车保留来源作品和必要参考说明。",
@@ -576,6 +615,7 @@
       "**Do** 依据明确的材料类型组织当前清单、可选工具与自备文字；单模式直接呈现内容，无购买能力的灵感仍保留已有教程。"
     ],
     "donts": [
+      "**Don't** 将当前分类原画的低清方底、运营译文缺失、示例商品数量或收藏服务未开放状态写成设计规范；源码与截图中的局部实现不替代获批方向和实际验收。",
       "**Don't** 将普通商品网格主导的电商首屏或 Hoshiami 仿站作为本首页的视觉方向。",
       "**Don't** 把临时字标、参考商品图、图上品牌或色数文字当作已授权正式品牌资产。",
       "**Don't** 为匹配 comp 的数量或颜色复制作品、生成假商品照片或修改真实名称；当前内部样例也不能被写成已验证可执行的正式教程。",
