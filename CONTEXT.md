@@ -53,7 +53,7 @@ _Avoid_: Order, Confirmed Quote
 _Avoid_: User, Customer
 
 **Member**:
-已注册并登录平台的参与者。Member 无需购买即可收藏 Project、使用 My Project 和记录制作进度。
+已注册并登录平台的参与者。Member 无需购买即可收藏公开作品与 Product；My Project 和制作进度属于后续能力。
 _Avoid_: User, Customer, Buyer
 
 **Shopify Customer**:
@@ -77,7 +77,7 @@ Member 管理个人 Making 并记录制作进度的空间，不要求先购买�
 _Avoid_: Order History, Purchased Projects
 
 **Favorite**:
-Member 对公开 Project 表达兴趣的收藏关系，不代表已经计划或开始制作，也不会创建 Making。
+Member 对公开作品（包括当前作品库的仅灵感条目）或 Product 表达兴趣的收藏关系，登录后可跨设备找回。收藏不代表已经计划、开始制作或购买，也不会创建 Making。作品与关联商品各自收藏，不自动相互收藏。
 _Avoid_: My Project, Making
 
 **Making**:
@@ -102,7 +102,7 @@ _Avoid_: Project, Product
 - **Member** 可以关联一个 **Shopify Customer** 记录，但两者不是同一个领域概念。
 - **Creator**、**Seller** 和 **Buyer** 是 **Member** 可以同时拥有的角色。
 - **Member** 无需成为 **Buyer** 即可使用 **My Project**。
-- **Member** 可以收藏一个 **Project**；**Favorite** 不属于 **My Project**，也不会自动创建 **Making**。
+- **Member** 可以收藏公开作品或 **Product**；**Favorite** 不属于 **My Project**，也不会自动创建 **Making**。收藏保存于账号下，不是仅当前浏览器的临时状态。
 - **My Project** 包含该 Member 的一个或多个 **Makings**。
 - 每个 **Making** 引用一个公开 **Project**；同一 Member 可以为同一 Project 建立多个 Makings。
 - 一个 **Project** 可以对应零个、一个或多个 **Project Kits**。
