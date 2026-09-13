@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>mewool · 首月 MVP 进度与协作</title>
+<title>mewool · 首月试跑进度与分工</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23f5f7f4' stroke='%23275f51' stroke-width='2'/%3E%3Cpath d='M7 10l18 12M6 15l16 11M12 6l14 10' fill='none' stroke='%23275f51' stroke-width='1.5'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="./map.css">
 <script src="./progress.js" defer></script>
@@ -11,26 +11,26 @@
 <script src="./map.js" defer></script>
 </head>
 <body>
-<header><a class="brand" href="#overview">mewool<span>团队进度与协作</span></a><span id="updated"></span></header>
+<header><a class="brand" href="#overview">mewool<span>团队进度与分工</span></a><span id="updated"></span></header>
 <main>
 <section class="progress-header" aria-labelledby="page-title">
-<div><h1 id="page-title">把第一笔测试订单<br>完整跑通。</h1><p>先补齐商品，再接上上架、履约与服务。</p></div>
+<div><h1 id="page-title">把第一笔测试订单<br>完整跑通。</h1><p>先备齐商品，再试下单、寄货和售后。</p></div>
 <div class="progress-box">
-<div class="progress-label"><h2>首月 MVP 总进度</h2><strong id="percent">30%</strong></div>
-<progress id="progress" value="30" max="100" aria-label="首月 MVP 总进度，当前估算">30%</progress>
+<div class="progress-label"><h2>首月试跑总进度</h2><strong id="percent">30%</strong></div>
+<progress id="progress" value="30" max="100" aria-label="首月试跑总进度，当前估算">30%</progress>
 <p id="estimate-note">当前估算，主要来自开发工作。</p>
 </div>
 </section>
 <div class="view-layout">
 <section id="view" aria-label="协作关系与任务"></section>
 <aside>
-<section class="aside-block"><h2>这个月怎样算跑通</h2><p>至少一个完整商品，完成一笔内部测试订单。</p><ol class="acceptance"><li>商品资料可用，运营确认可上架</li><li>完成下单与支付测试</li><li>实物拣货、包装和试发货</li><li>回填物流，客服可查询</li><li>完成取消、退换货与售后演练</li></ol><button data-view="journey" class="text-link">跟着一笔订单看交接 <span aria-hidden="true">→</span></button></section>
-<section class="aside-block"><h2>颜色说明</h2><ul class="legend"><li><span class="dot red"></span>P0 未就绪 · 当前优先补齐</li><li><span class="dot amber"></span>P1 未就绪 · 可并行准备</li><li><span class="dot green"></span>已就绪 · 交付与接手均确认</li><li><span class="dot gray"></span>待核实 · 尚无完成确认</li></ul><p class="small">优先级与完成状态分别保留。完成后转绿。</p></section>
-<section class="aside-block"><h2>怎样确认已就绪</h2><p>负责人交付结果，接手人确认可以继续下一步，再由锦晨统一更新。</p><p class="small">总进度为整体估算，由锦晨维护；不会随任务数量自动变化。</p><button data-view="development" class="text-link">开发支持与现有分工 <span aria-hidden="true">→</span></button><button data-view="pending" class="text-link">其他待确认决定 <span aria-hidden="true">→</span></button></section>
+<section class="aside-block"><h2>这个月怎样算跑通</h2><p>至少一个完整商品，完成一笔内部测试订单。</p><ol class="acceptance"><li>锦晨、启航确认商品资料齐了，能上架测试</li><li>完成下单与支付测试</li><li>实际找货、包装和试发货</li><li>记下快递单号，客服能查到</li><li>演练取消、退换货和售后处理</li></ol><button data-view="journey" class="text-link">跟着一笔订单看 <span aria-hidden="true">→</span></button></section>
+<section class="aside-block"><h2>颜色说明</h2><ul class="legend"><li><span class="dot red"></span>P0 最先做 · 当前最急的缺口</li><li><span class="dot amber"></span>P1 接着做 · 可以同时准备</li><li><span class="dot green"></span>已做好 · 做的人和接手的人都确认了</li><li><span class="dot gray"></span>还没确认 · 不能当作已经做好</li></ul><p class="small">P0 / P1 表示先做什么，不代表完成程度。确认做好后变绿。</p></section>
+<section class="aside-block"><h2>怎样才算做好</h2><p>做的人交来结果，接着做的人确认能用了，再由锦晨更新进度。</p><p class="small">30% 是对整体的估计，主要来自开发工作，不是自动计算的。</p><button data-view="development" class="text-link">锦晨、启航现在做什么 <span aria-hidden="true">→</span></button><button data-view="pending" class="text-link">还有什么没定 <span aria-hidden="true">→</span></button></section>
 </aside>
 </div>
-<noscript><p>请启用浏览器 JavaScript 查看可展开的协作图。当前首月 MVP 总进度为 30%（估算），商品与内容准备是 P0 阻塞。</p></noscript>
+<noscript><p>请启用浏览器 JavaScript 查看可点击的分工图。当前首月试跑总进度为 30%（估算），最急的是备齐商品与内容。</p></noscript>
 </main>
-<footer>由锦晨统一维护 · 团队只读查看<span>进度按确认结果更新，具体日程待排定。</span></footer>
+<footer>锦晨负责更新 · 其他人打开就能看<span>做好并确认后更新进度，具体日期还要安排。</span></footer>
 </body>
 </html>
