@@ -117,6 +117,7 @@ _Avoid_: Project, Product
 - 一个通用 **Tutorial** 可以被多个 **Project** 复用。
 - 当前 MVP 中，**Visitor** 与 **Member** 均可免费查看公开的自有完整 **Tutorial**，不要求成为 **Buyer** 或购买对应 **Project Kit**；免费访问不是 Tutorial 的永久定义。
 - 后期收费模式下，购买 **Project Kit** 包含对应完整 **Tutorial** 的访问权益；对应 Tutorial 也可独立购买，不要求购买该 Project Kit。
+- 收费切换前购买 **Project Kit** 的顾客继续访问对应完整 **Tutorial**，无需补交教程费；仅免费浏览 Tutorial 不自动产生永久访问权益。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 - **Member Work** 可以被品牌或编辑团队精选到 **Inspiration** 或 **Project** 页面中，但仍保持 Member Work 身份。
 
@@ -131,6 +132,6 @@ _Avoid_: Project, Product
 - **Inspiration** 不是 **Draft Project** 的发布状态；前者有意提供非指导型展示内容，后者正在准备成为可执行 Project。
 - 面向顾客的「新手作品」和「找灵感」均指 **Project** 的发现入口，不是两类作品；「找灵感」这一栏目名不等于领域中的非指导型 **Inspiration**。
 - 查看 **Tutorial** 不等于发起 **Making**；「开始制作」不能仅凭按钮名称被解释为已经建立一次个人制作记录。
-- **Tutorial** 表示教学内容，不等于其售卖方式或访问权益；购买 **Project Kit** 包含对应教程，不等于获得全部教程，访问期限和收费切换前用户的权益仍待确认。
+- **Tutorial** 表示教学内容，不等于其售卖方式或访问权益；购买 **Project Kit** 包含对应教程，不等于获得全部教程，访问期限、后续版本与退款权益仍待确认。
 - “用户”不是正式领域术语；涉及身份或权限时必须明确使用 **Visitor**、**Member**、**Buyer**、**Creator** 或 **Seller**。
 - Shopify API 中的 `Customer` 必须写作 **Shopify Customer**；不得用它指代已经购买的人，后者统一称为 **Buyer**。
