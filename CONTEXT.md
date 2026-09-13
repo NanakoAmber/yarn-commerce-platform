@@ -115,6 +115,7 @@ _Avoid_: Project, Product
 - 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
 - **Customization Inquiry** 可以引用目标 **Project**，但其提交不表示已购买材料或成品，也不构成制作或交付承诺。
 - 一个通用 **Tutorial** 可以被多个 **Project** 复用。
+- **Visitor** 与 **Member** 均可免费查看公开的自有完整 **Tutorial**，不要求成为 **Buyer** 或购买对应 **Project Kit**。
 - 一个 **Member Work** 可以由一个 **Making** 产生，但不要求购买其 **Project Kit**，也不自动成为可售 **Product**。
 - **Member Work** 可以被品牌或编辑团队精选到 **Inspiration** 或 **Project** 页面中，但仍保持 Member Work 身份。
 
