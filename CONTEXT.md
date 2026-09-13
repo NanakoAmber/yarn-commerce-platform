@@ -92,6 +92,7 @@ _Avoid_: Project, Product
 
 - 一个 **Product** 有一个或多个 **Variants**。
 - 成品 **Product** 可独立存在，不要求关联 **Project**、**Tutorial** 或 **Project Kit**。
+- 同款成品与 **Project Kit** 是不同的 **Products**，不是同一个 Product 的两种 **Variants**；同款关系不要求两者同时供货。
 - **Draft Project** 达到可执行标准后才能成为公开 **Project**。
 - **Project** 的成品购买能力、材料购买能力与教程内容分别维护；可跟做内容的完整性要求不用于阻止仅成品作品展示。当前发现页对两种购买能力皆无的作品显示 **Inspiration**。
 - 一个 **Material Requirement** 可以有零个或多个 **Product Recommendation**；推荐商品缺货、停售或替换不改变 Project 本身。
