@@ -115,6 +115,7 @@ _Avoid_: Project, Product
 - 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
 - **Customization Inquiry** 可以引用目标 **Project**，但其提交不表示已购买材料或成品，也不构成制作或交付承诺。
 - 一个通用 **Tutorial** 可以被多个 **Project** 复用。
+- 教程入口以「完整作品教程」为主、「基础技巧」为辅；两者都是 **Tutorial** 的内容用途，不是新增领域实体。独立教程入口不要求先访问 **Project** 或商品详情，辅助技巧可返回来源教程的原章节。
 - 当前 MVP 中，**Visitor** 与 **Member** 均可免费查看公开的自有完整 **Tutorial**，不要求成为 **Buyer** 或购买对应 **Project Kit**；免费访问不是 Tutorial 的永久定义。
 - 后期收费模式下，购买 **Project Kit** 包含对应完整 **Tutorial** 的访问权益；对应 Tutorial 也可独立购买，不要求购买该 Project Kit。
 - 收费切换前购买 **Project Kit** 的顾客继续访问对应完整 **Tutorial**，无需补交教程费；仅免费浏览 Tutorial 不自动产生永久访问权益。
