@@ -1,7 +1,7 @@
 # Architecture
 
 > Status: current direction
-> Last updated: 2026-09-09
+> Last updated: 2026-09-14
 
 ## Decision summary
 
@@ -27,6 +27,16 @@ Issue #39 已实现最小账号收藏服务代码（`services/favorites`），�
 独立搜索由 Liquid 分别生成公开 Project Metaobjects 与 Shopify Product 卡片，在浏览器按各实体自身的名称、描述和用途分组匹配。超过单页时通过同一 Section 的分页补齐目录；不使用关联作品自动扩充商品命中，也不从 Storefront API 重取价格。该实现适用于当前小目录，目录显著增长后再评估服务端索引。
 
 ## Responsibility boundaries
+
+### Theme 设计系统（2026-09-14 用户确认，Issue #49）
+
+- 在当前 Theme 内建设共享视觉变量、共享组件和页面组合三层结构；沿用现有共享文件扩展，不另起 Headless 或独立前端框架。
+- 独立设计系统展示页与商店业务页面调用同一份组件源码，不复制展示专用样式或组件。全站联动仅覆盖已迁移的消费者；旧页面逐步接入，不以全局覆盖掩盖局部差异。
+- 展示页首先用于内部浏览、交互状态演示和验收，不另建可写入线上配置的编辑后台。适合运营维护的品牌参数可接 Shopify Theme Editor；组件结构和行为通过代码维护。
+- 共享修改先在未发布 Theme 验证，再经人工批准发布。Shopify Checkout 与第三方嵌入内容不默认受 Theme 组件控制。
+- 页面职责与验收边界见 [设计系统展示页](design/design-system-surface.md)。这些是建设决定，不表示新视觉系统或全站迁移已完成。
+
+### 商业与平台数据
 
 | Capability | Source of truth | Notes |
 | --- | --- | --- |
