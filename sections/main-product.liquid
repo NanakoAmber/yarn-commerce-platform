@@ -211,11 +211,9 @@
                     {% elsif product.tags contains '毛糸' %}
                       {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
                       {% render 'yarn-product-description', product: product %}
-                      {% render 'yarn-kit-crosslinks', product: product, kind: 'kits-teaser' %}
                     {% elsif product.tags contains '完成品' %}
                       {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
                       {% render 'yarn-product-description', product: product %}
-                      {% render 'yarn-kit-crosslinks', product: product, kind: 'kit-from-finished' %}
                     {% else %}
                       {% render 'yarn-product-description', product: product %}
                     {% endif %}
@@ -523,6 +521,10 @@
                   -%}
                   {%- if product.tags contains '編みものキット' -%}
                     {%- render 'yarn-kit-crosslinks', product: product, kind: 'yarn' -%}
+                  {%- elsif product.tags contains '毛糸' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'kits-teaser' -%}
+                  {%- elsif product.tags contains '完成品' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'kit-from-finished' -%}
                   {%- endif -%}
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
