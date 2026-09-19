@@ -146,7 +146,7 @@
       "settings": {
         "caption": "SHOPPING GUIDE",
         "heading": "お買い物ガイド",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "heading_alignment": "center",
         "layout": "section",
         "color_scheme": "scheme-1",
@@ -154,8 +154,8 @@
         "open_first_collapsible_row": true,
         "image_ratio": "adapt",
         "desktop_layout": "image_second",
-        "padding_top": 36,
-        "padding_bottom": 36,
+        "padding_top": 28,
+        "padding_bottom": 20,
         "heading_zh": "购买须知",
         "heading_en": "Shopping guide"
       }
@@ -174,7 +174,7 @@
         "show_vendor": false,
         "show_rating": false,
         "columns_mobile": "2",
-        "padding_top": 36,
+        "padding_top": 28,
         "padding_bottom": 28,
         "heading_zh": "你可能也喜欢",
         "heading_en": "You may also like"

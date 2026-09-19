@@ -72,7 +72,10 @@
   })();
 </script>
 {% style %}
-  .yx-toolbar { padding: var(--yarn-space-3, 12px) 0 0; display: grid; gap: 8px; }
+  .yx-toolbar { padding-top: var(--yarn-space-3, 12px); display: grid; gap: 8px; }
+  @media (min-width: 750px) {
+    .yx-toolbar { padding-inline: 5rem; }
+  }
   .yx-toolbar__tabs, .yx-toolbar__chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .yx-chip { display: inline-flex; align-items: center; min-height: var(--yarn-touch, 44px); padding: 8px 16px; border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-pill); background: var(--yarn-surface); color: var(--yarn-ink); font-size: 1.35rem; text-decoration: none; }
   .yx-chip--active { background: var(--yarn-butter); border-color: var(--yarn-primary-line); font-weight: 600; }

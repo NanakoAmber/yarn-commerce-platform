@@ -29,13 +29,14 @@
       assign exit_note = section.settings.exit_note_en | default: exit_note
   endcase
 -%}
-<section class="yx-picks yarn-shell-block color-{{ section.settings.color_scheme }}" style="--yx-cols: {{ section.settings.columns_desktop }};" aria-labelledby="Picks-{{ section.id }}">
+<section class="yx-picks yarn-shell-block{% if section.settings.columns_desktop == 2 %} yx-picks--duo{% endif %} color-{{ section.settings.color_scheme }}" style="--yx-cols: {{ section.settings.columns_desktop }};" aria-labelledby="Picks-{{ section.id }}">
   <div class="yx-picks__inner page-width">
     <div class="yx-picks__head">
       <h2 id="Picks-{{ section.id }}">{{ picks_heading | escape }}</h2>
       {%- if picks_collection != blank -%}<a class="yx-picks__all" href="{{ picks_collection.url }}">{{ 'yarn_project.card_view_all' | t }} →</a>{%- endif -%}
     </div>
     {%- if picks_note != blank -%}<p class="yx-picks__note">{{ picks_note | escape }}</p>{%- endif -%}
+    <div class="yx-picks__body{% if section.settings.exit_enabled %} yx-picks__body--with-exit{% endif %}">
     {%- if section.settings.exit_enabled -%}
       <aside class="yx-exit yx-picks__exit">
         <div>
@@ -54,6 +55,7 @@
         {%- endfor -%}
       </div>
     {%- endif -%}
+    </div>
   </div>
 </section>
 {% style %}

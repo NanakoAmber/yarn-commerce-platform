@@ -6,6 +6,7 @@
 .yx-badge--kit { background: var(--yarn-blush); color: #94514c; }
 .yx-badge--finished { background: var(--yarn-mint); color: var(--yarn-ink); }
 .yx-badge--content { background: var(--yarn-blush); color: #94514c; }
+.yx-badge--on-media { position: absolute; left: 10px; top: 10px; z-index: 2; }
 
 /* —— 商品卡 —— */
 .yx-product-card { display: flex; flex-direction: column; background: var(--yarn-surface); border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-panel); overflow: hidden; color: var(--yarn-ink); text-decoration: none; }
@@ -57,4 +58,14 @@
 @media (min-width: 750px) {
   .yx-picks__grid { grid-template-columns: repeat(var(--yx-cols, 4), minmax(0, 1fr)); gap: 20px; }
   .yx-exit { padding: 20px 24px; gap: 24px; }
+}
+
+/* 桌面密度(Astra 走查 P1):辅助品类不放大为巨幅画册;出口卡与商品卡同行 */
+@media (min-width: 990px) {
+  .yx-picks--duo .yx-product-card__media { aspect-ratio: 1.9; }
+  .yx-picks--duo .yx-product-card__media img { object-fit: contain; }
+  .yx-picks__body--with-exit { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 2fr); gap: 24px; align-items: stretch; }
+  .yx-picks__body--with-exit .yx-picks__exit { grid-template-columns: 1fr; align-content: start; margin-bottom: 0; }
+  .yx-picks__body--with-exit .yx-picks__exit .yx-exit__media--row { justify-content: flex-start; }
+  .yx-picks__body--with-exit .yx-exit__note { text-align: left; }
 }

@@ -28,6 +28,7 @@
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+  {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- capture localized_product_title -%}{%- render 'yarn-product-title', product: card_product -%}{%- endcapture -%}
@@ -160,6 +161,7 @@
                   >
                 {%- endif -%}
               </div>
+              {%- render 'yarn-card-badge', badge_product: card_product -%}
             </div>
           {%- endif -%}
           <div class="card__content">
@@ -217,6 +219,8 @@
               </a>
             </h3>
             <div class="card-information">
+              {%- assign yx_spec = card_product.metafields.yarn.spec_line.value -%}
+              {%- if yx_spec != blank -%}<span class="yx-product-card__spec">{{ yx_spec | escape }}</span>{%- endif -%}
               {%- if yarn_role_label != blank -%}
                 <span class="yarn-product-role yarn-product-role--{{ yarn_role_type }}">
                   {{- yarn_role_label | escape -}}
@@ -673,6 +677,8 @@
             </a>
           </h3>
           <div class="card-information">
+              {%- assign yx_spec = card_product.metafields.yarn.spec_line.value -%}
+              {%- if yx_spec != blank -%}<span class="yx-product-card__spec">{{ yx_spec | escape }}</span>{%- endif -%}
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
