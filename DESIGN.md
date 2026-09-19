@@ -1,7 +1,10 @@
 ---
 name: 毛线品牌
-description: 从已实现首页与作品路径提取的暖纸、柔色手作界面系统；保留受保护内部原型边界
+description: 从已复核的毛线主线首页、目录、商品与内容页提取的暖白手作界面系统；保留受保护内部原型边界
 colors:
+  commerce-accent: "#b93b20"
+  commerce-ink: "#13202d"
+  commerce-line: "#dedbd5"
   paper: "#f7f7f5"
   surface: "#fffefa"
   ink: "#2f302f"
@@ -28,6 +31,50 @@ colors:
   capability-blush: "#f4dfdc"
   capability-mint: "#e4eee6"
 typography:
+  commerce-badge:
+    fontSize: "12px"
+  commerce-note:
+    fontSize: "13px"
+  commerce-meta:
+    fontSize: "14px"
+  commerce-control:
+    fontSize: "15px"
+  commerce-card-title:
+    fontSize: "16px"
+  commerce-hero-control:
+    fontSize: "17px"
+  commerce-reading-lead:
+    fontSize: "18px"
+  commerce-editorial-mobile-title:
+    fontSize: "19px"
+  commerce-exit-mobile-title:
+    fontSize: "20px"
+  commerce-card-price:
+    fontSize: "21px"
+  commerce-section-mobile:
+    fontSize: "23px"
+  commerce-section-small:
+    fontSize: "24px"
+  commerce-hero-ja-mobile:
+    fontSize: "25px"
+  commerce-product-mobile:
+    fontSize: "26px"
+  commerce-section:
+    fontSize: "28px"
+  commerce-home-section:
+    fontSize: "30px"
+  commerce-hero-mobile:
+    fontSize: "32px"
+  commerce-product-desktop:
+    fontSize: "36px"
+  commerce-page-title:
+    fontSize: "40px"
+  commerce-hero-ja-max:
+    fontSize: "44px"
+  commerce-hero-en-max:
+    fontSize: "50px"
+  commerce-hero-max:
+    fontSize: "56px"
   shared-section:
     fontFamily: "'Yarn Display', 'Noto Sans SC', sans-serif"
     fontSize: "clamp(2.5rem, 2.5vw, 3.2rem)"
@@ -245,7 +292,7 @@ components:
 数值以前言 token 为准,新页面默认调色板:
 
 - **底与面**:`paper` 页面底 / `surface` 暖白面(卡片、导航、横幅)/ `line` 暖灰细线分组。
-- **文字**:`ink` 标题与关键数字(价格用 `ink` + 600 字重,不设价格强调色)/ `muted` 辅助说明 / `copy` 正文。
+- **文字**:商品家族标题用 `commerce-ink`，价格与商品入口用 `commerce-accent` + 600 字重；`muted` 辅助说明 / `copy` 正文。旧搜索与 Project 组件保留 `ink`，不做无范围的全局换肤。
 - **动作**:`project-row-action`(行动陶土)承担链接、文字按钮、图标勾选、编号徽章文字;`action-soft`/`action-hover` 是它的浅底与悬停面;`butter` 系列承担主 CTA 胶囊(如「开始制作」)。
 - **焦点**:`indigo` 灰蓝 2px 轮廓 + 4px 偏移,全站键盘焦点统一。
 - 旧柔色分类面、粉色选中态等保留兼容既有组件,不是新页面默认。
@@ -255,28 +302,29 @@ components:
 ## Typography
 
 - **展示字**:`Yarn Display`(自托管 Noto Sans SC 子集,400/600)用于标题、导航、按钮;**正文**走系统中文字体栈,日英由语言层处理。
-- 层级要点:页面一级标题 clamp 流式;分区标题 2.2rem 上下;卡片标题 1.45–1.8rem 两行截断;正文 1.4–1.5rem/1.6–1.7 行高;辅助 1.2–1.3rem。局部 surface 可有自己的字号,但**不新增全站字号阶梯**。
+- 商品家族采用显式 px 尺寸，避免旧根字号放大构图：卡片标题 16px、规格 14px、价格 21px、角标 12px；目录标题桌面 40px / 手机 28px，商品标题 36px / 26px，阅读正文 16px。Hero 按容器流式，日英手机扩展画布保留按钮净空。前言 `commerce-*` 为该家族已实现的局部字号，不用于覆盖其他页面。
 - 新增文案必须检查三语断行与字体回退;菜单、集合描述等运营文案的原文与译文只维护在 Shopify(Navigation / Translate & Adapt),不在 Liquid 写死。
 
 ## Layout
 
-- **共享容器** 1320px,gutter 990+ 为 48px、750–989 为 24px、749- 为 16px。**作品详情**在容器内走 `yp-axis` 1200px 统一轴线:首屏两栏约 648/504、列距 48px,内容分区共用同一左右边界,页尾 FAQ/教程 648/504 并排;749px 以下单列顺读,顺序与获批手机稿一致。
+- **商品家族容器** 1200px 内容轴，手机 16px gutter；商品首屏桌面约 648/504 两栏、48px 列距，图库为主图加缩略图。商品详情在图库下方独立 960px 阅读轴；作品内容页为 800px 单列，封面 → 标题/摘要 → 已有正文或关联商品的介绍与步骤 → 来源 → 真实商品出口。共享导航与页脚仍用原 1320px 容器。
 - **间距角色** 4/8/12/16/24/32/48px;桌面主要分区间 64px。
 - 手机端优先保住:标题、主图、卖点、购买入口的首屏可达,以及正文与操作净空。
 
 ## Depth & Shapes
 
 - 无重阴影:平铺内容零阴影,覆盖面板才允许轻扩散阴影。
-- 圆角角色见前言 token:控件小圆角、卡片 16–28px、按钮胶囊、媒体 10–14px。
+- 商品家族卡片与内容卡为 `--yarn-card-radius: 10px`、1px 暖灰边线；出口卡陶土细边，按钮胶囊。其他既有组件保留原圆角。
 - 图标为细线 SVG;手作插画与商品照片是有来源的 raster,`contain` 保完整、不为填满容器裁掉主体。
 
 ## Components(现行规则)
 
 - **导航**:暖白底细线,当前页浅奶油胶囊 + 陶土字;菜单项来自 Shopify Navigation,含集合入口(编织包/毛线/成品);44px 触控、24px 图标。
-- **首页**:串联 Hero(奶油黄 CTA)+ 作品发现(精选网格、分类行、能力筛选、收藏)+ 紧凑帮助 + 页脚,构图以对应 surface brief 为准。
-- **作品详情(Kit 型)**:难度行 → 数据驱动卖点行(编织包 tag、视频/图文教程字段决定显隐,陶土勾选)→ 购买卡(数量、合计、加购、商品详情次链接)→ `yarn-kit-story` 把商品描述的六个 `<h2>` 小节平铺为顺读分区:关于(图文并排)、编织包里有什么(全家福图 + 01–10 编号清单,徽章浅奶油底陶土字)、怎么开始(陶土圆标三步)、尺寸与适合谁(细线事实条)、常见问题(折叠行);描述不满六节退回折叠形态。教程预览用独立标题键,来源块透明底 + 上缘细线。
+- **首页**:三节点串联 Hero（编织包 / 毛线 / 花束成品）→ 毛线四卡 → 编织包出口与双卡 → 成品双卡 → 内容卡 → 帮助条与 Shopify 页脚。桌面 Hero 主按钮陶土底，手机奶油黄；插画节点用同一手绘风格。
+- **商品详情**:Shopify 图库、Variant、数量、加购与动态购买保留原生行为；奶油黄加购为主，动态购买描边为次。购买下方显示真实互链出口。Kit 六段描述在商品双栏下方顺读；毛线/成品描述在「线材规格 / 尺寸与材质」独立区域渲染，不补造未录入的规格。
+- **作品内容页**:保留 Metaobject 标题、摘要、封面、准备与教程；缺少站内教程正文时，可呈现已关联 Kit 的既有介绍和开始步骤，再提供来源入口。商品关系只来自已存关系；不复制购买表单，不把外部商品页标为直接教程。
 - **双模式入口**:成品/材料两种能力并存才显示意图卡,单能力直接展示,无购买能力归灵感;能力标签不表示库存或齐套。
-- **集合页**:横幅暖白面 + 集合标题 + 一句引导语(存 Shopify 集合描述);商品卡暖白细线 16px 圆角、两行标题、墨色粗价格、细线上缘的陶土文字动作行(「选择颜色与规格」)。
+- **集合页**:全目录使用三语浏览标题，具名集合保留 Shopify 标题/描述；搜索、品类、价格带、真实供货筛选与排序在商品网格上方。默认 JPY 价格带为 <500 / 500–1499 / ≥1500。卡片桌面四列、手机两列，暖白细线、两行标题、陶土价格、无分隔线文字动作。规格优先读 `yarn.spec_line`，缺少时提示查看详情。
 - **购物车**:条目两列三行,数量步进器、删除与行总价必须完整可见可达;保障条三项(配送/选线支持/放心购物)三语内置。
 - **收藏**:图上暖白圆形爱心,表达收藏,不显示人数或评分。
 - **表单与字段**:暖白底、24px 圆角、56px 输入高度、16px 输入字号;成功/错误保留 Shopify 语义。
@@ -285,4 +333,4 @@ components:
 
 **Do**:延续暖纸+细线+炭黑的世界;新增文案查三语断行与手机可读;运营内容一律映射到 Shopify 可编辑层;每轮实现后把规范变化蒸馏回本文。
 
-**Don't**:不虚构评价、销量、折扣或品牌证明;不把参照站配色、构图稿小字或生成素材当真值;不把普通商品网格电商风或 Hoshiami 仿站当首页方向;不把局部字号、比例升级成全站令牌;不把本文当作发布、授权或验收凭据。
+**Don't**:不虚构评价、销量、折扣或品牌证明;不把参照站配色、构图稿小字或生成素材当真值;不以参照站样式替换当前批准的三节点首页与商品卡片家族;不把局部字号、比例升级成全站令牌;不把本文当作发布、授权或验收凭据。

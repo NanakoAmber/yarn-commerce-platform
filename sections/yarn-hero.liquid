@@ -8,7 +8,6 @@
   assign flow_project = section.settings.flow_project
   assign flow_yarn = section.settings.flow_yarn
   assign flow_tools = section.settings.flow_tools
-  assign flow_tutorial = section.settings.flow_tutorial
 
   case request.locale.iso_code
     when 'zh-CN', 'zh'
@@ -18,7 +17,6 @@
       assign flow_project = section.settings.flow_project_zh
       assign flow_yarn = section.settings.flow_yarn_zh
       assign flow_tools = section.settings.flow_tools_zh
-      assign flow_tutorial = section.settings.flow_tutorial_zh
     when 'en'
       assign hero_heading = section.settings.heading_en
       assign hero_text = section.settings.text_en
@@ -26,7 +24,6 @@
       assign flow_project = section.settings.flow_project_en
       assign flow_yarn = section.settings.flow_yarn_en
       assign flow_tools = section.settings.flow_tools_en
-      assign flow_tutorial = section.settings.flow_tutorial_en
   endcase
 %}
 
@@ -35,28 +32,28 @@
     <div class="yarn-hero__copy">
       <h1 id="YarnHeroHeading-{{ section.id }}" class="yarn-hero__heading" lang="{{ request.locale.iso_code }}">{{ hero_heading | escape | newline_to_br }}</h1>
       {% if hero_text != blank %}<div class="yarn-hero__text rte">{{ hero_text }}</div>{% endif %}
-      <a class="button yarn-hero__cta" href="{{ collections['yarn'].url | default: '#shop-by-project' }}">{{ hero_cta | escape }}</a>
+      <a class="button yarn-hero__cta" href="{{ collections['yarn'].url | default: '#shop-by-project' }}">{{ hero_cta | escape }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
     </div>
 
     <ol class="yarn-hero__journey" aria-label="{{ flow_yarn | escape }} · {{ flow_project | escape }} · {{ flow_tools | escape }}">
-      <svg class="yarn-hero__thread yarn-hero__thread--desktop" viewBox="0 0 900 750" preserveAspectRatio="none" aria-hidden="true"><path d="M 530 204 C 595 209 628 153 612 143 C 592 131 590 159 612 163 C 654 173 660 113 700 98 S 864 83 877 140 C 890 190 855 199 853 180 C 851 156 899 175 888 211 C 882 231 862 237 849 264 L 795 370 C 786 412 757 433 745 416 C 731 395 749 381 758 393 C 777 419 795 442 825 445 C 850 452 860 470 866 493 C 884 552 853 564 847 545 C 839 520 882 536 875 565 C 868 604 830 619 779 619"/></svg>
-      <svg class="yarn-hero__thread yarn-hero__thread--mobile" viewBox="0 0 354 660" preserveAspectRatio="none" aria-hidden="true"><path d="M 173 346 C 220 320 245 300 252 255 C 261 220 281 230 276 245 C 268 266 246 246 253 218 C 265 174 260 120 290 76 C 341 87 349 163 338 176 C 322 194 315 169 329 167 C 356 163 350 237 335 280 L 318 359 C 329 423 349 428 344 457 C 340 480 319 474 322 461 C 327 440 350 462 342 492 C 337 515 315 542 298 551"/></svg>
+      <svg class="yarn-hero__thread yarn-hero__thread--desktop" viewBox="0 0 1200 522" preserveAspectRatio="none" aria-hidden="true"><path d="M-160 440 C50 360 180 480 300 403 C350 372 329 324 308 350 C279 316 270 374 319 396 C388 432 452 408 515 342 C645 252 792 174 843 116 C861 95 840 80 831 100 C820 129 864 149 902 95 C977 26 1173 46 1176 162 C1176 201 1137 198 1146 178 C1161 153 1199 206 1170 243 C1134 299 1050 372 1005 439 C937 512 827 490 796 448"/></svg>
+      <svg class="yarn-hero__thread yarn-hero__thread--mobile" viewBox="0 0 358 360" preserveAspectRatio="none" aria-hidden="true"><path d="M-25 300 C20 275 40 330 83 297 C113 275 95 250 83 267 C65 248 63 280 86 291 C117 313 144 275 174 246 C219 211 247 143 264 97 C273 70 252 66 250 81 C248 102 279 113 303 84 C337 75 365 114 347 149 C329 175 324 149 337 150 C367 155 346 213 319 246 C290 283 267 338 229 346 C196 357 174 339 170 321"/></svg>
       <li class="yarn-hero__node yarn-hero__node--project">
         <a href="{{ collections['knit-kits'].url | default: '#shop-by-project' }}">
           <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-project-node-v2.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager" fetchpriority="high"></span>
-          <strong>{{ flow_project | escape }}</strong>
+          <strong lang="{{ request.locale.iso_code }}">{{ flow_project | escape }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></strong>
         </a>
       </li>
       <li class="yarn-hero__node yarn-hero__node--yarn">
         <a href="{{ collections['yarn'].url | default: '#shop-by-project' }}">
           <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-yarn-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
-          <strong>{{ flow_yarn | escape }}</strong>
+          <strong lang="{{ request.locale.iso_code }}">{{ flow_yarn | escape }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></strong>
         </a>
       </li>
       <li class="yarn-hero__node yarn-hero__node--tools">
         <a href="{{ collections['finished-goods'].url | default: '#shop-by-project' }}">
-          <span class="yarn-hero__node-art"><img src="{{ 'yarn-category-toy-approved.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
-          <strong>{{ flow_tools | escape }}</strong>
+          <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-finished-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
+          <strong lang="{{ request.locale.iso_code }}">{{ flow_tools | escape }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></strong>
         </a>
       </li>
     </ol>

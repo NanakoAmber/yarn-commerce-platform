@@ -4,10 +4,11 @@ const fs = require('node:fs');
 
 const banner = fs.readFileSync('sections/main-collection-banner.liquid', 'utf8');
 
-test('collection banner always renders Shopify collection content', () => {
+test('named collection banners preserve Shopify title and description', () => {
   assert.match(banner, /\{\{-?\s*collection\.title \| escape\s*-?\}\}/);
   assert.match(banner, /\{\{\s*collection\.description\s*\}\}/);
-  assert.doesNotMatch(banner, /collection\.handle|request\.locale|collection_heading|collection_intro/);
+  assert.match(banner, /if collection\.handle == 'all'[\s\S]*'yarn_project.browse_heading' \| t[\s\S]*else[\s\S]*collection\.title \| escape/);
+  assert.doesNotMatch(banner, /request\.locale|collection_heading|collection_intro/);
 });
 
 test('collection banner has no fixed catalog slogan or invented collection copy', () => {

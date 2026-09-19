@@ -1,6 +1,6 @@
 # 首页设计系统接入
 
-Issue #32 在已批准的 Hero 和分类作品区上提取共用规则。视觉事实以最终 `DESIGN.md` 为准；本页说明代码职责与下一页面如何接入。
+Issue #32 提取共享规则；Issue #55 将当前首页改为毛线主线与商品卡片家族。视觉事实以最终 `DESIGN.md` 为准；本页说明代码职责与下一页面如何接入。
 
 ## 单一来源
 
@@ -10,7 +10,9 @@ Issue #32 在已批准的 Hero 和分类作品区上提取共用规则。视觉�
 | `assets/yarn-foundation.css` | 导航、页脚、首页 Hero/作品/帮助的焦点与选区；导航与页脚共用字段、语言选择、下拉选项状态；不控制页面构图 |
 | `assets/yarn-header.css` | 共享桌面导航、手机菜单、搜索面板与品牌标识 |
 | `assets/yarn-footer.css` | 共享页脚品牌、订阅、运营 block、语言与政策的布局 |
-| `assets/yarn-hero-b.css` / `assets/yarn-project-rows.css` | 保留已批准的首页专属构图，只消费共享视觉角色 |
+| `assets/yarn-hero-b.css` | 三节点首页构图与三语文字扩展 |
+| `assets/yarn-cards.css` / `assets/yarn-collection.css` | 商品、内容和出口卡家族；1200px 目录轴与筛选布局 |
+| `assets/yarn-product-context.css` / `assets/yarn-project-reading.css` | 原生购买区、商品独立规格区与单列内容阅读 |
 | `sections/yarn-line-contact.liquid` | 紧凑帮助条消费容器/色彩/圆角角色，保留非紧凑历史变体 |
 
 `--yarn-action` 用于可点击文字，`--yarn-thread` 用于插画连线和轮廓；装饰色不可直接当小字颜色。`--yarn-butter` 是 Hero 主按钮，`--yarn-action-soft` 是导航选中、帮助和页脚的浅色纸面。焦点为 `--yarn-focus`，与 hover 分开。
@@ -36,3 +38,9 @@ Issue #32 在已批准的 Hero 和分类作品区上提取共用规则。视觉�
 `npm run verify` 包含一个系统边界检查：核心消费者不能重新硬编码颜色、引用必须在 token 文件中定义，且 token 必须先于旧原型样式加载。它防止单一来源再次分叉，不替代浏览器视觉复核。
 
 导航与页脚在其他页面共享生效；本次对作品详情和联系页做路径与无横向溢出的抽查，不宣称其他页面正文已完成视觉统一。回滚采用撤回本 PR 或重新选择原未变更主题；未发布预览不等于生产发布授权。
+
+## Issue #55 当前接入
+
+商品家族消费 `commerce-ink`、`commerce-accent`、`commerce-line`、10px card radius 与 1200px commerce max；卡片标题/规格/价格为 16/14/21px。这些角色不修改旧全局 token。构图与数据回退见 [当前 surface brief](approved/55-visual-fidelity.md)。
+
+首页出口卡未选择图片时使用当前集合第一件商品主图；内容卡链接指向 `yarn_project` 时可使用其封面，运营选择的图片优先。作品正文缺失时只读取已有关联 Kit 的介绍和步骤，不创建另一份内容真值。三语运营文案仍由 Section setting 与 Shopify 对应资源维护。

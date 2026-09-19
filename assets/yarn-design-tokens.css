@@ -74,6 +74,15 @@
   --yarn-leading: 1.5;
   --yarn-focus-width: 2px;
   --yarn-focus-offset: 4px;
+  /* Issue 55: shared roles for the selected storefront comps. */
+  --yarn-commerce-accent: #b93b20;
+  --yarn-commerce-ink: #13202d;
+  --yarn-commerce-line: #dedbd5;
+  --yarn-card-radius: 10px;
+  --yarn-card-title: 16px;
+  --yarn-card-meta: 14px;
+  --yarn-card-price: 21px;
+  --yarn-commerce-max: 1200px;
 }
 @media (max-width: 989px) { :root { --yarn-gutter: 24px; } }
 @media (max-width: 749px) { :root { --yarn-gutter: 16px; } }

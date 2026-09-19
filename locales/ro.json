@@ -699,7 +699,14 @@
     "detail_title": "Project details",
     "material_reference": "Material reference",
     "project_label": "Project",
-    "item_label": "Item"
+    "item_label": "Item",
+    "yarn_spec_heading": "Yarn specifications",
+    "finished_spec_heading": "Size and materials",
+    "card_spec_product": "See product specifications",
+    "card_spec_kit": "See kit contents",
+    "card_spec_finished": "See size and materials",
+    "browse_heading": "Find your next make",
+    "browse_search": "Search yarn, kits and finished pieces"
   },
   "yarn_discovery": {
     "search": "Search",

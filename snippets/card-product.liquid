@@ -97,7 +97,7 @@
   -%}
 
   <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
-    <div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div class="card-wrapper product-card-wrapper underline-links-hover yx-catalog-card">
       <div
         class="
           card card--{{ settings.card_style }}
@@ -219,8 +219,7 @@
               </a>
             </h3>
             <div class="card-information">
-              {%- assign yx_spec = card_product.metafields.yarn.spec_line.value -%}
-              {%- if yx_spec != blank -%}<span class="yx-product-card__spec">{{ yx_spec | escape }}</span>{%- endif -%}
+              <span class="yx-product-card__spec">{% render 'yarn-card-spec', product: card_product %}</span>
               {%- if yarn_role_label != blank -%}
                 <span class="yarn-product-role yarn-product-role--{{ yarn_role_type }}">
                   {{- yarn_role_label | escape -}}
@@ -373,7 +372,7 @@
                     aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                     data-product-url="{{ card_product.url }}"
                   >
-                    {{ 'products.product.choose_options' | t }}
+                    {{ 'products.product.choose_options' | t }} <span class="quick-add__arrow" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
                     {%- if horizontal_quick_add -%}
                       <span class="icon-wrap">
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -642,7 +641,7 @@
       assign ratio = 0.8
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper underline-links-hover yx-catalog-card">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -677,8 +676,7 @@
             </a>
           </h3>
           <div class="card-information">
-              {%- assign yx_spec = card_product.metafields.yarn.spec_line.value -%}
-              {%- if yx_spec != blank -%}<span class="yx-product-card__spec">{{ yx_spec | escape }}</span>{%- endif -%}
+              <span class="yx-product-card__spec">{% render 'yarn-card-spec', product: card_product %}</span>
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
