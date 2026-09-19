@@ -99,11 +99,20 @@
                 {%- when '@app' -%}
                   {% render block %}
                 {%- when 'text' -%}
+                  {%- liquid
+                    assign block_text = block.settings.text
+                    case request.locale.iso_code
+                      when 'zh-CN', 'zh'
+                        assign block_text = block.settings.text_zh | default: block_text
+                      when 'en'
+                        assign block_text = block.settings.text_en | default: block_text
+                    endcase
+                  -%}
                   <p
                     class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
                     {{ block.shopify_attributes }}
                   >
-                    {{- block.settings.text -}}
+                    {{- block_text -}}
                   </p>
                 {%- when 'title' -%}
                   <div class="product__title" {{ block.shopify_attributes }}>
@@ -202,7 +211,19 @@
                   </p>
                 {%- when 'description' -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {% render 'yarn-product-description', product: product %}
+                    {% if product.tags contains '編みものキット' %}
+                      {{ 'yarn-kit-story.css' | asset_url | stylesheet_tag }}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+                      {% render 'yarn-kit-story', product: product, part: 'about', fallback: 'raw' %}
+                    {% elsif product.tags contains '毛糸' %}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+                      {% render 'yarn-product-description', product: product %}
+                    {% elsif product.tags contains '完成品' %}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+                      {% render 'yarn-product-description', product: product %}
+                    {% else %}
+                      {% render 'yarn-product-description', product: product %}
+                    {% endif %}
                   </div>
                 {%- when 'sku' -%}
                   <p
@@ -505,6 +526,13 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                  {%- if product.tags contains '編みものキット' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'yarn' -%}
+                  {%- elsif product.tags contains '毛糸' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'kits-teaser' -%}
+                  {%- elsif product.tags contains '完成品' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'kit-from-finished' -%}
+                  {%- endif -%}
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -705,6 +733,14 @@
         </div>
       </div>
 
+      {%- if product.tags contains '編みものキット' -%}
+        <div class="yarn-kit-story-full">
+          {% render 'yarn-kit-story', product: product, part: 'body', fallback: 'none' %}
+          {% render 'yarn-kit-crosslinks', product: product, kind: 'finished' %}
+          {% render 'yarn-kit-story', product: product, part: 'faq', fallback: 'none' %}
+        </div>
+      {%- endif -%}
+
       {% render 'product-media-modal', variant_images: variant_images %}
 
       {% assign popups = section.blocks | where: 'type', 'popup' %}
@@ -770,6 +806,16 @@
           "id": "text",
           "default": "t:sections.main-product.blocks.text.settings.text.default",
           "label": "t:sections.main-product.blocks.text.settings.text.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text_zh",
+          "label": "中文 · 文本(空则用上方默认)"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text_en",
+          "label": "英文 · 文本(空则用上方默认)"
         },
         {
           "type": "select",

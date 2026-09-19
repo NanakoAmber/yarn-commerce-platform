@@ -1,0 +1,75 @@
+{{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  首页内容精选(内容卡):SNS 内容/教程/制作故事的站内落地入口。
+  文案按 yarn-hero 的三联模式:纯键名为日文默认,_zh/_en 为中英覆盖。
+{% endcomment %}
+{%- liquid
+  assign cp_heading = section.settings.heading
+  assign cp_badge = section.settings.badge
+  assign cp_title = section.settings.title
+  assign cp_text = section.settings.text
+  assign cp_link_label = section.settings.link_label
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign cp_heading = section.settings.heading_zh | default: cp_heading
+      assign cp_badge = section.settings.badge_zh | default: cp_badge
+      assign cp_title = section.settings.title_zh | default: cp_title
+      assign cp_text = section.settings.text_zh | default: cp_text
+      assign cp_link_label = section.settings.link_label_zh | default: cp_link_label
+    when 'en'
+      assign cp_heading = section.settings.heading_en | default: cp_heading
+      assign cp_badge = section.settings.badge_en | default: cp_badge
+      assign cp_title = section.settings.title_en | default: cp_title
+      assign cp_text = section.settings.text_en | default: cp_text
+      assign cp_link_label = section.settings.link_label_en | default: cp_link_label
+  endcase
+-%}
+<section class="yx-picks yx-content-pick color-{{ section.settings.color_scheme }}" aria-labelledby="ContentPick-{{ section.id }}">
+  <div class="page-width">
+    <div class="yx-picks__head">
+      <h2 id="ContentPick-{{ section.id }}">{{ cp_heading | escape }}</h2>
+      {%- if section.settings.all_link != blank -%}<a class="yx-picks__all" href="{{ section.settings.all_link }}">{{ 'yarn_project.card_view_all' | t }} →</a>{%- endif -%}
+    </div>
+    <a class="yx-content-card" href="{{ section.settings.link | default: '#' }}">
+      {%- if section.settings.image != blank -%}
+        <div class="yx-content-card__media">{{ section.settings.image | image_url: width: 1200 | image_tag: widths: '600, 900, 1200', sizes: '(min-width: 990px) 1200px, 100vw', loading: 'lazy', alt: '' }}</div>
+      {%- endif -%}
+      <div class="yx-content-card__body">
+        <span class="yx-badge yx-badge--content">{{ cp_badge | escape }}</span>
+        <h3 class="yx-content-card__title">{{ cp_title | escape }}</h3>
+        {%- if cp_text != blank -%}<p class="yx-content-card__text">{{ cp_text | escape }}</p>{%- endif -%}
+        <span class="yx-content-card__link">{{ cp_link_label | escape }} →</span>
+      </div>
+    </a>
+  </div>
+</section>
+{% style %}
+  .yx-content-pick { padding: var(--yarn-space-6, 32px) 0; }
+{% endstyle %}
+{% schema %}
+{
+  "name": "内容精选(内容卡)",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "日文 · 区块标题", "default": "読みものセレクション" },
+    { "type": "text", "id": "heading_zh", "label": "中文 · 区块标题", "default": "内容精选" },
+    { "type": "text", "id": "heading_en", "label": "英文 · 区块标题", "default": "Stories & guides" },
+    { "type": "url", "id": "all_link", "label": "查看全部链接(可空)" },
+    { "type": "text", "id": "badge", "label": "日文 · 内容徽标", "default": "チュートリアル · ストーリー" },
+    { "type": "text", "id": "badge_zh", "label": "中文 · 内容徽标", "default": "教程 · 故事" },
+    { "type": "text", "id": "badge_en", "label": "英文 · 内容徽标", "default": "Tutorial · Story" },
+    { "type": "text", "id": "title", "label": "日文 · 内容标题" },
+    { "type": "text", "id": "title_zh", "label": "中文 · 内容标题", "default": "一团线的日常" },
+    { "type": "text", "id": "title_en", "label": "英文 · 内容标题" },
+    { "type": "text", "id": "text", "label": "日文 · 一句话简介" },
+    { "type": "text", "id": "text_zh", "label": "中文 · 一句话简介", "default": "从一团线,记录制作的日常。" },
+    { "type": "text", "id": "text_en", "label": "英文 · 一句话简介" },
+    { "type": "text", "id": "link_label", "label": "日文 · 链接文字", "default": "ストーリーを読む" },
+    { "type": "text", "id": "link_label_zh", "label": "中文 · 链接文字", "default": "阅读故事" },
+    { "type": "text", "id": "link_label_en", "label": "英文 · 链接文字", "default": "Read the story" },
+    { "type": "url", "id": "link", "label": "内容链接" },
+    { "type": "image_picker", "id": "image", "label": "场景图" },
+    { "type": "select", "id": "color_scheme", "label": "配色", "options": [ { "value": "scheme-1", "label": "默认" } ], "default": "scheme-1" }
+  ],
+  "presets": [ { "name": "内容精选(内容卡)" } ]
+}
+{% endschema %}

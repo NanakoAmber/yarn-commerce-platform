@@ -1,2 +1,9 @@
-{%- comment -%}An empty description stays empty; never invent product specifications.{%- endcomment -%}
-{{- product.description -}}
+{%- comment -%}
+  An empty description stays empty; never invent product specifications.
+  以下 replace 仅在描述含既定标记时给段落加 class 以降低视觉权重(参考行 / 内部来源行);
+  不删除、不改写任何数据内容。
+{%- endcomment -%}
+{{- product.description
+  | replace: '<p>参考:', '<p class="yarn-spec-echo">参考:'
+  | replace: '<p>【内部演示数据', '<p class="yarn-demo-source">【内部演示数据'
+-}}

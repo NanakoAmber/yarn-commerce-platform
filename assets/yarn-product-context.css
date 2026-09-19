@@ -3,3 +3,24 @@
 .yp-product-context p { margin: 6px 0; line-height: 1.6; }
 .yp-product-context a { color: inherit; text-underline-offset: 4px; overflow-wrap: anywhere; }
 .yp-product-context a:focus-visible { outline: 2px solid var(--yarn-indigo); outline-offset: 4px; }
+
+/* 分区节奏:推荐区标题不再额外撑高分区间隔 */
+.related-products__heading { margin-top: 0; margin-bottom: 2rem; }
+
+/* 描述内元信息降权:参考行与内部来源行不与规格/购买争夺空间 */
+.product__description .yarn-spec-echo { font-size: 1.25rem; color: var(--yarn-muted); line-height: 1.6; }
+.product__description .yarn-demo-source { font-size: 1.2rem; color: var(--yarn-muted); line-height: 1.6; overflow-wrap: anywhere; }
+
+/* 购买按钮:对齐 DESIGN.md 层级——主 CTA 奶油胶囊,加购为暖纸底墨字描边;覆盖旧 scheme 灰蓝 */
+.product-form__buttons {
+  --color-button: 248, 229, 169;            /* --yarn-butter */
+  --color-button-text: 41, 42, 40;          /* --yarn-primary-ink */
+  --alpha-button-background: 1;
+  --color-secondary-button: 255, 254, 250;  /* --yarn-surface */
+  --color-secondary-button-text: 47, 48, 47;/* --yarn-ink */
+  --buttons-radius: var(--yarn-radius-field);
+  --buttons-radius-outset: var(--yarn-radius-field);
+}
+.product-form__buttons .shopify-payment-button__button--unbranded:hover {
+  --color-button: 246, 223, 160;            /* --yarn-primary-hover */
+}

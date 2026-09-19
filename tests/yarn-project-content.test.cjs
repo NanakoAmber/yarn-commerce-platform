@@ -65,7 +65,7 @@ test('Project and Product links use Shopify resource URLs without hand-built loc
     assert.doesNotMatch(source, /request\.locale|localization\.language|routes\.root_url\s*\|\s*append/);
     assert.doesNotMatch(source, /\/zh\/|\/en\/|\/ja\//);
   }
-  assert.match(detail, /href="\{\{ routes\.root_url \}\}#shop-by-project"/);
+  assert.match(detail, /href="\{\{ routes\.root_url \}\}"/);
 });
 
 test('rich text fields are rendered through metafield_tag and never emitted as raw value HTML', () => {
@@ -83,7 +83,7 @@ test('source credit remains visible without an external tutorial link', () => {
 test('material, tool and finished references all render Shopify Product truth', () => {
   assert.match(materials, /for product in project\.materials\.value[\s\S]*render 'yarn-project-purchase', product: product/);
   assert.match(materials, /project\.tools\.value[\s\S]*render 'yarn-project-products', products: project\.tools\.value/);
-  assert.match(detail, /for product in project\.finished_products\.value[\s\S]*render 'yarn-project-purchase', product: product/);
+  assert.match(detail, /for product in project\.finished_products\.value[\s\S]*render 'yarn-kit-crosslinks', kind: 'product', target: product/);
   assert.match(purchase, /chosen_variant\.price[\s\S]*chosen_variant\.available/);
   assert.match(products, /for product in products/);
   assert.match(products, /product\.title \| escape/);

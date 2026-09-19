@@ -1,0 +1,71 @@
+/* 卡片家族(Issue #55 获批 components-390):商品卡 / 内容卡 / 出口卡 + 品类角标
+   颜色与圆角一律来自 yarn-design-tokens.css 的既有角色,不新增色值 */
+
+/* —— 品类角标 —— */
+.yx-badge { display: inline-block; font-size: 1.2rem; line-height: 1; padding: 5px 10px; border-radius: var(--yarn-radius-pill); background: var(--yarn-action-soft); color: var(--yarn-ink); }
+.yx-badge--kit { background: var(--yarn-blush); color: #94514c; }
+.yx-badge--finished { background: var(--yarn-mint); color: var(--yarn-ink); }
+.yx-badge--content { background: var(--yarn-blush); color: #94514c; }
+.yx-badge--on-media { position: absolute; left: 10px; top: 10px; z-index: 2; }
+
+/* —— 商品卡 —— */
+.yx-product-card { display: flex; flex-direction: column; background: var(--yarn-surface); border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-panel); overflow: hidden; color: var(--yarn-ink); text-decoration: none; }
+.yx-product-card__media { position: relative; aspect-ratio: 1.15; background: var(--yarn-paper); }
+.yx-product-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.yx-product-card__media .yx-badge { position: absolute; left: 10px; top: 10px; }
+.yx-product-card__body { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px 14px; flex: 1; }
+.yx-product-card__title { font-size: 1.45rem; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.yx-product-card__spec { font-size: 1.25rem; color: var(--yarn-muted); }
+.yx-product-card__price { font-size: 1.7rem; font-weight: 600; margin-top: auto; }
+.yx-product-card__action { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--yarn-line); font-size: 1.35rem; color: var(--yarn-action); }
+.yx-product-card__action svg { width: 14px; height: 14px; }
+.yx-product-card:hover .yx-product-card__title { text-decoration: underline; }
+
+/* —— 内容卡 —— */
+.yx-content-card { display: block; position: relative; background: var(--yarn-surface); border: 1px solid var(--yarn-line); border-radius: 18px; overflow: hidden; color: var(--yarn-ink); text-decoration: none; }
+.yx-content-card__media { aspect-ratio: 2.2; background: var(--yarn-paper); }
+.yx-content-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.yx-content-card__body { padding: 14px 16px 16px; }
+.yx-content-card__body .yx-badge { margin-bottom: 8px; }
+.yx-content-card__title { font-family: var(--yarn-display); font-size: 1.8rem; margin: 0 0 4px; }
+.yx-content-card__text { font-size: 1.4rem; color: var(--yarn-muted); line-height: 1.6; margin: 0 0 8px; }
+.yx-content-card__link { font-size: 1.4rem; color: var(--yarn-action); }
+
+/* —— 出口卡(互链/导购)—— */
+.yx-exit { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 12px; align-items: center; background: var(--yarn-action-soft); border: 2px solid var(--yarn-action); border-radius: var(--yarn-radius-panel); padding: 16px; color: var(--yarn-ink); }
+.yx-exit__title { font-family: var(--yarn-display); font-size: 1.9rem; margin: 0 0 4px; }
+.yx-exit__text { font-size: 1.35rem; color: var(--yarn-muted); line-height: 1.55; margin: 0 0 10px; }
+.yx-exit__cta, .yx-exit .yx-exit__cta { display: inline-flex; align-items: center; gap: 8px; background: var(--yarn-action); color: var(--yarn-surface); font-size: 1.4rem; border-radius: 12px; padding: 10px 16px; min-height: 40px; text-decoration: none; }
+.yx-exit__cta svg { width: 14px; height: 14px; }
+.yx-exit__cta:hover { background: var(--yarn-action-strong, #8f3c26); }
+.yx-exit__media img { width: 100%; height: auto; max-height: 150px; object-fit: contain; display: block; }
+.yx-exit__note { grid-column: 1 / -1; text-align: center; font-size: 1.2rem; color: var(--yarn-muted); margin: 4px 0 0; }
+.yx-exit__media--row { display: flex; gap: 8px; justify-content: flex-end; }
+.yx-exit__media--row a { flex: 0 0 auto; }
+.yx-exit__media--row img { width: 72px; height: 72px; object-fit: cover; border-radius: 12px; border: 1px solid var(--yarn-line); }
+.yx-exit--compact { grid-template-columns: 72px minmax(0, 1fr) auto; border-width: 1.5px; padding: 12px 14px; }
+.yx-exit--compact .yx-exit__media img { max-height: 64px; border-radius: 10px; object-fit: cover; aspect-ratio: 1; }
+.yx-exit--compact .yx-exit__title { font-size: 1.5rem; margin: 0; }
+.yx-exit--compact .yx-exit__text { margin: 2px 0 0; }
+
+/* —— 精选区块 —— */
+.yx-picks { margin: 0 auto; }
+.yx-picks__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.yx-picks__head h2 { margin: 0; min-width: 0; text-wrap: balance; }
+.yx-picks__all { font-size: 1.4rem; color: var(--yarn-action); white-space: nowrap; }
+.yx-picks__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.yx-picks__exit { margin-bottom: 12px; }
+@media (min-width: 750px) {
+  .yx-picks__grid { grid-template-columns: repeat(var(--yx-cols, 4), minmax(0, 1fr)); gap: 20px; }
+  .yx-exit { padding: 20px 24px; gap: 24px; }
+}
+
+/* 桌面密度(Astra 走查 P1):辅助品类不放大为巨幅画册;出口卡与商品卡同行 */
+@media (min-width: 990px) {
+  .yx-picks--duo .yx-product-card__media { aspect-ratio: auto; height: 320px; }
+  .yx-picks--duo .yx-product-card__media img { object-fit: contain; }
+  .yx-picks__body--with-exit { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 2fr); gap: 24px; align-items: stretch; }
+  .yx-picks__body--with-exit .yx-picks__exit { grid-template-columns: 1fr; align-content: start; margin-bottom: 0; }
+  .yx-picks__body--with-exit .yx-picks__exit .yx-exit__media--row { justify-content: flex-start; }
+  .yx-picks__body--with-exit .yx-exit__note { text-align: left; }
+}
