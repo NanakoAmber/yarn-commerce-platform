@@ -15,6 +15,7 @@
 <article class="yp-detail yp-detail--modes yp-shell">
   <a class="yp-back" href="{{ routes.root_url }}#shop-by-project"><span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span> {{ 'yarn_project.back' | t }}</a>
   {% if visible == 'true' %}
+    <div class="yp-axis">
     <header class="yp-project-heading">
       {% if project.release_scope.value == '仅内部原型' %}<p class="yp-demo-label">{{ 'yarn_project.demo_content' | t }}</p>{% endif %}
       <h1>{{ project.title.value | escape }}</h1>
@@ -102,9 +103,22 @@
         endif
       %}
       {% if kit_story_product != blank and kit_story_product.description != blank %}
-        <div class="yp-kitstory-flow">{% render 'yarn-kit-story', product: kit_story_product %}</div>
-      {% endif %}
-      {% if has_tutorial %}
+        <div class="yp-kitstory-flow">{% render 'yarn-kit-story', product: kit_story_product, part: 'main' %}</div>
+        <div class="yp-endgrid">
+          <div class="yp-endgrid__faq">{% render 'yarn-kit-story', product: kit_story_product, part: 'faq' %}</div>
+          {% if has_tutorial %}
+            <section class="yp-tutorial-preview yp-tutorial-preview--flow">
+              <h2>{{ 'yarn_project.tutorial_preview' | t }}</h2>
+              <a class="yp-tutorial-cover" href="#ProjectTutorial">
+                {% if tutorial_cover != blank %}{{ tutorial_cover | image_url: width: 1200 | image_tag: widths: '390, 600, 900, 1200', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: '' }}{% endif %}
+                <span>{{ 'yarn_project.view_full_tutorial' | t }}</span>
+              </a>
+              <a class="yp-action yp-action--start" href="#ProjectTutorial">{{ 'yarn_project.start' | t }}</a>
+              <p class="yp-mode-note yp-mode-note--center">{{ 'yarn_project.start_without_purchase' | t }}</p>
+            </section>
+          {% endif %}
+        </div>
+      {% elsif has_tutorial %}
         <section class="yp-tutorial-preview yp-tutorial-preview--flow">
           <h2>{{ 'yarn_project.tutorial_preview' | t }}</h2>
           <a class="yp-tutorial-cover" href="#ProjectTutorial">
@@ -157,6 +171,7 @@
           {% else %}<p class="yp-notice">{{ 'yarn_project.form_disabled' | t }}</p>{% endif %}
         </section>
       {% endif %}
+    </div>
     </div>
   {% else %}<div class="yp-empty"><h1>{{ 'yarn_project.missing' | t }}</h1><p>{{ 'yarn_project.missing_hint' | t }}</p></div>{% endif %}
 </article>

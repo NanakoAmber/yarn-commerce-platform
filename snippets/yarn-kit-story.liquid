@@ -6,8 +6,11 @@
 {% endcomment %}
 {%- assign kit_parts = product.description | split: '<h2>' -%}
 {%- assign kit_section_count = kit_parts.size | minus: 1 -%}
+{%- assign story_part = part | default: 'all' -%}
 {%- if kit_section_count >= 6 -%}
   {%- for part in kit_parts offset: 1 -%}
+    {%- if story_part == 'main' and forloop.index == 6 -%}{%- continue -%}{%- endif -%}
+    {%- if story_part == 'faq' and forloop.index != 6 -%}{%- continue -%}{%- endif -%}
     {%- assign heading = part | split: '</h2>' | first | strip -%}
     {%- assign body = part | remove_first: heading | remove_first: '</h2>' -%}
     {%- case forloop.index -%}

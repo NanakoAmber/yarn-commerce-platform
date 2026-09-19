@@ -24,9 +24,33 @@ yarn-project-modes, yarn-project-purchase { display: block; min-width: 0; }
 .yp-mode-panel { margin-top: var(--yarn-space-5); }
 .yp-mode-panel[hidden] { display: none; }
 .yp-mode-note, .yp-making-facts { font-size: 1.4rem; color: var(--yarn-muted); margin: 0 0 var(--yarn-space-4); }
-/* 编织包故事分区(获批移动端构图 comp-mobile);桌面为栏下 760px 阅读流 */
-.yp-kitstory-flow { max-width: 760px; margin-top: var(--yarn-space-5); }
-.yp-tutorial-preview--flow { max-width: 760px; margin-top: var(--yarn-space-6); }
+/* 编织包故事分区(获批 comp-mobile + desktop-directives):统一 1200 轴线 */
+.yp-kitstory-flow { margin-top: var(--yarn-space-5); }
+.yp-tutorial-preview--flow { margin-top: var(--yarn-space-6); }
+.yp-endgrid { margin-top: var(--yarn-space-6); }
+.yp-source { background: transparent; border-top: 1px solid var(--yarn-line); padding-top: var(--yarn-space-4); }
+@media (min-width: 990px) {
+  .yp-axis { max-width: 1200px; margin-inline: auto; }
+  .yp-project-layout { grid-template-columns: minmax(0, 1.29fr) minmax(0, 1fr); column-gap: 48px; }
+  .yp-kitstory-flow { margin-top: 64px; }
+  .yp-kitstory { margin-top: 64px; }
+  .yp-kitstory > h2, .yp-kitstory__fact > h2 { margin-bottom: var(--yarn-space-4); }
+  .yp-kitstory__about { grid-template-columns: 384px minmax(0, 1fr); gap: 48px; }
+  .yp-kitstory__copy { max-width: 36em; align-self: center; }
+  .yp-kitstory--contents { display: grid; grid-template-columns: minmax(0, 552fr) minmax(0, 600fr); gap: var(--yarn-space-4) 48px; align-items: start; }
+  .yp-kitstory--contents > h2 { grid-column: 1 / -1; margin-bottom: 0; }
+  .yp-kitstory__hero { margin-bottom: 0; }
+  .yp-kitstory__hero img { object-fit: contain; background: var(--yarn-surface); border: 1px solid var(--yarn-line); }
+  .yp-kitstory--steps { max-width: 768px; }
+  .yp-kitstory--facts { grid-template-columns: 1fr 1fr; gap: 0; background: var(--yarn-surface); border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-panel); padding: var(--yarn-space-4); }
+  .yp-kitstory--facts .yp-kitstory__fact { background: none; border: 0; border-radius: 0; padding: 0 var(--yarn-space-4); }
+  .yp-kitstory--facts .yp-kitstory__fact + .yp-kitstory__fact { border-left: 1px solid var(--yarn-line); }
+  .yp-endgrid { display: grid; grid-template-columns: minmax(0, 648fr) minmax(0, 504fr); gap: 48px; align-items: start; margin-top: 64px; }
+  .yp-endgrid .yp-kitstory { margin-top: 0; }
+  .yp-endgrid .yp-tutorial-preview--flow { margin-top: 0; }
+  .yp-endgrid .yp-kitstory--faq { border-top: 0; }
+  .yp-endgrid .yp-kitstory--faq > h2 { padding-top: 0; }
+}
 .yp-kitstory { margin-top: var(--yarn-space-6); }
 .yp-kitstory > h2, .yp-kitstory__fact > h2 { margin: 0 0 var(--yarn-space-3); }
 .yp-kitstory__about { display: grid; grid-template-columns: minmax(96px, 132px) 1fr; gap: var(--yarn-space-4); align-items: start; }
