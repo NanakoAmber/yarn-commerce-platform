@@ -1,0 +1,55 @@
+{%- capture card_visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+{%- if card_visible == 'true' -%}
+{%- capture card_category -%}{%- render 'yarn-project-canonical-value', value: project.category.value -%}{%- endcapture -%}
+{%- capture card_difficulty -%}{%- render 'yarn-project-canonical-value', value: project.difficulty.value -%}{%- endcapture -%}
+{%- liquid
+  assign tutorial_type = ''
+  if project.tutorial.value != blank or project.tutorial_url.value != blank
+    assign tutorial_type = '图文'
+  endif
+  if project.video_url.value != blank
+    assign tutorial_type = tutorial_type | append: ',视频'
+  endif
+-%}
+{%- capture purchase_modes -%}{%- render 'yarn-project-capabilities', project: project -%}{%- endcapture -%}
+<article class="yp-card" data-project-card data-discovery-card data-entity-type="project" data-entity-id="{{ project.system.id | split: '/' | last }}"
+  data-purchase="{{ purchase_modes | escape }}"
+  data-project-id="{{ project.system.id | escape }}"
+  {% if row_id != blank %}data-row-id="{{ row_id | escape }}"{% endif %}
+  data-title="{{ project.title.value | escape }}" data-summary="{{ project.summary.value | escape }}"
+  data-category="{{ card_category | escape }}" data-difficulty="{{ card_difficulty | escape }}"
+  data-tutorial="{{ tutorial_type | escape }}" data-time="{{ project.time_minutes.value | escape }}"
+  data-made-for="{{ project.made_for.value | escape }}" data-holiday="{{ project.holiday.value | escape }}"
+  data-hook-size="{{ project.hook_size.value | escape }}">
+  <a class="yp-card__link" href="{{ project.system.url }}">
+    <div class="yp-card__image{% if project.cover.value == blank %} yp-card__image--placeholder{% endif %}">
+      {% if project.cover.value != blank %}
+        {{ project.cover.value | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '240, 400, 600, 800, 1000', sizes: '(min-width: 990px) 370px, 46vw', alt: project.title.value }}
+      {% else %}
+        <span class="yp-card__placeholder" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false"><circle cx="14" cy="14" r="9"/><path d="M7 8c5 4 10 7 16 8M7 20c5-4 9-9 12-15M5 14c6 0 12 3 16 8m2 1c3 0 5 2 5 5"/></svg>
+        </span>
+      {% endif %}
+    </div>
+    <div class="yp-card__body">
+      {% if compact %}
+        {% if search_card %}<h3 class="yp-card__title">{{ project.title.value | escape }}</h3>{% else %}<h4 class="yp-card__title">{{ project.title.value | escape }}</h4>{% endif %}
+        {% if project.summary.value != blank %}<p class="yp-card__summary">{{ project.summary.value | escape }}</p>{% endif %}
+      {% else %}
+      {% if project.category.value != blank %}<p class="yp-card__category">{% render 'yarn-project-label', value: project.category.value %}</p>{% endif %}
+      <h3>{{ project.title.value | escape }}</h3>
+      <p class="yp-card__action">{{ 'yarn_project.view_project' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></p>
+      {% if project.summary.value != blank %}<p class="yp-card__summary">{{ project.summary.value | escape }}</p>{% endif %}
+      {% if project.difficulty.value != blank or project.time_minutes.value != blank %}
+        <dl class="yp-card__facts">
+          {% if project.difficulty.value != blank %}<div><dt>{{ 'yarn_project.difficulty' | t }}</dt><dd>{% render 'yarn-project-label', value: project.difficulty.value %}</dd></div>{% endif %}
+          {% if project.time_minutes.value != blank %}<div><dt>{{ 'yarn_project.time' | t }}</dt><dd>{{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</dd></div>{% endif %}
+        </dl>
+      {% endif %}
+      {% endif %}
+      <div class="yp-purchase-tags">{% assign purchase_tags = purchase_modes | split: ',' %}{% for purchase_tag in purchase_tags %}<span class="yp-purchase-tag">{{ purchase_tag | prepend: 'yarn_project.tag_' | t }}</span>{% endfor %}</div>
+    </div>
+  </a>
+  {% render 'yarn-favorite-button', entity_type: 'project', entity_id: project.system.id, entity_title: project.title.value %}
+</article>
+{%- endif -%}

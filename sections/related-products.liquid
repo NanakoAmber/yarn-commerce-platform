@@ -32,9 +32,9 @@
         assign related_heading = section.settings.heading
         case request.locale.iso_code
           when 'zh-CN', 'zh'
-            assign related_heading = '也可以看看这些毛线与套装'
+            assign related_heading = section.settings.heading_zh | default: related_heading
           when 'en'
-            assign related_heading = 'More yarns and kits to explore'
+            assign related_heading = section.settings.heading_en | default: related_heading
         endcase
       -%}
       <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
@@ -83,6 +83,16 @@
       "id": "heading",
       "default": "t:sections.related-products.settings.paragraph__1.default",
       "label": "t:sections.related-products.settings.heading.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_zh",
+      "label": "中文 · 标题(空则用上方默认)"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_en",
+      "label": "英文 · 标题(空则用上方默认)"
     },
     {
       "type": "select",

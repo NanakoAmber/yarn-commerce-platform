@@ -1,0 +1,32 @@
+{% comment %}
+  商品卡(卡片家族):badge 按商品 tag 判品类;规格行读 metafield yarn.spec_line(可选,无则省略);
+  动作行:多 variant → 查看色号,单 variant → 查看详情。整卡一个链接目标。
+{% endcomment %}
+{%- liquid
+  assign card_badge_label = ''
+  assign card_badge_class = ''
+  if card_product.tags contains '毛糸'
+    assign card_badge_label = 'yarn_project.card_badge_yarn' | t
+    assign card_badge_class = ''
+  elsif card_product.tags contains '編みものキット'
+    assign card_badge_label = 'yarn_project.card_badge_kit' | t
+    assign card_badge_class = ' yx-badge--kit'
+  elsif card_product.tags contains '完成品'
+    assign card_badge_label = 'yarn_project.card_badge_finished' | t
+    assign card_badge_class = ' yx-badge--finished'
+  endif
+-%}
+<a class="yx-product-card" href="{{ card_product.url }}">
+  <div class="yx-product-card__media">
+    {%- if card_product.featured_image != blank -%}
+      {{ card_product.featured_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 750px) 300px, 45vw', loading: 'lazy', alt: card_product.featured_image.alt | default: card_product.title }}
+    {%- endif -%}
+    {%- if card_badge_label != blank -%}<span class="yx-badge{{ card_badge_class }}">{{ card_badge_label }}</span>{%- endif -%}
+  </div>
+  <div class="yx-product-card__body">
+    <span class="yx-product-card__title">{{ card_product.title | escape }}</span>
+    <span class="yx-product-card__spec">{% render 'yarn-card-spec', product: card_product %}</span>
+    <span class="yx-product-card__price">{{ card_product.price | money }}</span>
+    <span class="yx-product-card__action">{% if card_product.variants.size > 1 %}{{ 'yarn_project.card_view_colors' | t }}{% else %}{{ 'yarn_project.card_view_details' | t }}{% endif %}<span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></span>
+  </div>
+</a>

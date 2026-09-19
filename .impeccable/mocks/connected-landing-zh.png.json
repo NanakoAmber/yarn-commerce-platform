@@ -1,0 +1,11 @@
+{
+  "date": "2026-09-07",
+  "surface": "templates/index.json",
+  "issue": 13,
+  "generator": "built-in image_gen",
+  "approval": "用户选择合并方案后要求开始实现；随后要求小猫、打开的书、移动错落以及尽可能对齐原图。",
+  "prompt_summary": "合并方案 1 文案与暖白奶油黄配色，方案 2 连续赭色毛线，方案 3 手绘分类与搜索；左侧主文案，中央大作品，右上毛线、右侧工具、右下教程。画面可读文案为简体中文。",
+  "width": 946,
+  "height": 1663,
+  "implementation_review": "局部首屏布局已复核，整页 Comp-first gates 尚未关闭。"
+}

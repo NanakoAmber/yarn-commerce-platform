@@ -1,0 +1,77 @@
+{% if project.components.value != blank %}
+  {% assign purchasable_materials = 0 %}
+  {% for component in project.components.value %}{% if allow_purchase != false and component.supply.value == '本店提供' and component.variant.value.product != blank and component.component_type.value != '工具' %}{% assign purchasable_materials = purchasable_materials | plus: 1 %}{% endif %}{% endfor %}
+  {% assign listed_components = 0 %}
+  {% for component in project.components.value %}{% unless component.component_type.value == '其他材料' and component.supply.value == '需自行准备' %}{% assign listed_components = listed_components | plus: 1 %}{% endunless %}{% endfor %}
+  {% if listed_components > 0 %}<ul class="yp-supplies" role="list">
+    {% for component in project.components.value %}
+      {% liquid
+        assign variant = component.variant.value
+        assign offered = false
+        if component.supply.value == '本店提供' and variant != blank and variant.product != blank and allow_purchase != false
+          assign offered = true
+        endif
+        assign item_image = component.image.value | default: variant.featured_image | default: variant.product.featured_image
+        assign purchase_key = component.system.id
+        assign supporting = false
+        if component.component_type.value == '其他材料' and component.supply.value == '需自行准备'
+          assign supporting = true
+        endif
+      %}
+      {% unless supporting %}
+      <li class="yp-supply{% if component.component_type.value == '毛线' %} yp-supply--yarn{% endif %}">
+        {% if offered and component.component_type.value == '工具' %}<details class="yp-optional-purchase"><summary aria-label="{{ component.title.value | escape }} · {{ 'yarn_project.optional_tool' | t }}">{% endif %}
+        {% if offered and component.component_type.value != '工具' %}
+          {%- capture component_url -%}{%- render 'yarn-project-product-url', url: variant.url, project: project, kind: 'materials', component_title: component.title.value -%}{%- endcapture -%}
+          <a class="yp-supply__intro yp-supply__product" id="ProjectProduct-{{ component.system.id }}" href="{{ component_url | escape }}">
+        {% else %}<div class="yp-supply__intro">{% endif %}
+          {% if item_image != blank %}{{ item_image | image_url: width: 240 | image_tag: widths: '120, 180, 240', sizes: '112px', loading: 'lazy', width: 72, height: 72, alt: '' }}{% endif %}
+          <div><h3>{{ component.title.value | escape }}</h3>
+            {% if component.specification.value != blank %}<p>{{ component.specification.value | escape | newline_to_br }}</p>{% endif %}
+            {% unless offered %}<p class="yp-supply__status">{% if component.supply.value == '需自行准备' %}{{ 'yarn_project.part_bring' | t }}{% elsif allow_purchase == false %}{{ 'yarn_project.material_reference' | t }}{% else %}{{ 'yarn_project.part_pending' | t }}{% endif %}</p>{% endunless %}
+          </div>
+          {% if offered %}<span class="yp-supply__price" data-purchase-unit-price>{{ variant.price | money }}</span>{% endif %}
+          {% if offered and component.component_type.value == '工具' %}<span class="yp-supply__expand" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span>{% endif %}
+          {% if offered and component.component_type.value != '工具' %}<span class="yp-supply__expand" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>{% endif %}
+        {% if offered and component.component_type.value != '工具' %}</a>{% else %}</div>{% endif %}
+        {% if offered and component.component_type.value == '工具' %}
+          </summary>
+          {% render 'yarn-project-purchase', product: variant.product, default_variant: variant, recommended_quantity: component.quantity.value, project: project, purchase_key: purchase_key, component_title: component.title.value, kind: 'materials' %}
+          </details>
+        {% endif %}
+        {% unless offered and component.component_type.value != '工具' %}{% if component.note.value != blank %}<p class="yp-supply__note">{{ component.note.value | escape | newline_to_br }}</p>{% endif %}{% endunless %}
+      </li>
+      {% endunless %}
+    {% endfor %}
+  </ul>{% endif %}
+  {% unless allow_purchase == false %}
+    {% for component in project.components.value %}
+      {% assign variant = component.variant.value %}
+      {% if component.supply.value == '本店提供' and variant != blank and variant.product != blank and component.component_type.value != '工具' %}
+        <div class="yp-material-selection">
+          {% if purchasable_materials > 1 %}<h3>{{ component.title.value | escape }}</h3>{% endif %}
+          {% assign purchase_key = component.system.id %}
+          {% assign details_id = 'ProjectProduct-' | append: component.system.id %}
+          {% render 'yarn-project-purchase', product: variant.product, default_variant: variant, recommended_quantity: component.quantity.value, project: project, purchase_key: purchase_key, component_title: component.title.value, kind: 'materials', details_id: details_id %}
+          {% if component.note.value != blank %}<p class="yp-supply__note">{{ component.note.value | escape | newline_to_br }}</p>{% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+  {% for component in project.components.value %}
+    {% if component.component_type.value == '其他材料' and component.supply.value == '需自行准备' %}
+      <p class="yp-self-supply"><strong>{{ component.title.value | escape }}</strong>{% if component.specification.value != blank %} · {{ component.specification.value | escape }}{% endif %}{% if component.note.value != blank %}<span>{{ component.note.value | escape | newline_to_br }}</span>{% endif %}</p>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% if project.materials.value != blank %}
+    {% for product in project.materials.value %}
+      <div class="yp-legacy-material">
+        <div class="yp-supply__intro">{% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', width: 72, height: 72, alt: '' }}{% endif %}<h3>{{ product.title | escape }}</h3></div>
+        {% assign purchase_key = 'legacy-' | append: product.id %}
+        {% unless allow_purchase == false %}{% render 'yarn-project-purchase', product: product, project: project, purchase_key: purchase_key, kind: 'materials' %}{% endunless %}
+      </div>
+    {% endfor %}
+  {% endif %}
+  {% if project.tools.value != blank %}<details class="yp-optional-purchase"><summary>{{ 'yarn_project.tools' | t }}</summary>{% if allow_purchase == false %}<ul>{% for product in project.tools.value %}<li>{{ product.title | escape }}</li>{% endfor %}</ul>{% else %}{% render 'yarn-project-products', products: project.tools.value, project: project %}{% endif %}</details>{% endif %}
+{% endif %}

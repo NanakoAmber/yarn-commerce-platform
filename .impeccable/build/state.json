@@ -1,0 +1,274 @@
+{
+  "tool": "build-phase",
+  "version": 2,
+  "startedAt": "2026-09-07T21:52:54.247Z",
+  "comp": ".impeccable/mocks/34-project-dual-mode.png",
+  "direction": null,
+  "breakpoint": "849x1852",
+  "artifact": null,
+  "phase": "hero",
+  "phases": {
+    "comps": {
+      "status": "skipped",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [
+        {
+          "at": "2026-09-07T21:52:54.247Z",
+          "text": "started with an approved comp; the comp round happened before this state (surface round or manual)"
+        }
+      ],
+      "gate": null,
+      "forced": null
+    },
+    "spec": {
+      "status": "closed",
+      "openedAt": "2026-09-07T21:52:54.247Z",
+      "closedAt": "2026-09-07T22:00:43.117Z",
+      "attempts": 6,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "16 regions, 6 plates, 4 text regions measured",
+        "at": "2026-09-07T22:00:43.117Z"
+      },
+      "forced": null
+    },
+    "plates": {
+      "status": "closed",
+      "openedAt": "2026-09-07T22:00:43.117Z",
+      "closedAt": "2026-09-07T22:09:28.706Z",
+      "attempts": 7,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "6/6 plates",
+        "at": "2026-09-07T22:09:28.706Z"
+      },
+      "forced": null
+    },
+    "hero": {
+      "status": "open",
+      "openedAt": "2026-09-07T22:09:28.706Z",
+      "closedAt": null,
+      "attempts": 1,
+      "notes": [
+        {
+          "at": "2026-09-07T23:33:11.234Z",
+          "text": "Issue34 actual implementation verified at 1440/390 in zh/en/ja; 66 tests and CI pass. Independent reviewer accepts product-driven comp adaptations and resolved SVGs; non-tutorial demo content corrected. Automatic hero gate remains open due static/adaptation heuristics; no force or false pass. Draft PR35 and unpublished Theme189762732345 are the review delivery."
+        }
+      ],
+      "gate": {
+        "ok": false,
+        "reasons": [
+          "hero overall 71.5% < 72% (structure 59%, color 86%, detail 62%)",
+          "region mode-materials is missing (detail 18%, structure 38%): the comp shows material the build does not",
+          "region hook-media is missing (detail 2%, structure 68%): the comp shows material the build does not",
+          "region material-purchase is missing (detail 0%, structure 56%): the comp shows material the build does not",
+          "region tutorial-heading is missing (detail 0%, structure 74%): the comp shows material the build does not",
+          "region tutorial-cover is missing (detail 1%, structure 46%): the comp shows material the build does not",
+          "plate mode-finished is placed but not at the comp's box: its ink spans 88x76px at (4,1) in the comp region and 100x59px at (0,24) in the build; size and position the <img> to the spec box (object-fit: cover), not to the surrounding layout",
+          "region start-control (control) is contradicted (structure 52%, detail added 56%): this control does not read as the comp's: rebuild its chrome from the crop (border, fill, radius, chevron or arrow, label size) rather than from a component default",
+          "artifact draws an illustration in inline SVG (spinner): <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"spinner\" viewBox=\"0 0 66 66\"...> (1 shapes, 0 chars of path data, 66px). Drawings, diagrams, notation, and leader lines are plates or belong to the plate they annotate; only icon-sized SVG (under 64px, a few paths) is code",
+          "artifact draws an illustration in inline SVG (spinner): <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"spinner\" viewBox=\"0 0 66 66\"...> (1 shapes, 0 chars of path data, 66px). Drawings, diagrams, notation, and leader lines are plates or belong to the plate they annotate; only icon-sized SVG (under 64px, a few paths) is code",
+          "READINGS, each one CSS edit (1):",
+          "text tutorial-heading: ink is #88594e in the build, #151414 in the comp; use the comp's colour",
+          "plate mode-finished is clipped at the right and bottom: the comp's artwork keeps a margin there (ink box 88x76 at 4,1 in the region) and the build's runs to the edge (99x59 at 0,24); size the box to the artwork's aspect and use object-fit: contain, or place the <img> at the artwork's own size, never cover on a narrower box",
+          "plate mode-materials is clipped at the right: the comp's artwork keeps a margin there (ink box 109x79 at 4,0 in the region) and the build's runs to the edge (120x55 at 0,26); size the box to the artwork's aspect and use object-fit: contain, or place the <img> at the artwork's own size, never cover on a narrower box",
+          "plate hook-media is clipped at the left and top and right: the comp's artwork keeps a margin there (ink box 109x73 at 13,8 in the region) and the build's runs to the edge (134x81 at 0,0); size the box to the artwork's aspect and use object-fit: contain, or place the <img> at the artwork's own size, never cover on a narrower box",
+          "plate tutorial-cover is clipped at the left and right: the comp's artwork keeps a margin there (ink box 526x241 at 114,12 in the region) and the build's runs to the edge (792x244 at 0,10); size the box to the artwork's aspect and use object-fit: contain, or place the <img> at the artwork's own size, never cover on a narrower box",
+          "the build carries ink in 7 grid cells where the comp is calm (H7, I7, J7, A8, B8, C8, C9); nothing exists on the page that the comp does not show (a kicker, an extra nav item, a divider, a second row of controls); remove it or name it in a stated decision after the hero passes"
+        ],
+        "summary": "hero 72% (drift)",
+        "score": 0.7153,
+        "verdict": "drift",
+        "report": ".impeccable/review/diff/hero/report.json",
+        "sideBySide": "/Users/jinchen/Documents/ChatGPT/毛线-issue-34-project-modes/.impeccable/review/diff/hero/side-by-side.png",
+        "worst": [
+          "tutorial-cover missing 25%",
+          "hook-media missing 31%",
+          "start-control contradicted 32%"
+        ],
+        "worstIds": [
+          "tutorial-cover",
+          "hook-media",
+          "start-control"
+        ],
+        "worstCrops": [
+          {
+            "id": "tutorial-cover",
+            "verdict": "missing",
+            "score": {
+              "overall": 0.2457,
+              "structure": 0.4623,
+              "color": 0.4823,
+              "colorIntersection": 0.146,
+              "paletteMatch": 0.6634,
+              "detail": 0.0073,
+              "detailRaw": 0.1323,
+              "detailAdded": 0.25,
+              "bands": 0.6
+            },
+            "file": ".impeccable/review/diff/hero/regions/tutorial-cover.png"
+          },
+          {
+            "id": "hook-media",
+            "verdict": "missing",
+            "score": {
+              "overall": 0.308,
+              "structure": 0.6763,
+              "color": 0.5056,
+              "colorIntersection": 0.0987,
+              "paletteMatch": 0.7247,
+              "detail": 0.0156,
+              "detailRaw": 0.1406,
+              "detailAdded": 0.25,
+              "bands": 0.6
+            },
+            "file": ".impeccable/review/diff/hero/regions/hook-media.png"
+          },
+          {
+            "id": "start-control",
+            "verdict": "contradicted",
+            "score": {
+              "overall": 0.3235,
+              "structure": 0.5167,
+              "color": 0.2291,
+              "colorIntersection": 0.0352,
+              "paletteMatch": 0.3335,
+              "detail": 0.054,
+              "detailRaw": 0.3353,
+              "detailAdded": 0.5625,
+              "bands": 0.4
+            },
+            "file": ".impeccable/review/diff/hero/regions/start-control.png"
+          }
+        ],
+        "regionVerdicts": {
+          "chrome": "drift",
+          "project-title": "drift",
+          "project-cover": "match",
+          "intent-heading": "drift",
+          "mode-finished": "drift",
+          "mode-materials": "missing",
+          "materials-heading": "drift",
+          "yarn-media": "drift",
+          "hook-media": "missing",
+          "material-purchase": "missing",
+          "tutorial-heading": "missing",
+          "tutorial-cover": "missing",
+          "start-control": "contradicted"
+        },
+        "at": "2026-09-07T23:11:56.639Z"
+      },
+      "forced": null,
+      "records": 4,
+      "readingsSeen": {
+        "text tutorial-heading: ink is #88594e in the build, #151414 in the comp; use the comp's colour": 1
+      },
+      "history": [
+        {
+          "at": "2026-09-07T23:11:56.639Z",
+          "score": 0.7153,
+          "worstIds": [
+            "tutorial-cover",
+            "hook-media",
+            "start-control"
+          ],
+          "regionVerdicts": {
+            "chrome": "drift",
+            "project-title": "drift",
+            "project-cover": "match",
+            "intent-heading": "drift",
+            "mode-finished": "drift",
+            "mode-materials": "missing",
+            "materials-heading": "drift",
+            "yarn-media": "drift",
+            "hook-media": "missing",
+            "material-purchase": "missing",
+            "tutorial-heading": "missing",
+            "tutorial-cover": "missing",
+            "start-control": "contradicted"
+          },
+          "artifactHash": "48e0aa0c1ef3"
+        }
+      ]
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "review": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    }
+  },
+  "finish": {
+    "disposition": "fix",
+    "at": "2026-09-07T23:38:16.084Z",
+    "phaseAtFinish": "hero"
+  },
+  "plates": {
+    "project-cover": {
+      "status": "ok",
+      "score": 0.8077,
+      "size": "1715x917"
+    },
+    "mode-finished": {
+      "status": "ok",
+      "score": 0.7567,
+      "size": "594x498"
+    },
+    "mode-materials": {
+      "status": "ok",
+      "score": 0.7457,
+      "size": "720x486"
+    },
+    "yarn-media": {
+      "status": "ok",
+      "score": 0.5705,
+      "size": "1581x995"
+    },
+    "hook-media": {
+      "status": "ok",
+      "score": 0.5437,
+      "size": "1254x1254"
+    },
+    "tutorial-cover": {
+      "status": "ok",
+      "score": 0.535,
+      "size": "1672x941"
+    }
+  }
+}

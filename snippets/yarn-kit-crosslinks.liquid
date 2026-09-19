@@ -1,0 +1,101 @@
+{% comment %}
+  商品间互链出口卡(卡片家族 yx-exit,Issue #55 C 裁决):
+  一律数据驱动——metafield 有真实配对才显示配对卡;毛线侧允许降级为诚实的通用入口。
+  kind:
+    'yarn'            kit PDP → 相关毛线(metafield yarn.related_products 列表;
+                      无配对时降级为「想配自己的线?毛线精选」通用入口)
+    'finished'        kit PDP → 同款成品(metafield yarn.finished_counterpart 单引用;无则不渲染)
+    'kits-teaser'     毛线 PDP → 编织包(metafield yarn.related_kits 列表;
+                      无配对时降级为「想看看线能织成什么?」通用入口)
+    'kit-from-finished' 成品 PDP → 配套编织包(metafield yarn.kit_counterpart 单引用;无则不渲染)
+{% endcomment %}
+{%- liquid
+  assign cross_kind = kind | default: 'yarn'
+-%}
+{%- if cross_kind == 'yarn' -%}
+  {%- assign related = product.metafields.yarn.related_products.value -%}
+  {%- assign yarn_collection = collections['yarn'] -%}
+  <aside class="yx-exit">
+    <div>
+      {%- if related != blank and related.count > 0 -%}
+        <h3 class="yx-exit__title">{{ 'yarn_project.kit_related_yarn' | t }}</h3>
+      {%- else -%}
+        <h3 class="yx-exit__title">{{ 'yarn_project.kit_yarn_teaser' | t }}</h3>
+      {%- endif -%}
+      <a class="yx-exit__cta" href="{{ yarn_collection.url | default: routes.all_products_collection_url }}">{{ 'yarn_project.kit_view_all_yarn' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+    </div>
+    <div class="yx-exit__media yx-exit__media--row">
+      {%- if related != blank and related.count > 0 -%}
+        {%- for rp in related limit: 3 -%}
+          <a href="{{ rp.url }}">{%- if rp.featured_image != blank -%}{{ rp.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '88px', loading: 'lazy', alt: rp.title }}{%- endif -%}</a>
+        {%- endfor -%}
+      {%- elsif yarn_collection != blank -%}
+        {%- for rp in yarn_collection.products limit: 3 -%}
+          <a href="{{ rp.url }}">{%- if rp.featured_image != blank -%}{{ rp.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '88px', loading: 'lazy', alt: rp.title }}{%- endif -%}</a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    {%- if related == blank or related.count == 0 -%}<p class="yx-exit__note">{{ 'yarn_project.pairing_note' | t }}</p>{%- endif -%}
+  </aside>
+{%- elsif cross_kind == 'finished' -%}
+  {%- assign fin = product.metafields.yarn.finished_counterpart.value -%}
+  {%- if fin != blank -%}
+    <aside class="yx-exit yx-exit--compact">
+      <div class="yx-exit__media"><a href="{{ fin.url }}">{%- if fin.featured_image != blank -%}{{ fin.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '72px', loading: 'lazy', alt: fin.title }}{%- endif -%}</a></div>
+      <div>
+        <h3 class="yx-exit__title">{{ 'yarn_project.kit_finished_link' | t }}</h3>
+        <p class="yx-exit__text">{{ fin.title | escape }}</p>
+      </div>
+      <a class="yx-exit__cta" href="{{ fin.url }}"><span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+    </aside>
+  {%- endif -%}
+{%- elsif cross_kind == 'kits-teaser' -%}
+  {%- assign kits = product.metafields.yarn.related_kits.value -%}
+  {%- assign kits_collection = collections['knit-kits'] -%}
+  <aside class="yx-exit">
+    <div>
+      {%- if kits != blank and kits.count > 0 -%}
+        <h3 class="yx-exit__title">{{ 'yarn_project.yarn_makes_what' | t }}</h3>
+      {%- else -%}
+        <h3 class="yx-exit__title">{{ 'yarn_project.yarn_makes_what_teaser' | t }}</h3>
+      {%- endif -%}
+      <a class="yx-exit__cta" href="{{ kits_collection.url | default: routes.all_products_collection_url }}">{{ 'yarn_project.view_kits' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+    </div>
+    <div class="yx-exit__media yx-exit__media--row">
+      {%- if kits != blank and kits.count > 0 -%}
+        {%- for rp in kits limit: 3 -%}
+          <a href="{{ rp.url }}">{%- if rp.featured_image != blank -%}{{ rp.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '88px', loading: 'lazy', alt: rp.title }}{%- endif -%}</a>
+        {%- endfor -%}
+      {%- elsif kits_collection != blank -%}
+        {%- for rp in kits_collection.products limit: 2 -%}
+          <a href="{{ rp.url }}">{%- if rp.featured_image != blank -%}{{ rp.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '88px', loading: 'lazy', alt: rp.title }}{%- endif -%}</a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    {%- if kits == blank or kits.count == 0 -%}<p class="yx-exit__note">{{ 'yarn_project.pairing_note' | t }}</p>{%- endif -%}
+  </aside>
+{%- elsif cross_kind == 'kit-from-finished' -%}
+  {%- assign kit = product.metafields.yarn.kit_counterpart.value -%}
+  {%- if kit != blank -%}
+    <aside class="yx-exit">
+      <div>
+        <h3 class="yx-exit__title">{{ 'yarn_project.make_it_yourself' | t }}</h3>
+        <p class="yx-exit__text">{{ 'yarn_project.make_it_yourself_sub' | t }}</p>
+        <a class="yx-exit__cta" href="{{ kit.url }}">{{ 'yarn_project.view_matching_kit' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+      </div>
+      <div class="yx-exit__media"><a href="{{ kit.url }}">{%- if kit.featured_image != blank -%}{{ kit.featured_image | image_url: width: 400 | image_tag: widths: '200, 400', sizes: '(min-width: 750px) 320px, 40vw', loading: 'lazy', alt: kit.title }}{%- endif -%}</a></div>
+    </aside>
+  {%- endif -%}
+{%- elsif cross_kind == 'product' -%}
+  {%- comment -%} 内容页等场景 → 指定商品 PDP 的紧凑出口卡;target 为商品对象,cta_label 为已翻译文案 {%- endcomment -%}
+  {%- if target != blank -%}
+    <aside class="yx-exit yx-exit--compact">
+      <div class="yx-exit__media"><a href="{{ target.url }}">{%- if target.featured_image != blank -%}{{ target.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '72px', loading: 'lazy', alt: target.title }}{%- endif -%}</a></div>
+      <div>
+        <h3 class="yx-exit__title">{{ target.title | escape }}</h3>
+        <p class="yx-exit__text">{{ target.price | money_with_currency }}</p>
+      </div>
+      <a class="yx-exit__cta" href="{{ target.url }}">{{ cta_label }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+    </aside>
+  {%- endif -%}
+{%- endif -%}

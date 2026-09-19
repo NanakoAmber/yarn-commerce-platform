@@ -17,6 +17,84 @@
         "color_scheme": "scheme-1"
       }
     },
+    "browse-toolbar": {
+      "type": "yarn-browse-toolbar",
+      "blocks": {
+        "tab-all": {
+          "type": "tab",
+          "settings": {
+            "collection": "all",
+            "label": "すべて",
+            "label_zh": "全部",
+            "label_en": "All"
+          }
+        },
+        "tab-yarn": {
+          "type": "tab",
+          "settings": {
+            "collection": "yarn",
+            "label": "毛糸",
+            "label_zh": "毛线",
+            "label_en": "Yarn"
+          }
+        },
+        "tab-kits": {
+          "type": "tab",
+          "settings": {
+            "collection": "knit-kits",
+            "label": "編みものキット",
+            "label_zh": "编织包",
+            "label_en": "Kits"
+          }
+        },
+        "tab-finished": {
+          "type": "tab",
+          "settings": {
+            "collection": "finished-goods",
+            "label": "完成品",
+            "label_zh": "成品",
+            "label_en": "Finished"
+          }
+        },
+        "chip-low": {
+          "type": "chip",
+          "settings": {
+            "label": "¥500未満",
+            "param": "filter.v.price.lte=499",
+            "label_zh": "不足¥500",
+            "label_en": "Under ¥500"
+          }
+        },
+        "chip-mid": {
+          "type": "chip",
+          "settings": {
+            "label": "¥500–1,499",
+            "param": "filter.v.price.gte=500&filter.v.price.lte=1499",
+            "label_zh": "¥500–1499",
+            "label_en": "¥500–1,499"
+          }
+        },
+        "chip-high": {
+          "type": "chip",
+          "settings": {
+            "label": "¥1,500以上",
+            "param": "filter.v.price.gte=1500",
+            "label_zh": "¥1500以上",
+            "label_en": "¥1,500 and up"
+          }
+        }
+      },
+      "block_order": [
+        "tab-all",
+        "tab-yarn",
+        "tab-kits",
+        "tab-finished",
+        "chip-low",
+        "chip-mid",
+        "chip-high"
+      ],
+      "settings": {}
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -29,17 +107,18 @@
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "standard",
-        "enable_filtering": true,
+        "enable_filtering": false,
         "filter_type": "vertical",
-        "enable_sorting": true,
+        "enable_sorting": false,
         "columns_mobile": "2",
-        "padding_top": 36,
+        "padding_top": 12,
         "padding_bottom": 36
       }
     }
   },
   "order": [
     "banner",
+    "browse-toolbar",
     "product-grid"
   ]
 }

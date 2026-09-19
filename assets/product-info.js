@@ -243,7 +243,15 @@ if (!customElements.get('product-info')) {
         );
 
         if (this.dataset.updateUrl === 'false') return;
-        window.history.replaceState({}, '', `${url}${variantId ? `?variant=${variantId}` : ''}`);
+        const nextUrl = new URL(url, window.location.origin);
+        if (variantId) nextUrl.searchParams.set('variant', variantId);
+        const currentUrl = new URL(window.location.href);
+        if (currentUrl.pathname === nextUrl.pathname) {
+          for (const key of ['yarn_project', 'yarn_project_title', 'yarn_project_url', 'yarn_project_kind', 'yarn_component']) {
+            if (currentUrl.searchParams.has(key)) nextUrl.searchParams.set(key, currentUrl.searchParams.get(key));
+          }
+        }
+        window.history.replaceState({}, '', `${nextUrl.pathname}${nextUrl.search}`);
       }
 
       setUnavailable() {

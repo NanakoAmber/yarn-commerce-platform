@@ -1,7 +1,7 @@
 # Architecture
 
 > Status: current direction
-> Last updated: 2026-09-04
+> Last updated: 2026-09-09
 
 ## Decision summary
 
@@ -22,12 +22,16 @@ flowchart TD
 
 Shopify 使用 Liquid 直接生成首屏商品内容。当某个页面需要 My Project 或 UGC 等高级功能时，Theme 中的 JavaScript 再通过自有 API 或 Shopify App Proxy 获取数据并渲染局部模块。
 
+Issue #39 已实现最小账号收藏服务代码（`services/favorites`），外部部署和应用安装尚未完成；图中的其余 Platform Service 能力仍属未来范围。收藏通过 App Proxy 的签名客户 ID 确认账号，SQLite 仅保存实体 ID 与收藏时间。Theme 配置只含同源代理路径，详情见[服务接入说明](../services/favorites/README.md)。
+
+独立搜索由 Liquid 分别生成公开 Project Metaobjects 与 Shopify Product 卡片，在浏览器按各实体自身的名称、描述和用途分组匹配。超过单页时通过同一 Section 的分页补齐目录；不使用关联作品自动扩充商品命中，也不从 Storefront API 重取价格。该实现适用于当前小目录，目录显著增长后再评估服务端索引。
+
 ## Responsibility boundaries
 
 | Capability | Source of truth | Notes |
 | --- | --- | --- |
 | Product, Variant, price | Shopify | 不在自有数据库中复制真值 |
-| Inventory | Shopify | 在购物和下单时实时以 Shopify 为准 |
+| Inventory | Shopify | 单品和 Kit Component 引用同一 Variant 库存；Kit 可售量由组件库存共同约束 |
 | Cart, Checkout | Shopify | 支付与结账路径不自建 |
 | Order, refund | Shopify | 自有系统可保存 Shopify ID 和派生状态 |
 | Project 公开内容 | Shopify Metaobjects / Metafields initially | 名称、难度、时间、教程和关联商品 |

@@ -1,30 +1,30 @@
-name: Feature or change
-description: Define one reviewable product or theme change.
-title: "[Feature] "
+name: 功能或变更
+description: 定义一个可独立审查的产品或主题变更。
+title: "[功能] "
 labels:
   - feature
 body:
   - type: textarea
     id: goal
     attributes:
-      label: Goal
-      description: What user or business outcome should this change create?
+      label: 目标
+      description: 这项变更应带来什么用户或商业结果？
     validations:
       required: true
 
   - type: textarea
     id: scope
     attributes:
-      label: Scope
-      description: State what is included and explicitly excluded.
+      label: 范围
+      description: 说明包含内容，并明确列出排除内容。
     validations:
       required: true
 
   - type: textarea
     id: acceptance
     attributes:
-      label: Acceptance criteria
-      description: List observable checks that determine whether the work is complete.
+      label: 验收标准
+      description: 列出用于判断工作是否完成的可观察检查项。
       placeholder: |
         - [ ] ...
         - [ ] ...
@@ -34,15 +34,15 @@ body:
   - type: textarea
     id: surfaces
     attributes:
-      label: Affected surfaces
-      description: Pages, languages, devices, Shopify data, or integrations affected.
+      label: 影响范围
+      description: 列出受影响的页面、语言、设备、Shopify 数据或集成。
     validations:
       required: true
 
   - type: textarea
     id: risk
     attributes:
-      label: Risk and permissions
-      description: Note production data, payments, credentials, legal assets, or approval gates.
+      label: 风险与权限
+      description: 说明是否涉及生产数据、支付、凭证、素材授权或审批节点。
     validations:
       required: true

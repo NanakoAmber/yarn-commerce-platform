@@ -1,0 +1,18 @@
+{"regions":[
+ {"id":"chrome","kind":"chrome","grid":"A0:J0","note":"Shared compact mobile navigation; preserve real site's header and back link semantics."},
+ {"id":"project-title","kind":"text","box":{"x":0.038,"y":0.072,"w":0.601,"h":0.031},"note":"Bold Yarn Display project title above cover; retain established font."},
+ {"id":"project-cover","kind":"image","bleed":true,"box":{"x":0.033,"y":0.112,"w":0.934,"h":0.229},"note":"Blue chenille basket lifestyle photograph; editable Shopify cover."},
+ {"id":"gallery-frame","kind":"chrome","grid":"A1:J3","container":true,"codeDrawn":true,"note":"Semantic gallery wrapper, radius and surrounding spacing. Inner media has its own region."},
+ {"id":"intent-heading","kind":"text","box":{"x":0.036,"y":0.351,"w":0.60,"h":0.021},"note":"Which way would you like to own this project?"},
+ {"id":"mode-finished","kind":"plate","box":{"x":0.064,"y":0.394,"w":0.117,"h":0.045},"note":"Hand-drawn basket illustration; transparent raster."},
+ {"id":"mode-materials","kind":"plate","box":{"x":0.542,"y":0.395,"w":0.141,"h":0.044},"note":"Hand-drawn yarn balls illustration; transparent raster."},
+ {"id":"mode-control","kind":"control","grid":"A4:J4","note":"Two equal intent cards, selected border/check; wraps labels in Japanese and English."},
+ {"id":"materials-heading","kind":"text","box":{"x":0.036,"y":0.490,"w":0.40,"h":0.02},"note":"Preparation heading, subdued making metadata above."},
+ {"id":"yarn-media","kind":"image","box":{"x":0.051,"y":0.521,"w":0.159,"h":0.046},"note":"Editable material photo: blue chenille skeins."},
+ {"id":"preparation-list","kind":"control","grid":"A5:J6","container":true,"codeDrawn":true,"note":"Two-row material requirements and purchase form; media regions measured separately."},
+ {"id":"hook-media","kind":"image","box":{"x":0.053,"y":0.578,"w":0.158,"h":0.044},"note":"Existing Shopify tool image, exact assigned hook reference; not a required generated asset."},
+ {"id":"material-purchase","kind":"control","grid":"A6:J7","note":"Variant choice, quantity and explicit add-to-cart action; no automatic tool add."},
+ {"id":"tutorial-heading","kind":"text","box":{"x":0.036,"y":0.752,"w":0.40,"h":0.021},"note":"Tutorial heading."},
+ {"id":"tutorial-cover","kind":"image","bleed":true,"box":{"x":0.034,"y":0.773,"w":0.933,"h":0.137},"note":"Illustrative overhead hands with basket; editable preview image, actual tutorial opens on user click."},
+ {"id":"start-control","kind":"control","grid":"A9:J9","note":"Butter pill starts same-page tutorial, independent of purchase."}
+]}

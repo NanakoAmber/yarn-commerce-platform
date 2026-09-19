@@ -1,0 +1,13 @@
+<button
+  class="yarn-favorite"
+  type="button"
+  data-favorite-button
+  data-favorite-type="{{ entity_type }}"
+  data-favorite-id="{{ entity_id | split: '/' | last }}"
+  aria-pressed="false"
+  aria-label="{{ 'yarn_discovery.favorite_add' | t: title: entity_title | escape }}"
+  data-label-add="{{ 'yarn_discovery.favorite_add' | t: title: entity_title | escape }}"
+  data-label-remove="{{ 'yarn_discovery.favorite_remove' | t: title: entity_title | escape }}"
+>
+  {{ 'icon-heart.svg' | inline_asset_content }}
+</button>

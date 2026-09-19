@@ -1,32 +1,35 @@
-## Issue
+## 对应 Issue
 
 Closes #
 
-## Outcome
+## 结果
 
 
 
-## Scope and non-goals
+## 范围与非目标
 
 
 
-## Verification
+## 验证
+
+<!-- 仅保留适用项；纯文档写内容、引用与 diff 检查结果。 -->
 
 - [ ] `npm run verify`
-- [ ] Relevant desktop flow checked
-- [ ] Relevant mobile flow checked
-- [ ] Relevant locales checked
-- [ ] No secrets, personal data, or unlicensed assets added
+- [ ] 已检查受影响的桌面端路径
+- [ ] 已检查受影响的移动端路径
+- [ ] 已检查受影响的语言；导航、手机菜单、页脚与页面 section 跟随同一语言
+- [ ] UI 改动复用共享 token / 控件；如修改共享规则，已同步 `DESIGN.md` 与接入说明
+- [ ] 未新增密钥、个人数据或未授权素材
 
-## Evidence
+## 验证结论
+
+<!-- 简记实际检查结果、范围、独立评审最终结论与未解决项；链接已批准方向。不粘贴日志、逐轮讨论，不上传过程截图，不另建 QA / verdict 文件。 -->
+
+## 风险与回滚
 
 
 
-## Risks and rollback
+## 人工验收
 
-
-
-## Human acceptance
-
-- [ ] Accepted on an unpublished Shopify theme
-- [ ] Production release separately approved, if applicable
+- [ ] 已在未发布 Shopify Theme 上验收
+- [ ] 如涉及生产发布，已另行获得批准

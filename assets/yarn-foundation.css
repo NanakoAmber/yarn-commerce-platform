@@ -1,0 +1,56 @@
+/* Shared interaction primitives. Page-specific composition stays in its surface CSS. */
+:is(.header-wrapper, .yarn-footer, .yarn-line--compact, .yp-library--rows, .yarn-hero--connected) {
+  color: var(--yarn-ink);
+  text-underline-offset: 5px;
+}
+:is(.header-wrapper, .yarn-footer, .yarn-line--compact, .yp-library--rows, .yarn-hero--connected) ::selection {
+  background: var(--yarn-butter);
+  color: var(--yarn-ink);
+}
+:is(.header-wrapper, .yarn-footer, .yarn-line--compact, .yp-library--rows, .yarn-hero--connected) :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: var(--yarn-focus-width) solid var(--yarn-focus);
+  outline-offset: var(--yarn-focus-offset);
+  box-shadow: none;
+}
+:is(.header-wrapper, .yarn-footer, .yp-library--rows) :is(input, textarea) {
+  caret-color: var(--yarn-action);
+}
+:is(.header-wrapper, .yarn-footer) :is(.field, .localization-form__select) {
+  border: 1px solid var(--yarn-control-line);
+  border-radius: var(--yarn-radius-field);
+  background: var(--yarn-surface);
+  color: var(--yarn-ink);
+}
+:is(.header-wrapper, .yarn-footer) .field::before,
+:is(.header-wrapper, .yarn-footer) .field::after,
+:is(.header-wrapper, .yarn-footer) .localization-form__select::after {
+  display: none;
+}
+:is(.header-wrapper, .yarn-footer) .field__input {
+  min-height: var(--yarn-field-height);
+  border-radius: var(--yarn-radius-field);
+  background: transparent;
+  color: var(--yarn-ink);
+  font-size: 16px;
+  box-shadow: none;
+}
+:is(.header-wrapper, .yarn-footer) .field__label { color: var(--yarn-muted); }
+:is(.header-wrapper, .yarn-footer) .field__button {
+  min-width: var(--yarn-touch);
+  min-height: var(--yarn-touch);
+  color: var(--yarn-action);
+  border-radius: var(--yarn-radius-pill);
+}
+:is(.header-wrapper, .yarn-footer) .field__button:hover { background: var(--yarn-action-hover); }
+:is(.header-wrapper, .yarn-footer) .localization-form__select {
+  min-height: var(--yarn-touch);
+  padding-left: var(--yarn-space-4);
+  font-size: var(--yarn-type-meta);
+}
+:is(.header-wrapper, .yarn-footer) .disclosure__list-wrapper {
+  background: var(--yarn-surface);
+  border: 1px solid var(--yarn-line);
+  border-radius: var(--yarn-radius-panel);
+}
+:is(.header-wrapper, .yarn-footer) .disclosure__link { min-height: var(--yarn-touch); color: var(--yarn-ink); }
+:is(.header-wrapper, .yarn-footer) .disclosure__link:hover { background: var(--yarn-action-soft); color: var(--yarn-action); }

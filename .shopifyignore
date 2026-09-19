@@ -1,5 +1,8 @@
 .github/**
+.impeccable/**
+assets/plates/**
 docs/**
+tests/**
 AGENTS.md
 CONTEXT.md
 PRODUCT.md
@@ -7,3 +10,4 @@ README.md
 init.sh
 package.json
 package-lock.json
+impeccable-hero-plates.html

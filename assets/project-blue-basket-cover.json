@@ -1,0 +1,32 @@
+{
+  "asset": "project-blue-basket-cover.png",
+  "web_asset": "project-blue-basket-cover.webp",
+  "source": "OpenAI built-in image_gen",
+  "generation_mode": "reference-guided edit, exact approved composition",
+  "generated_at": "2026-09-07",
+  "original_generation_path": "/Users/jinchen/.codex/generated_images/01a07ddc-d03e-7931-a6dd-7b272c147ff1/exec-069d03c6-4e96-4a4e-9786-b33c37f43c16.png",
+  "reference_image_path": "/Users/jinchen/Documents/ChatGPT/\u6bdb\u7ebf-issue-34-project-modes/.impeccable/build/crops/project-cover-reference.png",
+  "reference_source": {
+    "file": ".impeccable/mocks/34-project-dual-mode.png",
+    "crop": {
+      "x": 28,
+      "y": 207,
+      "width": 793,
+      "height": 424
+    },
+    "note": "Reference-only crop recreated because tool-emitted project-cover.png was uniform palette fill. Crop is not shipped."
+  },
+  "prompt": "Use case: precise-object-edit.\nEdit target: attached exact approved photographic crop (793 x 424). Make a clean standalone high-resolution photograph from it with the EXACT SAME composition. Preserve the exact blue basket scale, position, silhouette, stitch scale, front rectangular handle aperture, perspective and camera angle. Preserve the same plant positions and pots, wooden tabletop, wall and frame, lighting, shadows and colors. Basket occupies approximately x24% through 79% and y29% through 97% of the frame; do not zoom in, enlarge it, or raise the camera. Left woven planter at left edge, right plant in cream/turquoise/gold pot at right edge must remain in their exact positions. Background and furniture are unchanged.\nChange only the four tiny rounded white corners into photographic content so the photo fills the full rectangular canvas edge-to-edge. Cleanly reconstruct those corners as continuation of the adjacent image. Keep everything else compositionally unchanged, faithfully retaining the reference photograph.\nOutput landscape aspect ratio exactly 793:424 (1.870283), requested resolution 1586 x 848 or higher same aspect ratio. No text, no UI, no added objects, no new styling, no border, no watermark. Preserve photographic realism and crisp tactile yarn detail.",
+  "usage": "Authorized internal demonstration imagery for Issue #34 Project cover and finished-product demo photo. Does not establish material, tutorial, inventory or product truth.",
+  "dimensions": {
+    "width": 1715,
+    "height": 917
+  },
+  "conversion": {
+    "format": "webp",
+    "quality": 86,
+    "resize": false,
+    "crop": false
+  },
+  "inspection": "Preserves approved basket framing, front handle aperture, left woven planter and right gold/turquoise/cream planter, wooden tabletop and frame. Full rectangular photo without UI/text."
+}

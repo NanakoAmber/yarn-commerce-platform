@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="yarn-product-page section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -41,6 +41,8 @@
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'yarn-product-context.js' | asset_url }}" defer="defer"></script>
+  {{ 'yarn-product-context.css' | asset_url | stylesheet_tag }}
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -85,37 +87,40 @@
             class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
           >
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
-            {%- capture localized_product_title -%}{%- render 'yarn-product-title', product: product -%}{%- endcapture -%}
-            {%- assign localized_product_title = localized_product_title | strip -%}
+            {%- capture product_title -%}{%- render 'yarn-product-title', product: product -%}{%- endcapture -%}
+            {%- assign product_title = product_title | strip -%}
+            <yarn-product-context class="yp-product-context" hidden data-product-id="{{ product.id }}">
+              <p>{{ 'yarn_project.context_from' | t }} <a data-project-return></a></p>
+              <p data-project-reference hidden>{{ 'yarn_project.context_reference' | t }}</p>
+            </yarn-product-context>
 
+            {%- assign show_product_details = false -%}
             {%- for block in section.blocks -%}
               {%- case block.type -%}
                 {%- when '@app' -%}
                   {% render block %}
                 {%- when 'text' -%}
                   {%- liquid
-                    assign product_note = block.settings.text
-                    if block.settings.text contains '税込価格'
-                      case request.locale.iso_code
-                        when 'zh-CN', 'zh'
-                          assign product_note = '含税价格 · 日本全国配送 · 满9,900日元免运费'
-                        when 'en'
-                          assign product_note = 'Tax included · Delivery across Japan · Free shipping over ¥9,900'
-                      endcase
-                    endif
+                    assign block_text = block.settings.text
+                    case request.locale.iso_code
+                      when 'zh-CN', 'zh'
+                        assign block_text = block.settings.text_zh | default: block_text
+                      when 'en'
+                        assign block_text = block.settings.text_en | default: block_text
+                    endcase
                   -%}
                   <p
                     class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
                     {{ block.shopify_attributes }}
                   >
-                    {{- product_note -}}
+                    {{- block_text -}}
                   </p>
                 {%- when 'title' -%}
                   <div class="product__title" {{ block.shopify_attributes }}>
-                    <h1>{{ localized_product_title | escape }}</h1>
+                    <h1>{{ product_title | escape }}</h1>
                     <a href="{{ product.url }}" class="product__title">
                       <h2 class="h1">
-                        {{ localized_product_title | escape }}
+                        {{ product_title | escape }}
                       </h2>
                     </a>
                   </div>
@@ -206,16 +211,21 @@
                     {%- endif -%}
                   </p>
                 {%- when 'description' -%}
-                  {%- assign plain_product_description = product.description | strip_html | strip -%}
-                  {%- if plain_product_description != blank -%}
-                    <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                      {{ product.description }}
-                    </div>
-                  {%- else -%}
-                    <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                    {% if product.tags contains '編みものキット' %}
+                      {{ 'yarn-kit-story.css' | asset_url | stylesheet_tag }}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+                      {% comment %}Full kit narrative follows the purchase section.{% endcomment %}
+                    {% elsif product.tags contains '毛糸' %}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+                      {% assign show_product_details = true %}
+                    {% elsif product.tags contains '完成品' %}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+                      {% assign show_product_details = true %}
+                    {% else %}
                       {% render 'yarn-product-description', product: product %}
-                    </div>
-                  {%- endif -%}
+                    {% endif %}
+                  </div>
                 {%- when 'sku' -%}
                   <p
                     class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -284,7 +294,7 @@
                       <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
                         <button class="quantity__button" name="minus" type="button">
                           <span class="visually-hidden">
-                            {{- 'products.product.quantity.decrease' | t: product: localized_product_title | escape -}}
+                            {{- 'products.product.quantity.decrease' | t: product: product_title | escape -}}
                           </span>
                           <span class="svg-wrapper">
                             {{- 'icon-minus.svg' | inline_asset_content -}}
@@ -308,7 +318,7 @@
                         >
                         <button class="quantity__button" name="plus" type="button">
                           <span class="visually-hidden">
-                            {{- 'products.product.quantity.increase' | t: product: localized_product_title | escape -}}
+                            {{- 'products.product.quantity.increase' | t: product: product_title | escape -}}
                           </span>
                           <span class="svg-wrapper">
                             {{- 'icon-plus.svg' | inline_asset_content -}}
@@ -517,6 +527,13 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                  {%- if product.tags contains '編みものキット' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'yarn' -%}
+                  {%- elsif product.tags contains '毛糸' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'kits-teaser' -%}
+                  {%- elsif product.tags contains '完成品' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'kit-from-finished' -%}
+                  {%- endif -%}
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -717,6 +734,22 @@
         </div>
       </div>
 
+      {%- if product.tags contains '編みものキット' -%}
+        <div class="yarn-kit-story-full">
+          {% render 'yarn-kit-story', product: product, part: 'about', fallback: 'raw' %}
+          {% render 'yarn-kit-story', product: product, part: 'body', fallback: 'none' %}
+          {% render 'yarn-kit-crosslinks', product: product, kind: 'finished' %}
+          {% render 'yarn-kit-story', product: product, part: 'faq', fallback: 'none' %}
+        </div>
+      {%- endif -%}
+
+      {% if show_product_details and product.description != blank %}
+        <section class="yarn-product-details-full product__description rte">
+          <h2>{% if product.tags contains '完成品' %}{{ 'yarn_project.finished_spec_heading' | t }}{% else %}{{ 'yarn_project.yarn_spec_heading' | t }}{% endif %}</h2>
+          {% render 'yarn-product-description', product: product %}
+        </section>
+      {% endif %}
+
       {% render 'product-media-modal', variant_images: variant_images %}
 
       {% assign popups = section.blocks | where: 'type', 'popup' %}
@@ -782,6 +815,16 @@
           "id": "text",
           "default": "t:sections.main-product.blocks.text.settings.text.default",
           "label": "t:sections.main-product.blocks.text.settings.text.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text_zh",
+          "label": "中文 · 文本(空则用上方默认)"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text_en",
+          "label": "英文 · 文本(空则用上方默认)"
         },
         {
           "type": "select",

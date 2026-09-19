@@ -164,20 +164,23 @@
       assign language_selector = true
     endif
 
-    assign yarn_brand_name = shop.name
-    if shop.name == 'My Store'
-      assign yarn_brand_name = 'YARN STUDIO'
-    endif
+    assign yarn_brand_name = 'MewoolMew'
+
+    assign navigation_menu = section.settings.menu
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
+  <header id="YarnHeader" class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if navigation_menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
+    {% if metaobject.system.type == 'yarn_project' %}
+      <a class="yarn-project-nav-back" href="{{ routes.root_url }}#shop-by-project" aria-label="{{ 'yarn_project.back' | t }}"><span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+      <span class="yarn-project-nav-title">{{ 'yarn_project.detail_title' | t }}</span>
+    {% endif %}
     {%- liquid
       assign render_search_left = false
-      if section.settings.logo_position == 'top-center' or section.settings.menu == blank or shop.customer_accounts_enabled
+      if section.settings.logo_position == 'top-center' or navigation_menu == blank or shop.customer_accounts_enabled
         assign render_search_left = true
       endif
 
-      if section.settings.menu != blank
-        render 'yarn-header-drawer', show_country_selector: country_selector, show_language_selector: language_selector, show_social_links: social_links
+      if navigation_menu != blank
+        render 'yarn-header-drawer', navigation_menu: navigation_menu, show_country_selector: country_selector, show_language_selector: language_selector, show_social_links: social_links
       endif
 
       if render_search_left
@@ -210,11 +213,7 @@
             }}
           </div>
         {%- else -%}
-          {%- if yarn_brand_name == 'YARN STUDIO' -%}
-            <span class="h2 yarn-wordmark"><span>YARN</span><span>STUDIO</span></span>
-          {%- else -%}
-            <span class="h2">{{ yarn_brand_name }}</span>
-          {%- endif -%}
+          {%- render 'yarn-wordmark', brand_name: yarn_brand_name -%}
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -223,12 +222,8 @@
     {%- endif -%}
 
     {%- liquid
-      if section.settings.menu != blank
-        if section.settings.menu_type_desktop == 'dropdown'
-          render 'header-dropdown-menu'
-        elsif section.settings.menu_type_desktop != 'drawer'
-          render 'yarn-header-menu'
-        endif
+      if navigation_menu != blank and section.settings.menu_type_desktop != 'drawer'
+        render 'yarn-header-menu', navigation_menu: navigation_menu
       endif
     %}
 
@@ -257,11 +252,7 @@
             }}
           </div>
         {%- else -%}
-          {%- if yarn_brand_name == 'YARN STUDIO' -%}
-            <span class="h2 yarn-wordmark"><span>YARN</span><span>STUDIO</span></span>
-          {%- else -%}
-            <span class="h2">{{ yarn_brand_name }}</span>
-          {%- endif -%}
+          {%- render 'yarn-wordmark', brand_name: yarn_brand_name -%}
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -294,6 +285,9 @@
         {%- endif -%}
       </div>
       {% render 'header-search', input_id: 'Search-In-Modal' %}
+      <a href="{{ routes.search_url }}?browse=favorites" class="header__icon header__icon--favorites link focus-inset" aria-label="{{ 'yarn_discovery.favorites' | t }}">
+        <span class="svg-wrapper">{{ 'icon-heart.svg' | inline_asset_content }}</span>
+      </a>
 
       {%- if shop.customer_accounts_enabled -%}
         <shopify-account
@@ -475,7 +469,7 @@
   {
     "@context": "http://schema.org",
     "@type": "Organization",
-    "name": {{ shop.name | json }},
+    "name": {{ yarn_brand_name | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
@@ -500,7 +494,7 @@
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      "name": {{ shop.name | json }},
+      "name": {{ yarn_brand_name | json }},
       "potentialAction": {
         "@type": "SearchAction",
         "target": {{ potential_action_target | json }},

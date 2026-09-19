@@ -1,0 +1,13 @@
+{
+  "source": "OpenAI built-in image_gen",
+  "original_generation_path": "/Users/jinchen/.codex/generated_images/01a07ddc-d03e-7931-a6dd-7b272c147ff1/exec-17ca2eb9-40cf-4d31-b613-4754d4483911.png",
+  "generated_at": "2026-09-07",
+  "prompt": "Use case: product-mockup.\nAsset type: square small product photograph for an internal crochet Project material row.\nPrimary request: one crochet hook with an unmarked bright yellow ergonomic handle and a silver metal shaft with a realistic smooth rounded crochet hook tip, representing a 7.0 mm crochet hook. No size markings or writing on the object.\nScene/backdrop: warm white seamless tabletop, soft natural daylight, gentle short grounding shadow.\nComposition/framing: square 1024 x 1024, one complete hook diagonal from upper-left silver hook tip to lower-right yellow handle, centered, fully inside the image with comfortable margins. Similar to the yellow-handled hook shown in the tool row of the approved craft interface reference.\nStyle/medium: realistic clean premium craft product photography, tactile yellow handle and subtly reflective silver metal, quiet warm editorial style.\nConstraints: no other objects, no hands, no yarn, no basket, no text, no letters, no numbers, no logos, no branding, no watermark, no border, no UI.",
+  "usage": "Authorized internal illustrative hook imagery for Issue #34; picture represents a yellow ergonomic 7.0 mm hook but does not verify a real product specification.",
+  "conversion": {
+    "format": "webp",
+    "quality": 86,
+    "resize": false,
+    "crop": false
+  }
+}

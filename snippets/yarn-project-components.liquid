@@ -1,0 +1,47 @@
+{% comment %}
+  The component_type field is editorial presentation data. Exact price, stock and
+  purchase rules still come from the selected Shopify Variant.
+{% endcomment %}
+{%- liquid
+  assign yarn_count = 0
+  assign supporting_count = 0
+  for component in components
+    if component.component_type.value == '毛线'
+      assign yarn_count = yarn_count | plus: 1
+    else
+      assign supporting_count = supporting_count | plus: 1
+    endif
+  endfor
+-%}
+
+{% if yarn_count > 0 %}
+  <div class="yp-yarn-prep">
+    <div class="yp-yarn-prep__intro">
+      <h3>{{ 'yarn_project.yarn_heading' | t }}</h3>
+      <p>{{ 'yarn_project.yarn_note' | t }}</p>
+    </div>
+    <ul class="yp-components yp-components--yarn" role="list">
+      {% for component in components %}
+        {% if component.component_type.value == '毛线' %}
+          {% render 'yarn-project-component', component: component, project: project, mode: 'yarn', item_index: forloop.index %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+{% if supporting_count > 0 %}
+  <div class="yp-supporting-prep">
+    <div class="yp-supporting-prep__intro">
+      <h3>{% if yarn_count > 0 %}{{ 'yarn_project.supporting_heading' | t }}{% else %}{{ 'yarn_project.components' | t }}{% endif %}</h3>
+      <p>{% if yarn_count > 0 %}{{ 'yarn_project.supporting_note' | t }}{% else %}{{ 'yarn_project.components_note' | t }}{% endif %}</p>
+    </div>
+    <ul class="yp-components yp-components--supporting" role="list">
+      {% for component in components %}
+        {% unless component.component_type.value == '毛线' %}
+          {% render 'yarn-project-component', component: component, project: project, mode: 'supporting', item_index: forloop.index %}
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
