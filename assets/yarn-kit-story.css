@@ -40,3 +40,17 @@
 .yp-kit-contents[open] > summary .yp-supply__expand { transform: rotate(45deg); }
 .yp-kit-contents__body { font-size: 1.4rem; color: var(--yarn-copy); line-height: 1.7; padding-bottom: var(--yarn-space-3); }
 .yp-kit-contents__body ul { padding-left: 1.4em; margin: 0 0 var(--yarn-space-3); }
+
+/* 展开提示:随组件走,不依赖作品页专属样式 */
+.yp-kitstory__faq .yp-supply__expand, .yp-kit-contents .yp-supply__expand { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: var(--yarn-radius-pill, 999px); background: var(--yarn-action-soft); color: var(--yarn-action); transition: transform 0.15s ease; }
+.yp-kitstory__faq .yp-supply__expand svg, .yp-kit-contents .yp-supply__expand svg { width: 14px; height: 14px; }
+
+/* kit PDP:六段叙事在商品双栏之后的共享宽轴 */
+.yarn-kit-story-full { max-width: 82rem; margin: var(--yarn-space-6) auto 0; }
+.yarn-kit-story-full .yx-exit--compact { margin-top: var(--yarn-space-5); }
+@media (min-width: 990px) {
+  .yarn-kit-story-full { max-width: 96rem; }
+  .yarn-kit-story-full .yp-kitstory--contents { display: grid; grid-template-columns: minmax(0, 42rem) 1fr; gap: var(--yarn-space-5); align-items: start; }
+  .yarn-kit-story-full .yp-kitstory--contents > h2 { grid-column: 1 / -1; }
+  .yarn-kit-story-full .yp-kitstory--contents .yp-kitstory__hero { margin-bottom: 0; }
+}

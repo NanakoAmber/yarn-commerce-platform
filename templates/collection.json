@@ -20,15 +20,79 @@
     "browse-toolbar": {
       "type": "yarn-browse-toolbar",
       "blocks": {
-        "tab-all": { "type": "tab", "settings": { "collection": "all", "label": "全部" } },
-        "tab-yarn": { "type": "tab", "settings": { "collection": "yarn", "label": "毛线" } },
-        "tab-kits": { "type": "tab", "settings": { "collection": "knit-kits", "label": "编织包" } },
-        "tab-finished": { "type": "tab", "settings": { "collection": "finished-goods", "label": "成品" } },
-        "chip-low": { "type": "chip", "settings": { "label": "¥500以下", "param": "filter.v.price.lte=500" } },
-        "chip-mid": { "type": "chip", "settings": { "label": "¥500–1500", "param": "filter.v.price.gte=500&filter.v.price.lte=1500" } },
-        "chip-high": { "type": "chip", "settings": { "label": "¥1500以上", "param": "filter.v.price.gte=1500" } }
+        "tab-all": {
+          "type": "tab",
+          "settings": {
+            "collection": "all",
+            "label": "すべて",
+            "label_zh": "全部",
+            "label_en": "All"
+          }
+        },
+        "tab-yarn": {
+          "type": "tab",
+          "settings": {
+            "collection": "yarn",
+            "label": "毛糸",
+            "label_zh": "毛线",
+            "label_en": "Yarn"
+          }
+        },
+        "tab-kits": {
+          "type": "tab",
+          "settings": {
+            "collection": "knit-kits",
+            "label": "編みものキット",
+            "label_zh": "编织包",
+            "label_en": "Kits"
+          }
+        },
+        "tab-finished": {
+          "type": "tab",
+          "settings": {
+            "collection": "finished-goods",
+            "label": "完成品",
+            "label_zh": "成品",
+            "label_en": "Finished"
+          }
+        },
+        "chip-low": {
+          "type": "chip",
+          "settings": {
+            "label": "¥500以下",
+            "param": "filter.v.price.lte=500",
+            "label_zh": "¥500以下",
+            "label_en": "Under ¥500"
+          }
+        },
+        "chip-mid": {
+          "type": "chip",
+          "settings": {
+            "label": "¥500–1,500",
+            "param": "filter.v.price.gte=500&filter.v.price.lte=1500",
+            "label_zh": "¥500–1500",
+            "label_en": "¥500–1,500"
+          }
+        },
+        "chip-high": {
+          "type": "chip",
+          "settings": {
+            "label": "¥1,500以上",
+            "param": "filter.v.price.gte=1500",
+            "label_zh": "¥1500以上",
+            "label_en": "Over ¥1,500"
+          }
+        }
       },
-      "block_order": ["tab-all", "tab-yarn", "tab-kits", "tab-finished", "chip-low", "chip-mid", "chip-high"],
+      "block_order": [
+        "tab-all",
+        "tab-yarn",
+        "tab-kits",
+        "tab-finished",
+        "chip-low",
+        "chip-mid",
+        "chip-high"
+      ],
       "settings": {}
     },
     "product-grid": {

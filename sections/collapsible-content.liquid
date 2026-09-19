@@ -28,9 +28,18 @@
               {{ section.settings.caption | escape }}
             </p>
           {% endif %}
-          {%- if section.settings.heading != blank -%}
+          {%- liquid
+            assign cc_heading = section.settings.heading
+            case request.locale.iso_code
+              when 'zh-CN', 'zh'
+                assign cc_heading = section.settings.heading_zh | default: cc_heading
+              when 'en'
+                assign cc_heading = section.settings.heading_en | default: cc_heading
+            endcase
+          -%}
+          {%- if cc_heading != blank -%}
             <h2 class="collapsible-content__heading inline-richtext {{ section.settings.heading_size }}">
-              {{ section.settings.heading }}
+              {{ cc_heading }}
             </h2>
           {%- else -%}
             <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
@@ -74,6 +83,18 @@
                 class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
                 {{ block.shopify_attributes }}
               >
+                {%- liquid
+                  assign row_heading = block.settings.heading
+                  assign row_body = block.settings.row_content
+                  case request.locale.iso_code
+                    when 'zh-CN', 'zh'
+                      assign row_heading = block.settings.heading_zh | default: row_heading
+                      assign row_body = block.settings.row_content_zh | default: row_body
+                    when 'en'
+                      assign row_heading = block.settings.heading_en | default: row_heading
+                      assign row_body = block.settings.row_content_en | default: row_body
+                  endcase
+                -%}
                 <details
                   id="Details-{{ block.id }}-{{ section.id }}"
                   {% if section.settings.open_first_collapsible_row and forloop.first %}
@@ -83,7 +104,7 @@
                   <summary id="Summary-{{ block.id }}-{{ section.id }}">
                     {% render 'icon-accordion', icon: block.settings.icon %}
                     <h3 class="accordion__title inline-richtext h4">
-                      {{ block.settings.heading | default: block.settings.page.title | escape }}
+                      {{ row_heading | default: block.settings.page.title | escape }}
                     </h3>
                     {{- 'icon-caret.svg' | inline_asset_content -}}
                   </summary>
@@ -93,7 +114,7 @@
                     role="region"
                     aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
                   >
-                    {{ block.settings.row_content }}
+                    {{ row_body }}
                     {{ block.settings.page.content }}
                   </div>
                 </details>
@@ -125,6 +146,16 @@
       "id": "heading",
       "label": "t:sections.collapsible_content.settings.heading.label",
       "default": "t:sections.collapsible_content.settings.heading.default"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_zh",
+      "label": "中文 · 标题(空则用上方默认)"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading_en",
+      "label": "英文 · 标题(空则用上方默认)"
     },
     {
       "type": "select",
@@ -296,6 +327,16 @@
           "id": "heading",
           "default": "t:sections.collapsible_content.blocks.collapsible_row.settings.heading.default",
           "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.heading.label"
+        },
+        {
+          "type": "text",
+          "id": "heading_zh",
+          "label": "中文 · 行标题(空则用上方默认)"
+        },
+        {
+          "type": "text",
+          "id": "heading_en",
+          "label": "英文 · 行标题(空则用上方默认)"
         },
         {
           "type": "select",
@@ -485,6 +526,16 @@
           "type": "richtext",
           "id": "row_content",
           "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.row_content.label"
+        },
+        {
+          "type": "richtext",
+          "id": "row_content_zh",
+          "label": "中文 · 行内容(空则用上方默认)"
+        },
+        {
+          "type": "richtext",
+          "id": "row_content_en",
+          "label": "英文 · 行内容(空则用上方默认)"
         },
         {
           "type": "page",

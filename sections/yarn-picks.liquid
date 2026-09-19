@@ -1,28 +1,50 @@
 {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
 {% comment %}
   首页精选区块(卡片家族):标题 + 查看全部 + 可选出口卡钩子 + 商品卡网格。
-  文案设置以店主语言(中文)填写,日英走主题内容翻译层。
+  文案按 yarn-hero 的三联模式:纯键名为日文默认,_zh/_en 为中英覆盖。
 {% endcomment %}
 {%- liquid
   assign picks_collection = collections[section.settings.collection]
   assign picks_limit = section.settings.products_to_show
+  assign picks_heading = section.settings.heading
+  assign picks_note = section.settings.note
+  assign exit_title = section.settings.exit_title
+  assign exit_text = section.settings.exit_text
+  assign exit_cta = section.settings.exit_cta
+  assign exit_note = section.settings.exit_note
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign picks_heading = section.settings.heading_zh | default: picks_heading
+      assign picks_note = section.settings.note_zh | default: picks_note
+      assign exit_title = section.settings.exit_title_zh | default: exit_title
+      assign exit_text = section.settings.exit_text_zh | default: exit_text
+      assign exit_cta = section.settings.exit_cta_zh | default: exit_cta
+      assign exit_note = section.settings.exit_note_zh | default: exit_note
+    when 'en'
+      assign picks_heading = section.settings.heading_en | default: picks_heading
+      assign picks_note = section.settings.note_en | default: picks_note
+      assign exit_title = section.settings.exit_title_en | default: exit_title
+      assign exit_text = section.settings.exit_text_en | default: exit_text
+      assign exit_cta = section.settings.exit_cta_en | default: exit_cta
+      assign exit_note = section.settings.exit_note_en | default: exit_note
+  endcase
 -%}
 <section class="yx-picks yarn-shell-block color-{{ section.settings.color_scheme }}" style="--yx-cols: {{ section.settings.columns_desktop }};" aria-labelledby="Picks-{{ section.id }}">
   <div class="yx-picks__inner page-width">
     <div class="yx-picks__head">
-      <h2 id="Picks-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+      <h2 id="Picks-{{ section.id }}">{{ picks_heading | escape }}</h2>
       {%- if picks_collection != blank -%}<a class="yx-picks__all" href="{{ picks_collection.url }}">{{ 'yarn_project.card_view_all' | t }} →</a>{%- endif -%}
     </div>
-    {%- if section.settings.note != blank -%}<p class="yx-picks__note">{{ section.settings.note | escape }}</p>{%- endif -%}
+    {%- if picks_note != blank -%}<p class="yx-picks__note">{{ picks_note | escape }}</p>{%- endif -%}
     {%- if section.settings.exit_enabled -%}
       <aside class="yx-exit yx-picks__exit">
         <div>
-          <h3 class="yx-exit__title">{{ section.settings.exit_title | escape }}</h3>
-          {%- if section.settings.exit_text != blank -%}<p class="yx-exit__text">{{ section.settings.exit_text | escape }}</p>{%- endif -%}
-          <a class="yx-exit__cta" href="{{ section.settings.exit_link | default: picks_collection.url }}">{{ section.settings.exit_cta | escape }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+          <h3 class="yx-exit__title">{{ exit_title | escape }}</h3>
+          {%- if exit_text != blank -%}<p class="yx-exit__text">{{ exit_text | escape }}</p>{%- endif -%}
+          <a class="yx-exit__cta" href="{{ section.settings.exit_link | default: picks_collection.url }}">{{ exit_cta | escape }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
         </div>
         {%- if section.settings.exit_image != blank -%}<div class="yx-exit__media">{{ section.settings.exit_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 750px) 420px, 45vw', loading: 'lazy', alt: '' }}</div>{%- endif -%}
-        {%- if section.settings.exit_note != blank -%}<p class="yx-exit__note">{{ section.settings.exit_note | escape }}</p>{%- endif -%}
+        {%- if exit_note != blank -%}<p class="yx-exit__note">{{ exit_note | escape }}</p>{%- endif -%}
       </aside>
     {%- endif -%}
     {%- if picks_collection != blank and picks_collection.products_count > 0 -%}
@@ -42,19 +64,31 @@
 {
   "name": "精选区块(卡片家族)",
   "settings": [
-    { "type": "text", "id": "heading", "label": "标题", "default": "毛线精选" },
-    { "type": "text", "id": "note", "label": "辅助说明(可空)" },
+    { "type": "text", "id": "heading", "label": "日文 · 标题", "default": "おすすめの毛糸" },
+    { "type": "text", "id": "heading_zh", "label": "中文 · 标题", "default": "毛线精选" },
+    { "type": "text", "id": "heading_en", "label": "英文 · 标题", "default": "Yarn picks" },
+    { "type": "text", "id": "note", "label": "日文 · 辅助说明(可空)" },
+    { "type": "text", "id": "note_zh", "label": "中文 · 辅助说明(可空)" },
+    { "type": "text", "id": "note_en", "label": "英文 · 辅助说明(可空)" },
     { "type": "collection", "id": "collection", "label": "集合" },
     { "type": "range", "id": "products_to_show", "min": 2, "max": 8, "step": 1, "default": 4, "label": "商品数" },
     { "type": "range", "id": "columns_desktop", "min": 2, "max": 4, "step": 1, "default": 4, "label": "桌面列数" },
     { "type": "header", "content": "出口卡钩子(可选)" },
     { "type": "checkbox", "id": "exit_enabled", "label": "显示出口卡", "default": false },
-    { "type": "text", "id": "exit_title", "label": "出口卡标题" },
-    { "type": "text", "id": "exit_text", "label": "出口卡说明" },
-    { "type": "text", "id": "exit_cta", "label": "出口卡按钮文字" },
+    { "type": "text", "id": "exit_title", "label": "日文 · 出口卡标题" },
+    { "type": "text", "id": "exit_title_zh", "label": "中文 · 出口卡标题" },
+    { "type": "text", "id": "exit_title_en", "label": "英文 · 出口卡标题" },
+    { "type": "text", "id": "exit_text", "label": "日文 · 出口卡说明" },
+    { "type": "text", "id": "exit_text_zh", "label": "中文 · 出口卡说明" },
+    { "type": "text", "id": "exit_text_en", "label": "英文 · 出口卡说明" },
+    { "type": "text", "id": "exit_cta", "label": "日文 · 出口卡按钮文字" },
+    { "type": "text", "id": "exit_cta_zh", "label": "中文 · 出口卡按钮文字" },
+    { "type": "text", "id": "exit_cta_en", "label": "英文 · 出口卡按钮文字" },
     { "type": "url", "id": "exit_link", "label": "出口卡链接(空则用集合)" },
     { "type": "image_picker", "id": "exit_image", "label": "出口卡图片" },
-    { "type": "text", "id": "exit_note", "label": "出口卡脚注(如配对示意说明)" },
+    { "type": "text", "id": "exit_note", "label": "日文 · 出口卡脚注(如配对示意说明)" },
+    { "type": "text", "id": "exit_note_zh", "label": "中文 · 出口卡脚注" },
+    { "type": "text", "id": "exit_note_en", "label": "英文 · 出口卡脚注" },
     { "type": "select", "id": "color_scheme", "label": "配色", "options": [ { "value": "scheme-1", "label": "默认" } ], "default": "scheme-1" }
   ],
   "presets": [ { "name": "精选区块(卡片家族)" } ]

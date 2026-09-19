@@ -86,4 +86,16 @@
       <div class="yx-exit__media"><a href="{{ kit.url }}">{%- if kit.featured_image != blank -%}{{ kit.featured_image | image_url: width: 400 | image_tag: widths: '200, 400', sizes: '(min-width: 750px) 320px, 40vw', loading: 'lazy', alt: kit.title }}{%- endif -%}</a></div>
     </aside>
   {%- endif -%}
+{%- elsif cross_kind == 'product' -%}
+  {%- comment -%} 内容页等场景 → 指定商品 PDP 的紧凑出口卡;target 为商品对象,cta_label 为已翻译文案 {%- endcomment -%}
+  {%- if target != blank -%}
+    <aside class="yx-exit yx-exit--compact">
+      <div class="yx-exit__media"><a href="{{ target.url }}">{%- if target.featured_image != blank -%}{{ target.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '72px', loading: 'lazy', alt: target.title }}{%- endif -%}</a></div>
+      <div>
+        <h3 class="yx-exit__title">{{ target.title | escape }}</h3>
+        <p class="yx-exit__text">{{ target.price | money_with_currency }}</p>
+      </div>
+      <a class="yx-exit__cta" href="{{ target.url }}">{{ cta_label }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+    </aside>
+  {%- endif -%}
 {%- endif -%}

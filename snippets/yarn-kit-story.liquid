@@ -11,6 +11,9 @@
   {%- for part in kit_parts offset: 1 -%}
     {%- if story_part == 'main' and forloop.index == 6 -%}{%- continue -%}{%- endif -%}
     {%- if story_part == 'faq' and forloop.index != 6 -%}{%- continue -%}{%- endif -%}
+    {%- if story_part == 'about' and forloop.index != 1 -%}{%- continue -%}{%- endif -%}
+    {%- if story_part == 'body' and forloop.index == 1 -%}{%- continue -%}{%- endif -%}
+    {%- if story_part == 'body' and forloop.index == 6 -%}{%- continue -%}{%- endif -%}
     {%- assign heading = part | split: '</h2>' | first | strip -%}
     {%- assign body = part | remove_first: heading | remove_first: '</h2>' -%}
     {%- case forloop.index -%}
@@ -55,7 +58,8 @@
     {%- endcase -%}
   {%- endfor -%}
 {%- elsif product.description != blank -%}
-  {%- if fallback == 'raw' -%}
+  {%- if fallback == 'none' -%}
+  {%- elsif fallback == 'raw' -%}
     {{ product.description }}
   {%- else -%}
     <details class="yp-kit-contents">

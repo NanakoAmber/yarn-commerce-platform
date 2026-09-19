@@ -4,14 +4,25 @@
   tab/chip 均为 blocks,运营可在主题编辑器调整;价格带用 Shopify 原生
   filter.v.price 参数(已实测生效)。当前 tab 高亮按集合 handle;chip 高亮由
   内联脚本按查询参数标记,并在点击时合并现有参数(无 JS 时链接直达)。
+  标签按 yarn-hero 三联模式:纯键名为日文默认,_zh/_en 为中英覆盖;留空则用集合名。
 {% endcomment %}
+{%- assign req_locale = request.locale.iso_code -%}
 <div class="yx-toolbar page-width" data-yx-toolbar>
   <nav class="yx-toolbar__tabs" aria-label="{{ 'yarn_project.browse_categories' | t }}">
     {%- for block in section.blocks -%}
       {%- if block.type == 'tab' -%}
         {%- assign tab_collection = collections[block.settings.collection] -%}
         {%- if tab_collection != blank -%}
-          <a class="yx-chip{% if collection.handle == tab_collection.handle %} yx-chip--active{% endif %}" href="{{ tab_collection.url }}" {{ block.shopify_attributes }}>{{ block.settings.label | default: tab_collection.title | escape }}</a>
+          {%- liquid
+            assign tab_label = block.settings.label
+            case req_locale
+              when 'zh-CN', 'zh'
+                assign tab_label = block.settings.label_zh | default: tab_label
+              when 'en'
+                assign tab_label = block.settings.label_en | default: tab_label
+            endcase
+          -%}
+          <a class="yx-chip{% if collection.handle == tab_collection.handle %} yx-chip--active{% endif %}" {% if collection.handle == tab_collection.handle %}aria-current="page"{% endif %} href="{{ tab_collection.url }}" {{ block.shopify_attributes }}>{{ tab_label | default: tab_collection.title | escape }}</a>
         {%- endif -%}
       {%- endif -%}
     {%- endfor -%}
@@ -20,7 +31,16 @@
     <a class="yx-chip" data-yx-chip data-yx-param="" href="{{ collection.url }}">{{ 'yarn_project.browse_price_any' | t }}</a>
     {%- for block in section.blocks -%}
       {%- if block.type == 'chip' -%}
-        <a class="yx-chip" data-yx-chip data-yx-param="{{ block.settings.param | escape }}" href="{{ collection.url }}?{{ block.settings.param | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+        {%- liquid
+          assign chip_label = block.settings.label
+          case req_locale
+            when 'zh-CN', 'zh'
+              assign chip_label = block.settings.label_zh | default: chip_label
+            when 'en'
+              assign chip_label = block.settings.label_en | default: chip_label
+          endcase
+        -%}
+        <a class="yx-chip" data-yx-chip data-yx-param="{{ block.settings.param | escape }}" href="{{ collection.url }}?{{ block.settings.param | escape }}" {{ block.shopify_attributes }}>{{ chip_label | escape }}</a>
       {%- endif -%}
     {%- endfor -%}
   </div>
@@ -34,9 +54,9 @@
     var anyActive = false;
     chips.forEach(function (chip) {
       var p = chip.getAttribute('data-yx-param');
-      if (p && qs.indexOf(p) !== -1) { chip.classList.add('yx-chip--active'); anyActive = true; }
+      if (p && qs.indexOf(p) !== -1) { chip.classList.add('yx-chip--active'); chip.setAttribute('aria-current', 'true'); anyActive = true; }
     });
-    if (!anyActive && chips.length) chips[0].classList.add('yx-chip--active');
+    if (!anyActive && chips.length) { chips[0].classList.add('yx-chip--active'); chips[0].setAttribute('aria-current', 'true'); }
     chips.forEach(function (chip) {
       chip.addEventListener('click', function (e) {
         e.preventDefault();
@@ -52,9 +72,9 @@
   })();
 </script>
 {% style %}
-  .yx-toolbar { padding: var(--yarn-space-4, 16px) 0 0; display: grid; gap: 10px; }
+  .yx-toolbar { padding: var(--yarn-space-3, 12px) 0 0; display: grid; gap: 8px; }
   .yx-toolbar__tabs, .yx-toolbar__chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .yx-chip { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 16px; border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-pill); background: var(--yarn-surface); color: var(--yarn-ink); font-size: 1.35rem; text-decoration: none; }
+  .yx-chip { display: inline-flex; align-items: center; min-height: var(--yarn-touch, 44px); padding: 8px 16px; border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-pill); background: var(--yarn-surface); color: var(--yarn-ink); font-size: 1.35rem; text-decoration: none; }
   .yx-chip--active { background: var(--yarn-butter); border-color: var(--yarn-primary-line); font-weight: 600; }
   .yx-chip:hover { background: var(--yarn-action-hover); }
   .yx-chip--active:hover { background: var(--yarn-primary-hover); }
@@ -66,10 +86,14 @@
   "blocks": [
     { "type": "tab", "name": "品类 Tab", "settings": [
       { "type": "collection", "id": "collection", "label": "集合" },
-      { "type": "text", "id": "label", "label": "标签(空则用集合名)" }
+      { "type": "text", "id": "label", "label": "日文 · 标签(空则用集合名)" },
+      { "type": "text", "id": "label_zh", "label": "中文 · 标签" },
+      { "type": "text", "id": "label_en", "label": "英文 · 标签" }
     ] },
     { "type": "chip", "name": "价格带", "settings": [
-      { "type": "text", "id": "label", "label": "标签", "default": "¥500以下" },
+      { "type": "text", "id": "label", "label": "日文 · 标签", "default": "¥500以下" },
+      { "type": "text", "id": "label_zh", "label": "中文 · 标签" },
+      { "type": "text", "id": "label_en", "label": "英文 · 标签" },
       { "type": "text", "id": "param", "label": "筛选参数", "default": "filter.v.price.lte=500", "info": "如 filter.v.price.gte=500&filter.v.price.lte=1500" }
     ] }
   ],

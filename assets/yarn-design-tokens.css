@@ -34,6 +34,7 @@
 /* Shared roles extracted from the approved connected Hero and project rows. */
 :root {
   --yarn-action: #a6472e;
+  --yarn-action-strong: #8f3c26;
   --yarn-thread: #bf5a38;
   --yarn-action-soft: #fff9e9;
   --yarn-action-hover: #fff3de;
