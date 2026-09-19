@@ -1,0 +1,78 @@
+{{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  统一浏览工具栏(Issue #55):品类 tab + 价格带 chips。
+  tab/chip 均为 blocks,运营可在主题编辑器调整;价格带用 Shopify 原生
+  filter.v.price 参数(已实测生效)。当前 tab 高亮按集合 handle;chip 高亮由
+  内联脚本按查询参数标记,并在点击时合并现有参数(无 JS 时链接直达)。
+{% endcomment %}
+<div class="yx-toolbar page-width" data-yx-toolbar>
+  <nav class="yx-toolbar__tabs" aria-label="{{ 'yarn_project.browse_categories' | t }}">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'tab' -%}
+        {%- assign tab_collection = collections[block.settings.collection] -%}
+        {%- if tab_collection != blank -%}
+          <a class="yx-chip{% if collection.handle == tab_collection.handle %} yx-chip--active{% endif %}" href="{{ tab_collection.url }}" {{ block.shopify_attributes }}>{{ block.settings.label | default: tab_collection.title | escape }}</a>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </nav>
+  <div class="yx-toolbar__chips">
+    <a class="yx-chip" data-yx-chip data-yx-param="" href="{{ collection.url }}">{{ 'yarn_project.browse_price_any' | t }}</a>
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'chip' -%}
+        <a class="yx-chip" data-yx-chip data-yx-param="{{ block.settings.param | escape }}" href="{{ collection.url }}?{{ block.settings.param | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+<script>
+  (function () {
+    var bar = document.querySelector('[data-yx-toolbar]');
+    if (!bar) return;
+    var qs = window.location.search.replace(/^\?/, '');
+    var chips = bar.querySelectorAll('[data-yx-chip]');
+    var anyActive = false;
+    chips.forEach(function (chip) {
+      var p = chip.getAttribute('data-yx-param');
+      if (p && qs.indexOf(p) !== -1) { chip.classList.add('yx-chip--active'); anyActive = true; }
+    });
+    if (!anyActive && chips.length) chips[0].classList.add('yx-chip--active');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function (e) {
+        e.preventDefault();
+        var params = new URLSearchParams(window.location.search);
+        params.delete('filter.v.price.gte');
+        params.delete('filter.v.price.lte');
+        var p = chip.getAttribute('data-yx-param');
+        if (p) new URLSearchParams(p).forEach(function (v, k) { params.set(k, v); });
+        var q = params.toString();
+        window.location.href = window.location.pathname + (q ? '?' + q : '');
+      });
+    });
+  })();
+</script>
+{% style %}
+  .yx-toolbar { padding: var(--yarn-space-4, 16px) 0 0; display: grid; gap: 10px; }
+  .yx-toolbar__tabs, .yx-toolbar__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .yx-chip { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 16px; border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-pill); background: var(--yarn-surface); color: var(--yarn-ink); font-size: 1.35rem; text-decoration: none; }
+  .yx-chip--active { background: var(--yarn-butter); border-color: var(--yarn-primary-line); font-weight: 600; }
+  .yx-chip:hover { background: var(--yarn-action-hover); }
+  .yx-chip--active:hover { background: var(--yarn-primary-hover); }
+{% endstyle %}
+{% schema %}
+{
+  "name": "浏览工具栏(品类+价格带)",
+  "settings": [],
+  "blocks": [
+    { "type": "tab", "name": "品类 Tab", "settings": [
+      { "type": "collection", "id": "collection", "label": "集合" },
+      { "type": "text", "id": "label", "label": "标签(空则用集合名)" }
+    ] },
+    { "type": "chip", "name": "价格带", "settings": [
+      { "type": "text", "id": "label", "label": "标签", "default": "¥500以下" },
+      { "type": "text", "id": "param", "label": "筛选参数", "default": "filter.v.price.lte=500", "info": "如 filter.v.price.gte=500&filter.v.price.lte=1500" }
+    ] }
+  ],
+  "presets": [ { "name": "浏览工具栏(品类+价格带)" } ]
+}
+{% endschema %}

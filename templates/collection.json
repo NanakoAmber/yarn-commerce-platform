@@ -17,6 +17,20 @@
         "color_scheme": "scheme-1"
       }
     },
+    "browse-toolbar": {
+      "type": "yarn-browse-toolbar",
+      "blocks": {
+        "tab-all": { "type": "tab", "settings": { "collection": "all", "label": "全部" } },
+        "tab-yarn": { "type": "tab", "settings": { "collection": "yarn", "label": "毛线" } },
+        "tab-kits": { "type": "tab", "settings": { "collection": "knit-kits", "label": "编织包" } },
+        "tab-finished": { "type": "tab", "settings": { "collection": "finished-goods", "label": "成品" } },
+        "chip-low": { "type": "chip", "settings": { "label": "¥500以下", "param": "filter.v.price.lte=500" } },
+        "chip-mid": { "type": "chip", "settings": { "label": "¥500–1500", "param": "filter.v.price.gte=500&filter.v.price.lte=1500" } },
+        "chip-high": { "type": "chip", "settings": { "label": "¥1500以上", "param": "filter.v.price.gte=1500" } }
+      },
+      "block_order": ["tab-all", "tab-yarn", "tab-kits", "tab-finished", "chip-low", "chip-mid", "chip-high"],
+      "settings": {}
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -29,7 +43,7 @@
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "standard",
-        "enable_filtering": true,
+        "enable_filtering": false,
         "filter_type": "vertical",
         "enable_sorting": true,
         "columns_mobile": "2",
@@ -40,6 +54,7 @@
   },
   "order": [
     "banner",
+    "browse-toolbar",
     "product-grid"
   ]
 }

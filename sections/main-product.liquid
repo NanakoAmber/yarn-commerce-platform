@@ -204,9 +204,18 @@
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {% if product.tags contains '編みものキット' %}
                       {{ 'yarn-kit-story.css' | asset_url | stylesheet_tag }}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
                       {% render 'yarn-kit-story', product: product, part: 'main', fallback: 'raw' %}
                       {% render 'yarn-kit-crosslinks', product: product, kind: 'finished' %}
                       {% render 'yarn-kit-story', product: product, part: 'faq' %}
+                    {% elsif product.tags contains '毛糸' %}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+                      {% render 'yarn-product-description', product: product %}
+                      {% render 'yarn-kit-crosslinks', product: product, kind: 'kits-teaser' %}
+                    {% elsif product.tags contains '完成品' %}
+                      {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+                      {% render 'yarn-product-description', product: product %}
+                      {% render 'yarn-kit-crosslinks', product: product, kind: 'kit-from-finished' %}
                     {% else %}
                       {% render 'yarn-product-description', product: product %}
                     {% endif %}
