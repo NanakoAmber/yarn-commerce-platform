@@ -15,6 +15,7 @@
 <article class="yp-detail yp-detail--modes yp-shell">
   <a class="yp-back" href="{{ routes.root_url }}#shop-by-project"><span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span> {{ 'yarn_project.back' | t }}</a>
   {% if visible == 'true' %}
+    <div class="yp-axis">
     <header class="yp-project-heading">
       {% if project.release_scope.value == '仅内部原型' %}<p class="yp-demo-label">{{ 'yarn_project.demo_content' | t }}</p>{% endif %}
       <h1>{{ project.title.value | escape }}</h1>
@@ -55,27 +56,80 @@
         {% if modes contains 'materials' %}
           <div class="yp-mode-panel" id="ProjectPanel-materials" data-mode-panel="materials">
             <p class="yp-making-facts">{% if project.difficulty.value != blank %}{% render 'yarn-project-label', value: project.difficulty.value %}{% endif %}{% if project.time_minutes.value != blank %}<span> · {{ project.time_minutes.value }} {{ 'yarn_project.minutes' | t }}</span>{% endif %}{% if project.hook_size.value != blank %}<span> · {{ project.hook_size.value | escape }}</span>{% endif %}</p>
+            {% liquid
+              assign has_kit_component = false
+              for component in project.components.value
+                if component.variant.value.product.tags contains '編みものキット'
+                  assign has_kit_component = true
+                endif
+              endfor
+              for product in project.materials.value
+                if product.tags contains '編みものキット'
+                  assign has_kit_component = true
+                endif
+              endfor
+            %}
+            {% if has_kit_component %}
+              <ul class="yp-value-points" role="list">
+                <li><span aria-hidden="true">{{ 'icon-checkmark.svg' | inline_asset_content }}</span>{{ 'yarn_project.value_kit_included' | t }}</li>
+                {% if project.video_url.value != blank %}<li><span aria-hidden="true">{{ 'icon-checkmark.svg' | inline_asset_content }}</span>{{ 'yarn_project.value_video' | t }}</li>{% endif %}
+                {% if project.tutorial.value != blank or project.tutorial_url.value != blank %}<li><span aria-hidden="true">{{ 'icon-checkmark.svg' | inline_asset_content }}</span>{{ 'yarn_project.value_tutorial' | t }}</li>{% endif %}
+              </ul>
+            {% endif %}
             <section id="ProjectPrepare" class="yp-preparation">
               <h2>{{ 'yarn_project.prepare' | t }}</h2>
               {% render 'yarn-project-mode-materials', project: project %}
             </section>
-            {% if has_tutorial %}
-              <section class="yp-tutorial-preview">
-                <h2>{{ 'yarn_project.tutorial' | t }}</h2>
-                <a class="yp-tutorial-cover" href="#ProjectTutorial">
-                  {% if tutorial_cover != blank %}{{ tutorial_cover | image_url: width: 1200 | image_tag: widths: '390, 600, 900, 1200', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: '' }}{% endif %}
-                  <span>{{ 'yarn_project.view_full_tutorial' | t }}</span>
-                </a>
-                <a class="yp-action yp-action--start" href="#ProjectTutorial">{{ 'yarn_project.start' | t }}</a>
-                <p class="yp-mode-note yp-mode-note--center">{{ 'yarn_project.start_without_purchase' | t }}</p>
-              </section>
-            {% endif %}
           </div>
         {% endif %}
         {% if modes == 'inspiration' %}<section class="yp-inspiration"><span class="yp-purchase-tag">{{ 'yarn_project.tag_inspiration' | t }}</span><h2>{{ 'yarn_project.inspiration_heading' | t }}</h2><p>{{ 'yarn_project.inspiration_note' | t }}</p>{% if project.preparation.value != blank or project.components.value != blank %}<h3>{{ 'yarn_project.prepare' | t }}</h3>{% render 'yarn-project-mode-materials', project: project, allow_purchase: false %}{% endif %}{% if has_tutorial %}<a class="yp-action" href="#ProjectTutorial">{{ 'yarn_project.open_tutorial' | t }}</a>{% endif %}</section>{% endif %}
       </yarn-project-modes>
         {% if project.summary.value != blank %}<p class="yp-project-summary">{{ project.summary.value | escape | newline_to_br }}</p>{% endif %}
     </div>
+    {% if modes contains 'materials' %}
+      {% liquid
+        assign kit_story_product = blank
+        for component in project.components.value
+          if component.variant.value.product.tags contains '編みものキット'
+            assign kit_story_product = component.variant.value.product
+          endif
+        endfor
+        if kit_story_product == blank
+          for mat_product in project.materials.value
+            if mat_product.tags contains '編みものキット'
+              assign kit_story_product = mat_product
+            endif
+          endfor
+        endif
+      %}
+      {% if kit_story_product != blank and kit_story_product.description != blank %}
+        <div class="yp-kitstory-flow">{% render 'yarn-kit-story', product: kit_story_product, part: 'main' %}</div>
+        <div class="yp-endgrid">
+          <div class="yp-endgrid__faq">{% render 'yarn-kit-story', product: kit_story_product, part: 'faq' %}</div>
+          {% if has_tutorial %}
+            <section class="yp-tutorial-preview yp-tutorial-preview--flow">
+              <h2>{{ 'yarn_project.tutorial_preview' | t }}</h2>
+              <a class="yp-tutorial-cover" href="#ProjectTutorial">
+                {% if tutorial_cover != blank %}{{ tutorial_cover | image_url: width: 1200 | image_tag: widths: '390, 600, 900, 1200', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: '' }}{% endif %}
+                <span>{{ 'yarn_project.view_full_tutorial' | t }}</span>
+              </a>
+              <a class="yp-action yp-action--start" href="#ProjectTutorial">{{ 'yarn_project.start' | t }}</a>
+              <p class="yp-mode-note yp-mode-note--center">{{ 'yarn_project.start_without_purchase' | t }}</p>
+            </section>
+          {% endif %}
+        </div>
+      {% elsif has_tutorial %}
+        <section class="yp-tutorial-preview yp-tutorial-preview--flow">
+          <h2>{{ 'yarn_project.tutorial_preview' | t }}</h2>
+          <a class="yp-tutorial-cover" href="#ProjectTutorial">
+            {% if tutorial_cover != blank %}{{ tutorial_cover | image_url: width: 1200 | image_tag: widths: '390, 600, 900, 1200', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: '' }}{% endif %}
+            <span>{{ 'yarn_project.view_full_tutorial' | t }}</span>
+          </a>
+          <a class="yp-action yp-action--start" href="#ProjectTutorial">{{ 'yarn_project.start' | t }}</a>
+          <p class="yp-mode-note yp-mode-note--center">{{ 'yarn_project.start_without_purchase' | t }}</p>
+        </section>
+      {% endif %}
+    {% endif %}
     <div class="yp-reading">
       {% if project.preparation.value != blank %}<section class="yp-project-notes"><h2>{{ 'yarn_project.prepare' | t }}</h2><div class="yp-preparation-copy rte">{{ project.preparation | metafield_tag }}</div></section>{% endif %}
       {% if project.purchase_modes.value == blank and project.release_scope.value == '仅内部原型' and project.finished_products.value != blank %}
@@ -117,6 +171,7 @@
           {% else %}<p class="yp-notice">{{ 'yarn_project.form_disabled' | t }}</p>{% endif %}
         </section>
       {% endif %}
+    </div>
     </div>
   {% else %}<div class="yp-empty"><h1>{{ 'yarn_project.missing' | t }}</h1><p>{{ 'yarn_project.missing_hint' | t }}</p></div>{% endif %}
 </article>

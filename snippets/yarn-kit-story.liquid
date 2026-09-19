@@ -1,0 +1,62 @@
+{% comment %}
+  按获批移动端构图稿(.impeccable/mocks/52-project-detail-comps/comp-mobile.png)
+  把编织包商品描述渲染为顺读分区。描述结构约定为六个 <h2> 分节:
+  1 关于 · 2 内容物 · 3 开始步骤 · 4 尺寸 · 5 适合谁 · 6 FAQ(内含 h3+p 问答)。
+  分节不足六个时回退为「编织包里有什么」折叠,保证旧数据可用。
+{% endcomment %}
+{%- assign kit_parts = product.description | split: '<h2>' -%}
+{%- assign kit_section_count = kit_parts.size | minus: 1 -%}
+{%- assign story_part = part | default: 'all' -%}
+{%- if kit_section_count >= 6 -%}
+  {%- for part in kit_parts offset: 1 -%}
+    {%- if story_part == 'main' and forloop.index == 6 -%}{%- continue -%}{%- endif -%}
+    {%- if story_part == 'faq' and forloop.index != 6 -%}{%- continue -%}{%- endif -%}
+    {%- assign heading = part | split: '</h2>' | first | strip -%}
+    {%- assign body = part | remove_first: heading | remove_first: '</h2>' -%}
+    {%- case forloop.index -%}
+      {%- when 1 -%}
+        <section class="yp-kitstory yp-kitstory--about">
+          <h2>{{ heading }}</h2>
+          <div class="yp-kitstory__about">
+            {%- if product.images[2] != blank -%}<div class="yp-kitstory__media">{{ product.images[2] | image_url: width: 480 | image_tag: widths: '240, 360, 480', sizes: '160px', loading: 'lazy', alt: heading }}</div>{%- endif -%}
+            <div class="yp-kitstory__copy">{{ body }}</div>
+          </div>
+        </section>
+      {%- when 2 -%}
+        <section class="yp-kitstory yp-kitstory--contents">
+          <h2>{{ heading }}</h2>
+          {%- if product.images[1] != blank -%}<div class="yp-kitstory__hero">{{ product.images[1] | image_url: width: 900 | image_tag: widths: '390, 600, 900', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: heading }}</div>{%- endif -%}
+          <div class="yp-kitstory__list">{{ body }}</div>
+        </section>
+      {%- when 3 -%}
+        <section class="yp-kitstory yp-kitstory--steps">
+          <h2>{{ heading }}</h2>
+          <div class="yp-kitstory__steps">{{ body }}</div>
+        </section>
+      {%- when 4 -%}
+        <div class="yp-kitstory yp-kitstory--facts">
+          <section class="yp-kitstory__fact"><h2>{{ heading }}</h2>{{ body }}</section>
+      {%- when 5 -%}
+          <section class="yp-kitstory__fact"><h2>{{ heading }}</h2>{{ body }}</section>
+        </div>
+      {%- when 6 -%}
+        <section class="yp-kitstory yp-kitstory--faq">
+          <h2>{{ heading }}</h2>
+          {%- assign qa_parts = body | split: '<h3>' -%}
+          {%- for qa in qa_parts offset: 1 -%}
+            {%- assign q = qa | split: '</h3>' | first | strip -%}
+            {%- assign a = qa | remove_first: q | remove_first: '</h3>' -%}
+            <details class="yp-kitstory__faq">
+              <summary>{{ q }}<span class="yp-supply__expand" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span></summary>
+              <div class="yp-kitstory__answer">{{ a }}</div>
+            </details>
+          {%- endfor -%}
+        </section>
+    {%- endcase -%}
+  {%- endfor -%}
+{%- elsif product.description != blank -%}
+  <details class="yp-kit-contents">
+    <summary>{{ 'yarn_project.kit_contents' | t }}<span class="yp-supply__expand" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span></summary>
+    <div class="yp-kit-contents__body rte">{{ product.description }}</div>
+  </details>
+{%- endif -%}
