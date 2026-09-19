@@ -1,0 +1,52 @@
+{% comment %}
+  kit PDP 的商品逻辑互链(Style A,Issue #55):
+  - kind: 'yarn'    → 毛线导购模块。有 product.metafields.yarn.related_products
+                      (商品引用列表,运营核实后填写)时展示「相关的毛线」;
+                      否则降级为「毛线精选」通用入口,绝不把未核实商品标为相关。
+  - kind: 'finished'→ 同款成品互链。仅当 product.metafields.yarn.finished_counterpart
+                      (单个商品引用)存在时渲染,无配对不显示。
+{% endcomment %}
+{%- liquid
+  assign cross_kind = kind | default: 'yarn'
+-%}
+{%- if cross_kind == 'yarn' -%}
+  {%- assign related = product.metafields.yarn.related_products.value -%}
+  {%- assign yarn_collection = collections['yarn'] -%}
+  <aside class="yk-cross yk-cross--yarn">
+    {%- if related != blank and related.count > 0 -%}
+      <h3>{{ 'yarn_project.kit_related_yarn' | t }}</h3>
+      <div class="yk-cross__row">
+        {%- for rp in related limit: 3 -%}
+          <a class="yk-cross__item" href="{{ rp.url }}">
+            {%- if rp.featured_image != blank -%}{{ rp.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '96px', loading: 'lazy', alt: rp.title }}{%- endif -%}
+            <span>{{ rp.title | escape | truncate: 20 }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- elsif yarn_collection != blank and yarn_collection.products_count > 0 -%}
+      <h3>{{ 'yarn_project.kit_yarn_teaser' | t }}</h3>
+      <div class="yk-cross__row">
+        {%- for rp in yarn_collection.products limit: 3 -%}
+          <a class="yk-cross__item" href="{{ rp.url }}">
+            {%- if rp.featured_image != blank -%}{{ rp.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '96px', loading: 'lazy', alt: rp.title }}{%- endif -%}
+            <span>{{ rp.title | escape | truncate: 20 }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- if yarn_collection != blank -%}
+      <a class="yk-cross__all" href="{{ yarn_collection.url }}">{{ 'yarn_project.kit_view_all_yarn' | t }} <span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></a>
+    {%- endif -%}
+  </aside>
+{%- elsif cross_kind == 'finished' -%}
+  {%- assign fin = product.metafields.yarn.finished_counterpart.value -%}
+  {%- if fin != blank -%}
+    <aside class="yk-cross yk-cross--finished">
+      <a class="yk-cross__finished" href="{{ fin.url }}">
+        {%- if fin.featured_image != blank -%}{{ fin.featured_image | image_url: width: 200 | image_tag: widths: '100, 200', sizes: '72px', loading: 'lazy', alt: fin.title }}{%- endif -%}
+        <span><strong>{{ 'yarn_project.kit_finished_link' | t }}</strong><small>{{ fin.title | escape }}</small></span>
+        <span class="yp-supply__expand" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+      </a>
+    </aside>
+  {%- endif -%}
+{%- endif -%}

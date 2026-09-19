@@ -202,7 +202,14 @@
                   </p>
                 {%- when 'description' -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {% render 'yarn-product-description', product: product %}
+                    {% if product.tags contains '編みものキット' %}
+                      {{ 'yarn-kit-story.css' | asset_url | stylesheet_tag }}
+                      {% render 'yarn-kit-story', product: product, part: 'main', fallback: 'raw' %}
+                      {% render 'yarn-kit-crosslinks', product: product, kind: 'finished' %}
+                      {% render 'yarn-kit-story', product: product, part: 'faq' %}
+                    {% else %}
+                      {% render 'yarn-product-description', product: product %}
+                    {% endif %}
                   </div>
                 {%- when 'sku' -%}
                   <p
@@ -505,6 +512,9 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                  {%- if product.tags contains '編みものキット' -%}
+                    {%- render 'yarn-kit-crosslinks', product: product, kind: 'yarn' -%}
+                  {%- endif -%}
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">

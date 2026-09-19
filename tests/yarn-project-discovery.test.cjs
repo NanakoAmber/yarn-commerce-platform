@@ -31,16 +31,17 @@ test('all literal and dynamic UI translations exist in the three section locales
   }
 });
 
-test('homepage has exactly the three approved main sections; removed sections remain recoverable', () => {
-  assert.deepEqual(index.order.filter(id => !index.sections[id].disabled), ['yarn-hero', 'project-discovery', 'line-support']);
-  for (const id of ['yarn-purpose', 'starter-project', 'seasonal-edit', 'all-products']) assert.equal(index.sections[id].disabled, true);
-  assert.equal(index.sections['project-discovery'].type, 'yarn-project-library');
-  assert.deepEqual(index.sections['project-discovery'].settings, {});
-  assert.equal('featured_products' in index.sections['project-discovery'].settings, false);
-  assert.match(fs.readFileSync('sections/yarn-project-library.liquid', 'utf8'), /shop\.metaobjects\.yarn_project\.values/);
-  assert.doesNotMatch(fs.readFileSync('sections/yarn-project-library.liquid', 'utf8'), /product\.handle/);
+test('homepage follows the approved yarn-first section order (Issue #55)', () => {
+  // 毛线主线首页:Hero(三来意)→ 毛线/编织包/成品精选 → 内容精选 → LINE 帮助。
+  assert.deepEqual(index.order, ['yarn-hero', 'picks-yarn', 'picks-kits', 'picks-finished', 'content-pick', 'line-support']);
+  assert.equal(index.sections['picks-yarn'].type, 'yarn-picks');
+  assert.equal(index.sections['picks-yarn'].settings.collection, 'yarn');
+  assert.equal(index.sections['picks-kits'].settings.exit_enabled, true);
+  assert.equal(index.sections['picks-finished'].settings.collection, 'finished-goods');
+  assert.equal(index.sections['content-pick'].type, 'yarn-content-pick');
 
-  // The disabled legacy section remains intact and testable for rollback/reuse.
+  // 作品库组件保持完整,供内容层与回滚复用(不在首页 order 中)。
+  assert.match(fs.readFileSync('sections/yarn-project-library.liquid', 'utf8'), /shop\.metaobjects\.yarn_project\.values/);
   assert.match(section, /featured_handles contains product\.handle/);
   assert.match(card, /product\.featured_image/);
   assert.match(card, /product\.url/);

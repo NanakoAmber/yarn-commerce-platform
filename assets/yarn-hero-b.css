@@ -19,7 +19,7 @@
 .yarn-hero--connected .yarn-hero__node-art img { display: block; width: 88%; height: 88%; object-fit: contain; }
 .yarn-hero--connected .yarn-hero__node--project { left: 36%; top: 23%; width: 40%; }
 .yarn-hero--connected .yarn-hero__node--yarn { left: 71%; top: 0; width: 23%; }
-.yarn-hero--connected .yarn-hero__node--tools { right: 0; top: 33%; width: 20%; }
+.yarn-hero--connected .yarn-hero__node--tools { right: 5%; top: 52%; width: 24%; }
 .yarn-hero--connected .yarn-hero__node--tutorial { right: 8%; top: 67%; width: 28%; }
 .yarn-hero--connected .yarn-hero__node--project .yarn-hero__node-art img { width: 94%; height: 94%; }
 .yarn-hero--connected .yarn-hero__node--tutorial .yarn-hero__node-art img { width: 96%; height: 96%; }

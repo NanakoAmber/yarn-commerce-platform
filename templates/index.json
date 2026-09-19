@@ -13,123 +13,80 @@
       "type": "yarn-hero",
       "settings": {
         "color_scheme": "scheme-1",
-        "heading": "好きな作品から、\n手づくりを始めよう。",
-        "text": "<p>作品に合わせて、毛糸・使用量・道具・作り方をひとつずつ準備できます。</p>",
-        "cta_label": "作品を見つける",
-        "flow_project": "作品を選ぶ",
+        "heading": "お気に入りの毛糸を、\nひと玉選ぼう。",
+        "text": "<p>ひと玉の毛糸から、あなたの日常を編み出そう。</p>",
+        "cta_label": "毛糸を選ぶ",
+        "flow_project": "編みキットを見る",
         "flow_yarn": "毛糸を選ぶ",
-        "flow_tools": "道具をそろえる",
+        "flow_tools": "完成品をおうちへ",
         "flow_tutorial": "作り方を見る",
-        "heading_zh": "从喜欢的作品，\n开始你的手作。",
-        "text_zh": "<p>毛线、用量、工具与教程，跟着作品慢慢准备。</p>",
-        "cta_label_zh": "发现作品",
-        "flow_project_zh": "选作品",
+        "heading_zh": "挑一团好线",
+        "text_zh": "<p>从一团线，织出你的日常。</p>",
+        "cta_label_zh": "开始挑选",
+        "flow_project_zh": "看编织包",
         "flow_yarn_zh": "挑毛线",
-        "flow_tools_zh": "找工具",
+        "flow_tools_zh": "带成品回家",
         "flow_tutorial_zh": "看教程",
-        "heading_en": "Start making from\na project you love.",
-        "text_en": "<p>Follow the project to prepare your yarn, quantity, tools, and tutorial one step at a time.</p>",
-        "cta_label_en": "Discover projects",
-        "flow_project_en": "Choose a project",
+        "heading_en": "Pick a ball of\nyarn you love.",
+        "text_en": "<p>From one ball of yarn, knit your everyday.</p>",
+        "cta_label_en": "Start picking",
+        "flow_project_en": "Browse kits",
         "flow_yarn_en": "Pick yarn",
-        "flow_tools_en": "Find tools",
+        "flow_tools_en": "Take one home",
         "flow_tutorial_en": "View tutorial"
       }
     },
-    "yarn-purpose": {
-      "type": "yarn-purpose-grid",
-      "disabled": true,
+    "picks-yarn": {
+      "type": "yarn-picks",
       "settings": {
-        "heading": "何を編みたいですか？",
-        "bag_label": "バッグ",
-        "bag_link": "",
-        "scarf_label": "マフラー・ショール",
-        "scarf_link": "",
-        "blanket_label": "ブランケット",
-        "blanket_link": "",
-        "doll_label": "あみぐるみ",
-        "doll_link": "",
-        "filter_aria_label": "目的から作品を探す",
-        "popular_label": "作品キット",
-        "popular_link": "?discover_type=kit#discover-products",
-        "one_ball_label": "1玉で完成",
-        "one_ball_link": "",
-        "gift_label": "ギフト",
-        "gift_link": "",
-        "season_label": "季節の作品",
-        "season_link": "",
-        "cta_label": "作品を見てみる",
-        "cta_link": "?discover_type=kit#discover-products",
-        "starter_label": "1玉で何が編める？",
-        "starter_link": "#starter-project",
-        "color_scheme": "scheme-1"
-      }
-    },
-    "starter-project": {
-      "type": "yarn-starter-project",
-      "disabled": true,
-      "settings": {
-        "product": "joyful-hanabi-shawl-crochet-kit",
-        "eyebrow": "はじめての一作",
-        "heading": "1玉で編む、花火ショール。",
-        "text": "<p>編み図と動画が付いたショールキット。材料と編み方を確認して、自分に合うか選びましょう。</p>",
-        "fact_one": "1玉で完成",
-        "fact_two": "編み図と動画",
-        "fact_three": "選べるカラー",
-        "button_label": "ショールキットを見る",
-        "color_scheme": "scheme-1"
-      }
-    },
-    "all-products": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "条件から、作品と材料を探す",
-        "heading_size": "h1",
-        "show_description": false,
-        "description_style": "subtitle",
-        "collection": "all",
-        "show_discovery_tools": true,
-        "products_to_show": 8,
+        "heading": "毛线精选",
+        "note": "内部示例 · 演示目录",
+        "collection": "yarn",
+        "products_to_show": 4,
         "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "link",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 72,
-        "padding_bottom": 96
-      }
-    },
-    "seasonal-edit": {
-      "type": "yarn-seasonal-feature",
-      "disabled": true,
-      "settings": {
-        "heading": "秋冬に編みたい、糸と作品。",
-        "text": "<p>秋冬に使いたい毛糸やブランケットキットを集めました。</p>",
-        "button_label": "秋冬の作品を見る",
-        "button_link": "#discover-products",
+        "exit_enabled": false,
         "color_scheme": "scheme-1"
       }
     },
-    "project-discovery": {
-      "type": "yarn-project-library",
-      "settings": {},
-      "blocks": {
-        "bags": { "type": "category", "settings": { "icon": "bag", "categories": "配饰" } },
-        "scarves": { "type": "category", "settings": { "icon": "scarf", "categories": "服装" } },
-        "home": { "type": "category", "settings": { "icon": "home", "categories": "家居,花片" } },
-        "toys": { "type": "category", "settings": { "icon": "toy", "categories": "玩偶" } }
-      },
-      "block_order": ["bags", "scarves", "home", "toys"]
+    "picks-kits": {
+      "type": "yarn-picks",
+      "settings": {
+        "heading": "编织包精选",
+        "note": "",
+        "collection": "knit-kits",
+        "products_to_show": 2,
+        "columns_desktop": 2,
+        "exit_enabled": true,
+        "exit_title": "想看看线能织成什么?",
+        "exit_text": "从一只小动物开始,材料和教程都备好了。",
+        "exit_cta": "看编织包",
+        "exit_note": "内部示例 · 与自家毛线的配对待核实",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "picks-finished": {
+      "type": "yarn-picks",
+      "settings": {
+        "heading": "成品精选",
+        "note": "不想动手,也能直接把温柔带回家。",
+        "collection": "finished-goods",
+        "products_to_show": 2,
+        "columns_desktop": 2,
+        "exit_enabled": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "content-pick": {
+      "type": "yarn-content-pick",
+      "settings": {
+        "heading": "内容精选",
+        "badge": "教程 · 故事",
+        "title": "一只小企鹅的诞生",
+        "text": "从一团线,记录制作的日常。",
+        "link_label": "阅读故事",
+        "link": "/pages/projects/demo-pierre-penguin",
+        "color_scheme": "scheme-1"
+      }
     },
     "line-support": {
       "type": "yarn-line-contact",
@@ -147,11 +104,10 @@
   },
   "order": [
     "yarn-hero",
-    "project-discovery",
-    "yarn-purpose",
-    "starter-project",
-    "seasonal-edit",
-    "all-products",
+    "picks-yarn",
+    "picks-kits",
+    "picks-finished",
+    "content-pick",
     "line-support"
   ]
 }

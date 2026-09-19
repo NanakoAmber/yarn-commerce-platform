@@ -35,29 +35,29 @@
     <div class="yarn-hero__copy">
       <h1 id="YarnHeroHeading-{{ section.id }}" class="yarn-hero__heading" lang="{{ request.locale.iso_code }}">{{ hero_heading | escape | newline_to_br }}</h1>
       {% if hero_text != blank %}<div class="yarn-hero__text rte">{{ hero_text }}</div>{% endif %}
-      <a class="button yarn-hero__cta" href="#shop-by-project">{{ hero_cta | escape }}</a>
+      <a class="button yarn-hero__cta" href="{{ collections['yarn'].url | default: '#shop-by-project' }}">{{ hero_cta | escape }}</a>
     </div>
 
-    <ol class="yarn-hero__journey" aria-label="{{ flow_project | escape }} → {{ flow_yarn | escape }} → {{ flow_tools | escape }} → {{ flow_tutorial | escape }}">
+    <ol class="yarn-hero__journey" aria-label="{{ flow_yarn | escape }} · {{ flow_project | escape }} · {{ flow_tools | escape }}">
       <svg class="yarn-hero__thread yarn-hero__thread--desktop" viewBox="0 0 900 750" preserveAspectRatio="none" aria-hidden="true"><path d="M 530 204 C 595 209 628 153 612 143 C 592 131 590 159 612 163 C 654 173 660 113 700 98 S 864 83 877 140 C 890 190 855 199 853 180 C 851 156 899 175 888 211 C 882 231 862 237 849 264 L 795 370 C 786 412 757 433 745 416 C 731 395 749 381 758 393 C 777 419 795 442 825 445 C 850 452 860 470 866 493 C 884 552 853 564 847 545 C 839 520 882 536 875 565 C 868 604 830 619 779 619"/></svg>
       <svg class="yarn-hero__thread yarn-hero__thread--mobile" viewBox="0 0 354 660" preserveAspectRatio="none" aria-hidden="true"><path d="M 173 346 C 220 320 245 300 252 255 C 261 220 281 230 276 245 C 268 266 246 246 253 218 C 265 174 260 120 290 76 C 341 87 349 163 338 176 C 322 194 315 169 329 167 C 356 163 350 237 335 280 L 318 359 C 329 423 349 428 344 457 C 340 480 319 474 322 461 C 327 440 350 462 342 492 C 337 515 315 542 298 551"/></svg>
       <li class="yarn-hero__node yarn-hero__node--project">
-        <a href="#shop-by-project">
+        <a href="{{ collections['knit-kits'].url | default: '#shop-by-project' }}">
           <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-project-node-v2.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager" fetchpriority="high"></span>
           <strong>{{ flow_project | escape }}</strong>
         </a>
       </li>
       <li class="yarn-hero__node yarn-hero__node--yarn">
-        <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-yarn-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
-        <strong>{{ flow_yarn | escape }}</strong>
+        <a href="{{ collections['yarn'].url | default: '#shop-by-project' }}">
+          <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-yarn-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
+          <strong>{{ flow_yarn | escape }}</strong>
+        </a>
       </li>
       <li class="yarn-hero__node yarn-hero__node--tools">
-        <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-tools-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
-        <strong>{{ flow_tools | escape }}</strong>
-      </li>
-      <li class="yarn-hero__node yarn-hero__node--tutorial">
-        <span class="yarn-hero__node-art"><img src="{{ 'mewool-hero-tutorial-node.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
-        <strong>{{ flow_tutorial | escape }}</strong>
+        <a href="{{ collections['finished-goods'].url | default: '#shop-by-project' }}">
+          <span class="yarn-hero__node-art"><img src="{{ 'yarn-category-toy-approved.png' | asset_url }}" alt="" width="1254" height="1254" loading="eager"></span>
+          <strong>{{ flow_tools | escape }}</strong>
+        </a>
       </li>
     </ol>
   </div>

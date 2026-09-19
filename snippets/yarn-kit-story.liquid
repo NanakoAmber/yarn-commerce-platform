@@ -55,8 +55,12 @@
     {%- endcase -%}
   {%- endfor -%}
 {%- elsif product.description != blank -%}
-  <details class="yp-kit-contents">
-    <summary>{{ 'yarn_project.kit_contents' | t }}<span class="yp-supply__expand" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span></summary>
-    <div class="yp-kit-contents__body rte">{{ product.description }}</div>
-  </details>
+  {%- if fallback == 'raw' -%}
+    {{ product.description }}
+  {%- else -%}
+    <details class="yp-kit-contents">
+      <summary>{{ 'yarn_project.kit_contents' | t }}<span class="yp-supply__expand" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span></summary>
+      <div class="yp-kit-contents__body rte">{{ product.description }}</div>
+    </details>
+  {%- endif -%}
 {%- endif -%}
