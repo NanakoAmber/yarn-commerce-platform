@@ -73,11 +73,11 @@
         "title",
         "price",
         "shopping-note",
-        "description",
         "variant-picker",
         "quantity-selector",
         "buy_buttons",
-        "product-inventory"
+        "product-inventory",
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -155,7 +155,7 @@
         "image_ratio": "adapt",
         "desktop_layout": "image_second",
         "padding_top": 28,
-        "padding_bottom": 20,
+        "padding_bottom": 12,
         "heading_zh": "购买须知",
         "heading_en": "Shopping guide"
       }
@@ -174,7 +174,7 @@
         "show_vendor": false,
         "show_rating": false,
         "columns_mobile": "2",
-        "padding_top": 28,
+        "padding_top": 16,
         "padding_bottom": 28,
         "heading_zh": "你可能也喜欢",
         "heading_en": "You may also like"

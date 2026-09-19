@@ -30,8 +30,8 @@
 .collection .card-wrapper .card__inner .card__media {
   border-radius: 0;
 }
-.collection .card__information {
-  padding: 12px 16px 4px;
+.collection .card-wrapper .card__content .card__information {
+  padding: 12px 14px 6px;
 }
 .collection .card__heading {
   color: var(--yarn-ink);

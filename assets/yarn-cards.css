@@ -35,7 +35,7 @@
 .yx-exit { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 12px; align-items: center; background: var(--yarn-action-soft); border: 2px solid var(--yarn-action); border-radius: var(--yarn-radius-panel); padding: 16px; color: var(--yarn-ink); }
 .yx-exit__title { font-family: var(--yarn-display); font-size: 1.9rem; margin: 0 0 4px; }
 .yx-exit__text { font-size: 1.35rem; color: var(--yarn-muted); line-height: 1.55; margin: 0 0 10px; }
-.yx-exit__cta { display: inline-flex; align-items: center; gap: 8px; background: var(--yarn-action); color: var(--yarn-surface); font-size: 1.4rem; border-radius: 12px; padding: 10px 16px; min-height: 40px; text-decoration: none; }
+.yx-exit__cta, .yx-exit .yx-exit__cta { display: inline-flex; align-items: center; gap: 8px; background: var(--yarn-action); color: var(--yarn-surface); font-size: 1.4rem; border-radius: 12px; padding: 10px 16px; min-height: 40px; text-decoration: none; }
 .yx-exit__cta svg { width: 14px; height: 14px; }
 .yx-exit__cta:hover { background: var(--yarn-action-strong, #8f3c26); }
 .yx-exit__media img { width: 100%; height: auto; max-height: 150px; object-fit: contain; display: block; }
@@ -51,7 +51,7 @@
 /* —— 精选区块 —— */
 .yx-picks { margin: 0 auto; }
 .yx-picks__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
-.yx-picks__head h2 { margin: 0; }
+.yx-picks__head h2 { margin: 0; min-width: 0; text-wrap: balance; }
 .yx-picks__all { font-size: 1.4rem; color: var(--yarn-action); white-space: nowrap; }
 .yx-picks__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .yx-picks__exit { margin-bottom: 12px; }
@@ -62,7 +62,7 @@
 
 /* 桌面密度(Astra 走查 P1):辅助品类不放大为巨幅画册;出口卡与商品卡同行 */
 @media (min-width: 990px) {
-  .yx-picks--duo .yx-product-card__media { aspect-ratio: 1.9; }
+  .yx-picks--duo .yx-product-card__media { aspect-ratio: auto; height: 320px; }
   .yx-picks--duo .yx-product-card__media img { object-fit: contain; }
   .yx-picks__body--with-exit { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 2fr); gap: 24px; align-items: stretch; }
   .yx-picks__body--with-exit .yx-picks__exit { grid-template-columns: 1fr; align-content: start; margin-bottom: 0; }

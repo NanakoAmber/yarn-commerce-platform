@@ -4,6 +4,9 @@
 .yp-product-context a { color: inherit; text-underline-offset: 4px; overflow-wrap: anywhere; }
 .yp-product-context a:focus-visible { outline: 2px solid var(--yarn-indigo); outline-offset: 4px; }
 
+/* 分区节奏:推荐区标题不再额外撑高分区间隔 */
+.related-products__heading { margin-top: 0; margin-bottom: 2rem; }
+
 /* 描述内元信息降权:参考行与内部来源行不与规格/购买争夺空间 */
 .product__description .yarn-spec-echo { font-size: 1.25rem; color: var(--yarn-muted); line-height: 1.6; }
 .product__description .yarn-demo-source { font-size: 1.2rem; color: var(--yarn-muted); line-height: 1.6; overflow-wrap: anywhere; }
