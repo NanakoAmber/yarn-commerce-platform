@@ -687,7 +687,14 @@
     "detail_title": "作品の詳細",
     "material_reference": "材料の参考",
     "project_label": "作品",
-    "item_label": "商品"
+    "item_label": "商品",
+    "yarn_spec_heading": "糸の仕様",
+    "finished_spec_heading": "サイズと素材",
+    "card_spec_product": "仕様は商品詳細へ",
+    "card_spec_kit": "内容物は商品詳細へ",
+    "card_spec_finished": "サイズ・素材は詳細へ",
+    "browse_heading": "次の手づくりを見つけよう",
+    "browse_search": "毛糸・キット・完成品を検索"
   },
   "yarn_discovery": {
     "search": "検索",

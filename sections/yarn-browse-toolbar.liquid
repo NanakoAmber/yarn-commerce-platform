@@ -1,13 +1,21 @@
 {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
+{{ 'yarn-collection.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'yarn-browse-toolbar.js' | asset_url }}" defer="defer"></script>
 {% comment %}
   统一浏览工具栏(Issue #55):品类 tab + 价格带 chips。
   tab/chip 均为 blocks,运营可在主题编辑器调整;价格带用 Shopify 原生
   filter.v.price 参数(已实测生效)。当前 tab 高亮按集合 handle;chip 高亮由
-  内联脚本按查询参数标记,并在点击时合并现有参数(无 JS 时链接直达)。
+  yarn-browse-toolbar.js 按查询参数标记,并合并现有参数(无 JS 时链接直达)。
   标签按 yarn-hero 三联模式:纯键名为日文默认,_zh/_en 为中英覆盖;留空则用集合名。
 {% endcomment %}
 {%- assign req_locale = request.locale.iso_code -%}
 <div class="yx-toolbar page-width" data-yx-toolbar>
+  <form class="yx-toolbar__search" action="{{ routes.search_url }}" method="get" role="search">
+    <label class="visually-hidden" for="BrowseSearch-{{ section.id }}">{{ 'yarn_project.browse_search' | t }}</label>
+    <input id="BrowseSearch-{{ section.id }}" type="search" name="q" placeholder="{{ 'yarn_project.browse_search' | t }}" autocomplete="off">
+    <input type="hidden" name="type" value="product">
+    <button type="submit" aria-label="{{ 'general.search.search' | t }}">{{ 'icon-search.svg' | inline_asset_content }}</button>
+  </form>
   <nav class="yx-toolbar__tabs" aria-label="{{ 'yarn_project.browse_categories' | t }}">
     {%- for block in section.blocks -%}
       {%- if block.type == 'tab' -%}
@@ -44,44 +52,36 @@
       {%- endif -%}
     {%- endfor -%}
   </div>
+  <form class="yx-toolbar__filters" action="{{ collection.url }}" method="get" data-yx-filters>
+    {% for filter in collection.filters %}
+      {% if filter.type == 'price_range' %}
+        {% if filter.min_value.value %}<input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | divided_by: 100.0 }}">{% endif %}
+        {% if filter.max_value.value %}<input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | divided_by: 100.0 }}">{% endif %}
+      {% else %}
+        <details class="yx-toolbar__facet">
+          <summary>{{ filter.label | escape }}{% if filter.active_values.size > 0 %} ({{ filter.active_values.size }}){% endif %}<span aria-hidden="true">{{ 'icon-caret.svg' | inline_asset_content }}</span></summary>
+          <div class="yx-toolbar__facet-panel">
+            <fieldset><legend class="visually-hidden">{{ filter.label | escape }}</legend>
+              {% for value in filter.values %}
+                <label><input type="checkbox" name="{{ value.param_name }}" value="{{ value.value | escape }}" {% if value.active %}checked{% elsif value.count == 0 %}disabled{% endif %}>{{ value.label | escape }} <span>({{ value.count }})</span></label>
+              {% endfor %}
+            </fieldset>
+            <button class="yx-toolbar__submit" type="submit">{{ 'products.facets.apply' | t }}</button>
+          </div>
+        </details>
+      {% endif %}
+    {% endfor %}
+    <div class="yx-toolbar__filter">
+      <label for="BrowseSort-{{ section.id }}">{{ 'products.facets.sort_by_label' | t }}</label>
+      <select id="BrowseSort-{{ section.id }}" name="sort_by" data-yx-sort>
+        {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+        {% for option in collection.sort_options %}<option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name | escape }}</option>{% endfor %}
+      </select>
+    </div>
+    <noscript><button class="yx-toolbar__submit" type="submit">{{ 'products.facets.apply' | t }}</button></noscript>
+  </form>
+  <p class="yx-toolbar__count" role="status">{{ 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}</p>
 </div>
-<script>
-  (function () {
-    var bar = document.querySelector('[data-yx-toolbar]');
-    if (!bar) return;
-    var qs = window.location.search.replace(/^\?/, '');
-    var chips = bar.querySelectorAll('[data-yx-chip]');
-    var anyActive = false;
-    chips.forEach(function (chip) {
-      var p = chip.getAttribute('data-yx-param');
-      if (p && qs.indexOf(p) !== -1) { chip.classList.add('yx-chip--active'); chip.setAttribute('aria-current', 'true'); anyActive = true; }
-    });
-    if (!anyActive && chips.length) { chips[0].classList.add('yx-chip--active'); chips[0].setAttribute('aria-current', 'true'); }
-    chips.forEach(function (chip) {
-      chip.addEventListener('click', function (e) {
-        e.preventDefault();
-        var params = new URLSearchParams(window.location.search);
-        params.delete('filter.v.price.gte');
-        params.delete('filter.v.price.lte');
-        var p = chip.getAttribute('data-yx-param');
-        if (p) new URLSearchParams(p).forEach(function (v, k) { params.set(k, v); });
-        var q = params.toString();
-        window.location.href = window.location.pathname + (q ? '?' + q : '');
-      });
-    });
-  })();
-</script>
-{% style %}
-  .yx-toolbar { padding-top: var(--yarn-space-3, 12px); display: grid; gap: 8px; }
-  @media (min-width: 750px) {
-    .yx-toolbar { padding-inline: 5rem; }
-  }
-  .yx-toolbar__tabs, .yx-toolbar__chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .yx-chip { display: inline-flex; align-items: center; min-height: var(--yarn-touch, 44px); padding: 8px 16px; border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-pill); background: var(--yarn-surface); color: var(--yarn-ink); font-size: 1.35rem; text-decoration: none; }
-  .yx-chip--active { background: var(--yarn-butter); border-color: var(--yarn-primary-line); font-weight: 600; }
-  .yx-chip:hover { background: var(--yarn-action-hover); }
-  .yx-chip--active:hover { background: var(--yarn-primary-hover); }
-{% endstyle %}
 {% schema %}
 {
   "name": "浏览工具栏(品类+价格带)",
@@ -94,10 +94,10 @@
       { "type": "text", "id": "label_en", "label": "英文 · 标签" }
     ] },
     { "type": "chip", "name": "价格带", "settings": [
-      { "type": "text", "id": "label", "label": "日文 · 标签", "default": "¥500以下" },
+      { "type": "text", "id": "label", "label": "日文 · 标签", "default": "¥500未満" },
       { "type": "text", "id": "label_zh", "label": "中文 · 标签" },
       { "type": "text", "id": "label_en", "label": "英文 · 标签" },
-      { "type": "text", "id": "param", "label": "筛选参数", "default": "filter.v.price.lte=500", "info": "如 filter.v.price.gte=500&filter.v.price.lte=1500" }
+      { "type": "text", "id": "param", "label": "筛选参数", "default": "filter.v.price.lte=499", "info": "如 filter.v.price.gte=500&filter.v.price.lte=1499" }
     ] }
   ],
   "presets": [ { "name": "浏览工具栏(品类+价格带)" } ]

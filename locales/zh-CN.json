@@ -687,7 +687,14 @@
     "detail_title": "作品详情",
     "material_reference": "材料参考",
     "project_label": "作品",
-    "item_label": "商品"
+    "item_label": "商品",
+    "yarn_spec_heading": "线材规格",
+    "finished_spec_heading": "尺寸与材质",
+    "card_spec_product": "规格见商品详情",
+    "card_spec_kit": "内容物见商品详情",
+    "card_spec_finished": "尺寸与材质见详情",
+    "browse_heading": "挑选你的下一件手作",
+    "browse_search": "搜索毛线、编织包、成品"
   },
   "yarn_discovery": {
     "search": "搜索",

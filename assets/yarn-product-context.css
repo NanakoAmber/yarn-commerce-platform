@@ -24,3 +24,59 @@
 .product-form__buttons .shopify-payment-button__button--unbranded:hover {
   --color-button: 246, 223, 160;            /* --yarn-primary-hover */
 }
+
+/* Issue 55 product family: a compact gallery and a clear purchase column. */
+product-info.yarn-product-page > product-component > .page-width { max-width: 1296px; padding-inline: 48px; }
+product-info.yarn-product-page .product__title h1 { color: var(--yarn-commerce-ink); font-size: 36px; font-weight: 700; line-height: 1.25; }
+product-info.yarn-product-page .price { color: var(--yarn-commerce-accent); font-size: 28px; font-weight: 700; }
+product-info.yarn-product-page .product__tax, product-info.yarn-product-page .product__text { color: var(--yarn-muted); font-size: 14px; line-height: 1.5; }
+product-info.yarn-product-page .product__media { border-radius: var(--yarn-card-radius); }
+product-info.yarn-product-page .product__media-list { margin-bottom: 12px; }
+product-info.yarn-product-page .thumbnail { border-radius: 8px; }
+product-info.yarn-product-page .product-form__buttons { max-width: none; }
+product-info.yarn-product-page .product-form__submit { background: var(--yarn-butter); color: var(--yarn-commerce-ink); border-radius: 999px; font-weight: 700; font-size: 18px; }
+product-info.yarn-product-page .product-form__submit::after { box-shadow: none; }
+product-info.yarn-product-page .shopify-payment-button__button--unbranded { background: var(--yarn-surface); border: 1px solid var(--yarn-commerce-line); color: var(--yarn-commerce-ink); font-size: 16px; }
+product-info.yarn-product-page .product__description:empty { display: none; }
+product-info.yarn-product-page .product__description { font-size: 16px; line-height: 1.7; }
+product-info.yarn-product-page .product__description h2 { font-size: 24px; font-weight: 700; }
+product-info.yarn-product-page .yarn-kit-story-full { max-width: 960px; margin-top: 48px; }
+product-info.yarn-product-page .yp-kitstory { margin-top: 32px; }
+product-info.yarn-product-page .yp-kitstory > h2 { font-size: 28px; font-weight: 700; color: var(--yarn-commerce-ink); }
+product-info.yarn-product-page .yp-kitstory__copy p { font-size: 16px; }
+@media (min-width: 990px) {
+  product-info.yarn-product-page .product { display: grid; grid-template-columns: minmax(0, 648fr) minmax(0, 504fr); column-gap: 48px; }
+  product-info.yarn-product-page .product > .grid__item { width: 100%; max-width: none; padding: 0; }
+  product-info.yarn-product-page .product__info-container > * + * { margin-block: 16px; }
+  product-info.yarn-product-page .yp-kitstory__about { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+}
+@media (max-width: 749px) {
+  product-info.yarn-product-page > product-component > .page-width { padding-inline: 16px; }
+  product-info.yarn-product-page .product__title h1 { font-size: 26px; }
+  product-info.yarn-product-page .price { font-size: 26px; }
+  product-info.yarn-product-page .product__info-wrapper { padding-top: 16px; }
+  product-info.yarn-product-page .product__info-container > * + * { margin-block: 12px; }
+  product-info.yarn-product-page .product__media-wrapper .product__media-list { margin-inline: 0; width: 100%; }
+  product-info.yarn-product-page .product__media-list .product__media-item { width: 100%; margin: 0; padding: 0; }
+  product-info.yarn-product-page .product__media-wrapper slider-component { margin-inline: 0; }
+  product-info.yarn-product-page .product-media-container { --aspect-ratio: 1.5; }
+  product-info.yarn-product-page .product > .grid__item { width: 100%; max-width: none; }
+  product-info.yarn-product-page .product__media img { object-fit: contain; }
+  product-info.yarn-product-page .thumbnail-list { padding: 0; margin: 0; gap: 8px; }
+  product-info.yarn-product-page .thumbnail-list__item.slider__slide { width: calc((100% - 16px) / 3); }
+  product-info.yarn-product-page .yarn-kit-story-full { margin-top: 28px; }
+  product-info.yarn-product-page .yp-kitstory > h2 { font-size: 23px; }
+}
+
+body:has(product-info.yarn-product-page), product-info.yarn-product-page { background: var(--yarn-surface); }
+product-info.yarn-product-page .product-form__quantity { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+product-info.yarn-product-page .product-form__quantity .quantity__label { margin: 0; }
+product-info.yarn-product-page .quantity { min-height: 44px; height: 44px; width: 152px; }
+
+product-info.yarn-product-page .yarn-product-details-full { max-width: 960px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid var(--yarn-commerce-line); }
+product-info.yarn-product-page .yarn-product-details-full > h2 { color: var(--yarn-commerce-ink); font-size: 28px; font-weight: 700; margin: 0 0 20px; }
+product-info.yarn-product-page .yarn-product-details-full ul { padding-left: 1.25em; }
+@media (max-width: 749px) {
+  product-info.yarn-product-page .yarn-product-details-full { margin-top: 28px; }
+  product-info.yarn-product-page .yarn-product-details-full > h2 { font-size: 23px; }
+}

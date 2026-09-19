@@ -1,74 +1,54 @@
-/* 集合页暖纸化覆盖层(获批 comp-collection-mobile 实现)
-   依赖全局 yarn-design-tokens.css 的 --yarn-* 角色 */
-
-.collection-hero {
-  background: var(--yarn-surface);
-  border-bottom: 1px solid var(--yarn-line);
+/* Issue 55 browse composition. Cards use the same stylesheet as homepage picks. */
+body:has(.yx-toolbar) { background: var(--yarn-surface); }
+body:has(.yx-toolbar) .announcement-bar-section { display: none; }
+.collection-hero { padding: 28px 0 8px; background: var(--yarn-surface); border: 0; }
+.collection-hero .page-width, .yx-toolbar.page-width, collection-component .page-width { width: 100%; max-width: calc(var(--yarn-commerce-max) + 64px); margin-inline: auto; padding-inline: 32px; }
+.collection-hero__title { color: var(--yarn-commerce-ink); font-family: var(--yarn-display); font-size: 40px; font-weight: 600; line-height: 1.3; }
+.collection-hero__description { margin-top: 12px; max-width: 54em; color: var(--yarn-muted); font-size: 16px; line-height: 1.6; }
+.collection-hero__description p { margin: 0 0 8px; }
+.yx-toolbar { display: grid; gap: 12px; padding-top: 12px; padding-bottom: 12px; }
+.yx-toolbar__search { display: flex; align-items: center; gap: 12px; min-height: 48px; border: 1px solid var(--yarn-control-line); border-radius: var(--yarn-radius-pill); padding: 0 16px; background: var(--yarn-surface); }
+.yx-toolbar__search input { min-width: 0; flex: 1; width: 100%; padding: 12px 0; border: 0; background: transparent; font: inherit; font-size: 16px; color: var(--yarn-commerce-ink); }
+.yx-toolbar__search input:focus-visible { outline: none; }
+.yx-toolbar__search:focus-within { outline: 2px solid var(--yarn-focus); outline-offset: 3px; }
+.yx-toolbar__search button { display: grid; place-items: center; min-width: var(--yarn-touch); min-height: var(--yarn-touch); border: 0; color: var(--yarn-commerce-ink); background: transparent; cursor: pointer; }
+.yx-toolbar__search svg { width: 22px; height: 22px; }
+.yx-toolbar__tabs, .yx-toolbar__chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.yx-chip { display: inline-flex; justify-content: center; align-items: center; min-height: var(--yarn-touch); padding: 9px 22px; border: 1px solid var(--yarn-commerce-line); border-radius: var(--yarn-radius-pill); background: var(--yarn-surface); color: var(--yarn-commerce-ink); font-size: 16px; line-height: 1.25; text-align: center; text-decoration: none; }
+.yx-chip--active { background: var(--yarn-butter); border-color: var(--yarn-butter); font-weight: 600; }
+.yx-chip:hover { background: var(--yarn-action-hover); }
+.yx-chip--active:hover { background: var(--yarn-primary-hover); }
+.yx-toolbar__filters { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+.yx-toolbar__filter { flex: 1; min-width: 140px; max-width: 260px; }
+.yx-toolbar__filter label { display: block; margin-bottom: 4px; font-size: 13px; color: var(--yarn-muted); }
+.yx-toolbar__filter select { width: 100%; min-height: var(--yarn-touch); padding: 8px 28px 8px 12px; border: 1px solid var(--yarn-commerce-line); border-radius: var(--yarn-card-radius); background: var(--yarn-surface); color: var(--yarn-commerce-ink); font: inherit; font-size: 14px; }
+.yx-toolbar__submit { min-height: var(--yarn-touch); padding: 8px 20px; border: 1px solid var(--yarn-commerce-line); border-radius: var(--yarn-card-radius); background: var(--yarn-butter); color: var(--yarn-commerce-ink); cursor: pointer; font: inherit; }
+.yx-toolbar__count { font-size: 14px; color: var(--yarn-muted); margin: 0; }
+collection-component > .gradient { background: var(--yarn-surface); }
+collection-component #product-grid { --grid-desktop-horizontal-spacing: 16px; --grid-mobile-horizontal-spacing: 12px; --grid-desktop-vertical-spacing: 24px; --grid-mobile-vertical-spacing: 16px; }
+collection-component .facets-vertical { display: block; }
+@media (max-width: 749px) {
+  .collection-hero { padding-top: 20px; }
+  .collection-hero .page-width, .yx-toolbar.page-width, collection-component .page-width { padding-inline: 16px; }
+  .collection-hero__title { font-size: 28px; }
+  .collection-hero__description { font-size: 14px; }
+  .yx-toolbar { gap: 10px; }
+  .yx-toolbar__tabs, .yx-toolbar__chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .yx-chip { padding: 9px 5px; font-size: 14px; }
+  .yx-toolbar__chips .yx-chip { font-size: 12px; }
+  .yx-toolbar__filter { min-width: 100px; max-width: none; }
 }
-.collection-hero__title {
-  color: var(--yarn-ink);
-  font-family: var(--yarn-font-display, inherit);
+.yx-toolbar__facet { position: relative; align-self: end; }
+.yx-toolbar__facet summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: var(--yarn-touch); border: 1px solid var(--yarn-commerce-line); border-radius: var(--yarn-card-radius); padding: 10px 14px; color: var(--yarn-commerce-ink); font-size: 14px; list-style: none; cursor: pointer; }
+.yx-toolbar__facet summary::-webkit-details-marker { display: none; }
+.yx-toolbar__facet summary svg { width: 12px; height: 12px; }
+.yx-toolbar__facet-panel { position: absolute; z-index: 5; top: calc(100% + 4px); left: 0; width: 240px; padding: 16px; background: var(--yarn-surface); border: 1px solid var(--yarn-commerce-line); border-radius: var(--yarn-card-radius); box-shadow: 0 8px 20px var(--yarn-overlay); }
+.yx-toolbar__facet-panel fieldset { padding: 0; margin: 0 0 12px; border: 0; max-height: 240px; overflow-y: auto; }
+.yx-toolbar__facet-panel label { display: flex; align-items: center; gap: 8px; min-height: var(--yarn-touch); font-size: 14px; }
+.yx-toolbar__facet-panel input { accent-color: var(--yarn-commerce-accent); }
+@media (max-width: 749px) {
+  .yx-toolbar__facet { flex: 1; }
+  .yx-toolbar__facet-panel { width: min(240px, 80vw); }
 }
-.collection-hero__description {
-  color: var(--yarn-muted);
-  font-size: 1.5rem;
-  line-height: 1.7;
-  max-width: 36em;
-}
-
-/* 商品卡:暖白面、细线、圆角,信息区内距 */
-.collection .card-wrapper .card {
-  background: var(--yarn-surface);
-  border: 1px solid var(--yarn-line);
-  border-radius: 16px;
-  overflow: hidden;
-}
-.collection .card-wrapper .card--card,
-.collection .card-wrapper .card__inner {
-  background: var(--yarn-surface);
-}
-.collection .card-wrapper .card__inner .card__media {
-  border-radius: 0;
-}
-.collection .card-wrapper .card__content .card__information {
-  padding: 12px 14px 6px;
-}
-.collection .card__heading {
-  color: var(--yarn-ink);
-  font-size: 1.45rem;
-  line-height: 1.5;
-}
-.collection .card__heading a {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.collection .price {
-  color: var(--yarn-ink);
-  font-weight: 600;
-  font-size: 1.8rem;
-}
-
-/* 动作行:按钮文字化,细线上缘 + 陶土色 */
-.collection .quick-add {
-  margin: 8px 0 0;
-}
-.collection .quick-add .button {
-  background: transparent;
-  border: 0;
-  border-top: 1px solid var(--yarn-line);
-  border-radius: 0;
-  box-shadow: none;
-  color: var(--yarn-action);
-  font-size: 1.4rem;
-  justify-content: flex-start;
-  min-height: 44px;
-  padding: 10px 16px;
-}
-.collection .quick-add .button:hover {
-  background: var(--yarn-action-hover);
-}
-.collection .quick-add .button::after {
-  box-shadow: none;
-}
+.collection-hero__title { margin: 0; }
+collection-component #product-grid { margin-top: 0; }

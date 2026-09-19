@@ -15,7 +15,6 @@
     assign card_badge_label = 'yarn_project.card_badge_finished' | t
     assign card_badge_class = ' yx-badge--finished'
   endif
-  assign spec_line = card_product.metafields.yarn.spec_line.value
 -%}
 <a class="yx-product-card" href="{{ card_product.url }}">
   <div class="yx-product-card__media">
@@ -26,7 +25,7 @@
   </div>
   <div class="yx-product-card__body">
     <span class="yx-product-card__title">{{ card_product.title | escape }}</span>
-    {%- if spec_line != blank -%}<span class="yx-product-card__spec">{{ spec_line | escape }}</span>{%- endif -%}
+    <span class="yx-product-card__spec">{% render 'yarn-card-spec', product: card_product %}</span>
     <span class="yx-product-card__price">{{ card_product.price | money }}</span>
     <span class="yx-product-card__action">{% if card_product.variants.size > 1 %}{{ 'yarn_project.card_view_colors' | t }}{% else %}{{ 'yarn_project.card_view_details' | t }}{% endif %}<span aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span></span>
   </div>

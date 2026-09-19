@@ -9,6 +9,19 @@
   assign cp_title = section.settings.title
   assign cp_text = section.settings.text
   assign cp_link_label = section.settings.link_label
+  assign cp_link = section.settings.link
+  assign cp_image = section.settings.image
+  assign cp_handle = cp_link | split: '/' | last
+  assign cp_project = shop.metaobjects.yarn_project[cp_handle]
+  if cp_project != blank
+    assign cp_image = cp_image | default: cp_project.cover.value
+    assign cp_link = cp_project.system.url
+  endif
+  if cp_link contains '/pages/' and routes.root_url != '/'
+    unless cp_link contains routes.root_url
+      assign cp_link = cp_link | prepend: routes.root_url
+    endunless
+  endif
   case request.locale.iso_code
     when 'zh-CN', 'zh'
       assign cp_heading = section.settings.heading_zh | default: cp_heading
@@ -30,9 +43,9 @@
       <h2 id="ContentPick-{{ section.id }}">{{ cp_heading | escape }}</h2>
       {%- if section.settings.all_link != blank -%}<a class="yx-picks__all" href="{{ section.settings.all_link }}">{{ 'yarn_project.card_view_all' | t }} →</a>{%- endif -%}
     </div>
-    <a class="yx-content-card" href="{{ section.settings.link | default: '#' }}">
-      {%- if section.settings.image != blank -%}
-        <div class="yx-content-card__media">{{ section.settings.image | image_url: width: 1200 | image_tag: widths: '600, 900, 1200', sizes: '(min-width: 990px) 1200px, 100vw', loading: 'lazy', alt: '' }}</div>
+    <a class="yx-content-card" href="{{ cp_link | default: '#' }}">
+      {%- if cp_image != blank -%}
+        <div class="yx-content-card__media">{{ cp_image | image_url: width: 1200 | image_tag: widths: '600, 900, 1200', sizes: '(min-width: 990px) 1200px, 100vw', loading: 'lazy', alt: '' }}</div>
       {%- endif -%}
       <div class="yx-content-card__body">
         <span class="yx-badge yx-badge--content">{{ cp_badge | escape }}</span>
@@ -43,9 +56,7 @@
     </a>
   </div>
 </section>
-{% style %}
-  .yx-content-pick { padding: var(--yarn-space-6, 32px) 0; }
-{% endstyle %}
+
 {% schema %}
 {
   "name": "内容精选(内容卡)",

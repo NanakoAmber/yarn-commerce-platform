@@ -9,8 +9,8 @@ const index = JSON.parse(indexSource);
 const schema = JSON.parse(hero.match(/{% schema %}([\s\S]*?){% endschema %}/)[1]);
 
 test('hero shows three clickable intent nodes using real raster assets (Issue #55)', () => {
-  // 三来意:看编织包(作品原画)/挑毛线(毛线球原画)/带成品回家(已批准玩偶原画)。
-  for (const asset of ['mewool-hero-project-node-v2.png', 'mewool-hero-yarn-node.png', 'yarn-category-toy-approved.png']) {
+  // 三来意:看编织包(作品原画)/挑毛线(毛线球原画)/带成品回家(与原型一致的花束插画)。
+  for (const asset of ['mewool-hero-project-node-v2.png', 'mewool-hero-yarn-node.png', 'mewool-hero-finished-node.png']) {
     assert.match(hero, new RegExp(asset.replaceAll('.', '\\.')));
   }
   assert.doesNotMatch(hero, /mewool-hero-tools-node\.png/);

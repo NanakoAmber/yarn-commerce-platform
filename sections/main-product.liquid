@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="yarn-product-page section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -94,6 +94,7 @@
               <p data-project-reference hidden>{{ 'yarn_project.context_reference' | t }}</p>
             </yarn-product-context>
 
+            {%- assign show_product_details = false -%}
             {%- for block in section.blocks -%}
               {%- case block.type -%}
                 {%- when '@app' -%}
@@ -214,13 +215,13 @@
                     {% if product.tags contains '編みものキット' %}
                       {{ 'yarn-kit-story.css' | asset_url | stylesheet_tag }}
                       {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
-                      {% render 'yarn-kit-story', product: product, part: 'about', fallback: 'raw' %}
+                      {% comment %}Full kit narrative follows the purchase section.{% endcomment %}
                     {% elsif product.tags contains '毛糸' %}
                       {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
-                      {% render 'yarn-product-description', product: product %}
+                      {% assign show_product_details = true %}
                     {% elsif product.tags contains '完成品' %}
                       {{ 'yarn-cards.css' | asset_url | stylesheet_tag }}
-                      {% render 'yarn-product-description', product: product %}
+                      {% assign show_product_details = true %}
                     {% else %}
                       {% render 'yarn-product-description', product: product %}
                     {% endif %}
@@ -735,11 +736,19 @@
 
       {%- if product.tags contains '編みものキット' -%}
         <div class="yarn-kit-story-full">
+          {% render 'yarn-kit-story', product: product, part: 'about', fallback: 'raw' %}
           {% render 'yarn-kit-story', product: product, part: 'body', fallback: 'none' %}
           {% render 'yarn-kit-crosslinks', product: product, kind: 'finished' %}
           {% render 'yarn-kit-story', product: product, part: 'faq', fallback: 'none' %}
         </div>
       {%- endif -%}
+
+      {% if show_product_details and product.description != blank %}
+        <section class="yarn-product-details-full product__description rte">
+          <h2>{% if product.tags contains '完成品' %}{{ 'yarn_project.finished_spec_heading' | t }}{% else %}{{ 'yarn_project.yarn_spec_heading' | t }}{% endif %}</h2>
+          {% render 'yarn-product-description', product: product %}
+        </section>
+      {% endif %}
 
       {% render 'product-media-modal', variant_images: variant_images %}
 

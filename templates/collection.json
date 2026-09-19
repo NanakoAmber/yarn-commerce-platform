@@ -59,19 +59,19 @@
         "chip-low": {
           "type": "chip",
           "settings": {
-            "label": "¥500以下",
-            "param": "filter.v.price.lte=500",
-            "label_zh": "¥500以下",
+            "label": "¥500未満",
+            "param": "filter.v.price.lte=499",
+            "label_zh": "不足¥500",
             "label_en": "Under ¥500"
           }
         },
         "chip-mid": {
           "type": "chip",
           "settings": {
-            "label": "¥500–1,500",
-            "param": "filter.v.price.gte=500&filter.v.price.lte=1500",
-            "label_zh": "¥500–1500",
-            "label_en": "¥500–1,500"
+            "label": "¥500–1,499",
+            "param": "filter.v.price.gte=500&filter.v.price.lte=1499",
+            "label_zh": "¥500–1499",
+            "label_en": "¥500–1,499"
           }
         },
         "chip-high": {
@@ -80,7 +80,7 @@
             "label": "¥1,500以上",
             "param": "filter.v.price.gte=1500",
             "label_zh": "¥1500以上",
-            "label_en": "Over ¥1,500"
+            "label_en": "¥1,500 and up"
           }
         }
       },
@@ -109,9 +109,9 @@
         "quick_add": "standard",
         "enable_filtering": false,
         "filter_type": "vertical",
-        "enable_sorting": true,
+        "enable_sorting": false,
         "columns_mobile": "2",
-        "padding_top": 36,
+        "padding_top": 12,
         "padding_bottom": 36
       }
     }

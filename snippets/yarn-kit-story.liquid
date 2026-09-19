@@ -10,6 +10,7 @@
 {%- if kit_section_count >= 6 -%}
   {%- for part in kit_parts offset: 1 -%}
     {%- if story_part == 'main' and forloop.index == 6 -%}{%- continue -%}{%- endif -%}
+    {%- if story_part == 'steps' and forloop.index != 3 -%}{%- continue -%}{%- endif -%}
     {%- if story_part == 'faq' and forloop.index != 6 -%}{%- continue -%}{%- endif -%}
     {%- if story_part == 'about' and forloop.index != 1 -%}{%- continue -%}{%- endif -%}
     {%- if story_part == 'body' and forloop.index == 1 -%}{%- continue -%}{%- endif -%}
