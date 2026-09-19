@@ -55,7 +55,6 @@
           {% render 'yarn-project-purchase', product: variant.product, default_variant: variant, recommended_quantity: component.quantity.value, project: project, purchase_key: purchase_key, component_title: component.title.value, kind: 'materials', details_id: details_id %}
           {% if component.note.value != blank %}<p class="yp-supply__note">{{ component.note.value | escape | newline_to_br }}</p>{% endif %}
         </div>
-        {% if variant.product.tags contains '編みものキット' and variant.product.description != blank %}{% render 'yarn-kit-story', product: variant.product %}{% endif %}
       {% endif %}
     {% endfor %}
   {% endunless %}
@@ -72,7 +71,6 @@
         {% assign purchase_key = 'legacy-' | append: product.id %}
         {% unless allow_purchase == false %}{% render 'yarn-project-purchase', product: product, project: project, purchase_key: purchase_key, kind: 'materials' %}{% endunless %}
       </div>
-      {% if product.tags contains '編みものキット' and product.description != blank %}{% render 'yarn-kit-story', product: product %}{% endif %}
     {% endfor %}
   {% endif %}
   {% if project.tools.value != blank %}<details class="yp-optional-purchase"><summary>{{ 'yarn_project.tools' | t }}</summary>{% if allow_purchase == false %}<ul>{% for product in project.tools.value %}<li>{{ product.title | escape }}</li>{% endfor %}</ul>{% else %}{% render 'yarn-project-products', products: project.tools.value, project: project %}{% endif %}</details>{% endif %}

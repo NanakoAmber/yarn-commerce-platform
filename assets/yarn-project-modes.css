@@ -24,7 +24,9 @@ yarn-project-modes, yarn-project-purchase { display: block; min-width: 0; }
 .yp-mode-panel { margin-top: var(--yarn-space-5); }
 .yp-mode-panel[hidden] { display: none; }
 .yp-mode-note, .yp-making-facts { font-size: 1.4rem; color: var(--yarn-muted); margin: 0 0 var(--yarn-space-4); }
-/* 编织包故事分区(获批移动端构图 comp-mobile) */
+/* 编织包故事分区(获批移动端构图 comp-mobile);桌面为栏下 760px 阅读流 */
+.yp-kitstory-flow { max-width: 760px; margin-top: var(--yarn-space-5); }
+.yp-tutorial-preview--flow { max-width: 760px; margin-top: var(--yarn-space-6); }
 .yp-kitstory { margin-top: var(--yarn-space-6); }
 .yp-kitstory > h2, .yp-kitstory__fact > h2 { margin: 0 0 var(--yarn-space-3); }
 .yp-kitstory__about { display: grid; grid-template-columns: minmax(96px, 132px) 1fr; gap: var(--yarn-space-4); align-items: start; }
