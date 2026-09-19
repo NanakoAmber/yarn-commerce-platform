@@ -24,6 +24,10 @@ yarn-project-modes, yarn-project-purchase { display: block; min-width: 0; }
 .yp-mode-panel { margin-top: var(--yarn-space-5); }
 .yp-mode-panel[hidden] { display: none; }
 .yp-mode-note, .yp-making-facts { font-size: 1.4rem; color: var(--yarn-muted); margin: 0 0 var(--yarn-space-4); }
+.yp-value-points { list-style: none; margin: 0 0 var(--yarn-space-4); padding: 0; display: grid; gap: var(--yarn-space-2); }
+.yp-value-points li { display: flex; align-items: center; gap: var(--yarn-space-2); font-size: 1.4rem; color: var(--yarn-ink); line-height: 1.5; }
+.yp-value-points li > span { display: inline-flex; flex-shrink: 0; width: 18px; height: 18px; color: var(--yarn-action); }
+.yp-value-points li > span svg { width: 100%; height: 100%; }
 .yp-preparation-copy { font-size: 1.4rem; color: var(--yarn-copy); }
 .yp-preparation-copy p { margin: 0 0 var(--yarn-space-3); }
 .yp-supplies { list-style: none; margin: 0; padding: 0 var(--yarn-space-4); background: var(--yarn-surface); border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-panel); }
@@ -46,7 +50,8 @@ yarn-project-modes, yarn-project-purchase { display: block; min-width: 0; }
 .yp-variant-choice img { border-radius: var(--yarn-radius-pill); object-fit: cover; }
 .yp-variant-choice input:checked + span { border-color: var(--yarn-action); background: var(--yarn-action-soft); color: var(--yarn-action); }
 .yp-variant-choice input:focus-visible + span { outline: var(--yarn-focus-width) solid var(--yarn-focus); outline-offset: var(--yarn-focus-offset); }
-.yp-purchase__summary { display: flex; justify-content: space-between; gap: var(--yarn-space-4); align-items: end; margin: var(--yarn-space-4) 0; }
+.yp-purchase__summary { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--yarn-space-4); align-items: end; margin: var(--yarn-space-4) 0; }
+.yp-purchase__quantity > label { white-space: nowrap; }
 .yp-purchase__quantity label, .yp-purchase__total > span { display: block; font-size: 1.3rem; color: var(--yarn-muted); margin-bottom: var(--yarn-space-1); }
 .yp-purchase__quantity input { width: 80px; min-height: var(--yarn-touch); border: 1px solid var(--yarn-control-line); border-radius: var(--yarn-radius-media); color: var(--yarn-ink); background: var(--yarn-surface); text-align: center; font: inherit; }
 .yp-purchase__total { text-align: right; }
