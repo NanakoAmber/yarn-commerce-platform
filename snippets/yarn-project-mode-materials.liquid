@@ -53,14 +53,9 @@
           {% assign purchase_key = component.system.id %}
           {% assign details_id = 'ProjectProduct-' | append: component.system.id %}
           {% render 'yarn-project-purchase', product: variant.product, default_variant: variant, recommended_quantity: component.quantity.value, project: project, purchase_key: purchase_key, component_title: component.title.value, kind: 'materials', details_id: details_id %}
-          {% if variant.product.tags contains '編みものキット' and variant.product.description != blank %}
-            <details class="yp-kit-contents">
-              <summary>{{ 'yarn_project.kit_contents' | t }}<span class="yp-supply__expand" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span></summary>
-              <div class="yp-kit-contents__body rte">{{ variant.product.description }}</div>
-            </details>
-          {% endif %}
           {% if component.note.value != blank %}<p class="yp-supply__note">{{ component.note.value | escape | newline_to_br }}</p>{% endif %}
         </div>
+        {% if variant.product.tags contains '編みものキット' and variant.product.description != blank %}{% render 'yarn-kit-story', product: variant.product %}{% endif %}
       {% endif %}
     {% endfor %}
   {% endunless %}
@@ -76,13 +71,8 @@
         <div class="yp-supply__intro">{% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', width: 72, height: 72, alt: '' }}{% endif %}<h3>{{ product.title | escape }}</h3></div>
         {% assign purchase_key = 'legacy-' | append: product.id %}
         {% unless allow_purchase == false %}{% render 'yarn-project-purchase', product: product, project: project, purchase_key: purchase_key, kind: 'materials' %}{% endunless %}
-        {% if product.tags contains '編みものキット' and product.description != blank %}
-          <details class="yp-kit-contents">
-            <summary>{{ 'yarn_project.kit_contents' | t }}<span class="yp-supply__expand" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span></summary>
-            <div class="yp-kit-contents__body rte">{{ product.description }}</div>
-          </details>
-        {% endif %}
       </div>
+      {% if product.tags contains '編みものキット' and product.description != blank %}{% render 'yarn-kit-story', product: product %}{% endif %}
     {% endfor %}
   {% endif %}
   {% if project.tools.value != blank %}<details class="yp-optional-purchase"><summary>{{ 'yarn_project.tools' | t }}</summary>{% if allow_purchase == false %}<ul>{% for product in project.tools.value %}<li>{{ product.title | escape }}</li>{% endfor %}</ul>{% else %}{% render 'yarn-project-products', products: project.tools.value, project: project %}{% endif %}</details>{% endif %}
