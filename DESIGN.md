@@ -260,7 +260,11 @@ Issue #34（2026-09-07）在现有首页视觉世界内采用用户指定的第�
 
 本次记录是实现事实，不是 gate 通过证明。方向与范围见[当前 surface brief](.impeccable/surfaces/sections-yarn-project-detail-liquid.md)，最终状态以独立 [finish review](.impeccable/review/34-project-modes/finish-review.md) 及本轮 verdict 为准；静态 hero gate 的解析 / 测量限制不能由文档关闭。真实 SKU 数量、教程图文入口和随内容增长的位置适配不被改写成逐像素匹配。本文不认证三语、后台编辑、真实供货、人工验收或生产发布已经完成；演示图文仍属于受保护内部原型。
 
-Issue #52（2026-09-19，PR #53）在既有视觉世界内为 Kit 型作品详情与集合页落实「参考锚定的双引擎 Comp-first」产物：Astra ImageGen 以 Woobles 整页参考包与现站截图为输入产出移动端单稿与桌面逐区指令（`.impeccable/mocks/52-project-detail-comps/`、`52-collection-comps/`，含 prompts 与 directives 记录），Claude 按稿实现并复核。作品详情当前事实：材料模式在难度行下方显示数据驱动卖点行（编织包 tag、`video_url`、`tutorial`/`tutorial_url` 条件显隐，勾选图标用行动陶土色）；`yarn-kit-story` snippet 把编织包商品描述的六个 `<h2>` 分节渲染为顺读分区——关于（384px 图 + 36em 正文并排）、编织包里有什么（全家福图与 01–10 编号清单 552/600 并排，编号徽章浅奶油底陶土字）、怎么开始（26px 陶土圆标步骤，768px 上限）、尺寸与适合谁（暖白细线事实条 1:1 竖分隔）、常见问题（细线折叠行）；分节不足六个时回退「编织包里有什么」折叠。桌面共用 `yp-axis` 1200px 轴线，首屏两栏约 648/504、列距 48px，FAQ 与教程预览以 648/504 尾段并排；749px 以下保持获批移动顺序（简介前置于卖点行之前），移动数量标签不再断字。教程预览标题使用独立 `tutorial_preview` 键，与教程正文标题区分；教程来源块改为透明底加上缘细线。集合页（三集合共用模板）由 `yarn-collection.css` 覆盖：横幅暖白面承载集合标题与一句引导语（描述来自 Shopify 集合字段，三语由 Translate & Adapt 维护），商品卡为暖白细线 16px 圆角、两行标题截断、墨色 600 字重价格，快速加购按钮改为细线上缘的陶土文字动作行；`choose_options` 文案为「选择颜色与规格 / 色・仕様を選ぶ」。商品模板购买须知、含税价说明与相关商品标题的源文案已改为店主语言中文，日英展示依赖主题内容翻译层逐项维护。本段依据 `snippets/yarn-kit-story.liquid`、`sections/yarn-project-detail.liquid`、`assets/yarn-project-modes.css`、`assets/yarn-collection.css`、`templates/product.json` 与工作区 `.claude/review-p1/FINAL-detail-{1440,390}.png`、`impl-collection-*.png` 截图复核。分节解析依赖商品描述的六节结构约定；生成构图稿中的逐件缩略图、步骤配图与尺寸标注图未实现（无对应真实素材，不伪造）；demo 素材含来源站水印仅限内部预览；本段不认证支付配置、真实供货或生产发布。
+Issue #52（2026-09-19，PR #53）更新了 Kit 型作品详情页和集合页。**设计流程很简单：Codex 出图，Claude 写码。** 先把 Woobles 的整页截图和我们网站的现状截图喂给 Codex（Astra 模型的 ImageGen），它生成一张手机端构图稿；Claude 照稿实现手机端，再用代码排出桌面版草稿并截图发回；Codex 对着草稿回一份逐区修改指令和一张修正稿，Claude 照单修改。稿件、提示词和指令都存在 `.impeccable/mocks/52-project-detail-comps/` 与 `52-collection-comps/`。
+
+这轮实现的事实：作品详情页的购买卡上方有一行数据驱动的卖点（编织包 tag、视频与图文教程字段各自决定显隐）；编织包介绍不再折叠，由 `yarn-kit-story` snippet 把商品描述的六个 `<h2>` 小节平铺成顺读分区——关于这只小动物（图文并排）、编织包里有什么（全家福图 + 01–10 编号清单）、怎么开始（三步圆标）、尺寸与适合谁（一条事实带）、常见问题（折叠行）；描述不满六节时退回原来的折叠形态。桌面统一在 1200px 轴线上，首屏两栏约 648/504，FAQ 和教程预览在页尾并排；手机端保持获批稿的顺序。集合页由 `yarn-collection.css` 统一成暖白细线卡片：横幅带一句引导语（存在 Shopify 集合描述里，三语走 Translate & Adapt），价格加粗墨色，加购按钮改为「选择颜色与规格」文字动作行。商品模板里原来写死的日文（购买须知、含税价等）改成了中文源文案。
+
+边界照旧：分节渲染依赖描述里的六节结构；构图稿里的逐件小图、步骤配图和尺寸标注图没有对应真实素材，未实现、不伪造；demo 图片带来源站水印，仅限密码保护的内部预览；本段不认证支付配置、真实供货或生产发布。复核依据为上述源码文件与工作区 `.claude/review-p1/` 的双端截图。
 
 ## Colors
 
