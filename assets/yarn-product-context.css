@@ -2,7 +2,7 @@
 .yp-product-context[hidden], .yp-product-context [hidden] { display: none; }
 .yp-product-context p { margin: 6px 0; line-height: 1.6; }
 .yp-product-context a { color: inherit; text-underline-offset: 4px; overflow-wrap: anywhere; }
-.yp-product-context a:focus-visible { outline: 2px solid var(--yarn-indigo); outline-offset: 4px; }
+.yp-product-context a:focus-visible { outline: var(--yarn-focus-width) solid var(--yarn-focus); outline-offset: var(--yarn-focus-offset); }
 
 /* 分区节奏:推荐区标题不再额外撑高分区间隔 */
 .related-products__heading { margin-top: 0; margin-bottom: 2rem; }
@@ -18,8 +18,8 @@
   --alpha-button-background: 1;
   --color-secondary-button: 255, 254, 250;  /* --yarn-surface */
   --color-secondary-button-text: 47, 48, 47;/* --yarn-ink */
-  --buttons-radius: var(--yarn-radius-field);
-  --buttons-radius-outset: var(--yarn-radius-field);
+  --buttons-radius: var(--yarn-radius-pill);
+  --buttons-radius-outset: var(--yarn-radius-pill);
 }
 .product-form__buttons .shopify-payment-button__button--unbranded:hover {
   --color-button: 246, 223, 160;            /* --yarn-primary-hover */
@@ -34,9 +34,9 @@ product-info.yarn-product-page .product__media { border-radius: var(--yarn-card-
 product-info.yarn-product-page .product__media-list { margin-bottom: 12px; }
 product-info.yarn-product-page .thumbnail { border-radius: 8px; }
 product-info.yarn-product-page .product-form__buttons { max-width: none; }
-product-info.yarn-product-page .product-form__submit { background: var(--yarn-butter); color: var(--yarn-commerce-ink); border-radius: 999px; font-weight: 700; font-size: 18px; }
+product-info.yarn-product-page .product-form__submit { background: var(--yarn-butter); color: var(--yarn-commerce-ink); border-radius: var(--yarn-radius-pill); font-weight: 700; font-size: 18px; }
 product-info.yarn-product-page .product-form__submit::after { box-shadow: none; }
-product-info.yarn-product-page .shopify-payment-button__button--unbranded { background: var(--yarn-surface); border: 1px solid var(--yarn-commerce-line); color: var(--yarn-commerce-ink); font-size: 16px; }
+product-info.yarn-product-page .shopify-payment-button__button--unbranded { background: var(--yarn-surface); border: 1px solid var(--yarn-commerce-line); border-radius: var(--yarn-radius-pill); color: var(--yarn-commerce-ink); font-size: 16px; }
 product-info.yarn-product-page .product__description:empty { display: none; }
 product-info.yarn-product-page .product__description { font-size: 16px; line-height: 1.7; }
 product-info.yarn-product-page .product__description h2 { font-size: 24px; font-weight: 700; }

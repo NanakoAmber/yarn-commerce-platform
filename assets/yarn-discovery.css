@@ -50,7 +50,7 @@
 .yp-library--rows .yp-row .yp-row__heading h3 { font-size: 2.6rem; }
 .yp-library--rows .yp-purchase-tag, .yd-search .yp-purchase-tag { background: var(--yarn-action-soft); color: var(--yarn-copy); font-size: 1.3rem; }
 .yp-card[data-purchase='materials'] .yp-purchase-tag { background: var(--yarn-blush); }
-.yp-card[data-purchase='inspiration'] .yp-purchase-tag { background: var(--yarn-mint); }
+.yp-card[data-purchase='inspiration'] .yp-purchase-tag { background: var(--yarn-sage); }
 .yp-library--rows .yp-card__body { padding-bottom: var(--yarn-space-1); }
 .yp-library--rows .yp-row__all { color: var(--yarn-action); font-size: 1.5rem; text-decoration: none; }
 .yp-library--rows .yp-category-filters__art { width: min(100%, 112px); }

@@ -7,7 +7,7 @@
   font-size: 12px; font-weight: 600; line-height: 1.2;
 }
 .yx-badge--kit { background: var(--yarn-butter); }
-.yx-badge--finished { background: var(--yarn-mint); }
+.yx-badge--finished { background: var(--yarn-sage); }
 .yx-badge--content { background: var(--yarn-action-soft); color: var(--yarn-commerce-accent); }
 .yx-badge--on-media, .yx-product-card__media .yx-badge { position: absolute; left: 8px; top: 8px; z-index: 2; }
 .yx-product-card, .yx-catalog-card .card {
