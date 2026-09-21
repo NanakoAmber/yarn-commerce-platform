@@ -30,6 +30,12 @@
       if page_title == 'My Store'
         assign yarn_page_title = 'MewoolMew'
       endif
+      comment
+        Shopify 只返回英文的 404 标题;标题栏跟随整页语言,使用主题 locale。
+      endcomment
+      if template.name == '404'
+        assign yarn_page_title = 'templates.404.title' | t
+      endif
       if template.name == 'search'
         case search.terms
           when 'tag:毛糸'

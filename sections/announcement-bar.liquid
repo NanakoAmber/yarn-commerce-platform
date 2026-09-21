@@ -30,9 +30,9 @@
         assign announcement_text = section.blocks.first.settings.text
         case request.locale.iso_code
           when 'zh-CN', 'zh'
-            assign announcement_text = '订单含税满9,900日元免运费 · 日本全国配送'
+            assign announcement_text = section.blocks.first.settings.text_zh | default: announcement_text
           when 'en'
-            assign announcement_text = 'Free shipping on orders over ¥9,900 · Shipping across Japan'
+            assign announcement_text = section.blocks.first.settings.text_en | default: announcement_text
         endcase
       -%}
       <div
@@ -91,9 +91,9 @@
                 assign announcement_text = block.settings.text
                 case request.locale.iso_code
                   when 'zh-CN', 'zh'
-                    assign announcement_text = '订单含税满9,900日元免运费 · 日本全国配送'
+                    assign announcement_text = block.settings.text_zh | default: announcement_text
                   when 'en'
-                    assign announcement_text = 'Free shipping on orders over ¥9,900 · Shipping across Japan'
+                    assign announcement_text = block.settings.text_en | default: announcement_text
                 endcase
               -%}
               <div
@@ -257,6 +257,16 @@
           "id": "text",
           "default": "t:sections.announcement-bar.blocks.announcement.settings.text.default",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "text",
+          "id": "text_zh",
+          "label": "中文 · 公告(空则用上方默认)"
+        },
+        {
+          "type": "text",
+          "id": "text_en",
+          "label": "英文 · 公告(空则用上方默认)"
         },
         {
           "type": "url",

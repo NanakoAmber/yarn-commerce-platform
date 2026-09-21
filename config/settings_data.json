@@ -22,21 +22,21 @@
     "animations_hover_elements": "none",
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
-    "buttons_radius": 2,
+    "buttons_radius": 40,
     "buttons_shadow_opacity": 0,
     "buttons_shadow_horizontal_offset": 0,
     "buttons_shadow_vertical_offset": 4,
     "buttons_shadow_blur": 5,
     "variant_pills_border_thickness": 1,
     "variant_pills_border_opacity": 55,
-    "variant_pills_radius": 2,
+    "variant_pills_radius": 40,
     "variant_pills_shadow_opacity": 0,
     "variant_pills_shadow_horizontal_offset": 0,
     "variant_pills_shadow_vertical_offset": 4,
     "variant_pills_shadow_blur": 5,
     "inputs_border_thickness": 1,
     "inputs_border_opacity": 55,
-    "inputs_radius": 2,
+    "inputs_radius": 24,
     "inputs_shadow_opacity": 0,
     "inputs_shadow_horizontal_offset": 0,
     "inputs_shadow_vertical_offset": 4,
@@ -90,7 +90,7 @@
     "media_shadow_blur": 5,
     "popup_border_thickness": 1,
     "popup_border_opacity": 10,
-    "popup_corner_radius": 10,
+    "popup_corner_radius": 16,
     "popup_shadow_opacity": 5,
     "popup_shadow_horizontal_offset": 0,
     "popup_shadow_vertical_offset": 4,
@@ -144,46 +144,46 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#f7f7f4",
+          "background": "#f7f7f5",
           "background_gradient": "",
-          "text": "#2b2925",
-          "button": "#2f5365",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#2b2925",
-          "shadow": "#d8d6d0"
+          "text": "#2f302f",
+          "button": "#b93b20",
+          "button_label": "#fffefa",
+          "secondary_button_label": "#a6472e",
+          "shadow": "#d8d4cc"
         }
       },
       "scheme-2": {
         "settings": {
           "background": "#ebe5dc",
           "background_gradient": "",
-          "text": "#2b2925",
-          "button": "#a84f3d",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#2b2925",
-          "shadow": "#d8d1c7"
+          "text": "#2f302f",
+          "button": "#b93b20",
+          "button_label": "#fffefa",
+          "secondary_button_label": "#a6472e",
+          "shadow": "#d9d1c4"
         }
       },
       "scheme-3": {
         "settings": {
-          "background": "#2f5365",
+          "background": "#8f3c26",
           "background_gradient": "",
-          "text": "#f7f7f4",
-          "button": "#f7f7f4",
-          "button_label": "#2f5365",
-          "secondary_button_label": "#f7f7f4",
-          "shadow": "#1f3945"
+          "text": "#fffefa",
+          "button": "#fffefa",
+          "button_label": "#8f3c26",
+          "secondary_button_label": "#fffefa",
+          "shadow": "#6d2c1b"
         }
       },
       "scheme-4": {
         "settings": {
-          "background": "#e9eef0",
+          "background": "#fff9e9",
           "background_gradient": "",
-          "text": "#2f424b",
-          "button": "#2f5365",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#2f424b",
-          "shadow": "#ccd6da"
+          "text": "#2f302f",
+          "button": "#b93b20",
+          "button_label": "#fffefa",
+          "secondary_button_label": "#a6472e",
+          "shadow": "#eadfc4"
         }
       },
       "scheme-5": {
@@ -191,9 +191,9 @@
           "background": "#ece8dc",
           "background_gradient": "",
           "text": "#3d3931",
-          "button": "#a84f3d",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#3d3931",
+          "button": "#b93b20",
+          "button_label": "#fffefa",
+          "secondary_button_label": "#a6472e",
           "shadow": "#d8d1bd"
         }
       }

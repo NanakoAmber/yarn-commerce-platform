@@ -74,8 +74,8 @@
 }
 
 .header-wrapper .header__icon:hover {
-  background: var(--yarn-paper);
-  color: var(--yarn-indigo);
+  background: var(--yarn-action-soft);
+  color: var(--yarn-action);
 }
 
 .header-wrapper .header__icon .svg-wrapper,

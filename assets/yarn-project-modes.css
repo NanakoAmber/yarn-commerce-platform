@@ -7,7 +7,7 @@
 .yp-detail--modes .yp-back { display: inline-flex; align-items: center; gap: var(--yarn-space-2); min-height: var(--yarn-touch); color: var(--yarn-action); text-decoration: none; }
 .yp-demo-label { font-size: var(--yarn-type-meta); color: var(--yarn-muted); margin: var(--yarn-space-2) 0 0; }
 .yp-project-layout { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: var(--yarn-space-4) var(--yarn-space-7); grid-template-areas: "visual mode" "summary mode"; grid-template-rows: auto 1fr; align-items: start; }
-.yp-detail--modes .yp-cover { aspect-ratio: 1.87; border-radius: var(--yarn-radius-media); background: var(--yarn-blue); overflow: hidden; min-height: 0; }
+.yp-detail--modes .yp-cover { aspect-ratio: 1.87; border-radius: var(--yarn-radius-media); background: var(--yarn-paper); overflow: hidden; min-height: 0; }
 .yp-detail--modes .yp-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .yp-project-visual { grid-area: visual; }
 .yp-mode-content { grid-area: mode; }
@@ -72,7 +72,7 @@ yarn-project-modes, yarn-project-purchase { display: block; min-width: 0; }
 .yp-optional-purchase > summary { display: flex; align-items: center; justify-content: space-between; min-height: var(--yarn-touch); font-size: 1.4rem; color: var(--yarn-action); cursor: pointer; }
 .yp-optional-purchase > summary svg { width: 14px; height: 14px; }
 .yp-tutorial-preview { margin-top: var(--yarn-space-5); }
-.yp-tutorial-cover { display: block; position: relative; border-radius: var(--yarn-radius-media); overflow: hidden; aspect-ratio: 3.12; background: var(--yarn-blue); }
+.yp-tutorial-cover { display: block; position: relative; border-radius: var(--yarn-radius-media); overflow: hidden; aspect-ratio: 3.12; background: var(--yarn-paper); }
 .yp-tutorial-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .yp-tutorial-cover > span { position: absolute; left: var(--yarn-space-3); bottom: var(--yarn-space-3); padding: var(--yarn-space-2) var(--yarn-space-3); border-radius: var(--yarn-radius-pill); background: var(--yarn-surface); color: var(--yarn-action); font-size: 1.4rem; }
 .yp-mode-note--center { text-align: center; margin: var(--yarn-space-2) 0 0; }

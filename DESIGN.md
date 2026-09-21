@@ -11,8 +11,8 @@ colors:
   muted: "#686762"
   line: "#e4dfd7"
   butter: "#f8e5a9"
-  butter-action: "#f7e3a5"
-  coral: "#e58b7d"
+  blush: "#f4dfdc"
+  sage: "#eceadb"
   mew-terra: "#bf5a38"
   project-row-action: "#a6472e"
   action-soft: "#fff9e9"
@@ -20,16 +20,16 @@ colors:
   primary-hover: "#f6dfa0"
   primary-line: "#efd68d"
   copy: "#4a4b48"
-  indigo: "#426f82"
+  focus: "#426f82"
   blush-surface: "#faecea"
-  blue-surface: "#edf5f7"
-  mint-surface: "#edf4ee"
   cream-surface: "#fff6df"
   discovery-ink: "#303330"
   selected-paper: "#fcf0ed"
   selected-ink: "#9e5554"
-  capability-blush: "#f4dfdc"
-  capability-mint: "#e4eee6"
+  scheme-page: "#f7f7f5"
+  scheme-soft: "#fff9e9"
+  scheme-sand: "#ebe5dc"
+  scheme-strong: "#8f3c26"
 typography:
   commerce-badge:
     fontSize: "12px"
@@ -210,18 +210,23 @@ components:
     textColor: "{colors.ink}"
   button-primary:
     backgroundColor: "{colors.butter}"
-    textColor: "#2c2e2c"
-    rounded: "{rounded.action-wide}"
+    textColor: "{colors.commerce-ink}"
+    rounded: "{rounded.pill}"
     padding: "16px clamp(24px, 3.5vw, 52px)"
   button-primary-hover:
-    backgroundColor: "#f5dda0"
-  button-pill:
-    backgroundColor: "{colors.butter-action}"
-    textColor: "#292a28"
+    backgroundColor: "{colors.primary-hover}"
+  button-commerce:
+    backgroundColor: "{colors.commerce-accent}"
+    textColor: "{colors.surface}"
     rounded: "{rounded.pill}"
-    padding: "0 24px"
-  button-pill-hover:
-    backgroundColor: "#f2d987"
+    padding: "12px 24px"
+  button-commerce-hover:
+    backgroundColor: "#8f3c26"
+  button-secondary:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.commerce-ink}"
+    rounded: "{rounded.pill}"
+    border: "1px solid {colors.commerce-line}"
   field-search:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
@@ -293,9 +298,12 @@ components:
 
 - **底与面**:`paper` 页面底 / `surface` 暖白面(卡片、导航、横幅)/ `line` 暖灰细线分组。
 - **文字**:商品家族标题用 `commerce-ink`，价格与商品入口用 `commerce-accent` + 600 字重；`muted` 辅助说明 / `copy` 正文。旧搜索与 Project 组件保留 `ink`，不做无范围的全局换肤。
-- **动作**:`project-row-action`(行动陶土)承担链接、文字按钮、图标勾选、编号徽章文字;`action-soft`/`action-hover` 是它的浅底与悬停面;`butter` 系列承担主 CTA 胶囊(如「开始制作」)。
-- **焦点**:`indigo` 灰蓝 2px 轮廓 + 4px 偏移,全站键盘焦点统一。
+- **动作**:`project-row-action`(行动陶土)承担链接、文字按钮、图标勾选、编号徽章文字;`action-soft`/`action-hover` 是它的浅底与悬停面;`butter` 承担商品页主 CTA 胶囊(加购),`commerce-accent` 承担跨区导航与结账等强操作胶囊。
+- **品类角标**:毛线 `blush` / 编织包 `butter` / 成品 `sage`,三者都在暖色侧,只表达品类。
+- **焦点**:`focus` 灰蓝 2px 轮廓 + 4px 偏移,全站键盘焦点统一;不再有第二套珊瑚色焦点环。
 - 旧柔色分类面、粉色选中态等保留兼容既有组件,不是新页面默认。
+
+**Shopify 全局配色方案**(`config/settings_data.json`,Rise/Dawn 原生组件消费):scheme-1 暖纸底 `scheme-page` / scheme-2 暖砂 `scheme-sand` / scheme-3 深陶土 `scheme-strong` / scheme-4 奶油 `scheme-soft` / scheme-5 暖米。五套的按钮统一为 `commerce-accent` 底 + `surface` 字。原型期的冷青蓝 `#2f5365`、冷灰蓝 `#e9eef0`/`#eceeed` 已全部退役,`--yarn-blue` / `--yarn-coral` / `--yarn-red` 令牌一并移除。
 
 **规则**:颜色只表达分类、选中和动作层级,不构成价格、热度、难度或库存的事实证明。禁止把参照站(Woobles 青绿等)的品牌色带进来。
 
@@ -314,7 +322,7 @@ components:
 ## Depth & Shapes
 
 - 无重阴影:平铺内容零阴影,覆盖面板才允许轻扩散阴影。
-- 商品家族卡片与内容卡为 `--yarn-card-radius: 10px`、1px 暖灰边线；出口卡陶土细边，按钮胶囊。其他既有组件保留原圆角。
+- 商品家族卡片与内容卡为 `--yarn-card-radius: 10px`、1px 暖灰边线；出口卡陶土细边。**所有实心与描边操作按钮统一胶囊 `--yarn-radius-pill`**(含加购、立即购买、结账、继续购物、集合筛选与排序控件)；输入框、语言选择器与下拉面板用 `--yarn-radius-field: 24px` / `--yarn-radius-panel: 16px`。媒体缩略图与数量步进器保留各自既有圆角。
 - 图标为细线 SVG;手作插画与商品照片是有来源的 raster,`contain` 保完整、不为填满容器裁掉主体。
 
 ## Components(现行规则)
@@ -325,9 +333,11 @@ components:
 - **作品内容页**:保留 Metaobject 标题、摘要、封面、准备与教程；缺少站内教程正文时，可呈现已关联 Kit 的既有介绍和开始步骤，再提供来源入口。商品关系只来自已存关系；不复制购买表单，不把外部商品页标为直接教程。
 - **双模式入口**:成品/材料两种能力并存才显示意图卡,单能力直接展示,无购买能力归灵感;能力标签不表示库存或齐套。
 - **集合页**:全目录使用三语浏览标题，具名集合保留 Shopify 标题/描述；搜索、品类、价格带、真实供货筛选与排序在商品网格上方。默认 JPY 价格带为 <500 / 500–1499 / ≥1500。卡片桌面四列、手机两列，暖白细线、两行标题、陶土价格、无分隔线文字动作。规格优先读 `yarn.spec_line`，缺少时提示查看详情。
-- **购物车**:条目两列三行,数量步进器、删除与行总价必须完整可见可达;保障条三项(配送/选线支持/放心购物)三语内置。
+- **购物车**:条目两列三行,数量步进器、删除与行总价必须完整可见可达;保障条三项(配送/选线支持/放心购物)三语内置,三张卡依次为奶油 / `blush` / `sage`;结账与继续购物为陶土胶囊。
 - **收藏**:图上暖白圆形爱心,表达收藏,不显示人数或评分。
 - **表单与字段**:暖白底、24px 圆角、56px 输入高度、16px 输入字号;成功/错误保留 Shopify 语义。
+- **公告条**:奶油底,文案与三语译文都存在 `announcement` block 的 `text` / `text_zh` / `text_en`,不在 Liquid 写死;首页有 Hero 时隐藏。
+- **语言一致性**:页面上的品类、用途一类标签一律走 Theme locale,不渲染 Shopify 的 `product.type`(该字段不可翻译,原值混着日文与中文)。404 标题用 `templates.404.title`,不用 Shopify 返回的英文 `page_title`。商品标题、描述、选项名与 Metaobject 正文属于 Shopify 内容层,由 Translate & Adapt 维护。
 
 ## Do / Don't
 

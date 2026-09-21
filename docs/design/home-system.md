@@ -17,7 +17,7 @@ Issue #32 提取共享规则；Issue #55 将当前首页改为毛线主线与商
 
 `--yarn-action` 用于可点击文字，`--yarn-thread` 用于插画连线和轮廓；装饰色不可直接当小字颜色。`--yarn-butter` 是 Hero 主按钮，`--yarn-action-soft` 是导航选中、帮助和页脚的浅色纸面。焦点为 `--yarn-focus`，与 hover 分开。
 
-旧 `--yarn-paper`、`--yarn-red` 等名称和值保留兼容，避免商品、购物车和作品详情被全局换肤；不把这批旧颜色都推荐给新页面。现有 Project 详情、购买表单、非紧凑帮助和 Rise 组件还含历史局部值，尚未完成全站迁移。
+原型期的冷色令牌 `--yarn-blue` / `--yarn-coral` / `--yarn-red` 已在 Issue #59 移除，`--yarn-mint` 换成暖侧的 `--yarn-sage`；Shopify 全局 color scheme 也一并改为暖陶土。`--yarn-paper`、`--yarn-ink` 等兼容名称保留。仍未迁移的历史局部值集中在当前没有任何模板使用的 `yarn-purpose-grid` / `yarn-shopping-paths` / `yarn-starter-project` / `yarn-project-library` / `yarn-project-discovery`，启用前需要先对齐配色与三语文案。
 
 ## 下一页面的用法
 
