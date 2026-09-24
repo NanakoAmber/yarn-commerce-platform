@@ -1,4 +1,4 @@
-.yp-product-context { display: block; padding-block: 12px; margin-bottom: 20px; border-block: 1px solid var(--yarn-line); color: var(--yarn-ink); font-size: 1.4rem; }
+.yp-product-context { display: block; padding-block: 12px; margin-bottom: 20px; border-block: 1px solid var(--yarn-border-subtle); color: var(--yarn-text-primary); font-size: 1.4rem; }
 .yp-product-context[hidden], .yp-product-context [hidden] { display: none; }
 .yp-product-context p { margin: 6px 0; line-height: 1.6; }
 .yp-product-context a { color: inherit; text-underline-offset: 4px; overflow-wrap: anywhere; }
@@ -8,8 +8,8 @@
 .related-products__heading { margin-top: 0; margin-bottom: 2rem; }
 
 /* 描述内元信息降权:参考行与内部来源行不与规格/购买争夺空间 */
-.product__description .yarn-spec-echo { font-size: 1.25rem; color: var(--yarn-muted); line-height: 1.6; }
-.product__description .yarn-demo-source { font-size: 1.2rem; color: var(--yarn-muted); line-height: 1.6; overflow-wrap: anywhere; }
+.product__description .yarn-spec-echo { font-size: 1.25rem; color: var(--yarn-text-muted); line-height: 1.6; }
+.product__description .yarn-demo-source { font-size: 1.2rem; color: var(--yarn-text-muted); line-height: 1.6; overflow-wrap: anywhere; }
 
 /* 购买按钮:对齐 DESIGN.md 层级——主 CTA 奶油胶囊,加购为暖纸底墨字描边;覆盖旧 scheme 灰蓝 */
 .product-form__buttons {
@@ -27,22 +27,22 @@
 
 /* Issue 55 product family: a compact gallery and a clear purchase column. */
 product-info.yarn-product-page > product-component > .page-width { max-width: 1296px; padding-inline: 48px; }
-product-info.yarn-product-page .product__title h1 { color: var(--yarn-commerce-ink); font-size: 36px; font-weight: 700; line-height: 1.25; }
-product-info.yarn-product-page .price { color: var(--yarn-commerce-accent); font-size: 28px; font-weight: 700; }
-product-info.yarn-product-page .product__tax, product-info.yarn-product-page .product__text { color: var(--yarn-muted); font-size: 14px; line-height: 1.5; }
+product-info.yarn-product-page .product__title h1 { color: var(--yarn-text-heading); font-size: 36px; font-weight: 700; line-height: 1.25; }
+product-info.yarn-product-page .price { color: var(--yarn-accent); font-size: 28px; font-weight: 700; }
+product-info.yarn-product-page .product__tax, product-info.yarn-product-page .product__text { color: var(--yarn-text-muted); font-size: 14px; line-height: 1.5; }
 product-info.yarn-product-page .product__media { border-radius: var(--yarn-card-radius); }
 product-info.yarn-product-page .product__media-list { margin-bottom: 12px; }
 product-info.yarn-product-page .thumbnail { border-radius: 8px; }
 product-info.yarn-product-page .product-form__buttons { max-width: none; }
-product-info.yarn-product-page .product-form__submit { background: var(--yarn-butter); color: var(--yarn-commerce-ink); border-radius: var(--yarn-radius-pill); font-weight: 700; font-size: 18px; }
+product-info.yarn-product-page .product-form__submit { background: var(--yarn-cta-bg); color: var(--yarn-text-heading); border-radius: var(--yarn-radius-pill); font-weight: 700; font-size: 18px; }
 product-info.yarn-product-page .product-form__submit::after { box-shadow: none; }
-product-info.yarn-product-page .shopify-payment-button__button--unbranded { background: var(--yarn-surface); border: 1px solid var(--yarn-commerce-line); border-radius: var(--yarn-radius-pill); color: var(--yarn-commerce-ink); font-size: 16px; }
+product-info.yarn-product-page .shopify-payment-button__button--unbranded { background: var(--yarn-bg-surface); border: 1px solid var(--yarn-border-card); border-radius: var(--yarn-radius-pill); color: var(--yarn-text-heading); font-size: 16px; }
 product-info.yarn-product-page .product__description:empty { display: none; }
 product-info.yarn-product-page .product__description { font-size: 16px; line-height: 1.7; }
 product-info.yarn-product-page .product__description h2 { font-size: 24px; font-weight: 700; }
 product-info.yarn-product-page .yarn-kit-story-full { max-width: 960px; margin-top: 48px; }
 product-info.yarn-product-page .yp-kitstory { margin-top: 32px; }
-product-info.yarn-product-page .yp-kitstory > h2 { font-size: 28px; font-weight: 700; color: var(--yarn-commerce-ink); }
+product-info.yarn-product-page .yp-kitstory > h2 { font-size: 28px; font-weight: 700; color: var(--yarn-text-heading); }
 product-info.yarn-product-page .yp-kitstory__copy p { font-size: 16px; }
 @media (min-width: 990px) {
   product-info.yarn-product-page .product { display: grid; grid-template-columns: minmax(0, 648fr) minmax(0, 504fr); column-gap: 48px; }
@@ -68,13 +68,13 @@ product-info.yarn-product-page .yp-kitstory__copy p { font-size: 16px; }
   product-info.yarn-product-page .yp-kitstory > h2 { font-size: 23px; }
 }
 
-body:has(product-info.yarn-product-page), product-info.yarn-product-page { background: var(--yarn-surface); }
+body:has(product-info.yarn-product-page), product-info.yarn-product-page { background: var(--yarn-bg-surface); }
 product-info.yarn-product-page .product-form__quantity { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 product-info.yarn-product-page .product-form__quantity .quantity__label { margin: 0; }
 product-info.yarn-product-page .quantity { min-height: 44px; height: 44px; width: 152px; }
 
-product-info.yarn-product-page .yarn-product-details-full { max-width: 960px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid var(--yarn-commerce-line); }
-product-info.yarn-product-page .yarn-product-details-full > h2 { color: var(--yarn-commerce-ink); font-size: 28px; font-weight: 700; margin: 0 0 20px; }
+product-info.yarn-product-page .yarn-product-details-full { max-width: 960px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid var(--yarn-border-card); }
+product-info.yarn-product-page .yarn-product-details-full > h2 { color: var(--yarn-text-heading); font-size: 28px; font-weight: 700; margin: 0 0 20px; }
 product-info.yarn-product-page .yarn-product-details-full ul { padding-left: 1.25em; }
 @media (max-width: 749px) {
   product-info.yarn-product-page .yarn-product-details-full { margin-top: 28px; }
