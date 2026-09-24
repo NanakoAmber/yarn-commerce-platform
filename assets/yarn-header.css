@@ -49,7 +49,7 @@
 }
 
 .yarn-main-menu .yarn-menu-project {
-  background: var(--yarn-action-soft);
+  background: var(--yarn-action-subtle-bg);
   color: var(--yarn-action);
 }
 
@@ -69,12 +69,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--yarn-ink);
+  color: var(--yarn-text-primary);
   border-radius: var(--yarn-radius-pill);
 }
 
 .header-wrapper .header__icon:hover {
-  background: var(--yarn-action-soft);
+  background: var(--yarn-action-subtle-bg);
   color: var(--yarn-action);
 }
 
@@ -123,13 +123,13 @@
 }
 
 .header-wrapper .disclosure__list-wrapper {
-  border: 1px solid var(--yarn-line);
+  border: 1px solid var(--yarn-border-subtle);
   border-radius: 12px;
-  background: var(--yarn-surface);
+  background: var(--yarn-bg-surface);
 }
 
 .header-wrapper .menu-drawer {
-  background: var(--yarn-surface);
+  background: var(--yarn-bg-surface);
 }
 
 .header-wrapper .menu-drawer__navigation {
@@ -148,13 +148,13 @@
 }
 
 .header-wrapper .menu-drawer__menu .yarn-menu-project {
-  background: var(--yarn-action-soft);
+  background: var(--yarn-action-subtle-bg);
   color: var(--yarn-action);
 }
 
 .header-wrapper .menu-drawer__localization {
   padding: 16px 28px;
-  border-top: 1px solid var(--yarn-line);
+  border-top: 1px solid var(--yarn-border-subtle);
 }
 
 @media screen and (max-width: 1339px) {
@@ -232,7 +232,7 @@
 .header-wrapper .menu-drawer__menu-item:hover,
 .header-wrapper .menu-drawer__menu-item--active,
 .yarn-main-menu .header__menu-item[aria-current='page'] {
-  background: var(--yarn-action-soft);
+  background: var(--yarn-action-subtle-bg);
   color: var(--yarn-action);
 }
 .yarn-main-menu .header__menu-item:is(:hover, :focus-visible) span {
@@ -240,16 +240,16 @@
   text-decoration-color: currentColor;
 }
 .header-wrapper .header__active-menu-item { text-decoration-color: var(--yarn-action); }
-.header-wrapper .header__icon:hover { background: var(--yarn-action-soft); color: var(--yarn-action); }
+.header-wrapper .header__icon:hover { background: var(--yarn-action-subtle-bg); color: var(--yarn-action); }
 .header-wrapper .header__submenu,
 .header-wrapper .search-modal,
 .header-wrapper .predictive-search,
 .header-wrapper .menu-drawer__submenu,
 .header-wrapper .menu-drawer__utility-links {
-  background: var(--yarn-surface);
-  color: var(--yarn-ink);
+  background: var(--yarn-bg-surface);
+  color: var(--yarn-text-primary);
 }
-.header-wrapper .header__submenu { border: 1px solid var(--yarn-line); border-radius: var(--yarn-radius-panel); }
+.header-wrapper .header__submenu { border: 1px solid var(--yarn-border-subtle); border-radius: var(--yarn-radius-panel); }
 .header-wrapper .menu-drawer__close-button { min-height: var(--yarn-touch); color: var(--yarn-action); }
 .header-wrapper .search-modal__close-button { min-width: var(--yarn-touch); min-height: var(--yarn-touch); }
 
@@ -259,8 +259,8 @@
   .yarn-project-page .announcement-bar-section { display: none; }
   .header-wrapper .header.header--project { grid-template-columns: 44px minmax(0,1fr) 88px; grid-template-areas: "left-icons heading icons"; column-gap: 0; padding: 6px var(--yarn-gutter); min-height: 56px; }
   .header--project > :is(header-drawer,.header__heading-link) { display: none; }
-  .header--project .yarn-project-nav-back { display: flex; grid-area: left-icons; align-items: center; justify-content: center; width: var(--yarn-touch); height: var(--yarn-touch); color: var(--yarn-ink); font-size: 2.4rem; text-decoration: none; }
-  .header--project .yarn-project-nav-title { display: block; grid-area: heading; text-align: center; font-family: var(--yarn-display); font-size: 1.6rem; color: var(--yarn-ink); }
+  .header--project .yarn-project-nav-back { display: flex; grid-area: left-icons; align-items: center; justify-content: center; width: var(--yarn-touch); height: var(--yarn-touch); color: var(--yarn-text-primary); font-size: 2.4rem; text-decoration: none; }
+  .header--project .yarn-project-nav-title { display: block; grid-area: heading; text-align: center; font-family: var(--yarn-display); font-size: 1.6rem; color: var(--yarn-text-primary); }
 }
 
 .yarn-project-nav-back svg { width: 24px; height: 24px; transform: rotate(180deg); }

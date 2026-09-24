@@ -15,40 +15,74 @@
 }
 
 :root {
-  /* Compatibility names keep existing product and project pages stable. */
-  --yarn-display: 'Yarn Display', 'Noto Sans SC', sans-serif;
-  --yarn-paper: #f7f7f5;
-  --yarn-surface: #fffefa;
-  --yarn-ink: #2f302f;
-  --yarn-muted: #686762;
-  --yarn-blush: #f4dfdc;
-  --yarn-sage: #eceadb;
-  --yarn-butter: #f8e5a9;
-  --yarn-indigo: #426f82;
-  --yarn-line: #e4dfd7;
+  /* Fonts. Colors live in the generated block below. */
+  --yarn-display: 'Klee One', 'Noto Sans JP', sans-serif;
+  --yarn-body: 'Noto Sans JP', sans-serif;
 }
 
-/* Shared roles extracted from the approved connected Hero and project rows. */
+/* Font preview G: Klee One headings + Noto Sans JP body; English body uses Figtree; Chinese pages use LXGW WenKai + WenKai Screen. */
+:root:lang(en) {
+  --yarn-body: 'Figtree', 'Noto Sans JP', sans-serif;
+}
+:root:lang(zh) {
+  --yarn-display: 'LXGW WenKai', 'Noto Sans SC', sans-serif;
+  --yarn-body: 'LXGW WenKai Screen', 'Noto Sans SC', sans-serif;
+}
+html[lang]:root {
+  --font-body-family: var(--yarn-body);
+  --font-heading-family: var(--yarn-display);
+}
+
+/* BEGIN generated colors — edit design/tokens/colors.json, then run npm run tokens */
 :root {
-  --yarn-action: #a6472e;
-  --yarn-action-strong: #8f3c26;
-  --yarn-thread: #bf5a38;
-  --yarn-action-soft: #fff9e9;
-  --yarn-action-hover: #fff3de;
-  --yarn-primary-hover: #f6dfa0;
-  --yarn-primary-line: #efd68d;
-  --yarn-art-line: #e9bd51;
-  --yarn-art-halo: rgba(248, 229, 169, .45);
-  --yarn-copy: #4a4b48;
-  --yarn-primary-ink: #292a28;
-  --yarn-label-ink: #252624;
-  --yarn-disabled: #8c8880;
-  --yarn-disabled-line: #d3cfc7;
-  --yarn-scroll-thumb: #b8b1a4;
-  --yarn-scroll-track: #f5f1e8;
-  --yarn-focus: var(--yarn-indigo);
-  --yarn-overlay: rgba(47, 48, 47, .32);
-  --yarn-control-line: var(--yarn-muted);
+  --yarn-bg-page: #f7f7f5; /* cream-100 · 页面底 */
+  --yarn-bg-surface: #fffefa; /* cream-50 · 卡片、导航、横幅、输入框面 */
+  --yarn-bg-sunken: #ebe5dc; /* sand-100 · 次级区块（暖砂） */
+  --yarn-bg-warm: #ece8dc; /* sand-150 · 暖米区块（配色方案 5） */
+  --yarn-bg-inverse: #8f3c26; /* clay-700 · 深色反白区块 */
+  --yarn-text-primary: #2f302f; /* charcoal-900 · 正文、通用标题、Rise 原生文字 */
+  --yarn-text-heading: #13202d; /* navy-900 · 商品家族标题 */
+  --yarn-text-warm: #3d3931; /* charcoal-800 · 暖米区块文字（配色方案 5） */
+  --yarn-text-secondary: #4a4b48; /* charcoal-700 · 次级正文 */
+  --yarn-text-muted: #686762; /* charcoal-500 · 辅助说明、规格、元信息 */
+  --yarn-text-disabled: #8c8880; /* sand-600 · 不可用文字 */
+  --yarn-text-inverse: #fffefa; /* cream-50 · 深色区块上的文字 */
+  --yarn-text-on-action: #fffefa; /* cream-50 · 陶土实心按钮上的文字 */
+  --yarn-text-on-cta: #292a28; /* charcoal-950 · 奶油主按钮上的文字 */
+  --yarn-action: #a6472e; /* clay-600 · 链接、文字按钮、图标勾选、编号徽章文字 */
+  --yarn-accent: #b93b20; /* clay-550 · 价格、跨区导航与结账等实心按钮 */
+  --yarn-action-strong: #8f3c26; /* clay-700 · 按下态、深色强调面 */
+  --yarn-action-subtle-bg: #fff9e9; /* cream-150 · 浅色操作面：导航选中、帮助、页脚 */
+  --yarn-action-subtle-hover: #fff3de; /* cream-200 · 浅色操作面的悬停 */
+  --yarn-cta-bg: #f8e5a9; /* butter-200 · 奶油主按钮：加购、Hero 主按钮、选中筛选 */
+  --yarn-cta-hover: #f6dfa0; /* butter-300 · 奶油主按钮悬停 */
+  --yarn-cta-border: #efd68d; /* butter-400 · 奶油按钮与浅色胶囊边线 */
+  --yarn-border-subtle: #e4dfd7; /* sand-200 · 分组细线、区块分隔 */
+  --yarn-border-card: #dedbd5; /* sand-250 · 商品与内容卡片边线 */
+  --yarn-border-control: #686762; /* charcoal-500 · 输入框、筛选与数量控件边线 */
+  --yarn-border-disabled: #d3cfc7; /* sand-300 · 不可用控件边线 */
+  --yarn-tint-butter: #f8e5a9; /* butter-200 · 柔色面：编织包角标、信息卡 */
+  --yarn-tint-blush: #f4dfdc; /* blush-100 · 柔色面：毛线角标、信息卡 */
+  --yarn-tint-sage: #eceadb; /* sage-100 · 柔色面：成品角标、信息卡 */
+  --yarn-selected-text: #9e5554; /* blush-700 · 作品筛选选中态文字与描边 */
+  --yarn-focus: #426f82; /* indigo-600 · 键盘焦点环、输入光标（全站唯一冷色） */
+  --yarn-decor-thread: #bf5a38; /* clay-500 · 插画连线、装饰描边；不得用于文字 */
+  --yarn-decor-art-line: #e9bd51; /* butter-600 · 插画节点描边；不得用于文字 */
+  --yarn-decor-halo: rgba(248, 229, 169, 0.45); /* butter-200 @ 0.45 · 插画节点光晕 */
+  --yarn-overlay: rgba(47, 48, 47, 0.32); /* charcoal-900 @ 0.32 · 抽屉与弹窗遮罩、浮层阴影 */
+  --yarn-shadow-soft: rgba(103, 81, 68, 0.14); /* umber-700 @ 0.14 · 卡片与浮层的柔和阴影 */
+  --yarn-scrollbar-thumb: #b8b1a4; /* sand-400 · 滚动条滑块 */
+  --yarn-scrollbar-track: #f5f1e8; /* sand-50 · 滚动条轨道 */
+  --yarn-shadow-page: #d8d4cc; /* shade-100 · 配色方案 1 阴影色 */
+  --yarn-shadow-sunken: #d9d1c4; /* shade-150 · 配色方案 2 阴影色 */
+  --yarn-shadow-inverse: #6d2c1b; /* clay-900 · 配色方案 3 阴影色 */
+  --yarn-shadow-cream: #eadfc4; /* butter-100 · 配色方案 4 阴影色 */
+  --yarn-shadow-warm: #d8d1bd; /* shade-200 · 配色方案 5 阴影色 */
+}
+/* END generated colors */
+
+/* Shape, spacing, touch and type roles shared by the connected Hero, project rows and commerce family. */
+:root {
   --yarn-radius-media: 14px;
   --yarn-radius-panel: 16px;
   --yarn-radius-field: 24px;
@@ -71,10 +105,7 @@
   --yarn-leading: 1.5;
   --yarn-focus-width: 2px;
   --yarn-focus-offset: 4px;
-  /* Issue 55: shared roles for the selected storefront comps. */
-  --yarn-commerce-accent: #b93b20;
-  --yarn-commerce-ink: #13202d;
-  --yarn-commerce-line: #dedbd5;
+  /* Issue 55: commerce family sizing. */
   --yarn-card-radius: 10px;
   --yarn-card-title: 16px;
   --yarn-card-meta: 14px;

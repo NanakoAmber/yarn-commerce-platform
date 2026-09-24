@@ -15,9 +15,9 @@ Issue #32 提取共享规则；Issue #55 将当前首页改为毛线主线与商
 | `assets/yarn-product-context.css` / `assets/yarn-project-reading.css` | 原生购买区、商品独立规格区与单列内容阅读 |
 | `sections/yarn-line-contact.liquid` | 紧凑帮助条消费容器/色彩/圆角角色，保留非紧凑历史变体 |
 
-`--yarn-action` 用于可点击文字，`--yarn-thread` 用于插画连线和轮廓；装饰色不可直接当小字颜色。`--yarn-butter` 是 Hero 主按钮，`--yarn-action-soft` 是导航选中、帮助和页脚的浅色纸面。焦点为 `--yarn-focus`，与 hover 分开。
+颜色的唯一来源是 `design/tokens/colors.json`，`npm run tokens` 生成 `yarn-design-tokens.css` 的颜色段（`BEGIN/END generated colors` 之间，勿手改）、`settings_data.json` 配色方案和 `DESIGN.md` 前言 `colors`。页面只引用语义角色，角色表与规则见 `DESIGN.md` Colors。`--yarn-action` 用于可点击文字，`--yarn-decor-thread` 只用于插画连线；`--yarn-cta-bg` 是奶油主按钮，`--yarn-action-subtle-bg` 是导航选中、帮助和页脚的浅色面；焦点为 `--yarn-focus`，与 hover 分开。
 
-原型期的冷色令牌 `--yarn-blue` / `--yarn-coral` / `--yarn-red` 已在 Issue #59 移除，`--yarn-mint` 换成暖侧的 `--yarn-sage`；Shopify 全局 color scheme 也一并改为暖陶土。`--yarn-paper`、`--yarn-ink` 等兼容名称保留。仍未迁移的历史局部值集中在当前没有任何模板使用的 `yarn-purpose-grid` / `yarn-shopping-paths` / `yarn-starter-project` / `yarn-project-library` / `yarn-project-discovery`，启用前需要先对齐配色与三语文案。
+Issue #65 删除了无模板使用的 `yarn-purpose-grid` / `yarn-seasonal-feature` / `yarn-shopping-paths`；保留的 `yarn-project-library` / `yarn-project-discovery` / `yarn-starter-project`（作品库等近期范围）已改用角色，启用前仍需核对三语文案与构图。
 
 ## 下一页面的用法
 
@@ -35,12 +35,12 @@ Issue #32 提取共享规则；Issue #55 将当前首页改为毛线主线与商
 
 ## 验证与回滚
 
-`npm run verify` 包含一个系统边界检查：核心消费者不能重新硬编码颜色、引用必须在 token 文件中定义，且 token 必须先于旧原型样式加载。它防止单一来源再次分叉，不替代浏览器视觉复核。
+`npm run verify` 包含两组系统边界检查：token 必须先于旧原型样式加载；`tests/yarn-color-system.test.cjs` 覆盖所有 yarn 样式与引用 `--yarn-*` 的模板，检查颜色字面量、未定义引用、生成物同步、对比度、未使用角色与近似色。它防止单一来源再次分叉，不替代浏览器视觉复核。
 
 导航与页脚在其他页面共享生效；本次对作品详情和联系页做路径与无横向溢出的抽查，不宣称其他页面正文已完成视觉统一。回滚采用撤回本 PR 或重新选择原未变更主题；未发布预览不等于生产发布授权。
 
 ## Issue #55 当前接入
 
-商品家族消费 `commerce-ink`、`commerce-accent`、`commerce-line`、10px card radius 与 1200px commerce max；卡片标题/规格/价格为 16/14/21px。这些角色不修改旧全局 token。构图与数据回退见 [当前 surface brief](approved/55-visual-fidelity.md)。
+商品家族消费 `text-heading`、`accent`、`border-card`、10px card radius 与 1200px commerce max；卡片标题/规格/价格为 16/14/21px。构图与数据回退见 [当前 surface brief](approved/55-visual-fidelity.md)。
 
 首页出口卡未选择图片时使用当前集合第一件商品主图；内容卡链接指向 `yarn_project` 时可使用其封面，运营选择的图片优先。作品正文缺失时只读取已有关联 Kit 的介绍和步骤，不创建另一份内容真值。三语运营文案仍由 Section setting 与 Shopify 对应资源维护。

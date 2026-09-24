@@ -11,3 +11,5 @@ init.sh
 package.json
 package-lock.json
 impeccable-hero-plates.html
+design/**
+scripts/**
