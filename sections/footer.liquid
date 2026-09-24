@@ -51,7 +51,7 @@
   -%}
     {%- unless only_empty_brand -%}
       <div class="footer__content-top page-width">
-        <a class="yarn-footer__brand" href="{{ routes.root_url }}" aria-label="MewoolMew">
+        <a class="yarn-footer__brand" href="{{ routes.root_url }}" aria-label="Mokomoko">
           {%- if settings.logo != blank -%}
             {{ settings.logo | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 600', alt: shop.name }}
           {%- else -%}
@@ -308,7 +308,7 @@
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
         {%- liquid
-          assign yarn_brand_name = 'MewoolMew'
+          assign yarn_brand_name = 'Mokomoko'
         -%}
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }}, {{ yarn_brand_name | link_to: routes.root_url -}}

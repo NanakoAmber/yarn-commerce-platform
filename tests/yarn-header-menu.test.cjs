@@ -40,12 +40,12 @@ test('prototype navigation contains no locale, product-copy or tag-search overri
   }
 });
 
-test('MewoolMew keeps the approved illustration and lettering with an accessible image name', () => {
-  assert.match(wordmark, /alt="MewoolMew"/);
-  assert.match(wordmark, /mewoolmew-logo-reference\.png/);
+test('Mokomoko keeps the approved illustration and lettering with an accessible image name', () => {
+  assert.match(wordmark, /alt="Mokomoko"/);
+  assert.match(wordmark, /mokomoko-logo\.png/);
   assert.doesNotMatch(wordmark, /inline_asset_content|毛线工作室/);
-  assert.match(wordmark, /width="1881"[\s\S]*height="836"/);
+  assert.match(wordmark, /width="1797"[\s\S]*height="836"/);
   assert.match(headerCss, /object-fit: cover/);
-  assert.match(header, /assign yarn_brand_name = 'MewoolMew'/);
+  assert.match(header, /assign yarn_brand_name = 'Mokomoko'/);
   assert.match(header, /"name": \{\{ yarn_brand_name \| json \}\}/);
 });

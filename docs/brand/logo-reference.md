@@ -1,18 +1,21 @@
-# MewoolMew 第一款 Logo 原稿与正式资产
+# Mokomoko Logo 来源与正式资产
 
-2026-09-06，用户指出另一版手工 SVG 猫标与本对话第一款设计不同，明确要求按第一款图像修正并更新当前 Live 网站。品牌名称沿用 Issue #25 已确认的 MewoolMew。
+2026-09-23，用户确认网站名称改为 Mokomoko，并同意字标草稿先上网页预览（Issue #63）。猫咪图形沿用 2026-09-06 用户选定的第一款原稿（Issue #25，原名 MewoolMew）。
 
 ## 视觉来源与使用
 
 - 用户选择的原创图稿：[`approved-first-concept.png`](approved-first-concept.png) 的第一列橘色猫咪。
-- 正式资产：[`../../assets/mewoolmew-logo-reference.png`](../../assets/mewoolmew-logo-reference.png)，1881×836 PNG。由内置 imagegen 以第一列图稿为输入生成，未使用外部品牌、字体文件或素材。
-- 保留歪头闭眼、橘色斑块、双爪环抱线团、圆弧线纹与回环线尾。原稿 `mewool` 按已确认名称扩展为小写 `mewoolmew`；图片替代文本、页面标题、页脚、结构化数据使用 `MewoolMew`。
-- 猫标与专门绘制的字形保存在同一图片中，不使用手工 SVG、系统圆体或额外 HTML 字标近似。
-- 原始生成文件保留全部画布。Theme 使用稳定尺寸容器、等比例 cover 和 42% 垂直位置展示有效内容；不拉伸。Shopify CDN 提供 600 / 900 px 响应式图片。
-- 第一次资产整理生成了不是真正透明的棋盘背景，已废弃；正式资产是暖白背景，以 multiply 混合融入当前暖白页眉。没有宣称 PNG 具备 alpha 透明通道，也未验证通用深色背景；将来若新增深色页眉，应另行制作相应资产。
+- 正式资产：[`../../assets/mokomoko-logo.png`](../../assets/mokomoko-logo.png)，1797×836 PNG。
+- 制作方式：以旧资产 `assets/mewoolmew-logo-reference.png`（提交 `38e7847` 中仍可取回）为唯一来源做像素编辑。猫咪、线团与回环线尾原样保留；`m`、`o` 取自原字标；原字标没有 `k`，由原 `l` 的上段竖笔、`m` 首笔的圆脚与两道同粗（37px）圆头斜笔合成，填色为原字标墨色 `#C95D39`。未使用外部字体、品牌或素材。
+- 字标为小写 `mokomoko`；图片替代文本、页面标题、页脚、结构化数据使用 `Mokomoko`。
+- 猫标与字形保存在同一图片中，不使用手工 SVG、系统圆体或额外 HTML 字标近似。
+- Theme 使用稳定尺寸容器、等比例 cover 和 42% 垂直位置展示有效内容；不拉伸。Shopify CDN 提供 600 / 900 px 响应式图片。
+- 资产是暖白背景（#FEFDFA），以 multiply 混合融入暖白页眉，不具备 alpha 透明通道；将来若新增深色页眉，应另行制作相应资产。
 - 用户上传的 Shopify Logo 设置仍优先，本次不改该设置。
 
-## 生成提示词
+## 猫咪原稿生成提示词
+
+以下是 2026-09-06 生成原 MewoolMew 资产（猫咪图形的来源）时的实际英文提示词，以便追溯。字标部分已被上文的 Mokomoko 编辑取代。
 
 使用内置 imagegen，两次资产整理；原始三案图亦由同一对话内置 imagegen 生成。以下保留正式资产整理的实际英文提示词，以便精确复现；它们是图像生产指令，不是消费者文案。
 
@@ -32,8 +35,5 @@ Edit this exact logo asset. Keep the cat illustration, its pose and contours, te
 
 ## 验证与发布范围
 
-- 独立未发布 Theme：189734420793；基于实际 Live 189727637817 的完整副本，只更改 [`logo-release-manifest.json`](logo-release-manifest.json) 中的 7 个品牌文件。
-- 桌面 1440×900、手机 390×844：日文 `/`、中文 `/zh`、英文 `/en` 的 Logo 加载、品牌名称与页眉尺寸一致；桌面 84 px、手机 68 px，无横向溢出。
-- 手机菜单、目录导航、目录页 Logo 返回中文首页通过；不操作商品、库存、价格、订单或账户设置。
-- 公开证据仅提交本次原创 Logo 的页眉截图；含原有第三方商品图片的全页截图仅留在本地评审目录，不加入公开仓库 diff。
-- 本次是品牌定向更新，不合并 PR #26 继承的其他待合并项目改动。发布结果、commit 与回滚步骤在 Issue #25 / PR #26 记录。
+- Mokomoko 资产的验证、预览主题与回滚记录在 Issue #63 及其 PR。
+- MewoolMew 版的 Live 定向发布记录保留在 [`logo-live-release.md`](logo-live-release.md)，仅作历史回滚参考，不授予未来发布权限。
