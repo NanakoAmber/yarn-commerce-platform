@@ -16,7 +16,8 @@
 
 :root {
   /* Compatibility names keep existing product and project pages stable. */
-  --yarn-display: 'Yarn Display', 'Noto Sans SC', sans-serif;
+  --yarn-display: 'Klee One', 'Noto Sans JP', sans-serif;
+  --yarn-body: 'Noto Sans JP', sans-serif;
   --yarn-paper: #f7f7f5;
   --yarn-surface: #fffefa;
   --yarn-ink: #2f302f;
@@ -26,6 +27,19 @@
   --yarn-butter: #f8e5a9;
   --yarn-indigo: #426f82;
   --yarn-line: #e4dfd7;
+}
+
+/* Font preview G: Klee One headings + Noto Sans JP body; English body uses Figtree; Chinese pages use LXGW WenKai + WenKai Screen. */
+:root:lang(en) {
+  --yarn-body: 'Figtree', 'Noto Sans JP', sans-serif;
+}
+:root:lang(zh) {
+  --yarn-display: 'LXGW WenKai', 'Noto Sans SC', sans-serif;
+  --yarn-body: 'LXGW WenKai Screen', 'Noto Sans SC', sans-serif;
+}
+html[lang]:root {
+  --font-body-family: var(--yarn-body);
+  --font-heading-family: var(--yarn-display);
 }
 
 /* Shared roles extracted from the approved connected Hero and project rows. */
