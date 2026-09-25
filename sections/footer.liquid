@@ -51,11 +51,12 @@
   -%}
     {%- unless only_empty_brand -%}
       <div class="footer__content-top page-width">
-        <a class="yarn-footer__brand" href="{{ routes.root_url }}" aria-label="MewoolMew">
+        {%- capture yarn_brand_name -%}{% render 'yarn-brand-name' %}{%- endcapture -%}
+        <a class="yarn-footer__brand" href="{{ routes.root_url }}" aria-label="{{ yarn_brand_name | strip | escape }}">
           {%- if settings.logo != blank -%}
             {{ settings.logo | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 600', alt: shop.name }}
           {%- else -%}
-            {% render 'yarn-wordmark' %}
+            {% render 'yarn-wordmark', brand_name: yarn_brand_name %}
           {%- endif -%}
         </a>
         {%- if section.blocks.size > 0 -%}
@@ -307,9 +308,8 @@
     </div>
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
-        {%- liquid
-          assign yarn_brand_name = 'MewoolMew'
-        -%}
+        {%- capture yarn_brand_name -%}{% render 'yarn-brand-name' %}{%- endcapture -%}
+        {%- assign yarn_brand_name = yarn_brand_name | strip -%}
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }}, {{ yarn_brand_name | link_to: routes.root_url -}}
         </small>

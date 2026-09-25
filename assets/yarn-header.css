@@ -18,14 +18,24 @@
   overflow: hidden;
 }
 
-.yarn-wordmark__image {
-  display: block;
-  width: 100%;
+/* Placeholder until the brand logo is designed; keeps the logo slot's size so layouts do not shift. */
+.yarn-wordmark--placeholder {
+  box-sizing: border-box;
+  border: 1.5px dashed var(--yarn-border-control);
+  border-radius: 12px;
+}
+
+.yarn-wordmark__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
-  /* Frame the artwork without stretching or redrawing the approved source. */
-  object-fit: cover;
-  object-position: 50% 42%;
-  mix-blend-mode: multiply;
+  color: var(--yarn-text-muted);
+  font-family: var(--yarn-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  line-height: 1;
 }
 
 .header-wrapper .header__inline-menu {
@@ -264,3 +274,66 @@
 }
 
 .yarn-project-nav-back svg { width: 24px; height: 24px; transform: rotate(180deg); }
+
+/* Desktop: the logo owns the first row, centered; search, navigation and icons share the second row. */
+@media screen and (min-width: 990px) {
+  .header-wrapper .header.header--top-center:not(.drawer-menu) {
+    grid-template-areas:
+      'heading heading heading'
+      'left-icons navigation icons';
+    grid-template-columns: 1fr auto 1fr;
+    row-gap: 14px;
+    padding-block: 20px 14px;
+  }
+
+  .header-wrapper .header--top-center:not(.drawer-menu) .header__heading,
+  .header-wrapper .header--top-center:not(.drawer-menu) > .header__heading-link {
+    justify-self: center;
+  }
+
+  .header-wrapper .header--top-center:not(.drawer-menu) .header__inline-menu {
+    margin-top: 0;
+    justify-self: center;
+  }
+
+  .header-wrapper .header--top-center:not(.drawer-menu) .header__icons {
+    justify-self: end;
+  }
+
+  /* Lighter second row: the selected pill is drawn 36px tall inside the 44px hit area, and marks the page on its own. */
+  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item:is(:hover, [aria-current='page']) {
+    background: transparent;
+  }
+
+  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item::before {
+    content: '';
+    position: absolute;
+    inset: 4px 0;
+    z-index: -1;
+    border-radius: var(--yarn-radius-pill);
+    background: var(--yarn-action-subtle-bg);
+    opacity: 0;
+  }
+
+  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item:is(:hover, [aria-current='page'])::before {
+    opacity: 1;
+  }
+
+  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__active-menu-item {
+    text-decoration: none;
+  }
+
+  .header--top-center:not(.drawer-menu) .localization-form__select {
+    min-height: 38px;
+  }
+
+  /* Rise adds a second search at the left in this layout; the icon group already has one. */
+  .header-wrapper .header--top-center:not(.drawer-menu) > .header__search {
+    display: none;
+  }
+}

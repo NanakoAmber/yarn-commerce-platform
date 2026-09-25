@@ -16,7 +16,7 @@
   gap: var(--yarn-space-6) var(--yarn-space-7);
   padding-bottom: var(--yarn-space-6);
 }
-.yarn-footer__brand { display: block; width: fit-content; min-height: var(--yarn-touch); }
+.yarn-footer__brand { display: block; width: fit-content; min-height: var(--yarn-touch); text-decoration: none; }
 .yarn-footer__brand > :is(img, .yarn-wordmark) { display: block; width: 252px; max-width: 100%; }
 .yarn-footer__brand > .yarn-wordmark { aspect-ratio: 4.4; overflow: hidden; }
 .yarn-footer__brand > img { height: auto; }

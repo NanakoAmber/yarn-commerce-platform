@@ -608,6 +608,7 @@
     "card_badge_kit": "編みキット",
     "card_badge_finished": "完成品",
     "card_view_colors": "色を見る",
+    "card_color_count": "{{ count }}色",
     "card_view_details": "詳細を見る",
     "card_view_all": "すべて見る",
     "kit_related_yarn": "このキットに合う毛糸",

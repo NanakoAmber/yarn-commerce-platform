@@ -128,7 +128,7 @@ yarn-project-library, yarn-project-tutorial { display: block; }
 yarn-material-purchase { display: block; }
 .yp-component__form { display: flex; align-items: end; flex-wrap: wrap; gap: 12px 20px; }
 .yp-component__form label { display: grid; gap: 6px; width: 110px; font-size: 1.3rem; }
-.yp-component__form .button { background: var(--yarn-accent); color: var(--yarn-text-on-action); }
+.yp-component__form .button { background: var(--yarn-action-fill); color: var(--yarn-text-on-action); }
 .yp-component__form .button:disabled { opacity: .65; cursor: not-allowed; }
 .yp-component__note { margin: 12px 0 0; }
 .yp-component--supporting .yp-component__heading h4 { font-size: 1.55rem; }
@@ -145,7 +145,7 @@ yarn-material-purchase { display: block; }
 .yp-contact label { margin-top: 12px; }
 .yp-contact .button { margin-top: 16px; justify-self: start; }
 .yp-start { position: sticky; bottom: 0; z-index: 3; margin: 0 auto; padding: 12px 0 max(12px, env(safe-area-inset-bottom)); background: var(--yarn-bg-page); border-top: 1px solid var(--yarn-border-subtle); display: flex; justify-content: center; }
-.yp-start .button { width: min(100%, 380px); background: var(--yarn-accent); color: var(--yarn-text-on-action); }
+.yp-start .button { width: min(100%, 380px); background: var(--yarn-action-fill); color: var(--yarn-text-on-action); }
 @media (max-width: 989px) {
   .yp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .yp-card__summary { display: none; }

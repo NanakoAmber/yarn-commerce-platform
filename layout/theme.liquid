@@ -23,12 +23,15 @@
 
     {%- liquid
       assign yarn_page_title = page_title
-      assign yarn_shop_name = 'MewoolMew'
+      capture yarn_shop_name
+        render 'yarn-brand-name'
+      endcapture
+      assign yarn_shop_name = yarn_shop_name | strip
       if template.name == 'product' and yarn_product_page_title != blank
         assign yarn_page_title = yarn_product_page_title | strip
       endif
       if page_title == 'My Store'
-        assign yarn_page_title = 'MewoolMew'
+        assign yarn_page_title = yarn_shop_name
       endif
       comment
         Shopify 只返回英文的 404 标题;标题栏跟随整页语言,使用主题 locale。

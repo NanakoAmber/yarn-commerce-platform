@@ -40,12 +40,13 @@ test('prototype navigation contains no locale, product-copy or tag-search overri
   }
 });
 
-test('MewoolMew keeps the approved illustration and lettering with an accessible image name', () => {
-  assert.match(wordmark, /alt="MewoolMew"/);
-  assert.match(wordmark, /mewoolmew-logo-reference\.png/);
-  assert.doesNotMatch(wordmark, /inline_asset_content|毛线工作室/);
-  assert.match(wordmark, /width="1881"[\s\S]*height="836"/);
-  assert.match(headerCss, /object-fit: cover/);
-  assert.match(header, /assign yarn_brand_name = 'MewoolMew'/);
+test('logo slot shows an accessible placeholder until a designed logo is uploaded', () => {
+  assert.match(wordmark, /yarn-wordmark--placeholder/);
+  assert.match(wordmark, /role="img" aria-label="\{\{ brand_name \| default: shop\.name \| escape \}\}"/);
+  assert.match(wordmark, /aria-hidden="true">LOGO</);
+  assert.doesNotMatch(wordmark, /mewoolmew-logo-reference\.png|<img/);
+  assert.match(headerCss, /\.yarn-wordmark--placeholder \{[^}]*border: 1\.5px dashed var\(--yarn-border-control\)/);
+  assert.match(header, /settings\.logo != blank/);
+  assert.match(header, /render 'yarn-brand-name'/);
   assert.match(header, /"name": \{\{ yarn_brand_name \| json \}\}/);
 });
