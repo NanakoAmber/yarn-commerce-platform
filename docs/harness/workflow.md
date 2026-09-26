@@ -74,3 +74,19 @@ PR 简记对应 Issue、最终行为、实际检查及结果、适用设备 / �
 - 每个 PR 使用固定名称 `PR-<number>` 的未发布主题，后续提交原地更新，避免耗尽 Shopify 主题数量上限。
 - PR 关闭后自动删除对应的未发布主题。
 - 自动化不使用 `--live`、`--publish` 或 `--allow-live`，不得修改线上主题。
+- 仓库改名或转移后，重跑（rerun）之前的运行会被跳过：旧事件里的仓库名与当前不一致。要验证预览，推一次新提交或开一个空提交测试 PR。
+
+## 仓库与外部连接
+
+仓库在 GitHub 组织 `mewool-yarn` 下：`mewool-yarn/yarn-commerce-platform`（2026-09-26 从个人账号转入，[Issue #80](https://github.com/mewool-yarn/yarn-commerce-platform/issues/80)）。旧地址会跳转，但以后新写的链接一律用新地址。
+
+- 团队地图页：`https://mewool-yarn.github.io/yarn-commerce-platform/`。GitHub Pages 地址跟随仓库所有者，改名 / 转移时不跳转，必须重新发给同事。
+- GitHub App 按所有者安装：Codex、Claude 等要访问仓库，需装在组织 `mewool-yarn` 上，个人账号上的安装不覆盖组织仓库。
+- Shopify 主题 `yarn-commerce-platform/main` 是用 CLI 推送的普通主题，没有连接 GitHub；仓库迁移不影响它。
+- 查主题列表用 `npx shopify theme list --store tutaka-54.myshopify.com --json`；`npm run admin` 的应用没有 `read_themes` 权限。
+- 再次改名或转移仓库前，按以上各项逐一检查，并用一个测试 PR 验证预览。
+
+## 浏览器操作
+
+- Chrome 窗口在后台时，Shopify 后台不渲染，坐标点击和键盘输入也可能无效。先请用户把窗口切到前台；填表单时可直接按元素写值。
+- 付款、接受条款、人机验证由用户本人完成；代理填到这一步就停下。

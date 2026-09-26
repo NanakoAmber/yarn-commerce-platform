@@ -67,7 +67,7 @@ function loadEnv(root) {
   if (fs.existsSync(file)) process.loadEnvFile(file);
   const { SHOPIFY_STORE, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET } = process.env;
   if (!SHOPIFY_STORE || !SHOPIFY_CLIENT_ID || !SHOPIFY_CLIENT_SECRET) {
-    throw new Error('Missing SHOPIFY_STORE / SHOPIFY_CLIENT_ID / SHOPIFY_CLIENT_SECRET (see .env.example)');
+    throw new Error(`Missing SHOPIFY_STORE / SHOPIFY_CLIENT_ID / SHOPIFY_CLIENT_SECRET in ${file} (see .env.example). .env is per worktree: copy it from a worktree that has one.`);
   }
   return { store: SHOPIFY_STORE, clientId: SHOPIFY_CLIENT_ID, clientSecret: SHOPIFY_CLIENT_SECRET };
 }
