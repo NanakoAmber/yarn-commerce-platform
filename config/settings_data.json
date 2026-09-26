@@ -144,57 +144,57 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#f0eee9",
+          "background": "#f7f1e6",
           "background_gradient": "",
-          "text": "#27302b",
-          "button": "#9d5c25",
+          "text": "#3b2f2a",
+          "button": "#7d583c",
           "button_label": "#ffffff",
-          "secondary_button_label": "#7e4718",
-          "shadow": "#c3cdc2"
+          "secondary_button_label": "#7d583c",
+          "shadow": "#e3d5c2"
         }
       },
       "scheme-2": {
         "settings": {
-          "background": "#dde5dc",
+          "background": "#efe4d3",
           "background_gradient": "",
-          "text": "#27302b",
-          "button": "#9d5c25",
+          "text": "#3b2f2a",
+          "button": "#7d583c",
           "button_label": "#ffffff",
-          "secondary_button_label": "#7e4718",
-          "shadow": "#c3cdc2"
+          "secondary_button_label": "#7d583c",
+          "shadow": "#e3d5c2"
         }
       },
       "scheme-3": {
         "settings": {
-          "background": "#414b45",
+          "background": "#5f432e",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#ffffff",
-          "button_label": "#414b45",
+          "button_label": "#5f432e",
           "secondary_button_label": "#ffffff",
-          "shadow": "#27302b"
+          "shadow": "#3b2f2a"
         }
       },
       "scheme-4": {
         "settings": {
-          "background": "#dde5dc",
+          "background": "#efe4d3",
           "background_gradient": "",
-          "text": "#27302b",
-          "button": "#9d5c25",
+          "text": "#3b2f2a",
+          "button": "#7d583c",
           "button_label": "#ffffff",
-          "secondary_button_label": "#7e4718",
-          "shadow": "#c3cdc2"
+          "secondary_button_label": "#7d583c",
+          "shadow": "#e3d5c2"
         }
       },
       "scheme-5": {
         "settings": {
-          "background": "#dde5dc",
+          "background": "#efe4d3",
           "background_gradient": "",
-          "text": "#27302b",
-          "button": "#9d5c25",
+          "text": "#3b2f2a",
+          "button": "#7d583c",
           "button_label": "#ffffff",
-          "secondary_button_label": "#7e4718",
-          "shadow": "#c3cdc2"
+          "secondary_button_label": "#7d583c",
+          "shadow": "#e3d5c2"
         }
       }
     }

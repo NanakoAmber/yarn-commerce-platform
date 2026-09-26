@@ -275,13 +275,15 @@
 
 .yarn-project-nav-back svg { width: 24px; height: 24px; transform: rotate(180deg); }
 
-/* Desktop: the logo owns the first row, centered; search, navigation and icons share the second row. */
+/* Desktop: the logo owns the first row, centered. The second row is the main navigation bar —
+   items spread between two fine rules, centered under the logo — with language and icons on the right. */
 @media screen and (min-width: 990px) {
   .header-wrapper .header.header--top-center:not(.drawer-menu) {
     grid-template-areas:
       'heading heading heading'
       'left-icons navigation icons';
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: minmax(280px, 1fr) minmax(0, 760px) minmax(280px, 1fr);
+    column-gap: 32px;
     row-gap: 14px;
     padding-block: 20px 14px;
   }
@@ -292,43 +294,39 @@
   }
 
   .header-wrapper .header--top-center:not(.drawer-menu) .header__inline-menu {
+    justify-self: stretch;
     margin-top: 0;
-    justify-self: center;
+    border-top: 1px solid var(--yarn-border-subtle);
+    border-bottom: 1px solid var(--yarn-border-subtle);
+  }
+
+  .header-wrapper .header--top-center:not(.drawer-menu) .yarn-main-menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .header-wrapper .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item {
+    padding: 12px 8px;
+    font-size: 17px;
+    letter-spacing: 0.08em;
+  }
+
+  .header-wrapper .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item:is(:hover, [aria-current='page']) {
+    background: transparent;
+    color: var(--yarn-action);
+  }
+
+  .header-wrapper .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item[aria-current='page'] span {
+    text-decoration: underline 2px var(--yarn-action);
+    text-underline-offset: 10px;
   }
 
   .header-wrapper .header--top-center:not(.drawer-menu) .header__icons {
     justify-self: end;
   }
 
-  /* Lighter second row: the selected pill is drawn 36px tall inside the 44px hit area, and marks the page on its own. */
-  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item:is(:hover, [aria-current='page']) {
-    background: transparent;
-  }
-
-  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item::before {
-    content: '';
-    position: absolute;
-    inset: 4px 0;
-    z-index: -1;
-    border-radius: var(--yarn-radius-pill);
-    background: var(--yarn-action-subtle-bg);
-    opacity: 0;
-  }
-
-  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__menu-item:is(:hover, [aria-current='page'])::before {
-    opacity: 1;
-  }
-
-  .header--top-center:not(.drawer-menu) .yarn-main-menu .header__active-menu-item {
-    text-decoration: none;
-  }
-
-  .header--top-center:not(.drawer-menu) .localization-form__select {
+  .header-wrapper .header--top-center:not(.drawer-menu) .localization-form__select {
     min-height: 38px;
   }
 

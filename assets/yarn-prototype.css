@@ -138,7 +138,7 @@ html {
   border-bottom: 1px solid var(--yarn-border-subtle);
 }
 
-body:has(.yarn-hero) .announcement-bar-section {
+body:has(.yarn-hero, .yarn-carousel) .announcement-bar-section {
   display: none;
 }
 

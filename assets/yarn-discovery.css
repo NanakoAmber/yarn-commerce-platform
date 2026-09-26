@@ -8,7 +8,8 @@
   background: var(--yarn-bg-surface); color: var(--yarn-text-primary); cursor: pointer;
 }
 .yarn-favorite svg { width: 22px; height: 22px; fill: currentColor; }
-.yarn-favorite:hover, .yarn-favorite[aria-pressed='true'] { color: var(--yarn-action); background: var(--yarn-action-subtle-bg); }
+.yarn-favorite:hover { color: var(--yarn-action); background: var(--yarn-action-subtle-bg); }
+.yarn-favorite[aria-pressed='true'] { color: var(--yarn-favorite); background: var(--yarn-tint-blush); }
 .yarn-favorite[aria-busy='true'] { opacity: .55; cursor: progress; }
 .yarn-favorite:focus-visible { outline: var(--yarn-focus-width) solid var(--yarn-focus); outline-offset: var(--yarn-focus-offset); }
 .yp-library--rows .yp-card__summary, .yd-search .yp-card__summary {

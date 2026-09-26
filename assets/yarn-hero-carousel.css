@@ -1,0 +1,184 @@
+/* Homepage peek carousel: the current slide sits centered, one neighbour peeks on each side.
+   Slides are positioned by --offset (0 = current) so the first paint is correct without JS. */
+.yarn-carousel {
+  --yc-width: min(760px, 53vw);
+  --yc-gap: 24px;
+  --yc-radius: 14px;
+  padding: 24px 0 56px;
+  background: var(--yarn-bg-page);
+}
+
+.yarn-carousel__viewport {
+  position: relative;
+  height: calc(var(--yc-width) * 0.625);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.yarn-carousel__track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.yarn-carousel__slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--yc-width);
+  aspect-ratio: 16 / 10;
+  margin-left: calc(var(--yc-width) / -2);
+  border-radius: var(--yc-radius);
+  overflow: hidden;
+  background: var(--yarn-bg-sunken);
+  transform: translateX(calc(var(--offset) * (var(--yc-width) + var(--yc-gap))));
+  transition: transform 600ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.yarn-carousel__slide.is-jump {
+  transition: none;
+}
+
+.yarn-carousel__slide:not(.is-current)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--yarn-bg-page) 32%, transparent);
+  pointer-events: none;
+}
+
+.yarn-carousel__link,
+.yarn-carousel__link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.yarn-carousel__link img {
+  object-fit: cover;
+}
+
+.yarn-carousel__slide.is-current {
+  box-shadow: 0 14px 32px var(--yarn-shadow-soft);
+}
+
+.yarn-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
+  border: 0;
+  border-radius: var(--yarn-radius-pill);
+  background: var(--yarn-decor-paw);
+  color: var(--yarn-text-on-cta);
+  font: 600 20px/1 var(--yarn-display);
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--yarn-shadow-soft);
+}
+
+.yarn-carousel__arrow:hover { background: var(--yarn-tint-blush); }
+.yarn-carousel__arrow--prev { left: calc(50% - var(--yc-width) / 2 - 26px); }
+.yarn-carousel__arrow--next { left: calc(50% + var(--yc-width) / 2 - 26px); }
+
+.yarn-carousel__pager {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.yarn-carousel__dot {
+  width: 44px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.yarn-carousel__dot::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 3px;
+  margin: 0 auto;
+  background: var(--yarn-border-subtle);
+}
+
+.yarn-carousel__dot[aria-current='true']::before { background: var(--yarn-action); }
+
+.yarn-carousel__arrow:focus-visible,
+.yarn-carousel__dot:focus-visible,
+.yarn-carousel__link:focus-visible,
+.yarn-carousel__button:focus-visible {
+  outline: var(--yarn-focus-width) solid var(--yarn-focus);
+  outline-offset: var(--yarn-focus-offset);
+}
+
+.yarn-carousel__intro {
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding-inline: var(--yarn-gutter);
+  text-align: center;
+}
+
+.yarn-carousel__eyebrow {
+  margin: 0;
+  color: var(--yarn-action);
+  font: 600 13px var(--yarn-body);
+  letter-spacing: 0.32em;
+}
+
+.yarn-carousel__heading {
+  margin: 14px 0 18px;
+  color: var(--yarn-text-heading);
+  font: 600 32px/1.35 var(--yarn-display);
+  letter-spacing: 0.06em;
+}
+
+.yarn-carousel__text {
+  color: var(--yarn-text-secondary);
+  font-size: 16px;
+  line-height: 2;
+}
+
+.yarn-carousel__text p { margin: 0; }
+
+.yarn-carousel__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--yarn-touch);
+  margin-top: 26px;
+  padding: 12px 32px;
+  border-radius: var(--yarn-radius-pill);
+  background: var(--yarn-action-fill);
+  color: var(--yarn-text-on-action);
+  font: 600 16px var(--yarn-display);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.yarn-carousel__button:hover { background: var(--yarn-action-strong); }
+
+@media (max-width: 749px) {
+  .yarn-carousel {
+    --yc-width: 86vw;
+    --yc-gap: 12px;
+    --yc-radius: 10px;
+    padding: 16px 0 40px;
+  }
+
+  .yarn-carousel__arrow { display: none; }
+  .yarn-carousel__intro { margin-top: 28px; padding-inline: 16px; }
+  .yarn-carousel__heading { font-size: 24px; }
+  .yarn-carousel__text { font-size: 15px; line-height: 1.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yarn-carousel__slide { transition: none; }
+}

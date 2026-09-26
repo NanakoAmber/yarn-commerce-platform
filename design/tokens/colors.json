@@ -1,67 +1,67 @@
 {
   "$comment": "唯一颜色源。修改后运行 npm run tokens 生成 assets/yarn-design-tokens.css 颜色段、config/settings_data.json 的 color_schemes 与 DESIGN.md 颜色 YAML。页面只能引用 roles；palette 只在本文件内被 roles 引用。",
   "palette": {
-    "cloud-dancer": "#f0eee9",
+    "cream-100": "#f7f1e6",
     "white": "#ffffff",
-    "celadon-200": "#dde5dc",
-    "celadon-300": "#c3cdc2",
-    "celadon-400": "#a9c4b1",
-    "celadon-500": "#93b39d",
-    "celadon-600": "#83a38f",
-    "slate-500": "#7a7d73",
-    "slate-700": "#4f5a53",
-    "slate-800": "#414b45",
-    "slate-900": "#27302b",
-    "ochre-500": "#9d5c25",
-    "ochre-700": "#7e4718",
-    "ochre-800": "#633812",
-    "blush-100": "#f2dcd4",
-    "linen-100": "#f0e1c3",
-    "indigo-600": "#3d6a8c"
+    "milk-100": "#efe4d3",
+    "milk-200": "#e3d5c2",
+    "milk-400": "#d8b99a",
+    "milk-500": "#cba784",
+    "tea-700": "#7d583c",
+    "tea-800": "#5f432e",
+    "ink-900": "#3b2f2a",
+    "ink-700": "#54463d",
+    "ink-500": "#6c5d52",
+    "ink-300": "#9a8b7e",
+    "paw-100": "#f8dedb",
+    "paw-200": "#f2b8b5",
+    "paw-600": "#c96f6f",
+    "lake-100": "#dcebe7",
+    "lake-700": "#3f7a73"
   },
   "roles": {
     "bg-page": {
-      "value": "cloud-dancer",
-      "use": "页面底（云舞白 PANTONE 11-4201 Cloud Dancer TCX）"
+      "value": "cream-100",
+      "use": "页面底（奶白）"
     },
     "bg-surface": {
       "value": "white",
       "use": "卡片、导航、横幅、输入框面"
     },
     "bg-sunken": {
-      "value": "celadon-200",
-      "use": "次级区块"
+      "value": "milk-100",
+      "use": "次级区块（浅奶茶）"
     },
     "bg-warm": {
-      "value": "celadon-200",
+      "value": "milk-100",
       "use": "配色方案 5 区块（与 bg-sunken 相同）"
     },
     "bg-inverse": {
-      "value": "slate-800",
+      "value": "tea-800",
       "use": "深色反白区块"
     },
     "text-primary": {
-      "value": "slate-900",
-      "use": "正文、通用标题、Rise 原生文字"
+      "value": "ink-900",
+      "use": "正文、通用标题、Rise 原生文字（暖深棕黑）"
     },
     "text-heading": {
-      "value": "slate-900",
+      "value": "ink-900",
       "use": "商品家族标题（与 text-primary 相同）"
     },
     "text-warm": {
-      "value": "slate-900",
+      "value": "ink-900",
       "use": "配色方案 5 文字（与 text-primary 相同）"
     },
     "text-secondary": {
-      "value": "slate-800",
+      "value": "ink-700",
       "use": "次级正文"
     },
     "text-muted": {
-      "value": "slate-700",
+      "value": "ink-500",
       "use": "辅助说明、规格、元信息"
     },
     "text-disabled": {
-      "value": "slate-500",
+      "value": "ink-300",
       "use": "不可用文字"
     },
     "text-inverse": {
@@ -70,137 +70,145 @@
     },
     "text-on-action": {
       "value": "white",
-      "use": "赭石实心按钮上的文字"
+      "use": "深奶茶实心按钮上的文字"
     },
     "text-on-cta": {
-      "value": "slate-900",
-      "use": "青瓷主按钮上的文字"
+      "value": "ink-900",
+      "use": "浅奶茶主按钮与爪子粉面上的文字"
     },
     "action": {
-      "value": "ochre-700",
-      "use": "链接、文字按钮、价格、实心按钮"
+      "value": "tea-700",
+      "use": "链接、文字按钮、价格（深奶茶）"
     },
     "accent": {
-      "value": "ochre-700",
+      "value": "tea-700",
       "use": "价格等强调文字（与 action 相同）"
     },
     "action-fill": {
-      "value": "ochre-500",
-      "use": "实心按钮、选中色块、购物车气泡的底色（原画赭石 9D5C25）"
+      "value": "tea-700",
+      "use": "实心按钮、选中色块、购物车气泡的底色（深奶茶）"
     },
     "action-strong": {
-      "value": "ochre-800",
+      "value": "tea-800",
       "use": "按下态、深色强调"
     },
     "action-subtle-bg": {
-      "value": "celadon-200",
+      "value": "milk-100",
       "use": "浅色操作面：导航选中、帮助、页脚"
     },
     "action-subtle-hover": {
-      "value": "celadon-300",
+      "value": "milk-200",
       "use": "浅色操作面的悬停"
     },
     "cta-bg": {
-      "value": "celadon-400",
-      "use": "主按钮：加购、Hero 主按钮、选中筛选"
+      "value": "milk-400",
+      "use": "主按钮：加购、Hero 主按钮、选中筛选（浅奶茶）"
     },
     "cta-hover": {
-      "value": "celadon-500",
+      "value": "milk-500",
       "use": "主按钮悬停"
     },
     "cta-border": {
-      "value": "celadon-600",
+      "value": "milk-500",
       "use": "主按钮与浅色胶囊边线"
     },
     "border-subtle": {
-      "value": "celadon-300",
+      "value": "milk-200",
       "use": "分组细线、区块分隔"
     },
     "border-card": {
-      "value": "celadon-300",
+      "value": "milk-200",
       "use": "商品与内容卡片边线（与 border-subtle 相同）"
     },
     "border-control": {
-      "value": "slate-700",
+      "value": "ink-500",
       "use": "输入框、筛选与数量控件边线"
     },
     "border-disabled": {
-      "value": "celadon-300",
+      "value": "milk-200",
       "use": "不可用控件边线"
     },
     "tint-butter": {
-      "value": "linen-100",
+      "value": "milk-100",
       "use": "柔色面：编织包角标、信息卡"
     },
     "tint-blush": {
-      "value": "blush-100",
-      "use": "柔色面：毛线角标、信息卡"
+      "value": "paw-100",
+      "use": "柔色面：毛线角标、信息卡（爪子粉）"
     },
     "tint-sage": {
-      "value": "celadon-200",
-      "use": "柔色面：成品角标、信息卡"
+      "value": "lake-100",
+      "use": "柔色面：成品角标、信息卡（湖绿）"
     },
     "selected-text": {
-      "value": "ochre-700",
+      "value": "tea-700",
       "use": "作品筛选选中态（与 action 相同）"
     },
     "focus": {
-      "value": "indigo-600",
-      "use": "键盘焦点环、输入光标（全站唯一冷蓝）"
+      "value": "lake-700",
+      "use": "键盘焦点环、输入光标（猫眼湖绿）"
+    },
+    "decor-paw": {
+      "value": "paw-200",
+      "use": "爪子粉点缀：首屏轮播箭头；不得用于文字"
+    },
+    "favorite": {
+      "value": "paw-600",
+      "use": "已收藏的爱心（图形，≥3:1）；不得用于文字"
     },
     "decor-thread": {
-      "value": "ochre-500",
+      "value": "milk-500",
       "use": "插画连线、装饰描边；不得用于文字"
     },
     "decor-art-line": {
-      "value": "celadon-600",
+      "value": "milk-400",
       "use": "插画节点描边；不得用于文字"
     },
     "decor-wave": {
-      "value": "celadon-200",
+      "value": "milk-100",
       "use": "Hero 底部波浪；随背景变化"
     },
     "decor-halo": {
-      "value": "celadon-400",
+      "value": "milk-400",
       "use": "插画节点光晕",
       "alpha": 0.45
     },
     "overlay": {
-      "value": "slate-900",
+      "value": "ink-900",
       "use": "抽屉与弹窗遮罩、浮层阴影",
       "alpha": 0.32
     },
     "shadow-soft": {
-      "value": "slate-900",
+      "value": "ink-900",
       "use": "卡片与浮层的柔和阴影",
       "alpha": 0.14
     },
     "scrollbar-thumb": {
-      "value": "celadon-500",
+      "value": "milk-400",
       "use": "滚动条滑块"
     },
     "scrollbar-track": {
-      "value": "cloud-dancer",
+      "value": "cream-100",
       "use": "滚动条轨道"
     },
     "shadow-page": {
-      "value": "celadon-300",
+      "value": "milk-200",
       "use": "配色方案 1 阴影色"
     },
     "shadow-sunken": {
-      "value": "celadon-300",
+      "value": "milk-200",
       "use": "配色方案 2 阴影色"
     },
     "shadow-inverse": {
-      "value": "slate-900",
+      "value": "ink-900",
       "use": "配色方案 3 阴影色"
     },
     "shadow-cream": {
-      "value": "celadon-300",
+      "value": "milk-200",
       "use": "配色方案 4 阴影色"
     },
     "shadow-warm": {
-      "value": "celadon-300",
+      "value": "milk-200",
       "use": "配色方案 5 阴影色"
     }
   },
@@ -215,7 +223,7 @@
       "shadow": "shadow-page"
     },
     "scheme-2": {
-      "name": "次级灰绿",
+      "name": "次级浅奶茶",
       "background": "bg-sunken",
       "text": "text-primary",
       "button": "action-fill",
@@ -413,6 +421,21 @@
         "text-on-action",
         "action-fill",
         4.5
+      ],
+      [
+        "text-on-cta",
+        "decor-paw",
+        4.5
+      ],
+      [
+        "favorite",
+        "bg-surface",
+        3
+      ],
+      [
+        "favorite",
+        "bg-page",
+        3
       ]
     ]
   },

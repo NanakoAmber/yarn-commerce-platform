@@ -35,51 +35,53 @@ html[lang]:root {
 
 /* BEGIN generated colors — edit design/tokens/colors.json, then run npm run tokens */
 :root {
-  --yarn-bg-page: #f0eee9; /* cloud-dancer · 页面底（云舞白 PANTONE 11-4201 Cloud Dancer TCX） */
+  --yarn-bg-page: #f7f1e6; /* cream-100 · 页面底（奶白） */
   --yarn-bg-surface: #ffffff; /* white · 卡片、导航、横幅、输入框面 */
-  --yarn-bg-sunken: #dde5dc; /* celadon-200 · 次级区块 */
-  --yarn-bg-warm: #dde5dc; /* celadon-200 · 配色方案 5 区块（与 bg-sunken 相同） */
-  --yarn-bg-inverse: #414b45; /* slate-800 · 深色反白区块 */
-  --yarn-text-primary: #27302b; /* slate-900 · 正文、通用标题、Rise 原生文字 */
-  --yarn-text-heading: #27302b; /* slate-900 · 商品家族标题（与 text-primary 相同） */
-  --yarn-text-warm: #27302b; /* slate-900 · 配色方案 5 文字（与 text-primary 相同） */
-  --yarn-text-secondary: #414b45; /* slate-800 · 次级正文 */
-  --yarn-text-muted: #4f5a53; /* slate-700 · 辅助说明、规格、元信息 */
-  --yarn-text-disabled: #7a7d73; /* slate-500 · 不可用文字 */
+  --yarn-bg-sunken: #efe4d3; /* milk-100 · 次级区块（浅奶茶） */
+  --yarn-bg-warm: #efe4d3; /* milk-100 · 配色方案 5 区块（与 bg-sunken 相同） */
+  --yarn-bg-inverse: #5f432e; /* tea-800 · 深色反白区块 */
+  --yarn-text-primary: #3b2f2a; /* ink-900 · 正文、通用标题、Rise 原生文字（暖深棕黑） */
+  --yarn-text-heading: #3b2f2a; /* ink-900 · 商品家族标题（与 text-primary 相同） */
+  --yarn-text-warm: #3b2f2a; /* ink-900 · 配色方案 5 文字（与 text-primary 相同） */
+  --yarn-text-secondary: #54463d; /* ink-700 · 次级正文 */
+  --yarn-text-muted: #6c5d52; /* ink-500 · 辅助说明、规格、元信息 */
+  --yarn-text-disabled: #9a8b7e; /* ink-300 · 不可用文字 */
   --yarn-text-inverse: #ffffff; /* white · 深色区块上的文字 */
-  --yarn-text-on-action: #ffffff; /* white · 赭石实心按钮上的文字 */
-  --yarn-text-on-cta: #27302b; /* slate-900 · 青瓷主按钮上的文字 */
-  --yarn-action: #7e4718; /* ochre-700 · 链接、文字按钮、价格、实心按钮 */
-  --yarn-accent: #7e4718; /* ochre-700 · 价格等强调文字（与 action 相同） */
-  --yarn-action-fill: #9d5c25; /* ochre-500 · 实心按钮、选中色块、购物车气泡的底色（原画赭石 9D5C25） */
-  --yarn-action-strong: #633812; /* ochre-800 · 按下态、深色强调 */
-  --yarn-action-subtle-bg: #dde5dc; /* celadon-200 · 浅色操作面：导航选中、帮助、页脚 */
-  --yarn-action-subtle-hover: #c3cdc2; /* celadon-300 · 浅色操作面的悬停 */
-  --yarn-cta-bg: #a9c4b1; /* celadon-400 · 主按钮：加购、Hero 主按钮、选中筛选 */
-  --yarn-cta-hover: #93b39d; /* celadon-500 · 主按钮悬停 */
-  --yarn-cta-border: #83a38f; /* celadon-600 · 主按钮与浅色胶囊边线 */
-  --yarn-border-subtle: #c3cdc2; /* celadon-300 · 分组细线、区块分隔 */
-  --yarn-border-card: #c3cdc2; /* celadon-300 · 商品与内容卡片边线（与 border-subtle 相同） */
-  --yarn-border-control: #4f5a53; /* slate-700 · 输入框、筛选与数量控件边线 */
-  --yarn-border-disabled: #c3cdc2; /* celadon-300 · 不可用控件边线 */
-  --yarn-tint-butter: #f0e1c3; /* linen-100 · 柔色面：编织包角标、信息卡 */
-  --yarn-tint-blush: #f2dcd4; /* blush-100 · 柔色面：毛线角标、信息卡 */
-  --yarn-tint-sage: #dde5dc; /* celadon-200 · 柔色面：成品角标、信息卡 */
-  --yarn-selected-text: #7e4718; /* ochre-700 · 作品筛选选中态（与 action 相同） */
-  --yarn-focus: #3d6a8c; /* indigo-600 · 键盘焦点环、输入光标（全站唯一冷蓝） */
-  --yarn-decor-thread: #9d5c25; /* ochre-500 · 插画连线、装饰描边；不得用于文字 */
-  --yarn-decor-art-line: #83a38f; /* celadon-600 · 插画节点描边；不得用于文字 */
-  --yarn-decor-wave: #dde5dc; /* celadon-200 · Hero 底部波浪；随背景变化 */
-  --yarn-decor-halo: rgba(169, 196, 177, 0.45); /* celadon-400 @ 0.45 · 插画节点光晕 */
-  --yarn-overlay: rgba(39, 48, 43, 0.32); /* slate-900 @ 0.32 · 抽屉与弹窗遮罩、浮层阴影 */
-  --yarn-shadow-soft: rgba(39, 48, 43, 0.14); /* slate-900 @ 0.14 · 卡片与浮层的柔和阴影 */
-  --yarn-scrollbar-thumb: #93b39d; /* celadon-500 · 滚动条滑块 */
-  --yarn-scrollbar-track: #f0eee9; /* cloud-dancer · 滚动条轨道 */
-  --yarn-shadow-page: #c3cdc2; /* celadon-300 · 配色方案 1 阴影色 */
-  --yarn-shadow-sunken: #c3cdc2; /* celadon-300 · 配色方案 2 阴影色 */
-  --yarn-shadow-inverse: #27302b; /* slate-900 · 配色方案 3 阴影色 */
-  --yarn-shadow-cream: #c3cdc2; /* celadon-300 · 配色方案 4 阴影色 */
-  --yarn-shadow-warm: #c3cdc2; /* celadon-300 · 配色方案 5 阴影色 */
+  --yarn-text-on-action: #ffffff; /* white · 深奶茶实心按钮上的文字 */
+  --yarn-text-on-cta: #3b2f2a; /* ink-900 · 浅奶茶主按钮与爪子粉面上的文字 */
+  --yarn-action: #7d583c; /* tea-700 · 链接、文字按钮、价格（深奶茶） */
+  --yarn-accent: #7d583c; /* tea-700 · 价格等强调文字（与 action 相同） */
+  --yarn-action-fill: #7d583c; /* tea-700 · 实心按钮、选中色块、购物车气泡的底色（深奶茶） */
+  --yarn-action-strong: #5f432e; /* tea-800 · 按下态、深色强调 */
+  --yarn-action-subtle-bg: #efe4d3; /* milk-100 · 浅色操作面：导航选中、帮助、页脚 */
+  --yarn-action-subtle-hover: #e3d5c2; /* milk-200 · 浅色操作面的悬停 */
+  --yarn-cta-bg: #d8b99a; /* milk-400 · 主按钮：加购、Hero 主按钮、选中筛选（浅奶茶） */
+  --yarn-cta-hover: #cba784; /* milk-500 · 主按钮悬停 */
+  --yarn-cta-border: #cba784; /* milk-500 · 主按钮与浅色胶囊边线 */
+  --yarn-border-subtle: #e3d5c2; /* milk-200 · 分组细线、区块分隔 */
+  --yarn-border-card: #e3d5c2; /* milk-200 · 商品与内容卡片边线（与 border-subtle 相同） */
+  --yarn-border-control: #6c5d52; /* ink-500 · 输入框、筛选与数量控件边线 */
+  --yarn-border-disabled: #e3d5c2; /* milk-200 · 不可用控件边线 */
+  --yarn-tint-butter: #efe4d3; /* milk-100 · 柔色面：编织包角标、信息卡 */
+  --yarn-tint-blush: #f8dedb; /* paw-100 · 柔色面：毛线角标、信息卡（爪子粉） */
+  --yarn-tint-sage: #dcebe7; /* lake-100 · 柔色面：成品角标、信息卡（湖绿） */
+  --yarn-selected-text: #7d583c; /* tea-700 · 作品筛选选中态（与 action 相同） */
+  --yarn-focus: #3f7a73; /* lake-700 · 键盘焦点环、输入光标（猫眼湖绿） */
+  --yarn-decor-paw: #f2b8b5; /* paw-200 · 爪子粉点缀：首屏轮播箭头；不得用于文字 */
+  --yarn-favorite: #c96f6f; /* paw-600 · 已收藏的爱心（图形，≥3:1）；不得用于文字 */
+  --yarn-decor-thread: #cba784; /* milk-500 · 插画连线、装饰描边；不得用于文字 */
+  --yarn-decor-art-line: #d8b99a; /* milk-400 · 插画节点描边；不得用于文字 */
+  --yarn-decor-wave: #efe4d3; /* milk-100 · Hero 底部波浪；随背景变化 */
+  --yarn-decor-halo: rgba(216, 185, 154, 0.45); /* milk-400 @ 0.45 · 插画节点光晕 */
+  --yarn-overlay: rgba(59, 47, 42, 0.32); /* ink-900 @ 0.32 · 抽屉与弹窗遮罩、浮层阴影 */
+  --yarn-shadow-soft: rgba(59, 47, 42, 0.14); /* ink-900 @ 0.14 · 卡片与浮层的柔和阴影 */
+  --yarn-scrollbar-thumb: #d8b99a; /* milk-400 · 滚动条滑块 */
+  --yarn-scrollbar-track: #f7f1e6; /* cream-100 · 滚动条轨道 */
+  --yarn-shadow-page: #e3d5c2; /* milk-200 · 配色方案 1 阴影色 */
+  --yarn-shadow-sunken: #e3d5c2; /* milk-200 · 配色方案 2 阴影色 */
+  --yarn-shadow-inverse: #3b2f2a; /* ink-900 · 配色方案 3 阴影色 */
+  --yarn-shadow-cream: #e3d5c2; /* milk-200 · 配色方案 4 阴影色 */
+  --yarn-shadow-warm: #e3d5c2; /* milk-200 · 配色方案 5 阴影色 */
 }
 /* END generated colors */
 

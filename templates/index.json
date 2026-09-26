@@ -9,6 +9,49 @@
  */
 {
   "sections": {
+    "hero-carousel": {
+      "type": "yarn-hero-carousel",
+      "blocks": {
+        "slide-yarn": {
+          "type": "slide",
+          "settings": {
+            "fallback_asset": "yarn-hero-slide-yarn.webp",
+            "link": "shopify://collections/yarn",
+            "title": "毛糸を選ぶ",
+            "title_zh": "挑毛线",
+            "title_en": "Pick yarn"
+          }
+        },
+        "slide-kits": {
+          "type": "slide",
+          "settings": {
+            "fallback_asset": "yarn-hero-slide-kit.webp",
+            "link": "shopify://collections/knit-kits",
+            "title": "編みキットを見る",
+            "title_zh": "看编织包",
+            "title_en": "Browse kits"
+          }
+        },
+        "slide-finished": {
+          "type": "slide",
+          "settings": {
+            "fallback_asset": "yarn-hero-slide-finished.webp",
+            "link": "shopify://collections/finished-goods",
+            "title": "完成品をおうちへ",
+            "title_zh": "带成品回家",
+            "title_en": "Take one home"
+          }
+        }
+      },
+      "block_order": [
+        "slide-yarn",
+        "slide-kits",
+        "slide-finished"
+      ],
+      "settings": {
+        "autoplay": false
+      }
+    },
     "yarn-hero": {
       "type": "yarn-hero",
       "settings": {
@@ -34,7 +77,8 @@
         "flow_yarn_en": "Pick yarn",
         "flow_tools_en": "Take one home",
         "flow_tutorial_en": "View tutorial"
-      }
+      },
+      "disabled": true
     },
     "picks-yarn": {
       "type": "yarn-picks",
@@ -131,6 +175,7 @@
     }
   },
   "order": [
+    "hero-carousel",
     "yarn-hero",
     "picks-yarn",
     "picks-kits",
