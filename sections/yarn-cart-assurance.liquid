@@ -1,33 +1,8 @@
-{%- liquid
-  assign title_1 = '日本全国へ配送'
-  assign text_1 = '税込9,900円以上で送料無料'
-  assign title_2 = '糸選びをサポート'
-  assign text_2 = '色合わせや必要量を相談できます'
-  assign title_3 = '安心してお買いもの'
-  assign text_3 = 'ご注文内容は決済前に確認できます'
-  case request.locale.iso_code
-    when 'zh-CN', 'zh'
-      assign title_1 = '日本全国配送'
-      assign text_1 = '订单含税满9,900日元免运费'
-      assign title_2 = '选线支持'
-      assign text_2 = '可咨询配色与作品所需用量'
-      assign title_3 = '放心购物'
-      assign text_3 = '付款前可以再次确认订单内容'
-    when 'en'
-      assign title_1 = 'Delivery across Japan'
-      assign text_1 = 'Free shipping on orders over ¥9,900'
-      assign title_2 = 'Yarn guidance'
-      assign text_2 = 'Ask about colour matching and quantity'
-      assign title_3 = 'Shop with confidence'
-      assign text_3 = 'Review your order before payment'
-  endcase
--%}
-
 <section class="yarn-cart-assurance color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width yarn-cart-assurance__grid">
-    <div><span aria-hidden="true">01</span><strong>{{ title_1 }}</strong><p>{{ text_1 }}</p></div>
-    <div><span aria-hidden="true">02</span><strong>{{ title_2 }}</strong><p>{{ text_2 }}</p></div>
-    <div><span aria-hidden="true">03</span><strong>{{ title_3 }}</strong><p>{{ text_3 }}</p></div>
+    <div><span aria-hidden="true">01</span><strong>{{ 'yarn_cart_assurance.title_1' | t }}</strong><p>{{ 'yarn_cart_assurance.text_1' | t }}</p></div>
+    <div><span aria-hidden="true">02</span><strong>{{ 'yarn_cart_assurance.title_2' | t }}</strong><p>{{ 'yarn_cart_assurance.text_2' | t }}</p></div>
+    <div><span aria-hidden="true">03</span><strong>{{ 'yarn_cart_assurance.title_3' | t }}</strong><p>{{ 'yarn_cart_assurance.text_3' | t }}</p></div>
   </div>
 </section>
 

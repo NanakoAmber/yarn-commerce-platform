@@ -694,7 +694,8 @@
     "card_spec_kit": "内容物は商品詳細へ",
     "card_spec_finished": "サイズ・素材は詳細へ",
     "browse_heading": "次の手づくりを見つけよう",
-    "browse_search": "毛糸・キット・完成品を検索"
+    "browse_search": "毛糸・キット・完成品を検索",
+    "option_default": "オプション"
   },
   "yarn_discovery": {
     "search": "検索",
@@ -737,5 +738,13 @@
     "filters": "絞り込み",
     "kind_finished": "完成品",
     "favorites_unavailable": "お気に入り機能は準備中のため、まだ保存できません。"
+  },
+  "yarn_cart_assurance": {
+    "title_1": "日本全国へ配送",
+    "text_1": "税込9,900円以上で送料無料",
+    "title_2": "糸選びをサポート",
+    "text_2": "色合わせや必要量を相談できます",
+    "title_3": "安心してお買いもの",
+    "text_3": "ご注文内容は決済前に確認できます"
   }
 }

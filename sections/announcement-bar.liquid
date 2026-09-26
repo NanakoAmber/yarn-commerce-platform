@@ -27,13 +27,9 @@
     {%- endif -%}
     {%- if section.blocks.size == 1 -%}
       {%- liquid
-        assign announcement_text = section.blocks.first.settings.text
-        case request.locale.iso_code
-          when 'zh-CN', 'zh'
-            assign announcement_text = section.blocks.first.settings.text_zh | default: announcement_text
-          when 'en'
-            assign announcement_text = section.blocks.first.settings.text_en | default: announcement_text
-        endcase
+        capture announcement_text
+          render 'yarn-setting-text', settings: section.blocks.first.settings, key: 'text'
+        endcapture
       -%}
       <div
         class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
@@ -88,13 +84,9 @@
           >
             {%- for block in section.blocks -%}
               {%- liquid
-                assign announcement_text = block.settings.text
-                case request.locale.iso_code
-                  when 'zh-CN', 'zh'
-                    assign announcement_text = block.settings.text_zh | default: announcement_text
-                  when 'en'
-                    assign announcement_text = block.settings.text_en | default: announcement_text
-                endcase
+                capture announcement_text
+                  render 'yarn-setting-text', settings: block.settings, key: 'text'
+                endcapture
               -%}
               <div
                 class="slideshow__slide slider__slide grid__item grid--1-col"

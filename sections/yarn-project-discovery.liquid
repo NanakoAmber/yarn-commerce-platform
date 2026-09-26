@@ -7,16 +7,12 @@
 {{ 'yarn-project-discovery.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'yarn-project-discovery.js' | asset_url }}" defer="defer"></script>
 {% liquid
-  assign heading = section.settings.heading
-  assign intro = section.settings.intro
-  case request.locale.iso_code
-    when 'zh', 'zh-CN'
-      assign heading = section.settings.heading_zh
-      assign intro = section.settings.intro_zh
-    when 'en'
-      assign heading = section.settings.heading_en
-      assign intro = section.settings.intro_en
-  endcase
+  capture heading
+    render 'yarn-setting-text', settings: section.settings, key: 'heading'
+  endcapture
+  capture intro
+    render 'yarn-setting-text', settings: section.settings, key: 'intro'
+  endcapture
   assign catalogue = section.settings.collection
   assign featured_products = section.settings.featured_products
   assign featured_handles = featured_products | map: 'handle'

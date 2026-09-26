@@ -285,15 +285,6 @@ body:has(.yarn-hero) .yarn-seasonal__link:hover {
   -webkit-line-clamp: 2;
 }
 
-.yarn-discovery-collection .yarn-product-role {
-  display: block;
-  margin-top: 0.8rem;
-  color: var(--yarn-text-muted);
-  font-size: 1.15rem;
-  font-weight: 400;
-  line-height: 1.4;
-}
-
 .product-card-wrapper .quick-add__submit {
   min-height: 4.2rem;
   border-color: var(--yarn-border-subtle);

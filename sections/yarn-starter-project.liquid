@@ -1,31 +1,25 @@
 {% liquid
   assign starter_product = section.settings.product
 
-  assign starter_heading = section.settings.heading
-  assign starter_text = section.settings.text
-  assign starter_label = section.settings.button_label
-  assign starter_fact_one = section.settings.fact_one
-  assign starter_fact_two = section.settings.fact_two
-  assign starter_fact_three = section.settings.fact_three
 
-  case request.locale.iso_code
-    when 'zh-CN', 'zh'
-
-      assign starter_heading = section.settings.heading_zh
-      assign starter_text = section.settings.text_zh
-      assign starter_label = section.settings.label_zh
-      assign starter_fact_one = section.settings.fact_one_zh
-      assign starter_fact_two = section.settings.fact_two_zh
-      assign starter_fact_three = section.settings.fact_three_zh
-    when 'en'
-
-      assign starter_heading = section.settings.heading_en
-      assign starter_text = section.settings.text_en
-      assign starter_label = section.settings.label_en
-      assign starter_fact_one = section.settings.fact_one_en
-      assign starter_fact_two = section.settings.fact_two_en
-      assign starter_fact_three = section.settings.fact_three_en
-  endcase
+  capture starter_heading
+    render 'yarn-setting-text', settings: section.settings, key: 'heading'
+  endcapture
+  capture starter_text
+    render 'yarn-setting-text', settings: section.settings, key: 'text'
+  endcapture
+  capture starter_label
+    render 'yarn-setting-text', settings: section.settings, key: 'button_label', zh: 'label_zh', en: 'label_en'
+  endcapture
+  capture starter_fact_one
+    render 'yarn-setting-text', settings: section.settings, key: 'fact_one'
+  endcapture
+  capture starter_fact_two
+    render 'yarn-setting-text', settings: section.settings, key: 'fact_two'
+  endcapture
+  capture starter_fact_three
+    render 'yarn-setting-text', settings: section.settings, key: 'fact_three'
+  endcapture
 
   if starter_product != blank
     assign starter_url = starter_product.url

@@ -29,13 +29,9 @@
   >
     {% if recommendations.performed and recommendations.products_count > 0 %}
       {%- liquid
-        assign related_heading = section.settings.heading
-        case request.locale.iso_code
-          when 'zh-CN', 'zh'
-            assign related_heading = section.settings.heading_zh | default: related_heading
-          when 'en'
-            assign related_heading = section.settings.heading_en | default: related_heading
-        endcase
+        capture related_heading
+          render 'yarn-setting-text', settings: section.settings, key: 'heading'
+        endcapture
       -%}
       <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
         {{ related_heading }}

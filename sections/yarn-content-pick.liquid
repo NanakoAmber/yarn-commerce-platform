@@ -4,11 +4,6 @@
   文案按 yarn-hero 的三联模式:纯键名为日文默认,_zh/_en 为中英覆盖。
 {% endcomment %}
 {%- liquid
-  assign cp_heading = section.settings.heading
-  assign cp_badge = section.settings.badge
-  assign cp_title = section.settings.title
-  assign cp_text = section.settings.text
-  assign cp_link_label = section.settings.link_label
   assign cp_link = section.settings.link
   assign cp_image = section.settings.image
   assign cp_handle = cp_link | split: '/' | last
@@ -22,20 +17,21 @@
       assign cp_link = cp_link | prepend: routes.root_url
     endunless
   endif
-  case request.locale.iso_code
-    when 'zh-CN', 'zh'
-      assign cp_heading = section.settings.heading_zh | default: cp_heading
-      assign cp_badge = section.settings.badge_zh | default: cp_badge
-      assign cp_title = section.settings.title_zh | default: cp_title
-      assign cp_text = section.settings.text_zh | default: cp_text
-      assign cp_link_label = section.settings.link_label_zh | default: cp_link_label
-    when 'en'
-      assign cp_heading = section.settings.heading_en | default: cp_heading
-      assign cp_badge = section.settings.badge_en | default: cp_badge
-      assign cp_title = section.settings.title_en | default: cp_title
-      assign cp_text = section.settings.text_en | default: cp_text
-      assign cp_link_label = section.settings.link_label_en | default: cp_link_label
-  endcase
+  capture cp_heading
+    render 'yarn-setting-text', settings: section.settings, key: 'heading'
+  endcapture
+  capture cp_badge
+    render 'yarn-setting-text', settings: section.settings, key: 'badge'
+  endcapture
+  capture cp_title
+    render 'yarn-setting-text', settings: section.settings, key: 'title'
+  endcapture
+  capture cp_text
+    render 'yarn-setting-text', settings: section.settings, key: 'text'
+  endcapture
+  capture cp_link_label
+    render 'yarn-setting-text', settings: section.settings, key: 'link_label'
+  endcapture
 -%}
 <section class="yx-picks yx-content-pick color-{{ section.settings.color_scheme }}" aria-labelledby="ContentPick-{{ section.id }}">
   <div class="page-width">
