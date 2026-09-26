@@ -7,7 +7,7 @@
 ## 快速入口
 
 - [团队进度与需求入口：开店还差什么](https://claude.ai/artifact/VVNTkXnczkkjBj41Rty4cz)：团队成员需获 Claude 页面「参与者」或以上权限才能提需求。
-- [Shopify 店铺](https://tutaka-54.myshopify.com/)：当前主域名；店铺有密码保护。各 PR 的未发布主题预览链接见对应 PR，不作为长期入口。
+- [Shopify 店铺](https://tutaka-54.myshopify.com/)：当前主域名，可直接访问；各 PR 的未发布主题预览链接见对应 PR，不作为长期入口。
 
 ## 当前架构
 
