@@ -80,3 +80,68 @@ product-info.yarn-product-page .yarn-product-details-full ul { padding-left: 1.2
   product-info.yarn-product-page .yarn-product-details-full { margin-top: 28px; }
   product-info.yarn-product-page .yarn-product-details-full > h2 { font-size: 23px; }
 }
+
+/* Kit PDP: let the existing product description carry the reading experience on phones. */
+@media (max-width: 749px) {
+  product-info.yarn-product-page .yarn-kit-story-full {
+    border-top: 1px solid var(--yarn-border-subtle);
+    padding-top: var(--yarn-space-4);
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory {
+    margin-top: var(--yarn-space-5);
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory > h2,
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__fact > h2 {
+    margin-bottom: var(--yarn-space-3);
+    font-size: 23px;
+    line-height: 1.35;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__about {
+    display: block;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__about .yp-kitstory__media {
+    display: none;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__copy p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory--contents {
+    display: flex;
+    flex-direction: column;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory--contents > h2 {
+    order: 0;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__list {
+    order: 1;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__hero {
+    order: 2;
+    margin: var(--yarn-space-4) 0 0;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__list li {
+    padding-block: var(--yarn-space-3);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__steps li {
+    align-items: start;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory--facts {
+    display: block;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__fact {
+    padding: var(--yarn-space-4) 0;
+    border: 0;
+    border-top: 1px solid var(--yarn-border-subtle);
+    border-radius: 0;
+  }
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__fact p,
+  product-info.yarn-product-page .yarn-kit-story-full .yp-kitstory__answer p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+}
