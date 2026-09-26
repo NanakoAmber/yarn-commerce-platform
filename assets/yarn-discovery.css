@@ -12,7 +12,7 @@
 .yarn-favorite[aria-busy='true'] { opacity: .55; cursor: progress; }
 .yarn-favorite:focus-visible { outline: var(--yarn-focus-width) solid var(--yarn-focus); outline-offset: var(--yarn-focus-offset); }
 .yp-library--rows .yp-card__summary, .yd-search .yp-card__summary {
-  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; max-width: 100%;
   overflow: hidden; margin: var(--yarn-space-1) 0 0; color: var(--yarn-text-muted);
   font-size: 1.5rem; line-height: var(--yarn-leading);
 }
