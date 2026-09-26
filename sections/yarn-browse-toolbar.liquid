@@ -43,6 +43,7 @@
       {%- endif -%}
     {%- endfor -%}
   </div>
+  {% unless collection.handle == 'yarn' %}
   <form class="yx-toolbar__filters" action="{{ collection.url }}" method="get" data-yx-filters>
     {% for filter in collection.filters %}
       {% if filter.type == 'price_range' %}
@@ -72,6 +73,7 @@
     <noscript><button class="yx-toolbar__submit" type="submit">{{ 'products.facets.apply' | t }}</button></noscript>
   </form>
   <p class="yx-toolbar__count" role="status">{{ 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}</p>
+  {% endunless %}
 </div>
 {% schema %}
 {

@@ -1,0 +1,31 @@
+{%- comment -%}
+  Collection card facts come only from structured Shopify product metafields.
+  Empty fields produce no label or placeholder; shipping weight and title text
+  must not be used as a substitute for per-ball specifications.
+{%- endcomment -%}
+{%- liquid
+  assign material = product.metafields.yarn.material.value
+  assign thickness = product.metafields.yarn.thickness.value
+  assign ball_weight_g = product.metafields.yarn.ball_weight_g.value
+  assign ball_length_m = product.metafields.yarn.ball_length_m.value
+  assign needle_size = product.metafields.yarn.needle_size.value
+-%}
+{%- if material != blank or thickness != blank or ball_weight_g != blank or ball_length_m != blank or needle_size != blank -%}
+  <dl class="yx-yarn-specs">
+    {%- if material != blank -%}
+      <div><dt>{{ 'yarn_collection.material' | t }}</dt><dd>{{ material | escape }}</dd></div>
+    {%- endif -%}
+    {%- if thickness != blank -%}
+      <div><dt>{{ 'yarn_collection.thickness' | t }}</dt><dd>{{ thickness | escape }}</dd></div>
+    {%- endif -%}
+    {%- if ball_weight_g != blank -%}
+      <div><dt>{{ 'yarn_collection.ball_weight' | t }}</dt><dd>{{ ball_weight_g | escape }} g</dd></div>
+    {%- endif -%}
+    {%- if ball_length_m != blank -%}
+      <div><dt>{{ 'yarn_collection.ball_length' | t }}</dt><dd>{{ ball_length_m | escape }} m</dd></div>
+    {%- endif -%}
+    {%- if needle_size != blank -%}
+      <div><dt>{{ 'yarn_collection.needle_size' | t }}</dt><dd>{{ needle_size | escape }}</dd></div>
+    {%- endif -%}
+  </dl>
+{%- endif -%}

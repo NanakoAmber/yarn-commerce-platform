@@ -52,3 +52,59 @@ collection-component .facets-vertical { display: block; }
 }
 .collection-hero__title { margin: 0; }
 collection-component #product-grid { margin-top: 0; }
+
+/* The yarn collection keeps Shopify's native facet form and result counts.
+   Only its mobile presentation changes to the approved bottom-sheet layout. */
+@media (max-width: 749px) {
+  collection-component[data-yarn-collection] .mobile-facets {
+    display: flex;
+    align-items: flex-end;
+  }
+  collection-component[data-yarn-collection] .mobile-facets__inner {
+    width: 100%;
+    max-width: none;
+    height: min(80dvh, 740px);
+    margin-top: auto;
+    margin-left: 0;
+    border: 0;
+    border-radius: var(--yarn-radius-panel) var(--yarn-radius-panel) 0 0;
+    background: var(--yarn-bg-surface);
+    box-shadow: 0 -8px 28px var(--yarn-overlay);
+  }
+  collection-component[data-yarn-collection] .menu-opening .mobile-facets__inner {
+    transform: translateY(0);
+  }
+  .js collection-component[data-yarn-collection] .disclosure-has-popup:not(.menu-opening) .mobile-facets__inner {
+    transform: translateY(105vh);
+  }
+  collection-component[data-yarn-collection] .mobile-facets__header {
+    min-height: 72px;
+    align-items: center;
+    padding: 14px 24px;
+    border-color: var(--yarn-border-subtle);
+  }
+  collection-component[data-yarn-collection] .mobile-facets__close {
+    top: calc(max(20dvh, 100dvh - 740px) + 14px);
+    right: 12px;
+    color: var(--yarn-text-heading);
+  }
+  collection-component[data-yarn-collection] .mobile-facets__heading {
+    color: var(--yarn-text-heading);
+    font-family: var(--yarn-display);
+    font-size: 20px;
+    font-weight: 600;
+  }
+  collection-component[data-yarn-collection] .mobile-facets__main {
+    padding-top: 12px;
+  }
+  collection-component[data-yarn-collection] .mobile-facets__summary,
+  collection-component[data-yarn-collection] .mobile-facets__sort {
+    min-height: var(--yarn-touch);
+    color: var(--yarn-text-heading);
+  }
+  collection-component[data-yarn-collection] .mobile-facets__footer {
+    border-color: var(--yarn-border-subtle);
+    padding: 12px 20px max(12px, env(safe-area-inset-bottom));
+    background: var(--yarn-bg-surface);
+  }
+}

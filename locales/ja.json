@@ -537,6 +537,13 @@
       "collapsed": "ギフトカードカードの受取人フォームを折りたたみました"
     }
   },
+  "yarn_collection": {
+    "material": "素材",
+    "thickness": "太さ",
+    "ball_weight": "1玉の重さ",
+    "ball_length": "1玉の長さ",
+    "needle_size": "適合針号"
+  },
   "yarn_project": {
     "row_view_all": "すべて見る",
     "row_collapse": "閉じる",

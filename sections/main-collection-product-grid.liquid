@@ -2,6 +2,16 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'yarn-collection.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign enable_filtering = section.settings.enable_filtering
+  assign enable_sorting = section.settings.enable_sorting
+  assign filter_type = section.settings.filter_type
+  if collection.handle == 'yarn'
+    assign enable_filtering = true
+    assign enable_sorting = true
+    assign filter_type = 'horizontal'
+  endif
+%}
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -40,11 +50,14 @@
 <collection-component
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
   data-collection-id="{{ collection.id }}"
+  {% if collection.handle == 'yarn' %}data-yarn-collection{% endif %}
 >
   <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
     {%- paginate collection.products by section.settings.products_per_page -%}
+      {% assign show_yarn_specs = false %}
+      {% if collection.handle == 'yarn' %}{% assign show_yarn_specs = true %}{% endif %}
       {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
-      {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
+      {%- if enable_sorting and filter_type == 'vertical' -%}
         <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
           <form class="facets-vertical-form" id="FacetSortForm">
             <div class="facet-filters sorting caption">
@@ -102,21 +115,21 @@
         </facet-filters-form>
       {%- endif -%}
 
-      <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
+      <div class="{% if filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
         <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-        {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+        {%- if enable_filtering or enable_sorting -%}
           <aside
             aria-labelledby="verticalTitle"
-            class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+            class="facets-wrapper{% unless enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if filter_type != 'vertical' %} page-width{% endif %}"
             id="main-collection-filters"
             data-id="{{ section.id }}"
           >
             {% render 'facets',
               results: collection,
-              enable_filtering: section.settings.enable_filtering,
-              enable_sorting: section.settings.enable_sorting,
-              filter_type: section.settings.filter_type,
+              enable_filtering: enable_filtering,
+              enable_sorting: enable_sorting,
+              filter_type: filter_type,
               paginate: paginate
             %}
           </aside>
@@ -145,7 +158,7 @@
             </div>
           {%- else -%}
             <div
-              class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+              class="collection{% if filter_type != 'vertical' %} page-width{% endif %}"
             >
               <div class="loading-overlay gradient"></div>
               <ul
@@ -181,7 +194,8 @@
                       skip_styles: skip_card_product_styles,
                       quick_add: section.settings.quick_add,
                       section_id: section.id,
-                      product_view_context: 'collection'
+                      product_view_context: 'collection',
+                      show_yarn_specs: show_yarn_specs
                     %}
                   </li>
                   {%- assign skip_card_product_styles = true -%}

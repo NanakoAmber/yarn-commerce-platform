@@ -537,6 +537,13 @@
       "collapsed": "礼品卡收件人表单已折叠"
     }
   },
+  "yarn_collection": {
+    "material": "材质",
+    "thickness": "粗细",
+    "ball_weight": "每团克数",
+    "ball_length": "每团长度",
+    "needle_size": "适用针号"
+  },
   "yarn_project": {
     "row_view_all": "查看全部",
     "row_collapse": "收起",

@@ -561,6 +561,13 @@
       "collapsed": "Formulář pro příjemce dárkové karty se sbalil."
     }
   },
+  "yarn_collection": {
+    "material": "Fiber",
+    "thickness": "Weight",
+    "ball_weight": "Per ball",
+    "ball_length": "Length",
+    "needle_size": "Needle size"
+  },
   "yarn_project": {
     "row_view_all": "View all",
     "row_collapse": "Show less",

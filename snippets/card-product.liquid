@@ -32,6 +32,14 @@
 {%- if card_product and card_product != empty -%}
   {%- capture localized_product_title -%}{%- render 'yarn-product-title', product: card_product -%}{%- endcapture -%}
   {%- assign localized_product_title = localized_product_title | strip -%}
+  {%- capture card_spec -%}
+    {%- if show_yarn_specs -%}
+      {%- render 'yarn-collection-specs', product: card_product -%}
+    {%- else -%}
+      {%- render 'yarn-card-spec', product: card_product -%}
+    {%- endif -%}
+  {%- endcapture -%}
+  {%- assign card_spec = card_spec | strip -%}
   {%- liquid
     assign ratio = 1
     if card_product.featured_media and media_aspect_ratio == 'portrait'
@@ -167,7 +175,7 @@
               </a>
             </h3>
             <div class="card-information">
-              <span class="yx-product-card__spec">{% render 'yarn-card-spec', product: card_product %}</span>
+              {% if card_spec != blank %}<div class="yx-product-card__spec">{{ card_spec }}</div>{% endif %}
               {%- if show_vendor -%}
                 <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
                 <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
@@ -619,7 +627,7 @@
             </a>
           </h3>
           <div class="card-information">
-              <span class="yx-product-card__spec">{% render 'yarn-card-spec', product: card_product %}</span>
+              {% if card_spec != blank %}<div class="yx-product-card__spec">{{ card_spec }}</div>{% endif %}
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
