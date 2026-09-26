@@ -32,6 +32,17 @@ npm run dev -- --store <store>.myshopify.com
 npm run verify
 ```
 
+查询 Shopify 后台数据（Admin API）：先按 `.env.example` 在仓库根目录建 `.env`，Client secret 在 Dev Dashboard → 应用 → 设置，`.env` 不提交。
+
+```bash
+npm run admin -- summary            # 店铺、商品数、Metaobject、语言、菜单
+npm run admin -- coverage ja        # 各类内容的日文翻译覆盖率
+npm run admin -- '{ shop { name } }'
+npm run admin -- -f query.graphql --vars '{"first":5}'
+```
+
+修改数据的 mutation 必须显式加 `--write`，并且应用需要已授予对应写权限；按生产安全规则，运营数据写入需要当次人工批准。
+
 ## 协作
 
 持久任务和决策以 GitHub Issue / PR 为准。Slack 用于讨论和提出需求，Codex 用于实现、验证和准备 PR。详见 [docs/harness/workflow.md](./docs/harness/workflow.md)。
