@@ -24,7 +24,7 @@
 /会议纪要-*.md
 
 # Impeccable runtime and non-publishable visual working evidence.
-/.github/skills/impeccable/scripts/bin/
+/.agents/skills/impeccable/scripts/bin/
 /.impeccable/questions/
 /.impeccable/references/
 /.impeccable/build/alpha-preview/
@@ -68,3 +68,7 @@
 /.impeccable/references/
 /.impeccable/design.json
 # New approved visuals and minimal provenance belong in docs/design/approved/.
+
+# Claude Code local state and process files. Only the shared skills link is tracked.
+/.claude/*
+!/.claude/skills
