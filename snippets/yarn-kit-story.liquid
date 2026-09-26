@@ -28,8 +28,8 @@
       {%- when 2 -%}
         <section class="yp-kitstory yp-kitstory--contents">
           <h2>{{ heading }}</h2>
-          {%- if product.images[1] != blank -%}<div class="yp-kitstory__hero">{{ product.images[1] | image_url: width: 900 | image_tag: widths: '390, 600, 900', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: heading }}</div>{%- endif -%}
           <div class="yp-kitstory__list">{{ body }}</div>
+          {%- if product.images[1] != blank -%}<div class="yp-kitstory__hero">{{ product.images[1] | image_url: width: 900 | image_tag: widths: '390, 600, 900', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: heading }}</div>{%- endif -%}
         </section>
       {%- when 3 -%}
         <section class="yp-kitstory yp-kitstory--steps">
