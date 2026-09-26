@@ -72,3 +72,6 @@
 # Claude Code local state and process files. Only the shared skills link is tracked.
 /.claude/*
 !/.claude/skills
+
+# npm run proof 证据包（本地生成，不提交）
+/.proof/
