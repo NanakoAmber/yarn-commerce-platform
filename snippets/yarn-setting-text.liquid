@@ -1,0 +1,27 @@
+{%- comment -%}
+  按当前语言取运营文案设置：日文用 key，简体中文用 key_zh，英文用 key_en。
+  设置名不按这个规律时，用 zh / en 参数指定。译文为空时回退日文原文（npm run proof 会报出缺译）。
+  三语运营文案都走这里；通用控件文案用 Theme locales（| t），不在 Liquid 里写死。
+
+  用法：
+  {%- capture heading -%}{%- render 'yarn-setting-text', settings: section.settings, key: 'heading' -%}{%- endcapture -%}
+  {%- capture primary -%}{%- render 'yarn-setting-text', settings: section.settings, key: 'primary_label', zh: 'primary_zh', en: 'primary_en' -%}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+  assign text = settings[key]
+  case request.locale.iso_code
+    when 'zh-CN', 'zh'
+      assign localized_key = zh
+      if localized_key == blank
+        assign localized_key = key | append: '_zh'
+      endif
+      assign text = settings[localized_key] | default: text
+    when 'en'
+      assign localized_key = en
+      if localized_key == blank
+        assign localized_key = key | append: '_en'
+      endif
+      assign text = settings[localized_key] | default: text
+  endcase
+  echo text
+-%}

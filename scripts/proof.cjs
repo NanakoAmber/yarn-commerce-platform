@@ -143,7 +143,7 @@ async function runJob(browser, job, baseUrl) {
 
   page.on('pageerror', error => result.failures.push(`脚本异常：${error.message.split('\n')[0]}`));
   // 本地预览固有的平台报错（shop.app 嵌入、Shopify 云端脚本跨域）不算；同源请求失败由下方 response 记录。
-  const platformNoise = /Failed to load resource|shop\.app|shopifycloud|origin_trials/;
+  const platformNoise = /Failed to load resource|shop\.app|shopifycloud|shopifysvc|origin_trials/;
   page.on('console', message => {
     if (message.type() === 'error' && !platformNoise.test(message.text())) result.warnings.push(`控制台错误：${message.text().slice(0, 160)}`);
   });
@@ -251,7 +251,10 @@ async function main() {
   const worker = async () => {
     while (next < jobs.length) {
       const job = jobs[next++];
-      results.push(await runJob(browser, job, baseUrl));
+      let result = await runJob(browser, job, baseUrl);
+      // 本地预览偶发的网络请求失败（多为 Shopify 遥测）重跑一次；再失败就如实报告。
+      if (result.failures.length && result.failures.every(f => f.startsWith('脚本异常：Failed to fetch'))) result = await runJob(browser, job, baseUrl);
+      results.push(result);
     }
   };
   await Promise.all(Array.from({ length: Number(args.concurrency || 4) }, worker));

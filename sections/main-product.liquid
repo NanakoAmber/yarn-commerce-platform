@@ -101,13 +101,9 @@
                   {% render block %}
                 {%- when 'text' -%}
                   {%- liquid
-                    assign block_text = block.settings.text
-                    case request.locale.iso_code
-                      when 'zh-CN', 'zh'
-                        assign block_text = block.settings.text_zh | default: block_text
-                      when 'en'
-                        assign block_text = block.settings.text_en | default: block_text
-                    endcase
+                    capture block_text
+                      render 'yarn-setting-text', settings: block.settings, key: 'text'
+                    endcapture
                   -%}
                   <p
                     class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"

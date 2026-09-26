@@ -2,29 +2,24 @@
 {{ 'yarn-hero-b.css' | asset_url | stylesheet_tag }}
 
 {% liquid
-  assign hero_heading = section.settings.heading
-  assign hero_text = section.settings.text
-  assign hero_cta = section.settings.cta_label
-  assign flow_project = section.settings.flow_project
-  assign flow_yarn = section.settings.flow_yarn
-  assign flow_tools = section.settings.flow_tools
-
-  case request.locale.iso_code
-    when 'zh-CN', 'zh'
-      assign hero_heading = section.settings.heading_zh
-      assign hero_text = section.settings.text_zh
-      assign hero_cta = section.settings.cta_label_zh
-      assign flow_project = section.settings.flow_project_zh
-      assign flow_yarn = section.settings.flow_yarn_zh
-      assign flow_tools = section.settings.flow_tools_zh
-    when 'en'
-      assign hero_heading = section.settings.heading_en
-      assign hero_text = section.settings.text_en
-      assign hero_cta = section.settings.cta_label_en
-      assign flow_project = section.settings.flow_project_en
-      assign flow_yarn = section.settings.flow_yarn_en
-      assign flow_tools = section.settings.flow_tools_en
-  endcase
+  capture hero_heading
+    render 'yarn-setting-text', settings: section.settings, key: 'heading'
+  endcapture
+  capture hero_text
+    render 'yarn-setting-text', settings: section.settings, key: 'text'
+  endcapture
+  capture hero_cta
+    render 'yarn-setting-text', settings: section.settings, key: 'cta_label'
+  endcapture
+  capture flow_project
+    render 'yarn-setting-text', settings: section.settings, key: 'flow_project'
+  endcapture
+  capture flow_yarn
+    render 'yarn-setting-text', settings: section.settings, key: 'flow_yarn'
+  endcapture
+  capture flow_tools
+    render 'yarn-setting-text', settings: section.settings, key: 'flow_tools'
+  endcapture
 %}
 
 <section class="yarn-hero yarn-hero--connected color-{{ section.settings.color_scheme }}" aria-labelledby="YarnHeroHeading-{{ section.id }}">

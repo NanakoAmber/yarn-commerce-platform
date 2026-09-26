@@ -1,50 +1,39 @@
 {% liquid
-  assign line_heading = section.settings.heading
-  assign line_text = section.settings.text
-  assign line_primary = section.settings.primary_label
-  assign line_secondary = section.settings.secondary_label
   assign line_has_primary = false
   if section.settings.primary_link != blank
     assign line_has_primary = true
   endif
-  case request.locale.iso_code
-    when 'zh-CN', 'zh'
-      assign line_heading = section.settings.heading_zh
-      assign line_text = section.settings.text_zh
-      assign line_primary = section.settings.primary_zh
-      assign line_secondary = section.settings.secondary_zh
-    when 'en'
-      assign line_heading = section.settings.heading_en
-      assign line_text = section.settings.text_en
-      assign line_primary = section.settings.primary_en
-      assign line_secondary = section.settings.secondary_en
-  endcase
+  capture line_heading
+    render 'yarn-setting-text', settings: section.settings, key: 'heading'
+  endcapture
+  capture line_text
+    render 'yarn-setting-text', settings: section.settings, key: 'text'
+  endcapture
+  capture line_primary
+    render 'yarn-setting-text', settings: section.settings, key: 'primary_label', zh: 'primary_zh', en: 'primary_en'
+  endcapture
+  capture line_secondary
+    render 'yarn-setting-text', settings: section.settings, key: 'secondary_label', zh: 'secondary_zh', en: 'secondary_en'
+  endcapture
 
   unless line_has_primary
-    assign line_heading = section.settings.fallback_heading
-    assign line_text = section.settings.fallback_text
-    case request.locale.iso_code
-      when 'zh-CN', 'zh'
-        assign line_heading = section.settings.heading_zh_fallback
-        assign line_text = section.settings.text_zh_fallback
-        assign line_secondary = section.settings.secondary_zh_fallback
-      when 'en'
-        assign line_heading = section.settings.heading_en_fallback
-        assign line_text = section.settings.text_en_fallback
-        assign line_secondary = section.settings.secondary_en_fallback
-    endcase
+    capture line_heading
+      render 'yarn-setting-text', settings: section.settings, key: 'fallback_heading', zh: 'heading_zh_fallback', en: 'heading_en_fallback'
+    endcapture
+    capture line_text
+      render 'yarn-setting-text', settings: section.settings, key: 'fallback_text', zh: 'text_zh_fallback', en: 'text_en_fallback'
+    endcapture
+    capture line_secondary
+      render 'yarn-setting-text', settings: section.settings, key: 'secondary_label', zh: 'secondary_zh_fallback', en: 'secondary_en_fallback'
+    endcapture
   endunless
   if section.settings.compact_layout
-    assign line_heading = section.settings.compact_heading
-    assign line_secondary = section.settings.compact_action
-    case request.locale.iso_code
-      when 'zh', 'zh-CN'
-        assign line_heading = section.settings.compact_heading_zh
-        assign line_secondary = section.settings.compact_action_zh
-      when 'en'
-        assign line_heading = section.settings.compact_heading_en
-        assign line_secondary = section.settings.compact_action_en
-    endcase
+    capture line_heading
+      render 'yarn-setting-text', settings: section.settings, key: 'compact_heading'
+    endcapture
+    capture line_secondary
+      render 'yarn-setting-text', settings: section.settings, key: 'compact_action'
+    endcapture
   endif
 %}
 

@@ -706,7 +706,8 @@
     "card_spec_kit": "See kit contents",
     "card_spec_finished": "See size and materials",
     "browse_heading": "Find your next make",
-    "browse_search": "Search yarn, kits and finished pieces"
+    "browse_search": "Search yarn, kits and finished pieces",
+    "option_default": "Option"
   },
   "yarn_discovery": {
     "search": "Search",
@@ -749,5 +750,13 @@
     "filters": "Filters",
     "kind_finished": "Finished item",
     "favorites_unavailable": "Favorites are not available yet. Items cannot be saved at this time."
+  },
+  "yarn_cart_assurance": {
+    "title_1": "Delivery across Japan",
+    "text_1": "Free shipping on orders over ¥9,900",
+    "title_2": "Yarn guidance",
+    "text_2": "Ask about colour matching and quantity",
+    "title_3": "Shop with confidence",
+    "text_3": "Review your order before payment"
   }
 }
