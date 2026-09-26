@@ -287,7 +287,7 @@ components:
 
 ## 这份文档是什么
 
-这里只记录**当前生效的设计规范**和**我们怎么做设计**。逐个 Issue 的实现过程、评审截图和当轮边界声明不再写进本文——它们完整保存在 git 历史与 `.impeccable/review/`、`.impeccable/mocks/` 中,需要考古时去那里。颜色的唯一来源是 `design/tokens/colors.json`：`npm run tokens` 生成 `yarn-design-tokens.css` 颜色段、Shopify 配色方案和本文前言的 `colors`，请勿手改这三处。其余前言 token 仍在本文维护，代码通过 `yarn-design-tokens.css` 消费。
+这里只记录**当前生效的设计规范**和**我们怎么做设计**。逐个 Issue 的实现过程、评审截图和当轮边界声明不再写进本文——需要考古时查 git 历史;界面以线上实现为准。颜色的唯一来源是 `design/tokens/colors.json`：`npm run tokens` 生成 `yarn-design-tokens.css` 颜色段、Shopify 配色方案和本文前言的 `colors`，请勿手改这三处。其余前言 token 仍在本文维护，代码通过 `yarn-design-tokens.css` 消费。
 
 **边界(一次性声明,适用于全文)**:本店仍是受密码保护的内部原型。本文描述的是已实现并复核过的界面事实,不认证生产发布、真实供货、支付配置或素材公开授权;demo 素材(含来源站水印的参考图片)仅限内部预览,发布前必须替换或取得授权。
 

@@ -23,16 +23,10 @@
 /report-source.md
 /会议纪要-*.md
 
-# Impeccable 运行文件与视觉过程资料只留本地；已跟踪的历史文件在迁出有效结论前保留。
-# 新获批视觉稿与必要来源放 docs/design/approved/；不要用 git add -f 提交过程文件。
+# Impeccable 只保留 config.json；视觉稿、评审、构建等过程产物只留本地。界面以线上实现为准。
 /.agents/skills/impeccable/scripts/bin/
-/.impeccable/build/
-/.impeccable/review/
-/.impeccable/content/
-/.impeccable/mocks/
-/.impeccable/questions/
-/.impeccable/references/
-/.impeccable/design.json
+/.impeccable/*
+!/.impeccable/config.json
 /.playwright-mcp/
 
 # Claude Code local state and process files. Only the shared skills link is tracked.

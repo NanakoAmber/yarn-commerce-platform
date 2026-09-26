@@ -21,8 +21,6 @@
 
 六组检查均满足：品牌标题 MewoolMew、新 PNG 已加载、无预览栏、无横向溢出。页眉仍为桌面 84 px / 手机 68 px。Live 的图片来自 `/cdn/shop/t/16/assets/`，预览来自 `/cdn/shop/t/23/assets/`，避免把草稿缓存误认为生产结果。
 
-- Live 实测记录：`../../.impeccable/review/25-logo-reference/live-metrics.json`。
-- 公开图像证据：同目录 `live-header-desktop.png` / `live-header-mobile.png`，仅包含本次原创 Logo 的页眉。
 - 预览中的手机菜单、Catalog → Logo 返回 `/zh` 已验证；上线仅复制相同品牌文件。发布后控制台无 error。
 - `npm run verify`：51/51 tests；Theme Check 0 errors、12 条既有 warnings。
 - Detector：0 anti-patterns、8 条既有导航 advisory。独立 finish verdict：ship，局部 P0/P1/P2 为 0。
