@@ -29,6 +29,9 @@
       assign exit_note = section.settings.exit_note_en | default: exit_note
   endcase
 -%}
+{%- if picks_collection == blank or picks_collection.products_count == 0 -%}
+  {%- if request.design_mode -%}<p class="yx-picks__note page-width">{{ picks_heading | escape }}：请在右侧选择一个有商品的集合，未选择时本区块不在店面显示。</p>{%- endif -%}
+{%- else -%}
 <section class="yx-picks yarn-shell-block{% if section.settings.columns_desktop == 2 %} yx-picks--duo{% endif %} color-{{ section.settings.color_scheme }}" style="--yx-cols: {{ section.settings.columns_desktop }};" aria-labelledby="Picks-{{ section.id }}">
   <div class="yx-picks__inner page-width">
     <div class="yx-picks__head">
@@ -59,6 +62,7 @@
     </div>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {

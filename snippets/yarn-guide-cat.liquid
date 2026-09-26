@@ -1,0 +1,25 @@
+{%- comment -%}
+  导览条线头的简笔小猫(viewBox 0 18 100 76,地线 y = 91):默认蜷着睡觉,.yarn-guide.is-awake 时淡入正面坐姿。
+  两个姿势共用同一颗头,坐姿整体右移 24 使头部位置接近,切换时像同一只猫起身。线用 currentColor。
+{%- endcomment -%}
+<svg class="yarn-guide__cat" viewBox="0 18 100 76" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <g class="yarn-guide__cat-pose yarn-guide__cat-pose--sleep">
+    <path d="M60 66C55 61.6 49 60 42 60 26 60 13 69 13 80 13 87 17 91 24 91H62"/>
+    <path d="M17 86C22 81.6 32 80.8 42 83 48 84.6 53 84.6 57 82.6"/>
+    <path d="M62 91H79C82 91 83.6 89.4 83.4 87.4 83.2 85.4 81.4 84.6 79.4 84.6M70.6 91V87.6"/>
+    <path class="yarn-guide__cat-head" d="M60.6 74C59.6 70 60.4 66 63 63L62.4 53.4 69.6 58.4C72.4 57.6 75.6 57.6 78.4 58.4L85.4 53.4 84.8 63C87.4 66 88.2 70 87.2 74 85.8 80 80.4 83.6 74 83.6 67.6 83.6 62 80 60.6 74Z"/>
+    <path d="M66.4 72c1.4 1.6 3.4 1.6 4.8 0M76.8 72c1.4 1.6 3.4 1.6 4.8 0M73 75.8h2l-1 1.1zM63.4 74.6l-5.4-.6M63.6 77l-5 1M84.4 74.6l5.4-.6M84.2 77l5 1"/>
+    <path d="M87 45h4.4l-4.4 5.4h4.4M93.6 37.6h3.2l-3.2 3.8h3.2" stroke-width="1.4"/>
+  </g>
+  <g class="yarn-guide__cat-pose yarn-guide__cat-pose--sit" transform="translate(24 0)">
+    <path d="M31 86C21 88.6 14.6 82 16.4 72.4 17.2 68 21.6 67 22.8 70.4"/>
+    <path d="M41 52C33 59 28.6 71 29.4 81.4 29.8 87.6 33.4 91 39 91H61C66.6 91 70.2 87.6 70.6 81.4 71.4 71 67 59 59 52"/>
+    <path d="M44.6 71C44.4 79 44.4 86 45.4 91M55.4 71C55.6 79 55.6 86 54.6 91"/>
+    <g transform="translate(-24 -30)">
+      <path class="yarn-guide__cat-head" d="M60.6 74C59.6 70 60.4 66 63 63L62.4 53.4 69.6 58.4C72.4 57.6 75.6 57.6 78.4 58.4L85.4 53.4 84.8 63C87.4 66 88.2 70 87.2 74 85.8 80 80.4 83.6 74 83.6 67.6 83.6 62 80 60.6 74Z"/>
+      <circle cx="69.6" cy="71.6" r="2" fill="currentColor" stroke="none"/>
+      <circle cx="80" cy="71.6" r="2" fill="currentColor" stroke="none"/>
+      <path d="M73 75.6h2l-1 1.1zM74 76.8c-.2 1.4-1.4 2-2.4 1.6M74 76.8c.2 1.4 1.4 2 2.4 1.6M63.4 74.6l-5.4-.6M63.6 77l-5 1M84.4 74.6l5.4-.6M84.2 77l5 1"/>
+    </g>
+  </g>
+</svg>

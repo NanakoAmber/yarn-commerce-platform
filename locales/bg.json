@@ -607,6 +607,7 @@
     "card_badge_yarn": "Yarn",
     "card_badge_kit": "Kit",
     "card_badge_finished": "Finished",
+    "card_badge_tools": "Tools",
     "card_view_colors": "View colors",
     "card_color_count": "{{ count }} colors",
     "card_view_details": "View details",

@@ -32,12 +32,13 @@ test('all literal and dynamic UI translations exist in the three section locales
 });
 
 test('homepage follows the approved yarn-first section order (Issue #55, hero carousel 2026-09-24)', () => {
-  // 毛线主线首页:首屏露边轮播 + 品牌介绍 → 毛线/编织包/成品精选 → 内容精选 → LINE 帮助。
+  // 毛线主线首页:首屏露边轮播 + 品牌介绍 → 导览条 → 毛线/编织包/成品/工具精选 → 内容精选 → LINE 帮助。
   // 原三节点 Hero 保留为停用 section,可在主题编辑器切回。
-  assert.deepEqual(index.order, ['hero-carousel', 'yarn-hero', 'picks-yarn', 'picks-kits', 'picks-finished', 'content-pick', 'line-support']);
+  assert.deepEqual(index.order, ['hero-carousel', 'guide-strip', 'yarn-hero', 'picks-yarn', 'picks-kits', 'picks-finished', 'picks-tools', 'content-pick', 'line-support']);
   assert.equal(index.sections['hero-carousel'].type, 'yarn-hero-carousel');
   assert.ok(index.sections['hero-carousel'].block_order.length >= 3);
   assert.equal(index.sections['yarn-hero'].disabled, true);
+  assert.equal(index.sections['guide-strip'].type, 'yarn-guide-strip');
   assert.equal(index.sections['picks-yarn'].type, 'yarn-picks');
   assert.equal(index.sections['picks-yarn'].settings.collection, 'yarn');
   assert.equal(index.sections['picks-kits'].settings.exit_enabled, true);

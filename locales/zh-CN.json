@@ -607,6 +607,7 @@
     "card_badge_yarn": "毛线",
     "card_badge_kit": "编织包",
     "card_badge_finished": "成品",
+    "card_badge_tools": "工具",
     "card_view_colors": "查看色号",
     "card_color_count": "{{ count }} 色",
     "card_view_details": "查看详情",
