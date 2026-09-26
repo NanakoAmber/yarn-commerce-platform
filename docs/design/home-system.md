@@ -44,3 +44,7 @@ Issue #65 删除了无模板使用的 `yarn-purpose-grid` / `yarn-seasonal-featu
 商品家族消费 `text-heading`、`accent`、`border-card`、10px card radius 与 1200px commerce max；卡片标题/规格/价格为 16/14/21px。构图与数据回退见 [当前 surface brief](approved/55-visual-fidelity.md)。
 
 首页出口卡未选择图片时使用当前集合第一件商品主图；内容卡链接指向 `yarn_project` 时可使用其封面，运营选择的图片优先。作品正文缺失时只读取已有关联 Kit 的介绍和步骤，不创建另一份内容真值。三语运营文案仍由 Section setting 与 Shopify 对应资源维护。
+
+## 首屏露边轮播（2026-09-24 用户选定）
+
+首页首屏由 `sections/yarn-hero-carousel.liquid` 承担：中间 16:10 大图、两侧露出前后张、循环切换，下方为品牌介绍区；图上不压文字，横幅图片、链接、三语名称与介绍文案都在主题编辑器维护。原三节点 Hero 保留为停用 section。构图依据与首屏照片来源见 [首屏轮播来源](approved/home-hero-carousel.source.md)。
