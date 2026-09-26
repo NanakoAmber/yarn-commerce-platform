@@ -15,6 +15,10 @@ Design and review the requested surface within the approved product scope and vi
 
 Root `AGENTS.md` owns what persists. Keep only current decisions, approved direction and required asset provenance in canonical documents. References and agents may require local review, verdict or build outputs for execution; these remain ignored temporary files, never committed or uploaded as process archives. Perform required checks and independent review, summarize final results in the PR, and do not create separate tracked review reports. Load only the current surface and relevant reference; do not recursively read historical review/build/content directories. New approved visuals belong in `docs/design/approved/` with a surface-brief link. Do not force-add process artifacts or duplicate them under another path.
 
+## Project flow override
+
+This project's page design flow is defined in `docs/agents/visual-review.md` (one mobile comp → mobile build → user OK → one desktop comp → desktop build, all in one thread). It overrides the Comp-first gates, `concept-seed` direction rounds, `build-phase` gates, `comp-diff` and independent finish review in the references; use those only when the user explicitly asks.
+
 ## Start and select a workflow
 
 1. Run `<skill-base-dir>/scripts/impeccable context` once per session, keeping cwd at the project. The loaded skill base resolves command paths in this skill and its references; `.github/skills/impeccable` is the fallback. Pass `--target <path>` for a known route or source file. The launcher uses its bundled binary or downloads it on first run.
