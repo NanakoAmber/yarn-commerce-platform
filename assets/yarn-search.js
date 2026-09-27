@@ -62,7 +62,7 @@
     if (!categoryMatches(entity, state.category)) return false;
     const capabilities = String(entity.purchase || '').split(',');
     if (state.purchase && !capabilities.includes(state.purchase)) return false;
-    const ownCopy = normalizeText(`${entity.title || ''} ${entity.summary || ''}`);
+    const ownCopy = normalizeText(`${entity.title || ''} ${entity.summary || ''} ${entity.tags || ''}`);
     const terms = normalizeText(state.q).split(' ').filter(Boolean);
     return terms.every((term) => ownCopy.includes(term) || (term === '篮子' && ownCopy.includes('篮')));
   }
@@ -73,6 +73,7 @@
       id: card.dataset.entityId,
       title: card.dataset.title || '',
       summary: card.dataset.summary || '',
+      tags: card.dataset.tags || '',
       category: card.dataset.category || '',
       purchase: card.dataset.purchase || '',
     };

@@ -16,6 +16,13 @@ test('basket results match each entity own copy and do not inherit a related pro
   assert.equal(matchesEntity({ ...yarn, category: 'bag' }, { ...state, category: 'home' }), false);
 });
 
+test('product tags are searchable without changing category inference', () => {
+  const tagged = { ...yarn, tags: 'issue-88 样品-2026-09-25' };
+  assert.equal(matchesEntity(tagged, queryState('issue-88')), true);
+  assert.equal(matchesEntity(tagged, queryState('样品-2026-09-25')), true);
+  assert.equal(matchesEntity(tagged, { ...queryState('issue-88'), category: 'bag' }), false);
+});
+
 test('new keyword clears browse restrictions while URL round trips preserve filters and preview', () => {
   const href = 'https://example.com/zh/search?browse=projects&category=home&purchase=finished&project_q=old&page_a=2&section_id=s&preview_theme_id=42';
   const next = urlWithState(href, queryState('cotton'));
