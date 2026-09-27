@@ -1,7 +1,7 @@
 {%- comment -%}
-  Collection card facts come only from structured Shopify product metafields.
-  Empty fields produce no label or placeholder; shipping weight and title text
-  must not be used as a substitute for per-ball specifications.
+  Prefer structured Shopify product metafields. Until those values are entered,
+  reuse the existing demo-loop Product description's explicit specification list. Empty
+  fields produce no placeholder; never infer ball facts from shipping weight or title.
 {%- endcomment -%}
 {%- liquid
   assign material = product.metafields.yarn.material.value
@@ -28,4 +28,10 @@
       <div><dt>{{ 'yarn_collection.needle_size' | t }}</dt><dd>{{ needle_size | escape }}</dd></div>
     {%- endif -%}
   </dl>
+{%- elsif product.tags contains 'demo-loop' and product.description contains '<ul>' and product.description contains '</ul>' -%}
+  {%- assign description_sections = product.description | split: '<ul>' -%}
+  {%- assign description_specs = description_sections[1] | split: '</ul>' | first -%}
+  {%- if description_specs contains '<li>' -%}
+    <ul class="yx-yarn-specs yx-yarn-specs--description">{{ description_specs }}</ul>
+  {%- endif -%}
 {%- endif -%}
