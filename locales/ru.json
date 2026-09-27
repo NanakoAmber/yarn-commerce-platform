@@ -770,5 +770,14 @@
     "text_2": "Ask about colour matching and quantity",
     "title_3": "Shop with confidence",
     "text_3": "Review your order before payment"
+  },
+  "hitoami_home": {
+    "featured": "Featured collection",
+    "carousel": "Carousel",
+    "slide": "Slide",
+    "categories": "Shop by category",
+    "yarn": "Yarn",
+    "kit": "Kits",
+    "finished": "Finished pieces"
   }
 }

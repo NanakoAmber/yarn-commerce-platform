@@ -746,5 +746,14 @@
     "text_2": "可咨询配色与作品所需用量",
     "title_3": "放心购物",
     "text_3": "付款前可以再次确认订单内容"
+  },
+  "hitoami_home": {
+    "featured": "本期推荐",
+    "carousel": "轮播",
+    "slide": "幻灯片",
+    "categories": "按商品分类浏览",
+    "yarn": "毛线",
+    "kit": "编织包",
+    "finished": "成品"
   }
 }

@@ -10,31 +10,57 @@
 {
   "sections": {
     "yarn-hero": {
-      "type": "yarn-hero",
+      "type": "hitoami-home",
       "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "お気に入りの毛糸を、\nひと玉選ぼう。",
-        "text": "<p>ひと玉の毛糸から、あなたの日常を編み出そう。</p>",
-        "cta_label": "毛糸を選ぶ",
-        "flow_project": "編みキットを見る",
-        "flow_yarn": "毛糸を選ぶ",
-        "flow_tools": "完成品をおうちへ",
-        "flow_tutorial": "作り方を見る",
-        "heading_zh": "挑一团好线",
-        "text_zh": "<p>从一团线，织出你的日常。</p>",
-        "cta_label_zh": "开始挑选",
-        "flow_project_zh": "看编织包",
-        "flow_yarn_zh": "挑毛线",
-        "flow_tools_zh": "带成品回家",
-        "flow_tutorial_zh": "看教程",
-        "heading_en": "Pick a ball of\nyarn you love.",
-        "text_en": "<p>From one ball of yarn, knit your everyday.</p>",
-        "cta_label_en": "Start picking",
-        "flow_project_en": "Browse kits",
-        "flow_yarn_en": "Pick yarn",
-        "flow_tools_en": "Take one home",
-        "flow_tutorial_en": "View tutorial"
-      }
+        "enable_cat": true,
+        "show_story": true,
+        "story_heading": "最初のひと目から、\n編みもので、人と暮らしをやさしくつなぐ。",
+        "story_heading_zh": "从第一针开始，\n用编织，温柔连接人与生活。",
+        "story_heading_en": "From the first stitch,\nweaving warmth into everyday connections.",
+        "story_text": "<p>hitoami は、「一」と「編む」という想いから生まれました。</p><p>最初のひと目から、糸と色、ひらめきを少しずつ暮らしの中へ。初めて毛糸に触れる人も、手づくりが好きな人も。ひと目ひと目に自分のペースを見つけ、編みものを愛する誰かと出会える場所でありたいと願っています。</p>",
+        "story_text_zh": "<p>hitoami，取意于「一」与「编织」。</p><p>从第一针开始，把线、色彩与灵感慢慢编进日常。无论初次拿起毛线，还是早已钟情手作，都能在一针一线之间找到自己的节奏，也与同样热爱编织的人相遇。</p>",
+        "story_text_en": "<p>hitoami brings together the ideas of “one” and “knitting”.</p><p>From the first stitch, bring yarn, colour and imagination into everyday life. Whether you are picking up yarn for the first time or have always loved making, find your own rhythm, one stitch at a time—and connect with others who share that love.</p>"
+      },
+      "blocks": {
+        "welcome": {
+          "type": "slide",
+          "settings": {
+            "scene": "kit",
+            "focus": 50,
+            "tone": "dark",
+            "heading": "ここで、\n毎日を少しゆっくりと。",
+            "heading_zh": "来这里，\n把日子过慢一点。",
+            "heading_en": "Come in.\nTake life a stitch slower.",
+            "text": "材料と編み図を、ゆっくり選ぼう。",
+            "text_zh": "材料与图解，一起慢慢挑。",
+            "text_en": "Find your yarn, your pattern, your pace.",
+            "cta": "編みキットを見る",
+            "cta_zh": "看看编织包",
+            "cta_en": "Explore the kits"
+          }
+        },
+        "yarn": {
+          "type": "slide",
+          "settings": {
+            "scene": "yarn",
+            "focus": 50,
+            "tone": "dark",
+            "heading": "好きな色から、\n今日のひと目を。",
+            "heading_zh": "挑一团喜欢的线，\n织进今天的心情。",
+            "heading_en": "A colour you love.\nA little time to make.",
+            "text": "色と手ざわりから、お気に入りを探そう。",
+            "text_zh": "从颜色与手感开始，找到自己的节奏。",
+            "text_en": "Explore colour and texture at your own pace.",
+            "cta": "毛糸を選ぶ",
+            "cta_zh": "挑选毛线",
+            "cta_en": "Explore the yarn"
+          }
+        }
+      },
+      "block_order": [
+        "welcome",
+        "yarn"
+      ]
     },
     "picks-yarn": {
       "type": "yarn-picks",

@@ -35,6 +35,8 @@ html[lang]:root {
 
 /* BEGIN generated colors — edit design/tokens/colors.json, then run npm run tokens */
 :root {
+  --yarn-home-action: #675144; /* umber-700 · hitoami 首页低饱和按钮 */
+  --yarn-home-thread: #8c8880; /* sand-600 · hitoami 小猫展开的装饰毛线 */
   --yarn-bg-page: #f7f7f5; /* cream-100 · 页面底 */
   --yarn-bg-surface: #fffefa; /* cream-50 · 卡片、导航、横幅、输入框面 */
   --yarn-bg-sunken: #ebe5dc; /* sand-100 · 次级区块（暖砂） */

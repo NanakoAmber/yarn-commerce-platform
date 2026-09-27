@@ -10,7 +10,7 @@ Issue #32 提取共享规则；Issue #55 将当前首页改为毛线主线与商
 | `assets/yarn-foundation.css` | 导航、页脚、首页 Hero/作品/帮助的焦点与选区；导航与页脚共用字段、语言选择、下拉选项状态；不控制页面构图 |
 | `assets/yarn-header.css` | 共享桌面导航、手机菜单、搜索面板与品牌标识 |
 | `assets/yarn-footer.css` | 共享页脚品牌、订阅、运营 block、语言与政策的布局 |
-| `assets/yarn-hero-b.css` | 三节点首页构图与三语文字扩展 |
+| `sections/hitoami-home.liquid` / `assets/hitoami-home.css` / `assets/hitoami-home.js` | 可编辑小屋轮播、独立猫通道、三个分类入口与品牌介绍（#110） |
 | `assets/yarn-cards.css` / `assets/yarn-collection.css` | 商品、内容和出口卡家族；1200px 目录轴与筛选布局 |
 | `assets/yarn-product-context.css` / `assets/yarn-project-reading.css` | 原生购买区、商品独立规格区与单列内容阅读 |
 | `sections/yarn-line-contact.liquid` | 紧凑帮助条消费容器/色彩/圆角角色，保留非紧凑历史变体 |
@@ -29,7 +29,7 @@ Issue #65 删除了无模板使用的 `yarn-purpose-grid` / `yarn-seasonal-featu
 
 ## Shopify 编辑边界
 
-导航文字与目标继续来自 Navigation 菜单，菜单标题与每个菜单项的日/中/英译文在 Shopify Translate & Adapt 对应菜单资源维护；桌面、手机菜单和页面 section 必须显示同一整页语言，不能在 Liquid 写死英文或用另一份硬编码菜单遮住未翻译内容。Logo 沿用全局上传设置，未上传时使用已批准 MewoolMew 原图。帮助文案/链接来自原 Section setting。页脚订阅标题、显示开关、Block、语言/国家、政策与付款图标仍由原设置及 Shopify 数据决定。
+导航文字与目标继续来自 Navigation 菜单，菜单标题与每个菜单项的日/中/英译文在 Shopify Translate & Adapt 对应菜单资源维护；桌面、手机菜单和页面 section 必须显示同一整页语言，不能在 Liquid 写死英文或用另一份硬编码菜单遮住未翻译内容。Logo 沿用全局上传设置，未上传时使用用户提供的 hitoami 字标。帮助文案/链接来自原 Section setting。页脚订阅标题、显示开关、Block、语言/国家、政策与付款图标仍由原设置及 Shopify 数据决定。
 
 页脚订阅仍使用 `form 'customer'`、`contact[email]` 和 `newsletter` tag；不增加营销承诺，不替换后端处理。本轮复核输入、验证和焦点，不发送真实订阅。隐藏订阅时不应渲染输入表单；未来添加运营 block 时仍使用原有 schema。
 
@@ -44,3 +44,9 @@ Issue #65 删除了无模板使用的 `yarn-purpose-grid` / `yarn-seasonal-featu
 商品家族消费 `text-heading`、`accent`、`border-card`、10px card radius 与 1200px commerce max；卡片标题/规格/价格为 16/14/21px。构图与数据回退见 [当前 surface brief](approved/55-visual-fidelity.md)。
 
 首页出口卡未选择图片时使用当前集合第一件商品主图；内容卡链接指向 `yarn_project` 时可使用其封面，运营选择的图片优先。作品正文缺失时只读取已有关联 Kit 的介绍和步骤，不创建另一份内容真值。三语运营文案仍由 Section setting 与 Shopify 对应资源维护。
+
+## Issue #110 手机首页
+
+构图依据 [已批准手机方向](approved/110-home-mobile.md)。Hero 通过 slide block 维护桌面图、手机图、三语文案、CTA、链接、焦点与浅/深文字，最多 8 张；分类固定三个，分别选择 Shopify Collection，数量与轮播无关。小猫装饰通道位于导航图标上方，复用原九帧素材；轮播切换、分类 hover/键盘焦点推动毛球，线只在球后展开。分类链接立即跳转，不等待动画。关闭动画或系统减少动态时保留静态猫。
+
+首页隐藏原全局公告条，页眉保留原菜单/搜索/购物车行为。品牌介绍可独立关闭，运营三语文字存于 Section setting；既有精选商品与内容区域保留 Shopify 数据源。桌面提供响应式布局，本轮不声明桌面视觉定稿。

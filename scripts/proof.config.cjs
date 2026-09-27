@@ -4,8 +4,8 @@ module.exports = {
   baseUrl: 'http://127.0.0.1:9292',
 
   locales: [
-    { key: 'ja', prefix: '', lang: 'ja' },
-    { key: 'zh', prefix: '/zh', lang: 'zh' },
+    { key: 'ja', prefix: '/ja', lang: 'ja' },
+    { key: 'zh', prefix: '', lang: 'zh' },
     { key: 'en', prefix: '/en', lang: 'en' },
   ],
 

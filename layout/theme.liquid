@@ -23,12 +23,12 @@
 
     {%- liquid
       assign yarn_page_title = page_title
-      assign yarn_shop_name = 'MewoolMew'
+      assign yarn_shop_name = 'hitoami'
       if template.name == 'product' and yarn_product_page_title != blank
         assign yarn_page_title = yarn_product_page_title | strip
       endif
       if page_title == 'My Store'
-        assign yarn_page_title = 'MewoolMew'
+        assign yarn_page_title = 'hitoami'
       endif
       comment
         Shopify 只返回英文的 404 标题;标题栏跟随整页语言,使用主题 locale。
@@ -318,6 +318,7 @@
     {{ 'yarn-design-tokens.css' | asset_url | stylesheet_tag }}
     {{ 'yarn-prototype.css' | asset_url | stylesheet_tag }}
     {{ 'yarn-header.css' | asset_url | stylesheet_tag }}
+    {% if template.name == 'index' %}{{ 'hitoami-home.css' | asset_url | stylesheet_tag }}{% endif %}
     {{ 'yarn-foundation.css' | asset_url | stylesheet_tag }}
     {{ 'yarn-discovery.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'yarn-favorites.js' | asset_url }}" defer="defer"></script>
