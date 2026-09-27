@@ -22,6 +22,12 @@ module.exports = {
     { key: 'finished-pdp', path: '/products/demo-flower-bouquet-blanket-finished' },
     { key: 'cart-drawer', path: '/products/demo-nukumori-yarn-50g', openCart: true },
     { key: 'search', path: '/search?q=demo' },
+    { key: 'commercial-disclosure', path: '/pages/commercial-disclosure' },
+    { key: 'returns-exchanges', path: '/pages/returns-exchanges' },
+    { key: 'shipping', path: '/pages/shipping' },
+    { key: 'faq', path: '/pages/faq' },
+    { key: 'about', path: '/pages/about' },
+    { key: 'contact', path: '/pages/contact' },
   ],
 
   // Shopify 内容层：商品、集合、作品、菜单等在后台维护的文字。混语言只报告，不判失败（归 #60 / #68）。
