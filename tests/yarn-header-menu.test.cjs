@@ -49,3 +49,17 @@ test('MewoolMew keeps the approved illustration and lettering with an accessible
   assert.match(header, /assign yarn_brand_name = 'MewoolMew'/);
   assert.match(header, /"name": \{\{ yarn_brand_name \| json \}\}/);
 });
+
+test('drawer lists every shop language inline for one-tap switching (#107)', () => {
+  const switcher = drawer.slice(drawer.indexOf('yarn-drawer-language'));
+  assert.match(switcher, /for language in localization\.available_languages/);
+  assert.match(switcher, /href="\{\{ language_url \}\}"/);
+  assert.match(switcher, /hreflang="\{\{ language\.iso_code \}\}"/);
+  assert.match(switcher, /language\.iso_code == localization\.language\.iso_code[\s\S]*aria-current="true"/);
+  assert.doesNotMatch(switcher, /render 'language-localization'|disclosure__/);
+  const optionCss = headerCss.match(/\.yarn-drawer-language__option \{([\s\S]*?)\}/)[1];
+  assert.match(optionCss, /min-height: var\(--yarn-touch\)/);
+  assert.match(optionCss, /padding: var\(--yarn-space-2\) var\(--yarn-space-3\)/);
+  assert.match(optionCss, /text-decoration: none/);
+  assert.match(headerCss, /\.yarn-drawer-language__option\[aria-current='true'\]/);
+});
