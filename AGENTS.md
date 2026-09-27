@@ -25,6 +25,7 @@
 ## 事实来源
 
 - GitHub Issue：目标、范围、验收和状态；PR：实现、审查和验证证据。Slack 是讨论入口，决定需归档到 Issue / PR。
+- 团队进度页是展示与需求入口，不是任务记录；值得做的需求由锦晨或 agent 转成 GitHub Issue。
 - `PRODUCT.md`：产品边界；`CONTEXT.md`：领域词汇与关系；`docs/ARCHITECTURE.md` / ADR：架构边界与难逆转决策。
 - `DESIGN.md`：真实实现且复核后的全局视觉系统；surface brief：单页面获批方向与构图。不得把意向稿提前写成成品规范。
 - 视觉权威：当前用户明确批准的方向 / surface brief > `DESIGN.md` > 当前实现 > 历史 QA、参考站和原型。
