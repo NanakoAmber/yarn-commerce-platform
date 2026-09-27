@@ -89,12 +89,46 @@
             </ul>
           </nav>
           {%- if show_language_selector and localization.available_languages.size > 1 -%}
-            <div class="menu-drawer__localization header-localization">
-              <localization-form>
-                {%- form 'localization', id: 'HeaderDrawerLanguageForm', class: 'localization-form' -%}
-                  <div><h2 class="visually-hidden" id="HeaderDrawerLanguageLabel">{{ 'localization.language_label' | t }}</h2>{%- render 'language-localization', localPosition: 'HeaderDrawerLanguage' -%}</div>
-                {%- endform -%}
-              </localization-form>
+            {%- comment -%}All shop languages side by side: one tap opens the same page in that language (#107).{%- endcomment -%}
+            {%- liquid
+              assign current_language_root = localization.language.root_url
+              assign path_without_language = request.path
+              if current_language_root != '/'
+                assign path_without_language = path_without_language | remove_first: current_language_root
+              endif
+              if path_without_language == blank
+                assign path_without_language = '/'
+              endif
+            -%}
+            <div class="menu-drawer__localization yarn-drawer-language">
+              <h2 class="visually-hidden" id="HeaderDrawerLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+              <ul class="yarn-drawer-language__list list-unstyled" role="list" aria-labelledby="HeaderDrawerLanguageLabel">
+                {%- for language in localization.available_languages -%}
+                  {%- liquid
+                    assign language_url = language.root_url
+                    if path_without_language != '/'
+                      if language.root_url == '/'
+                        assign language_url = path_without_language
+                      else
+                        assign language_url = language.root_url | append: path_without_language
+                      endif
+                    endif
+                  -%}
+                  <li>
+                    <a
+                      class="yarn-drawer-language__option"
+                      href="{{ language_url }}"
+                      hreflang="{{ language.iso_code }}"
+                      lang="{{ language.iso_code }}"
+                      {% if language.iso_code == localization.language.iso_code %}
+                        aria-current="true"
+                      {% endif %}
+                    >
+                      {{- language.endonym_name | capitalize -}}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
             </div>
           {%- endif -%}
         </div>

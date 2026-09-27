@@ -157,6 +157,46 @@
   border-top: 1px solid var(--yarn-border-subtle);
 }
 
+/* Drawer language options sit side by side; the current one uses the nav selected state (Issue 107). */
+.header-wrapper .yarn-drawer-language__list {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: var(--yarn-space-2);
+  margin: 0;
+  padding: 0;
+}
+
+.header-wrapper .yarn-drawer-language__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--yarn-touch);
+  padding: var(--yarn-space-2) var(--yarn-space-3);
+  border: 1px solid var(--yarn-border-subtle);
+  border-radius: var(--yarn-radius-pill);
+  color: var(--yarn-text-primary);
+  font-family: var(--yarn-display);
+  font-size: var(--yarn-type-control);
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .header-wrapper .yarn-drawer-language__option:hover {
+    background: var(--yarn-action-subtle-hover);
+    color: var(--yarn-action);
+  }
+}
+
+.header-wrapper .yarn-drawer-language__option[aria-current='true'] {
+  border-color: var(--yarn-action);
+  background: var(--yarn-action-subtle-bg);
+  color: var(--yarn-action);
+}
+
 @media screen and (max-width: 1339px) {
   /* Override Rise's four-column account layout as one coherent mobile row. */
   #YarnHeader {
