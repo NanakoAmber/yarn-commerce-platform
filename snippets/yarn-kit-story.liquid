@@ -38,14 +38,15 @@
         </section>
       {%- when 4 -%}
         <div class="yp-kitstory yp-kitstory--facts">
-          <section class="yp-kitstory__fact"><h2>{{ heading }}</h2>{{ body }}</section>
+          <section class="yp-kitstory__fact">{% if show_fact_icons %}<span class="yp-kitstory__fact-icon" aria-hidden="true">{{ 'icon-ruler.svg' | inline_asset_content }}</span>{% endif %}<h2>{{ heading }}</h2>{{ body }}</section>
       {%- when 5 -%}
-          <section class="yp-kitstory__fact"><h2>{{ heading }}</h2>{{ body }}</section>
+          <section class="yp-kitstory__fact">{% if show_fact_icons %}<span class="yp-kitstory__fact-icon" aria-hidden="true">{{ 'icon-account.svg' | inline_asset_content }}</span>{% endif %}<h2>{{ heading }}</h2>{{ body }}</section>
         </div>
       {%- when 6 -%}
         <section class="yp-kitstory yp-kitstory--faq">
           <h2>{{ heading }}</h2>
           {%- assign qa_parts = body | split: '<h3>' -%}
+          <div class="yp-kitstory__questions">
           {%- for qa in qa_parts offset: 1 -%}
             {%- assign q = qa | split: '</h3>' | first | strip -%}
             {%- assign a = qa | remove_first: q | remove_first: '</h3>' -%}
@@ -54,6 +55,7 @@
               <div class="yp-kitstory__answer">{{ a }}</div>
             </details>
           {%- endfor -%}
+          </div>
         </section>
     {%- endcase -%}
   {%- endfor -%}
