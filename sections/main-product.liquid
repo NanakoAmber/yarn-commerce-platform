@@ -733,7 +733,7 @@
       {%- if product.tags contains '編みものキット' -%}
         <div class="yarn-kit-story-full">
           {% render 'yarn-kit-story', product: product, part: 'about', fallback: 'raw' %}
-          {% render 'yarn-kit-story', product: product, part: 'body', fallback: 'none' %}
+          {% render 'yarn-kit-story', product: product, part: 'body', fallback: 'none', show_fact_icons: true %}
           {% render 'yarn-kit-crosslinks', product: product, kind: 'finished' %}
           {% render 'yarn-kit-story', product: product, part: 'faq', fallback: 'none' %}
         </div>
