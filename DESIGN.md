@@ -334,6 +334,7 @@ components:
 
 - **字体（方案 G，2026-09-23 用户选定并发布）**：日文与英文标题、导航、按钮用 Klee One；正文日文 Noto Sans JP、英文 Figtree（日文回退 Noto Sans JP）。中文页标题用霞鹜文楷、正文用霞鹜文楷屏幕版。`--yarn-display` / `--yarn-body` 按 `:lang()` 切换，并覆盖 Rise 的 `--font-heading-family` / `--font-body-family`。字体暂由 Google Fonts 与 jsDelivr 按语言加载，正式托管方式待定；手机日文 Hero 断行待调整。
 - 商品家族采用显式 px 尺寸，避免旧根字号放大构图：卡片标题 16px、规格 14px、价格 21px、角标 12px；目录标题桌面 40px / 手机 28px，商品标题 36px / 26px，阅读正文 16px。Hero 按容器流式，日英手机扩展画布保留按钮净空。前言 `commerce-*` 为该家族已实现的局部字号，不用于覆盖其他页面。
+- 说明页（#86）的阅读标题桌面 36px、手机 28–36px；字段和值桌面 16px、手机 15px。它们是该页面已实现的局部字号，不扩成全站令牌；构图与内容来源见 [说明页 brief](docs/design/approved/86-policy-support.md)。
 - 新增文案必须检查三语断行与字体回退;菜单、集合描述等运营文案的原文与译文只维护在 Shopify(Navigation / Translate & Adapt),不在 Liquid 写死。
 - 三语文案只有两条路:section / block 里的运营文案用 `key`(日文)/ `key_zh` / `key_en` 三个设置,统一经 `snippets/yarn-setting-text.liquid` 取当前语言(译文为空时回退日文,`npm run proof` 会报缺译);通用控件文案进 Theme locales,用 `| t`。不在 Liquid 里按语言写死文案,`tests/yarn-locale-copy.test.cjs` 检查。
 
