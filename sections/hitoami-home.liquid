@@ -110,7 +110,7 @@
             endcase
             assign label = 'hitoami_home.' | append: key
           %}
-          <li><a class="hitoami-category hitoami-category--{{ key }}" href="{{ destination }}" data-category="{{ forloop.index0 }}"><span class="hitoami-category-art"><img src="{{ icon | asset_url }}" width="360" height="360" alt="" loading="eager"></span><span>{{ label | t }}</span></a></li>
+          <li><a class="hitoami-category hitoami-category--{{ key }}" href="{{ destination }}" data-category="{{ forloop.index0 }}" data-scene="{{ key }}"><span class="hitoami-category-art"><img src="{{ icon | asset_url }}" width="360" height="360" alt="" loading="eager"></span><span>{{ label | t }}</span></a></li>
         {% endfor %}
       </ul>
     </div>
@@ -205,7 +205,8 @@
         {
           "type": "select",
           "id": "scene",
-          "label": "未上传时使用的氛围图",
+          "label": "所属分类与默认氛围图",
+          "info": "决定导航选中项和小猫停靠位置；上传活动图片后仍保留此分类。多个活动可以属于同一分类。",
           "default": "kit",
           "options": [
             {

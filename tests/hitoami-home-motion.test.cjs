@@ -24,7 +24,7 @@ test('cat, ball and thread remain in their horizontal lane at narrow and wide wi
       for (let i = 0; i < 400; i++) {
         cat.step(16);
         assert.ok(Number.isFinite(cat.rotation));
-        assert.ok(cat.x >= 8 && cat.x + 72 <= width);
+        assert.ok(cat.x >= 0 && cat.x + 72 <= width);
         assert.ok(cat.ball >= 18 && cat.ball + 10 <= width);
         assert.ok(cat.frame >= 0 && cat.frame < 9);
       }
@@ -56,4 +56,34 @@ test('nearby and rapid retargeting never make the cat walk against its facing di
       if (cat.x !== before) assert.equal(Math.sign(cat.x - before), cat.direction);
     }
   }
+});
+
+test('each category has the same resting centre from either direction, including wraparound', () => {
+  for (const width of [284, 354, 1014]) {
+    const cat = new CatMotion(width);
+    const centres = [width / 6, width / 2, width * 5 / 6];
+    cat.goTo(centres[0], true);
+    for (const index of [1, 2, 0, 2, 1, 0]) {
+      const start = cat.x;
+      cat.goTo(centres[index]);
+      assert.equal(cat.direction, Math.sign(centres[index] - 36 - start));
+      for (let i = 0; i < 250; i++) cat.step(16);
+      assert.equal(cat.state, 'sleep');
+      assert.ok(Math.abs(cat.x + 36 - centres[index]) < .01);
+    }
+  }
+});
+
+test('nonanimated selection and resize settle on the selected category, not the starting point', () => {
+  const cat = new CatMotion(1014);
+  cat.goTo(845, true);
+  assert.equal(cat.x + 36, 845);
+  cat.goTo(169);
+  cat.step(40);
+  cat.width = 354;
+  cat.goTo(59, true);
+  assert.equal(cat.x + 36, 59);
+  assert.equal(cat.state, 'sleep');
+  assert.equal(cat.frame, 0);
+  assert.equal(cat.ball, cat.ballPosition());
 });

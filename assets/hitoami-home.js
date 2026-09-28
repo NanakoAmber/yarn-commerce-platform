@@ -8,16 +8,21 @@
     reset(width) {
       Object.assign(this, { width, x: 8, ball: 88, rotation: 0, direction: 1, frame: 0, state: 'sleep', elapsed: 0, stride: 0, target: 8 });
     }
-    goTo(point) {
-      // If the new point is already beside the cat, settle in place instead of walking backwards.
-      let target = this.x;
-      if (point > this.x + 80) target = point - 80;
-      else if (point < this.x - 12) target = point + 12;
-      this.target = clamp(target, 8, this.width - 96);
+    goTo(point, immediate = false) {
+      // The cat's centre always lands over the category, regardless of arrival direction.
+      this.target = clamp(point - 36, 0, this.width - 72);
       if (Math.abs(this.target - this.x) > .6) this.direction = Math.sign(this.target - this.x);
+      this.speed = Math.max(150, Math.abs(this.target - this.x) / .9);
+      if (immediate) {
+        this.x = this.target; this.ball = this.ballPosition();
+        this.state = 'sleep'; this.frame = 0; this.elapsed = 0;
+        return;
+      }
+      if (Math.abs(this.target - this.x) <= .6) return;
       if (this.state === 'sleep') { this.state = 'wake'; this.elapsed = 0; }
       else if (this.state !== 'wake') this.state = 'walk';
     }
+    ballPosition() { return clamp(this.x + (this.direction === 1 ? 80 : -12), 18, this.width - 12); }
     step(delta) {
       const dt = clamp(delta, 0, 40);
       this.elapsed += dt;
@@ -31,14 +36,14 @@
         } else {
           this.stride += dt / 550;
           const cadence = .86 + .14 * Math.sin(this.stride * Math.PI * 2);
-          this.x += Math.sign(distance) * Math.min(Math.abs(distance), Math.min(150, Math.max(35, Math.abs(distance) * 2.5)) * cadence * dt / 1000);
+          this.x += Math.sign(distance) * Math.min(Math.abs(distance), Math.min(this.speed, Math.max(45, Math.abs(distance) * 5)) * cadence * dt / 1000);
           this.frame = [3, 4, 5, 6, 7][Math.floor(this.stride % 1 * 5)];
         }
       } else if (this.state === 'settle' && this.elapsed > 650) {
         this.state = 'sleep'; this.frame = 0;
       }
       const before = this.ball;
-      const targetBall = clamp(this.x + (this.direction === 1 ? 80 : -12), 18, this.width - 12);
+      const targetBall = this.ballPosition();
       this.ball += (targetBall - this.ball) * (1 - Math.exp(-dt / 70));
       this.rotation += (this.ball - before) / (Math.PI * 20) * 360;
       return this.state !== 'sleep' || Math.abs(targetBall - this.ball) > .1;
@@ -95,13 +100,16 @@
       });
       for (const event of ['pointercancel', 'blur']) this.on(window, event, () => { this.drag = null; });
       this.categories.forEach(link => {
-        const move = () => this.moveCat(link.getBoundingClientRect().left - this.lane.getBoundingClientRect().left + link.offsetWidth / 2);
+        const move = () => {
+          const index = this.slides.findIndex(slide => slide.dataset.scene === link.dataset.scene);
+          if (index >= 0 && this.slides[this.index]?.dataset.scene !== link.dataset.scene) this.show(index);
+        };
         this.on(link, 'pointerenter', event => { if (event.pointerType !== 'touch') move(); });
         this.on(link, 'focus', move);
         // Links retain native activation; buying never waits for the decorative cat.
       });
       this.on(this.reduce, 'change', () => {
-        this.stop(); this.motion.reset(this.lane.clientWidth); this.paint();
+        this.syncCategory(false);
       });
       this.on(document, 'visibilitychange', () => {
         if (document.hidden) this.stop(); else if (this.visible) this.start();
@@ -112,7 +120,7 @@
       });
       this.observer.observe(this.lane);
       this.resize = new ResizeObserver(() => {
-        this.stop(); this.motion.reset(this.lane.clientWidth); this.paint();
+        this.motion.width = this.lane.clientWidth; this.syncCategory(false);
       });
       this.resize.observe(this.lane);
       this.on(document, 'shopify:block:select', event => {
@@ -145,14 +153,22 @@
       this.querySelector('[data-slide-status]').textContent = this.slides[next].querySelector('.hitoami-heading').textContent;
       if (animate && !this.reduce.matches) {
         this.slides[next].animate([{ opacity: .45 }, { opacity: 1 }], { duration: 340, easing: 'ease-out' });
-        // Independent of slide/category counts: a short forward step, then gently rewind at the edge.
-        const nextPoint = this.motion.ball + this.lane.clientWidth * .28;
-        this.moveCat(nextPoint > this.lane.clientWidth - 20 ? 88 : nextPoint);
       }
+      this.syncCategory(animate);
     }
-    moveCat(point) {
-      if (this.dataset.motion !== 'true' || this.reduce.matches) return;
-      this.motion.goTo(point); this.start();
+    syncCategory(animate) {
+      const scene = this.slides[this.index]?.dataset.scene;
+      const active = this.categories.find(link => link.dataset.scene === scene);
+      this.categories.forEach(link => {
+        if (link === active) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+      if (!active) return;
+      const bounds = active.getBoundingClientRect();
+      const point = bounds.left + bounds.width / 2 - this.lane.getBoundingClientRect().left;
+      const immediate = !animate || this.dataset.motion !== 'true' || this.reduce.matches;
+      this.stop(); this.motion.goTo(point, immediate); this.paint();
+      if (!immediate) this.start();
     }
     stop() { cancelAnimationFrame(this.raf); this.raf = null; this.lastTime = null; }
     start() {
