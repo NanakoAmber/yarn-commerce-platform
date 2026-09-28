@@ -8,6 +8,8 @@ const path = require('node:path');
 
 // 暂不被引用但有意保留的文件，写明原因。
 const KEEP = {
+  'sections/yarn-hero.liquid': '保留旧 hero section，兼容商家已保存的模板配置；默认首页改用 hitoami-home（#110）',
+  'assets/mewoolmew-logo-reference.png': '历史 Logo 原始稿，docs/brand/logo-reference.md 仍引用；新页眉使用用户提供的 hitoami 字标（#110）',
   'sections/yarn-project-library.liquid': '作品库，用户 2026-09-23 决定保留（#65）',
   'sections/yarn-project-discovery.liquid': '作品发现，用户 2026-09-23 决定保留（#65）',
   'sections/yarn-starter-project.liquid': '新手作品，用户 2026-09-23 决定保留（#65）',

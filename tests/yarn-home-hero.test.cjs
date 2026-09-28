@@ -24,13 +24,12 @@ test('hero shows three clickable intent nodes using real raster assets (Issue #5
   assert.match(heroCss, /\.yarn-hero--connected \.yarn-hero__thread/);
 });
 
-test('hero copy carries the yarn-first promise in all three languages', () => {
-  const settings = index.sections['yarn-hero'].settings;
-  assert.equal(settings.heading_zh, '挑一团好线');
-  assert.match(settings.text_zh, /从一团线/);
-  assert.match(settings.heading, /毛糸/);
-  assert.match(settings.heading_en, /yarn/i);
-  assert.equal(settings.flow_yarn_zh, '挑毛线');
-  assert.equal(settings.flow_project_zh, '看编织包');
-  assert.equal(settings.flow_tools_zh, '带成品回家');
+test('homepage activates the editable cottage section and preserves catalogue sections', () => {
+  const home = index.sections['yarn-hero'];
+  assert.equal(home.type, 'hitoami-home');
+  assert.deepEqual(home.block_order.map(id => home.blocks[id].settings.scene), ['yarn', 'kit', 'finished']);
+  for (const id of home.block_order) {
+    for (const key of ['heading', 'heading_zh', 'heading_en', 'cta', 'cta_zh', 'cta_en']) assert.ok(home.blocks[id].settings[key]);
+  }
+  for (const key of ['picks-yarn', 'picks-kits', 'picks-finished', 'content-pick']) assert.ok(index.order.includes(key));
 });

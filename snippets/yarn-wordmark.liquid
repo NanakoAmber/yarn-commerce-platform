@@ -1,13 +1,4 @@
-{%- comment -%}The approved cat illustration and custom lettering are kept together as one source asset.{%- endcomment -%}
+{%- comment -%}用户提供的 hitoami Logo 套件 02 原图，等比缩放，不重画字形。{%- endcomment -%}
 <span class="yarn-wordmark">
-  <img
-    class="yarn-wordmark__image"
-    src="{{ 'mewoolmew-logo-reference.png' | asset_img_url: '600x' }}"
-    srcset="{{ 'mewoolmew-logo-reference.png' | asset_img_url: '600x' }} 600w, {{ 'mewoolmew-logo-reference.png' | asset_img_url: '900x' }} 900w"
-    sizes="(max-width: 599px) 184px, 252px"
-    width="1881"
-    height="836"
-    alt="MewoolMew"
-    fetchpriority="high"
-  >
+  <img class="yarn-wordmark__image" src="{{ 'hitoami-wordmark.webp' | asset_url }}" width="640" height="246" alt="hitoami" fetchpriority="high">
 </span>
