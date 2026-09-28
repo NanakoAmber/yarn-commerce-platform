@@ -27,7 +27,7 @@ test('hero shows three clickable intent nodes using real raster assets (Issue #5
 test('homepage activates the editable cottage section and preserves catalogue sections', () => {
   const home = index.sections['yarn-hero'];
   assert.equal(home.type, 'hitoami-home');
-  assert.equal(home.block_order.length, 2);
+  assert.deepEqual(home.block_order.map(id => home.blocks[id].settings.scene), ['yarn', 'kit', 'finished']);
   for (const id of home.block_order) {
     for (const key of ['heading', 'heading_zh', 'heading_en', 'cta', 'cta_zh', 'cta_en']) assert.ok(home.blocks[id].settings[key]);
   }

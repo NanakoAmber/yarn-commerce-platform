@@ -28,9 +28,9 @@
             "scene": "kit",
             "focus": 50,
             "tone": "dark",
-            "heading": "ここで、\n毎日を少しゆっくりと。",
-            "heading_zh": "来这里，\n把日子过慢一点。",
-            "heading_en": "Come in.\nTake life a stitch slower.",
+            "heading": "キットを開いて、\n最初のひと目から。",
+            "heading_zh": "打开编织包，\n从第一针慢慢开始。",
+            "heading_en": "Open a kit.\nBegin with one stitch.",
             "text": "材料と編み図を、ゆっくり選ぼう。",
             "text_zh": "材料与图解，一起慢慢挑。",
             "text_en": "Find your yarn, your pattern, your pace.",
@@ -45,9 +45,9 @@
             "scene": "yarn",
             "focus": 50,
             "tone": "dark",
-            "heading": "好きな色から、\n今日のひと目を。",
-            "heading_zh": "挑一团喜欢的线，\n织进今天的心情。",
-            "heading_en": "A colour you love.\nA little time to make.",
+            "heading": "ここで、\n毎日を少しゆっくりと。",
+            "heading_zh": "来这里，\n把日子过慢一点。",
+            "heading_en": "Come in.\nTake life a stitch slower.",
             "text": "色と手ざわりから、お気に入りを探そう。",
             "text_zh": "从颜色与手感开始，找到自己的节奏。",
             "text_en": "Explore colour and texture at your own pace.",
@@ -55,11 +55,29 @@
             "cta_zh": "挑选毛线",
             "cta_en": "Explore the yarn"
           }
+        },
+        "finished": {
+          "type": "slide",
+          "settings": {
+            "scene": "finished",
+            "focus": 50,
+            "tone": "dark",
+            "heading": "手づくりのぬくもりを、\n毎日の暮らしへ。",
+            "heading_zh": "把手作的温柔，\n带进日常。",
+            "heading_en": "Handmade warmth.\nA place in your everyday.",
+            "text": "お気に入りのひと品を、あなたのもとへ。",
+            "text_zh": "挑一件喜欢的手作，陪伴每一天。",
+            "text_en": "Find a handmade piece to make your days a little warmer.",
+            "cta": "完成品を見る",
+            "cta_zh": "挑选成品",
+            "cta_en": "Explore finished pieces"
+          }
         }
       },
       "block_order": [
+        "yarn",
         "welcome",
-        "yarn"
+        "finished"
       ]
     },
     "picks-yarn": {

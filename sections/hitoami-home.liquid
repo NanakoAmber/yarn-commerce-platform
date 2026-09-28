@@ -10,11 +10,14 @@
             assign desktop_image = block.settings.image
             assign mobile_image = block.settings.mobile_image | default: desktop_image
             assign desktop_image = desktop_image | default: mobile_image
-            assign desktop_asset = 'hitoami-room-wide.webp'
+            assign desktop_asset = 'hitoami-kit-wide.webp'
             assign mobile_asset = 'hitoami-room-mobile.webp'
             if block.settings.scene == 'yarn'
-              assign desktop_asset = 'hitoami-yarn-mobile.webp'
+              assign desktop_asset = 'hitoami-yarn-wide.webp'
               assign mobile_asset = 'hitoami-yarn-mobile.webp'
+            elsif block.settings.scene == 'finished'
+              assign desktop_asset = 'hitoami-finished-wide.webp'
+              assign mobile_asset = 'hitoami-finished-mobile.webp'
             endif
             capture heading
               render 'yarn-setting-text', settings: block.settings, key: 'heading'
@@ -30,10 +33,12 @@
               assign target = collections['knit-kits'].url | default: routes.all_products_collection_url
               if block.settings.scene == 'yarn'
                 assign target = collections['yarn'].url | default: routes.all_products_collection_url
+              elsif block.settings.scene == 'finished'
+                assign target = collections['finished-goods'].url | default: routes.all_products_collection_url
               endif
             endif
           %}
-          <article id="HitoamiSlide-{{ block.id }}" class="hitoami-slide hitoami-slide--{{ block.settings.tone }}" data-slide data-block-id="{{ block.id }}" aria-roledescription="{{ 'hitoami_home.slide' | t }}" aria-label="{{ forloop.index }} / {{ section.blocks.size }}" {% unless forloop.first %}hidden inert{% endunless %} {{ block.shopify_attributes }}>
+          <article id="HitoamiSlide-{{ block.id }}" class="hitoami-slide hitoami-slide--{{ block.settings.tone }}{% if desktop_image == blank %} hitoami-slide--default-scene{% endif %}" data-scene="{{ block.settings.scene }}" data-slide data-block-id="{{ block.id }}" aria-roledescription="{{ 'hitoami_home.slide' | t }}" aria-label="{{ forloop.index }} / {{ section.blocks.size }}" {% unless forloop.first %}hidden inert{% endunless %} {{ block.shopify_attributes }}>
             <picture class="hitoami-scene" style="--scene-focus: {{ block.settings.focus }}%;">
               {% if mobile_image != blank %}
                 <source media="(max-width: 749px)" srcset="{{ mobile_image | image_url: width: 600 }} 600w, {{ mobile_image | image_url: width: 900 }} 900w" sizes="100vw">
@@ -41,9 +46,9 @@
                 <source media="(max-width: 749px)" srcset="{{ mobile_asset | asset_url }}">
               {% endif %}
               {% if desktop_image != blank %}
-                <img src="{{ desktop_image | image_url: width: 1600 }}" srcset="{{ desktop_image | image_url: width: 900 }} 900w, {{ desktop_image | image_url: width: 1600 }} 1600w, {{ desktop_image | image_url: width: 2200 }} 2200w" sizes="100vw" width="{{ desktop_image.width }}" height="{{ desktop_image.height }}" alt="" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+                <img src="{{ desktop_image | image_url: width: 2560 }}" srcset="{{ desktop_image | image_url: width: 900 }} 900w, {{ desktop_image | image_url: width: 1600 }} 1600w, {{ desktop_image | image_url: width: 2560 }} 2560w, {{ desktop_image | image_url: width: 3840 }} 3840w" sizes="100vw" width="{{ desktop_image.width }}" height="{{ desktop_image.height }}" alt="" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
               {% else %}
-                <img src="{{ desktop_asset | asset_url }}" width="1600" height="1000" alt="" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+                <img src="{{ desktop_asset | asset_url }}" width="1672" height="941" alt="" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
               {% endif %}
             </picture>
             <div class="hitoami-copy">
@@ -210,13 +215,18 @@
             {
               "value": "yarn",
               "label": "毛线柜"
+            },
+            {
+              "value": "finished",
+              "label": "成品角"
             }
           ]
         },
         {
           "type": "image_picker",
           "id": "image",
-          "label": "桌面背景图"
+          "label": "桌面背景图",
+          "info": "建议至少 2560px 宽的横图，左侧为标题留白；高密度大屏建议 3840px。"
         },
         {
           "type": "image_picker",
@@ -308,7 +318,7 @@
           "type": "url",
           "id": "link",
           "label": "按钮链接",
-          "info": "留空时按氛围图进入材料包或毛线集合；可链接任意活动、商品或内容页。"
+          "info": "留空时进入对应的毛线、材料包或成品集合；可链接任意活动、商品或内容页。"
         }
       ]
     }
@@ -318,7 +328,55 @@
       "name": "hitoami · 手作小屋",
       "blocks": [
         {
-          "type": "slide"
+          "type": "slide",
+          "settings": {
+            "scene": "yarn",
+            "focus": 50,
+            "tone": "dark",
+            "heading": "ここで、\n毎日を少しゆっくりと。",
+            "heading_zh": "来这里，\n把日子过慢一点。",
+            "heading_en": "Come in.\nTake life a stitch slower.",
+            "text": "色と手ざわりから、お気に入りを探そう。",
+            "text_zh": "从颜色与手感开始，找到自己的节奏。",
+            "text_en": "Explore colour and texture at your own pace.",
+            "cta": "毛糸を選ぶ",
+            "cta_zh": "挑选毛线",
+            "cta_en": "Explore the yarn"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "scene": "kit",
+            "focus": 50,
+            "tone": "dark",
+            "heading": "キットを開いて、\n最初のひと目から。",
+            "heading_zh": "打开编织包，\n从第一针慢慢开始。",
+            "heading_en": "Open a kit.\nBegin with one stitch.",
+            "text": "材料と編み図を、ゆっくり選ぼう。",
+            "text_zh": "材料与图解，一起慢慢挑。",
+            "text_en": "Find your yarn, your pattern, your pace.",
+            "cta": "編みキットを見る",
+            "cta_zh": "看看编织包",
+            "cta_en": "Explore the kits"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "scene": "finished",
+            "focus": 50,
+            "tone": "dark",
+            "heading": "手づくりのぬくもりを、\n毎日の暮らしへ。",
+            "heading_zh": "把手作的温柔，\n带进日常。",
+            "heading_en": "Handmade warmth.\nA place in your everyday.",
+            "text": "お気に入りのひと品を、あなたのもとへ。",
+            "text_zh": "挑一件喜欢的手作，陪伴每一天。",
+            "text_en": "Find a handmade piece to make your days a little warmer.",
+            "cta": "完成品を見る",
+            "cta_zh": "挑选成品",
+            "cta_en": "Explore finished pieces"
+          }
         }
       ]
     }

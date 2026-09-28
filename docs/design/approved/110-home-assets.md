@@ -1,5 +1,44 @@
 # hitoami 首页素材来源
 
+## 三张轮播与桌面修正
+
+用户评审要求默认顺序毛线 → 编织材料包 → 成品。通过内置 ImageGen 新绘制三个横幅与成品竖图，沿用本轮小屋参考。工具实际输出横图为 1672×941（提示词请求更大尺寸但未得到），保留原生尺寸、WebP quality 92；CSS 限制内置横图不超过原生尺寸，不做插值放大冒充高清。成品竖图输出 1024×1536，压到 900px；既有毛线/Kit 竖图继续用于手机。
+
+旧 `hitoami-room-wide.webp` 被 `hitoami-kit-wide.webp` 替换；旧来源记录保留为迭代出处。
+
+### hitoami-yarn-wide.webp
+
+来源：`exec-5978c13b-7765-4a3c-a411-1916e49e9380.png`。
+
+```text
+Create a NEW high-resolution 3072x1728 landscape photographic website hero for hitoami, referencing the attached cottage's architectural style and exact subdued palette. This is a production raster background, not a screenshot. Prioritize crisp yarn fibers, fine stitches and natural wood grain in the featured products, no soft focus on products, neutral diffuse daylight. Layout: leftmost 55% is a nearly empty smooth cream plaster wall with very subtle soft daylight; no foliage, vases, patterned objects, hard shadows, shelves or windows in this text safe zone from x10%-52%, y12%-70%. At rightmost 45% and bottom a pale oak craft table holds a generous arrangement of cream, mist blue, oatmeal, pale sage skeins and cakes, one small knit sample and a crochet hook. One tall light wooden yarn shelving unit near extreme right. Keep top14% quiet cream for navigation. Viewer feels inside a calm airy handcrafted cottage. Delicate plants only extreme right or lower corners, not left copy zone. Match reference neutral cream muted colors, no orange, no golden color cast, no sepia. NO text, typography, logos, UI, buttons, frames, watermarks, cats or animals. Full scene to image edges. Output at native 3072x1728 or highest available landscape resolution; do not use a portrait crop.
+```
+
+### hitoami-kit-wide.webp
+
+来源：`exec-9a24e35b-a479-49da-be8a-b2d7f9df20bb.png`。
+
+```text
+Create a NEW high-resolution 3072x1728 landscape photographic background for hitoami's craft cottage website. Attached image is style and room reference; preserve its cream/oat/mistblue/sage neutral subdued daylight and pale oak furniture. Improve composition for a desktop headline: keep left55% mostly completely bare softly lit ivory wall, with calm space from x10%-52% y12%-70%; no plants, window mullions, hard shadows or patterned items behind future text. Open kraft CROCHET MATERIALS KIT on pale oak table in right45%/lowerhalf: balls of cream, pale blue and sage yarn, crochet hook, printed sheet with tiny crochet symbols and a delicate flower diagram only, never readable words. Lid open. Crisp real yarn fibers, kraft paper texture, fine stitches and wood grain. A cream crocheted swatch and small ceramic cup near right corner, quiet shelves at extreme right. Top14% quiet cream for nav. Immersive natural room depth, photoreal editorial, no artificial blur on featured kit. NO cats/animals, text, logo, letters, labels, UI, buttons, frames or watermark. Native 3072x1728 or highest landscape resolution, not a stretched portrait.
+```
+
+### hitoami-finished-wide.webp
+
+来源：`exec-5d8f78e1-7e5d-41d1-a49d-4f3df566274c.png`。
+
+```text
+Create high-resolution 3072x1728 LANDSCAPE photoreal website background for the FINISHED HANDMADE GOODS scene of hitoami cottage. Attached image is room/palette reference only. Same cream plaster walls, pale oak wood, neutral diffuse daylight, muted ivory/oatmeal/mistblue/sage. Left55% is bare light cream wall with exceptionally calm empty copy space x10%-52%, y12%-70%; no leafy plants, shelves, window mullions or hard shadows there. Top14% also quiet for header. Main scene lower-right45%: inviting pale oak armchair with a beautifully finished ivory knitted cardigan draped naturally over backrest and a cream/muted sage crochet tote bag on its seat, a neatly folded small blue-gray knit throw on an adjacent low stool. Finished stitch textures sharp and richly detailed, believable knit structures. Sparse tiny flowers and plant only at extreme right. A cozy quiet corner of same room, furnishings realistic and balanced. No yarn skeins or kit boxes as featured objects. NO cats/animals, words, logos, UI, buttons, watermarks or frames. High native resolution crisp product photography, no blurry product texture, no warm orange cast. Native 3072x1728 or highest available landscape resolution.
+```
+
+### hitoami-finished-mobile.webp
+
+来源：`exec-518f85b8-a387-4145-bf14-2db2dc4702dc.png`。
+
+```text
+Create 1024x1536 PORTRAIT clean photographic background for the mobile FINISHED HANDMADE GOODS scene of hitoami cottage. Style/palette match attached cottage photo: pale oak, bright ivory plaster, neutral soft daylight, cream/oatmeal/mistblue/softsage; muted low saturation, no yellow-orange cast. TOP45% almost empty plain light cream plaster wall with subtle pale curtain at very far left, no foliage or shelves behind future headline. LOWER55% cozy pale oak armchair with beautifully finished ivory knit cardigan draped over its backrest, cream-and-muted-sage crocheted tote on seat, small blue-gray folded knit throw on low stool at right. Crisp intricate stitches and tactile fibers, beautiful realistic finished handmade objects. Sparse plant extreme right only, pale room floor below, immersive cottage depth. These are mood objects without brand labels or product claims. No cats/animals, no kit box, no hero yarn balls. Absolutely NO text, logo, UI, buttons, icons, navigation, frame or watermark. Full photo to edges; photoreal, featured products sharp.
+```
+
+
 本轮素材用于品牌氛围与分类导航，不代表真实可售商品或套件组成。用户提供的 `hitoami-logo-kit-v1.zip` 内 02 平面字标，经等比缩小与 WebP 编码用于 `hitoami-wordmark.webp`；保留原字形、颜色和透明留白。原生成包归用户提供材料，未重画。
 
 `hitoami-cat-atlas.webp` 和 `hitoami-yarn-ball.svg` 复用本会话已批准的 cat-nav 动画包，来源 `cat-nav/app/public/assets/cat-atlas.png`、`ball.svg`；精灵为 3×3 九帧。仅转码。
