@@ -62,27 +62,31 @@ body:has(main[data-template='index'] hitoami-home) .header__heading-link { justi
 body:has(main[data-template='index'] hitoami-home) .header__heading-link > .yarn-wordmark { width: 130px; }
 body:has(main[data-template='index'] hitoami-home) .header-wrapper { color: var(--yarn-home-action); }
 @media (min-width: 750px) {
+  body:has(main[data-template='index'] hitoami-home) { --hitoami-content-edge: max(32px, calc((100% - var(--yarn-commerce-max)) / 2)); }
   .hitoami-slides { min-height: 620px; height: clamp(620px, 78svh, 880px); }
-  /* Built-in raster stays at or below native size even on ultrawide screens. */
-  .hitoami-slide--default-scene .hitoami-scene { left: auto; right: 0; width: min(100%, 1672px); mask-image: linear-gradient(90deg, transparent, var(--yarn-text-primary) 20%); }
-  .hitoami-slide::after { background: linear-gradient(90deg, var(--yarn-scrollbar-track), color-mix(in srgb, var(--yarn-scrollbar-track) 94%, transparent) 28%, color-mix(in srgb, var(--yarn-scrollbar-track) 65%, transparent) 43%, transparent 65%); }
-  .hitoami-slide--light::after { background: linear-gradient(90deg, var(--yarn-text-primary), color-mix(in srgb, var(--yarn-text-primary) 94%, transparent) 28%, color-mix(in srgb, var(--yarn-text-primary) 65%, transparent) 43%, transparent 65%); }
-  .hitoami-copy { padding: 130px 0 0; margin-left: clamp(40px, 6vw, 144px); max-width: min(44vw, 640px); }
+  /* Decorative daylight can bleed out; the product composition stays beside the content column. */
+  .hitoami-slide--default-scene::before { content: ''; position: absolute; inset: 0; margin-inline: auto; width: min(100%, 1672px); background: url('hitoami-window-light.webp') left center / cover no-repeat; mask-image: linear-gradient(90deg, transparent, var(--yarn-text-primary) 6%, var(--yarn-text-primary) 92%, transparent); }
+  .hitoami-slide--default-scene .hitoami-scene { left: 50%; right: auto; transform: translateX(-50%); width: min(100%, 1440px); mask-image: linear-gradient(90deg, transparent 10%, var(--yarn-text-primary) 45%, var(--yarn-text-primary) 96%, transparent); }
+  .hitoami-slide::after { left: var(--hitoami-content-edge); right: auto; width: min(56%, 680px); background: linear-gradient(90deg, color-mix(in srgb, var(--yarn-scrollbar-track) 94%, transparent), color-mix(in srgb, var(--yarn-scrollbar-track) 65%, transparent) 70%, transparent); }
+  .hitoami-slide--default-scene::after { background: linear-gradient(90deg, color-mix(in srgb, var(--yarn-scrollbar-track) 45%, transparent), color-mix(in srgb, var(--yarn-scrollbar-track) 18%, transparent) 70%, transparent); }
+  .hitoami-slide--light::after { background: linear-gradient(90deg, color-mix(in srgb, var(--yarn-text-primary) 88%, transparent), color-mix(in srgb, var(--yarn-text-primary) 65%, transparent) 70%, transparent); }
+  .hitoami-copy { padding: 130px 0 0; margin-left: var(--hitoami-content-edge); max-width: min(44vw, 560px); }
   .hitoami-heading { font-size: clamp(3.6rem, 4vw, 5.4rem); }
   .hitoami-subtitle { font-size: 1.8rem; }
-  .hitoami-guide-inner { padding-bottom: 36px; }
+  .hitoami-guide-inner { max-width: calc(var(--yarn-commerce-max) + 64px); padding: 0 32px 36px; }
   .hitoami-cat-lane { height: 88px; }
   .hitoami-category-art { width: 100px; }
   .hitoami-category { font-size: 2rem; gap: 10px; }
-  .hitoami-arrow--previous { left: 30px; }
-  .hitoami-arrow--next { right: 30px; }
-  .hitoami-pagination { bottom: 45px; right: 40px; }
+  .hitoami-arrow--previous { left: var(--hitoami-content-edge); }
+  .hitoami-arrow--next { right: var(--hitoami-content-edge); }
+  .hitoami-pagination { bottom: 45px; right: var(--hitoami-content-edge); }
   .hitoami-story { padding: 76px 32px; }
   .hitoami-story h2 { font-size: 3.2rem; }
 }
 @media (min-width: 1340px) {
   body:has(main[data-template='index'] hitoami-home) .section-header { margin-bottom: -86px; }
-  body:has(main[data-template='index'] hitoami-home) #YarnHeader { grid-template-areas: 'heading navigation icons'; grid-template-columns: 220px 1fr auto; max-width: none; padding-inline: clamp(40px, 6vw, 144px); background: linear-gradient(var(--yarn-scrollbar-track), color-mix(in srgb, var(--yarn-scrollbar-track) 80%, transparent), transparent); }
+  body:has(main[data-template='index'] hitoami-home) #YarnHeader { grid-template-areas: 'heading navigation icons'; grid-template-columns: 190px 1fr auto; max-width: none; padding-inline: var(--hitoami-content-edge); background: linear-gradient(color-mix(in srgb, var(--yarn-scrollbar-track) 85%, transparent), transparent); }
+  body:has(main[data-template='index'] hitoami-home) .header__heading-link { padding-inline: 0; margin-inline: 0; }
   body:has(main[data-template='index'] hitoami-home) .header__heading-link > .yarn-wordmark { width: 172px; }
 }
 @media (prefers-reduced-motion: reduce) {
