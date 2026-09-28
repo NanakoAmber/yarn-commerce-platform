@@ -23,48 +23,15 @@
 /report-source.md
 /会议纪要-*.md
 
-# Impeccable runtime and non-publishable visual working evidence.
-/.github/skills/impeccable/scripts/bin/
-/.impeccable/questions/
-/.impeccable/references/
-/.impeccable/build/alpha-preview/
-/.impeccable/build/crops/
-/.impeccable/build/font-match/
-/.impeccable/build/scaffold/
-/.impeccable/build/texture-work/
-/.impeccable/build/*.png
-/.impeccable/review/*.png
-/.impeccable/review/*.jpg
-/.impeccable/review/20-navigation/*.png
-/.impeccable/review/diff/
-/.impeccable/mocks/*
-!/.impeccable/mocks/platform-navigation-zh.webp
-!/.impeccable/mocks/platform-navigation-zh.webp.json
-!/.impeccable/mocks/discovery-b-zh.png
-!/.impeccable/mocks/discovery-b-zh.png.json
-/.impeccable/build/hero-plates.html
+# Impeccable 只保留 config.json；视觉稿、评审、构建等过程产物只留本地。界面以线上实现为准。
+/.agents/skills/impeccable/scripts/bin/
+/.impeccable/*
+!/.impeccable/config.json
 /.playwright-mcp/
 
-# Issue 32 local screenshots contain protected internal sample media.
-/.impeccable/review/32-home-system/*.png
+# Claude Code local state and process files. Only the shared skills link is tracked.
+/.claude/*
+!/.claude/skills
 
-# Issue 34 private browser review captures and rendered DOM snapshots.
-/.impeccable/review/34-project-modes/*.png
-/.impeccable/review/34-project-modes/*.jpg
-/.impeccable/review/34-project-modes/rendered-source.html
-/.impeccable/review/34-project-modes/prior-build-state/
-
-# User-approved generated review composition for Issue 34.
-!/.impeccable/mocks/34-project-dual-mode.png
-!/.impeccable/mocks/34-project-dual-mode.json
-
-# Harness: new process artifacts stay local. Existing tracked decisions/provenance
-# are migrated deliberately; never force-add new process files.
-/.impeccable/build/
-/.impeccable/review/
-/.impeccable/content/
-/.impeccable/mocks/
-/.impeccable/questions/
-/.impeccable/references/
-/.impeccable/design.json
-# New approved visuals and minimal provenance belong in docs/design/approved/.
+# npm run proof 证据包（本地生成，不提交）
+/.proof/

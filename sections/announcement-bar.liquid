@@ -27,13 +27,9 @@
     {%- endif -%}
     {%- if section.blocks.size == 1 -%}
       {%- liquid
-        assign announcement_text = section.blocks.first.settings.text
-        case request.locale.iso_code
-          when 'zh-CN', 'zh'
-            assign announcement_text = '订单含税满9,900日元免运费 · 日本全国配送'
-          when 'en'
-            assign announcement_text = 'Free shipping on orders over ¥9,900 · Shipping across Japan'
-        endcase
+        capture announcement_text
+          render 'yarn-setting-text', settings: section.blocks.first.settings, key: 'text'
+        endcapture
       -%}
       <div
         class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
@@ -88,13 +84,9 @@
           >
             {%- for block in section.blocks -%}
               {%- liquid
-                assign announcement_text = block.settings.text
-                case request.locale.iso_code
-                  when 'zh-CN', 'zh'
-                    assign announcement_text = '订单含税满9,900日元免运费 · 日本全国配送'
-                  when 'en'
-                    assign announcement_text = 'Free shipping on orders over ¥9,900 · Shipping across Japan'
-                endcase
+                capture announcement_text
+                  render 'yarn-setting-text', settings: block.settings, key: 'text'
+                endcapture
               -%}
               <div
                 class="slideshow__slide slider__slide grid__item grid--1-col"
@@ -257,6 +249,16 @@
           "id": "text",
           "default": "t:sections.announcement-bar.blocks.announcement.settings.text.default",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "text",
+          "id": "text_zh",
+          "label": "中文 · 公告(空则用上方默认)"
+        },
+        {
+          "type": "text",
+          "id": "text_en",
+          "label": "英文 · 公告(空则用上方默认)"
         },
         {
           "type": "url",

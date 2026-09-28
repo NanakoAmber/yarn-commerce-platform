@@ -6,28 +6,24 @@
 {%- liquid
   assign picks_collection = collections[section.settings.collection]
   assign picks_limit = section.settings.products_to_show
-  assign picks_heading = section.settings.heading
-  assign picks_note = section.settings.note
-  assign exit_title = section.settings.exit_title
-  assign exit_text = section.settings.exit_text
-  assign exit_cta = section.settings.exit_cta
-  assign exit_note = section.settings.exit_note
-  case request.locale.iso_code
-    when 'zh-CN', 'zh'
-      assign picks_heading = section.settings.heading_zh | default: picks_heading
-      assign picks_note = section.settings.note_zh | default: picks_note
-      assign exit_title = section.settings.exit_title_zh | default: exit_title
-      assign exit_text = section.settings.exit_text_zh | default: exit_text
-      assign exit_cta = section.settings.exit_cta_zh | default: exit_cta
-      assign exit_note = section.settings.exit_note_zh | default: exit_note
-    when 'en'
-      assign picks_heading = section.settings.heading_en | default: picks_heading
-      assign picks_note = section.settings.note_en | default: picks_note
-      assign exit_title = section.settings.exit_title_en | default: exit_title
-      assign exit_text = section.settings.exit_text_en | default: exit_text
-      assign exit_cta = section.settings.exit_cta_en | default: exit_cta
-      assign exit_note = section.settings.exit_note_en | default: exit_note
-  endcase
+  capture picks_heading
+    render 'yarn-setting-text', settings: section.settings, key: 'heading'
+  endcapture
+  capture picks_note
+    render 'yarn-setting-text', settings: section.settings, key: 'note'
+  endcapture
+  capture exit_title
+    render 'yarn-setting-text', settings: section.settings, key: 'exit_title'
+  endcapture
+  capture exit_text
+    render 'yarn-setting-text', settings: section.settings, key: 'exit_text'
+  endcapture
+  capture exit_cta
+    render 'yarn-setting-text', settings: section.settings, key: 'exit_cta'
+  endcapture
+  capture exit_note
+    render 'yarn-setting-text', settings: section.settings, key: 'exit_note'
+  endcapture
 -%}
 <section class="yx-picks yarn-shell-block{% if section.settings.columns_desktop == 2 %} yx-picks--duo{% endif %} color-{{ section.settings.color_scheme }}" style="--yx-cols: {{ section.settings.columns_desktop }};" aria-labelledby="Picks-{{ section.id }}">
   <div class="yx-picks__inner page-width">

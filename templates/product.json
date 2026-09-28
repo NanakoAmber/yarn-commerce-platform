@@ -144,7 +144,9 @@
         "collapsible-row-2"
       ],
       "settings": {
-        "caption": "SHOPPING GUIDE",
+        "caption": "ご購入前に",
+        "caption_zh": "下单前",
+        "caption_en": "Before you order",
         "heading": "お買い物ガイド",
         "heading_size": "h2",
         "heading_alignment": "center",

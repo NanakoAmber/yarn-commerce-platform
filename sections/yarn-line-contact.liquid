@@ -1,50 +1,39 @@
 {% liquid
-  assign line_heading = section.settings.heading
-  assign line_text = section.settings.text
-  assign line_primary = section.settings.primary_label
-  assign line_secondary = section.settings.secondary_label
   assign line_has_primary = false
   if section.settings.primary_link != blank
     assign line_has_primary = true
   endif
-  case request.locale.iso_code
-    when 'zh-CN', 'zh'
-      assign line_heading = section.settings.heading_zh
-      assign line_text = section.settings.text_zh
-      assign line_primary = section.settings.primary_zh
-      assign line_secondary = section.settings.secondary_zh
-    when 'en'
-      assign line_heading = section.settings.heading_en
-      assign line_text = section.settings.text_en
-      assign line_primary = section.settings.primary_en
-      assign line_secondary = section.settings.secondary_en
-  endcase
+  capture line_heading
+    render 'yarn-setting-text', settings: section.settings, key: 'heading'
+  endcapture
+  capture line_text
+    render 'yarn-setting-text', settings: section.settings, key: 'text'
+  endcapture
+  capture line_primary
+    render 'yarn-setting-text', settings: section.settings, key: 'primary_label', zh: 'primary_zh', en: 'primary_en'
+  endcapture
+  capture line_secondary
+    render 'yarn-setting-text', settings: section.settings, key: 'secondary_label', zh: 'secondary_zh', en: 'secondary_en'
+  endcapture
 
   unless line_has_primary
-    assign line_heading = section.settings.fallback_heading
-    assign line_text = section.settings.fallback_text
-    case request.locale.iso_code
-      when 'zh-CN', 'zh'
-        assign line_heading = section.settings.heading_zh_fallback
-        assign line_text = section.settings.text_zh_fallback
-        assign line_secondary = section.settings.secondary_zh_fallback
-      when 'en'
-        assign line_heading = section.settings.heading_en_fallback
-        assign line_text = section.settings.text_en_fallback
-        assign line_secondary = section.settings.secondary_en_fallback
-    endcase
+    capture line_heading
+      render 'yarn-setting-text', settings: section.settings, key: 'fallback_heading', zh: 'heading_zh_fallback', en: 'heading_en_fallback'
+    endcapture
+    capture line_text
+      render 'yarn-setting-text', settings: section.settings, key: 'fallback_text', zh: 'text_zh_fallback', en: 'text_en_fallback'
+    endcapture
+    capture line_secondary
+      render 'yarn-setting-text', settings: section.settings, key: 'secondary_label', zh: 'secondary_zh_fallback', en: 'secondary_en_fallback'
+    endcapture
   endunless
   if section.settings.compact_layout
-    assign line_heading = section.settings.compact_heading
-    assign line_secondary = section.settings.compact_action
-    case request.locale.iso_code
-      when 'zh', 'zh-CN'
-        assign line_heading = section.settings.compact_heading_zh
-        assign line_secondary = section.settings.compact_action_zh
-      when 'en'
-        assign line_heading = section.settings.compact_heading_en
-        assign line_secondary = section.settings.compact_action_en
-    endcase
+    capture line_heading
+      render 'yarn-setting-text', settings: section.settings, key: 'compact_heading'
+    endcapture
+    capture line_secondary
+      render 'yarn-setting-text', settings: section.settings, key: 'compact_action'
+    endcapture
   endif
 %}
 
@@ -77,8 +66,8 @@
 {% stylesheet %}
   .yarn-line.yarn-line {
     padding: clamp(64px, 7vw, 100px) 0;
-    background: #f5f7f3;
-    color: #2b2d2b;
+    background: var(--yarn-bg-page);
+    color: var(--yarn-text-primary);
   }
 
   .yarn-line__inner {
@@ -89,10 +78,10 @@
     align-items: center;
     overflow: hidden;
     padding: clamp(42px, 6vw, 82px);
-    border: 1px solid rgba(135, 174, 181, 0.22);
+    border: 1px solid var(--yarn-cta-border);
     border-radius: 28px;
-    background: #edf5f7;
-    box-shadow: 0 20px 54px rgba(88, 119, 125, 0.07);
+    background: var(--yarn-action-subtle-bg);
+    box-shadow: none;
   }
 
   .yarn-line__flourish {
@@ -111,7 +100,7 @@
   .yarn-line__copy h2 {
     margin: 0;
     max-width: 15em;
-    color: #292b29;
+    color: var(--yarn-text-primary);
     font-size: clamp(3rem, 3.3vw, 4.8rem);
     font-weight: 500;
     line-height: 1.2;
@@ -121,7 +110,7 @@
   .yarn-line__copy .rte {
     max-width: 54rem;
     margin-top: 14px;
-    color: #5f6260;
+    color: var(--yarn-text-secondary);
     font-size: 1.5rem;
     line-height: 1.8;
   }
@@ -139,21 +128,21 @@
   }
 
   .yarn-line .yarn-line__primary {
-    border-radius: 999px;
-    border-color: #cee6d5;
-    background: #cee6d5;
-    color: #294333;
+    border-radius: var(--yarn-radius-pill);
+    border-color: var(--yarn-accent);
+    background: var(--yarn-accent);
+    color: var(--yarn-text-on-action);
   }
 
   .yarn-line .yarn-line__fallback {
-    border-radius: 999px;
-    border-color: #f7e3a5;
-    background: #f7e3a5;
-    color: #292a28;
+    border-radius: var(--yarn-radius-pill);
+    border-color: var(--yarn-cta-bg);
+    background: var(--yarn-cta-bg);
+    color: var(--yarn-text-on-cta);
   }
 
   .yarn-line__secondary {
-    color: #343b3c;
+    color: var(--yarn-text-secondary);
     font-size: 1.3rem;
     text-align: center;
     text-decoration-thickness: 1px;
@@ -188,11 +177,11 @@
     }
   }
   .section:has(.yarn-line--compact) { margin-top: 0; }
-  .yarn-line.yarn-line--compact { padding: var(--yarn-space-6) 0 var(--yarn-space-7); background: var(--yarn-surface); color: var(--yarn-ink); }
+  .yarn-line.yarn-line--compact { padding: var(--yarn-space-6) 0 var(--yarn-space-7); background: var(--yarn-bg-surface); color: var(--yarn-text-primary); }
   .yarn-line--compact > .page-width { width: min(var(--yarn-content-max), calc(100% - 2 * var(--yarn-gutter))); max-width: none; padding: 0; }
-  .yarn-line--compact .yarn-line__inner { grid-template-columns: 58px minmax(0, 1fr) auto; padding: 24px 30px; gap: 22px; min-height: 110px; border: 1px solid var(--yarn-primary-line); border-radius: var(--yarn-radius-panel); background: var(--yarn-action-soft); box-shadow: none; }
+  .yarn-line--compact .yarn-line__inner { grid-template-columns: 58px minmax(0, 1fr) auto; padding: 24px 30px; gap: 22px; min-height: 110px; border: 1px solid var(--yarn-cta-border); border-radius: var(--yarn-radius-panel); background: var(--yarn-action-subtle-bg); box-shadow: none; }
   .yarn-line__help-icon { display: block; width: 58px; height: 58px; object-fit: contain; mix-blend-mode: multiply; }
-  .yarn-line--compact .yarn-line__copy h2 { font-family: var(--yarn-display); color: var(--yarn-ink); font-size: 2rem; line-height: 1.4; }
+  .yarn-line--compact .yarn-line__copy h2 { font-family: var(--yarn-display); color: var(--yarn-text-primary); font-size: 2rem; line-height: 1.4; }
   .yarn-line--compact .yarn-line__actions { min-width: 0; }
   .yarn-line--compact .yarn-line__fallback { padding: 8px 0; min-height: 44px; gap: 14px; background: transparent; border: 0; border-radius: 0; color: var(--yarn-action); font-size: var(--yarn-type-control); box-shadow: none; }
   .yarn-line--compact .yarn-line__fallback::before, .yarn-line--compact .yarn-line__fallback::after { display: none; }

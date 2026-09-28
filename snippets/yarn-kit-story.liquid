@@ -1,5 +1,4 @@
 {% comment %}
-  按获批移动端构图稿(.impeccable/mocks/52-project-detail-comps/comp-mobile.png)
   把编织包商品描述渲染为顺读分区。描述结构约定为六个 <h2> 分节:
   1 关于 · 2 内容物 · 3 开始步骤 · 4 尺寸 · 5 适合谁 · 6 FAQ(内含 h3+p 问答)。
   分节不足六个时回退为「编织包里有什么」折叠,保证旧数据可用。
@@ -29,8 +28,8 @@
       {%- when 2 -%}
         <section class="yp-kitstory yp-kitstory--contents">
           <h2>{{ heading }}</h2>
-          {%- if product.images[1] != blank -%}<div class="yp-kitstory__hero">{{ product.images[1] | image_url: width: 900 | image_tag: widths: '390, 600, 900', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: heading }}</div>{%- endif -%}
           <div class="yp-kitstory__list">{{ body }}</div>
+          {%- if product.images[1] != blank -%}<div class="yp-kitstory__hero">{{ product.images[1] | image_url: width: 900 | image_tag: widths: '390, 600, 900', sizes: '(min-width: 990px) 480px, 100vw', loading: 'lazy', alt: heading }}</div>{%- endif -%}
         </section>
       {%- when 3 -%}
         <section class="yp-kitstory yp-kitstory--steps">
@@ -39,14 +38,15 @@
         </section>
       {%- when 4 -%}
         <div class="yp-kitstory yp-kitstory--facts">
-          <section class="yp-kitstory__fact"><h2>{{ heading }}</h2>{{ body }}</section>
+          <section class="yp-kitstory__fact">{% if show_fact_icons %}<span class="yp-kitstory__fact-icon" aria-hidden="true">{{ 'icon-ruler.svg' | inline_asset_content }}</span>{% endif %}<h2>{{ heading }}</h2>{{ body }}</section>
       {%- when 5 -%}
-          <section class="yp-kitstory__fact"><h2>{{ heading }}</h2>{{ body }}</section>
+          <section class="yp-kitstory__fact">{% if show_fact_icons %}<span class="yp-kitstory__fact-icon" aria-hidden="true">{{ 'icon-account.svg' | inline_asset_content }}</span>{% endif %}<h2>{{ heading }}</h2>{{ body }}</section>
         </div>
       {%- when 6 -%}
         <section class="yp-kitstory yp-kitstory--faq">
           <h2>{{ heading }}</h2>
           {%- assign qa_parts = body | split: '<h3>' -%}
+          <div class="yp-kitstory__questions">
           {%- for qa in qa_parts offset: 1 -%}
             {%- assign q = qa | split: '</h3>' | first | strip -%}
             {%- assign a = qa | remove_first: q | remove_first: '</h3>' -%}
@@ -55,6 +55,7 @@
               <div class="yp-kitstory__answer">{{ a }}</div>
             </details>
           {%- endfor -%}
+          </div>
         </section>
     {%- endcase -%}
   {%- endfor -%}

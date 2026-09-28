@@ -1,11 +1,11 @@
 /* Shared interaction primitives. Page-specific composition stays in its surface CSS. */
 :is(.header-wrapper, .yarn-footer, .yarn-line--compact, .yp-library--rows, .yarn-hero--connected) {
-  color: var(--yarn-ink);
+  color: var(--yarn-text-primary);
   text-underline-offset: 5px;
 }
 :is(.header-wrapper, .yarn-footer, .yarn-line--compact, .yp-library--rows, .yarn-hero--connected) ::selection {
-  background: var(--yarn-butter);
-  color: var(--yarn-ink);
+  background: var(--yarn-tint-butter);
+  color: var(--yarn-text-primary);
 }
 :is(.header-wrapper, .yarn-footer, .yarn-line--compact, .yp-library--rows, .yarn-hero--connected) :is(a, button, input, select, textarea, summary):focus-visible {
   outline: var(--yarn-focus-width) solid var(--yarn-focus);
@@ -16,10 +16,10 @@
   caret-color: var(--yarn-action);
 }
 :is(.header-wrapper, .yarn-footer) :is(.field, .localization-form__select) {
-  border: 1px solid var(--yarn-control-line);
+  border: 1px solid var(--yarn-border-control);
   border-radius: var(--yarn-radius-field);
-  background: var(--yarn-surface);
-  color: var(--yarn-ink);
+  background: var(--yarn-bg-surface);
+  color: var(--yarn-text-primary);
 }
 :is(.header-wrapper, .yarn-footer) .field::before,
 :is(.header-wrapper, .yarn-footer) .field::after,
@@ -30,27 +30,27 @@
   min-height: var(--yarn-field-height);
   border-radius: var(--yarn-radius-field);
   background: transparent;
-  color: var(--yarn-ink);
+  color: var(--yarn-text-primary);
   font-size: 16px;
   box-shadow: none;
 }
-:is(.header-wrapper, .yarn-footer) .field__label { color: var(--yarn-muted); }
+:is(.header-wrapper, .yarn-footer) .field__label { color: var(--yarn-text-muted); }
 :is(.header-wrapper, .yarn-footer) .field__button {
   min-width: var(--yarn-touch);
   min-height: var(--yarn-touch);
   color: var(--yarn-action);
   border-radius: var(--yarn-radius-pill);
 }
-:is(.header-wrapper, .yarn-footer) .field__button:hover { background: var(--yarn-action-hover); }
+:is(.header-wrapper, .yarn-footer) .field__button:hover { background: var(--yarn-action-subtle-hover); }
 :is(.header-wrapper, .yarn-footer) .localization-form__select {
   min-height: var(--yarn-touch);
   padding-left: var(--yarn-space-4);
   font-size: var(--yarn-type-meta);
 }
 :is(.header-wrapper, .yarn-footer) .disclosure__list-wrapper {
-  background: var(--yarn-surface);
-  border: 1px solid var(--yarn-line);
+  background: var(--yarn-bg-surface);
+  border: 1px solid var(--yarn-border-subtle);
   border-radius: var(--yarn-radius-panel);
 }
-:is(.header-wrapper, .yarn-footer) .disclosure__link { min-height: var(--yarn-touch); color: var(--yarn-ink); }
-:is(.header-wrapper, .yarn-footer) .disclosure__link:hover { background: var(--yarn-action-soft); color: var(--yarn-action); }
+:is(.header-wrapper, .yarn-footer) .disclosure__link { min-height: var(--yarn-touch); color: var(--yarn-text-primary); }
+:is(.header-wrapper, .yarn-footer) .disclosure__link:hover { background: var(--yarn-action-subtle-bg); color: var(--yarn-action); }

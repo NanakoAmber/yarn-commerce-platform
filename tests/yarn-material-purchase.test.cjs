@@ -132,16 +132,18 @@ test('double submit and invalid quantities do not send a second request', async 
 });
 
 test('components use exact Variant truth, preserve project identity, and never gate project visibility', () => {
-  const source = [
-    'snippets/yarn-project-components.liquid',
-    'snippets/yarn-project-component.liquid',
-  ].map((path) => fs.readFileSync(path, 'utf8')).join('\n');
+  // 作品详情的材料区：yarn-project-mode-materials 列出组件，yarn-project-purchase 负责加购。
+  const materials = fs.readFileSync('snippets/yarn-project-mode-materials.liquid', 'utf8');
+  const purchase = fs.readFileSync('snippets/yarn-project-purchase.liquid', 'utf8');
+  const source = `${materials}\n${purchase}`;
   for (const expression of ['component.variant.value', 'variant.available', 'variant.price', 'variant.id', 'variant.url', 'variant.quantity_rule.min', 'variant.quantity_rule.increment', 'variant.quantity_rule.max']) {
     assert.ok(source.includes(expression), expression);
   }
-  assert.match(source, /component\.supply\.value == '本店提供' and variant != blank and variant\.product != blank/);
-  assert.match(source, /name="properties\[_Project handle\]"/);
-  assert.doesNotMatch(source, /selected_or_first_available_variant|name="items\[/);
+  assert.match(materials, /component\.supply\.value == '本店提供' and variant != blank and variant\.product != blank/);
+  // 组件加购必须传入组件指定的 Variant，不能退回商品的默认 Variant。
+  assert.match(materials, /render 'yarn-project-purchase', product: variant\.product, default_variant: variant/);
+  assert.match(purchase, /name="properties\[_Project handle\]"/);
+  assert.doesNotMatch(source, /name="items\[/);
   assert.doesNotMatch(fs.readFileSync('snippets/yarn-project-visible.liquid', 'utf8'), /components|materials|inventory|available/);
   const cart = fs.readFileSync('snippets/yarn-cart-project.liquid', 'utf8');
   assert.match(cart, /shop\.metaobjects\.yarn_project\[project_handle\]/);
@@ -149,14 +151,10 @@ test('components use exact Variant truth, preserve project identity, and never g
 });
 
 test('component presentation makes typed yarn primary without guessing legacy item types', () => {
-  const list = fs.readFileSync('snippets/yarn-project-components.liquid', 'utf8');
-  const item = fs.readFileSync('snippets/yarn-project-component.liquid', 'utf8');
+  const materials = fs.readFileSync('snippets/yarn-project-mode-materials.liquid', 'utf8');
   const detail = fs.readFileSync('sections/yarn-project-detail.liquid', 'utf8');
-  assert.match(list, /component\.component_type\.value == '毛线'/);
-  assert.match(list, /yp-components--yarn[\s\S]*mode: 'yarn'/);
-  assert.match(list, /yp-components--supporting[\s\S]*unless component\.component_type\.value == '毛线'/);
-  assert.match(item, /assign item_image = component\.image\.value[\s\S]*variant\.featured_image \| default: variant\.product\.featured_image/);
-  assert.match(item, /yp-component--\{\{ mode \}\}/);
-  assert.doesNotMatch(list, /component\.title[^\n]*(contains|downcase)/);
+  assert.match(materials, /component\.component_type\.value == '毛线' %\} yp-supply--yarn/);
+  assert.match(materials, /assign item_image = component\.image\.value \| default: variant\.featured_image \| default: variant\.product\.featured_image/);
+  assert.doesNotMatch(materials, /component\.title[^\n]*(contains|downcase)/);
   assert.match(detail, /render 'yarn-project-mode-materials'/);
 });

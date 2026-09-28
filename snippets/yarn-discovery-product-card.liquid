@@ -1,5 +1,7 @@
 {%- capture product_kind -%}{%- render 'yarn-discovery-product-kind', product: product -%}{%- endcapture -%}
+{%- capture product_kind_label -%}{%- render 'yarn-product-kind-label', kind_product: product -%}{%- endcapture -%}
 {%- liquid
+  assign product_kind_label = product_kind_label | strip
   assign product_summary = product.metafields.yarn.short_description.value
   if product_summary == blank
     assign product_summary = product.description | strip_html | strip | truncate: 90
@@ -7,7 +9,7 @@
   assign product_search_text = product.description | strip_html | append: ' ' | append: product.metafields.yarn.discovery_uses.value
 -%}
 <article class="yp-card yp-product-card" data-discovery-card data-entity-type="product" data-entity-id="{{ product.id }}"
-  data-title="{{ product.title | escape }}" data-summary="{{ product_search_text | escape }}"
+  data-title="{{ product.title | escape }}" data-summary="{{ product_search_text | escape }}" data-tags="{{ product.tags | join: ' ' | escape }}"
   data-category="{{ product.metafields.yarn.discovery_categories.value | join: ',' | escape }}" data-purchase="{{ product_kind }}">
   <a class="yp-card__link" href="{{ product.url }}">
     <div class="yp-card__image{% if product.featured_image == blank %} yp-card__image--placeholder{% endif %}">
@@ -17,7 +19,7 @@
     </div>
     <div class="yp-card__body">
       <h3 class="yp-card__title">{{ product.title | escape }}</h3>
-      {% if search_card and product.type != blank %}<p class="yp-card__kind">{{ product.type | escape }}</p>{% elsif search_card and product_kind == 'finished' %}<p class="yp-card__kind">{{ 'yarn_discovery.kind_finished' | t }}</p>{% endif %}
+      {% if search_card and product_kind_label != blank %}<p class="yp-card__kind">{{ product_kind_label }}</p>{% elsif search_card and product_kind == 'finished' %}<p class="yp-card__kind">{{ 'yarn_discovery.kind_finished' | t }}</p>{% endif %}
       <p class="yp-card__summary">{{ product_summary | escape }}</p>
       <p class="yp-card__price">
         {% if product.price_varies %}<span class="yp-card__price-from">{{ 'yarn_discovery.price_from' | t }}</span> {% endif %}

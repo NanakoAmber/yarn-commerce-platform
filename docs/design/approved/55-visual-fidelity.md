@@ -1,6 +1,6 @@
 # Issue #55 商品家族构图
 
-范围与批准记录：[Issue #55](https://github.com/NanakoAmber/yarn-commerce-platform/issues/55#issuecomment-5745597797)。用户在本轮确认按指定手机/桌面原型修正 PR #56 的视觉还原；沿用既有品牌与 Shopify 数据边界，不使用仅适用于 #23 的原型例外。
+范围与批准记录：[Issue #55](https://github.com/mewool-yarn/yarn-commerce-platform/issues/55#issuecomment-5745597797)。用户在本轮确认按指定手机/桌面原型修正 PR #56 的视觉还原；沿用既有品牌与 Shopify 数据边界，不使用仅适用于 #23 的原型例外。
 
 | Surface | 目的 | 构图 |
 | --- | --- | --- |
@@ -9,7 +9,7 @@
 | 毛线、Kit、成品 PDP | Operate | 主图/缩略图 + 购买区；图库下独立真实描述，Kit 叙事顺读 |
 | Project 内容 | Read | 800px 单列封面、摘要、阅读、来源与已关联商品出口 |
 
-原型来源：本地既有 `.impeccable/mocks/55-site-mobile-v2/` 与 `55-site-desktop/` 的 home、browse、components、kit-pdp、finished-pdp、project-content。生成图的文件像素宽度不等于 390px，不将其虚构商品文案、规格、照片或配对写入 Shopify。实际字号和响应式事实以 `DESIGN.md` 为准。
+原型图未入库，现以线上实现为准。生成图的文件像素宽度不等于 390px，不将其虚构商品文案、规格、照片或配对写入 Shopify。实际字号和响应式事实以 `DESIGN.md` 为准。
 
 真实商品照片使用 contain 保完整；未录入的规格提示查看详情，未证实的配对不渲染为同款。保留 Shopify 页脚、动态购买与实际供货筛选，后台没有材质/粗细筛选时不画假控件。
 

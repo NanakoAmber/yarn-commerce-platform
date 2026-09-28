@@ -13,6 +13,16 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "support_pages": {
+          "type": "link_list",
+          "settings": {
+            "heading": "",
+            "menu": "support"
+          }
+        }
+      },
+      "block_order": ["support_pages"],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,

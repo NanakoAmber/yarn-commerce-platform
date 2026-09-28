@@ -4,10 +4,18 @@ Issue #23，2026-09-06。以下两图由内置 imagegen 生成并逐张打开原
 
 | 文件 | 内容 | 原始输出 |
 | --- | --- | --- |
-| `assets/yarn-project-demo-basket.png` | 方形篮插画 | exec-c7990e22-c253-4265-ad97-906926fb322f.png |
-| `assets/yarn-project-demo-pouch.png` | 花片双拼小袋｜内部示例插画 | exec-6abe68db-896e-471d-b454-f13c5d6f80ef.png |
+| Shopify Files `yarn-project-demo-basket.png` | 方形篮插画 | exec-c7990e22-c253-4265-ad97-906926fb322f.png |
+| Shopify Files `yarn-project-demo-pouch.png` | 花片双拼小袋｜内部示例插画 | exec-6abe68db-896e-471d-b454-f13c5d6f80ef.png |
 
-两图不使用参考图片；后台封面可以由队友替换。原始输出保留，未覆盖既有资产。
+两图不使用参考图片；后台封面可以由队友替换。店面从 Shopify Files 读取，主题 assets 中的副本已于 #72 删除。
+
+## Issue #34 演示素材
+
+作品页演示图 `project-blue-basket-cover`、`project-blue-basket-tutorial`、`project-blue-chenille`、`project-yellow-hook`（png / webp）由内置 image_gen 生成，店面从 Shopify Files 读取。生成提示词、参考图与原始输出路径见 `docs/project-demo-assets/*.json`（#72 从主题 assets 迁出）。
+
+### 撤回 Issue #34 演示数据
+
+演示数据均带 `issue34-demo` / `issue-34-demo` 前缀，`release_scope` 为 `仅内部原型`。撤回时删除 Project `279602889017`、`279603413305`、`279603708217`、`279603937593`，三个 `yarn_project_component` 条目，以及三件演示商品（`10332848193849` 交叉针收纳篮成品、`10332848554297` 云绒雪尼尔毛线、`10332848619833` 木柄钩针 7.0 mm）。`yarn_project` 的 `purchase_modes`、`tutorial_cover` 字段确认无其他条目依赖后才能删除，删除会丢失字段值，执行前需人工确认。
 
 ## 店铺现有素材
 

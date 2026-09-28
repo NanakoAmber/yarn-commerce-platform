@@ -4,6 +4,11 @@
 
 正式品牌名尚未确定；`yarn-commerce-platform` 是稳定的内部仓库名。
 
+## 快速入口
+
+- [团队进度与需求入口：开店还差什么](https://claude.ai/artifact/VVNTkXnczkkjBj41Rty4cz)：团队成员需获 Claude 页面「参与者」或以上权限才能提需求。
+- [Shopify 店铺](https://tutaka-54.myshopify.com/)：当前主域名，可直接访问；各 PR 的未发布主题预览链接见对应 PR，不作为长期入口。
+
 ## 当前架构
 
 - Shopify Theme + Liquid 负责公开店面、商品发现与购物路径。
@@ -31,6 +36,17 @@ npm run dev -- --store <store>.myshopify.com
 ```bash
 npm run verify
 ```
+
+查询 Shopify 后台数据（Admin API）：先按 `.env.example` 在仓库根目录建 `.env`，Client secret 在 Dev Dashboard → 应用 → 设置，`.env` 不提交。
+
+```bash
+npm run admin -- summary            # 店铺、商品数、Metaobject、语言、菜单
+npm run admin -- coverage ja        # 各类内容的日文翻译覆盖率
+npm run admin -- '{ shop { name } }'
+npm run admin -- -f query.graphql --vars '{"first":5}'
+```
+
+修改数据的 mutation 必须显式加 `--write`，并且应用需要已授予对应写权限；按生产安全规则，运营数据写入需要当次人工批准。
 
 ## 协作
 
