@@ -78,10 +78,10 @@
                     <a
                       id="YarnHeaderDrawer-{{ link.handle }}"
                       href="{{ link.url | escape }}"
-                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}{% if link.type == 'collection_link' and link.object.handle == 'sale' %} yarn-menu-sale{% endif %}"
                       {% if link.current %}aria-current="page"{% endif %}
                     >
-                      {{ link.title | escape }}
+                      <span>{{ link.title | escape }}</span>
                     </a>
                   {%- endif -%}
                 </li>

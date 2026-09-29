@@ -304,3 +304,15 @@
 }
 
 .yarn-project-nav-back svg { width: 24px; height: 24px; transform: rotate(180deg); }
+
+/* SALE: a top-level menu link to the `sale` collection gets a soft pill in both menus (#93). */
+.yarn-main-menu .yarn-menu-sale span,
+.menu-drawer .yarn-menu-sale span {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 14px;
+  border-radius: var(--yarn-radius-pill);
+  background: var(--yarn-tint-blush);
+  color: var(--yarn-text-primary);
+  font-weight: 600;
+}

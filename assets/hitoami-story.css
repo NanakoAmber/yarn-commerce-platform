@@ -1,0 +1,11 @@
+/* Home brand story: centred tagline and a short story (from the live home, #110), an independent section. */
+.hitoami-story { padding: 46px 28px 52px; background: var(--yarn-bg-surface); color: var(--yarn-text-primary); text-align: center; }
+.hitoami-story h2 { max-width: 22ch; margin: 0 auto 22px; color: inherit; font: 600 2.5rem/1.6 var(--yarn-display); }
+.hitoami-story .rte { max-width: 640px; margin: 0 auto; font-size: 1.5rem; line-height: 1.9; }
+.hitoami-story p { margin: 0 0 14px; }
+.hitoami-story a:focus-visible { outline: 2px solid var(--yarn-focus); outline-offset: 4px; }
+
+@media (min-width: 750px) {
+  .hitoami-story { padding: 76px 32px; }
+  .hitoami-story h2 { font-size: 3.2rem; }
+}

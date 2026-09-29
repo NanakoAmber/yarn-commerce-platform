@@ -24,12 +24,13 @@ test('hero shows three clickable intent nodes using real raster assets (Issue #5
   assert.match(heroCss, /\.yarn-hero--connected \.yarn-hero__thread/);
 });
 
-test('homepage activates the editable cottage section and preserves catalogue sections', () => {
-  const home = index.sections['yarn-hero'];
-  assert.equal(home.type, 'hitoami-home');
+test('homepage opens with the editable cottage hero, decoupled from the guide strip (#93)', () => {
+  const home = index.sections.hero;
+  assert.equal(home.type, 'hitoami-hero');
   assert.deepEqual(home.block_order.map(id => home.blocks[id].settings.scene), ['yarn', 'kit', 'finished']);
   for (const id of home.block_order) {
     for (const key of ['heading', 'heading_zh', 'heading_en', 'cta', 'cta_zh', 'cta_en']) assert.ok(home.blocks[id].settings[key]);
   }
-  for (const key of ['picks-yarn', 'picks-kits', 'picks-finished', 'content-pick']) assert.ok(index.order.includes(key));
+  assert.equal(index.order[0], 'hero');
+  assert.equal(index.sections['yarn-hero'].disabled, true);
 });
