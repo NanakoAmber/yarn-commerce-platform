@@ -41,6 +41,7 @@
   "roles": {
     "home-action": { "value": "umber-700", "use": "hitoami 首页低饱和按钮" },
     "home-thread": { "value": "sand-600", "use": "hitoami 小猫展开的装饰毛线" },
+    "home-rope": { "value": "sand-400", "use": "首页导览条挂线的线芯（线纹用 home-thread）；不得用于文字" },
     "bg-page": { "value": "cream-100", "use": "页面底" },
     "bg-surface": { "value": "cream-50", "use": "卡片、导航、横幅、输入框面" },
     "bg-sunken": { "value": "sand-100", "use": "次级区块（暖砂）" },

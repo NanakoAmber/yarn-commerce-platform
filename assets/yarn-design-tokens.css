@@ -37,6 +37,7 @@ html[lang]:root {
 :root {
   --yarn-home-action: #675144; /* umber-700 · hitoami 首页低饱和按钮 */
   --yarn-home-thread: #8c8880; /* sand-600 · hitoami 小猫展开的装饰毛线 */
+  --yarn-home-rope: #b8b1a4; /* sand-400 · 首页导览条挂线的线芯（线纹用 home-thread）；不得用于文字 */
   --yarn-bg-page: #f7f7f5; /* cream-100 · 页面底 */
   --yarn-bg-surface: #fffefa; /* cream-50 · 卡片、导航、横幅、输入框面 */
   --yarn-bg-sunken: #ebe5dc; /* sand-100 · 次级区块（暖砂） */

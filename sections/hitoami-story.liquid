@@ -1,0 +1,64 @@
+{% comment %}
+  首页品牌介绍:居中的品牌标语与一段品牌故事(取自线上首页 #110 / #111,拆成独立 section,位置在编辑器调整)。
+  三语文案经 yarn-setting-text 取:纯键名为日文默认,_zh/_en 为中英设置。
+{% endcomment %}
+{{ 'hitoami-story.css' | asset_url | stylesheet_tag }}
+{%- capture story_heading -%}{%- render 'yarn-setting-text', settings: section.settings, key: 'story_heading' -%}{%- endcapture -%}
+{%- capture story_text -%}{%- render 'yarn-setting-text', settings: section.settings, key: 'story_text' -%}{%- endcapture -%}
+{%- if story_heading != blank or story_text != blank -%}
+<div class="hitoami-story" {% if story_heading != blank %}aria-labelledby="HitoamiStory-{{ section.id }}"{% endif %}>
+  {%- if story_heading != blank -%}<h2 id="HitoamiStory-{{ section.id }}">{{ story_heading | escape | newline_to_br }}</h2>{%- endif -%}
+  {%- if story_text != blank -%}<div class="rte">{{ story_text }}</div>{%- endif -%}
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "品牌介绍",
+  "tag": "section",
+  "class": "section hitoami-story-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "story_heading",
+      "label": "日文 · 品牌标语",
+      "default": "最初のひと目から、\n編みもので、人と暮らしをやさしくつなぐ。"
+    },
+    {
+      "type": "textarea",
+      "id": "story_heading_zh",
+      "label": "中文 · 品牌标语",
+      "default": "从第一针开始，\n用编织，温柔连接人与生活。"
+    },
+    {
+      "type": "textarea",
+      "id": "story_heading_en",
+      "label": "英文 · 品牌标语",
+      "default": "From the first stitch,\nweaving warmth into everyday connections."
+    },
+    {
+      "type": "richtext",
+      "id": "story_text",
+      "label": "日文 · 品牌故事",
+      "default": "<p>hitoami は、「一」と「編む」という想いから生まれました。</p><p>最初のひと目から、糸と色、ひらめきを少しずつ暮らしの中へ。初めて毛糸に触れる人も、手づくりが好きな人も。ひと目ひと目に自分のペースを見つけ、編みものを愛する誰かと出会える場所でありたいと願っています。</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "story_text_zh",
+      "label": "中文 · 品牌故事",
+      "default": "<p>hitoami，取意于「一」与「编织」。</p><p>从第一针开始，把线、色彩与灵感慢慢编进日常。无论初次拿起毛线，还是早已钟情手作，都能在一针一线之间找到自己的节奏，也与同样热爱编织的人相遇。</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "story_text_en",
+      "label": "英文 · 品牌故事",
+      "default": "<p>hitoami brings together the ideas of “one” and “knitting”.</p><p>From the first stitch, bring yarn, colour and imagination into everyday life. Whether you are picking up yarn for the first time or have always loved making, find your own rhythm, one stitch at a time—and connect with others who share that love.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "品牌介绍"
+    }
+  ]
+}
+{% endschema %}

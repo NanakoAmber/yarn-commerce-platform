@@ -36,6 +36,10 @@ _Avoid_: Member Work, Project
 以卷／团为单位单独销售的线材 Product。其顾客通常自带明确制作目标，选购不依赖 Project 引导。
 _Avoid_: Material Requirement, Kit Component
 
+**Tool Product（工具）**:
+单独销售的钩针、棒针、辅料等编织工具 Product。MVP 阶段可售商品类型为毛线、Project Kit、Finished Piece 与工具（2026-09-26 用户决定，#93）；工具沿用现有 Product 模板与 Collection，不另设字段、状态或服务。
+_Avoid_: Kit Component, Material Requirement
+
 **Reference Standard（参照标准）**:
 帮助顾客估算用量或成品尺寸的参照信息，例如一卷线可织多大的围巾；它是内容提示，不构成 Material Requirement，也不构成完成承诺。
 _Avoid_: Material Requirement, Product Recommendation
@@ -125,7 +129,7 @@ _Avoid_: Project, Product
 - **Kit Component** 共享库存模型仅适用于未来日本端自组材料包：届时 Kit 的 **Variant** 由一个或多个 **Kit Components** 构成，可售数量受组件共享库存约束；任一组件缺货则该 Variant 不可购买，材料不得被系统自动替换。
 - **Yarn Product** 在 MVP 阶段不通过 **Material Requirement**／**Product Recommendation** 与 **Project** 建立选购引导关系；其页面通过 **Reference Standard** 提供估算参照。
 - **Tutorial** 在 MVP 阶段免费提供并拥有独立入口；保留未来转为付费商品的可能（2026-09-13 确认）。
-- MVP 阶段不单独销售钩针等编织工具（2026-09-18 确认），工具仅作为 **Project Kit** 内容物存在；Bundles 与配件类 kit 的形态在 MVP 后评估。
+- **Tool Product** 可单独购买，也可作为 **Project Kit** 内容物出现；两者库存互不关联（2026-09-26 用户决定，#93）。Bundles 与配件类 kit 的形态在 MVP 后评估。
 - 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
 - **Customization Inquiry** 可以引用目标 **Project**，但其提交不表示已购买材料或成品，也不构成制作或交付承诺。
 - 一个通用 **Tutorial** 可以被多个 **Project** 复用。
@@ -145,5 +149,5 @@ _Avoid_: Project, Product
 - 查看 **Tutorial** 不等于发起 **Making**；「开始制作」不能仅凭按钮名称被解释为已经建立一次个人制作记录。
 - “用户”不是正式领域术语；涉及身份或权限时必须明确使用 **Visitor**、**Member**、**Buyer**、**Creator** 或 **Seller**。
 - Shopify API 中的 `Customer` 必须写作 **Shopify Customer**；不得用它指代已经购买的人，后者统一称为 **Buyer**。
-- 团队口语中的「编织包」「材料包」「kit」统一映射到 **Project Kit**；「成品」映射到 **Finished Piece**，与 **Member Work**（会员分享的作品）是不同概念。
-- 首页主推位（编织包、毛线、成品谁为主角）是待确认的运营决策，只影响入口摆放，不改变本文件的商品类型与关系（见 Issue #50）。
+- 团队口语中的「编织包」「材料包」「kit」统一映射到 **Project Kit**；「成品」映射到 **Finished Piece**，与 **Member Work**（会员分享的作品）是不同概念；「工具」「道具」映射到 **Tool Product**。
+- 首页主推位（编织包、毛线、成品、工具谁为主角）是待确认的运营决策，只影响入口摆放，不改变本文件的商品类型与关系（见 Issue #50）。
