@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>毛线分类入口</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css">
+<style>
+:root{
+  --page:#f7f7f5;--surface:#fffefa;--sunken:#ebe5dc;--warm:#ece8dc;
+  --text:#2f302f;--heading:#13202d;--secondary:#4a4b48;--muted:#686762;
+  --home-action:#675144;--action:#a6472e;--accent:#b93b20;
+  --cta:#f8e5a9;--cta-border:#efd68d;--subtle:#fff9e9;
+  --border:#e4dfd7;--card:#dedbd5;--control:#686762;
+  --blush:#f4dfdc;--sage:#eceadb;--butter:#f8e5a9;
+  --display:'LXGW WenKai','Noto Sans SC',sans-serif;
+  --body:'LXGW WenKai Screen','Noto Sans SC',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#d9d4cb;font-family:var(--body);color:var(--text);padding:24px;display:flex;flex-wrap:wrap;gap:24px}
+.screen{width:390px;height:844px;overflow:hidden;background:var(--page);position:relative;flex:none}
+.hdr{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.hdr img{height:22px}
+.ico{display:flex;gap:14px}
+.ico svg,.burger svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:1.6}
+.tag{position:absolute;top:70px;right:12px;background:var(--home-action);color:#fffefa;font:600 13px var(--body);padding:4px 10px;border-radius:999px;z-index:5}
+.ctx{font:13px var(--body);color:var(--muted);padding:10px 16px;background:var(--sunken);border-bottom:1px dashed #cfc7b9}
+.ctx b{color:var(--secondary);font-weight:600}
+h2{font-family:var(--display);font-weight:600;color:var(--heading);margin:0}
+.eyebrow{font:14px var(--body);color:var(--action);letter-spacing:.12em;margin-bottom:4px}
+.sec{padding:22px 16px 20px}
+.more{font:14px var(--body);color:var(--action);text-decoration:underline;text-underline-offset:4px}
+.headrow{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px}
+
+/* A: circle grid */
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 12px}
+.cell{display:flex;flex-direction:column;align-items:center;text-align:center}
+.ring{position:relative;width:104px;height:104px;border-radius:50%;padding:5px;border:1.5px dashed #d8cdbd}
+.ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.ring .go{position:absolute;right:-4px;bottom:2px;width:30px;height:30px;border-radius:50%;background:var(--home-action);color:#fffefa;display:grid;place-items:center;font-size:15px}
+.ring.all{background:var(--surface);display:grid;place-items:center}
+.ring.all>span:first-child{font:600 26px var(--display);color:var(--home-action)}
+.cname{font:600 16px var(--display);color:var(--heading);margin-top:8px}
+.cnum{font:13px var(--body);color:var(--muted)}
+.cgrid.small .ring{width:92px;height:92px}
+.cgrid.small{gap:14px 10px}
+
+/* B: project cards */
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bcard{background:var(--surface);border:1px solid var(--card);border-radius:14px;overflow:hidden}
+.bcard img{width:100%;aspect-ratio:1/1.05;object-fit:cover;display:block}
+.bcard .t{padding:9px 12px 11px}
+.bcard .n{font:600 17px var(--display);color:var(--heading)}
+.bcard .s{font:13px var(--body);color:var(--muted);margin-top:2px}
+.bcard.plain{display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--subtle);gap:6px}
+.bcard.plain .n{font-size:18px}
+
+/* chips */
+.chips{display:flex;gap:8px;overflow:hidden;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.chip{flex:none;min-height:38px;padding:0 15px;border-radius:999px;border:1px solid var(--card);background:var(--surface);display:flex;align-items:center;gap:6px;font:15px var(--body);color:var(--secondary)}
+.chip img{width:24px;height:24px;border-radius:50%;object-fit:cover}
+.chip.on{background:var(--cta);border-color:var(--cta-border);color:var(--heading);font-weight:600}
+.tools{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font:14px var(--body);color:var(--secondary)}
+.tools .btn{display:flex;align-items:center;gap:6px;border:1px solid var(--control);border-radius:999px;padding:6px 14px}
+
+/* product cards */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px;padding:4px 16px 20px}
+.pcard img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;display:block}
+.pcard .imgw{position:relative}
+.badge{position:absolute;left:8px;top:8px;background:var(--blush);color:#7d3b2c;font:600 12px var(--body);padding:2px 8px;border-radius:999px}
+.pcard .k{font:12px var(--body);color:var(--muted);margin-top:8px}
+.pcard .n{font:16px var(--display);color:var(--heading);line-height:1.35}
+.pcard .m{font:13px var(--body);color:var(--muted);margin-top:2px}
+.pcard .p{font:15px var(--body);color:var(--muted);margin-top:4px}
+
+/* list page title */
+.crumb{font:13px var(--body);color:var(--muted);padding:14px 16px 0}
+.ltitle{padding:4px 16px 4px;display:flex;align-items:baseline;gap:10px}
+.ltitle h2{font-size:26px}
+.ltitle span{font:14px var(--body);color:var(--muted)}
+.ldesc{font:14px var(--body);color:var(--secondary);padding:0 16px 10px}
+
+/* rail */
+.rail{display:flex;gap:12px;overflow:hidden}
+.rail .pcard{width:150px;flex:none}
+.allbanner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--card);border-radius:16px;padding:12px;margin-bottom:22px}
+.allbanner .pics{display:flex}
+.allbanner .pics img{width:56px;height:56px;border-radius:50%;border:3px solid var(--surface);object-fit:cover;margin-left:-14px}
+.allbanner .pics img:first-child{margin-left:0}
+.allbanner .n{font:600 19px var(--display);color:var(--heading)}
+.allbanner .s{font:13px var(--body);color:var(--muted)}
+.allbanner .go{margin-left:auto;width:34px;height:34px;border-radius:50%;background:var(--home-action);color:#fffefa;display:grid;place-items:center}
+.fade{position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(transparent,var(--page))}
+.note{position:absolute;left:12px;right:12px;bottom:12px;font:12.5px var(--body);color:var(--secondary);border:1px dashed #b9ae9c;border-radius:12px;padding:7px 10px;background:rgba(255,254,250,.92);z-index:6;line-height:1.5}
+</style>
+</head>
+<body>
+
+<template id="hdr">
+  <div class="hdr">
+    <span class="burger"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></span>
+    <img src="img/hitoami-wordmark.webp" alt="hitoami">
+    <span class="ico">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </span>
+  </div>
+</template>
+
+<!-- A 首页 -->
+<div class="screen" id="A">
+  <div data-hdr></div>
+  <div class="tag">方案 A · 首页</div>
+  <div class="ctx">首页 · 位于导览条和品牌介绍之后</div>
+  <div class="sec">
+    <div class="eyebrow">挑 毛 线</div>
+    <div class="headrow"><h2 style="font-size:26px">今天想要什么样的线？</h2></div>
+    <div class="cgrid">
+      <div class="cell"><div class="ring"><img src="img/y24.jpg"><span class="go">›</span></div><div class="cname">段染渐变</div><div class="cnum">10 款</div></div>
+      <div class="cell"><div class="ring"><img src="img/y34.jpg"><span class="go">›</span></div><div class="cname">毛绒绒</div><div class="cnum">6 款</div></div>
+      <div class="cell"><div class="ring"><img src="img/y57.jpg"><span class="go">›</span></div><div class="cname">圈圈线</div><div class="cnum">3 款</div></div>
+      <div class="cell"><div class="ring"><img src="img/y60.jpg"><span class="go">›</span></div><div class="cname">马海毛</div><div class="cnum">2 款</div></div>
+      <div class="cell"><div class="ring"><img src="img/y1.jpg"><span class="go">›</span></div><div class="cname">基础纯色</div><div class="cnum">8 款</div></div>
+      <div class="cell"><div class="ring"><img src="img/y15.jpg"><span class="go">›</span></div><div class="cname">春夏棉线</div><div class="cnum">6 款</div></div>
+      <div class="cell"><div class="ring"><img src="img/y54.jpg"><span class="go">›</span></div><div class="cname">做玩偶</div><div class="cnum">8 款</div></div>
+      <div class="cell"><div class="ring"><img src="img/y29.jpg"><span class="go">›</span></div><div class="cname">做包包</div><div class="cnum">6 款</div></div>
+      <div class="cell"><div class="ring all"><span>30</span><span class="go">›</span></div><div class="cname">全部毛线</div><div class="cnum">30 款</div></div>
+    </div>
+  </div>
+  <div class="note">9 个入口一次展开，不用点标签；前 6 个按线的质感，后 2 个按用途，最后是全部。</div>
+</div>
+
+<!-- B 首页 -->
+<div class="screen" id="B">
+  <div data-hdr></div>
+  <div class="tag">方案 B · 首页</div>
+  <div class="ctx">首页 · 位于导览条和品牌介绍之后</div>
+  <div class="sec">
+    <div class="eyebrow">挑 毛 线</div>
+    <div class="headrow"><h2 style="font-size:26px">想织点什么？</h2></div>
+    <div class="bgrid">
+      <div class="bcard"><img src="img/y54.jpg"><div class="t"><div class="n">玩偶小物</div><div class="s">8 款适合的线</div></div></div>
+      <div class="bcard"><img src="img/y29.jpg"><div class="t"><div class="n">包包家居</div><div class="s">6 款适合的线</div></div></div>
+      <div class="bcard"><img src="img/y21.jpg"><div class="t"><div class="n">围巾帽子</div><div class="s">8 款适合的线</div></div></div>
+      <div class="bcard"><img src="img/y44.jpg"><div class="t"><div class="n">毛衣披肩</div><div class="s">6 款适合的线</div></div></div>
+    </div>
+  </div>
+  <div class="fade"></div>
+  <div class="note">下方还有「毯子大件」和「全部毛线」两张卡（共 6 张，3 行）。卡片用作品照片，不用线团照片。</div>
+</div>
+
+<!-- C 首页 -->
+<div class="screen" id="C1">
+  <div data-hdr></div>
+  <div class="tag">方案 C · 首页</div>
+  <div class="ctx">首页 · 位于导览条和品牌介绍之后</div>
+  <div class="sec">
+    <div class="allbanner">
+      <div class="pics"><img src="img/y24.jpg"><img src="img/y34.jpg"><img src="img/y1.jpg"></div>
+      <div><div class="n">全部毛线</div><div class="s">30 款 · 进入后可按质感筛选</div></div>
+      <span class="go">›</span>
+    </div>
+    <div class="headrow"><h2 style="font-size:24px">预订爆款</h2><span class="more">查看全部 →</span></div>
+    <div class="rail">
+      <div class="pcard"><div class="imgw"><img src="img/y24.jpg"><span class="badge">预订</span></div><div class="n">魔法球 羽毛渐变长绒</div><div class="m">200g · 约395m · 15 色</div><div class="p">价格待定</div></div>
+      <div class="pcard"><div class="imgw"><img src="img/y10.jpg"><span class="badge">预订</span></div><div class="n">印象日出 蛋糕线</div><div class="m">100g · 约330m</div><div class="p">价格待定</div></div>
+      <div class="pcard"><div class="imgw"><img src="img/y55.jpg"><span class="badge">预订</span></div><div class="n">油画圈圈线</div><div class="m">100g · 约160m</div><div class="p">价格待定</div></div>
+    </div>
+  </div>
+  <div class="note">首页只留一个「全部毛线」入口 + 预订爆款轮播；分类全部交给列表页 →</div>
+</div>
+
+<!-- C 列表页 -->
+<div class="screen" id="C2">
+  <div data-hdr></div>
+  <div class="tag">方案 C · 全部毛线页</div>
+  <div class="crumb">首页 / 全部毛线</div>
+  <div class="ltitle"><h2>全部毛线</h2><span>30 款</span></div>
+  <div class="chips">
+    <span class="chip on">全部</span><span class="chip">毛绒</span><span class="chip">段染</span><span class="chip">圈圈</span><span class="chip">马海毛</span><span class="chip">玩偶</span><span class="chip">包包</span><span class="chip">春夏</span>
+  </div>
+  <div class="tools"><span class="btn">⚙ 更多筛选</span><span>排序：推荐 ⌄</span></div>
+  <div class="pgrid">
+    <div class="pcard"><div class="imgw"><img src="img/y1.jpg"></div><div class="n">莫兰迪8 澳洲美利奴</div><div class="m">50g · 约75m · 中粗</div><div class="p">价格待定</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y4.jpg"></div><div class="n">印象点彩</div><div class="m">50g · 约120m</div><div class="p">价格待定</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y24.jpg"><span class="badge">预订</span></div><div class="n">魔法球 羽毛渐变长绒</div><div class="m">200g · 约395m</div><div class="p">价格待定</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y15.jpg"></div><div class="n">珍珠蕾丝线 3#</div><div class="m">40g · 约120m · 中等</div><div class="p">价格待定</div></div>
+  </div>
+  <div class="note">筛选标签固定在顶部、可横滑，点一下即在本页筛选；材质 / 粗细 / 季节收在「更多筛选」。</div>
+</div>
+
+<!-- A+C 首页 -->
+<div class="screen" id="AC1">
+  <div data-hdr></div>
+  <div class="tag">方案 A+C · 首页</div>
+  <div class="ctx">首页 · 位于导览条和品牌介绍之后</div>
+  <div class="sec" style="padding-bottom:10px">
+    <div class="eyebrow">挑 毛 线</div>
+    <div class="headrow" style="margin-bottom:12px"><h2 style="font-size:24px">今天想要什么样的线？</h2></div>
+    <div class="cgrid small">
+      <div class="cell"><div class="ring"><img src="img/y24.jpg"><span class="go">›</span></div><div class="cname">段染渐变</div></div>
+      <div class="cell"><div class="ring" style="border-color:var(--action);border-style:solid;border-width:2.5px"><img src="img/y34.jpg"><span class="go">›</span></div><div class="cname">毛绒绒</div></div>
+      <div class="cell"><div class="ring"><img src="img/y57.jpg"><span class="go">›</span></div><div class="cname">圈圈线</div></div>
+      <div class="cell"><div class="ring"><img src="img/y60.jpg"><span class="go">›</span></div><div class="cname">马海毛</div></div>
+      <div class="cell"><div class="ring"><img src="img/y54.jpg"><span class="go">›</span></div><div class="cname">做玩偶</div></div>
+      <div class="cell"><div class="ring all"><span>30</span><span class="go">›</span></div><div class="cname">全部毛线</div></div>
+    </div>
+  </div>
+  <div class="sec" style="padding-top:8px">
+    <div class="headrow" style="margin-bottom:12px"><h2 style="font-size:22px">预订爆款</h2><span class="more">查看全部 →</span></div>
+    <div class="rail">
+      <div class="pcard"><div class="imgw"><img src="img/y24.jpg"><span class="badge">预订</span></div><div class="n">魔法球 羽毛渐变长绒</div></div>
+      <div class="pcard"><div class="imgw"><img src="img/y10.jpg"><span class="badge">预订</span></div><div class="n">印象日出 蛋糕线</div></div>
+      <div class="pcard"><div class="imgw"><img src="img/y55.jpg"><span class="badge">预订</span></div><div class="n">油画圈圈线</div></div>
+    </div>
+  </div>
+  <div class="note">首页 6 个圆图入口（2 行）+ 预订爆款轮播。点「毛绒绒」→</div>
+</div>
+
+<!-- A+C 列表页 -->
+<div class="screen" id="AC2">
+  <div data-hdr></div>
+  <div class="tag">方案 A+C · 列表页</div>
+  <div class="crumb">首页 / 全部毛线 / 毛绒绒</div>
+  <div class="ltitle"><h2>毛绒绒</h2><span>6 款</span></div>
+  <div class="ldesc">蓬松软乎，适合玩偶、帽子和冬天的小物。</div>
+  <div class="chips">
+    <span class="chip">全部</span><span class="chip">段染</span><span class="chip on"><img src="img/y34.jpg">毛绒</span><span class="chip">圈圈</span><span class="chip">马海毛</span><span class="chip">玩偶</span><span class="chip">包包</span>
+  </div>
+  <div class="tools"><span class="btn">⚙ 更多筛选</span><span>排序：推荐 ⌄</span></div>
+  <div class="pgrid">
+    <div class="pcard"><div class="imgw"><img src="img/y24.jpg"><span class="badge">预订</span></div><div class="n">魔法球 羽毛渐变长绒</div><div class="m">200g · 约395m</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y26.jpg"></div><div class="n">棉花糖绒绒线</div><div class="m">40g · 约117m</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y45.jpg"></div><div class="n">聚可爱 玩偶线</div><div class="m">50g · 约80m</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y30.jpg"></div><div class="n">雪绒花 Ⅱ号</div><div class="m">40g · 约148m</div></div>
+  </div>
+  <div class="note">首页圆图和顶部标签用同一套名字；进入后可直接横滑切换到其他分类，不用回首页。</div>
+</div>
+
+<script>
+const t=document.getElementById('hdr');
+document.querySelectorAll('[data-hdr]').forEach(e=>e.replaceWith(t.content.cloneNode(true)));
+const only=location.search.slice(1);if(only){document.querySelectorAll('.screen').forEach(e=>{if(e.id!==only)e.remove()});document.body.style.padding='0';document.body.style.background='#f7f7f5'}
+</script>
+</body>
+</html>

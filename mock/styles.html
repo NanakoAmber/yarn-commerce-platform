@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>分类入口风格</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css">
+<style>
+:root{
+  --page:#f7f7f5;--surface:#fffefa;--sunken:#ebe5dc;--warm:#ece8dc;
+  --text:#2f302f;--heading:#13202d;--secondary:#4a4b48;--muted:#686762;
+  --home-action:#675144;--action:#a6472e;--accent:#b93b20;--thread:#bf5a38;--rope:#b8b1a4;--rope2:#8c8880;
+  --cta:#f8e5a9;--cta-border:#efd68d;--subtle:#fff9e9;
+  --border:#e4dfd7;--card:#dedbd5;--control:#686762;
+  --blush:#f4dfdc;--sage:#eceadb;--butter:#f8e5a9;
+  --display:'LXGW WenKai','Noto Sans SC',sans-serif;
+  --body:'LXGW WenKai Screen','Noto Sans SC',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#d9d4cb;font-family:var(--body);color:var(--text);padding:24px;display:flex;flex-wrap:wrap;gap:24px}
+.screen{width:390px;height:844px;overflow:hidden;background:var(--page);position:relative;flex:none}
+.hdr{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.hdr img{height:22px}
+.ico{display:flex;gap:14px}
+.ico svg,.burger svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:1.6}
+.tag{position:absolute;top:70px;right:12px;background:var(--home-action);color:#fffefa;font:600 13px var(--body);padding:4px 10px;border-radius:999px;z-index:5}
+.ctx{font:13px var(--body);color:var(--muted);padding:10px 16px;background:var(--sunken);border-bottom:1px dashed #cfc7b9}
+h2{font-family:var(--display);font-weight:600;color:var(--heading);margin:0}
+.eyebrow{font:14px var(--body);color:var(--action);letter-spacing:.12em;margin-bottom:4px}
+.sec{padding:20px 16px 16px}
+.more{font:14px var(--body);color:var(--action);text-decoration:underline;text-underline-offset:4px}
+.headrow{display:flex;justify-content:space-between;align-items:end;margin-bottom:14px}
+.note{position:absolute;left:12px;right:12px;bottom:12px;font:12.5px var(--body);color:var(--secondary);border:1px dashed #b9ae9c;border-radius:12px;padding:7px 10px;background:rgba(255,254,250,.94);z-index:6;line-height:1.5}
+
+/* rail + product */
+.rail{display:flex;gap:12px;overflow:hidden}
+.rail .pcard{width:132px;flex:none}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px;padding:4px 16px 20px}
+.pcard img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;display:block}
+.pcard .imgw{position:relative}
+.badge{position:absolute;left:8px;top:8px;background:var(--blush);color:#7d3b2c;font:600 12px var(--body);padding:2px 8px;border-radius:999px}
+.pcard .n{font:15.5px var(--display);color:var(--heading);line-height:1.35;margin-top:6px}
+.pcard .m{font:13px var(--body);color:var(--muted)}
+.crumb{font:13px var(--body);color:var(--muted);padding:14px 16px 0}
+.ltitle{padding:4px 16px 2px;display:flex;align-items:baseline;gap:10px}
+.ltitle h2{font-size:26px}
+.ltitle span{font:14px var(--body);color:var(--muted)}
+.ldesc{font:14px var(--body);color:var(--secondary);padding:0 16px 10px}
+.tools{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font:14px var(--body);color:var(--secondary)}
+.tools .btn{display:flex;align-items:center;gap:6px;border:1px solid var(--control);border-radius:999px;padding:6px 14px}
+.chips{display:flex;gap:8px;overflow:hidden;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.chip{flex:none;min-height:38px;padding:0 15px;border-radius:999px;border:1px solid var(--card);background:var(--surface);display:flex;align-items:center;gap:6px;font:15px var(--body);color:var(--secondary)}
+.chip img{width:24px;height:24px;border-radius:50%;object-fit:cover}
+.chip.on{background:var(--cta);border-color:var(--cta-border);color:var(--heading);font-weight:600}
+.go{width:28px;height:28px;border-radius:50%;background:var(--home-action);color:#fffefa;display:grid;place-items:center;font-size:14px;flex:none}
+
+/* ---------- V1 晾衣绳 ---------- */
+.v1 .sec.home{background:var(--warm)}
+.rope{position:relative;height:178px}
+.rope svg.line{position:absolute;left:-16px;top:0;width:390px;height:60px}
+.hang{position:absolute;top:0;width:110px;display:flex;flex-direction:column;align-items:center}
+.hang .str{width:1.5px;visibility:hidden}
+.hang .pin{width:10px;height:18px;border-radius:3px;background:#d9b98a;border:1px solid #b99467;margin-top:-4px}
+.hang .ph{width:96px;height:96px;border-radius:50%;border:4px solid var(--surface);box-shadow:0 4px 10px rgba(103,81,68,.16);overflow:hidden;margin-top:-2px;background:var(--surface);display:grid;place-items:center}
+.hang .ph img{width:100%;height:100%;object-fit:cover}
+.hang .nm{font:600 16px var(--display);color:var(--heading);margin-top:6px}
+.hang .ct{font:12.5px var(--body);color:var(--muted)}
+.hang.on .ph{border-color:var(--thread)}
+.v1 .chips{background:transparent;border:0;padding-top:4px;position:relative}
+.ltag{flex:none;position:relative;display:flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 22px;background:var(--surface);border:1px solid var(--card);border-radius:6px 18px 18px 6px;font:15px var(--body);color:var(--secondary)}
+.ltag::before{content:"";position:absolute;left:8px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;border:1.5px solid var(--rope2)}
+.ltag.on{background:var(--cta);border-color:var(--cta-border);color:var(--heading);font-weight:600}
+.v1 .chipwrap{background:var(--warm);padding-top:6px;border-bottom:1px solid var(--border)}
+
+/* ---------- V2 线团标签 ---------- */
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 10px}
+.band{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1/1.12;background:var(--surface)}
+.band img{width:100%;height:100%;object-fit:cover;display:block}
+.band .lb{position:absolute;left:-2px;right:-2px;bottom:16px;background:var(--surface);padding:5px 8px 5px;text-align:center;border-top:1.5px dashed var(--rope);border-bottom:1.5px dashed var(--rope)}
+.band .lb b{display:block;font:600 15px var(--display);color:var(--heading)}
+.band .lb i{font:normal 11.5px var(--body);color:var(--muted)}
+.band.all{background:var(--butter);display:grid;place-items:center}
+.band.all .big{font:600 40px var(--display);color:var(--home-action);margin-top:-30px}
+.band.on{outline:2.5px solid var(--thread);outline-offset:2px}
+.bchip{flex:none;height:36px;display:flex;align-items:center;gap:6px;padding:0 14px;background:var(--surface);border-top:1.5px dashed var(--rope);border-bottom:1.5px dashed var(--rope);font:15px var(--body);color:var(--secondary)}
+.bchip.on{background:var(--cta);border-color:#d8b85e;color:var(--heading);font-weight:600}
+.v2 .chips{gap:10px}
+
+/* ---------- V3 柔色拼格 ---------- */
+.bento{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:118px 118px 96px;gap:10px}
+.tile{position:relative;border-radius:16px;overflow:hidden;padding:12px}
+.tile .nm{font:600 17px var(--display);color:var(--heading);position:relative;z-index:2}
+.tile .ct{font:12.5px var(--body);color:var(--secondary);position:relative;z-index:2}
+.tile img{position:absolute;border-radius:50%;object-fit:cover}
+.tile .go{position:absolute;right:10px;bottom:10px;z-index:2}
+.t-big{grid-row:span 2;background:var(--blush)}
+.t-big img{width:150px;height:150px;right:-26px;bottom:-22px}
+.t-a{background:var(--butter)} .t-b{background:var(--sage)}
+.t-a img,.t-b img{width:86px;height:86px;right:-10px;bottom:-12px}
+.t-c{background:var(--sunken)} .t-d{background:#f6e9e2}
+.t-c img,.t-d img{width:76px;height:76px;right:-6px;bottom:-14px}
+.t-all{grid-column:span 2;background:var(--home-action);display:flex;align-items:center;justify-content:space-between}
+.t-all .nm,.t-all .ct{color:#fffefa}
+.t-all .go{position:static;background:#fffefa;color:var(--home-action)}
+.bento.r{grid-template-rows:118px 118px 64px}
+.t-on{box-shadow:inset 0 0 0 2.5px var(--thread)}
+.v3 .lhead{background:var(--blush);padding-bottom:12px}
+.tchip{flex:none;height:38px;display:flex;align-items:center;gap:7px;padding:0 14px;border-radius:12px;font:15px var(--body);color:var(--secondary)}
+.tchip i{width:10px;height:10px;border-radius:50%;display:block}
+.tchip.on{background:var(--home-action);color:#fffefa;font-weight:600}
+
+/* ---------- V4 色卡条 ---------- */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sw{display:flex;align-items:center;gap:10px;border-radius:14px;padding:8px 10px 8px 8px;min-height:82px}
+.sw img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none}
+.sw .nm{font:600 16px var(--display);color:var(--heading)}
+.sw .ds{font:12px var(--body);color:var(--secondary);line-height:1.35;margin-top:1px}
+.sw .ct{font:12px var(--body);color:var(--muted)}
+.sw.on{box-shadow:inset 0 0 0 2.5px var(--thread)}
+.swchip{flex:none;height:42px;display:flex;align-items:center;gap:7px;padding:0 12px 0 4px;border-radius:12px;border:1px solid var(--card);background:var(--surface);font:15px var(--body);color:var(--secondary)}
+.swchip img{width:34px;height:34px;border-radius:9px;object-fit:cover}
+.swchip.on{background:var(--cta);border-color:var(--cta-border);color:var(--heading);font-weight:600}
+
+/* ---------- V5 目录索引 ---------- */
+.idx{border-top:1.5px dashed var(--rope)}
+.row{display:flex;align-items:center;gap:12px;padding:9px 2px;border-bottom:1.5px dashed var(--rope)}
+.row .no{font:600 15px var(--display);color:var(--action);width:22px}
+.row img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none}
+.row .tx{flex:1;min-width:0}
+.row .nm{font:600 17px var(--display);color:var(--heading)}
+.row .nm small{font:13px var(--body);color:var(--muted);margin-left:6px}
+.row .ds{font:13px var(--body);color:var(--secondary)}
+.row .ar{color:var(--home-action);font-size:20px}
+.row.on{background:var(--subtle)}
+.utabs{display:flex;gap:20px;overflow:hidden;padding:0 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.utab{flex:none;padding:12px 0 10px;font:16px var(--body);color:var(--muted);border-bottom:3px solid transparent}
+.utab small{font-size:12px;margin-left:3px}
+.utab.on{color:var(--heading);font-weight:600;border-bottom:3px dashed var(--thread)}
+</style>
+</head>
+<body>
+<template id="hdr">
+  <div class="hdr">
+    <span class="burger"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></span>
+    <img src="img/hitoami-wordmark.webp" alt="hitoami">
+    <span class="ico">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </span>
+  </div>
+</template>
+<template id="rail">
+  <div class="rail">
+    <div class="pcard"><div class="imgw"><img src="img/y24.jpg"><span class="badge">预订</span></div><div class="n">魔法球 羽毛渐变长绒</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y10.jpg"><span class="badge">预订</span></div><div class="n">印象日出 蛋糕线</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y55.jpg"><span class="badge">预订</span></div><div class="n">油画圈圈线</div></div>
+  </div>
+</template>
+<template id="plist">
+  <div class="tools"><span class="btn">⚙ 更多筛选</span><span>排序：推荐 ⌄</span></div>
+  <div class="pgrid">
+    <div class="pcard"><div class="imgw"><img src="img/y24.jpg"><span class="badge">预订</span></div><div class="n">魔法球 羽毛渐变长绒</div><div class="m">200g · 约395m</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y26.jpg"></div><div class="n">棉花糖绒绒线</div><div class="m">40g · 约117m</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y45.jpg"></div><div class="n">聚可爱 玩偶线</div><div class="m">50g · 约80m</div></div>
+    <div class="pcard"><div class="imgw"><img src="img/y30.jpg"></div><div class="n">雪绒花 Ⅱ号</div><div class="m">40g · 约148m</div></div>
+  </div>
+</template>
+
+<!-- ===== V1 晾衣绳 ===== -->
+<div class="screen v1" id="V1a">
+  <div data-hdr></div><div class="tag">风格 1 · 晾衣绳</div>
+  <div class="ctx">首页 · 接在导览条挂线之后</div>
+  <div class="sec home">
+    <div class="eyebrow">挑 毛 线</div>
+    <h2 style="font-size:24px;margin-bottom:10px">今天想要什么样的线？</h2>
+    <div class="rope">
+      <svg class="line" viewBox="0 0 390 60"><path d="M0 10 C 120 46, 270 46, 390 10" fill="none" stroke="#b8b1a4" stroke-width="3"/><path d="M0 10 C 120 46, 270 46, 390 10" fill="none" stroke="#8c8880" stroke-width="1" stroke-dasharray="3 5"/></svg>
+      <div class="hang" style="left:-2px"><div class="str" style="height:23px"></div><div class="pin"></div><div class="ph"><img src="img/y24.jpg"></div><div class="nm">段染渐变</div><div class="ct">10 款</div></div>
+      <div class="hang on" style="left:124px"><div class="str" style="height:33px"></div><div class="pin"></div><div class="ph"><img src="img/y34.jpg"></div><div class="nm">毛绒绒</div><div class="ct">6 款</div></div>
+      <div class="hang" style="left:250px"><div class="str" style="height:23px"></div><div class="pin"></div><div class="ph"><img src="img/y57.jpg"></div><div class="nm">圈圈线</div><div class="ct">3 款</div></div>
+    </div>
+    <div class="rope">
+      <svg class="line" viewBox="0 0 390 60"><path d="M0 10 C 120 46, 270 46, 390 10" fill="none" stroke="#b8b1a4" stroke-width="3"/><path d="M0 10 C 120 46, 270 46, 390 10" fill="none" stroke="#8c8880" stroke-width="1" stroke-dasharray="3 5"/></svg>
+      <div class="hang" style="left:-2px"><div class="str" style="height:23px"></div><div class="pin"></div><div class="ph"><img src="img/y60.jpg"></div><div class="nm">马海毛</div><div class="ct">2 款</div></div>
+      <div class="hang" style="left:124px"><div class="str" style="height:33px"></div><div class="pin"></div><div class="ph"><img src="img/y54.jpg"></div><div class="nm">做玩偶</div><div class="ct">8 款</div></div>
+      <div class="hang" style="left:250px"><div class="str" style="height:23px"></div><div class="pin"></div><div class="ph"><span style="font:600 28px var(--display);color:var(--home-action)">30</span></div><div class="nm">全部毛线</div><div class="ct">30 款</div></div>
+    </div>
+  </div>
+  <div class="sec" style="padding-top:14px"><div class="headrow"><h2 style="font-size:21px">预订爆款</h2><span class="more">查看全部 →</span></div><div data-rail></div></div>
+  <div class="note">圆图像毛线一样晾在绳上，接着首页导览条的挂线往下走，品牌感最强。</div>
+</div>
+<div class="screen v1" id="V1b">
+  <div data-hdr></div><div class="tag">风格 1 · 列表页</div>
+  <div class="chipwrap">
+    <div class="crumb" style="padding-top:8px">首页 / 全部毛线 / 毛绒绒</div>
+    <div class="ltitle"><h2>毛绒绒</h2><span>6 款</span></div>
+    <div class="ldesc">蓬松软乎，适合玩偶、帽子和冬天的小物。</div>
+    <div class="chips"><span class="ltag">全部</span><span class="ltag">段染</span><span class="ltag on">毛绒</span><span class="ltag">圈圈</span><span class="ltag">马海毛</span><span class="ltag">玩偶</span></div>
+  </div>
+  <div data-plist></div>
+  <div class="note">筛选标签做成吊牌形状（左边一个小孔），和首页的晾衣绳是一套。</div>
+</div>
+
+<!-- ===== V2 线团标签 ===== -->
+<div class="screen v2" id="V2a">
+  <div data-hdr></div><div class="tag">风格 2 · 线团标签</div>
+  <div class="ctx">首页 · 位于导览条和品牌介绍之后</div>
+  <div class="sec">
+    <div class="eyebrow">挑 毛 线</div>
+    <h2 style="font-size:24px;margin-bottom:14px">今天想要什么样的线？</h2>
+    <div class="bgrid">
+      <div class="band"><img src="img/y24.jpg"><div class="lb"><b>段染渐变</b><i>10 款</i></div></div>
+      <div class="band on"><img src="img/y34.jpg"><div class="lb"><b>毛绒绒</b><i>6 款</i></div></div>
+      <div class="band"><img src="img/y57.jpg"><div class="lb"><b>圈圈线</b><i>3 款</i></div></div>
+      <div class="band"><img src="img/y60.jpg"><div class="lb"><b>马海毛</b><i>2 款</i></div></div>
+      <div class="band"><img src="img/y54.jpg"><div class="lb"><b>做玩偶</b><i>8 款</i></div></div>
+      <div class="band all"><span class="big">30</span><div class="lb"><b>全部毛线</b><i>30 款</i></div></div>
+    </div>
+  </div>
+  <div class="sec" style="padding-top:6px"><div class="headrow"><h2 style="font-size:21px">预订爆款</h2><span class="more">查看全部 →</span></div><div data-rail></div></div>
+  <div class="note">每个入口像一团毛线套着纸标签（上下虚线像缝线），名字一直压在图上，不会和图分开。</div>
+</div>
+<div class="screen v2" id="V2b">
+  <div data-hdr></div><div class="tag">风格 2 · 列表页</div>
+  <div class="crumb">首页 / 全部毛线 / 毛绒绒</div>
+  <div class="ltitle"><h2>毛绒绒</h2><span>6 款</span></div>
+  <div class="ldesc">蓬松软乎，适合玩偶、帽子和冬天的小物。</div>
+  <div class="chips"><span class="bchip">全部</span><span class="bchip">段染</span><span class="bchip on">毛绒</span><span class="bchip">圈圈</span><span class="bchip">马海毛</span><span class="bchip">玩偶</span></div>
+  <div data-plist></div>
+  <div class="note">筛选标签也是"纸标签"：方角 + 上下缝线，选中时变奶油黄。</div>
+</div>
+
+<!-- ===== V3 柔色拼格 ===== -->
+<div class="screen v3" id="V3a">
+  <div data-hdr></div><div class="tag">风格 3 · 柔色拼格</div>
+  <div class="ctx">首页 · 位于导览条和品牌介绍之后</div>
+  <div class="sec">
+    <div class="eyebrow">挑 毛 线</div>
+    <h2 style="font-size:24px;margin-bottom:14px">今天想要什么样的线？</h2>
+    <div class="bento" style="grid-template-rows:112px 112px">
+      <div class="tile t-big"><div class="nm" style="font-size:20px">段染渐变</div><div class="ct">10 款 · 一团织出好几种颜色</div><img src="img/y24.jpg"></div>
+      <div class="tile t-a t-on"><div class="nm">毛绒绒</div><div class="ct">6 款</div><img src="img/y34.jpg"></div>
+      <div class="tile t-b"><div class="nm">圈圈线</div><div class="ct">3 款</div><img src="img/y57.jpg"></div>
+    </div>
+    <div class="bento" style="grid-template-rows:96px 60px;margin-top:10px;grid-template-columns:1fr 1fr">
+      <div class="tile t-c"><div class="nm">马海毛</div><div class="ct">2 款</div><img src="img/y60.jpg"></div>
+      <div class="tile t-d"><div class="nm">做玩偶</div><div class="ct">8 款</div><img src="img/y54.jpg"></div>
+      <div class="tile t-all"><div><div class="nm">全部毛线</div><div class="ct">30 款都在这里</div></div><span class="go">›</span></div>
+    </div>
+  </div>
+  <div class="sec" style="padding-top:2px"><div class="headrow" style="margin-bottom:10px"><h2 style="font-size:21px">预订爆款</h2><span class="more">查看全部 →</span></div><div data-rail></div></div>
+  <div class="note">大小格子拼在一起，主推的「段染渐变」占大格；每格用不同的柔色底，跳出照片好坏的限制。</div>
+</div>
+<div class="screen v3" id="V3b">
+  <div data-hdr></div><div class="tag">风格 3 · 列表页</div>
+  <div class="lhead">
+    <div class="crumb">首页 / 全部毛线 / 毛绒绒</div>
+    <div class="ltitle"><h2>毛绒绒</h2><span>6 款</span></div>
+    <div class="ldesc" style="padding-bottom:0">蓬松软乎，适合玩偶、帽子和冬天的小物。</div>
+  </div>
+  <div class="chips" style="gap:4px"><span class="tchip"><i style="background:var(--rope)"></i>全部</span><span class="tchip"><i style="background:#e8b9b2"></i>段染</span><span class="tchip on"><i style="background:var(--butter)"></i>毛绒</span><span class="tchip"><i style="background:#cfcbb0"></i>圈圈</span><span class="tchip"><i style="background:#cfc4b4"></i>马海毛</span></div>
+  <div data-plist></div>
+  <div class="note">分类页顶部沿用该分类的底色；标签前的小圆点对应首页格子的颜色。</div>
+</div>
+
+<!-- ===== V4 色卡条 ===== -->
+<div class="screen v4" id="V4a">
+  <div data-hdr></div><div class="tag">风格 4 · 色卡条</div>
+  <div class="ctx">首页 · 位于导览条和品牌介绍之后</div>
+  <div class="sec">
+    <div class="eyebrow">挑 毛 线</div>
+    <h2 style="font-size:24px;margin-bottom:14px">今天想要什么样的线？</h2>
+    <div class="sgrid">
+      <div class="sw" style="background:var(--blush)"><img src="img/y24.jpg"><div><div class="nm">段染渐变</div><div class="ds">一团多种颜色</div><div class="ct">10 款</div></div></div>
+      <div class="sw on" style="background:var(--butter)"><img src="img/y34.jpg"><div><div class="nm">毛绒绒</div><div class="ds">蓬松软乎</div><div class="ct">6 款</div></div></div>
+      <div class="sw" style="background:var(--sage)"><img src="img/y57.jpg"><div><div class="nm">圈圈线</div><div class="ds">表面带小圈</div><div class="ct">3 款</div></div></div>
+      <div class="sw" style="background:var(--sunken)"><img src="img/y60.jpg"><div><div class="nm">马海毛</div><div class="ds">轻薄透气</div><div class="ct">2 款</div></div></div>
+      <div class="sw" style="background:#f6e9e2"><img src="img/y54.jpg"><div><div class="nm">做玩偶</div><div class="ds">钩玩偶和挂件</div><div class="ct">8 款</div></div></div>
+      <div class="sw" style="background:var(--home-action)"><div style="width:64px;height:64px;border-radius:10px;background:#fffefa;display:grid;place-items:center;font:600 24px var(--display);color:var(--home-action);flex:none">30</div><div><div class="nm" style="color:#fffefa">全部毛线</div><div class="ds" style="color:#f1e8de">30 款都在这里</div></div></div>
+    </div>
+  </div>
+  <div class="sec" style="padding-top:4px"><div class="headrow" style="margin-bottom:10px"><h2 style="font-size:21px">预订爆款</h2><span class="more">查看全部 →</span></div><div data-rail></div></div>
+  <div class="note">像一本色卡：小方图 + 名字 + 一句话说明，新手不认识"圈圈线"也能看懂。</div>
+</div>
+<div class="screen v4" id="V4b">
+  <div data-hdr></div><div class="tag">风格 4 · 列表页</div>
+  <div class="crumb">首页 / 全部毛线 / 毛绒绒</div>
+  <div class="ltitle"><h2>毛绒绒</h2><span>6 款</span></div>
+  <div class="ldesc">蓬松软乎，适合玩偶、帽子和冬天的小物。</div>
+  <div class="chips"><span class="swchip"><img src="img/y1.jpg">全部</span><span class="swchip"><img src="img/y24.jpg">段染</span><span class="swchip on"><img src="img/y34.jpg">毛绒</span><span class="swchip"><img src="img/y57.jpg">圈圈</span><span class="swchip"><img src="img/y60.jpg">马海毛</span></div>
+  <div data-plist></div>
+  <div class="note">每个筛选标签都带小方图，切换分类时不用记名字，看图就行。</div>
+</div>
+
+<!-- ===== V5 目录索引 ===== -->
+<div class="screen v5" id="V5a">
+  <div data-hdr></div><div class="tag">风格 5 · 目录索引</div>
+  <div class="ctx">首页 · 位于导览条和品牌介绍之后</div>
+  <div class="sec">
+    <div class="eyebrow">挑 毛 线</div>
+    <h2 style="font-size:24px;margin-bottom:12px">今天想要什么样的线？</h2>
+    <div class="idx">
+      <div class="row"><span class="no">01</span><img src="img/y24.jpg"><div class="tx"><div class="nm">段染渐变<small>10 款</small></div><div class="ds">一团织出好几种颜色</div></div><span class="ar">›</span></div>
+      <div class="row on"><span class="no">02</span><img src="img/y34.jpg"><div class="tx"><div class="nm">毛绒绒<small>6 款</small></div><div class="ds">蓬松软乎，玩偶和冬天小物</div></div><span class="ar">›</span></div>
+      <div class="row"><span class="no">03</span><img src="img/y57.jpg"><div class="tx"><div class="nm">圈圈线<small>3 款</small></div><div class="ds">表面有小圈，肌理感强</div></div><span class="ar">›</span></div>
+      <div class="row"><span class="no">04</span><img src="img/y60.jpg"><div class="tx"><div class="nm">马海毛<small>2 款</small></div><div class="ds">轻薄透气，适合毛衣披肩</div></div><span class="ar">›</span></div>
+      <div class="row"><span class="no">05</span><img src="img/y54.jpg"><div class="tx"><div class="nm">做玩偶<small>8 款</small></div><div class="ds">适合钩玩偶和小挂件</div></div><span class="ar">›</span></div>
+      <div class="row"><span class="no">06</span><div style="width:52px;height:52px;border-radius:50%;background:var(--butter);display:grid;place-items:center;font:600 18px var(--display);color:var(--home-action);flex:none">30</div><div class="tx"><div class="nm">全部毛线<small>30 款</small></div><div class="ds">所有毛线都在这里</div></div><span class="ar">›</span></div>
+    </div>
+  </div>
+  <div class="sec" style="padding-top:2px"><div class="headrow" style="margin-bottom:10px"><h2 style="font-size:21px">预订爆款</h2><span class="more">查看全部 →</span></div><div data-rail></div></div>
+  <div class="note">像书的目录：编号 + 小圆图 + 一句话，信息最全、最好扫读；装饰最少。</div>
+</div>
+<div class="screen v5" id="V5b">
+  <div data-hdr></div><div class="tag">风格 5 · 列表页</div>
+  <div class="crumb">首页 / 全部毛线 / 毛绒绒</div>
+  <div class="ltitle"><h2>毛绒绒</h2><span>6 款</span></div>
+  <div class="ldesc">蓬松软乎，适合玩偶、帽子和冬天的小物。</div>
+  <div class="utabs"><span class="utab">全部<small>30</small></span><span class="utab">段染<small>10</small></span><span class="utab on">毛绒<small>6</small></span><span class="utab">圈圈<small>3</small></span><span class="utab">马海毛<small>2</small></span><span class="utab">玩偶<small>8</small></span></div>
+  <div data-plist></div>
+  <div class="note">顶部改成带数量的横向文字标签，选中项下面是一道缝线式虚线，最安静。</div>
+</div>
+
+<script>
+for (const [sel,id] of [['[data-hdr]','hdr'],['[data-rail]','rail'],['[data-plist]','plist']]){
+  const t=document.getElementById(id);document.querySelectorAll(sel).forEach(e=>e.replaceWith(t.content.cloneNode(true)));
+}
+const only=location.search.slice(1);if(only){document.querySelectorAll('.screen').forEach(e=>{if(e.id!==only)e.remove()});document.body.style.padding='0';document.body.style.background='#f7f7f5'}
+</script>
+</body>
+</html>
