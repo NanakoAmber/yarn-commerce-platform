@@ -125,8 +125,6 @@
                 assign ct_image = ct_product.featured_image
                 assign ct_alt = ''
               endif
-              assign ct_placeholder = forloop.index0 | modulo: 6 | plus: 1
-              assign ct_placeholder = 'collection-' | append: ct_placeholder
             -%}
             {%- capture ct_title -%}{%- render 'yarn-setting-text', settings: block.settings, key: 'title' -%}{%- endcapture -%}
             {%- if ct_title == blank and ct_collection != blank -%}{%- assign ct_title = ct_collection.title -%}{%- endif -%}
@@ -138,7 +136,7 @@
                     {%- if ct_image != blank -%}
                       {{ ct_image | image_url: width: 600 | image_tag: widths: '200, 300, 400, 500, 600', sizes: '(min-width: 1200px) 264px, (min-width: 990px) 21vw, (min-width: 750px) 28vw, 42vw', loading: 'lazy', alt: ct_alt }}
                     {%- else -%}
-                      {{ ct_placeholder | placeholder_svg_tag: 'yarn-cattabs__placeholder' }}
+                      {{ 'image' | placeholder_svg_tag: 'yarn-cattabs__placeholder' }}
                     {%- endif -%}
                   </span>
                   {%- if ct_badge != blank -%}<span class="yarn-cattabs__badge">{{ ct_badge | escape }}</span>{%- endif -%}
