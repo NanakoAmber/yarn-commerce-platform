@@ -12,7 +12,8 @@
   {%- if ec_collection != blank -%}
     {%- for block in section.blocks -%}
         {%- liquid
-          assign ec_entry = block.settings.entry
+          assign ec_handle = block.settings.entry | strip
+          assign ec_entry = metaobjects.yarn_entry[ec_handle]
           if ec_entry == blank
             continue
           endif
@@ -53,7 +54,7 @@
               <span class="yarn-fswitch__photo">{%- if ec_image != blank -%}{{ ec_image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '(min-width: 990px) 132px, (min-width: 750px) 22vw, 30vw', loading: 'lazy', alt: '' }}{%- endif -%}</span>
               <span class="yarn-fswitch__go" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
             </span>
-            <span class="yarn-fswitch__name">{{ ec_entry.name | escape }}</span>
+            <span class="yarn-fswitch__name">{{ ec_entry.name.value | escape }}</span>
             <span class="yarn-fswitch__needle">{{ 'yarn_project.entry_count' | t: count: ec_count }}</span>
           </a>
         </li>
@@ -93,7 +94,7 @@
       "name": "入口",
       "settings": [
         { "type": "select", "id": "field", "label": "商品字段", "options": [ { "value": "yarn.texture", "label": "质感（yarn.texture）" }, { "value": "yarn.use", "label": "用途 / 季节（yarn.use）" } ], "default": "yarn.texture" },
-        { "type": "metaobject", "id": "entry", "label": "毛线入口", "metaobject_type": "yarn_entry", "info": "名称三语在 Translate & Adapt 的 Metaobject「毛线入口」里编辑" },
+        { "type": "text", "id": "entry", "label": "毛线入口 handle（Metaobject「毛线入口」yarn_entry）", "info": "例如 gradient；名称三语在 Translate & Adapt 的「毛线入口」里编辑" },
         { "type": "image_picker", "id": "image", "label": "照片（空则用集合里第一件带该取值的商品主图）" }
       ]
     }

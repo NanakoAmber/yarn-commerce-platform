@@ -127,7 +127,7 @@ test('yarn entry circles and collection type chips share one filter (Issue #117,
   assert.equal(entries.settings.collection, 'yarn');
   const values = entries.block_order.map((id) => entries.blocks[id].settings);
   // 入口是 yarn_entry Metaobject：名称三语在 Translate & Adapt 维护，筛选参数用 GID，不用中文文字。
-  assert.deepEqual(values.map((v) => v.entry), ['gradient', 'fluffy', 'loop-fancy', 'fine-airy', 'basic-solid', 'amigurumi', 'bags-home', 'spring-summer-cotton'].map((h) => `shopify://metaobjects/yarn_entry/${h}`));
+  assert.deepEqual(values.map((v) => v.entry), ['gradient', 'fluffy', 'loop-fancy', 'fine-airy', 'basic-solid', 'amigurumi', 'bags-home', 'spring-summer-cotton']);
   for (const v of values) assert.ok(['yarn.texture', 'yarn.use'].includes(v.field));
   const circles = fs.readFileSync('sections/yarn-entry-circles.liquid', 'utf8');
   const toolbar = fs.readFileSync('sections/yarn-browse-toolbar.liquid', 'utf8');
@@ -135,7 +135,7 @@ test('yarn entry circles and collection type chips share one filter (Issue #117,
   assert.match(circles, /\?filter\.p\.m\.\{\{ block\.settings\.field \}\}=/);
   assert.match(circles, /if ec_count == 0\s+continue/);
   assert.match(circles, /'gid:\/\/shopify\/Metaobject\/' \| append: ec_id/);
-  assert.match(circles, /"metaobject_type": "yarn_entry"/);
+  assert.match(circles, /metaobjects\.yarn_entry\[ec_handle\]/);
   assert.match(toolbar, /"default": "filter\.p\.m\.yarn\.texture,filter\.p\.m\.yarn\.use"/);
   assert.match(toolbar, /cat_params contains filter\.param_name and cat_chips != blank/);
 });
