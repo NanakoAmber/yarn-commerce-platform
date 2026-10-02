@@ -143,7 +143,6 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: var(--yarn-bg-warm);
   fill: var(--yarn-text-disabled);
 }
 
@@ -185,6 +184,9 @@
   font: 600 18px/1.4 var(--yarn-display);
   letter-spacing: 0.12em;
   text-wrap: balance;
+  /* Japanese names break at 「・」 rather than mid-word; overlong words still wrap. */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .yarn-cattabs__note {
