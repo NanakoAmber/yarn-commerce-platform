@@ -145,6 +145,104 @@
         "story_text_en": "<p>hitoami brings together the ideas of “one” and “knitting”.</p><p>From the first stitch, bring yarn, colour and imagination into everyday life. Whether you are picking up yarn for the first time or have always loved making, find your own rhythm, one stitch at a time—and connect with others who share that love.</p>"
       }
     },
+    "yarn-entries": {
+      "type": "yarn-entry-circles",
+      "blocks": {
+        "entry-1": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "value": "段染渐变",
+            "name": "段染め・グラデーション",
+            "name_zh": "段染渐变",
+            "name_en": "Gradient"
+          }
+        },
+        "entry-2": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "value": "毛绒绒",
+            "name": "ふわふわ",
+            "name_zh": "毛绒绒",
+            "name_en": "Fluffy"
+          }
+        },
+        "entry-3": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "value": "圈圈·花式",
+            "name": "ループ・ファンシー",
+            "name_zh": "圈圈·花式",
+            "name_en": "Loop & fancy"
+          }
+        },
+        "entry-4": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "value": "轻柔细线",
+            "name": "やわらか極細",
+            "name_zh": "轻柔细线",
+            "name_en": "Fine & airy"
+          }
+        },
+        "entry-5": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "value": "基础纯色",
+            "name": "ベーシック単色",
+            "name_zh": "基础纯色",
+            "name_en": "Basic solids"
+          }
+        },
+        "entry-6": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.use",
+            "value": "做玩偶",
+            "name": "あみぐるみ用",
+            "name_zh": "做玩偶",
+            "name_en": "For amigurumi"
+          }
+        },
+        "entry-7": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.use",
+            "value": "包包家居",
+            "name": "バッグ・インテリア",
+            "name_zh": "包包家居",
+            "name_en": "Bags & home"
+          }
+        },
+        "entry-8": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.use",
+            "value": "春夏棉线",
+            "name": "春夏コットン",
+            "name_zh": "春夏棉线",
+            "name_en": "Spring–summer cotton"
+          }
+        }
+      },
+      "block_order": [
+        "entry-1",
+        "entry-2",
+        "entry-3",
+        "entry-4",
+        "entry-5",
+        "entry-6",
+        "entry-7",
+        "entry-8"
+      ],
+      "settings": {
+        "collection": "yarn"
+      }
+    },
     "sale-picks": {
       "type": "yarn-picks",
       "settings": {
@@ -193,7 +291,8 @@
         "collection": "yarn",
         "material_field": "yarn.material",
         "weight_field": "yarn.weight"
-      }
+      },
+      "disabled": true
     },
     "picks-finished": {
       "type": "yarn-picks",
@@ -257,6 +356,7 @@
     "hero",
     "guide-strip",
     "story",
+    "yarn-entries",
     "sale-picks",
     "project-picks",
     "beginner-kits",

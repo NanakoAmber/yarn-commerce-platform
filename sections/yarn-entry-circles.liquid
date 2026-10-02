@@ -1,0 +1,100 @@
+{{ 'yarn-filter-switch.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  首页「挑毛线」圆图入口（Issue #117，方案 A+C）：一组圆图全部展开，不分标签页。
+  每个入口是一个 block：商品字段（yarn.texture 质感 / yarn.use 用途）+ 取值，链接到毛线集合并带
+  Search & Discovery 筛选参数（filter.p.m.<字段>=<取值>），与集合页顶部的分类标签是同一个筛选。
+  款数与默认照片来自所选集合里带该取值的商品（前 50 件）；一件都没有的入口不渲染。
+  名称三语经 yarn-setting-text 取（纯键名为日文，_zh/_en 为中英），留空时显示取值本身。
+{% endcomment %}
+{%- capture ec_heading -%}{%- render 'yarn-setting-text', settings: section.settings, key: 'heading' -%}{%- endcapture -%}
+{%- assign ec_collection = collections[section.settings.collection] -%}
+{%- capture ec_items -%}
+  {%- if ec_collection != blank -%}
+    {%- for block in section.blocks -%}
+        {%- liquid
+          assign ec_value = block.settings.value | strip
+          if ec_value == blank
+            continue
+          endif
+          assign ec_parts = block.settings.field | split: '.'
+          assign ec_count = 0
+          assign ec_image = block.settings.image
+          for ec_product in ec_collection.products limit: 50
+            assign ec_field = ec_product.metafields[ec_parts[0]][ec_parts[1]]
+            if ec_field == blank
+              continue
+            endif
+            if ec_field.type contains 'list'
+              assign ec_found = ec_field.value
+            else
+              assign ec_found = ec_field.value | append: '' | split: '§§'
+            endif
+            if ec_found contains ec_value
+              assign ec_count = ec_count | plus: 1
+              if ec_image == blank
+                assign ec_image = ec_product.featured_image
+              endif
+            endif
+          endfor
+          if ec_count == 0
+            continue
+          endif
+        -%}
+        {%- capture ec_name -%}{%- render 'yarn-setting-text', settings: block.settings, key: 'name' -%}{%- endcapture -%}
+        <li>
+          <a class="yarn-fswitch__card" href="{{ ec_collection.url }}?filter.p.m.{{ block.settings.field }}={{ ec_value | url_encode }}" {{ block.shopify_attributes }}>
+            <span class="yarn-fswitch__ring">
+              <span class="yarn-fswitch__photo">{%- if ec_image != blank -%}{{ ec_image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '(min-width: 990px) 132px, (min-width: 750px) 22vw, 30vw', loading: 'lazy', alt: '' }}{%- endif -%}</span>
+              <span class="yarn-fswitch__go" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+            </span>
+            <span class="yarn-fswitch__name">{{ ec_name | default: ec_value | escape }}</span>
+            <span class="yarn-fswitch__needle">{{ 'yarn_project.entry_count' | t: count: ec_count }}</span>
+          </a>
+        </li>
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if ec_items != blank -%}
+<section class="yarn-fswitch yarn-entries" aria-labelledby="EntryCircles-{{ section.id }}">
+  <div class="page-width">
+    <div class="yarn-fswitch__head">
+      <h2 id="EntryCircles-{{ section.id }}">{{ ec_heading | escape }}</h2>
+      <a class="yx-picks__all" href="{{ ec_collection.url }}">{{ 'yarn_project.card_view_all' | t }} →</a>
+    </div>
+    <ul class="yarn-fswitch__grid yarn-entries__grid" role="list">
+      {{ ec_items }}
+    </ul>
+  </div>
+</section>
+{%- elsif request.design_mode -%}
+  <p class="yx-picks__note page-width">{{ ec_heading | escape }}：所选集合里还没有商品填写这些入口的字段值，本区块不在店面显示。</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "挑毛线（圆图入口）",
+  "tag": "div",
+  "class": "section-yarn-entry-circles",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "日文 · 标题", "default": "どんな毛糸をお探しですか？" },
+    { "type": "text", "id": "heading_zh", "label": "中文 · 标题", "default": "今天想要什么样的线？" },
+    { "type": "text", "id": "heading_en", "label": "英文 · 标题", "default": "What kind of yarn are you after?" },
+    { "type": "collection", "id": "collection", "label": "毛线集合", "info": "圆图链接到该集合并带筛选参数；需在 Search & Discovery 为 yarn.texture / yarn.use 开启筛选" }
+  ],
+  "blocks": [
+    {
+      "type": "entry",
+      "name": "入口",
+      "settings": [
+        { "type": "select", "id": "field", "label": "商品字段", "options": [ { "value": "yarn.texture", "label": "质感（yarn.texture）" }, { "value": "yarn.use", "label": "用途 / 季节（yarn.use）" } ], "default": "yarn.texture" },
+        { "type": "text", "id": "value", "label": "取值（与商品字段里的文字完全一致）" },
+        { "type": "text", "id": "name", "label": "日文 · 名称（空则显示取值）" },
+        { "type": "text", "id": "name_zh", "label": "中文 · 名称" },
+        { "type": "text", "id": "name_en", "label": "英文 · 名称" },
+        { "type": "image_picker", "id": "image", "label": "照片（空则用集合里第一件带该取值的商品主图）" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "挑毛线（圆图入口）" } ]
+}
+{% endschema %}

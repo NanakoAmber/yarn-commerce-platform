@@ -34,7 +34,9 @@ test('all literal and dynamic UI translations exist in the three section locales
 test('homepage follows scheme C: category entries and sale (Issue #93, approved 2026-09-26)', () => {
   // 首屏手作小屋轮播（与导览条解耦）→ 四个品类入口 + 新手入口 → 优惠 → 按作品图选 → 新手友好编织包 → 材质 / 粗细 → 店铺精选成品 → LINE 帮助。
   // 每个模块都是独立 section，顺序与开关在主题编辑器调整；原三节点 Hero 保留为停用 section。
-  assert.deepEqual(index.order, ['hero', 'guide-strip', 'story', 'sale-picks', 'project-picks', 'beginner-kits', 'filter-switch', 'picks-finished', 'yarn-hero', 'line-support']);
+  // Issue #117：挑毛线圆图入口接在品牌介绍之后；原「按材质 / 粗细」标签页区块停用（材质 / 粗细改在集合页「更多筛选」）。
+  assert.deepEqual(index.order, ['hero', 'guide-strip', 'story', 'yarn-entries', 'sale-picks', 'project-picks', 'beginner-kits', 'filter-switch', 'picks-finished', 'yarn-hero', 'line-support']);
+  assert.equal(index.sections['filter-switch'].disabled, true);
   assert.equal(index.sections.hero.type, 'hitoami-hero');
   assert.ok(index.sections.hero.block_order.length >= 3);
   // 解耦：首屏脚本不读导览条，导览条脚本不读首屏。
@@ -117,4 +119,23 @@ test('filter updates preserve preview parameters and URL hash', () => {
   assert.equal(urls[0].searchParams.get('preview_theme_id'), '123');
   assert.equal(urls[0].searchParams.get('discover_project'), 'bag');
   assert.equal(urls[0].hash, '#discover-products');
+});
+
+test('yarn entry circles and collection type chips share one filter (Issue #117, A+C approved 2026-10-02)', () => {
+  const entries = index.sections['yarn-entries'];
+  assert.equal(entries.type, 'yarn-entry-circles');
+  assert.equal(entries.settings.collection, 'yarn');
+  const values = entries.block_order.map((id) => entries.blocks[id].settings);
+  assert.deepEqual(values.map((v) => v.value), ['段染渐变', '毛绒绒', '圈圈·花式', '轻柔细线', '基础纯色', '做玩偶', '包包家居', '春夏棉线']);
+  for (const v of values) {
+    assert.ok(['yarn.texture', 'yarn.use'].includes(v.field));
+    assert.ok(v.name && v.name_en, `${v.value} needs ja/en names`);
+  }
+  const circles = fs.readFileSync('sections/yarn-entry-circles.liquid', 'utf8');
+  const toolbar = fs.readFileSync('sections/yarn-browse-toolbar.liquid', 'utf8');
+  // 圆图与标签都用 Search & Discovery 的同一个参数；没有商品的入口不显示，不编造款数。
+  assert.match(circles, /\?filter\.p\.m\.\{\{ block\.settings\.field \}\}=/);
+  assert.match(circles, /if ec_count == 0\s+continue/);
+  assert.match(toolbar, /"default": "filter\.p\.m\.yarn\.texture,filter\.p\.m\.yarn\.use"/);
+  assert.match(toolbar, /cat_params contains filter\.param_name and cat_chips != blank/);
 });

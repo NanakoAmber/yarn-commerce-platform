@@ -650,6 +650,12 @@
     "pairing_note": "Internal sample - pairing with real products not yet verified",
     "browse_categories": "Browse by category",
     "browse_price_any": "Any price",
+    "browse_category_all": "All yarn",
+    "browse_yarn_types": "Yarn types",
+    "entry_count": {
+      "one": "{{ count }} yarn",
+      "other": "{{ count }} yarns"
+    },
     "materials": "Materials reference",
     "tools": "Add tools as needed",
     "finished": "Buy finished piece",
