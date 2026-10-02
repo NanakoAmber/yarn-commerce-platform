@@ -187,6 +187,134 @@
         "color_scheme": "scheme-1"
       }
     },
+    "yarn-categories": {
+      "type": "yarn-category-tabs",
+      "blocks": {
+        "tab-popular": {
+          "type": "tab",
+          "settings": {
+            "label": "人気の毛糸",
+            "label_zh": "热门毛线",
+            "label_en": "Popular yarn"
+          }
+        },
+        "popular-joyful-cake": {
+          "type": "category",
+          "settings": {
+            "title": "Joyful Cake",
+            "title_zh": "Joyful Cake",
+            "title_en": "Joyful Cake",
+            "product": "joyful-cake-yarn"
+          }
+        },
+        "popular-melody-cake": {
+          "type": "category",
+          "settings": {
+            "title": "Melody Cake",
+            "title_zh": "Melody Cake",
+            "title_en": "Melody Cake",
+            "product": "melody-cake-yarn"
+          }
+        },
+        "popular-milk-candy": {
+          "type": "category",
+          "settings": {
+            "title": "Milk Candy",
+            "title_zh": "Milk Candy",
+            "title_en": "Milk Candy",
+            "product": "milk-candy-gradient-cotton-yarn"
+          }
+        },
+        "popular-puni": {
+          "type": "category",
+          "settings": {
+            "title": "Puni",
+            "title_zh": "Puni",
+            "title_en": "Puni",
+            "product": "puni-yarn"
+          }
+        },
+        "tab-feature": {
+          "type": "tab",
+          "settings": {
+            "label": "特徴で選ぶ",
+            "label_zh": "按特点选",
+            "label_en": "Shop by texture"
+          }
+        },
+        "feature-solid": {
+          "type": "category",
+          "settings": {
+            "title": "単色ベーシック",
+            "title_zh": "纯色基础线",
+            "title_en": "Solid basics"
+          }
+        },
+        "feature-gradient": {
+          "type": "category",
+          "settings": {
+            "title": "段染め・グラデーション",
+            "title_zh": "段染·渐变",
+            "title_en": "Variegated & gradient"
+          }
+        },
+        "feature-fluffy": {
+          "type": "category",
+          "settings": {
+            "title": "ふわふわ・ファー",
+            "title_zh": "毛绒",
+            "title_en": "Fluffy & faux fur"
+          }
+        },
+        "feature-loop": {
+          "type": "category",
+          "settings": {
+            "title": "ループ・ネップ",
+            "title_zh": "圈圈·点彩花式线",
+            "title_en": "Loop & nep"
+          }
+        },
+        "feature-mohair": {
+          "type": "category",
+          "settings": {
+            "title": "モヘア",
+            "title_zh": "马海毛",
+            "title_en": "Mohair"
+          }
+        },
+        "feature-accent": {
+          "type": "category",
+          "settings": {
+            "title": "アクセント糸",
+            "title_zh": "点缀配线",
+            "title_en": "Accent yarn"
+          }
+        }
+      },
+      "block_order": [
+        "tab-popular",
+        "popular-joyful-cake",
+        "popular-melody-cake",
+        "popular-milk-candy",
+        "popular-puni",
+        "tab-feature",
+        "feature-solid",
+        "feature-gradient",
+        "feature-fluffy",
+        "feature-loop",
+        "feature-mohair",
+        "feature-accent"
+      ],
+      "settings": {
+        "heading": "毛糸のカテゴリ",
+        "heading_zh": "毛线分类",
+        "heading_en": "Yarn categories",
+        "subheading": "",
+        "subheading_zh": "",
+        "subheading_en": "",
+        "collection": "yarn"
+      }
+    },
     "filter-switch": {
       "type": "yarn-filter-switch",
       "settings": {
@@ -260,6 +388,7 @@
     "sale-picks",
     "project-picks",
     "beginner-kits",
+    "yarn-categories",
     "filter-switch",
     "picks-finished",
     "yarn-hero",

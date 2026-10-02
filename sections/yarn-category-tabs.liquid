@@ -1,0 +1,227 @@
+{{ 'yarn-category-tabs.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'yarn-category-tabs.js' | asset_url }}" defer="defer"></script>
+{% comment %}
+  首页「毛线分类」(#114):标签页 + 虚线圆环照片卡,卡片右下圆形箭头,名称在下。
+  block 顺序即分组:每张「分类卡片」归属于它上方最近的「标签页」;排在第一个标签页之前的卡片归入第一个标签页。
+  没有分类卡片的标签页不在店面显示;只剩一个标签页时不显示标签栏,直接显示卡片;一张卡片都没有时整块不渲染。
+  链接:网址 → 系列 → 商品 → 区块的「默认系列」→ 全部系列。
+  照片:上传的图片 → 系列封面 → 系列第一件商品主图 → 商品主图 → 中性占位图。
+  无脚本时显示第一个标签页;yarn-category-tabs.js 负责切换、方向键与主题编辑器联动。
+  三语文案经 yarn-setting-text 取:纯键名为日文默认,_zh/_en 为中英设置。
+{% endcomment %}
+{%- capture ct_heading -%}{%- render 'yarn-setting-text', settings: section.settings, key: 'heading' -%}{%- endcapture -%}
+{%- capture ct_subheading -%}{%- render 'yarn-setting-text', settings: section.settings, key: 'subheading' -%}{%- endcapture -%}
+{%- liquid
+  # Pass 1: first tab, and which tabs own at least one category (",id," list).
+  assign ct_first_tab = ''
+  for block in section.blocks
+    if block.type == 'tab'
+      assign ct_first_tab = block.id
+      break
+    endif
+  endfor
+  assign ct_owner = ct_first_tab
+  assign ct_filled = ','
+  assign ct_cards = 0
+  for block in section.blocks
+    if block.type == 'tab'
+      assign ct_owner = block.id
+    else
+      assign ct_cards = ct_cards | plus: 1
+      assign ct_probe = ',' | append: ct_owner | append: ','
+      unless ct_filled contains ct_probe
+        assign ct_filled = ct_filled | append: ct_owner | append: ','
+      endunless
+    endif
+  endfor
+  # Tabs shown: those with cards; in the theme editor also the empty ones, so merchants can fill them.
+  assign ct_tabs = ''
+  for block in section.blocks
+    if block.type == 'tab'
+      assign ct_probe = ',' | append: block.id | append: ','
+      if ct_filled contains ct_probe or request.design_mode
+        assign ct_tabs = ct_tabs | append: block.id | append: ','
+      endif
+    endif
+  endfor
+  # No tab blocks at all: one plain grid with every card.
+  if ct_tabs == blank
+    assign ct_tabs = 'all'
+  endif
+  assign ct_tabs = ct_tabs | split: ','
+  assign ct_selected = ''
+  for ct_tab_id in ct_tabs
+    assign ct_probe = ',' | append: ct_tab_id | append: ','
+    if ct_filled contains ct_probe
+      assign ct_selected = ct_tab_id
+      break
+    endif
+  endfor
+  assign ct_use_tabs = false
+  if ct_tabs.size > 1
+    assign ct_use_tabs = true
+  endif
+  assign ct_fallback = collections[section.settings.collection]
+-%}
+{%- if ct_cards > 0 -%}
+<section class="yarn-cattabs" data-yarn-cattabs{% if ct_heading != blank %} aria-labelledby="YarnCatTabsHeading-{{ section.id }}"{% endif %}>
+  <div class="yarn-cattabs__inner">
+    {%- if ct_heading != blank or ct_subheading != blank -%}
+      <div class="yarn-cattabs__head">
+        {%- if ct_heading != blank -%}<h2 id="YarnCatTabsHeading-{{ section.id }}">{{ ct_heading | escape }}</h2>{%- endif -%}
+        {%- if ct_subheading != blank -%}<p>{{ ct_subheading | escape }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if ct_use_tabs -%}
+      <div class="yarn-cattabs__tabs" role="tablist"{% if ct_heading != blank %} aria-labelledby="YarnCatTabsHeading-{{ section.id }}"{% endif %}>
+        {%- for ct_tab_id in ct_tabs -%}
+          {%- assign ct_tab = section.blocks | where: 'id', ct_tab_id | first -%}
+          {%- capture ct_label -%}{%- render 'yarn-setting-text', settings: ct_tab.settings, key: 'label' -%}{%- endcapture -%}
+          {%- assign ct_on = false -%}
+          {%- if ct_tab_id == ct_selected -%}{%- assign ct_on = true -%}{%- endif -%}
+          <button type="button" class="yarn-cattabs__tab" role="tab" id="YarnCatTab-{{ section.id }}-{{ ct_tab_id }}" aria-controls="YarnCatPanel-{{ section.id }}-{{ ct_tab_id }}" aria-selected="{{ ct_on }}"{% unless ct_on %} tabindex="-1"{% endunless %} data-block-id="{{ ct_tab_id }}" {{ ct_tab.shopify_attributes }}>
+            <span>{{ ct_label | escape }}</span>
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- for ct_tab_id in ct_tabs -%}
+      {%- assign ct_on = false -%}
+      {%- if ct_tab_id == ct_selected or ct_use_tabs == false -%}{%- assign ct_on = true -%}{%- endif -%}
+      <div class="yarn-cattabs__panel" id="YarnCatPanel-{{ section.id }}-{{ ct_tab_id }}"{% if ct_use_tabs %} role="tabpanel" aria-labelledby="YarnCatTab-{{ section.id }}-{{ ct_tab_id }}"{% endif %}{% unless ct_on %} hidden{% endunless %}>
+        {%- assign ct_owner = ct_first_tab -%}
+        {%- assign ct_shown = 0 -%}
+        <ul class="yarn-cattabs__grid" role="list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'tab' -%}
+              {%- assign ct_owner = block.id -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- if ct_use_tabs and ct_owner != ct_tab_id -%}{%- continue -%}{%- endif -%}
+            {%- liquid
+              assign ct_shown = ct_shown | plus: 1
+              assign ct_collection = block.settings.collection
+              assign ct_product = block.settings.product
+              if block.settings.link != blank
+                assign ct_href = block.settings.link
+              elsif ct_collection != blank
+                assign ct_href = ct_collection.url
+              elsif ct_product != blank
+                assign ct_href = ct_product.url
+              elsif ct_fallback != blank
+                assign ct_href = ct_fallback.url
+              else
+                assign ct_href = routes.collections_url
+              endif
+              assign ct_image = block.settings.image
+              assign ct_alt = ct_image.alt | default: ''
+              if ct_image == blank and ct_collection != blank
+                assign ct_image = ct_collection.featured_image | default: ct_collection.products.first.featured_image
+                assign ct_alt = ''
+              endif
+              if ct_image == blank and ct_product != blank
+                assign ct_image = ct_product.featured_image
+                assign ct_alt = ''
+              endif
+              assign ct_placeholder = forloop.index0 | modulo: 6 | plus: 1
+              assign ct_placeholder = 'collection-' | append: ct_placeholder
+            -%}
+            {%- capture ct_title -%}{%- render 'yarn-setting-text', settings: block.settings, key: 'title' -%}{%- endcapture -%}
+            {%- if ct_title == blank and ct_collection != blank -%}{%- assign ct_title = ct_collection.title -%}{%- endif -%}
+            {%- capture ct_badge -%}{%- render 'yarn-setting-text', settings: block.settings, key: 'badge' -%}{%- endcapture -%}
+            <li>
+              <a class="yarn-cattabs__card" href="{{ ct_href }}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                <span class="yarn-cattabs__ring">
+                  <span class="yarn-cattabs__photo">
+                    {%- if ct_image != blank -%}
+                      {{ ct_image | image_url: width: 600 | image_tag: widths: '200, 300, 400, 500, 600', sizes: '(min-width: 1200px) 264px, (min-width: 990px) 21vw, (min-width: 750px) 28vw, 42vw', loading: 'lazy', alt: ct_alt }}
+                    {%- else -%}
+                      {{ ct_placeholder | placeholder_svg_tag: 'yarn-cattabs__placeholder' }}
+                    {%- endif -%}
+                  </span>
+                  {%- if ct_badge != blank -%}<span class="yarn-cattabs__badge">{{ ct_badge | escape }}</span>{%- endif -%}
+                  <span class="yarn-cattabs__go" aria-hidden="true"><svg viewBox="0 0 10 16" focusable="false"><path d="M2.5 2 8.5 8l-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </span>
+                <span class="yarn-cattabs__name">{{ ct_title | escape }}</span>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if ct_shown == 0 and request.design_mode -%}
+          <p class="yarn-cattabs__note">这个标签页下还没有分类卡片：在主题编辑器里把「分类卡片」拖到它下面，店面才会显示这个标签页。</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+{%- elsif request.design_mode -%}
+  <p class="yarn-cattabs__note page-width">毛线分类：还没有分类卡片，本区块不在店面显示。请添加「标签页」与「分类卡片」。</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "毛线分类(标签页)",
+  "tag": "div",
+  "class": "section-yarn-category-tabs",
+  "max_blocks": 40,
+  "settings": [
+    { "type": "paragraph", "content": "每张「分类卡片」归入它上方最近的「标签页」，拖动 block 即可调整分组与顺序。没有卡片的标签页不在店面显示。" },
+    { "type": "text", "id": "heading", "label": "日文 · 标题(可空)", "default": "毛糸のカテゴリ" },
+    { "type": "text", "id": "heading_zh", "label": "中文 · 标题(可空)", "default": "毛线分类" },
+    { "type": "text", "id": "heading_en", "label": "英文 · 标题(可空)", "default": "Yarn categories" },
+    { "type": "text", "id": "subheading", "label": "日文 · 副标题(可空)" },
+    { "type": "text", "id": "subheading_zh", "label": "中文 · 副标题(可空)" },
+    { "type": "text", "id": "subheading_en", "label": "英文 · 副标题(可空)" },
+    { "type": "collection", "id": "collection", "label": "默认系列", "info": "卡片没填网址、系列和商品时，点击进入这个系列" }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "标签页",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "label", "label": "日文 · 标签名", "default": "カテゴリ" },
+        { "type": "text", "id": "label_zh", "label": "中文 · 标签名", "default": "分类" },
+        { "type": "text", "id": "label_en", "label": "英文 · 标签名", "default": "Category" }
+      ]
+    },
+    {
+      "type": "category",
+      "name": "分类卡片",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "图片", "info": "留空时依次用：系列封面 → 系列第一件商品主图 → 商品主图 → 占位图" },
+        { "type": "text", "id": "title", "label": "日文 · 名称", "info": "留空时用系列名称" },
+        { "type": "text", "id": "title_zh", "label": "中文 · 名称" },
+        { "type": "text", "id": "title_en", "label": "英文 · 名称" },
+        { "type": "collection", "id": "collection", "label": "链接的系列" },
+        { "type": "url", "id": "link", "label": "网址(可选)", "info": "填了就优先于系列，例如带筛选的系列网址" },
+        { "type": "product", "id": "product", "label": "商品(可选)", "info": "没选系列与网址时链接到这件商品，并用它的主图" },
+        { "type": "text", "id": "badge", "label": "日文 · 角标(可空)", "info": "例如「人気」(热门)、「新作」(新品)；只写有依据的内容" },
+        { "type": "text", "id": "badge_zh", "label": "中文 · 角标(可空)" },
+        { "type": "text", "id": "badge_en", "label": "英文 · 角标(可空)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "毛线分类(标签页)",
+      "blocks": [
+        { "type": "tab", "settings": { "label": "人気の毛糸", "label_zh": "热门毛线", "label_en": "Popular yarn" } },
+        { "type": "category", "settings": { "title": "カテゴリ 1", "title_zh": "分类 1", "title_en": "Category 1" } },
+        { "type": "category", "settings": { "title": "カテゴリ 2", "title_zh": "分类 2", "title_en": "Category 2" } },
+        { "type": "category", "settings": { "title": "カテゴリ 3", "title_zh": "分类 3", "title_en": "Category 3" } },
+        { "type": "category", "settings": { "title": "カテゴリ 4", "title_zh": "分类 4", "title_en": "Category 4" } },
+        { "type": "tab", "settings": { "label": "特徴で選ぶ", "label_zh": "按特点选", "label_en": "Shop by texture" } },
+        { "type": "category", "settings": { "title": "単色ベーシック", "title_zh": "纯色基础线", "title_en": "Solid basics" } },
+        { "type": "category", "settings": { "title": "段染め・グラデーション", "title_zh": "段染·渐变", "title_en": "Variegated & gradient" } },
+        { "type": "category", "settings": { "title": "ふわふわ・ファー", "title_zh": "毛绒", "title_en": "Fluffy & faux fur" } },
+        { "type": "category", "settings": { "title": "ループ・ネップ", "title_zh": "圈圈·点彩花式线", "title_en": "Loop & nep" } },
+        { "type": "category", "settings": { "title": "モヘア", "title_zh": "马海毛", "title_en": "Mohair" } },
+        { "type": "category", "settings": { "title": "アクセント糸", "title_zh": "点缀配线", "title_en": "Accent yarn" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

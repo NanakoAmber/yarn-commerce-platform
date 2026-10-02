@@ -32,9 +32,9 @@ test('all literal and dynamic UI translations exist in the three section locales
 });
 
 test('homepage follows scheme C: category entries and sale (Issue #93, approved 2026-09-26)', () => {
-  // 首屏手作小屋轮播（与导览条解耦）→ 四个品类入口 + 新手入口 → 优惠 → 按作品图选 → 新手友好编织包 → 材质 / 粗细 → 店铺精选成品 → LINE 帮助。
+  // 首屏手作小屋轮播（与导览条解耦）→ 四个品类入口 + 新手入口 → 优惠 → 按作品图选 → 新手友好编织包 → 毛线分类（#114）→ 材质 / 粗细 → 店铺精选成品 → LINE 帮助。
   // 每个模块都是独立 section，顺序与开关在主题编辑器调整；原三节点 Hero 保留为停用 section。
-  assert.deepEqual(index.order, ['hero', 'guide-strip', 'story', 'sale-picks', 'project-picks', 'beginner-kits', 'filter-switch', 'picks-finished', 'yarn-hero', 'line-support']);
+  assert.deepEqual(index.order, ['hero', 'guide-strip', 'story', 'sale-picks', 'project-picks', 'beginner-kits', 'yarn-categories', 'filter-switch', 'picks-finished', 'yarn-hero', 'line-support']);
   assert.equal(index.sections.hero.type, 'hitoami-hero');
   assert.ok(index.sections.hero.block_order.length >= 3);
   // 解耦：首屏脚本不读导览条，导览条脚本不读首屏。
@@ -50,6 +50,7 @@ test('homepage follows scheme C: category entries and sale (Issue #93, approved 
   assert.equal(index.sections['project-picks'].type, 'yarn-project-picks');
   assert.equal(index.sections['beginner-kits'].settings.mode, 'beginner');
   assert.equal(index.sections['filter-switch'].type, 'yarn-filter-switch');
+  assert.equal(index.sections['yarn-categories'].type, 'yarn-category-tabs');
   assert.equal(index.sections['picks-finished'].settings.collection, 'finished-goods');
   for (const retired of ['picks-yarn', 'picks-kits', 'picks-tools', 'content-pick']) assert.equal(index.sections[retired], undefined);
 
