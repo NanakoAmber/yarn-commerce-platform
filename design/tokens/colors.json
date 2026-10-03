@@ -39,7 +39,7 @@
     "umber-700": "#675144"
   },
   "roles": {
-    "home-action": { "value": "umber-700", "use": "hitoami 首页低饱和按钮" },
+    "home-action": { "value": "umber-700", "use": "hitoami 低饱和主操作：首页按钮；毛线详情页加入、选中与价格" },
     "home-thread": { "value": "sand-600", "use": "hitoami 小猫展开的装饰毛线" },
     "home-rope": { "value": "sand-400", "use": "首页导览条挂线的线芯（线纹用 home-thread）；不得用于文字" },
     "bg-page": { "value": "cream-100", "use": "页面底" },
@@ -106,6 +106,7 @@
     "$comment": "声明实际使用的文字/背景搭配；min 为 WCAG 最低对比度（正文 4.5，大字与控件 3）。",
     "pairs": [
       ["text-inverse", "home-action", 4.5],
+      ["home-action", "bg-surface", 4.5], ["home-action", "action-subtle-bg", 4.5], ["text-secondary", "tint-sage", 4.5], ["text-heading", "tint-blush", 4.5], ["text-secondary", "action-subtle-bg", 4.5],
       ["text-primary", "bg-page", 4.5], ["text-primary", "bg-surface", 4.5], ["text-primary", "bg-sunken", 4.5], ["text-primary", "action-subtle-bg", 4.5],
       ["text-primary", "tint-butter", 4.5], ["text-primary", "tint-blush", 4.5], ["text-primary", "tint-sage", 4.5],
       ["text-heading", "bg-page", 4.5], ["text-heading", "bg-surface", 4.5], ["text-heading", "cta-bg", 4.5],

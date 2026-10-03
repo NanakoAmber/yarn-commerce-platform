@@ -15,17 +15,7 @@
     {%- capture pp_visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
     {%- if pp_visible == 'true' and project.cover.value != blank -%}
       {%- assign pp_shown = pp_shown | plus: 1 -%}
-      {%- capture pp_tags -%}{%- render 'yarn-project-offer-tags', project: project -%}{%- endcapture -%}
-      <a class="yx-project-pick" href="{{ project.system.url }}">
-        <span class="yx-project-pick__media">{{ project.cover.value | image_url: width: 800 | image_tag: widths: '300, 450, 600, 800', sizes: '(min-width: 750px) 300px, 45vw', loading: 'lazy', alt: '' }}</span>
-        <span class="yx-project-pick__title">{{ project.title.value | escape }}</span>
-        {%- assign pp_tag_list = pp_tags | split: ',' -%}
-        {%- if pp_tag_list.size > 0 -%}
-          <span class="yx-project-pick__tags">
-            {%- for pp_tag in pp_tag_list -%}<span class="yx-project-pick__tag yx-project-pick__tag--{{ pp_tag }}">{{ pp_tag | prepend: 'yarn_project.tag_' | t }}</span>{%- endfor -%}
-          </span>
-        {%- endif -%}
-      </a>
+      {%- render 'yarn-project-pick-card', project: project -%}
     {%- endif -%}
   {%- endfor -%}
 {%- endcapture -%}

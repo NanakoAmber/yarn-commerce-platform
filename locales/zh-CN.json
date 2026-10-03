@@ -537,6 +537,41 @@
       "collapsed": "礼品卡收件人表单已折叠"
     }
   },
+  "yarn_pdp": {
+    "per_ball": "/ 团",
+    "option_selected": "{{ name }}：{{ value }}",
+    "spec_heading": "线的规格",
+    "spec_material": "成分",
+    "spec_weight_length": "重量 / 长度",
+    "spec_weight": "重量",
+    "spec_length": "长度",
+    "spec_weight_value": "{{ weight }} g",
+    "spec_length_value": "约 {{ length }} m",
+    "spec_thickness": "粗细",
+    "spec_needle": "推荐针号",
+    "usage_heading": "要买几团？",
+    "usage_intro": "选你想织的东西，我们按常见尺寸估算。",
+    "usage_options": "想织的东西",
+    "usage_size": "（{{ size }}）",
+    "usage_result": {
+      "one": "{{ work }}{{ size }}大约需要 {{ count }} 团。",
+      "other": "{{ work }}{{ size }}大约需要 {{ count }} 团。"
+    },
+    "usage_needle": "推荐 {{ needle }}。",
+    "usage_note": "仅供参考，手紧手松会有 ±1 团差异。数量可以自由调整。",
+    "usage_fill": {
+      "one": "按参考填入 {{ count }} 团",
+      "other": "按参考填入 {{ count }} 团"
+    },
+    "usage_filled": "数量已改为 {{ quantity }}。",
+    "works_heading": "用这款线能织",
+    "works_note": "用到这款线的作品。",
+    "kits_heading": "搭配的编织包",
+    "care_heading": "怎么洗",
+    "sticky_label": "快速购买",
+    "sticky_add": "加入 · {{ price }}",
+    "sticky_selected": "已选：{{ value }}"
+  },
   "yarn_project": {
     "row_view_all": "查看全部",
     "row_collapse": "收起",

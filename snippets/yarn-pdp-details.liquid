@@ -1,0 +1,166 @@
+{%- comment -%}
+  毛线详情页购买区之后的内容（Issue #120，视觉稿 Yarn PDP 1a）：
+  线的规格 → 要买几团？ → 用这款线能织 → 搭配的编织包 → 怎么洗。
+  每块只读 Shopify 已有数据，没有数据的块整块不渲染，不补写示例值：
+  - 规格：yarn.material / ball_weight_g / ball_length_m / thickness / needle_size
+  - 要买几团：yarn.usage_estimates → yarn_usage（name / size / balls / needle）；「按参考填入」只改数量，不加购
+  - 能织：可公开且有封面、在 materials 或 components 里引用本商品的 yarn_project
+  - 编织包：yarn.related_kits；没有配对时退回现有的通用编织包入口
+  - 怎么洗：yarn.care 每行一条
+  参数：product、section_id
+{%- endcomment -%}
+{%- liquid
+  assign y = product.metafields.yarn
+  assign spec_weight = y.ball_weight_g.value
+  assign spec_length = y.ball_length_m.value
+  if spec_length != blank
+    assign spec_length_whole = spec_length | round
+    if spec_length == spec_length_whole
+      assign spec_length = spec_length_whole
+    endif
+  endif
+-%}
+
+{%- capture spec_rows -%}
+  {%- if y.material.value != blank -%}
+    <div class="yp-yarn-spec__row"><dt>{{ 'yarn_pdp.spec_material' | t }}</dt><dd data-proof-content>{{ y.material.value | escape }}</dd></div>
+  {%- endif -%}
+  {%- if spec_weight != blank and spec_length != blank -%}
+    <div class="yp-yarn-spec__row"><dt>{{ 'yarn_pdp.spec_weight_length' | t }}</dt><dd>{{ 'yarn_pdp.spec_weight_value' | t: weight: spec_weight }} · {{ 'yarn_pdp.spec_length_value' | t: length: spec_length }}</dd></div>
+  {%- elsif spec_weight != blank -%}
+    <div class="yp-yarn-spec__row"><dt>{{ 'yarn_pdp.spec_weight' | t }}</dt><dd>{{ 'yarn_pdp.spec_weight_value' | t: weight: spec_weight }}</dd></div>
+  {%- elsif spec_length != blank -%}
+    <div class="yp-yarn-spec__row"><dt>{{ 'yarn_pdp.spec_length' | t }}</dt><dd>{{ 'yarn_pdp.spec_length_value' | t: length: spec_length }}</dd></div>
+  {%- endif -%}
+  {%- if y.thickness.value != blank -%}
+    <div class="yp-yarn-spec__row"><dt>{{ 'yarn_pdp.spec_thickness' | t }}</dt><dd data-proof-content>{{ y.thickness.value | escape }}</dd></div>
+  {%- endif -%}
+  {%- if y.needle_size.value != blank -%}
+    <div class="yp-yarn-spec__row"><dt>{{ 'yarn_pdp.spec_needle' | t }}</dt><dd data-proof-content>{{ y.needle_size.value | escape }}</dd></div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- assign usage_options = '' -%}
+{%- capture usage_items -%}
+  {%- assign usage_index = 0 -%}
+  {%- for usage in y.usage_estimates.value -%}
+    {%- if usage.name.value != blank and usage.balls.value > 0 -%}
+      {%- liquid
+        assign usage_size = ''
+        if usage.size.value != blank
+          assign usage_size = 'yarn_pdp.usage_size' | t: size: usage.size.value
+        endif
+        assign usage_pressed = 'false'
+        if usage_index == 0
+          assign usage_pressed = 'true'
+        endif
+      -%}
+      {%- capture usage_option -%}<button type="button" class="yp-usage__option" aria-pressed="{{ usage_pressed }}" data-usage-option="{{ usage_index }}" data-proof-content>{{ usage.name.value | escape }}</button>{%- endcapture -%}
+      {%- assign usage_options = usage_options | append: usage_option -%}
+      <div class="yp-usage__result" data-usage-result="{{ usage_index }}"{% if usage_index > 0 %} hidden{% endif %}>
+        {%- comment -%}作品、尺寸、针号来自 Shopify 内容层，整句按内容层核对语言；句式在 locales 测试中覆盖。{%- endcomment -%}
+        <p data-proof-content>
+          {{- 'yarn_pdp.usage_result' | t: count: usage.balls.value, work: usage.name.value, size: usage_size | escape -}}
+          {%- if usage.needle.value != blank -%}{{ 'yarn_pdp.usage_needle' | t: needle: usage.needle.value | escape }}{%- endif -%}
+        </p>
+        <p class="yp-usage__note">{{ 'yarn_pdp.usage_note' | t }}</p>
+        <button type="button" class="yp-usage__fill" data-usage-fill="{{ usage.balls.value }}" hidden>
+          {{- 'yarn_pdp.usage_fill' | t: count: usage.balls.value -}}
+        </button>
+      </div>
+      {%- assign usage_index = usage_index | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- capture work_cards -%}
+  {%- assign work_shown = 0 -%}
+  {%- for project in shop.metaobjects.yarn_project.values -%}
+    {%- if work_shown >= 4 -%}{%- break -%}{%- endif -%}
+    {%- if project.cover.value == blank -%}{%- continue -%}{%- endif -%}
+    {%- assign uses_yarn = false -%}
+    {%- for material in project.materials.value -%}
+      {%- if material.id == product.id -%}{%- assign uses_yarn = true -%}{%- break -%}{%- endif -%}
+    {%- endfor -%}
+    {%- unless uses_yarn -%}
+      {%- for component in project.components.value -%}
+        {%- if component.variant.value.product.id == product.id -%}{%- assign uses_yarn = true -%}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+    {%- endunless -%}
+    {%- if uses_yarn -%}
+      {%- capture work_visible -%}{%- render 'yarn-project-visible', project: project -%}{%- endcapture -%}
+      {%- if work_visible == 'true' -%}
+        {%- assign work_shown = work_shown | plus: 1 -%}
+        {%- render 'yarn-project-pick-card', project: project -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- assign related_kits = y.related_kits.value -%}
+{%- assign care_lines = y.care.value -%}
+
+<div class="yp-yarn-details">
+  {%- if spec_rows contains 'yp-yarn-spec__row' -%}
+    <section class="yp-yarn-block" aria-labelledby="YarnSpec-{{ section_id }}">
+      <h2 class="yp-yarn-block__title" id="YarnSpec-{{ section_id }}">{{ 'yarn_pdp.spec_heading' | t }}</h2>
+      <dl class="yp-yarn-spec">{{ spec_rows }}</dl>
+    </section>
+  {%- endif -%}
+
+  {%- if usage_items contains 'data-usage-result' -%}
+    <yarn-usage-estimate
+      class="yp-usage"
+      data-quantity-input="Quantity-{{ section_id }}"
+      data-filled="{{ 'yarn_pdp.usage_filled' | t: quantity: '[quantity]' | escape }}"
+    >
+      <section aria-labelledby="YarnUsage-{{ section_id }}">
+        <div class="yp-usage__head">
+          <h2 class="yp-yarn-block__title" id="YarnUsage-{{ section_id }}">{{ 'yarn_pdp.usage_heading' | t }}</h2>
+          <p>{{ 'yarn_pdp.usage_intro' | t }}</p>
+        </div>
+        <div class="yp-usage__options" role="group" aria-label="{{ 'yarn_pdp.usage_options' | t }}" data-usage-options hidden>{{ usage_options }}</div>
+        {{ usage_items }}
+        <p class="visually-hidden" role="status" data-usage-status></p>
+      </section>
+    </yarn-usage-estimate>
+  {%- endif -%}
+
+  {%- if work_cards contains 'yx-project-pick' -%}
+    <section class="yp-yarn-block" aria-labelledby="YarnWorks-{{ section_id }}">
+      <div class="yp-yarn-block__head">
+        <h2 class="yp-yarn-block__title yp-yarn-block__title--section" id="YarnWorks-{{ section_id }}">{{ 'yarn_pdp.works_heading' | t }}</h2>
+        <p>{{ 'yarn_pdp.works_note' | t }}</p>
+      </div>
+      <div class="yx-project-picks yp-yarn-grid">{{ work_cards }}</div>
+    </section>
+  {%- endif -%}
+
+  {%- if related_kits != blank and related_kits.count > 0 -%}
+    <section class="yp-yarn-block" aria-labelledby="YarnKits-{{ section_id }}">
+      <div class="yp-yarn-block__head">
+        <h2 class="yp-yarn-block__title yp-yarn-block__title--section" id="YarnKits-{{ section_id }}">{{ 'yarn_pdp.kits_heading' | t }}</h2>
+      </div>
+      <div class="yp-yarn-grid">
+        {%- for kit in related_kits limit: 4 -%}
+          {%- render 'yarn-pick-card', card_product: kit, beginner: true -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- else -%}
+    <div class="yp-yarn-block">{%- render 'yarn-kit-crosslinks', product: product, kind: 'kits-teaser' -%}</div>
+  {%- endif -%}
+
+  {%- if care_lines != blank and care_lines.size > 0 -%}
+    <section class="yp-yarn-block" aria-labelledby="YarnCare-{{ section_id }}">
+      <h2 class="yp-yarn-block__title" id="YarnCare-{{ section_id }}">{{ 'yarn_pdp.care_heading' | t }}</h2>
+      <ul class="yp-yarn-care">
+        {%- for line in care_lines -%}
+          {%- if line != blank -%}
+            <li><span class="svg-wrapper" aria-hidden="true">{{ 'icon-washing.svg' | inline_asset_content }}</span><span data-proof-content>{{ line | escape }}</span></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </section>
+  {%- endif -%}
+</div>

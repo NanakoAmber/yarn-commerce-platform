@@ -549,6 +549,41 @@
       "collapsed": "Modulo destinatario del buono regalo compresso"
     }
   },
+  "yarn_pdp": {
+    "per_ball": "/ ball",
+    "option_selected": "{{ name }}: {{ value }}",
+    "spec_heading": "Yarn specs",
+    "spec_material": "Fiber",
+    "spec_weight_length": "Weight / length",
+    "spec_weight": "Weight",
+    "spec_length": "Length",
+    "spec_weight_value": "{{ weight }} g",
+    "spec_length_value": "approx. {{ length }} m",
+    "spec_thickness": "Thickness",
+    "spec_needle": "Recommended needle",
+    "usage_heading": "How many balls?",
+    "usage_intro": "Pick what you want to make and we'll estimate it from a typical size.",
+    "usage_options": "What you want to make",
+    "usage_size": " ({{ size }})",
+    "usage_result": {
+      "one": "{{ work }}{{ size }} takes about {{ count }} ball.",
+      "other": "{{ work }}{{ size }} takes about {{ count }} balls."
+    },
+    "usage_needle": " Suggested needle: {{ needle }}.",
+    "usage_note": "An estimate only: knitting tension can change it by about one ball. You can adjust the quantity freely.",
+    "usage_fill": {
+      "one": "Set quantity to {{ count }} ball",
+      "other": "Set quantity to {{ count }} balls"
+    },
+    "usage_filled": "Quantity set to {{ quantity }}.",
+    "works_heading": "What you can make with this yarn",
+    "works_note": "Projects that use this yarn.",
+    "kits_heading": "Matching kits",
+    "care_heading": "Care",
+    "sticky_label": "Quick buy",
+    "sticky_add": "Add · {{ price }}",
+    "sticky_selected": "Selected: {{ value }}"
+  },
   "yarn_project": {
     "row_view_all": "View all",
     "row_collapse": "Show less",

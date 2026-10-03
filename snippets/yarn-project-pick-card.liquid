@@ -1,0 +1,15 @@
+{%- comment -%}
+  作品卡（封面 + 标题 + 真实购买标签）：首页「按作品图选」与毛线详情页「用这款线能织」共用。
+  调用方负责只传入可公开且有封面的 project。
+{%- endcomment -%}
+{%- capture pick_tags -%}{%- render 'yarn-project-offer-tags', project: project -%}{%- endcapture -%}
+<a class="yx-project-pick" href="{{ project.system.url }}">
+  <span class="yx-project-pick__media">{{ project.cover.value | image_url: width: 800 | image_tag: widths: '300, 450, 600, 800', sizes: '(min-width: 750px) 300px, 45vw', loading: 'lazy', alt: '' }}</span>
+  <span class="yx-project-pick__title">{{ project.title.value | escape }}</span>
+  {%- assign pick_tag_list = pick_tags | split: ',' -%}
+  {%- if pick_tag_list.size > 0 -%}
+    <span class="yx-project-pick__tags">
+      {%- for pick_tag in pick_tag_list -%}<span class="yx-project-pick__tag yx-project-pick__tag--{{ pick_tag }}">{{ pick_tag | prepend: 'yarn_project.tag_' | t }}</span>{%- endfor -%}
+    </span>
+  {%- endif -%}
+</a>
