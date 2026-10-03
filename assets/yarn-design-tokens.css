@@ -35,7 +35,7 @@ html[lang]:root {
 
 /* BEGIN generated colors — edit design/tokens/colors.json, then run npm run tokens */
 :root {
-  --yarn-home-action: #675144; /* umber-700 · hitoami 首页低饱和按钮 */
+  --yarn-home-action: #675144; /* umber-700 · hitoami 低饱和主操作：首页按钮；毛线详情页加入、选中与价格 */
   --yarn-home-thread: #8c8880; /* sand-600 · hitoami 小猫展开的装饰毛线 */
   --yarn-home-rope: #b8b1a4; /* sand-400 · 首页导览条挂线的线芯（线纹用 home-thread）；不得用于文字 */
   --yarn-bg-page: #f7f7f5; /* cream-100 · 页面底 */

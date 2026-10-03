@@ -17,7 +17,7 @@ module.exports = {
   pages: [
     { key: 'home', path: '/' },
     { key: 'yarn-collection', path: '/collections/yarn' },
-    { key: 'yarn-pdp', path: '/products/demo-nukumori-yarn-50g' },
+    { key: 'yarn-pdp', path: '/products/joyful-cake-yarn' },
     { key: 'kit-pdp', path: '/products/demo-pierre-penguin-crochet-kit' },
     { key: 'finished-pdp', path: '/products/demo-flower-bouquet-blanket-finished' },
     { key: 'cart-drawer', path: '/products/demo-nukumori-yarn-50g', openCart: true },
@@ -41,7 +41,7 @@ module.exports = {
     '.cart-item__name', '.cart-item__details', '.cart-notification-product',
     '.collection-hero__title', '.collection-hero__description',
     '.header__menu-item', '.menu-drawer__menu-item', '.list-menu__item', '.footer-block__details-content',
-    '.predictive-search', '[data-proof-content]',
+    '.predictive-search', '.yx-project-pick__title', '[data-proof-content]',
   ],
 
   // 有意显示多种语言或品牌名的区域：语言切换器、支付方式图标。

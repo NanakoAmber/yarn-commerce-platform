@@ -52,7 +52,11 @@
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label">{{ localized_option_name | strip }}</legend>
+          {%- if show_selected_value -%}
+            <legend class="form__label">{{ 'yarn_pdp.option_selected' | t: name: localized_option_name, value: option.selected_value | strip }}</legend>
+          {%- else -%}
+            <legend class="form__label">{{ localized_option_name | strip }}</legend>
+          {%- endif -%}
           {% render 'product-variant-options',
             product: product,
             option: option,

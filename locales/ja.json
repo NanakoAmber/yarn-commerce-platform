@@ -537,6 +537,41 @@
       "collapsed": "ギフトカードカードの受取人フォームを折りたたみました"
     }
   },
+  "yarn_pdp": {
+    "per_ball": "/ 玉",
+    "option_selected": "{{ name }}：{{ value }}",
+    "spec_heading": "糸の仕様",
+    "spec_material": "素材",
+    "spec_weight_length": "重さ / 長さ",
+    "spec_weight": "重さ",
+    "spec_length": "長さ",
+    "spec_weight_value": "{{ weight }}g",
+    "spec_length_value": "約{{ length }}m",
+    "spec_thickness": "太さ",
+    "spec_needle": "推奨針",
+    "usage_heading": "何玉あればいい？",
+    "usage_intro": "編みたいものを選ぶと、よくあるサイズで目安をお出しします。",
+    "usage_options": "編みたいもの",
+    "usage_size": "（{{ size }}）",
+    "usage_result": {
+      "one": "{{ work }}{{ size }}は約{{ count }}玉が目安です。",
+      "other": "{{ work }}{{ size }}は約{{ count }}玉が目安です。"
+    },
+    "usage_needle": "推奨針は{{ needle }}です。",
+    "usage_note": "あくまで目安です。手加減で1玉ほど前後することがあります。数量は自由に変えられます。",
+    "usage_fill": {
+      "one": "目安の{{ count }}玉を入れる",
+      "other": "目安の{{ count }}玉を入れる"
+    },
+    "usage_filled": "数量を{{ quantity }}にしました。",
+    "works_heading": "この糸で編めるもの",
+    "works_note": "この糸を使う作品です。",
+    "kits_heading": "合わせて使える編みものキット",
+    "care_heading": "お手入れ方法",
+    "sticky_label": "かんたん購入",
+    "sticky_add": "カートへ・{{ price }}",
+    "sticky_selected": "選択中：{{ value }}"
+  },
   "yarn_project": {
     "row_view_all": "すべて見る",
     "row_collapse": "閉じる",

@@ -127,7 +127,7 @@ _Avoid_: Project, Product
 - 每个 **Project Kit** 都是一个可售 **Product**，可以通过 **Variants** 表达少量明确配置。
 - MVP 阶段 **Project Kit** 整包采购、独立库存，不通过 **Kit Components** 引用毛线 **Variants**，与 **Yarn Product** 库存互不影响（选品组 2026-09-17 确认）。
 - **Kit Component** 共享库存模型仅适用于未来日本端自组材料包：届时 Kit 的 **Variant** 由一个或多个 **Kit Components** 构成，可售数量受组件共享库存约束；任一组件缺货则该 Variant 不可购买，材料不得被系统自动替换。
-- **Yarn Product** 在 MVP 阶段不通过 **Material Requirement**／**Product Recommendation** 与 **Project** 建立选购引导关系；其页面通过 **Reference Standard** 提供估算参照。
+- **Yarn Product** 在 MVP 阶段不通过 **Material Requirement**／**Product Recommendation** 与 **Project** 建立选购引导关系；其页面通过 **Reference Standard** 提供估算参照（Shopify `yarn_usage` 条目，经商品字段 `yarn.usage_estimates` 引用）。毛线页可展示材料中用到该线的公开 **Project** 作为灵感入口，不构成 Material Requirement 或推荐（用户 2026-10-02 决定，#120）。
 - **Tutorial** 在 MVP 阶段免费提供并拥有独立入口；保留未来转为付费商品的可能（2026-09-13 确认）。
 - **Tool Product** 可单独购买，也可作为 **Project Kit** 内容物出现；两者库存互不关联（2026-09-26 用户决定，#93）。Bundles 与配件类 kit 的形态在 MVP 后评估。
 - 一个 **Project** 可以关联多个 **Tutorial**，并指定主要制作教程。
