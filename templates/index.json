@@ -145,6 +145,80 @@
         "story_text_en": "<p>hitoami brings together the ideas of “one” and “knitting”.</p><p>From the first stitch, bring yarn, colour and imagination into everyday life. Whether you are picking up yarn for the first time or have always loved making, find your own rhythm, one stitch at a time—and connect with others who share that love.</p>"
       }
     },
+    "yarn-entries": {
+      "type": "yarn-entry-circles",
+      "blocks": {
+        "entry-1": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "entry": "gradient"
+          }
+        },
+        "entry-2": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "entry": "fluffy"
+          }
+        },
+        "entry-3": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "entry": "loop-fancy"
+          }
+        },
+        "entry-4": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "entry": "fine-airy"
+          }
+        },
+        "entry-5": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.texture",
+            "entry": "basic-solid"
+          }
+        },
+        "entry-6": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.use",
+            "entry": "amigurumi"
+          }
+        },
+        "entry-7": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.use",
+            "entry": "bags-home"
+          }
+        },
+        "entry-8": {
+          "type": "entry",
+          "settings": {
+            "field": "yarn.use",
+            "entry": "spring-summer-cotton"
+          }
+        }
+      },
+      "block_order": [
+        "entry-1",
+        "entry-2",
+        "entry-3",
+        "entry-4",
+        "entry-5",
+        "entry-6",
+        "entry-7",
+        "entry-8"
+      ],
+      "settings": {
+        "collection": "yarn"
+      }
+    },
     "sale-picks": {
       "type": "yarn-picks",
       "settings": {
@@ -193,7 +267,8 @@
         "collection": "yarn",
         "material_field": "yarn.material",
         "weight_field": "yarn.weight"
-      }
+      },
+      "disabled": true
     },
     "picks-finished": {
       "type": "yarn-picks",
@@ -257,6 +332,7 @@
     "hero",
     "guide-strip",
     "story",
+    "yarn-entries",
     "sale-picks",
     "project-picks",
     "beginner-kits",

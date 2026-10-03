@@ -626,6 +626,12 @@
     "pairing_note": "示例展示 · 与真实商品的配对待核实",
     "browse_categories": "按品类浏览",
     "browse_price_any": "不限价格",
+    "browse_category_all": "全部毛线",
+    "browse_yarn_types": "毛线分类",
+    "entry_count": {
+      "one": "{{ count }} 款",
+      "other": "{{ count }} 款"
+    },
     "materials": "材料参考",
     "tools": "按需补齐工具",
     "finished": "购买成品",
