@@ -138,4 +138,7 @@ test('yarn entry circles and collection type chips share one filter (Issue #117,
   assert.match(circles, /metaobjects\.yarn_entry\[ec_handle\]/);
   assert.match(toolbar, /"default": "filter\.p\.m\.yarn\.texture,filter\.p\.m\.yarn\.use"/);
   assert.match(toolbar, /cat_params contains filter\.param_name and cat_chips != blank/);
+  // 列表页标签顺序与首页圆图一致，不随 Search & Discovery 的自动排序（各语言不同）变化。
+  const order = toolbar.match(/"id": "category_order"[^}]*"default": "([^"]+)"/)[1].split(',');
+  assert.deepEqual(order, values.map((v) => v.entry));
 });

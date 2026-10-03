@@ -12,6 +12,7 @@
 {% endcomment %}
 {%- liquid
   assign cat_params = section.settings.category_filters | remove: ' ' | split: ','
+  assign cat_order = section.settings.category_order | remove: ' ' | split: ','
   assign cat_active = false
   for filter in collection.filters
     if cat_params contains filter.param_name
@@ -27,11 +28,17 @@
   {%- for param in cat_params -%}
     {%- for filter in collection.filters -%}
       {%- if filter.param_name == param -%}
-        {%- for value in filter.values -%}
-          {%- comment -%} 选中某个分类后,其他分类的数量会按当前筛选重算,所以只在未选分类时显示款数,且标签一直保留。{%- endcomment -%}
-          {%- if value.count > 0 or cat_active -%}
-            <a class="yx-chip yx-cat{% if value.active %} yx-chip--active{% endif %}"{% if value.active %} aria-current="true"{% endif %} href="{{ collection.url }}?{{ value.param_name }}={{ value.value | url_encode }}">{{ value.label | escape }}{% unless cat_active %}<span class="yx-cat__count">{{ value.count }}</span>{% endunless %}</a>
-          {%- endif -%}
+        {%- comment -%} 标签按设置里的「毛线入口」handle 顺序排列,与首页圆图一致;Search & Discovery 的自动排序会因语言不同而变。{%- endcomment -%}
+        {%- for entry_handle in cat_order -%}
+          {%- assign entry = metaobjects.yarn_entry[entry_handle] -%}
+          {%- if entry == blank -%}{%- continue -%}{%- endif -%}
+          {%- assign entry_gid = 'gid://shopify/Metaobject/' | append: entry.system.id -%}
+          {%- for value in filter.values -%}
+            {%- comment -%} 选中某个分类后,其他分类的数量会按当前筛选重算,所以只在未选分类时显示款数,且标签一直保留。{%- endcomment -%}
+            {%- if value.value == entry_gid and value.count > 0 or value.value == entry_gid and cat_active -%}
+              <a class="yx-chip yx-cat{% if value.active %} yx-chip--active{% endif %}"{% if value.active %} aria-current="true"{% endif %} href="{{ collection.url }}?{{ value.param_name }}={{ value.value | url_encode }}">{{ value.label | escape }}{% unless cat_active %}<span class="yx-cat__count">{{ value.count }}</span>{% endunless %}</a>
+            {%- endif -%}
+          {%- endfor -%}
         {%- endfor -%}
       {%- endif -%}
     {%- endfor -%}
@@ -114,7 +121,8 @@
 {
   "name": "浏览工具栏(品类+价格带)",
   "settings": [
-    { "type": "text", "id": "category_filters", "label": "平铺为分类标签的筛选参数", "default": "filter.p.m.yarn.texture,filter.p.m.yarn.use", "info": "逗号分隔;需与首页圆图入口使用同一组商品字段" }
+    { "type": "text", "id": "category_filters", "label": "平铺为分类标签的筛选参数", "default": "filter.p.m.yarn.texture,filter.p.m.yarn.use", "info": "逗号分隔;需与首页圆图入口使用同一组商品字段" },
+    { "type": "text", "id": "category_order", "label": "分类标签顺序(毛线入口 handle)", "default": "gradient,fluffy,loop-fancy,fine-airy,basic-solid,amigurumi,bags-home,spring-summer-cotton", "info": "逗号分隔;与首页圆图顺序一致。未列出的入口不显示为标签" }
   ],
   "blocks": [
     { "type": "tab", "name": "品类 Tab", "settings": [
